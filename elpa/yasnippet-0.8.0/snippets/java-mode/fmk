@@ -1,0 +1,7 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: for (...) { ... }
+# key: fmk
+# --
+for (${1:Integer} key : ${2:map}.keySet()) {
+    $0
+}

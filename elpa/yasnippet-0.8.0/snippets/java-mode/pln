@@ -1,0 +1,10 @@
+# contributor: deepwaterooo
+# name: print ListNode
+# key: pln
+# --
+System.out.println("");
+while (${1:res} != null) {
+    System.out.print($1.val + ", ");
+    $1 = $1.next;
+}
+$0

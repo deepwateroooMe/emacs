@@ -1,0 +1,6 @@
+# contributor: deepwaterooo
+# name: String [] ${1:s} = {$0};
+# key: si
+# --
+String ${1:s} = "${2}";
+$0

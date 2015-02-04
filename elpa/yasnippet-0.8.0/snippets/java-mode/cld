@@ -1,0 +1,5 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: cld
+# key: cld
+# --
+Character.isLetterOrDigit(${1})$0

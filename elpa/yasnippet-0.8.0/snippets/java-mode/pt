@@ -1,0 +1,6 @@
+# contributor: deepwaterooo
+# name: print ListNode
+# key: pt
+# --
+${1:root}.levelPrintTree($1);
+$0
