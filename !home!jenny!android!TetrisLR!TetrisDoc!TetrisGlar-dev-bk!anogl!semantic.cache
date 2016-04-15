@@ -1,0 +1,518 @@
+;; Object anogl/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "anogl/"
+  :tables (list 
+   (semanticdb-table "Material.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("dev.anogl" package nil nil [1 19])
+            ("android.opengl.GLES20" include nil nil [21 50])
+            ("android.util.Log" include nil nil [51 75])
+            ("java.util.ArrayList" include nil nil [76 103])
+            ("java.util.List" include nil nil [104 126])
+            ("Material" type
+               (:typemodifiers ("public" "abstract")
+                :members 
+                  ( ("TAG" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [165 210])
+                    ("batchCount" variable
+                       (:typemodifiers ("protected")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [301 326])
+                    ("batchRendering" variable
+                       (:typemodifiers ("private")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [331 362])
+                    ("depthMask" variable
+                       (:typemodifiers ("protected")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [472 507])
+                    ("addAttribute" function
+                       (:typemodifiers ("protected" "final")
+                        :arguments 
+                          ( ("paramAttribute" variable (:type "Attribute") (reparse-symbol formal_parameters) [925 949])
+                            ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [951 969]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [891 1359])
+                    ("bindTextures" function
+                       (:typemodifiers ("private")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1365 1948])
+                    ("prepareState" function
+                       (:typemodifiers ("private")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2628 3449])
+                    ("addTexture" function
+                       (:typemodifiers ("protected" "final")
+                        :arguments 
+                          ( ("paramTexture" variable (:type "Texture") (reparse-symbol formal_parameters) [3487 3507])
+                            ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [3509 3527]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3455 4131])
+                    ("getDepthTest" function
+                       (:typemodifiers ("public")
+                        :type "DepthTest")
+                        (reparse-symbol class_member_declaration) [4322 4392])
+                    ("isDepthMask" function
+                       (:typemodifiers ("public")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [4398 4465])
+                    ("render" function
+                       (:typemodifiers ("public" "final")
+                        :arguments 
+                          ( ("paramMesh" variable (:type "Mesh") (reparse-symbol formal_parameters) [5615 5629])
+                            ("paramArrayOfFloat" variable
+                               (:dereference 1
+                                :type "float")
+                                (reparse-symbol formal_parameters) [5631 5656])
+                            ("paramRenderParams" variable (:type "RenderParams") (reparse-symbol formal_parameters) [5658 5688]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5590 7114])
+                    ("setDepthMask" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramBoolean" variable (:type "boolean") (reparse-symbol formal_parameters) [7262 7282]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [7237 7330])
+                    ("setDepthTest" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramDepthTest" variable (:type "DepthTest") (reparse-symbol formal_parameters) [7361 7385]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [7336 7435])
+                    ("updateUniforms" function
+                       (:typemodifiers ("protected")
+                        :arguments 
+                          ( ("paramArrayOfFloat" variable
+                               (:dereference 1
+                                :type "float")
+                                (reparse-symbol formal_parameters) [7471 7496])
+                            ("paramRenderParams" variable (:type "RenderParams") (reparse-symbol formal_parameters) [7498 7528]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [7441 7537]))                  
+                :type "class")
+                nil [128 7539]))          
+    :file "Material.java"
+    :pointmax 7540
+    :fsize 7539
+    :lastmodtime '(22277 48212 686826 754000)
+    :unmatched-syntax '((SEMICOLON 667 . 668) (GT 651 . 652) (PRIVATE 631 . 638) (LT 643 . 644) (SEMICOLON 253 . 254) (GT 235 . 236) (PRIVATE 215 . 222) (LT 227 . 228))
+    )
+   (semanticdb-table "AssetManager.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("dev.ttetris.util" package nil nil [1 26])
+            ("android.content.Context" include nil nil [28 59])
+            ("android.content.res.Resources" include nil nil [60 97])
+            ("java.io.IOException" include nil nil [98 125])
+            ("java.io.InputStream" include nil nil [126 153])
+            ("java.util.HashMap" include nil nil [154 179])
+            ("java.util.HashSet" include nil nil [180 205])
+            ("java.util.Iterator" include nil nil [206 232])
+            ("java.util.Map" include nil nil [233 254])
+            ("java.util.Set" include nil nil [255 276])
+            ("dev.ttetris.utils.MeshLoader" include nil nil [277 313])
+            ("dev.ttetris.utils.MeshPlyLoader" include nil nil [314 353])
+            ("AssetManager" type
+               (:typemodifiers ("public")
+                :members 
+                  ( ("CUBEMAP_FACES" variable
+                       (:dereference 1
+                        :typemodifiers ("private" "static" "final")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [387 472])
+                    ("CUBEMAP_FACE_PATTERN" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [477 564])
+                    ("CUBEMAP_TEXTURE_PARAMS" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "TextureParams")
+                        (reparse-symbol class_member_declaration) [569 751])
+                    ("TAG" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [756 805])
+                    ("WRITE_LOG" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [810 849])
+                    ("context" variable
+                       (:typemodifiers ("private")
+                        :type "Context")
+                        (reparse-symbol class_member_declaration) [854 878])
+                    ("defaultTextureParams" variable
+                       (:typemodifiers ("private")
+                        :type "TextureParams")
+                        (reparse-symbol class_member_declaration) [883 926])
+                    ("AssetManager" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("paramContext" variable (:type "Context") (reparse-symbol formal_parameters) [1394 1414])
+                            ("paramTextureParams" variable (:type "TextureParams") (reparse-symbol formal_parameters) [1416 1448]))                          )
+                        (reparse-symbol class_member_declaration) [1374 1608])
+                    ("getCubemapFileByFace" function
+                       (:typemodifiers ("private")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [1650 1668]))                          
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [1614 2379])
+                    ("isCubemapFaceFile" function
+                       (:typemodifiers ("private")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [2419 2437]))                          
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [2385 2519])
+                    ("loadMesh" function
+                       (:typemodifiers ("private")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [2547 2565]))                          
+                        :type "Mesh")
+                        (reparse-symbol class_member_declaration) [2525 3200])
+                    ("splitFilename" function
+                       (:typemodifiers ("private")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [3237 3255]))                          
+                        :type "String[]")
+                        (reparse-symbol class_member_declaration) [3206 3682])
+                    ("getCubeTexture" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [3718 3736]))                          
+                        :type "Texture")
+                        (reparse-symbol class_member_declaration) [3688 4830])
+                    ("getMaterial" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [4864 4882]))                          
+                        :type "Material")
+                        (reparse-symbol class_member_declaration) [4836 4949])
+                    ("getMesh" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [4975 4993]))                          
+                        :type "Mesh")
+                        (reparse-symbol class_member_declaration) [4955 5271])
+                    ("getShader" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramInt" variable (:type "int") (reparse-symbol formal_parameters) [5301 5313]))                          
+                        :type "Shader")
+                        (reparse-symbol class_member_declaration) [5277 5648])
+                    ("getShader" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [5694 5712]))                          
+                        :type "Shader")
+                        (reparse-symbol class_member_declaration) [5670 7780])
+                    ("getTexture" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramInt" variable (:type "int") (reparse-symbol formal_parameters) [7812 7824]))                          
+                        :type "Texture")
+                        (reparse-symbol class_member_declaration) [7786 7897])
+                    ("getTexture" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramInt" variable (:type "int") (reparse-symbol formal_parameters) [7929 7941])
+                            ("paramTextureParams" variable (:type "TextureParams") (reparse-symbol formal_parameters) [7943 7975]))                          
+                        :type "Texture")
+                        (reparse-symbol class_member_declaration) [7903 8336])
+                    ("getTexture" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [8368 8386]))                          
+                        :type "Texture")
+                        (reparse-symbol class_member_declaration) [8342 8462])
+                    ("getTexture" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [8510 8528])
+                            ("paramTextureParams" variable (:type "TextureParams") (reparse-symbol formal_parameters) [8530 8562]))                          
+                        :type "Texture")
+                        (reparse-symbol class_member_declaration) [8484 10697])
+                    ("loadMeshes" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [10726 10744]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [10703 11317])
+                    ("loadShaders" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [11347 11365]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [11323 11941])
+                    ("loadTextures" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [11972 11990]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [11947 12061])
+                    ("loadTextures" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [12092 12110])
+                            ("paramTextureParams" variable (:type "TextureParams") (reparse-symbol formal_parameters) [12112 12144]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [12067 13228])
+                    ("putMaterial" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [13258 13276])
+                            ("paramMaterial" variable (:type "Material") (reparse-symbol formal_parameters) [13278 13300]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [13234 13365])
+                    ("putMesh" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [13391 13409])
+                            ("paramMesh" variable (:type "Mesh") (reparse-symbol formal_parameters) [13411 13425]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [13371 13483]))                  
+                :type "class")
+                nil [355 13485]))          
+    :file "AssetManager.java"
+    :pointmax 13486
+    :fsize 13485
+    :lastmodtime '(22283 5253 955259 0)
+    :unmatched-syntax '((SEMICOLON 1367 . 1368) (NEW 1354 . 1357) (EQ 1352 . 1353) (GT 1337 . 1338) (COMMA 1328 . 1329) (LT 1320 . 1321) (SEMICOLON 1303 . 1304) (NEW 1290 . 1293) (EQ 1288 . 1289) (GT 1267 . 1268) (COMMA 1258 . 1259) (LT 1251 . 1252) (SEMICOLON 1234 . 1235) (NEW 1221 . 1224) (EQ 1219 . 1220) (GT 1205 . 1206) (COMMA 1197 . 1198) (LT 1189 . 1190) (SEMICOLON 1172 . 1173) (NEW 1159 . 1162) (EQ 1157 . 1158) (GT 1137 . 1138) (COMMA 1129 . 1130) (LT 1122 . 1123) (SEMICOLON 1105 . 1106) (NEW 1092 . 1095) (EQ 1090 . 1091) (GT 1081 . 1082) (COMMA 1075 . 1076) (LT 1068 . 1069) (SEMICOLON 1051 . 1052) (NEW 1038 . 1041) (EQ 1036 . 1037) (GT 1022 . 1023) (COMMA 1010 . 1011) (LT 1003 . 1004) (SEMICOLON 986 . 987) (NEW 973 . 976) (EQ 971 . 972) (GT 959 . 960) (COMMA 949 . 950) (PRIVATE 931 . 938) (LT 942 . 943))
+    )
+   (semanticdb-table "Scene.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("dev.ttetris.util.Scene" package nil nil [1 32])
+            ("android.opengl.GLES20" include nil nil [34 63])
+            ("android.opengl.Matrix" include nil nil [64 93])
+            ("android.os.SystemClock" include nil nil [94 124])
+            ("android.util.Log" include nil nil [125 149])
+            ("java.util.ArrayList" include nil nil [150 177])
+            ("java.util.Collections" include nil nil [178 207])
+            ("java.util.Iterator" include nil nil [208 234])
+            ("java.util.LinkedList" include nil nil [235 263])
+            ("java.util.List" include nil nil [264 286])
+            ("java.util.Queue" include nil nil [287 310])
+            ("Scene" type
+               (:typemodifiers ("public" "abstract")
+                :members 
+                  ( ("DEFAULT_FPS" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [346 393])
+                    ("TAG" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [398 440])
+                    ("aspectRatio" variable
+                       (:typemodifiers ("protected")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [445 480])
+                    ("averageFps" variable
+                       (:typemodifiers ("protected")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [485 512])
+                    ("created" variable
+                       (:typemodifiers ("protected")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [517 543])
+                    ("currentFps" variable
+                       (:typemodifiers ("protected")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [548 575])
+                    ("far" variable
+                       (:typemodifiers ("protected")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [637 666])
+                    ("fov" variable
+                       (:typemodifiers ("protected")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [671 699])
+                    ("geometryComparator" variable
+                       (:typemodifiers ("protected")
+                        :type "GeometryComparator")
+                        (reparse-symbol class_member_declaration) [768 843])
+                    ("height" variable
+                       (:typemodifiers ("protected")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [848 869])
+                    ("lastTime" variable
+                       (:typemodifiers ("protected")
+                        :type "long")
+                        (reparse-symbol class_member_declaration) [874 898])
+                    ("logFps" variable
+                       (:typemodifiers ("protected")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [903 928])
+                    ("near" variable
+                       (:typemodifiers ("protected")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [933 961])
+                    ("previousFps" variable
+                       (:typemodifiers ("protected")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [966 994])
+                    ("renderParams" variable
+                       (:typemodifiers ("protected")
+                        :type "RenderParams")
+                        (reparse-symbol class_member_declaration) [999 1035])
+                    ("rootNode" variable
+                       (:typemodifiers ("protected")
+                        :type "Node")
+                        (reparse-symbol class_member_declaration) [1040 1064])
+                    ("updateInterval" variable
+                       (:typemodifiers ("protected")
+                        :type "long")
+                        (reparse-symbol class_member_declaration) [1137 1167])
+                    ("width" variable
+                       (:typemodifiers ("protected")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1172 1192])
+                    ("worldMatrix" variable
+                       (:dereference 1
+                        :typemodifiers ("protected")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [1197 1243])
+                    ("Scene" function
+                       (:constructor-flag t
+                        :typemodifiers ("public"))
+                        (reparse-symbol class_member_declaration) [1249 1294])
+                    ("addFrameBuffer" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramFrameBuffer" variable (:type "FrameBuffer") (reparse-symbol formal_parameters) [1327 1355]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1300 1413])
+                    ("drawFrame" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramAssetManager" variable (:type "AssetManager") (reparse-symbol formal_parameters) [1441 1471])
+                            ("paramInt1" variable (:type "int") (reparse-symbol formal_parameters) [1473 1486])
+                            ("paramInt2" variable (:type "int") (reparse-symbol formal_parameters) [1488 1501]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1419 3234])
+                    ("executeEvents" function
+                       (:typemodifiers ("protected")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3240 3443])
+                    ("getAverageFps" function
+                       (:typemodifiers ("public")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [3449 3517])
+                    ("getCurrentFps" function
+                       (:typemodifiers ("public")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [3523 3591])
+                    ("onCreate" function
+                       (:typemodifiers ("protected")
+                        :arguments 
+                          ( ("paramAssetManager" variable (:type "AssetManager") (reparse-symbol formal_parameters) [3621 3651]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3597 3660])
+                    ("onResize" function
+                       (:typemodifiers ("protected")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3666 3699])
+                    ("onUpdate" function
+                       (:typemodifiers ("protected")
+                        :arguments 
+                          ( ("paramFloat" variable (:type "float") (reparse-symbol formal_parameters) [3729 3745]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3705 3754])
+                    ("queueEvent" function
+                       (:typemodifiers ("protected")
+                        :arguments 
+                          ( ("paramRunnable" variable (:type "Runnable") (reparse-symbol formal_parameters) [3786 3808]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3760 3930])
+                    ("removeFrameBuffer" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramFrameBuffer" variable (:type "FrameBuffer") (reparse-symbol formal_parameters) [3966 3994]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3936 4055])
+                    ("render" function
+                       (:typemodifiers ("protected")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [4061 5227])
+                    ("setFps" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramFloat" variable (:type "float") (reparse-symbol formal_parameters) [5252 5268]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5233 5341])
+                    ("setFrustrum" function
+                       (:typemodifiers ("protected")
+                        :arguments 
+                          ( ("paramFloat1" variable (:type "float") (reparse-symbol formal_parameters) [5374 5391])
+                            ("paramFloat2" variable (:type "float") (reparse-symbol formal_parameters) [5393 5410])
+                            ("paramFloat3" variable (:type "float") (reparse-symbol formal_parameters) [5412 5429]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5347 5561])
+                    ("setLogFps" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramBoolean" variable (:type "boolean") (reparse-symbol formal_parameters) [5589 5609]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5567 5654])
+                    ("updateFrustrum" function
+                       (:typemodifiers ("protected")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5660 5787]))                  
+                :type "class")
+                nil [312 5789]))          
+    :file "Scene.java"
+    :pointmax 5780
+    :fsize 5789
+    :lastmodtime '(22283 12743 412397 232000)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "FrameBuffer.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("dev.anogl" package nil nil [1 19])
+            ("android.opengl.GLES20" include nil nil [21 50])
+            ("java.util.Iterator" include nil nil [51 77])
+            ("java.util.List" include nil nil [78 100])
+            ("FrameBuffer" type
+               (:typemodifiers ("public" "final")
+                :members 
+                  ( ("bufferId" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [139 160])
+                    ("FrameBuffer" function
+                       (:constructor-flag t
+                        :typemodifiers ("public"))
+                        (reparse-symbol class_member_declaration) [210 368])
+                    ("bind" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [644 726])
+                    ("destroy" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [732 1147])
+                    ("finalize" function
+                       (:typemodifiers ("protected")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1153 1205])
+                    ("isComplete" function
+                       (:typemodifiers ("public")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [1211 1326]))                  
+                :type "class")
+                nil [102 2251]))          
+    :file "FrameBuffer.java"
+    :pointmax 2252
+    :fsize 2251
+    :lastmodtime '(22276 44209 210704 0)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!home!jenny!android!TetrisLR!TetrisDoc!TetrisGlar-dev-bk!anogl!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

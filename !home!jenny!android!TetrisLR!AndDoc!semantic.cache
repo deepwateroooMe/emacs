@@ -1,0 +1,90 @@
+;; Object AndDoc/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "AndDoc/"
+  :tables (list 
+   (semanticdb-table "MyPanel.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("MyPanel" type
+               (:superclasses "Panel"
+                :members 
+                  ( ("getInsets" function
+                       (:typemodifiers ("public")
+                        :type "Insets")
+                        (reparse-symbol class_member_declaration) [62 142]))                  
+                :type "class")
+                nil [28 144]))          
+    :file "MyPanel.java"
+    :pointmax 131
+    :fsize 156
+    :lastmodtime '(22233 45947 325621 674000)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "Block.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("Block" type
+               (:members 
+                  ( ("pattern" variable
+                       (:dereference 2
+                        :typemodifiers ("static")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [26 545])
+                    ("blockType" variable (:type "int") (reparse-symbol class_member_declaration) [551 565])
+                    ("turnState" variable (:type "int") (reparse-symbol class_member_declaration) [584 598])
+                    ("blockState" variable (:type "int") (reparse-symbol class_member_declaration) [618 633])
+                    ("col" variable (:type "int") (reparse-symbol class_member_declaration) [657 661])
+                    ("row" variable (:type "int") (reparse-symbol class_member_declaration) [648 656])
+                    ("scr" variable (:type "GameCanvas") (reparse-symbol class_member_declaration) [678 693])
+                    ("Block" function
+                       (:constructor-flag t
+                        :arguments 
+                          ( ("scr" variable (:type "GameCanvas") (reparse-symbol formal_parameters) [720 734]))                          )
+                        (reparse-symbol class_member_declaration) [714 963])
+                    ("reset" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [989 1234])
+                    ("leftTurn" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1258 1464])
+                    ("leftMove" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1489 1663])
+                    ("rightMove" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1683 1858])
+                    ("fallDown" function
+                       (:typemodifiers ("public")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [1883 2251])
+                    ("assertValid" function
+                       (:arguments 
+                          ( ("t" variable (:type "int") (reparse-symbol formal_parameters) [2294 2299])
+                            ("s" variable (:type "int") (reparse-symbol formal_parameters) [2301 2306])
+                            ("row" variable (:type "int") (reparse-symbol formal_parameters) [2308 2315])
+                            ("col" variable (:type "int") (reparse-symbol formal_parameters) [2317 2324]))                          
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [2274 2769])
+                    ("dispBlock" function
+                       (:typemodifiers ("public" "synchronized")
+                        :arguments 
+                          ( ("s" variable (:type "int") (reparse-symbol formal_parameters) [2825 2830]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2790 3166]))                  
+                :type "class")
+                nil [8 3168]))          
+    :file "Block.java"
+    :pointmax 2353
+    :fsize 3291
+    :lastmodtime '(22233 46498 492354 755000)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!home!jenny!android!TetrisLR!AndDoc!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

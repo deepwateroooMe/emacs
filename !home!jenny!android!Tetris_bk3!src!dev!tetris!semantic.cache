@@ -1,0 +1,213 @@
+;; Object tetris/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "tetris/"
+  :tables (list 
+   (semanticdb-table "TetrisView.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("dev.tetris" package nil nil [1 20])
+            ("dev.tetris.game.Block" include nil nil [22 51])
+            ("dev.tetris.game.Model" include nil nil [52 81])
+            ("java.io.IOException" include nil nil [83 110])
+            ("java.io.InputStream" include nil nil [111 138])
+            ("android.content.Context" include nil nil [140 171])
+            ("android.graphics.Bitmap" include nil nil [172 203])
+            ("android.graphics.BitmapFactory" include nil nil [204 242])
+            ("android.graphics.Canvas" include nil nil [243 274])
+            ("android.graphics.Color" include nil nil [275 305])
+            ("android.graphics.Paint" include nil nil [306 336])
+            ("android.graphics.RectF" include nil nil [337 367])
+            ("android.os.Handler" include nil nil [368 394])
+            ("android.os.Message" include nil nil [395 421])
+            ("android.util.AttributeSet" include nil nil [422 455])
+            ("android.util.Log" include nil nil [456 480])
+            ("android.view.View" include nil nil [481 506])
+            ("android.view.MotionEvent" include nil nil [507 539])
+            ("TetrisView" type
+               (:typemodifiers ("public")
+                :superclasses "View"
+                :members 
+                  ( ("DELAY" variable
+                       (:typemodifiers ("public")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [625 647])
+                    ("redrawHandler" variable
+                       (:typemodifiers ("private")
+                        :type "RedrawHandler")
+                        (reparse-symbol class_member_declaration) [649 711])
+                    ("BLOCK_OFFSET" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [762 804])
+                    ("FRAME_OFFSET_BASE" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [806 853])
+                    ("paint" variable
+                       (:typemodifiers ("private" "final")
+                        :type "Paint")
+                        (reparse-symbol class_member_declaration) [855 895])
+                    ("width" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [897 915])
+                    ("height" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [917 936])
+                    ("cellSize" variable
+                       (:typemodifiers ("private")
+                        :type "Dimension")
+                        (reparse-symbol class_member_declaration) [938 972])
+                    ("frameOffset" variable
+                       (:typemodifiers ("private")
+                        :type "Dimension")
+                        (reparse-symbol class_member_declaration) [1049 1086])
+                    ("model" variable
+                       (:typemodifiers ("private")
+                        :type "Model")
+                        (reparse-symbol class_member_declaration) [1088 1115])
+                    ("lastMove" variable
+                       (:typemodifiers ("private")
+                        :type "long")
+                        (reparse-symbol class_member_declaration) [1117 1143])
+                    ("lastDown" variable
+                       (:typemodifiers ("private")
+                        :type "long")
+                        (reparse-symbol class_member_declaration) [1148 1174])
+                    ("activity" variable
+                       (:typemodifiers ("private")
+                        :type "TetrisGame")
+                        (reparse-symbol class_member_declaration) [1176 1204])
+                    ("getCellSize" function
+                       (:typemodifiers ("public")
+                        :type "Dimension")
+                        (reparse-symbol class_member_declaration) [1210 1278])
+                    ("TetrisView" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("context" variable (:type "Context") (reparse-symbol formal_parameters) [1299 1314])
+                            ("attrs" variable (:type "AttributeSet") (reparse-symbol formal_parameters) [1316 1334]))                          )
+                        (reparse-symbol class_member_declaration) [1281 1365])
+                    ("TetrisView" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("context" variable (:type "Context") (reparse-symbol formal_parameters) [1386 1401])
+                            ("attrs" variable (:type "AttributeSet") (reparse-symbol formal_parameters) [1403 1421])
+                            ("defStyle" variable (:type "int") (reparse-symbol formal_parameters) [1423 1435]))                          )
+                        (reparse-symbol class_member_declaration) [1368 1476])
+                    ("setModel" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("model" variable (:type "Model") (reparse-symbol formal_parameters) [1500 1511]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1479 1539])
+                    ("setActivity" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("activity" variable (:type "TetrisGame") (reparse-symbol formal_parameters) [1566 1585]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1542 1619])
+                    ("setGameCommand" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("move" variable (:type "Model.Move") (reparse-symbol formal_parameters) [1649 1664]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1622 1869])
+                    ("setGameCommandWithDelay" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("move" variable (:type "Model.Move") (reparse-symbol formal_parameters) [1908 1923]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1872 2383])
+                    ("drawCell" function
+                       (:typemodifiers ("private")
+                        :arguments 
+                          ( ("canvas" variable (:type "Canvas") (reparse-symbol formal_parameters) [2408 2421])
+                            ("row" variable (:type "int") (reparse-symbol formal_parameters) [2423 2430])
+                            ("col" variable (:type "int") (reparse-symbol formal_parameters) [2432 2439]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2386 3073])
+                    ("drawCell" function
+                       (:typemodifiers ("private")
+                        :arguments 
+                          ( ("canvas" variable (:type "Canvas") (reparse-symbol formal_parameters) [3102 3115])
+                            ("x" variable (:type "int") (reparse-symbol formal_parameters) [3117 3122])
+                            ("y" variable (:type "int") (reparse-symbol formal_parameters) [3124 3129])
+                            ("colorFG" variable (:type "int") (reparse-symbol formal_parameters) [3131 3142])
+                            ("nStatus" variable (:type "byte") (reparse-symbol formal_parameters) [3144 3156]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3080 4033])
+                    ("drawCell" function
+                       (:typemodifiers ("private")
+                        :arguments 
+                          ( ("canvas" variable (:type "Canvas") (reparse-symbol formal_parameters) [4058 4071])
+                            ("x" variable (:type "int") (reparse-symbol formal_parameters) [4073 4078])
+                            ("y" variable (:type "int") (reparse-symbol formal_parameters) [4080 4085])
+                            ("colorFG" variable (:type "int") (reparse-symbol formal_parameters) [4087 4098]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [4036 4580])
+                    ("onDraw" function
+                       (:typemodifiers ("protected")
+                        :arguments 
+                          ( ("canvas" variable (:type "Canvas") (reparse-symbol formal_parameters) [4616 4629]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [4594 4871])
+                    ("drawFrame" function
+                       (:typemodifiers ("private")
+                        :arguments 
+                          ( ("canvas" variable (:type "Canvas") (reparse-symbol formal_parameters) [4897 4910]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [4874 5412])
+                    ("onSizeChanged" function
+                       (:typemodifiers ("protected")
+                        :arguments 
+                          ( ("w" variable (:type "int") (reparse-symbol formal_parameters) [5455 5460])
+                            ("h" variable (:type "int") (reparse-symbol formal_parameters) [5462 5467])
+                            ("oldw" variable (:type "int") (reparse-symbol formal_parameters) [5469 5477])
+                            ("oldh" variable (:type "int") (reparse-symbol formal_parameters) [5479 5487]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5426 5927])
+                    ("RedrawHandler" type
+                       (:typemodifiers ("static")
+                        :superclasses "Handler"
+                        :members 
+                          ( ("owner" variable
+                               (:typemodifiers ("private" "final")
+                                :type "TetrisView")
+                                (reparse-symbol class_member_declaration) [5977 6008])
+                            ("RedrawHandler" function
+                               (:constructor-flag t
+                                :typemodifiers ("private")
+                                :arguments 
+                                  ( ("owner" variable (:type "TetrisView") (reparse-symbol formal_parameters) [6033 6049]))                                  )
+                                (reparse-symbol class_member_declaration) [6011 6079])
+                            ("handleMessage" function
+                               (:typemodifiers ("public")
+                                :arguments 
+                                  ( ("msg" variable (:type "Message") (reparse-symbol formal_parameters) [6121 6132]))                                  
+                                :type "void")
+                                (reparse-symbol class_member_declaration) [6095 6350])
+                            ("sleep" function
+                               (:typemodifiers ("public")
+                                :arguments 
+                                  ( ("delayMillis" variable (:type "long") (reparse-symbol formal_parameters) [6372 6388]))                                  
+                                :type "void")
+                                (reparse-symbol class_member_declaration) [6354 6476]))                          
+                        :type "class")
+                        (reparse-symbol class_member_declaration) [5930 6479]))                  
+                :type "class")
+                nil [541 6481]))          
+    :file "TetrisView.java"
+    :pointmax 6482
+    :fsize 6481
+    :lastmodtime '(22247 40023 881572 0)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!home!jenny!android!Tetris_bk3!src!dev!tetris!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

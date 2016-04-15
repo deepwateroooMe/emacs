@@ -1,0 +1,374 @@
+;; Object tetris/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "tetris/"
+  :tables (list 
+   (semanticdb-table "Tetris.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("dev.tetris" package nil nil [1 20])
+            ("android.app.Activity" include nil nil [22 50])
+            ("android.content.Intent" include nil nil [51 81])
+            ("android.content.SharedPreferences" include nil nil [82 123])
+            ("android.graphics.Typeface" include nil nil [124 157])
+            ("android.os.Bundle" include nil nil [158 183])
+            ("android.view.MotionEvent" include nil nil [184 216])
+            ("android.view.View" include nil nil [217 242])
+            ("android.view.View.OnClickListener" include nil nil [243 284])
+            ("android.view.MenuInflater" include nil nil [285 318])
+            ("android.widget.TextView" include nil nil [319 350])
+            ("android.widget.ImageButton" include nil nil [351 385])
+            ("Tetris" type
+               (:typemodifiers ("public")
+                :interfaces ("OnClickListener")
+                :superclasses "Activity"
+                :members 
+                  ( ("onCreate" function
+                       (:typemodifiers ("protected")
+                        :arguments 
+                          ( ("savedInstanceState" variable (:type "Bundle") (reparse-symbol formal_parameters) [489 514]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [465 1155])
+                    ("onClick" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("v" variable (:type "View") (reparse-symbol formal_parameters) [1181 1187]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1161 1873]))                  
+                :type "class")
+                nil [387 1875]))          
+    :file "Tetris.java"
+    :pointmax 1876
+    :fsize 1875
+    :lastmodtime '(22254 63644 637751 970000)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "Dimension.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("dev.tetris" package nil nil [1 20])
+            ("Dimension" type
+               (:typemodifiers ("public")
+                :members 
+                  ( ("width" variable
+                       (:typemodifiers ("private" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [48 72])
+                    ("height" variable
+                       (:typemodifiers ("private" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [74 99])
+                    ("Dimension" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("width" variable (:type "int") (reparse-symbol formal_parameters) [121 130])
+                            ("height" variable (:type "int") (reparse-symbol formal_parameters) [132 142]))                          )
+                        (reparse-symbol class_member_declaration) [103 195])
+                    ("getWidth" function
+                       (:typemodifiers ("public")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [198 240])
+                    ("getHeight" function
+                       (:typemodifiers ("public")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [243 287]))                  
+                :type "class")
+                nil [22 293]))          
+    :file "Dimension.java"
+    :pointmax 294
+    :fsize 293
+    :lastmodtime '(22254 63742 282236 162000)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "StarSurfaceView.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("dev.tetris" package nil nil [1 20])
+            ("dev.ttetris.Model" include nil nil [30 55])
+            ("java.io.InputStream" include nil nil [57 84])
+            ("android.content.Context" include nil nil [85 116])
+            ("android.content.Intent" include nil nil [117 147])
+            ("android.content.res.Resources" include nil nil [148 185])
+            ("android.graphics.Bitmap" include nil nil [186 217])
+            ("android.graphics.BitmapFactory" include nil nil [218 256])
+            ("android.graphics.Canvas" include nil nil [257 288])
+            ("android.graphics.Paint" include nil nil [289 319])
+            ("android.util.AttributeSet" include nil nil [320 353])
+            ("android.view.MotionEvent" include nil nil [354 386])
+            ("android.view.SurfaceHolder" include nil nil [387 421])
+            ("android.view.SurfaceView" include nil nil [422 454])
+            ("android.view.View" include nil nil [455 480])
+            ("android.graphics.Color" include nil nil [481 511])
+            ("android.graphics.Rect" include nil nil [512 541])
+            ("android.graphics.RectF" include nil nil [542 572])
+            ("StarSurfaceView" type
+               (:typemodifiers ("public")
+                :interfaces ("Runnable" "SurfaceHolder.Callback")
+                :superclasses "SurfaceView"
+                :members 
+                  ( ("DELAY" variable
+                       (:typemodifiers ("public")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [792 815])
+                    ("BLOCK_OFFSET" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [820 862])
+                    ("OFFSET" variable
+                       (:typemodifiers ("private")
+                        :type "Integer")
+                        (reparse-symbol class_member_declaration) [867 895])
+                    ("TOP_OFFSET" variable
+                       (:typemodifiers ("private")
+                        :type "Integer")
+                        (reparse-symbol class_member_declaration) [900 932])
+                    ("color" variable
+                       (:typemodifiers ("private")
+                        :type "BlockColor")
+                        (reparse-symbol class_member_declaration) [937 962])
+                    ("width" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [964 982])
+                    ("height" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [984 1003])
+                    ("nextSize" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1008 1029])
+                    ("cellSize" variable
+                       (:typemodifiers ("private")
+                        :type "Dimension")
+                        (reparse-symbol class_member_declaration) [1034 1068])
+                    ("frameOffset" variable
+                       (:typemodifiers ("private")
+                        :type "Dimension")
+                        (reparse-symbol class_member_declaration) [1111 1148])
+                    ("activity" variable
+                       (:typemodifiers ("private")
+                        :type "ActivityGame")
+                        (reparse-symbol class_member_declaration) [1150 1180])
+                    ("lastMove" variable
+                       (:typemodifiers ("private")
+                        :type "long")
+                        (reparse-symbol class_member_declaration) [1182 1208])
+                    ("mx" variable
+                       (:typemodifiers ("private" "static")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [1214 1238])
+                    ("my" variable
+                       (:typemodifiers ("private" "static")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [1243 1267])
+                    ("mBgnX" variable
+                       (:typemodifiers ("private" "static")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [1272 1299])
+                    ("mBgnY" variable
+                       (:typemodifiers ("private" "static")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [1304 1331])
+                    ("SWIPE_MIN_DISTANCE" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1336 1384])
+                    ("sHolder" variable (:type "SurfaceHolder") (reparse-symbol class_member_declaration) [1428 1457])
+                    ("canvas" variable (:type "Canvas") (reparse-symbol class_member_declaration) [1459 1480])
+                    ("paint" variable (:type "Paint") (reparse-symbol class_member_declaration) [1482 1494])
+                    ("model" variable (:type "Model") (reparse-symbol class_member_declaration) [1496 1508])
+                    ("face" variable (:type "int") (reparse-symbol class_member_declaration) [1521 1530])
+                    ("flag" variable (:type "boolean") (reparse-symbol class_member_declaration) [1532 1545])
+                    ("onlyone" variable (:type "boolean") (reparse-symbol class_member_declaration) [1547 1570])
+                    ("next" variable (:type "boolean") (reparse-symbol class_member_declaration) [1572 1593])
+                    ("activeBlock" variable (:type "Block") (reparse-symbol class_member_declaration) [1598 1616])
+                    ("nextBlock" variable (:type "Block") (reparse-symbol class_member_declaration) [1623 1639])
+                    ("x" variable (:type "int") (reparse-symbol class_member_declaration) [1648 1654])
+                    ("y" variable (:type "int") (reparse-symbol class_member_declaration) [1656 1662])
+                    ("kk" variable (:type "int") (reparse-symbol class_member_declaration) [1664 1671])
+                    ("totalScore" variable (:type "int") (reparse-symbol class_member_declaration) [1676 1691])
+                    ("counter" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1696 1716])
+                    ("StarSurfaceView" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("context" variable (:type "Context") (reparse-symbol formal_parameters) [1814 1829]))                          )
+                        (reparse-symbol class_member_declaration) [1791 2191])
+                    ("getCellSize" function
+                       (:typemodifiers ("public")
+                        :type "Dimension")
+                        (reparse-symbol class_member_declaration) [2634 2702])
+                    ("setModel" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("model" variable (:type "Model") (reparse-symbol formal_parameters) [2730 2741]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2709 2769])
+                    ("setActivity" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("activity" variable (:type "ActivityGame") (reparse-symbol formal_parameters) [2796 2817]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2772 2851])
+                    ("setGameCommand" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("move" variable (:type "Model.Move") (reparse-symbol formal_parameters) [2881 2896]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2854 3143])
+                    ("setGameCommandWithDelay" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("move" variable (:type "Model.Move") (reparse-symbol formal_parameters) [3182 3197]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3146 3427])
+                    ("getColor" function
+                       (:typemodifiers ("public")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [3430 3478])
+                    ("getStaticValue" function
+                       (:typemodifiers ("public")
+                        :type "byte")
+                        (reparse-symbol class_member_declaration) [3481 3536])
+                    ("getColorForStaticValue" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("b" variable (:type "byte") (reparse-symbol formal_parameters) [3580 3586]))                          
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [3539 3722])
+                    ("drawNextCell" function
+                       (:typemodifiers ("private")
+                        :arguments 
+                          ( ("canvas" variable (:type "Canvas") (reparse-symbol formal_parameters) [3751 3764])
+                            ("x" variable (:type "int") (reparse-symbol formal_parameters) [3766 3771])
+                            ("y" variable (:type "int") (reparse-symbol formal_parameters) [3773 3778])
+                            ("colorFG" variable (:type "byte") (reparse-symbol formal_parameters) [3780 3792]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3725 4224])
+                    ("drawGameCell" function
+                       (:typemodifiers ("private")
+                        :arguments 
+                          ( ("canvas" variable (:type "Canvas") (reparse-symbol formal_parameters) [4256 4269])
+                            ("x" variable (:type "int") (reparse-symbol formal_parameters) [4271 4276])
+                            ("y" variable (:type "int") (reparse-symbol formal_parameters) [4278 4283]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [4230 5078])
+                    ("drawScoreAndFrames" function
+                       (:typemodifiers ("private")
+                        :arguments 
+                          ( ("canvas" variable (:type "Canvas") (reparse-symbol formal_parameters) [5116 5129]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5084 5877])
+                    ("draw" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5892 6809])
+                    ("onTouchEvent" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("event" variable (:type "MotionEvent") (reparse-symbol formal_parameters) [6861 6878]))                          
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [6833 9513])
+                    ("activateGame" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [9516 9620])
+                    ("left" variable (:type "boolean") (reparse-symbol class_member_declaration) [9623 9644])
+                    ("right" variable (:type "boolean") (reparse-symbol class_member_declaration) [9646 9668])
+                    ("up" variable (:type "boolean") (reparse-symbol class_member_declaration) [9670 9689])
+                    ("down" variable (:type "boolean") (reparse-symbol class_member_declaration) [9691 9712])
+                    ("run" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [9715 13252])
+                    ("startNewGame" function
+                       (:typemodifiers ("public" "final")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [13255 13450])
+                    ("onSizeChanged" function
+                       (:typemodifiers ("protected")
+                        :arguments 
+                          ( ("w" variable (:type "int") (reparse-symbol formal_parameters) [13500 13505])
+                            ("h" variable (:type "int") (reparse-symbol formal_parameters) [13507 13512])
+                            ("oldw" variable (:type "int") (reparse-symbol formal_parameters) [13514 13522])
+                            ("oldh" variable (:type "int") (reparse-symbol formal_parameters) [13524 13532]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [13471 14083])
+                    ("getGameTopLeftPoint" function
+                       (:typemodifiers ("public")
+                        :type "Point")
+                        (reparse-symbol class_member_declaration) [14089 14290])
+                    ("surfaceChanged" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("holder" variable (:type "SurfaceHolder") (reparse-symbol formal_parameters) [14324 14344])
+                            ("format" variable (:type "int") (reparse-symbol formal_parameters) [14346 14356])
+                            ("width" variable (:type "int") (reparse-symbol formal_parameters) [14358 14367])
+                            ("height" variable (:type "int") (reparse-symbol formal_parameters) [14368 14378]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [14297 14384])
+                    ("surfaceCreated" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("holder" variable (:type "SurfaceHolder") (reparse-symbol formal_parameters) [14414 14434]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [14387 14587])
+                    ("surfaceDestroyed" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("holder" variable (:type "SurfaceHolder") (reparse-symbol formal_parameters) [14620 14640]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [14591 14662]))                  
+                :type "class")
+                nil [693 14664]))          
+    :file "StarSurfaceView.java"
+    :pointmax 14666
+    :fsize 14822
+    :lastmodtime '(22254 63798 94512 912000)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "Model.java"
+    :file "Model.java"
+    :fsize 7249
+    :lastmodtime '(22254 63746 174255 467000)
+    )
+   (semanticdb-table "ActGameover.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("dev.tetris" package nil nil [1 20])
+            ("android.app.Activity" include nil nil [30 58])
+            ("android.content.Intent" include nil nil [59 89])
+            ("android.os.Bundle" include nil nil [90 115])
+            ("android.view.View" include nil nil [116 141])
+            ("android.widget.Button" include nil nil [142 171])
+            ("ActGameover" type
+               (:typemodifiers ("public")
+                :superclasses "Activity"
+                :members 
+                  ( ("b4" variable
+                       (:typemodifiers ("private")
+                        :type "Button")
+                        (reparse-symbol class_member_declaration) [241 266])
+                    ("onCreate" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("savedInstanceState" variable (:type "Bundle") (reparse-symbol formal_parameters) [291 316]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [270 1126]))                  
+                :type "class")
+                nil [173 1128]))          
+    :file "ActGameover.java"
+    :pointmax 1131
+    :fsize 1234
+    :lastmodtime '(22254 63812 734585 530000)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!home!jenny!android!Tetris!src!dev!tetris!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

@@ -1,0 +1,63 @@
+;; Object lc/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "lc/"
+  :tables (list 
+   (semanticdb-table "BSTIterator.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("com.TreeNode" include nil nil [1 21])
+            ("java.util.HashMap" include nil nil [23 48])
+            ("java.util.Map" include nil nil [49 70])
+            ("java.util.ArrayList" include nil nil [71 98])
+            ("java.util.List" include nil nil [99 121])
+            ("java.util.Stack" include nil nil [122 145])
+            ("BSTIterator" type
+               (:typemodifiers ("public")
+                :members 
+                  ( ("Solution" type
+                       (:typemodifiers ("public" "static")
+                        :members 
+                          ( ("pushIntoStackInOrder" function
+                               (:typemodifiers ("public")
+                                :arguments 
+                                  ( ("root" variable (:type "TreeNode") (reparse-symbol formal_parameters) [548 561]))                                  
+                                :type "void")
+                                (reparse-symbol class_member_declaration) [515 763])
+                            ("BSTIterator" function
+                               (:typemodifiers ("public")
+                                :arguments 
+                                  ( ("root" variable (:type "TreeNode") (reparse-symbol formal_parameters) [805 818]))                                  
+                                :type "void")
+                                (reparse-symbol class_member_declaration) [781 871])
+                            ("hasNext" function
+                               (:typemodifiers ("public")
+                                :type "boolean")
+                                (reparse-symbol class_member_declaration) [943 1026])
+                            ("next" function
+                               (:typemodifiers ("public")
+                                :type "int")
+                                (reparse-symbol class_member_declaration) [1084 1384]))                          
+                        :type "class")
+                        (reparse-symbol class_member_declaration) [178 1568])
+                    ("main" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("args" variable
+                               (:dereference 1
+                                :type "String")
+                                (reparse-symbol formal_parameters) [1598 1611]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1574 1991]))                  
+                :type "class")
+                nil [147 1993]))          
+    :file "BSTIterator.java"
+    :pointmax 1994
+    :fsize 1993
+    :lastmodtime '(21874 29474 360531 444000)
+    :unmatched-syntax '((SEMICOLON 505 . 506) (PAREN_BLOCK 503 . 505) (GT 502 . 503) (LT 493 . 494) (NEW 484 . 487) (EQ 482 . 483) (GT 478 . 479) (PRIVATE 456 . 463) (LT 469 . 470))
+    )
+   )
+  :file "!home!jenny!lc!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

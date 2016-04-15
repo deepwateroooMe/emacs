@@ -1,0 +1,78 @@
+;; Object tetrislr/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "tetrislr/"
+  :tables (list 
+   (semanticdb-table "GameView.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("dev.tetrislr" package nil nil [1 22])
+            ("android.content.Context" include nil nil [24 55])
+            ("android.graphics.Canvas" include nil nil [56 87])
+            ("android.graphics.Paint" include nil nil [88 118])
+            ("android.os.Handler" include nil nil [119 145])
+            ("android.os.Message" include nil nil [146 172])
+            ("android.util.AttributeSet" include nil nil [173 206])
+            ("android.view.View" include nil nil [207 232])
+            ("GameView" type
+               (:typemodifiers ("public")
+                :superclasses "View"
+                :members 
+                  ( ("block" variable
+                       (:typemodifiers ("public" "static")
+                        :type "Block")
+                        (reparse-symbol class_member_declaration) [275 301])
+                    ("handler" variable
+                       (:typemodifiers ("public")
+                        :type "Handler")
+                        (reparse-symbol class_member_declaration) [306 329])
+                    ("dir" variable
+                       (:typemodifiers ("public" "static")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [345 370])
+                    ("DIRUP" variable
+                       (:typemodifiers ("public" "static" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [386 418])
+                    ("DIRDOWN" variable
+                       (:typemodifiers ("public" "static" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [423 457])
+                    ("DIRLEFT" variable
+                       (:typemodifiers ("public" "static" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [462 496])
+                    ("DIRRIGHT" variable
+                       (:typemodifiers ("public" "static" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [501 536])
+                    ("GameView" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("context" variable (:type "Context") (reparse-symbol formal_parameters) [557 572])
+                            ("attrs" variable (:type "AttributeSet") (reparse-symbol formal_parameters) [573 591]))                          )
+                        (reparse-symbol class_member_declaration) [541 1969])
+                    ("onDraw" function
+                       (:typemodifiers ("protected")
+                        :arguments 
+                          ( ("canvas" variable (:type "Canvas") (reparse-symbol formal_parameters) [2011 2024]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1989 2278]))                  
+                :type "class")
+                nil [234 2280]))          
+    :file "GameView.java"
+    :pointmax 1609
+    :fsize 2326
+    :lastmodtime '(22168 38307 505375 656000)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "Block.java"
+    :file "Block.java"
+    :fsize 682
+    :lastmodtime '(22168 35122 85580 3000)
+    )
+   )
+  :file "!home!jenny!android!TetrisLR!src!dev!tetrislr!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

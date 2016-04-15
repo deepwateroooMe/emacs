@@ -1,0 +1,111 @@
+;; Object utils/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "utils/"
+  :tables (list 
+   (semanticdb-table "MeshPlyLoader.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("dev.anogl.utils" package nil nil [1 25])
+            ("java.io.BufferedReader" include nil nil [27 57])
+            ("java.io.IOException" include nil nil [58 85])
+            ("java.io.InputStream" include nil nil [86 113])
+            ("java.io.InputStreamReader" include nil nil [114 147])
+            ("java.util.ArrayList" include nil nil [148 175])
+            ("java.util.Arrays" include nil nil [176 200])
+            ("java.util.EnumMap" include nil nil [201 226])
+            ("java.util.Iterator" include nil nil [227 253])
+            ("java.util.List" include nil nil [254 276])
+            ("dev.anogl.Attribute" include nil nil [277 304])
+            ("dev.anogl.Mesh" include nil nil [305 327])
+            ("MeshPlyLoader" type
+               (:typemodifiers ("public")
+                :interfaces ("MeshLoader")
+                :members 
+                  ( ("getVertexSpec" function
+                       (:typemodifiers ("private")
+                        :arguments 
+                          ( ("paramElementSpec" variable (:type "ElementSpec") (reparse-symbol formal_parameters) [417 445]))                          
+                        :type "VertexSpec")
+                        (reparse-symbol class_member_declaration) [384 3397])
+                    ("passElementData" function
+                       (:throws ("IOException")
+                        :typemodifiers ("private")
+                        :arguments 
+                          ( ("paramElementSpec" variable (:type "ElementSpec") (reparse-symbol formal_parameters) [3432 3460])
+                            ("paramBufferedReader" variable (:type "BufferedReader") (reparse-symbol formal_parameters) [3462 3496]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3403 3787])
+                    ("readIndicesData" function
+                       (:throws ("IOException")
+                        :typemodifiers ("private")
+                        :arguments 
+                          ( ("paramElementSpec" variable (:type "ElementSpec") (reparse-symbol formal_parameters) [3825 3853])
+                            ("paramBufferedReader" variable (:type "BufferedReader") (reparse-symbol formal_parameters) [3855 3889]))                          
+                        :type "short[]")
+                        (reparse-symbol class_member_declaration) [3793 5757])
+                    ("readVerticesData" function
+                       (:throws ("IOException")
+                        :typemodifiers ("private")
+                        :arguments 
+                          ( ("paramElementSpec" variable (:type "ElementSpec") (reparse-symbol formal_parameters) [5796 5824])
+                            ("paramVertexSpec" variable (:type "VertexSpec") (reparse-symbol formal_parameters) [5826 5852])
+                            ("paramBufferedReader" variable (:type "BufferedReader") (reparse-symbol formal_parameters) [5854 5888]))                          
+                        :type "float[]")
+                        (reparse-symbol class_member_declaration) [5763 6926])
+                    ("loadMesh" function
+                       (:throws ("IOException")
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("paramInputStream" variable (:type "InputStream") (reparse-symbol formal_parameters) [6953 6981]))                          
+                        :type "Mesh")
+                        (reparse-symbol class_member_declaration) [6932 11135])
+                    ("ElementSpec" type
+                       (:typemodifiers ("private")
+                        :members 
+                          ( ("count" variable (:type "int") (reparse-symbol class_member_declaration) [11177 11187])
+                            ("name" variable (:type "String") (reparse-symbol class_member_declaration) [11196 11208])
+                            ("ElementSpec" function
+                               (:constructor-flag t
+                                :typemodifiers ("private"))
+                                (reparse-symbol class_member_declaration) [11289 11322]))                          
+                        :type "class")
+                        (reparse-symbol class_member_declaration) [11141 11328])
+                    ("PropertySpec" type
+                       (:typemodifiers ("private")
+                        :members 
+                          ( ("listType" variable (:type "String") (reparse-symbol class_member_declaration) [11371 11387])
+                            ("name" variable (:type "String") (reparse-symbol class_member_declaration) [11396 11408])
+                            ("numericType" variable (:type "String") (reparse-symbol class_member_declaration) [11417 11436])
+                            ("PropertySpec" function
+                               (:constructor-flag t
+                                :typemodifiers ("private"))
+                                (reparse-symbol class_member_declaration) [11446 11480]))                          
+                        :type "class")
+                        (reparse-symbol class_member_declaration) [11334 11486])
+                    ("VertexSpec" type
+                       (:typemodifiers ("private")
+                        :members 
+                          ( ("verticesDataMap" variable
+                               (:dereference 1
+                                :type "int")
+                                (reparse-symbol class_member_declaration) [11608 11630])
+                            ("verticesStride" variable (:type "int") (reparse-symbol class_member_declaration) [11639 11658])
+                            ("VertexSpec" function
+                               (:constructor-flag t
+                                :typemodifiers ("private"))
+                                (reparse-symbol class_member_declaration) [11668 11700]))                          
+                        :type "class")
+                        (reparse-symbol class_member_declaration) [11492 11706]))                  
+                :type "class")
+                nil [329 11708]))          
+    :file "MeshPlyLoader.java"
+    :pointmax 11713
+    :fsize 11708
+    :lastmodtime '(22276 22275 948151 760000)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!home!jenny!android!TTetris!src!dev!anogl!utils!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

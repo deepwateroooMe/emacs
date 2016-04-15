@@ -1,0 +1,84 @@
+;; Object help/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "help/"
+  :tables (list 
+   (semanticdb-table "HelpCanvas.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("hujkay.help" package nil nil [1 21])
+            ("hujkay.*" include nil nil [23 40])
+            ("javax.microedition.lcdui.*" include nil nil [42 76])
+            ("java.io.*" include nil nil [78 95])
+            ("HelpCanvas" type
+               (:typemodifiers ("public")
+                :interfaces ("CommandListener")
+                :superclasses "Canvas"
+                :members 
+                  ( ("imagecontent" variable
+                       (:typemodifiers ("private")
+                        :type "Image")
+                        (reparse-symbol class_member_declaration) [168 196])
+                    ("picturey" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [220 230])
+                    ("picturex" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [198 220])
+                    ("height" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [251 259])
+                    ("wide" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [232 250])
+                    ("loadsuccess" variable
+                       (:typemodifiers ("private")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [261 297])
+                    ("block" variable
+                       (:typemodifiers ("private")
+                        :type "Block")
+                        (reparse-symbol class_member_declaration) [299 320])
+                    ("okcommand" variable
+                       (:typemodifiers ("private")
+                        :type "Command")
+                        (reparse-symbol class_member_declaration) [322 382])
+                    ("HelpCanvas" function
+                       (:constructor-flag t
+                        :typemodifiers ("public"))
+                        (reparse-symbol class_member_declaration) [386 905])
+                    ("HelpCanvas" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("block" variable (:type "Block") (reparse-symbol formal_parameters) [926 937]))                          )
+                        (reparse-symbol class_member_declaration) [908 1461])
+                    ("paint" function
+                       (:typemodifiers ("protected")
+                        :arguments 
+                          ( ("g" variable (:type "Graphics") (reparse-symbol formal_parameters) [1486 1496]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1465 1794])
+                    ("commandAction" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("c" variable (:type "Command") (reparse-symbol formal_parameters) [1823 1832])
+                            ("d" variable (:type "Displayable") (reparse-symbol formal_parameters) [1834 1847]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1797 1914]))                  
+                :type "class")
+                nil [98 1916]))          
+    :file "HelpCanvas.java"
+    :pointmax 1917
+    :fsize 2011
+    :lastmodtime '(17489 20166 0 0)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!home!jenny!android!TetrisLR!TetrisDoc!Java俄罗斯方块游戏源代码tetris!codefans.net!俄罗斯方块源代码!src!hujkay!help!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

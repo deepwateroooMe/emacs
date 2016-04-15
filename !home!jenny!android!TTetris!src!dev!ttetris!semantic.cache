@@ -1,0 +1,311 @@
+;; Object ttetris/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "ttetris/"
+  :tables (list 
+   (semanticdb-table "TTetris.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("dev.ttetris" package nil nil [1 21])
+            ("android.content.Intent" include nil nil [23 53])
+            ("android.app.AlertDialog" include nil nil [54 85])
+            ("android.app.AlertDialog.Builder" include nil nil [86 125])
+            ("android.app.ProgressDialog" include nil nil [126 160])
+            ("android.content.DialogInterface" include nil nil [161 200])
+            ("android.content.DialogInterface.OnCancelListener" include nil nil [201 257])
+            ("android.content.DialogInterface.OnClickListener" include nil nil [258 313])
+            ("android.graphics.Color" include nil nil [314 344])
+            ("android.graphics.Typeface" include nil nil [345 378])
+            ("android.media.MediaPlayer" include nil nil [379 412])
+            ("android.os.Bundle" include nil nil [413 438])
+            ("android.os.Vibrator" include nil nil [439 466])
+            ("android.util.Log" include nil nil [467 491])
+            ("android.view.LayoutInflater" include nil nil [492 527])
+            ("android.view.View" include nil nil [528 553])
+            ("android.view.ViewGroup" include nil nil [554 584])
+            ("android.widget.Button" include nil nil [585 614])
+            ("android.widget.FrameLayout" include nil nil [615 649])
+            ("android.widget.ScrollView" include nil nil [650 683])
+            ("android.widget.TableLayout" include nil nil [684 718])
+            ("android.widget.TableRow" include nil nil [719 750])
+            ("android.widget.TextView" include nil nil [751 782])
+            ("java.io.IOException" include nil nil [783 810])
+            ("java.io.ObjectInputStream" include nil nil [811 844])
+            ("java.io.ObjectOutputStream" include nil nil [845 879])
+            ("java.io.OutputStream" include nil nil [880 908])
+            ("java.util.List" include nil nil [909 931])
+            ("org.apache.http.HttpEntity" include nil nil [932 966])
+            ("org.apache.http.HttpResponse" include nil nil [967 1003])
+            ("org.apache.http.StatusLine" include nil nil [1004 1038])
+            ("org.apache.http.client.CookieStore" include nil nil [1039 1081])
+            ("org.apache.http.client.methods.HttpGet" include nil nil [1082 1128])
+            ("org.apache.http.client.methods.HttpPost" include nil nil [1129 1176])
+            ("org.apache.http.client.methods.HttpUriRequest" include nil nil [1177 1230])
+            ("org.apache.http.cookie.Cookie" include nil nil [1231 1268])
+            ("org.apache.http.entity.ContentProducer" include nil nil [1269 1315])
+            ("org.apache.http.entity.EntityTemplate" include nil nil [1316 1361])
+            ("org.apache.http.impl.client.AbstractHttpClient" include nil nil [1362 1416])
+            ("org.apache.http.impl.client.DefaultHttpClient" include nil nil [1417 1470])
+            ("dev.ttetris.util.ActivityGame" include nil nil [1471 1508])
+            ("dev.ttetris.util.SoundManager" include nil nil [1509 1546])
+            ("dev.ttetris.util.AssetManager" include nil nil [1547 1584])
+            ("dev.ttetris.util.SceneView" include nil nil [1585 1619])
+            ("dev.ttetris.common.GameResult" include nil nil [1620 1657])
+            ("dev.ttetris.common.TopScore" include nil nil [1658 1693])
+            ("dev.ttetris.model.Board" include nil nil [1694 1725])
+            ("dev.ttetris.model.Game" include nil nil [1726 1756])
+            ("dev.ttetris.model.GameAdapter" include nil nil [1757 1794])
+            ("dev.ttetris.model.GameState" include nil nil [1795 1830])
+            ("TTetris" type
+               (:typemodifiers ("public")
+                :superclasses "ActivityGame"
+                :members 
+                  ( ("newGameButton" variable
+                       (:typemodifiers ("private")
+                        :type "View")
+                        (reparse-symbol class_member_declaration) [1880 1907])
+                    ("continueButton" variable
+                       (:typemodifiers ("private")
+                        :type "View")
+                        (reparse-symbol class_member_declaration) [1912 1940])
+                    ("topScoresButton" variable
+                       (:typemodifiers ("private")
+                        :type "View")
+                        (reparse-symbol class_member_declaration) [1945 1974])
+                    ("soundManager" variable
+                       (:typemodifiers ("private")
+                        :type "SoundManager")
+                        (reparse-symbol class_member_declaration) [1979 2013])
+                    ("mediaPlayer" variable
+                       (:typemodifiers ("private")
+                        :type "MediaPlayer")
+                        (reparse-symbol class_member_declaration) [2018 2050])
+                    ("tetrisScene" variable
+                       (:typemodifiers ("private")
+                        :type "TetrisScene")
+                        (reparse-symbol class_member_declaration) [2055 2087])
+                    ("menuView" variable
+                       (:typemodifiers ("private")
+                        :type "ViewGroup")
+                        (reparse-symbol class_member_declaration) [2093 2120])
+                    ("gameView" variable
+                       (:typemodifiers ("private")
+                        :type "ViewGroup")
+                        (reparse-symbol class_member_declaration) [2125 2152])
+                    ("loadingView" variable
+                       (:typemodifiers ("private")
+                        :type "ViewGroup")
+                        (reparse-symbol class_member_declaration) [2157 2187])
+                    ("uiLayout" variable
+                       (:typemodifiers ("private")
+                        :type "ViewGroup")
+                        (reparse-symbol class_member_declaration) [2192 2219])
+                    ("topScoresScrollView" variable
+                       (:typemodifiers ("private")
+                        :type "ScrollView")
+                        (reparse-symbol class_member_declaration) [2224 2263])
+                    ("topScoresTable" variable
+                       (:typemodifiers ("private")
+                        :type "TableLayout")
+                        (reparse-symbol class_member_declaration) [2268 2303])
+                    ("vibrator" variable
+                       (:typemodifiers ("private")
+                        :type "Vibrator")
+                        (reparse-symbol class_member_declaration) [2308 2334])
+                    ("scoreTextView" variable
+                       (:typemodifiers ("private")
+                        :type "TextView")
+                        (reparse-symbol class_member_declaration) [2340 2371])
+                    ("state" variable
+                       (:typemodifiers ("private")
+                        :type "ActivityState")
+                        (reparse-symbol class_member_declaration) [2376 2404])
+                    ("loadGame" function
+                       (:typemodifiers ("private")
+                        :type "Game")
+                        (reparse-symbol class_member_declaration) [2410 2456])
+                    ("saveGame" function
+                       (:typemodifiers ("private")
+                        :arguments 
+                          ( ("paramGame" variable (:type "Game") (reparse-symbol formal_parameters) [2483 2497]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2461 2502])
+                    ("OnCancelAllTasks" function
+                       (:typemodifiers ("protected")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2508 2571])
+                    ("onCreate" function
+                       (:typemodifiers ("protected")
+                        :arguments 
+                          ( ("paramBundle" variable (:type "Bundle") (reparse-symbol formal_parameters) [2601 2619]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2577 3947])
+                    ("bindInputListeners" function
+                       (:typemodifiers ("private")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3954 5275])
+                    ("bindGameListener" function
+                       (:typemodifiers ("private")
+                        :arguments 
+                          ( ("paramGame" variable (:type "Game") (reparse-symbol formal_parameters) [5311 5325]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5281 7104])
+                    ("changeState" function
+                       (:typemodifiers ("private")
+                        :arguments 
+                          ( ("paramActivityState" variable (:type "ActivityState") (reparse-symbol formal_parameters) [7135 7167]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [7110 8959])
+                    ("releaseMediaPlayer" function
+                       (:typemodifiers ("private")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [8965 9133])
+                    ("showGameOverDialog" function
+                       (:typemodifiers ("private")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [9139 10233])
+                    ("showReceivingTopScoresProgressDialog" function
+                       (:typemodifiers ("private")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [10239 10700])
+                    ("startThemeMusic" function
+                       (:typemodifiers ("private")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [10706 10947])
+                    ("onBackPressed" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [11251 11539])
+                    ("onPause" function
+                       (:typemodifiers ("protected")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [11545 11678])
+                    ("onStart" function
+                       (:typemodifiers ("protected")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [11684 13515]))                  
+                :type "class")
+                nil [1832 13517]))          
+    :file "TTetris.java"
+    :pointmax 13518
+    :fsize 13517
+    :lastmodtime '(22289 14698 491767 642000)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "ActivityState.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("dev.ttetris" package nil nil [1 21]))          
+    :file "ActivityState.java"
+    :pointmax 258
+    :fsize 305
+    :lastmodtime '(22284 33539 700009 661000)
+    :unmatched-syntax '((BRACE_BLOCK 49 . 257) (IDENTIFIER 35 . 48) (PUBLIC 23 . 29) (IDENTIFIER 30 . 34) (BRACE_BLOCK 49 . 513) (IDENTIFIER 35 . 48) (PUBLIC 23 . 29) (IDENTIFIER 30 . 34) (BRACE_BLOCK 49 . 512) (IDENTIFIER 35 . 48) (PUBLIC 23 . 29) (IDENTIFIER 30 . 34) (BRACE_BLOCK 49 . 511) (IDENTIFIER 35 . 48) (PUBLIC 23 . 29) (IDENTIFIER 30 . 34) (BRACE_BLOCK 49 . 551) (IDENTIFIER 35 . 48) (PUBLIC 23 . 29) (IDENTIFIER 30 . 34) (BRACE_BLOCK 49 . 601) (IDENTIFIER 35 . 48) (PUBLIC 23 . 29) (IDENTIFIER 30 . 34) (BRACE_BLOCK 49 . 591) (IDENTIFIER 35 . 48) (PUBLIC 23 . 29) (IDENTIFIER 30 . 34) (BRACE_BLOCK 49 . 591) (IDENTIFIER 35 . 48) (PUBLIC 23 . 29) (IDENTIFIER 30 . 34) (BRACE_BLOCK 49 . 566) (IDENTIFIER 35 . 48) (PUBLIC 23 . 29) (IDENTIFIER 30 . 34) (BRACE_BLOCK 49 . 566) (IDENTIFIER 35 . 48) (PUBLIC 23 . 29) (IDENTIFIER 30 . 34) (BRACE_BLOCK 49 . 562) (IDENTIFIER 35 . 48) (PUBLIC 23 . 29) (IDENTIFIER 30 . 34) (BRACE_BLOCK 49 . 562) (IDENTIFIER 35 . 48) (PUBLIC 23 . 29) (IDENTIFIER 30 . 34) (BRACE_BLOCK 49 . 553) (IDENTIFIER 35 . 48) (PUBLIC 23 . 29) (IDENTIFIER 30 . 34) (RBRACE 504 . 505) (BRACE_BLOCK 49 . 503) (IDENTIFIER 35 . 48) (PUBLIC 23 . 29) (IDENTIFIER 30 . 34) (RBRACE 500 . 501) (BRACE_BLOCK 49 . 499) (IDENTIFIER 35 . 48) (PUBLIC 23 . 29) (IDENTIFIER 30 . 34) (RBRACE 497 . 498) (BRACE_BLOCK 49 . 496) (IDENTIFIER 35 . 48) (PUBLIC 23 . 29) (IDENTIFIER 30 . 34) (RBRACE 481 . 482) (BRACE_BLOCK 49 . 480) (IDENTIFIER 35 . 48) (PUBLIC 23 . 29) (IDENTIFIER 30 . 34) (RBRACE 434 . 435) (BRACE_BLOCK 49 . 433) (IDENTIFIER 35 . 48) (PUBLIC 23 . 29) (IDENTIFIER 30 . 34) (RBRACE 413 . 414) (BRACE_BLOCK 49 . 412) (IDENTIFIER 35 . 48) (PUBLIC 23 . 29) (IDENTIFIER 30 . 34) (BRACE_BLOCK 49 . 411) (IDENTIFIER 35 . 48) (PUBLIC 23 . 29) (IDENTIFIER 30 . 34))
+    )
+   (semanticdb-table "TetrisScene.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("dev.ttetris" package nil nil [1 21])
+            ("dev.ttetris.util.AssetManager" include nil nil [23 60])
+            ("dev.ttetris.util.Node" include nil nil [61 90])
+            ("dev.ttetris.util.RenderParams" include nil nil [91 128])
+            ("dev.ttetris.util.Scene" include nil nil [129 159])
+            ("dev.ttetris.common.GameResult" include nil nil [160 197])
+            ("dev.ttetris.model.Game" include nil nil [198 228])
+            ("dev.ttetris.view.BackgroundGeometry" include nil nil [229 272])
+            ("dev.ttetris.view.GameView" include nil nil [273 306])
+            ("TetrisScene" type
+               (:typemodifiers ("public")
+                :superclasses "Scene"
+                :members 
+                  ( ("game" variable
+                       (:typemodifiers ("private")
+                        :type "Game")
+                        (reparse-symbol class_member_declaration) [353 371])
+                    ("stopScoreSubmitting" variable
+                       (:typemodifiers ("private")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [376 412])
+                    ("TetrisScene" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("paramGame" variable (:type "Game") (reparse-symbol formal_parameters) [437 451]))                          )
+                        (reparse-symbol class_member_declaration) [418 479])
+                    ("getGame" function
+                       (:typemodifiers ("public")
+                        :type "Game")
+                        (reparse-symbol class_member_declaration) [484 527])
+                    ("getGameScore" function
+                       (:typemodifiers ("public")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [532 591])
+                    ("isPaused" function
+                       (:typemodifiers ("public")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [596 654])
+                    ("isStopScoreSubmitting" function
+                       (:typemodifiers ("public")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [659 734])
+                    ("getGameResult" function
+                       (:typemodifiers ("public")
+                        :type "GameResult")
+                        (reparse-symbol class_member_declaration) [740 987])
+                    ("moveBlockLeft" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [993 1193])
+                    ("moveBlockRight" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1198 1400])
+                    ("onCreate" function
+                       (:typemodifiers ("protected")
+                        :arguments 
+                          ( ("paramAssetManager" variable (:type "AssetManager") (reparse-symbol formal_parameters) [1430 1460]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1406 1983])
+                    ("onUpdate" function
+                       (:typemodifiers ("protected")
+                        :arguments 
+                          ( ("paramFloat" variable (:type "float") (reparse-symbol formal_parameters) [2013 2029]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1989 2076])
+                    ("rotateBlockLeft" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2082 2286])
+                    ("rotateBlockRight" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2292 2498])
+                    ("setPaused" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramBoolean" variable
+                               (:typemodifiers ("final")
+                                :type "boolean")
+                                (reparse-symbol formal_parameters) [2526 2552]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2504 2734])
+                    ("stopScoreSubmitting" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2740 2993])
+                    ("throwBlock" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2999 3193]))                  
+                :type "class")
+                nil [308 3195]))          
+    :file "TetrisScene.java"
+    :pointmax 3196
+    :fsize 3097
+    :lastmodtime '(22287 13022 931796 719000)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!home!jenny!android!TTetris!src!dev!ttetris!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

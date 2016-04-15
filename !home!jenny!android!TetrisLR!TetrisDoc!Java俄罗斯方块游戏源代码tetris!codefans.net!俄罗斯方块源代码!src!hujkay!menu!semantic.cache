@@ -1,0 +1,201 @@
+;; Object menu/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "menu/"
+  :tables (list 
+   (semanticdb-table "MenuCanvas.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("hujkay.menu" package nil nil [1 21])
+            ("javax.microedition.lcdui.*" include nil nil [23 57])
+            ("javax.microedition.io.*" include nil nil [58 89])
+            ("java.lang.*" include nil nil [90 109])
+            ("java.util.Timer" include nil nil [110 133])
+            ("javax.microedition.*" include nil nil [135 163])
+            ("javax.microedition.midlet.*" include nil nil [164 199])
+            ("java.util.TimerTask" include nil nil [200 227])
+            ("java.io.*" include nil nil [229 246])
+            ("hujkay.*" include nil nil [247 264])
+            ("MenuCanvas" type
+               (:typemodifiers ("public")
+                :interfaces ("CommandListener")
+                :superclasses "Canvas"
+                :members 
+                  ( ("fistloadpicture" variable
+                       (:typemodifiers ("private")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [349 389])
+                    ("picturey" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [414 424])
+                    ("picturex" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [391 413])
+                    ("blanktop" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [463 473])
+                    ("blankleft" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [439 462])
+                    ("currentchoice" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [484 511])
+                    ("redpicture" variable
+                       (:typemodifiers ("private")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [513 541])
+                    ("height" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [575 583])
+                    ("wide" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [558 575])
+                    ("image" variable
+                       (:dereference 1
+                        :typemodifiers ("private")
+                        :type "Image")
+                        (reparse-symbol class_member_declaration) [593 631])
+                    ("active" variable
+                       (:typemodifiers ("private")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [643 673])
+                    ("activeerr" variable
+                       (:typemodifiers ("private")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [697 731])
+                    ("offcanvas" variable
+                       (:typemodifiers ("private")
+                        :type "Image")
+                        (reparse-symbol class_member_declaration) [740 765])
+                    ("timer" variable
+                       (:typemodifiers ("private")
+                        :type "Timer")
+                        (reparse-symbol class_member_declaration) [767 788])
+                    ("menuTask" variable
+                       (:typemodifiers ("private")
+                        :type "menuTask")
+                        (reparse-symbol class_member_declaration) [790 818])
+                    ("selectcommand" variable
+                       (:typemodifiers ("private")
+                        :type "Command")
+                        (reparse-symbol class_member_declaration) [820 888])
+                    ("exitcommand" variable
+                       (:typemodifiers ("private")
+                        :type "Command")
+                        (reparse-symbol class_member_declaration) [890 956])
+                    ("block" variable
+                       (:typemodifiers ("private")
+                        :type "Block")
+                        (reparse-symbol class_member_declaration) [958 979])
+                    ("restartnow" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [983 1144])
+                    ("MenuCanvas" function
+                       (:constructor-flag t
+                        :typemodifiers ("public"))
+                        (reparse-symbol class_member_declaration) [1154 1386])
+                    ("MenuCanvas" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("b" variable (:type "Block") (reparse-symbol formal_parameters) [1408 1415]))                          )
+                        (reparse-symbol class_member_declaration) [1390 1647])
+                    ("readpictures" function
+                       (:typemodifiers ("private")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [1659 2278])
+                    ("Initdata" function
+                       (:typemodifiers ("private")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2281 2512])
+                    ("clearcanvas" function
+                       (:typemodifiers ("private")
+                        :arguments 
+                          ( ("g" variable (:type "Graphics") (reparse-symbol formal_parameters) [2539 2549]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2514 2613])
+                    ("paintcanvas" function
+                       (:typemodifiers ("private")
+                        :arguments 
+                          ( ("g" variable (:type "Graphics") (reparse-symbol formal_parameters) [2640 2650]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2615 3315])
+                    ("paint" function
+                       (:typemodifiers ("protected")
+                        :arguments 
+                          ( ("g" variable (:type "Graphics") (reparse-symbol formal_parameters) [3338 3348]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3317 3660])
+                    ("keyPressed" function
+                       (:typemodifiers ("protected" "synchronized")
+                        :arguments 
+                          ( ("keyCode" variable (:type "int") (reparse-symbol formal_parameters) [3701 3712]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3662 3922])
+                    ("Hide" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3938 3986])
+                    ("IsOK" function
+                       (:typemodifiers ("public")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [3988 4036])
+                    ("commandAction" function
+                       (:typemodifiers ("public" "synchronized")
+                        :arguments 
+                          ( ("c" variable (:type "Command") (reparse-symbol formal_parameters) [4080 4089])
+                            ("d" variable (:type "Displayable") (reparse-symbol formal_parameters) [4091 4104]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [4040 4516]))                  
+                :type "class")
+                nil [265 4519]))          
+    :file "MenuCanvas.java"
+    :pointmax 4520
+    :fsize 4844
+    :lastmodtime '(17489 24458 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "menuTask.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("hujkay.menu" package nil nil [1 21])
+            ("java.util.TimerTask" include nil nil [23 50])
+            ("javax.microedition.lcdui.*" include nil nil [51 85])
+            ("menuTask" type
+               (:typemodifiers ("public")
+                :superclasses "TimerTask"
+                :members 
+                  ( ("canvas" variable
+                       (:typemodifiers ("private")
+                        :type "MenuCanvas")
+                        (reparse-symbol class_member_declaration) [132 159])
+                    ("menuTask" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("canvas" variable (:type "MenuCanvas") (reparse-symbol formal_parameters) [177 194]))                          )
+                        (reparse-symbol class_member_declaration) [161 227])
+                    ("run" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [232 312]))                  
+                :type "class")
+                nil [87 315]))          
+    :file "menuTask.java"
+    :pointmax 316
+    :fsize 335
+    :lastmodtime '(17486 48532 0 0)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!home!jenny!android!TetrisLR!TetrisDoc!Java俄罗斯方块游戏源代码tetris!codefans.net!俄罗斯方块源代码!src!hujkay!menu!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

@@ -1,0 +1,1233 @@
+;; Object TetrisDoc/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "TetrisDoc/"
+  :tables (list 
+   (semanticdb-table "Control.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("dev.ttetris" package nil nil [1 21])
+            ("Control" type
+               (:typemodifiers ("public")
+                :members 
+                  ( ("score" variable
+                       (:typemodifiers ("public")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [50 67])
+                    ("speed" variable
+                       (:typemodifiers ("public")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [72 89])
+                    ("sco" variable
+                       (:dereference 1
+                        :typemodifiers ("public")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [94 112])
+                    ("updateScore" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("x" variable (:type "int") (reparse-symbol formal_parameters) [142 147]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [118 319])
+                    ("passWar" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [369 564]))                  
+                :type "class")
+                nil [23 566]))          
+    :file "Control.java"
+    :pointmax 567
+    :fsize 566
+    :lastmodtime '(22252 49628 471184 936000)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "CubeRenderer.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("javax.microedition.khronos.egl.EGLConfig" include nil nil [25 73])
+            ("javax.microedition.khronos.opengles.GL10" include nil nil [74 122])
+            ("android.opengl.GLES20" include nil nil [124 153])
+            ("android.opengl.GLSurfaceView" include nil nil [154 190])
+            ("java.nio.ByteBuffer" include nil nil [191 218])
+            ("java.nio.ByteOrder" include nil nil [219 245])
+            ("java.nio.FloatBuffer" include nil nil [246 274])
+            ("java.nio.ShortBuffer" include nil nil [275 303])
+            ("android.opengl.GLU" include nil nil [304 330])
+            ("android.opengl.Matrix" include nil nil [331 360])
+            ("android.util.Log" include nil nil [361 385])
+            ("javax.vecmath.Vector3f" include nil nil [386 416])
+            ("javax.vecmath.Vector4f" include nil nil [417 447])
+            ("CubeRenderer" type
+               (:typemodifiers ("public")
+                :interfaces ("GLSurfaceView.Renderer")
+                :members 
+                  ( ("TAG" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [516 576])
+                    ("xrot" variable (:type "float") (reparse-symbol class_member_declaration) [581 599])
+                    ("yrot" variable (:type "float") (reparse-symbol class_member_declaration) [604 622])
+                    ("mMVPMatrix" variable
+                       (:dereference 1
+                        :typemodifiers ("private" "final")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [627 676])
+                    ("mProjectionMatrix" variable
+                       (:dereference 1
+                        :typemodifiers ("private" "final")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [681 737])
+                    ("mViewMatrix" variable
+                       (:dereference 1
+                        :typemodifiers ("private" "final")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [742 792])
+                    ("mRotationMatrix" variable
+                       (:dereference 1
+                        :typemodifiers ("private" "final")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [797 851])
+                    ("mAngle" variable
+                       (:typemodifiers ("private")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [856 877])
+                    ("vertexShaderCode" variable
+                       (:typemodifiers ("private" "final")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [883 1190])
+                    ("fragmentShaderCode" variable
+                       (:typemodifiers ("private" "final")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [1195 1384])
+                    ("vertexBuffer" variable
+                       (:typemodifiers ("private")
+                        :type "FloatBuffer")
+                        (reparse-symbol class_member_declaration) [1390 1423])
+                    ("mColorBuffer" variable
+                       (:typemodifiers ("private")
+                        :type "FloatBuffer")
+                        (reparse-symbol class_member_declaration) [1428 1461])
+                    ("drawListBuffer" variable
+                       (:typemodifiers ("private")
+                        :type "ShortBuffer")
+                        (reparse-symbol class_member_declaration) [1466 1501])
+                    ("mProgram" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1506 1527])
+                    ("mPositionHandle" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1532 1560])
+                    ("mColorHandle" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1565 1590])
+                    ("mMVPMatrixHandle" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1595 1624])
+                    ("COORDS_PER_VERTEX" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1629 1676])
+                    ("VALUES_PER_COLOR" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1681 1727])
+                    ("VERTEX_STRIDE" variable
+                       (:typemodifiers ("private" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1732 1788])
+                    ("COLOR_STRIDE" variable
+                       (:typemodifiers ("private" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1793 1847])
+                    ("color" variable
+                       (:dereference 1
+                        :typemodifiers ("private" "static" "final")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [1857 2160])
+                    ("drawOrder" variable
+                       (:dereference 1
+                        :typemodifiers ("private" "static" "final")
+                        :type "short")
+                        (reparse-symbol class_member_declaration) [2165 2370])
+                    ("VERTEX_BUFFER" variable
+                       (:typemodifiers ("public" "static" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [2409 2451])
+                    ("TEXTURE_BUFFER" variable
+                       (:typemodifiers ("public" "static" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [2457 2500])
+                    ("one" variable
+                       (:typemodifiers ("private")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [2506 2531])
+                    ("vertices" variable
+                       (:dereference 1
+                        :typemodifiers ("private")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [2553 3267])
+                    ("texCoords" variable
+                       (:dereference 1
+                        :typemodifiers ("private")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [3291 3667])
+                    ("indices" variable
+                       (:dereference 1
+                        :typemodifiers ("private")
+                        :type "byte")
+                        (reparse-symbol class_member_declaration) [3689 3857])
+                    ("onSurfaceCreated" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("gl" variable (:type "GL10") (reparse-symbol formal_parameters) [3911 3918])
+                            ("config" variable (:type "EGLConfig") (reparse-symbol formal_parameters) [3920 3936]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3882 4397])
+                    ("onSurfaceChanged" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("gl" variable (:type "GL10") (reparse-symbol formal_parameters) [4451 4458])
+                            ("w" variable (:type "int") (reparse-symbol formal_parameters) [4460 4465])
+                            ("h" variable (:type "int") (reparse-symbol formal_parameters) [4467 4472]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [4422 4649])
+                    ("onDrawFrame" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("gl" variable (:type "GL10") (reparse-symbol formal_parameters) [4698 4705]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [4674 6261])
+                    ("initShapes" function
+                       (:typemodifiers ("private")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [6267 7528])
+                    ("surface" variable
+                       (:typemodifiers ("public")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [7590 7614])
+                    ("getCoordinate" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("coord_id" variable (:type "int") (reparse-symbol formal_parameters) [7670 7682]))                          
+                        :type "FloatBuffer")
+                        (reparse-symbol class_member_declaration) [7637 7950])
+                    ("getIndices" function
+                       (:typemodifiers ("public")
+                        :type "ByteBuffer")
+                        (reparse-symbol class_member_declaration) [7974 8053])
+                    ("getDirectBuffer" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("buffer" variable
+                               (:dereference 1
+                                :type "float")
+                                (reparse-symbol formal_parameters) [8094 8109]))                          
+                        :type "FloatBuffer")
+                        (reparse-symbol class_member_declaration) [8059 8383])
+                    ("getSphereCenter" function
+                       (:typemodifiers ("public")
+                        :type "Vector3f")
+                        (reparse-symbol class_member_declaration) [8409 8488])
+                    ("getSphereRadius" function
+                       (:typemodifiers ("public")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [8522 8586])
+                    ("intersect" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("ray" variable (:type "Ray") (reparse-symbol formal_parameters) [8763 8770])
+                            ("trianglePosOut" variable
+                               (:dereference 1
+                                :type "Vector3f")
+                                (reparse-symbol formal_parameters) [8772 8798]))                          
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [8738 10574])
+                    ("getVector3f" function
+                       (:typemodifiers ("private")
+                        :arguments 
+                          ( ("start" variable (:type "int") (reparse-symbol formal_parameters) [10609 10618]))                          
+                        :type "Vector3f")
+                        (reparse-symbol class_member_declaration) [10580 10727])
+                    ("loadShader" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("type" variable (:type "int") (reparse-symbol formal_parameters) [10766 10774])
+                            ("shaderCode" variable (:type "String") (reparse-symbol formal_parameters) [10776 10793]))                          
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [10737 11017])
+                    ("checkGlError" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("glOperation" variable (:type "String") (reparse-symbol formal_parameters) [11055 11073]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [11023 11317]))                  
+                :type "class")
+                nil [450 11319]))          
+    :file "CubeRenderer.java"
+    :pointmax 11320
+    :fsize 11623
+    :lastmodtime '(22276 3195 725538 46000)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "StarRenderer.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("dev.ttetris" package nil nil [1 21])
+            ("dev.ttetris.model.BlockType" include nil nil [23 58])
+            ("dev.ttetris.model.CubeColor" include nil nil [59 94])
+            ("dev.ttetris.model.Cube" include nil nil [95 125])
+            ("dev.ttetris.model.Block" include nil nil [126 157])
+            ("dev.ttetris.model.Model" include nil nil [158 189])
+            ("dev.ttetris.util.MatrixState" include nil nil [190 226])
+            ("javax.microedition.khronos.egl.EGLConfig" include nil nil [228 276])
+            ("javax.microedition.khronos.opengles.GL10" include nil nil [277 325])
+            ("android.opengl.GLES20" include nil nil [327 356])
+            ("android.opengl.GLSurfaceView" include nil nil [357 393])
+            ("java.nio.ByteBuffer" include nil nil [394 421])
+            ("java.nio.ByteOrder" include nil nil [422 448])
+            ("java.nio.FloatBuffer" include nil nil [449 477])
+            ("java.nio.ShortBuffer" include nil nil [478 506])
+            ("android.opengl.GLU" include nil nil [507 533])
+            ("android.opengl.Matrix" include nil nil [534 563])
+            ("android.util.Log" include nil nil [564 588])
+            ("javax.vecmath.Vector3f" include nil nil [589 619])
+            ("javax.vecmath.Vector4f" include nil nil [620 650])
+            ("javax.vecmath.Matrix4f" include nil nil [651 681])
+            ("StarRenderer" type
+               (:typemodifiers ("public")
+                :interfaces ("GLSurfaceView.Renderer")
+                :members 
+                  ( ("TAG" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [750 799])
+                    ("mMVPMatrix" variable
+                       (:dereference 1
+                        :typemodifiers ("private" "final")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [804 853])
+                    ("mProjectionMatrix" variable
+                       (:dereference 1
+                        :typemodifiers ("private" "final")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [858 914])
+                    ("mViewMatrix" variable
+                       (:dereference 1
+                        :typemodifiers ("private" "final")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [919 969])
+                    ("mRotationMatrix" variable
+                       (:dereference 1
+                        :typemodifiers ("private" "final")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [974 1028])
+                    ("unitSize" variable
+                       (:typemodifiers ("private" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1033 1064])
+                    ("cubeSize" variable
+                       (:typemodifiers ("private" "final")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [1069 1109])
+                    ("mAngle" variable
+                       (:typemodifiers ("private")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [1195 1216])
+                    ("downThread" variable
+                       (:typemodifiers ("public")
+                        :type "DownThread")
+                        (reparse-symbol class_member_declaration) [1221 1250])
+                    ("model" variable
+                       (:typemodifiers ("private")
+                        :type "Model")
+                        (reparse-symbol class_member_declaration) [1255 1289])
+                    ("cube" variable (:type "Cube") (reparse-symbol class_member_declaration) [1294 1304])
+                    ("vertexShaderCode" variable
+                       (:typemodifiers ("private" "final")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [1314 1621])
+                    ("fragmentShaderCode" variable
+                       (:typemodifiers ("private" "final")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [1626 1815])
+                    ("vertexBuffer" variable
+                       (:typemodifiers ("private")
+                        :type "FloatBuffer")
+                        (reparse-symbol class_member_declaration) [1821 1854])
+                    ("mColorBuffer" variable
+                       (:typemodifiers ("private")
+                        :type "FloatBuffer")
+                        (reparse-symbol class_member_declaration) [1859 1892])
+                    ("drawListBuffer" variable
+                       (:typemodifiers ("private")
+                        :type "ShortBuffer")
+                        (reparse-symbol class_member_declaration) [1897 1932])
+                    ("mProgram" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1937 1958])
+                    ("mPositionHandle" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1963 1991])
+                    ("mColorHandle" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1996 2021])
+                    ("mMVPMatrixHandle" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [2026 2055])
+                    ("COORDS_PER_VERTEX" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [2060 2107])
+                    ("VALUES_PER_COLOR" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [2112 2158])
+                    ("VERTEX_STRIDE" variable
+                       (:typemodifiers ("private" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [2163 2219])
+                    ("COLOR_STRIDE" variable
+                       (:typemodifiers ("private" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [2224 2278])
+                    ("VERTEX_BUFFER" variable
+                       (:typemodifiers ("public" "static" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [2284 2326])
+                    ("TEXTURE_BUFFER" variable
+                       (:typemodifiers ("public" "static" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [2332 2375])
+                    ("mfAngleX" variable
+                       (:typemodifiers ("public")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [2381 2410])
+                    ("mfAngleY" variable
+                       (:typemodifiers ("public")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [2416 2445])
+                    ("gesDistance" variable
+                       (:typemodifiers ("public")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [2451 2483])
+                    ("one" variable
+                       (:typemodifiers ("private" "static")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [2489 2521])
+                    ("currBlock" variable
+                       (:typemodifiers ("private")
+                        :type "Block")
+                        (reparse-symbol class_member_declaration) [2528 2552])
+                    ("color" variable
+                       (:dereference 1
+                        :typemodifiers ("private" "static" "final")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [3058 3120])
+                    ("drawOrder0" variable
+                       (:dereference 1
+                        :typemodifiers ("public")
+                        :type "short")
+                        (reparse-symbol class_member_declaration) [3226 3480])
+                    ("drawOrder" variable
+                       (:dereference 1
+                        :typemodifiers ("private" "static" "final")
+                        :type "short")
+                        (reparse-symbol class_member_declaration) [3515 3667])
+                    ("onSurfaceCreated" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("gl" variable (:type "GL10") (reparse-symbol formal_parameters) [3716 3723])
+                            ("config" variable (:type "EGLConfig") (reparse-symbol formal_parameters) [3725 3741]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3687 4635])
+                    ("DownThread" type
+                       (:typemodifiers ("public")
+                        :superclasses "Thread"
+                        :members 
+                          ( ("flag" variable
+                               (:typemodifiers ("public")
+                                :type "boolean")
+                                (reparse-symbol class_member_declaration) [4690 4717])
+                            ("run" function
+                               (:typemodifiers ("public")
+                                :type "void")
+                                (reparse-symbol class_member_declaration) [4745 5152]))                          
+                        :type "class")
+                        (reparse-symbol class_member_declaration) [4641 5158])
+                    ("onSurfaceChanged" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("gl" variable (:type "GL10") (reparse-symbol formal_parameters) [5207 5214])
+                            ("w" variable (:type "int") (reparse-symbol formal_parameters) [5216 5221])
+                            ("h" variable (:type "int") (reparse-symbol formal_parameters) [5223 5228]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5178 5660])
+                    ("onDrawFrame" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("gl" variable (:type "GL10") (reparse-symbol formal_parameters) [5709 5716]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5685 7221])
+                    ("getCubeCoordinates" function
+                       (:typemodifiers ("private")
+                        :arguments 
+                          ( ("i" variable (:type "int") (reparse-symbol formal_parameters) [7263 7268])
+                            ("j" variable (:type "int") (reparse-symbol formal_parameters) [7270 7275])
+                            ("k" variable (:type "int") (reparse-symbol formal_parameters) [7277 7282]))                          
+                        :type "float[]")
+                        (reparse-symbol class_member_declaration) [7227 7721])
+                    ("drawGameCell" function
+                       (:typemodifiers ("private")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [7727 8803])
+                    ("drawCube" function
+                       (:typemodifiers ("private")
+                        :arguments 
+                          ( ("squareCoords" variable
+                               (:dereference 1
+                                :type "float")
+                                (reparse-symbol formal_parameters) [8836 8857]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [8814 10728])
+                    ("drawCurrBlock" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [10738 13381])
+                    ("drawGameFrame" function
+                       (:typemodifiers ("private")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [13383 16605])
+                    ("drawLineLoop" function
+                       (:typemodifiers ("private")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [16611 17632])
+                    ("initShapes" function
+                       (:typemodifiers ("private")
+                        :arguments 
+                          ( ("cube" variable (:type "Cube") (reparse-symbol formal_parameters) [17666 17675]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [17642 18676])
+                    ("loadShader" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("type" variable (:type "int") (reparse-symbol formal_parameters) [18711 18719])
+                            ("shaderCode" variable (:type "String") (reparse-symbol formal_parameters) [18721 18738]))                          
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [18682 18962])
+                    ("checkGlError" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("glOperation" variable (:type "String") (reparse-symbol formal_parameters) [19000 19018]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [18968 19262])
+                    ("surface" variable
+                       (:typemodifiers ("public")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [20623 20647])
+                    ("getDirectBuffer" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("buffer" variable
+                               (:dereference 1
+                                :type "float")
+                                (reparse-symbol formal_parameters) [21153 21168]))                          
+                        :type "FloatBuffer")
+                        (reparse-symbol class_member_declaration) [21118 21442])
+                    ("getSphereCenter" function
+                       (:typemodifiers ("public")
+                        :type "Vector3f")
+                        (reparse-symbol class_member_declaration) [21468 21547])
+                    ("getSphereRadius" function
+                       (:typemodifiers ("public")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [21581 21645])
+                    ("transformedSphereCenter" variable
+                       (:typemodifiers ("private")
+                        :type "Vector3f")
+                        (reparse-symbol class_member_declaration) [21651 21709])
+                    ("matInvertModel" variable
+                       (:typemodifiers ("private")
+                        :type "Matrix4f")
+                        (reparse-symbol class_member_declaration) [21762 21811])
+                    ("mpTriangle" variable
+                       (:dereference 1
+                        :typemodifiers ("private")
+                        :type "Vector3f")
+                        (reparse-symbol class_member_declaration) [21817 21929]))                  
+                :type "class")
+                nil [684 24081]))          
+    :file "StarRenderer.java"
+    :pointmax 24082
+    :fsize 24416
+    :lastmodtime '(22280 29684 717842 294000)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "TTetris.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("dev.ttetris" package nil nil [1 21])
+            ("android.app.Activity" include nil nil [23 51])
+            ("android.content.Intent" include nil nil [52 82])
+            ("android.content.SharedPreferences" include nil nil [83 124])
+            ("android.graphics.Typeface" include nil nil [125 158])
+            ("android.os.Bundle" include nil nil [159 184])
+            ("android.view.MotionEvent" include nil nil [185 217])
+            ("android.view.View" include nil nil [218 243])
+            ("android.view.View.OnClickListener" include nil nil [244 285])
+            ("android.view.MenuInflater" include nil nil [286 319])
+            ("android.widget.TextView" include nil nil [320 351])
+            ("android.widget.ImageButton" include nil nil [352 386])
+            ("TTetris" type
+               (:typemodifiers ("public")
+                :interfaces ("OnClickListener")
+                :superclasses "Activity"
+                :members 
+                  ( ("onCreate" function
+                       (:typemodifiers ("protected")
+                        :arguments 
+                          ( ("savedInstanceState" variable (:type "Bundle") (reparse-symbol formal_parameters) [491 516]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [467 1157])
+                    ("onClick" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("v" variable (:type "View") (reparse-symbol formal_parameters) [1183 1189]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1163 1875]))                  
+                :type "class")
+                nil [388 1877]))          
+    :file "TTetris.java"
+    :pointmax 1878
+    :fsize 1877
+    :lastmodtime '(22269 19353 325756 87000)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "StarGLSurfaceView.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("dev.ttetris" package nil nil [1 21])
+            ("dev.ttetris.model.Cube" include nil nil [23 53])
+            ("dev.ttetris.model.BlockType" include nil nil [54 89])
+            ("dev.ttetris.model.BlockMeta" include nil nil [90 125])
+            ("dev.ttetris.model.Block" include nil nil [126 157])
+            ("dev.ttetris.model.Board" include nil nil [158 189])
+            ("android.content.Context" include nil nil [191 222])
+            ("android.opengl.GLSurfaceView" include nil nil [223 259])
+            ("android.view.MotionEvent" include nil nil [260 292])
+            ("android.os.Handler" include nil nil [293 319])
+            ("android.util.AttributeSet" include nil nil [320 353])
+            ("android.os.Bundle" include nil nil [354 379])
+            ("javax.microedition.khronos.opengles.GL10" include nil nil [380 428])
+            ("dev.ttetris.model.BlockType" include nil nil [430 465])
+            ("dev.ttetris.model.CubeColor" include nil nil [466 501])
+            ("dev.ttetris.model.Cube" include nil nil [502 532])
+            ("dev.ttetris.model.Block" include nil nil [533 564])
+            ("dev.ttetris.model.Board" include nil nil [565 596])
+            ("dev.ttetris.util.MatrixState" include nil nil [597 633])
+            ("javax.microedition.khronos.egl.EGLConfig" include nil nil [635 683])
+            ("javax.microedition.khronos.opengles.GL10" include nil nil [684 732])
+            ("android.opengl.GLES20" include nil nil [734 763])
+            ("android.opengl.GLSurfaceView" include nil nil [764 800])
+            ("java.nio.ByteBuffer" include nil nil [801 828])
+            ("java.nio.ByteOrder" include nil nil [829 855])
+            ("java.nio.FloatBuffer" include nil nil [856 884])
+            ("java.nio.ShortBuffer" include nil nil [885 913])
+            ("android.opengl.GLU" include nil nil [914 940])
+            ("android.opengl.Matrix" include nil nil [941 970])
+            ("android.util.Log" include nil nil [971 995])
+            ("javax.vecmath.Vector3f" include nil nil [996 1026])
+            ("javax.vecmath.Vector4f" include nil nil [1027 1057])
+            ("javax.vecmath.Matrix4f" include nil nil [1058 1088])
+            ("StarGLSurfaceView" type
+               (:typemodifiers ("public")
+                :superclasses "GLSurfaceView"
+                :members 
+                  ( ("ANGLE_SPAN" variable
+                       (:typemodifiers ("final")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [1149 1181])
+                    ("cube" variable (:type "Cube") (reparse-symbol class_member_declaration) [1186 1196])
+                    ("mStarGLSurfaceView" variable
+                       (:typemodifiers ("private" "static")
+                        :type "StarGLSurfaceView")
+                        (reparse-symbol class_member_declaration) [1206 1265])
+                    ("mStarRenderer" variable
+                       (:typemodifiers ("private")
+                        :type "StarRenderer")
+                        (reparse-symbol class_member_declaration) [1322 1357])
+                    ("sHandler" variable
+                       (:typemodifiers ("private" "static")
+                        :type "Handler")
+                        (reparse-symbol class_member_declaration) [1364 1396])
+                    ("activity" variable
+                       (:typemodifiers ("private")
+                        :type "ActivityGame")
+                        (reparse-symbol class_member_declaration) [1423 1453])
+                    ("model" variable
+                       (:typemodifiers ("private")
+                        :type "Board")
+                        (reparse-symbol class_member_declaration) [1458 1478])
+                    ("DELAY" variable
+                       (:typemodifiers ("public")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1483 1506])
+                    ("lastMove" variable
+                       (:typemodifiers ("private")
+                        :type "long")
+                        (reparse-symbol class_member_declaration) [1508 1534])
+                    ("activeBlock" variable (:type "Block") (reparse-symbol class_member_declaration) [1544 1562])
+                    ("nextBlock" variable (:type "Block") (reparse-symbol class_member_declaration) [1564 1580])
+                    ("mPreviousY" variable
+                       (:typemodifiers ("private")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [1693 1704])
+                    ("mPreviousX" variable
+                       (:typemodifiers ("private")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [1667 1692])
+                    ("StarGLSurfaceView" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("context" variable (:type "Context") (reparse-symbol formal_parameters) [1740 1755]))                          )
+                        (reparse-symbol class_member_declaration) [1715 1951])
+                    ("StarGLSurfaceView" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("context" variable (:type "Context") (reparse-symbol formal_parameters) [1982 1997])
+                            ("attributeSet" variable (:type "AttributeSet") (reparse-symbol formal_parameters) [1999 2024]))                          )
+                        (reparse-symbol class_member_declaration) [1957 2197])
+                    ("initView" function
+                       (:typemodifiers ("private")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2737 3107])
+                    ("onTouchEvent" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("e" variable
+                               (:typemodifiers ("final")
+                                :type "MotionEvent")
+                                (reparse-symbol formal_parameters) [3145 3164]))                          
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [3117 4510])
+                    ("setBoard" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("model" variable (:type "Board") (reparse-symbol formal_parameters) [4541 4552]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [4520 4580])
+                    ("setActivity" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("activity" variable (:type "ActivityGame") (reparse-symbol formal_parameters) [4607 4628]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [4583 4662])
+                    ("endGame" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [4665 4691])
+                    ("pauseGame" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [4694 4749])
+                    ("StarRenderer" type
+                       (:typemodifiers ("private")
+                        :interfaces ("GLSurfaceView.Renderer")
+                        :members 
+                          ( ("TAG" variable
+                               (:typemodifiers ("private" "static" "final")
+                                :type "String")
+                                (reparse-symbol class_member_declaration) [5373 5422])
+                            ("mMVPMatrix" variable
+                               (:dereference 1
+                                :typemodifiers ("private" "final")
+                                :type "float")
+                                (reparse-symbol class_member_declaration) [5431 5480])
+                            ("mProjectionMatrix" variable
+                               (:dereference 1
+                                :typemodifiers ("private" "final")
+                                :type "float")
+                                (reparse-symbol class_member_declaration) [5489 5545])
+                            ("mViewMatrix" variable
+                               (:dereference 1
+                                :typemodifiers ("private" "final")
+                                :type "float")
+                                (reparse-symbol class_member_declaration) [5554 5604])
+                            ("mRotationMatrix" variable
+                               (:dereference 1
+                                :typemodifiers ("private" "final")
+                                :type "float")
+                                (reparse-symbol class_member_declaration) [5613 5667])
+                            ("unitSize" variable
+                               (:typemodifiers ("private" "final")
+                                :type "int")
+                                (reparse-symbol class_member_declaration) [5676 5707])
+                            ("cubeSize" variable
+                               (:typemodifiers ("private" "final")
+                                :type "float")
+                                (reparse-symbol class_member_declaration) [5716 5756])
+                            ("mAngle" variable
+                               (:typemodifiers ("private")
+                                :type "float")
+                                (reparse-symbol class_member_declaration) [5850 5871])
+                            ("downThread" variable
+                               (:typemodifiers ("public")
+                                :type "DownThread")
+                                (reparse-symbol class_member_declaration) [5880 5909])
+                            ("model" variable
+                               (:typemodifiers ("private")
+                                :type "Board")
+                                (reparse-symbol class_member_declaration) [5918 5952])
+                            ("vertexShaderCode" variable
+                               (:typemodifiers ("private" "final")
+                                :type "String")
+                                (reparse-symbol class_member_declaration) [5987 6326])
+                            ("fragmentShaderCode" variable
+                               (:typemodifiers ("private" "final")
+                                :type "String")
+                                (reparse-symbol class_member_declaration) [6335 6544])
+                            ("vertexBuffer" variable
+                               (:typemodifiers ("private")
+                                :type "FloatBuffer")
+                                (reparse-symbol class_member_declaration) [6554 6587])
+                            ("mColorBuffer" variable
+                               (:typemodifiers ("private")
+                                :type "FloatBuffer")
+                                (reparse-symbol class_member_declaration) [6596 6629])
+                            ("drawListBuffer" variable
+                               (:typemodifiers ("private")
+                                :type "ShortBuffer")
+                                (reparse-symbol class_member_declaration) [6638 6673])
+                            ("mProgram" variable
+                               (:typemodifiers ("private")
+                                :type "int")
+                                (reparse-symbol class_member_declaration) [6682 6703])
+                            ("mPositionHandle" variable
+                               (:typemodifiers ("private")
+                                :type "int")
+                                (reparse-symbol class_member_declaration) [6712 6740])
+                            ("mColorHandle" variable
+                               (:typemodifiers ("private")
+                                :type "int")
+                                (reparse-symbol class_member_declaration) [6749 6774])
+                            ("mMVPMatrixHandle" variable
+                               (:typemodifiers ("private")
+                                :type "int")
+                                (reparse-symbol class_member_declaration) [6783 6812])
+                            ("COORDS_PER_VERTEX" variable
+                               (:typemodifiers ("private" "static" "final")
+                                :type "int")
+                                (reparse-symbol class_member_declaration) [6821 6868])
+                            ("VALUES_PER_COLOR" variable
+                               (:typemodifiers ("private" "static" "final")
+                                :type "int")
+                                (reparse-symbol class_member_declaration) [6877 6923])
+                            ("VERTEX_STRIDE" variable
+                               (:typemodifiers ("private" "final")
+                                :type "int")
+                                (reparse-symbol class_member_declaration) [6932 6988])
+                            ("COLOR_STRIDE" variable
+                               (:typemodifiers ("private" "final")
+                                :type "int")
+                                (reparse-symbol class_member_declaration) [6997 7051])
+                            ("VERTEX_BUFFER" variable
+                               (:typemodifiers ("public" "static" "final")
+                                :type "int")
+                                (reparse-symbol class_member_declaration) [7061 7103])
+                            ("TEXTURE_BUFFER" variable
+                               (:typemodifiers ("public" "static" "final")
+                                :type "int")
+                                (reparse-symbol class_member_declaration) [7113 7156])
+                            ("mfAngleX" variable
+                               (:typemodifiers ("public")
+                                :type "float")
+                                (reparse-symbol class_member_declaration) [7166 7195])
+                            ("mfAngleY" variable
+                               (:typemodifiers ("public")
+                                :type "float")
+                                (reparse-symbol class_member_declaration) [7205 7234])
+                            ("gesDistance" variable
+                               (:typemodifiers ("public")
+                                :type "float")
+                                (reparse-symbol class_member_declaration) [7244 7276])
+                            ("one" variable
+                               (:typemodifiers ("private")
+                                :type "float")
+                                (reparse-symbol class_member_declaration) [7331 7356])
+                            ("currBlock" variable
+                               (:typemodifiers ("private")
+                                :type "Block")
+                                (reparse-symbol class_member_declaration) [7367 7391])
+                            ("color" variable
+                               (:dereference 1
+                                :typemodifiers ("private")
+                                :type "float")
+                                (reparse-symbol class_member_declaration) [7409 7458])
+                            ("drawOrder" variable
+                               (:dereference 1
+                                :typemodifiers ("private")
+                                :type "short")
+                                (reparse-symbol class_member_declaration) [7467 7619])
+                            ("onSurfaceCreated" function
+                               (:typemodifiers ("public")
+                                :arguments 
+                                  ( ("gl" variable (:type "GL10") (reparse-symbol formal_parameters) [7676 7683])
+                                    ("config" variable (:type "EGLConfig") (reparse-symbol formal_parameters) [7685 7701]))                                  
+                                :type "void")
+                                (reparse-symbol class_member_declaration) [7647 8642])
+                            ("DownThread" type
+                               (:typemodifiers ("public")
+                                :superclasses "Thread"
+                                :members 
+                                  ( ("flag" variable
+                                       (:typemodifiers ("public")
+                                        :type "boolean")
+                                        (reparse-symbol class_member_declaration) [8705 8732])
+                                    ("run" function
+                                       (:typemodifiers ("public")
+                                        :type "void")
+                                        (reparse-symbol class_member_declaration) [8768 9030]))                                  
+                                :type "class")
+                                (reparse-symbol class_member_declaration) [8652 9040])
+                            ("onSurfaceChanged" function
+                               (:typemodifiers ("public")
+                                :arguments 
+                                  ( ("gl" variable (:type "GL10") (reparse-symbol formal_parameters) [9097 9104])
+                                    ("w" variable (:type "int") (reparse-symbol formal_parameters) [9106 9111])
+                                    ("h" variable (:type "int") (reparse-symbol formal_parameters) [9113 9118]))                                  
+                                :type "void")
+                                (reparse-symbol class_member_declaration) [9068 9704])
+                            ("onDrawFrame" function
+                               (:typemodifiers ("public")
+                                :arguments 
+                                  ( ("gl" variable (:type "GL10") (reparse-symbol formal_parameters) [9761 9768]))                                  
+                                :type "void")
+                                (reparse-symbol class_member_declaration) [9737 11240])
+                            ("getCubeCoordinates" function
+                               (:typemodifiers ("private")
+                                :arguments 
+                                  ( ("i" variable (:type "int") (reparse-symbol formal_parameters) [11286 11291])
+                                    ("j" variable (:type "int") (reparse-symbol formal_parameters) [11293 11298])
+                                    ("k" variable (:type "int") (reparse-symbol formal_parameters) [11300 11305]))                                  
+                                :type "float[]")
+                                (reparse-symbol class_member_declaration) [11250 11788])
+                            ("drawGameCell" function
+                               (:typemodifiers ("private")
+                                :type "void")
+                                (reparse-symbol class_member_declaration) [11798 12946])
+                            ("drawCube" function
+                               (:typemodifiers ("private")
+                                :arguments 
+                                  ( ("squareCoords" variable
+                                       (:dereference 1
+                                        :type "float")
+                                        (reparse-symbol formal_parameters) [12983 13004]))                                  
+                                :type "void")
+                                (reparse-symbol class_member_declaration) [12961 15007])
+                            ("drawCurrBlock" function
+                               (:typemodifiers ("public")
+                                :type "void")
+                                (reparse-symbol class_member_declaration) [15021 18017])
+                            ("drawOrder0" variable
+                               (:dereference 1
+                                :typemodifiers ("public")
+                                :type "short")
+                                (reparse-symbol class_member_declaration) [18132 18526])
+                            ("drawGameFrame" function
+                               (:typemodifiers ("private")
+                                :type "void")
+                                (reparse-symbol class_member_declaration) [18535 20700])
+                            ("drawLineLoop" function
+                               (:typemodifiers ("private")
+                                :type "void")
+                                (reparse-symbol class_member_declaration) [20710 21791])
+                            ("initShapes" function
+                               (:typemodifiers ("private")
+                                :arguments 
+                                  ( ("cube" variable (:type "Cube") (reparse-symbol formal_parameters) [21829 21838]))                                  
+                                :type "void")
+                                (reparse-symbol class_member_declaration) [21805 22907])
+                            ("loadShader" function
+                               (:typemodifiers ("public")
+                                :arguments 
+                                  ( ("type" variable (:type "int") (reparse-symbol formal_parameters) [22940 22948])
+                                    ("shaderCode" variable (:type "String") (reparse-symbol formal_parameters) [22950 22967]))                                  
+                                :type "int")
+                                (reparse-symbol class_member_declaration) [22917 23211])
+                            ("checkGlError" function
+                               (:typemodifiers ("public")
+                                :arguments 
+                                  ( ("glOperation" variable (:type "String") (reparse-symbol formal_parameters) [23247 23265]))                                  
+                                :type "void")
+                                (reparse-symbol class_member_declaration) [23221 23533])
+                            ("surface" variable
+                               (:typemodifiers ("public")
+                                :type "int")
+                                (reparse-symbol class_member_declaration) [24682 24706])
+                            ("getDirectBuffer" function
+                               (:typemodifiers ("public")
+                                :arguments 
+                                  ( ("buffer" variable
+                                       (:dereference 1
+                                        :type "float")
+                                        (reparse-symbol formal_parameters) [25216 25231]))                                  
+                                :type "FloatBuffer")
+                                (reparse-symbol class_member_declaration) [25181 25533])
+                            ("getSphereCenter" function
+                               (:typemodifiers ("public")
+                                :type "Vector3f")
+                                (reparse-symbol class_member_declaration) [25567 25654])
+                            ("getSphereRadius" function
+                               (:typemodifiers ("public")
+                                :type "float")
+                                (reparse-symbol class_member_declaration) [25696 25768])
+                            ("transformedSphereCenter" variable
+                               (:typemodifiers ("private")
+                                :type "Vector3f")
+                                (reparse-symbol class_member_declaration) [25778 25836])
+                            ("matInvertBoard" variable
+                               (:typemodifiers ("private")
+                                :type "Matrix4f")
+                                (reparse-symbol class_member_declaration) [25897 25946])
+                            ("mpTriangle" variable
+                               (:dereference 1
+                                :typemodifiers ("private")
+                                :type "Vector3f")
+                                (reparse-symbol class_member_declaration) [25956 26084]))                          
+                        :type "class")
+                        (reparse-symbol class_member_declaration) [5302 27876]))                  
+                :type "class")
+                nil [1090 27883]))          
+    :file "StarGLSurfaceView.java"
+    :pointmax 27884
+    :fsize 28272
+    :lastmodtime '(22284 28065 188863 33000)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "Cube.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("dev.ttetris.model" package nil nil [1 27])
+            ("dev.ttetris.StarGLSurfaceView" include nil nil [29 66])
+            ("dev.ttetris.util.MatrixState" include nil nil [67 103])
+            ("dev.ttetris.util.Shader" include nil nil [104 135])
+            ("java.io.Serializable" include nil nil [137 165])
+            ("java.nio.ByteBuffer" include nil nil [166 193])
+            ("java.nio.ShortBuffer" include nil nil [194 222])
+            ("java.nio.ByteOrder" include nil nil [223 249])
+            ("java.nio.FloatBuffer" include nil nil [250 278])
+            ("android.opengl.GLES20" include nil nil [279 308])
+            ("android.opengl.Matrix" include nil nil [309 338]))          
+    :file "Cube.java"
+    :pointmax 7102
+    :fsize 7152
+    :lastmodtime '(22282 56966 902714 0)
+    :unmatched-syntax '((BRACE_BLOCK 411 . 7101) (IDENTIFIER 398 . 410) (COMMA 396 . 397) (GT 395 . 396) (IDENTIFIER 391 . 395) (PUBLIC 340 . 346) (LT 390 . 391))
+    )
+   (semanticdb-table "BlockType.java"
+    :file "BlockType.java"
+    :fsize 2511
+    :lastmodtime '(22280 15728 781104 38000)
+    )
+   (semanticdb-table "Shader.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("dev.ttetris.util" package nil nil [1 26])
+            ("java.io.ByteArrayOutputStream" include nil nil [28 65])
+            ("java.io.InputStream" include nil nil [66 93])
+            ("android.content.res.Resources" include nil nil [95 132])
+            ("android.opengl.GLES20" include nil nil [133 162])
+            ("android.util.Log" include nil nil [163 187])
+            ("Shader" type
+               (:typemodifiers ("public")
+                :members 
+                  ( ("loadShader" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("shaderType" variable (:type "int") (reparse-symbol formal_parameters) [241 255])
+                            ("source" variable (:type "String") (reparse-symbol formal_parameters) [257 270]))                          
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [212 733])
+                    ("createProgram" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("vertexSource" variable (:type "String") (reparse-symbol formal_parameters) [769 788])
+                            ("fragmentSource" variable (:type "String") (reparse-symbol formal_parameters) [790 811]))                          
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [737 1647])
+                    ("checkGlError" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("op" variable (:type "String") (reparse-symbol formal_parameters) [1682 1691]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1650 1870])
+                    ("loadFromAssetsFile" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("fname" variable (:type "String") (reparse-symbol formal_parameters) [1913 1925])
+                            ("r" variable (:type "Resources") (reparse-symbol formal_parameters) [1926 1937]))                          
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [1873 2386]))                  
+                :type "class")
+                nil [189 2388]))          
+    :file "Shader.java"
+    :pointmax 2389
+    :fsize 2388
+    :lastmodtime '(22279 1398 151396 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "Triangle.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("dev.ttetris" package nil nil [1 21])
+            ("java.nio.ByteBuffer" include nil nil [23 50])
+            ("java.nio.ByteOrder" include nil nil [51 77])
+            ("java.nio.FloatBuffer" include nil nil [78 106])
+            ("java.nio.ShortBuffer" include nil nil [107 135])
+            ("android.opengl.GLES20" include nil nil [136 165])
+            ("Triangle" type
+               (:typemodifiers ("public")
+                :members 
+                  ( ("vertexShaderCode" variable
+                       (:typemodifiers ("private" "final")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [195 420])
+                    ("fragmentShaderCode" variable
+                       (:typemodifiers ("private" "final")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [425 632])
+                    ("triangleCoords" variable
+                       (:dereference 1
+                        :typemodifiers ("private" "static")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [659 697])
+                    ("vertexBuffer" variable
+                       (:typemodifiers ("private")
+                        :type "FloatBuffer")
+                        (reparse-symbol class_member_declaration) [949 989])
+                    ("indicesBuffer" variable
+                       (:typemodifiers ("private")
+                        :type "ShortBuffer")
+                        (reparse-symbol class_member_declaration) [994 1035])
+                    ("numOfIndices" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1040 1070])
+                    ("x" variable
+                       (:typemodifiers ("public")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [1100 1119])
+                    ("y" variable
+                       (:typemodifiers ("public")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [1124 1143])
+                    ("z" variable
+                       (:typemodifiers ("public")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [1148 1167])
+                    ("rx" variable
+                       (:typemodifiers ("public")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [1194 1214])
+                    ("ry" variable
+                       (:typemodifiers ("public")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [1219 1239])
+                    ("rz" variable
+                       (:typemodifiers ("public")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [1244 1264])
+                    ("mProgram" variable
+                       (:typemodifiers ("private" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1316 1343])
+                    ("mPositionHandle" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1348 1376])
+                    ("mColorHandle" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1381 1406])
+                    ("mMVPMatrixHandle" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1411 1440])
+                    ("COORDS_PER_VERTEX" variable
+                       (:typemodifiers ("static" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1445 1484])
+                    ("Triangle" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("vertices" variable
+                               (:dereference 1
+                                :type "float")
+                                (reparse-symbol formal_parameters) [1507 1524]))                          )
+                        (reparse-symbol class_member_declaration) [1490 2423])
+                    ("vertexCount" variable
+                       (:typemodifiers ("private" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [2433 2507])
+                    ("vertexStride" variable
+                       (:typemodifiers ("private" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [2512 2567])
+                    ("rgba" variable
+                       (:dereference 1
+                        :typemodifiers ("private")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [2617 2679])
+                    ("colorBuffer" variable
+                       (:typemodifiers ("private")
+                        :type "FloatBuffer")
+                        (reparse-symbol class_member_declaration) [2705 2744])
+                    ("draw" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("mvpMatrix" variable
+                               (:dereference 1
+                                :type "float")
+                                (reparse-symbol formal_parameters) [2854 2871]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2837 4221])
+                    ("setColor" function
+                       (:typemodifiers ("protected")
+                        :arguments 
+                          ( ("red" variable (:type "float") (reparse-symbol formal_parameters) [4879 4888])
+                            ("green" variable (:type "float") (reparse-symbol formal_parameters) [4890 4901])
+                            ("blue" variable (:type "float") (reparse-symbol formal_parameters) [4903 4913])
+                            ("alpha" variable (:type "float") (reparse-symbol formal_parameters) [4915 4926]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [4855 5033])
+                    ("setColors" function
+                       (:typemodifiers ("protected")
+                        :arguments 
+                          ( ("colors" variable
+                               (:dereference 1
+                                :type "float")
+                                (reparse-symbol formal_parameters) [5064 5078]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5039 5311]))                  
+                :type "class")
+                nil [167 5313]))          
+    :file "Triangle.java"
+    :pointmax 5314
+    :fsize 5313
+    :lastmodtime '(22275 1098 153195 0)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!home!jenny!android!TetrisLR!TetrisDoc!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

@@ -1,0 +1,18 @@
+;; Object js/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "js/"
+  :tables (list 
+   (semanticdb-table "app.js"
+    :major-mode 'js-mode
+    :tags nil
+    :file "app.js"
+    :pointmax 2143
+    :fsize 2218
+    :lastmodtime '(22154 55731 467356 728000)
+    :unmatched-syntax '((VARIABLE 2051 . 2054) (PAREN_BLOCK 2061 . 2140) (PAREN_BLOCK 1254 . 2048) (DOT 1250 . 1251) (PAREN_BLOCK 420 . 1245) (DOT 413 . 414) (VAR 344 . 347) (PAREN_BLOCK 368 . 392) (VARIABLE 2048 . 2051) (PAREN_BLOCK 2058 . 2137) (PAREN_BLOCK 1251 . 2045) (DOT 1247 . 1248) (PAREN_BLOCK 420 . 1242) (DOT 413 . 414) (VAR 344 . 347) (PAREN_BLOCK 368 . 392))
+    )
+   )
+  :file "!var!www!html!js!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

@@ -1,5 +1,5 @@
 # contributor: deepwaterooo
-# name: print ListNode
+# name: print List<List<Integer>>
 # key: pll
 # --
 System.out.println("");

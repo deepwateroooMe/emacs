@@ -1,0 +1,92 @@
+;; Object material/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "material/"
+  :tables (list 
+   (semanticdb-table "BrickBatchMaterial.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("ru.igsoft.tetris.view.material" package nil nil [1 40])
+            ("android.opengl.GLES20" include nil nil [42 71])
+            ("android.opengl.Matrix" include nil nil [72 101])
+            ("ru.igsoft.anogl.AssetManager" include nil nil [102 138])
+            ("ru.igsoft.anogl.Attribute" include nil nil [139 172])
+            ("ru.igsoft.anogl.Material" include nil nil [173 205])
+            ("ru.igsoft.anogl.RenderParams" include nil nil [206 242])
+            ("ru.igsoft.anogl.Shader" include nil nil [243 273])
+            ("ru.igsoft.tetris.view.BrickBatch" include nil nil [274 314])
+            ("ru.igsoft.tetris.view.ViewConstants" include nil nil [315 358])
+            ("CubeBatchMaterial" type
+               (:typemodifiers ("public")
+                :interfaces ("CubeBatch")
+                :superclasses "Material"
+                :members 
+                  ( ("uCameraPositionWorldHandle" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [435 474])
+                    ("uTranslations" variable
+                       (:dereference 1
+                        :typemodifiers ("private")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [479 509])
+                    ("uTranslationsHandle" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [514 546])
+                    ("uWorldMatrixHandle" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [551 582])
+                    ("uWorldViewProjMatrix" variable
+                       (:dereference 1
+                        :typemodifiers ("private")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [587 640])
+                    ("uWorldViewProjMatrixHandle" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [645 684])
+                    ("CubeBatchMaterial" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("paramAssetManager" variable (:type "AssetManager") (reparse-symbol formal_parameters) [715 745])
+                            ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [747 765]))                          )
+                        (reparse-symbol class_member_declaration) [690 1872])
+                    ("updateBatch" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramInt" variable (:type "int") (reparse-symbol formal_parameters) [1902 1914])
+                            ("paramArrayOfFloat1" variable
+                               (:dereference 1
+                                :type "float")
+                                (reparse-symbol formal_parameters) [1916 1942])
+                            ("paramArrayOfFloat2" variable
+                               (:dereference 1
+                                :type "float")
+                                (reparse-symbol formal_parameters) [1944 1970]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1878 2064])
+                    ("updateUniforms" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramArrayOfFloat" variable
+                               (:dereference 1
+                                :type "float")
+                                (reparse-symbol formal_parameters) [2097 2122])
+                            ("paramRenderParams" variable (:type "RenderParams") (reparse-symbol formal_parameters) [2124 2154]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2070 2681]))                  
+                :type "class")
+                nil [360 2683]))          
+    :file "BrickBatchMaterial.java"
+    :pointmax 2700
+    :fsize 2687
+    :lastmodtime '(22277 45883 187275 390000)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!home!jenny!android!TetrisLR!TetrisDoc!TetrisGlar!ru!igsoft!tetris!view!material!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

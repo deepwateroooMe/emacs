@@ -1,0 +1,365 @@
+;; Object opengl/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "opengl/"
+  :tables (list 
+   (semanticdb-table "TestActivity.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("com.manyou.opengl" package nil nil [1 27])
+            ("android.app.Activity" include nil nil [1469 1497])
+            ("android.content.pm.ActivityInfo" include nil nil [1498 1537])
+            ("android.os.Bundle" include nil nil [1538 1563])
+            ("TestActivity" type
+               (:typemodifiers ("public")
+                :superclasses "Activity"
+                :members 
+                  ( ("mview" variable (:type "MyTDView") (reparse-symbol class_member_declaration) [1611 1626])
+                    ("onCreate" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("savedInstanceState" variable (:type "Bundle") (reparse-symbol formal_parameters) [1661 1686]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1640 1930])
+                    ("onResume" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1944 2011])
+                    ("onPause" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2025 2089]))                  
+                :type "class")
+                nil [1565 2091]))          
+    :file "TestActivity.java"
+    :pointmax 2092
+    :fsize 2260
+    :lastmodtime '(22280 31760 752136 799000)
+    :unmatched-syntax '((DIV 2093 . 2094) (MULT 2092 . 2093))
+    )
+   (semanticdb-table "MatrixState.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("com.manyou.opengl" package nil nil [1 27])
+            ("android.opengl.Matrix" include nil nil [29 58])
+            ("java.nio.ByteBuffer" include nil nil [59 86])
+            ("MatrixState" type
+               (:typemodifiers ("public")
+                :members 
+                  ( ("mProjMatrix" variable
+                       (:dereference 1
+                        :typemodifiers ("private" "static")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [117 168])
+                    ("mVMatrix" variable
+                       (:dereference 1
+                        :typemodifiers ("private" "static")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [170 218])
+                    ("currMatrix" variable
+                       (:dereference 1
+                        :typemodifiers ("private" "static")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [220 254])
+                    ("mStack" variable
+                       (:dereference 2
+                        :typemodifiers ("static")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [258 302])
+                    ("stackTop" variable
+                       (:typemodifiers ("static")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [304 329])
+                    ("llbb" variable
+                       (:typemodifiers ("static")
+                        :type "ByteBuffer")
+                        (reparse-symbol class_member_declaration) [331 387])
+                    ("cameraLocation" variable
+                       (:dereference 1
+                        :typemodifiers ("static")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [389 434])
+                    ("setInitStack" function
+                       (:typemodifiers ("public" "static")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [438 553])
+                    ("pushMatrix" function
+                       (:typemodifiers ("public" "static")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [557 670])
+                    ("popMatrix" function
+                       (:typemodifiers ("public" "static")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [674 787])
+                    ("translate" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("x" variable (:type "float") (reparse-symbol formal_parameters) [819 826])
+                            ("y" variable (:type "float") (reparse-symbol formal_parameters) [827 834])
+                            ("z" variable (:type "float") (reparse-symbol formal_parameters) [836 843]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [790 894])
+                    ("setCamera" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("cx" variable (:type "float") (reparse-symbol formal_parameters) [926 934])
+                            ("cy" variable (:type "float") (reparse-symbol formal_parameters) [935 943])
+                            ("cz" variable (:type "float") (reparse-symbol formal_parameters) [945 953])
+                            ("tx" variable (:type "float") (reparse-symbol formal_parameters) [988 996])
+                            ("ty" variable (:type "float") (reparse-symbol formal_parameters) [998 1006])
+                            ("tz" variable (:type "float") (reparse-symbol formal_parameters) [1008 1016])
+                            ("upx" variable (:type "float") (reparse-symbol formal_parameters) [1051 1060])
+                            ("upy" variable (:type "float") (reparse-symbol formal_parameters) [1061 1070])
+                            ("upz" variable (:type "float") (reparse-symbol formal_parameters) [1072 1081]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [897 1160])
+                    ("setProjectFrustum" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("left" variable (:type "float") (reparse-symbol formal_parameters) [1204 1214])
+                            ("right" variable (:type "float") (reparse-symbol formal_parameters) [1215 1226])
+                            ("bottom" variable (:type "float") (reparse-symbol formal_parameters) [1269 1281])
+                            ("top" variable (:type "float") (reparse-symbol formal_parameters) [1283 1292])
+                            ("near" variable (:type "float") (reparse-symbol formal_parameters) [1335 1345])
+                            ("far" variable (:type "float") (reparse-symbol formal_parameters) [1347 1356]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1167 1434])
+                    ("setProjectOrtho" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("left" variable (:type "float") (reparse-symbol formal_parameters) [1471 1481])
+                            ("right" variable (:type "float") (reparse-symbol formal_parameters) [1483 1494])
+                            ("bottom" variable (:type "float") (reparse-symbol formal_parameters) [1535 1547])
+                            ("top" variable (:type "float") (reparse-symbol formal_parameters) [1549 1558])
+                            ("near" variable (:type "float") (reparse-symbol formal_parameters) [1599 1609])
+                            ("far" variable (:type "float") (reparse-symbol formal_parameters) [1610 1619]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1436 1695])
+                    ("mMVPMatrix" variable
+                       (:dereference 1
+                        :typemodifiers ("static")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [1699 1741])
+                    ("getFinalMatrix" function
+                       (:typemodifiers ("public" "static")
+                        :type "float[]")
+                        (reparse-symbol class_member_declaration) [1743 1938])
+                    ("getMMatrix" function
+                       (:typemodifiers ("public" "static")
+                        :type "float[]")
+                        (reparse-symbol class_member_declaration) [1942 2001]))                  
+                :type "class")
+                nil [88 2003]))          
+    :file "MatrixState.java"
+    :pointmax 1961
+    :fsize 2003
+    :lastmodtime '(22280 7253 963079 674000)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "Cube.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("com.manyou.opengl" package nil nil [1 27])
+            ("java.nio.ByteBuffer" include nil nil [29 56])
+            ("java.nio.ByteOrder" include nil nil [57 83])
+            ("java.nio.FloatBuffer" include nil nil [84 112])
+            ("android.opengl.GLES20" include nil nil [113 142])
+            ("Cube" type
+               (:typemodifiers ("public")
+                :members 
+                  ( ("mProgram" variable (:type "int") (reparse-symbol class_member_declaration) [165 178])
+                    ("muMVPMatrixHandle" variable (:type "int") (reparse-symbol class_member_declaration) [180 202])
+                    ("maPositionHandle" variable (:type "int") (reparse-symbol class_member_declaration) [204 225])
+                    ("maColorHandle" variable (:type "int") (reparse-symbol class_member_declaration) [227 245])
+                    ("mVertexShader" variable (:type "String") (reparse-symbol class_member_declaration) [247 268])
+                    ("mFragmentShader" variable (:type "String") (reparse-symbol class_member_declaration) [270 293])
+                    ("mVertexBuffer" variable (:type "FloatBuffer") (reparse-symbol class_member_declaration) [295 321])
+                    ("mColorBuffer" variable (:type "FloatBuffer") (reparse-symbol class_member_declaration) [323 348])
+                    ("vCount" variable (:type "int") (reparse-symbol class_member_declaration) [350 365])
+                    ("Cube" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("mv" variable (:type "MyTDView") (reparse-symbol formal_parameters) [389 400]))                          )
+                        (reparse-symbol class_member_declaration) [377 443])
+                    ("initVertexData" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [447 7103])
+                    ("initShader" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("mv" variable (:type "MyTDView") (reparse-symbol formal_parameters) [7130 7141]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [7107 7597])
+                    ("drawSelf" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [7601 8165]))                  
+                :type "class")
+                nil [144 8169]))          
+    :file "Cube.java"
+    :pointmax 8170
+    :fsize 8325
+    :lastmodtime '(22280 5311 257446 320000)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "MyTDView.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("com.manyou.opengl" package nil nil [1 27])
+            ("javax.microedition.khronos.egl.EGLConfig" include nil nil [1972 2020])
+            ("javax.microedition.khronos.opengles.GL10" include nil nil [2021 2069])
+            ("android.content.Context" include nil nil [2070 2101])
+            ("android.opengl.GLES20" include nil nil [2102 2131])
+            ("android.opengl.GLSurfaceView" include nil nil [2132 2168])
+            ("android.opengl.Matrix" include nil nil [2169 2198])
+            ("MyTDView" type
+               (:typemodifiers ("public")
+                :superclasses "GLSurfaceView"
+                :members 
+                  ( ("ANGLE_SPAN" variable
+                       (:typemodifiers ("final")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [2247 2279])
+                    ("rthread" variable (:type "RotateThread") (reparse-symbol class_member_declaration) [2282 2303])
+                    ("mRenderer" variable (:type "SceneRenderer") (reparse-symbol class_member_declaration) [2305 2329])
+                    ("MyTDView" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("context" variable (:type "Context") (reparse-symbol formal_parameters) [2348 2363]))                          )
+                        (reparse-symbol class_member_declaration) [2332 2552])
+                    ("SceneRenderer" type
+                       (:typemodifiers ("private")
+                        :interfaces ("GLSurfaceView.Renderer")
+                        :members 
+                          ( ("tle" variable (:type "Triangle") (reparse-symbol class_member_declaration) [2621 2634])
+                            ("onDrawFrame" function
+                               (:typemodifiers ("public")
+                                :arguments 
+                                  ( ("gl" variable (:type "GL10") (reparse-symbol formal_parameters) [2662 2669]))                                  
+                                :type "void")
+                                (reparse-symbol class_member_declaration) [2638 2802])
+                            ("onSurfaceChanged" function
+                               (:typemodifiers ("public")
+                                :arguments 
+                                  ( ("gl" variable (:type "GL10") (reparse-symbol formal_parameters) [2835 2842])
+                                    ("width" variable (:type "int") (reparse-symbol formal_parameters) [2844 2853])
+                                    ("height" variable (:type "int") (reparse-symbol formal_parameters) [2855 2865]))                                  
+                                :type "void")
+                                (reparse-symbol class_member_declaration) [2806 3199])
+                            ("onSurfaceCreated" function
+                               (:typemodifiers ("public")
+                                :arguments 
+                                  ( ("gl" variable (:type "GL10") (reparse-symbol formal_parameters) [3232 3239])
+                                    ("config" variable (:type "EGLConfig") (reparse-symbol formal_parameters) [3241 3257]))                                  
+                                :type "void")
+                                (reparse-symbol class_member_declaration) [3203 3482]))                          
+                        :type "class")
+                        (reparse-symbol class_member_declaration) [2555 3485])
+                    ("RotateThread" type
+                       (:typemodifiers ("public")
+                        :superclasses "Thread"
+                        :members 
+                          ( ("flag" variable
+                               (:typemodifiers ("public")
+                                :type "boolean")
+                                (reparse-symbol class_member_declaration) [3533 3560])
+                            ("run" function
+                               (:typemodifiers ("public")
+                                :type "void")
+                                (reparse-symbol class_member_declaration) [3576 3777]))                          
+                        :type "class")
+                        (reparse-symbol class_member_declaration) [3488 3780]))                  
+                :type "class")
+                nil [2200 3782]))          
+    :file "MyTDView.java"
+    :pointmax 3784
+    :fsize 3957
+    :lastmodtime '(22280 31707 687873 657000)
+    :unmatched-syntax '((SEMICOLON 3194 . 3195) (PAREN_BLOCK 3135 . 3194) (SEMICOLON 3089 . 3090) (IDENTIFIER 3020 . 3026) (PAREN_BLOCK 3035 . 3089) (SEMICOLON 2926 . 2927) (PAREN_BLOCK 2905 . 2926) (DIV 3784 . 3785) (MULT 3783 . 3784))
+    )
+   (semanticdb-table "Triangle.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("com.manyou.opengl" package nil nil [1 27])
+            ("java.nio.ByteBuffer" include nil nil [29 56])
+            ("java.nio.ByteOrder" include nil nil [57 83])
+            ("java.nio.FloatBuffer" include nil nil [84 112])
+            ("android.opengl.GLES20" include nil nil [113 142])
+            ("android.opengl.Matrix" include nil nil [143 172])
+            ("Triangle" type
+               (:typemodifiers ("public")
+                :members 
+                  ( ("mProjMatrix" variable
+                       (:dereference 1
+                        :typemodifiers ("public" "static")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [205 255])
+                    ("mVMatrix" variable
+                       (:dereference 1
+                        :typemodifiers ("public" "static")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [269 316])
+                    ("mMVPMatrix" variable
+                       (:dereference 1
+                        :typemodifiers ("public" "static")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [333 366])
+                    ("mProgram" variable (:type "int") (reparse-symbol class_member_declaration) [383 396])
+                    ("muMVPMatrixHandle" variable (:type "int") (reparse-symbol class_member_declaration) [412 434])
+                    ("maPositionHandle" variable (:type "int") (reparse-symbol class_member_declaration) [448 469])
+                    ("maColorHandle" variable (:type "int") (reparse-symbol class_member_declaration) [485 503])
+                    ("mVertexShader" variable (:type "String") (reparse-symbol class_member_declaration) [519 540])
+                    ("mFragmentShader" variable (:type "String") (reparse-symbol class_member_declaration) [550 573])
+                    ("mMMatrix" variable
+                       (:dereference 1
+                        :typemodifiers ("static")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [583 623])
+                    ("mVertexBuffer" variable (:type "FloatBuffer") (reparse-symbol class_member_declaration) [646 672])
+                    ("mColorBuffer" variable (:type "FloatBuffer") (reparse-symbol class_member_declaration) [685 710])
+                    ("vCount" variable (:type "int") (reparse-symbol class_member_declaration) [723 738])
+                    ("xAngle" variable (:type "float") (reparse-symbol class_member_declaration) [740 757])
+                    ("Triangle" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("mv" variable (:type "MyTDView") (reparse-symbol formal_parameters) [787 798]))                          )
+                        (reparse-symbol class_member_declaration) [771 875])
+                    ("initVertexData" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [878 1550])
+                    ("initShader" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("mv" variable (:type "MyTDView") (reparse-symbol formal_parameters) [1590 1601]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1567 2174])
+                    ("drawSelf" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2177 2935])
+                    ("getFianlMatrix" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("spec" variable
+                               (:dereference 1
+                                :type "float")
+                                (reparse-symbol formal_parameters) [2975 2987]))                          
+                        :type "float[]")
+                        (reparse-symbol class_member_declaration) [2938 3169]))                  
+                :type "class")
+                nil [180 3171]))          
+    :file "Triangle.java"
+    :pointmax 3172
+    :fsize 3445
+    :lastmodtime '(22280 666 222412 843000)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!home!jenny!android!TriangleRotate!src!com!manyou!opengl!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

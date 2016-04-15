@@ -1,0 +1,456 @@
+;; Object game/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "game/"
+  :tables (list 
+   (semanticdb-table "Point.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("dev.tetris.game" package nil nil [1 25])
+            ("Point" type
+               (:typemodifiers ("public")
+                :members 
+                  ( ("x" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [49 63])
+                    ("y" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [65 79])
+                    ("Point" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("that" variable (:type "Point") (reparse-symbol formal_parameters) [97 107]))                          )
+                        (reparse-symbol class_member_declaration) [83 140])
+                    ("Point" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("x" variable (:type "int") (reparse-symbol formal_parameters) [156 161])
+                            ("y" variable (:type "int") (reparse-symbol formal_parameters) [163 168]))                          )
+                        (reparse-symbol class_member_declaration) [143 202])
+                    ("getX" function
+                       (:typemodifiers ("public")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [205 239])
+                    ("getY" function
+                       (:typemodifiers ("public")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [242 276])
+                    ("setX" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("x" variable (:type "int") (reparse-symbol formal_parameters) [298 303]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [280 324])
+                    ("setY" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("y" variable (:type "int") (reparse-symbol formal_parameters) [345 350]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [327 371]))                  
+                :type "class")
+                nil [27 373]))          
+    :file "Point.java"
+    :pointmax 374
+    :fsize 373
+    :lastmodtime '(22222 29979 586893 814000)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "ScoresCounter.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("dev.ttetris" package nil nil [1 21])
+            ("android.os.Bundle" include nil nil [23 48])
+            ("android.widget.TextView" include nil nil [49 80])
+            ("ScoresCounter" type
+               (:typemodifiers ("public")
+                :members 
+                  ( ("TAG_SCORES" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [112 162])
+                    ("TAG_LINES" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [164 212])
+                    ("scores" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [216 239])
+                    ("lines" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [241 263])
+                    ("scoreDelta" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [265 293])
+                    ("status" variable
+                       (:typemodifiers ("private" "final")
+                        :type "TextView")
+                        (reparse-symbol class_member_declaration) [297 327])
+                    ("format" variable
+                       (:typemodifiers ("private" "final")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [329 357])
+                    ("ScoresCounter" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("status" variable (:type "TextView") (reparse-symbol formal_parameters) [383 398])
+                            ("format" variable (:type "String") (reparse-symbol formal_parameters) [400 413]))                          )
+                        (reparse-symbol class_member_declaration) [361 468])
+                    ("reset" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [471 540])
+                    ("getScores" function
+                       (:typemodifiers ("public")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [543 587])
+                    ("getLines" function
+                       (:typemodifiers ("public")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [590 632])
+                    ("addScores" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [635 711])
+                    ("addLine" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [714 769])
+                    ("updateStatus" function
+                       (:typemodifiers ("private")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [774 864])
+                    ("storeTo" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("bundle" variable (:type "Bundle") (reparse-symbol formal_parameters) [887 900]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [867 978])
+                    ("restoreFrom" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("bundle" variable (:type "Bundle") (reparse-symbol formal_parameters) [1005 1018]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [981 1108]))                  
+                :type "class")
+                nil [82 1111]))          
+    :file "ScoresCounter.java"
+    :pointmax 1112
+    :fsize 1115
+    :lastmodtime '(22254 11894 645729 726000)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "Model.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("dev.tetris.game" package nil nil [1 25])
+            ("android.os.Bundle" include nil nil [27 52])
+            ("Model" type
+               (:typemodifiers ("public")
+                :members 
+                  ( ("TAG_DATA" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [208 254])
+                    ("TAG_ACTIVE_BLOCK" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [256 318])
+                    ("NUM_COLS" variable
+                       (:typemodifiers ("public" "static" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [320 358])
+                    ("NUM_ROWS" variable
+                       (:typemodifiers ("public" "static" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [390 428])
+                    ("gameStatus" variable
+                       (:typemodifiers ("private")
+                        :type "GameStatus")
+                        (reparse-symbol class_member_declaration) [485 541])
+                    ("field" variable
+                       (:dereference 2
+                        :typemodifiers ("private")
+                        :type "byte")
+                        (reparse-symbol class_member_declaration) [569 599])
+                    ("activeBlock" variable
+                       (:typemodifiers ("private")
+                        :type "Block")
+                        (reparse-symbol class_member_declaration) [619 652])
+                    ("counter" variable
+                       (:typemodifiers ("private")
+                        :type "ScoresCounter")
+                        (reparse-symbol class_member_declaration) [674 711])
+                    ("Model" function
+                       (:constructor-flag t
+                        :typemodifiers ("public"))
+                        (reparse-symbol class_member_declaration) [714 773])
+                    ("setCounter" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("counter" variable (:type "ScoresCounter") (reparse-symbol formal_parameters) [800 821]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [777 853])
+                    ("isGameActive" function
+                       (:typemodifiers ("public")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [856 937])
+                    ("isGameOver" function
+                       (:typemodifiers ("public")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [940 1017])
+                    ("isGameBeforeStart" function
+                       (:typemodifiers ("public")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [1021 1113])
+                    ("reset" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1117 1203])
+                    ("getCellStatus" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("nRow" variable (:type "int") (reparse-symbol formal_parameters) [1232 1240])
+                            ("nCol" variable (:type "int") (reparse-symbol formal_parameters) [1242 1250]))                          
+                        :type "byte")
+                        (reparse-symbol class_member_declaration) [1206 1284])
+                    ("setCellStatus" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("nRow" variable (:type "int") (reparse-symbol formal_parameters) [1313 1321])
+                            ("nCol" variable (:type "int") (reparse-symbol formal_parameters) [1323 1331])
+                            ("nStatus" variable (:type "byte") (reparse-symbol formal_parameters) [1333 1345]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1287 1382])
+                    ("setGameStatus" function
+                       (:typemodifiers ("public" "synchronized")
+                        :arguments 
+                          ( ("gameStatus" variable (:type "GameStatus") (reparse-symbol formal_parameters) [1424 1445]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1385 1483])
+                    ("gameStart" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1506 1629])
+                    ("setGameActive" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1632 1700])
+                    ("setGamePaused" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1704 1772])
+                    ("isGamePaused" function
+                       (:typemodifiers ("public")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [1775 1856])
+                    ("genereteNewField" function
+                       (:typemodifiers ("public" "synchronized")
+                        :arguments 
+                          ( ("move" variable (:type "Move") (reparse-symbol formal_parameters) [1903 1912]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1861 2949])
+                    ("reset" function
+                       (:typemodifiers ("private" "final")
+                        :arguments 
+                          ( ("bDynamicDataOnly" variable (:type "boolean") (reparse-symbol formal_parameters) [3083 3107]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3058 3310])
+                    ("isMoveValid" function
+                       (:typemodifiers ("private" "final")
+                        :arguments 
+                          ( ("newTopLeft" variable (:type "Point") (reparse-symbol formal_parameters) [3347 3363])
+                            ("nFrame" variable (:type "int") (reparse-symbol formal_parameters) [3365 3375]))                          
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [3313 4357])
+                    ("newBlock" function
+                       (:typemodifiers ("private" "synchronized")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [4497 5414])
+                    ("shiftRows" function
+                       (:typemodifiers ("private" "synchronized" "final")
+                        :arguments 
+                          ( ("nToRow" variable (:type "int") (reparse-symbol formal_parameters) [5459 5469]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5417 5763])
+                    ("getActiveBlockColor" function
+                       (:typemodifiers ("public")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [5766 5836])
+                    ("storeTo" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("bundle" variable (:type "Bundle") (reparse-symbol formal_parameters) [5859 5872]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5839 5990])
+                    ("restoreFrom" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("bundle" variable (:type "Bundle") (reparse-symbol formal_parameters) [6017 6030]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5993 6171])
+                    ("restoreDataFromIntArray" function
+                       (:typemodifiers ("private")
+                        :arguments 
+                          ( ("src" variable
+                               (:dereference 1
+                                :type "int")
+                                (reparse-symbol formal_parameters) [6212 6221]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [6175 6386])
+                    ("getIntArrayFromData" function
+                       (:typemodifiers ("private")
+                        :type "int[]")
+                        (reparse-symbol class_member_declaration) [6389 6623]))                  
+                :type "class")
+                nil [54 6625]))          
+    :file "Model.java"
+    :pointmax 6626
+    :fsize 6625
+    :lastmodtime '(22246 23321 974209 293000)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "Block.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("dev.tetris.game" package nil nil [1 25])
+            ("java.io.Serializable" include nil nil [27 55])
+            ("java.util.ArrayList" include nil nil [56 83])
+            ("java.util.List" include nil nil [84 106])
+            ("java.util.Random" include nil nil [107 131])
+            ("Block" type
+               (:typemodifiers ("public")
+                :interfaces ("Serializable")
+                :members 
+                  ( ("serialVersionUID" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "long")
+                        (reparse-symbol class_member_declaration) [179 227])
+                    ("CELL_EMPTY" variable
+                       (:typemodifiers ("public" "static" "final")
+                        :type "byte")
+                        (reparse-symbol class_member_declaration) [710 750])
+                    ("CELL_DYNAMIC" variable
+                       (:typemodifiers ("public" "static" "final")
+                        :type "byte")
+                        (reparse-symbol class_member_declaration) [752 794])
+                    ("random" variable
+                       (:typemodifiers ("private" "static")
+                        :type "Random")
+                        (reparse-symbol class_member_declaration) [797 841])
+                    ("shape" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [869 891])
+                    ("frame" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [893 915])
+                    ("topLeft" variable
+                       (:typemodifiers ("private")
+                        :type "Point")
+                        (reparse-symbol class_member_declaration) [917 975])
+                    ("color" variable
+                       (:typemodifiers ("private")
+                        :type "BlockColor")
+                        (reparse-symbol class_member_declaration) [987 1012])
+                    ("getFrame" function
+                       (:typemodifiers ("public")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1015 1057])
+                    ("getColor" function
+                       (:typemodifiers ("public")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1060 1108])
+                    ("getStaticValue" function
+                       (:typemodifiers ("public")
+                        :type "byte")
+                        (reparse-symbol class_member_declaration) [1111 1166])
+                    ("getColorForStaticValue" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("b" variable (:type "byte") (reparse-symbol formal_parameters) [1210 1216]))                          
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1169 1363])
+                    ("setState" function
+                       (:typemodifiers ("public" "final")
+                        :arguments 
+                          ( ("frame" variable (:type "int") (reparse-symbol formal_parameters) [1393 1402])
+                            ("topLeft" variable (:type "Point") (reparse-symbol formal_parameters) [1404 1417]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1366 1471])
+                    ("getFramesCount" function
+                       (:typemodifiers ("public" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1474 1555])
+                    ("getShape" function
+                       (:typemodifiers ("public" "final")
+                        :arguments 
+                          ( ("nFrame" variable (:type "int") (reparse-symbol formal_parameters) [1589 1599]))                          
+                        :type "byte[][]")
+                        (reparse-symbol class_member_declaration) [1558 1660])
+                    ("getShapeWidth" function
+                       (:typemodifiers ("public" "final")
+                        :arguments 
+                          ( ("nFrame" variable (:type "int") (reparse-symbol formal_parameters) [1694 1704]))                          
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1663 1765])
+                    ("createBlock" function
+                       (:typemodifiers ("public" "final" "static" "synchronized")
+                        :type "Block")
+                        (reparse-symbol class_member_declaration) [1768 2189])
+                    ("Block" function
+                       (:constructor-flag t
+                        :typemodifiers ("private")
+                        :arguments 
+                          ( ("nShape" variable (:type "int") (reparse-symbol formal_parameters) [2206 2216])
+                            ("blockColor" variable (:type "BlockColor") (reparse-symbol formal_parameters) [2218 2239]))                          )
+                        (reparse-symbol class_member_declaration) [2192 2290])
+                    ("getTopLeft" function
+                       (:typemodifiers ("public")
+                        :type "Point")
+                        (reparse-symbol class_member_declaration) [2293 2346])
+                    ("Frame" type
+                       (:typemodifiers ("private" "static")
+                        :members 
+                          ( ("width" variable
+                               (:typemodifiers ("private" "final")
+                                :type "int")
+                                (reparse-symbol class_member_declaration) [4973 4997])
+                            ("Frame" function
+                               (:constructor-flag t
+                                :typemodifiers ("private")
+                                :arguments 
+                                  ( ("width" variable (:type "int") (reparse-symbol formal_parameters) [5077 5086]))                                  )
+                                (reparse-symbol class_member_declaration) [5063 5116])
+                            ("add" function
+                               (:typemodifiers ("private")
+                                :arguments 
+                                  ( ("rowStr" variable (:type "String") (reparse-symbol formal_parameters) [5138 5151]))                                  
+                                :type "Frame")
+                                (reparse-symbol class_member_declaration) [5120 5337])
+                            ("get" function
+                               (:typemodifiers ("private")
+                                :type "byte[][]")
+                                (reparse-symbol class_member_declaration) [5341 5447]))                          
+                        :type "class")
+                        (reparse-symbol class_member_declaration) [4942 5450]))                  
+                :type "class")
+                nil [133 5452]))          
+    :file "Block.java"
+    :pointmax 5453
+    :fsize 5452
+    :lastmodtime '(22233 55710 58032 455000)
+    :unmatched-syntax '((SEMICOLON 5058 . 5059) (PAREN_BLOCK 5055 . 5058) (GT 5054 . 5055) (LT 5047 . 5048) (NEW 5034 . 5037) (EQ 5032 . 5033) (GT 5025 . 5026) (PRIVATE 5000 . 5007) (LT 5018 . 5019))
+    )
+   )
+  :file "!home!jenny!android!Tetris!src!dev!tetris!game!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

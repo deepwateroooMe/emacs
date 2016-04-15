@@ -1,0 +1,82 @@
+;; Object android/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "android/"
+  :tables (list 
+   (semanticdb-table "IntentResult.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("com.google.zxing.integration.android" package nil nil [600 645])
+            ("IntentResult" type
+               (:typemodifiers ("public" "final")
+                :members 
+                  ( ("contents" variable
+                       (:typemodifiers ("private" "final")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [812 842])
+                    ("formatName" variable
+                       (:typemodifiers ("private" "final")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [847 879])
+                    ("rawBytes" variable
+                       (:dereference 1
+                        :typemodifiers ("private" "final")
+                        :type "byte")
+                        (reparse-symbol class_member_declaration) [884 914])
+                    ("orientation" variable
+                       (:typemodifiers ("private" "final")
+                        :type "Integer")
+                        (reparse-symbol class_member_declaration) [919 953])
+                    ("errorCorrectionLevel" variable
+                       (:typemodifiers ("private" "final")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [958 1000])
+                    ("IntentResult" function (:constructor-flag t) (reparse-symbol class_member_declaration) [1006 1072])
+                    ("IntentResult" function
+                       (:constructor-flag t
+                        :arguments 
+                          ( ("contents" variable (:type "String") (reparse-symbol formal_parameters) [1091 1106])
+                            ("formatName" variable (:type "String") (reparse-symbol formal_parameters) [1125 1142])
+                            ("rawBytes" variable
+                               (:dereference 1
+                                :type "byte")
+                                (reparse-symbol formal_parameters) [1161 1176])
+                            ("orientation" variable (:type "Integer") (reparse-symbol formal_parameters) [1195 1214])
+                            ("errorCorrectionLevel" variable (:type "String") (reparse-symbol formal_parameters) [1233 1260]))                          )
+                        (reparse-symbol class_member_declaration) [1078 1473])
+                    ("getContents" function
+                       (:typemodifiers ("public")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [1533 1593])
+                    ("getFormatName" function
+                       (:typemodifiers ("public")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [1720 1784])
+                    ("getRawBytes" function
+                       (:typemodifiers ("public")
+                        :type "byte[]")
+                        (reparse-symbol class_member_declaration) [1888 1948])
+                    ("getOrientation" function
+                       (:typemodifiers ("public")
+                        :type "Integer")
+                        (reparse-symbol class_member_declaration) [2070 2137])
+                    ("getErrorCorrectionLevel" function
+                       (:typemodifiers ("public")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [2244 2328])
+                    ("toString" function
+                       (:typemodifiers ("public")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [2350 2936]))                  
+                :type "class")
+                nil [773 2939]))          
+    :file "IntentResult.java"
+    :pointmax 2940
+    :fsize 2939
+    :lastmodtime '(22212 7380 56778 117000)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!home!jenny!android!DorkyMonkey!src!com!google!zxing!integration!android!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

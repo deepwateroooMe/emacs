@@ -1,0 +1,7 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: src
+# key: <s
+# --
+#+BEGIN_SRC python
+$0
+#+END_SRC

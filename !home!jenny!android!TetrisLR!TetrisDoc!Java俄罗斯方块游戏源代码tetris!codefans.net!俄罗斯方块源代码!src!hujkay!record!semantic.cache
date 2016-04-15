@@ -1,0 +1,186 @@
+;; Object record/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "record/"
+  :tables (list 
+   (semanticdb-table "RecordCanvas.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("hujkay.record" package nil nil [1 23])
+            ("hujkay.*" include nil nil [24 41])
+            ("javax.microedition.lcdui.*" include nil nil [43 77])
+            ("javax.microedition.rms.RecordEnumeration" include nil nil [78 126])
+            ("javax.microedition.rms.RecordStore" include nil nil [127 169])
+            ("RecordCanvas" type
+               (:typemodifiers ("public")
+                :interfaces ("CommandListener")
+                :superclasses "Canvas"
+                :members 
+                  ( ("okcommand" variable
+                       (:typemodifiers ("private")
+                        :type "Command")
+                        (reparse-symbol class_member_declaration) [244 304])
+                    ("block" variable
+                       (:typemodifiers ("private")
+                        :type "Block")
+                        (reparse-symbol class_member_declaration) [306 327])
+                    ("dbname" variable
+                       (:typemodifiers ("private")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [329 367])
+                    ("score" variable
+                       (:dereference 1
+                        :typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [379 412])
+                    ("id" variable
+                       (:dereference 1
+                        :typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [414 444])
+                    ("inputscore" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [446 475])
+                    ("GAME_ERR" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [477 503])
+                    ("GAME_ACTIVE" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [505 534])
+                    ("currentstate" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [536 562])
+                    ("height" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [583 591])
+                    ("wide" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [564 582])
+                    ("breakrecord" variable
+                       (:typemodifiers ("private")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [593 622])
+                    ("space" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [624 649])
+                    ("words" variable
+                       (:dereference 2
+                        :typemodifiers ("private")
+                        :type "char")
+                        (reparse-symbol class_member_declaration) [651 1011])
+                    ("initdata" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1015 1187])
+                    ("RecordCanvas" function
+                       (:constructor-flag t
+                        :typemodifiers ("public"))
+                        (reparse-symbol class_member_declaration) [1191 1296])
+                    ("RecordCanvas" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("block" variable (:type "Block") (reparse-symbol formal_parameters) [1321 1332]))                          )
+                        (reparse-symbol class_member_declaration) [1301 1437])
+                    ("RecordCanvas" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("b" variable (:type "Block") (reparse-symbol formal_parameters) [1460 1467])
+                            ("inputscore" variable (:type "int") (reparse-symbol formal_parameters) [1470 1484]))                          )
+                        (reparse-symbol class_member_declaration) [1439 1619])
+                    ("opendb" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("s" variable (:type "String") (reparse-symbol formal_parameters) [1650 1658]))                          
+                        :type "RecordStore")
+                        (reparse-symbol class_member_declaration) [1623 1879])
+                    ("deletedb" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("s" variable (:type "String") (reparse-symbol formal_parameters) [1907 1915]))                          
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [1883 2093])
+                    ("encode" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("m" variable (:type "int") (reparse-symbol formal_parameters) [2118 2123]))                          
+                        :type "byte[]")
+                        (reparse-symbol class_member_declaration) [2096 2458])
+                    ("decode" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("b" variable
+                               (:dereference 1
+                                :type "byte")
+                                (reparse-symbol formal_parameters) [2481 2489]))                          
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [2462 2608])
+                    ("max" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("m" variable (:type "int") (reparse-symbol formal_parameters) [2627 2632])
+                            ("n" variable (:type "int") (reparse-symbol formal_parameters) [2635 2640]))                          
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [2611 2667])
+                    ("sort" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("m" variable (:type "int") (reparse-symbol formal_parameters) [2689 2694]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2671 2996])
+                    ("travelRS" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("rs" variable (:type "RecordStore") (reparse-symbol formal_parameters) [3021 3035]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3000 3870])
+                    ("start" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3874 4400])
+                    ("converttochar" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("number" variable (:type "int") (reparse-symbol formal_parameters) [4432 4442])
+                            ("s" variable (:type "int") (reparse-symbol formal_parameters) [4445 4450]))                          
+                        :type "char[]")
+                        (reparse-symbol class_member_declaration) [4404 4774])
+                    ("clear" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("g" variable (:type "Graphics") (reparse-symbol formal_parameters) [4798 4808]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [4780 4916])
+                    ("paint" function
+                       (:typemodifiers ("protected")
+                        :arguments 
+                          ( ("g" variable (:type "Graphics") (reparse-symbol formal_parameters) [4941 4951]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [4920 5587])
+                    ("commandAction" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("arg0" variable (:type "Command") (reparse-symbol formal_parameters) [5616 5628])
+                            ("arg1" variable (:type "Displayable") (reparse-symbol formal_parameters) [5630 5646]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5590 5716]))                  
+                :type "class")
+                nil [172 5719]))          
+    :file "RecordCanvas.java"
+    :pointmax 5720
+    :fsize 6097
+    :lastmodtime '(17493 2558 0 0)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!home!jenny!android!TetrisLR!TetrisDoc!Java俄罗斯方块游戏源代码tetris!codefans.net!俄罗斯方块源代码!src!hujkay!record!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

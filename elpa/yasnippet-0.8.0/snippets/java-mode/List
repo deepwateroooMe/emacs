@@ -2,5 +2,5 @@
 # name: List
 # key: List
 # --
-List<${1:String}> ${2:res} = new ArrayList<$1>();
+ArrayList<${1:String}> ${2:res} = new ArrayList<$1>();
 $0

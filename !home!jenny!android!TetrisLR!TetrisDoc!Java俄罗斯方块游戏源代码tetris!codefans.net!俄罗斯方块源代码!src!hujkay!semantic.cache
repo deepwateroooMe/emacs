@@ -1,0 +1,117 @@
+;; Object hujkay/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "hujkay/"
+  :tables (list 
+   (semanticdb-table "Block.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("hujkay" package nil nil [1 16])
+            ("hujkay.record.*" include nil nil [18 41])
+            ("hujkay.game.*" include nil nil [42 63])
+            ("hujkay.menu.*" include nil nil [64 85])
+            ("hujkay.help.*" include nil nil [86 107])
+            ("javax.microedition.midlet.MIDlet" include nil nil [109 149])
+            ("javax.microedition.midlet.MIDletStateChangeException" include nil nil [150 210])
+            ("javax.microedition.lcdui.*" include nil nil [211 245])
+            ("java.lang.*" include nil nil [246 265])
+            ("Block" type
+               (:typemodifiers ("public")
+                :superclasses "MIDlet"
+                :members 
+                  ( ("display" variable
+                       (:typemodifiers ("private")
+                        :type "Display")
+                        (reparse-symbol class_member_declaration) [322 347])
+                    ("block" variable
+                       (:typemodifiers ("private" "static")
+                        :type "Block")
+                        (reparse-symbol class_member_declaration) [349 377])
+                    ("recordcanvas" variable
+                       (:typemodifiers ("private")
+                        :type "RecordCanvas")
+                        (reparse-symbol class_member_declaration) [406 447])
+                    ("gamecanvas" variable
+                       (:typemodifiers ("private")
+                        :type "GameCanvas")
+                        (reparse-symbol class_member_declaration) [449 487])
+                    ("menucanvas" variable
+                       (:typemodifiers ("private")
+                        :type "MenuCanvas")
+                        (reparse-symbol class_member_declaration) [489 526])
+                    ("helpcanvas" variable
+                       (:typemodifiers ("private")
+                        :type "HelpCanvas")
+                        (reparse-symbol class_member_declaration) [528 565])
+                    ("Block" function
+                       (:constructor-flag t
+                        :typemodifiers ("public"))
+                        (reparse-symbol class_member_declaration) [569 720])
+                    ("startApp" function
+                       (:throws ("MIDletStateChangeException")
+                        :typemodifiers ("protected")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [724 825])
+                    ("pauseApp" function
+                       (:typemodifiers ("protected")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [828 895])
+                    ("destroyApp" function
+                       (:typemodifiers ("protected")
+                        :arguments 
+                          ( ("arg0" variable (:type "boolean") (reparse-symbol formal_parameters) [924 936]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [898 1017])
+                    ("ErrProcess" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1021 1099])
+                    ("start0" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("source" variable (:type "int") (reparse-symbol formal_parameters) [1122 1132]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1103 1915])
+                    ("start1" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("source" variable (:type "int") (reparse-symbol formal_parameters) [1938 1948]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1919 2320])
+                    ("start2" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("source" variable (:type "int") (reparse-symbol formal_parameters) [2343 2353]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2324 2874])
+                    ("start3" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("source" variable (:type "int") (reparse-symbol formal_parameters) [2897 2907]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2878 3280])
+                    ("start4" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("source" variable (:type "int") (reparse-symbol formal_parameters) [3304 3314]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3284 3519])
+                    ("mangeaction" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("event" variable (:type "int") (reparse-symbol formal_parameters) [3548 3557])
+                            ("source" variable (:type "int") (reparse-symbol formal_parameters) [3560 3570]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3523 4076]))                  
+                :type "class")
+                nil [267 4078]))          
+    :file "Block.java"
+    :pointmax 3939
+    :fsize 4526
+    :lastmodtime '(22250 56175 140870 428000)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!home!jenny!android!TetrisLR!TetrisDoc!Java俄罗斯方块游戏源代码tetris!codefans.net!俄罗斯方块源代码!src!hujkay!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

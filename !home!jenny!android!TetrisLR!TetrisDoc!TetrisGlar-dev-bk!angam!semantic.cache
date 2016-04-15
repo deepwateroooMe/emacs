@@ -1,0 +1,80 @@
+;; Object angam/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "angam/"
+  :tables (list 
+   (semanticdb-table "Interpolator.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("dev.ttetris" package nil nil [1 21])
+            ("java.io.Serializable" include nil nil [23 51])
+            ("Interpolator" type
+               (:typemodifiers ("public")
+                :interfaces ("Serializable")
+                :members 
+                  ( ("serialVersionUID" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "long")
+                        (reparse-symbol class_member_declaration) [109 175])
+                    ("endValue" variable
+                       (:typemodifiers ("private" "final")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [180 209])
+                    ("startValue" variable
+                       (:typemodifiers ("private" "final")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [214 245])
+                    ("time" variable
+                       (:typemodifiers ("private" "final")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [250 275])
+                    ("timer" variable
+                       (:typemodifiers ("private")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [280 300])
+                    ("Interpolator" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("paramFloat1" variable (:type "float") (reparse-symbol formal_parameters) [326 343])
+                            ("paramFloat2" variable (:type "float") (reparse-symbol formal_parameters) [345 362])
+                            ("paramFloat3" variable (:type "float") (reparse-symbol formal_parameters) [364 381]))                          )
+                        (reparse-symbol class_member_declaration) [306 499])
+                    ("getEndValue" function
+                       (:typemodifiers ("public")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [505 569])
+                    ("getStartValue" function
+                       (:typemodifiers ("public")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [575 643])
+                    ("getValue" function
+                       (:typemodifiers ("public")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [649 833])
+                    ("isFinished" function
+                       (:typemodifiers ("public")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [839 914])
+                    ("reset" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [920 974])
+                    ("update" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramFloat" variable (:type "float") (reparse-symbol formal_parameters) [999 1015]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [980 1103]))                  
+                :type "class")
+                nil [53 1105]))          
+    :file "Interpolator.java"
+    :pointmax 1099
+    :fsize 1105
+    :lastmodtime '(22283 573 408049 447000)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!home!jenny!android!TetrisLR!TetrisDoc!TetrisGlar-dev-bk!angam!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

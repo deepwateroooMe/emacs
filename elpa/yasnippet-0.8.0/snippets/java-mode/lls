@@ -2,5 +2,5 @@
 # name: List
 # key: lls
 # --
-List<List<String>> ${1:res} = new ArrayList<List<String>>();
+ArrayList<ArrayList<String>> ${1:res} = new ArrayList<ArrayList<String>>();
 $0

@@ -1,0 +1,207 @@
+;; Object view/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "view/"
+  :tables (list 
+   (semanticdb-table "CubeView.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("dev.ttetris.view" package nil nil [1 26])
+            ("dev.anogl.AssetManager" include nil nil [28 58])
+            ("dev.anogl.Geometry" include nil nil [59 85])
+            ("dev.anogl.Material" include nil nil [86 112])
+            ("dev.anogl.Node" include nil nil [113 135])
+            ("dev.ttetris.model.Brick" include nil nil [136 167])
+            ("dev.ttetris.model.BrickType" include nil nil [168 203])
+            ("dev.ttetris.view.material.BrickMaterial" include nil nil [204 251])
+            ("CubeView" type
+               (:typemodifiers ("public" "final")
+                :superclasses "Node"
+                :members 
+                  ( ("cube" variable
+                       (:typemodifiers ("private")
+                        :type "Cube")
+                        (reparse-symbol class_member_declaration) [300 318])
+                    ("CubeView" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("paramAssetManager" variable (:type "AssetManager") (reparse-symbol formal_parameters) [340 370])
+                            ("paramCube" variable (:type "Cube") (reparse-symbol formal_parameters) [372 386]))                          )
+                        (reparse-symbol class_member_declaration) [324 753])
+                    ("getMaterial" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("paramAssetManager" variable (:type "AssetManager") (reparse-symbol formal_parameters) [794 824])
+                            ("paramCubeType" variable (:type "CubeType") (reparse-symbol formal_parameters) [826 848]))                          
+                        :type "Material")
+                        (reparse-symbol class_member_declaration) [759 1202])
+                    ("getCube" function
+                       (:typemodifiers ("public")
+                        :type "Cube")
+                        (reparse-symbol class_member_declaration) [1208 1263])
+                    ("syncPosition" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1269 1366]))                  
+                :type "class")
+                nil [253 1368]))          
+    :file "CubeView.java"
+    :pointmax 1369
+    :fsize 1368
+    :lastmodtime '(22276 21633 948968 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "GameView.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("dev.ttetris.view" package nil nil [1 26])
+            ("dev.anogl.AssetManager" include nil nil [28 58])
+            ("dev.anogl.Node" include nil nil [59 81])
+            ("dev.anogl.ParticleGenerator" include nil nil [82 117])
+            ("dev.anogl.ParticleParams" include nil nil [118 150])
+            ("dev.anogl.ParticleSystem" include nil nil [151 183])
+            ("dev.anogl.ParticleSystemParams" include nil nil [184 222])
+            ("dev.ttetris.model.Board" include nil nil [223 254])
+            ("dev.ttetris.model.Block" include nil nil [255 286])
+            ("dev.ttetris.model.Game" include nil nil [287 317])
+            ("dev.ttetris.model.GameListener" include nil nil [318 356])
+            ("dev.ttetris.model.GameState" include nil nil [357 392])
+            ("GameView" type
+               (:typemodifiers ("public")
+                :interfaces ("GameListener")
+                :superclasses "Node"
+                :members 
+                  ( ("assetManager" variable
+                       (:typemodifiers ("private")
+                        :type "AssetManager")
+                        (reparse-symbol class_member_declaration) [459 493])
+                    ("boardsCount" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [498 522])
+                    ("boardsNode" variable
+                       (:typemodifiers ("private")
+                        :type "Node")
+                        (reparse-symbol class_member_declaration) [527 551])
+                    ("currentStars" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [556 581])
+                    ("game" variable
+                       (:typemodifiers ("private")
+                        :type "Game")
+                        (reparse-symbol class_member_declaration) [586 604])
+                    ("nextBlock" variable
+                       (:typemodifiers ("private")
+                        :type "Node")
+                        (reparse-symbol class_member_declaration) [609 632])
+                    ("nextBlockParent" variable
+                       (:typemodifiers ("private")
+                        :type "Node")
+                        (reparse-symbol class_member_declaration) [637 666])
+                    ("stars1" variable
+                       (:dereference 1
+                        :typemodifiers ("private")
+                        :type "ParticleSystem")
+                        (reparse-symbol class_member_declaration) [671 703])
+                    ("stars2" variable
+                       (:dereference 1
+                        :typemodifiers ("private")
+                        :type "ParticleSystem")
+                        (reparse-symbol class_member_declaration) [708 740])
+                    ("GameView" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("paramAssetManager" variable (:type "AssetManager") (reparse-symbol formal_parameters) [762 792])
+                            ("paramGame" variable (:type "Game") (reparse-symbol formal_parameters) [794 808]))                          )
+                        (reparse-symbol class_member_declaration) [746 1051])
+                    ("updateNextBlockVisibility" function
+                       (:typemodifiers ("private")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1057 1356])
+                    ("boardChangeDenied" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1362 1401])
+                    ("boardChanged" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramBoard" variable (:type "Board") (reparse-symbol formal_parameters) [1432 1448]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1407 1616])
+                    ("boardCreated" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramBoard" variable (:type "Board") (reparse-symbol formal_parameters) [1647 1663]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1622 7042])
+                    ("figureFalled" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [7048 7082])
+                    ("figureFreezed" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [7088 7123])
+                    ("figureRotateDenied" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [7129 7169])
+                    ("gameOver" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [7175 7335])
+                    ("levelChanged" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramInt" variable (:type "int") (reparse-symbol formal_parameters) [7366 7378]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [7341 7387])
+                    ("lineDisappearing" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [7393 7431])
+                    ("nextBlockGenerated" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramBlock" variable (:type "Block") (reparse-symbol formal_parameters) [7468 7484]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [7437 7764])
+                    ("pauseChanged" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramBoolean" variable (:type "boolean") (reparse-symbol formal_parameters) [7795 7815]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [7770 7861])
+                    ("pointsChanged" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramInt" variable (:type "int") (reparse-symbol formal_parameters) [7893 7905]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [7867 7914])
+                    ("stateChanged" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramGameState" variable (:type "GameState") (reparse-symbol formal_parameters) [7945 7969]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [7920 8015])
+                    ("update" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramFloat" variable (:type "float") (reparse-symbol formal_parameters) [8040 8056]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [8021 8188]))                  
+                :type "class")
+                nil [394 8190]))          
+    :file "GameView.java"
+    :pointmax 8191
+    :fsize 8190
+    :lastmodtime '(22276 21738 241485 0)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!home!jenny!android!TTetris!dev-bk!ttetris!view!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

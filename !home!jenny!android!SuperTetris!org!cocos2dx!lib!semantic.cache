@@ -1,0 +1,1842 @@
+;; Object lib/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "lib/"
+  :tables (list 
+   (semanticdb-table "Cocos2dxGLSurfaceView.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("org.cocos2dx.lib" package nil nil [1 26])
+            ("android.content.Context" include nil nil [28 59])
+            ("android.opengl.GLSurfaceView" include nil nil [60 96])
+            ("android.os.Handler" include nil nil [97 123])
+            ("android.os.Message" include nil nil [124 150])
+            ("android.util.AttributeSet" include nil nil [151 184])
+            ("android.util.Log" include nil nil [185 209])
+            ("android.view.KeyEvent" include nil nil [210 239])
+            ("android.view.MotionEvent" include nil nil [240 272])
+            ("android.view.inputmethod.InputMethodManager" include nil nil [273 324])
+            ("Cocos2dxGLSurfaceView" type
+               (:typemodifiers ("public")
+                :superclasses "GLSurfaceView"
+                :members 
+                  ( ("HANDLER_CLOSE_IME_KEYBOARD" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [389 445])
+                    ("HANDLER_OPEN_IME_KEYBOARD" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [450 505])
+                    ("TAG" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [510 588])
+                    ("mCocos2dxGLSurfaceView" variable
+                       (:typemodifiers ("private" "static")
+                        :type "Cocos2dxGLSurfaceView")
+                        (reparse-symbol class_member_declaration) [593 653])
+                    ("sCocos2dxTextInputWraper" variable
+                       (:typemodifiers ("private" "static")
+                        :type "Cocos2dxTextInputWraper")
+                        (reparse-symbol class_member_declaration) [658 722])
+                    ("sHandler" variable
+                       (:typemodifiers ("private" "static")
+                        :type "Handler")
+                        (reparse-symbol class_member_declaration) [727 759])
+                    ("mCocos2dxEditText" variable
+                       (:typemodifiers ("private")
+                        :type "Cocos2dxEditText")
+                        (reparse-symbol class_member_declaration) [764 807])
+                    ("mCocos2dxRenderer" variable
+                       (:typemodifiers ("private")
+                        :type "Cocos2dxRenderer")
+                        (reparse-symbol class_member_declaration) [812 855])
+                    ("Cocos2dxGLSurfaceView" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("paramContext" variable (:type "Context") (reparse-symbol formal_parameters) [890 910]))                          )
+                        (reparse-symbol class_member_declaration) [861 1007])
+                    ("Cocos2dxGLSurfaceView" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("paramContext" variable (:type "Context") (reparse-symbol formal_parameters) [1042 1062])
+                            ("paramAttributeSet" variable (:type "AttributeSet") (reparse-symbol formal_parameters) [1064 1094]))                          )
+                        (reparse-symbol class_member_declaration) [1013 1210])
+                    ("closeIMEKeyboard" function
+                       (:typemodifiers ("public" "static")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1216 1382])
+                    ("dumpMotionEvent" function
+                       (:typemodifiers ("private" "static")
+                        :arguments 
+                          ( ("paramMotionEvent" variable (:type "MotionEvent") (reparse-symbol formal_parameters) [1424 1452]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1388 2658])
+                    ("getContentText" function
+                       (:typemodifiers ("private")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [2664 2759])
+                    ("openIMEKeyboard" function
+                       (:typemodifiers ("public" "static")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2765 2998])
+                    ("deleteBackward" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3004 3235])
+                    ("getCocos2dxEditText" function
+                       (:typemodifiers ("public")
+                        :type "Cocos2dxEditText")
+                        (reparse-symbol class_member_declaration) [3241 3333])
+                    ("initView" function
+                       (:typemodifiers ("protected")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3339 5509])
+                    ("insertText" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramString" variable
+                               (:typemodifiers ("final")
+                                :type "String")
+                                (reparse-symbol formal_parameters) [5538 5562]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5515 5773])
+                    ("onKeyDown" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramInt" variable
+                               (:typemodifiers ("final")
+                                :type "int")
+                                (reparse-symbol formal_parameters) [5804 5822])
+                            ("paramKeyEvent" variable (:type "KeyEvent") (reparse-symbol formal_parameters) [5824 5846]))                          
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [5779 6221])
+                    ("onPause" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [6227 6444])
+                    ("onResume" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [6450 6695])
+                    ("onSizeChanged" function
+                       (:typemodifiers ("protected")
+                        :arguments 
+                          ( ("paramInt1" variable (:type "int") (reparse-symbol formal_parameters) [6730 6743])
+                            ("paramInt2" variable (:type "int") (reparse-symbol formal_parameters) [6745 6758])
+                            ("paramInt3" variable (:type "int") (reparse-symbol formal_parameters) [6760 6773])
+                            ("paramInt4" variable (:type "int") (reparse-symbol formal_parameters) [6775 6788]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [6701 6908])
+                    ("onTouchEvent" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramMotionEvent" variable (:type "MotionEvent") (reparse-symbol formal_parameters) [6942 6970]))                          
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [6914 10207])
+                    ("setCocos2dxEditText" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramCocos2dxEditText" variable (:type "Cocos2dxEditText") (reparse-symbol formal_parameters) [10245 10283]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [10213 10627])
+                    ("setCocos2dxRenderer" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramCocos2dxRenderer" variable (:type "Cocos2dxRenderer") (reparse-symbol formal_parameters) [10665 10703]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [10633 10813]))                  
+                :type "class")
+                nil [326 10815]))          
+    :file "Cocos2dxGLSurfaceView.java"
+    :pointmax 10994
+    :fsize 10993
+    :lastmodtime '(22246 25464 920835 596000)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "Cocos2dxRenderer.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("org.cocos2dx.lib" package nil nil [1 26])
+            ("android.opengl.GLSurfaceView.Renderer" include nil nil [28 73])
+            ("javax.microedition.khronos.egl.EGLConfig" include nil nil [74 122])
+            ("javax.microedition.khronos.opengles.GL10" include nil nil [123 171])
+            ("Cocos2dxRenderer" type
+               (:typemodifiers ("public")
+                :interfaces ("GLSurfaceView.Renderer")
+                :members 
+                  ( ("NANOSECONDSPERMICROSECOND" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "long")
+                        (reparse-symbol class_member_declaration) [243 306])
+                    ("NANOSECONDSPERSECOND" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "long")
+                        (reparse-symbol class_member_declaration) [311 372])
+                    ("sAnimationInterval" variable
+                       (:typemodifiers ("private" "static")
+                        :type "long")
+                        (reparse-symbol class_member_declaration) [377 428])
+                    ("mLastTickInNanoSeconds" variable
+                       (:typemodifiers ("private")
+                        :type "long")
+                        (reparse-symbol class_member_declaration) [433 469])
+                    ("mScreenHeight" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [474 500])
+                    ("mScreenWidth" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [505 530])
+                    ("nativeInit" function
+                       (:typemodifiers ("private" "static" "native")
+                        :arguments 
+                          ( ("paramInt1" variable (:type "int") (reparse-symbol formal_parameters) [574 587])
+                            ("paramInt2" variable (:type "int") (reparse-symbol formal_parameters) [589 602]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [536 604])
+                    ("nativeInit2" function
+                       (:typemodifiers ("private" "static" "native")
+                        :arguments 
+                          ( ("paramInt1" variable (:type "int") (reparse-symbol formal_parameters) [648 661])
+                            ("paramInt2" variable (:type "int") (reparse-symbol formal_parameters) [663 676]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [609 678])
+                    ("nativeDeleteBackward" function
+                       (:typemodifiers ("private" "static" "native")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [684 734])
+                    ("nativeGetContentText" function
+                       (:typemodifiers ("private" "static" "native")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [739 791])
+                    ("nativeInsertText" function
+                       (:typemodifiers ("private" "static" "native")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [840 858]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [796 860])
+                    ("nativeKeyDown" function
+                       (:typemodifiers ("private" "static" "native")
+                        :arguments 
+                          ( ("paramInt" variable (:type "int") (reparse-symbol formal_parameters) [910 922]))                          
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [866 924])
+                    ("nativeOnPause" function
+                       (:typemodifiers ("private" "static" "native")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [929 972])
+                    ("nativeOnResume" function
+                       (:typemodifiers ("private" "static" "native")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [977 1021])
+                    ("nativeRender" function
+                       (:typemodifiers ("private" "static" "native")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1027 1069])
+                    ("nativeTouchesBegin" function
+                       (:typemodifiers ("private" "static" "native")
+                        :arguments 
+                          ( ("paramInt" variable (:type "int") (reparse-symbol formal_parameters) [1121 1133])
+                            ("paramFloat1" variable (:type "float") (reparse-symbol formal_parameters) [1135 1152])
+                            ("paramFloat2" variable (:type "float") (reparse-symbol formal_parameters) [1154 1171]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1075 1173])
+                    ("nativeTouchesCancel" function
+                       (:typemodifiers ("private" "static" "native")
+                        :arguments 
+                          ( ("paramArrayOfInt" variable
+                               (:dereference 1
+                                :type "int")
+                                (reparse-symbol formal_parameters) [1225 1246])
+                            ("paramArrayOfFloat1" variable
+                               (:dereference 1
+                                :type "float")
+                                (reparse-symbol formal_parameters) [1248 1274])
+                            ("paramArrayOfFloat2" variable
+                               (:dereference 1
+                                :type "float")
+                                (reparse-symbol formal_parameters) [1276 1302]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1178 1304])
+                    ("nativeTouchesEnd" function
+                       (:typemodifiers ("private" "static" "native")
+                        :arguments 
+                          ( ("paramInt" variable (:type "int") (reparse-symbol formal_parameters) [1353 1365])
+                            ("paramFloat1" variable (:type "float") (reparse-symbol formal_parameters) [1367 1384])
+                            ("paramFloat2" variable (:type "float") (reparse-symbol formal_parameters) [1386 1403]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1309 1405])
+                    ("nativeTouchesMove" function
+                       (:typemodifiers ("private" "static" "native")
+                        :arguments 
+                          ( ("paramArrayOfInt" variable
+                               (:dereference 1
+                                :type "int")
+                                (reparse-symbol formal_parameters) [1455 1476])
+                            ("paramArrayOfFloat1" variable
+                               (:dereference 1
+                                :type "float")
+                                (reparse-symbol formal_parameters) [1478 1504])
+                            ("paramArrayOfFloat2" variable
+                               (:dereference 1
+                                :type "float")
+                                (reparse-symbol formal_parameters) [1506 1532]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1410 1534])
+                    ("handleActionDown" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramInt" variable (:type "int") (reparse-symbol formal_parameters) [1569 1581])
+                            ("paramFloat1" variable (:type "float") (reparse-symbol formal_parameters) [1583 1600])
+                            ("paramFloat2" variable (:type "float") (reparse-symbol formal_parameters) [1602 1619]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1540 1692])
+                    ("handleActionMove" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramArrayOfInt" variable
+                               (:dereference 1
+                                :type "int")
+                                (reparse-symbol formal_parameters) [1727 1748])
+                            ("paramArrayOfFloat1" variable
+                               (:dereference 1
+                                :type "float")
+                                (reparse-symbol formal_parameters) [1750 1776])
+                            ("paramArrayOfFloat2" variable
+                               (:dereference 1
+                                :type "float")
+                                (reparse-symbol formal_parameters) [1778 1804]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1698 1897])
+                    ("handleActionUp" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramInt" variable (:type "int") (reparse-symbol formal_parameters) [1930 1942])
+                            ("paramFloat1" variable (:type "float") (reparse-symbol formal_parameters) [1944 1961])
+                            ("paramFloat2" variable (:type "float") (reparse-symbol formal_parameters) [1963 1980]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1903 2051])
+                    ("handleActionCancel" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramArrayOfInt" variable
+                               (:dereference 1
+                                :type "int")
+                                (reparse-symbol formal_parameters) [2088 2109])
+                            ("paramArrayOfFloat1" variable
+                               (:dereference 1
+                                :type "float")
+                                (reparse-symbol formal_parameters) [2111 2137])
+                            ("paramArrayOfFloat2" variable
+                               (:dereference 1
+                                :type "float")
+                                (reparse-symbol formal_parameters) [2139 2165]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2057 2260])
+                    ("handleDeleteBackward" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2266 2340])
+                    ("handleInsertText" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [2375 2393]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2346 2441])
+                    ("handleOnPause" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2447 2507])
+                    ("handleOnResume" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2513 2575])
+                    ("setAnimationInterval" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("paramDouble" variable (:type "double") (reparse-symbol formal_parameters) [2621 2639]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2581 2710])
+                    ("getContentText" function
+                       (:typemodifiers ("public")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [2716 2793])
+                    ("handleKeyDown" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramInt" variable (:type "int") (reparse-symbol formal_parameters) [2825 2837]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2799 2879])
+                    ("onDrawFrame" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramGL10" variable (:type "GL10") (reparse-symbol formal_parameters) [2909 2923]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2885 3323])
+                    ("onSurfaceChanged" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramGL10" variable (:type "GL10") (reparse-symbol formal_parameters) [3358 3372])
+                            ("paramInt1" variable (:type "int") (reparse-symbol formal_parameters) [3374 3387])
+                            ("paramInt2" variable (:type "int") (reparse-symbol formal_parameters) [3389 3402]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3329 3411])
+                    ("onSurfaceCreated" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramGL10" variable (:type "GL10") (reparse-symbol formal_parameters) [3446 3460])
+                            ("paramEGLConfig" variable (:type "EGLConfig") (reparse-symbol formal_parameters) [3462 3486]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3417 3612])
+                    ("setScreenWidthAndHeight" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramInt1" variable (:type "int") (reparse-symbol formal_parameters) [3654 3667])
+                            ("paramInt2" variable (:type "int") (reparse-symbol formal_parameters) [3669 3682]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3618 3770]))                  
+                :type "class")
+                nil [173 3772]))          
+    :file "Cocos2dxRenderer.java"
+    :pointmax 3946
+    :fsize 3945
+    :lastmodtime '(22258 4004 78416 40000)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "Cocos2dxBitmap.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("org.cocos2dx.lib" package nil nil [1 26])
+            ("android.content.Context" include nil nil [28 59])
+            ("android.graphics.Bitmap" include nil nil [60 91])
+            ("android.graphics.Bitmap.Config" include nil nil [92 130])
+            ("android.graphics.Canvas" include nil nil [131 162])
+            ("android.graphics.Paint" include nil nil [163 193])
+            ("android.graphics.Paint.Align" include nil nil [194 230])
+            ("android.graphics.Paint.FontMetricsInt" include nil nil [231 276])
+            ("android.graphics.Rect" include nil nil [277 306])
+            ("android.graphics.Typeface" include nil nil [307 340])
+            ("android.text.TextPaint" include nil nil [341 371])
+            ("android.text.TextUtils" include nil nil [372 402])
+            ("android.text.TextUtils.TruncateAt" include nil nil [403 444])
+            ("android.util.FloatMath" include nil nil [445 475])
+            ("android.util.Log" include nil nil [476 500])
+            ("java.nio.ByteBuffer" include nil nil [501 528])
+            ("java.nio.ByteOrder" include nil nil [529 555])
+            ("java.util.LinkedList" include nil nil [556 584])
+            ("Cocos2dxBitmap" type
+               (:typemodifiers ("public")
+                :members 
+                  ( ("HORIZONTALALIGN_CENTER" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [618 670])
+                    ("HORIZONTALALIGN_LEFT" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [673 723])
+                    ("HORIZONTALALIGN_RIGHT" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [726 777])
+                    ("VERTICALALIGN_BOTTOM" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [780 830])
+                    ("VERTICALALIGN_CENTER" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [833 883])
+                    ("VERTICALALIGN_TOP" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [886 933])
+                    ("sContext" variable
+                       (:typemodifiers ("private" "static")
+                        :type "Context")
+                        (reparse-symbol class_member_declaration) [936 968])
+                    ("computeTextProperty" function
+                       (:typemodifiers ("private" "static")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [1020 1038])
+                            ("paramInt1" variable (:type "int") (reparse-symbol formal_parameters) [1040 1053])
+                            ("paramInt2" variable (:type "int") (reparse-symbol formal_parameters) [1055 1068])
+                            ("paramPaint" variable (:type "Paint") (reparse-symbol formal_parameters) [1070 1086]))                          
+                        :type "TextProperty")
+                        (reparse-symbol class_member_declaration) [972 1730])
+                    ("computeX" function
+                       (:typemodifiers ("private" "static")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [1762 1780])
+                            ("paramInt1" variable (:type "int") (reparse-symbol formal_parameters) [1782 1795])
+                            ("paramInt2" variable (:type "int") (reparse-symbol formal_parameters) [1797 1810]))                          
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1734 1957])
+                    ("computeY" function
+                       (:typemodifiers ("private" "static")
+                        :arguments 
+                          ( ("paramFontMetricsInt" variable (:type "Paint.FontMetricsInt") (reparse-symbol formal_parameters) [1989 2029])
+                            ("paramInt1" variable (:type "int") (reparse-symbol formal_parameters) [2031 2044])
+                            ("paramInt2" variable (:type "int") (reparse-symbol formal_parameters) [2046 2059])
+                            ("paramInt3" variable (:type "int") (reparse-symbol formal_parameters) [2061 2074]))                          
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1961 2424])
+                    ("createTextBitmap" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("paramString1" variable (:type "String") (reparse-symbol formal_parameters) [2464 2483])
+                            ("paramString2" variable (:type "String") (reparse-symbol formal_parameters) [2485 2504])
+                            ("paramInt1" variable (:type "int") (reparse-symbol formal_parameters) [2506 2519])
+                            ("paramInt2" variable (:type "int") (reparse-symbol formal_parameters) [2521 2534])
+                            ("paramInt3" variable (:type "int") (reparse-symbol formal_parameters) [2536 2549])
+                            ("paramInt4" variable (:type "int") (reparse-symbol formal_parameters) [2551 2564]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2428 3701])
+                    ("divideStringWithMaxWidth" function
+                       (:constructor-flag t
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [3764 3782])
+                            ("paramInt" variable (:type "int") (reparse-symbol formal_parameters) [3784 3796])
+                            ("paramPaint" variable (:type "Paint") (reparse-symbol formal_parameters) [3798 3814]))                          )
+                        (reparse-symbol class_member_declaration) [3739 4776])
+                    ("getFontSizeAccordingHeight" function
+                       (:typemodifiers ("private" "static")
+                        :arguments 
+                          ( ("paramInt" variable (:type "int") (reparse-symbol formal_parameters) [4826 4838]))                          
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [4780 5281])
+                    ("getPixels" function
+                       (:typemodifiers ("private" "static")
+                        :arguments 
+                          ( ("paramBitmap" variable (:type "Bitmap") (reparse-symbol formal_parameters) [5317 5335]))                          
+                        :type "byte[]")
+                        (reparse-symbol class_member_declaration) [5285 5695])
+                    ("getStringWithEllipsis" function
+                       (:typemodifiers ("private" "static")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [5743 5761])
+                            ("paramFloat1" variable (:type "float") (reparse-symbol formal_parameters) [5763 5780])
+                            ("paramFloat2" variable (:type "float") (reparse-symbol formal_parameters) [5782 5799]))                          
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [5699 6119])
+                    ("initNativeObject" function
+                       (:typemodifiers ("private" "static")
+                        :arguments 
+                          ( ("paramBitmap" variable (:type "Bitmap") (reparse-symbol formal_parameters) [6160 6178]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [6123 6365])
+                    ("nativeInitBitmapDC" function
+                       (:typemodifiers ("private" "static" "native")
+                        :arguments 
+                          ( ("paramInt1" variable (:type "int") (reparse-symbol formal_parameters) [6415 6428])
+                            ("paramInt2" variable (:type "int") (reparse-symbol formal_parameters) [6430 6443])
+                            ("paramArrayOfByte" variable
+                               (:dereference 1
+                                :type "byte")
+                                (reparse-symbol formal_parameters) [6445 6468]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [6369 6470])
+                    ("newPaint" function
+                       (:typemodifiers ("private" "static")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [6504 6522])
+                            ("paramInt1" variable (:type "int") (reparse-symbol formal_parameters) [6524 6537])
+                            ("paramInt2" variable (:type "int") (reparse-symbol formal_parameters) [6539 6552]))                          
+                        :type "Paint")
+                        (reparse-symbol class_member_declaration) [6474 7476])
+                    ("refactorString" function
+                       (:typemodifiers ("private" "static")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [7517 7535]))                          
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [7480 8175])
+                    ("setContext" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("paramContext" variable (:type "Context") (reparse-symbol formal_parameters) [8209 8229]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [8179 8267])
+                    ("splitString" function
+                       (:typemodifiers ("private" "static")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [8307 8325])
+                            ("paramInt1" variable (:type "int") (reparse-symbol formal_parameters) [8327 8340])
+                            ("paramInt2" variable (:type "int") (reparse-symbol formal_parameters) [8342 8355])
+                            ("paramPaint" variable (:type "Paint") (reparse-symbol formal_parameters) [8357 8373]))                          
+                        :type "String[]")
+                        (reparse-symbol class_member_declaration) [8271 10030])
+                    ("TextProperty" type
+                       (:typemodifiers ("private" "static")
+                        :members 
+                          ( ("mHeightPerLine" variable
+                               (:typemodifiers ("private" "final")
+                                :type "int")
+                                (reparse-symbol class_member_declaration) [10076 10109])
+                            ("mLines" variable
+                               (:dereference 1
+                                :typemodifiers ("private" "final")
+                                :type "String")
+                                (reparse-symbol class_member_declaration) [10114 10144])
+                            ("mMaxWidth" variable
+                               (:typemodifiers ("private" "final")
+                                :type "int")
+                                (reparse-symbol class_member_declaration) [10149 10177])
+                            ("mTotalHeight" variable
+                               (:typemodifiers ("private" "final")
+                                :type "int")
+                                (reparse-symbol class_member_declaration) [10182 10213])
+                            ("TextProperty" function
+                               (:constructor-flag t
+                                :arguments 
+                                  ( ("paramInt1" variable (:type "int") (reparse-symbol formal_parameters) [10232 10245])
+                                    ("paramInt2" variable (:type "int") (reparse-symbol formal_parameters) [10247 10260])
+                                    ("paramArrayOfString" variable
+                                       (:dereference 1
+                                        :type "String")
+                                        (reparse-symbol formal_parameters) [10262 10289]))                                  )
+                                (reparse-symbol class_member_declaration) [10219 10482]))                          
+                        :type "class")
+                        (reparse-symbol class_member_declaration) [10034 10486]))                  
+                :type "class")
+                nil [586 10488]))          
+    :file "Cocos2dxBitmap.java"
+    :pointmax 10659
+    :fsize 10658
+    :lastmodtime '(22241 9460 0 0)
+    :unmatched-syntax '((GT 3737 . 3738) (PRIVATE 3705 . 3712) (LT 3730 . 3731))
+    )
+   (semanticdb-table "Cocos2dxActivity.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("org.cocos2dx.lib" package nil nil [1 26])
+            ("android.app.Activity" include nil nil [28 56])
+            ("android.os.Bundle" include nil nil [57 82])
+            ("android.os.Message" include nil nil [83 109])
+            ("android.view.ViewGroup.LayoutParams" include nil nil [110 153])
+            ("android.widget.FrameLayout" include nil nil [154 188])
+            ("com.chartboost.sdk.Chartboost" include nil nil [189 226])
+            ("Cocos2dxActivity" type
+               (:typemodifiers ("public" "abstract")
+                :interfaces ("Cocos2dxHelper.Cocos2dxHelperListener")
+                :superclasses "Activity"
+                :members 
+                  ( ("TAG" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [339 412])
+                    ("ddAdmob_" variable
+                       (:typemodifiers ("private")
+                        :type "DDAdmob")
+                        (reparse-symbol class_member_declaration) [417 449])
+                    ("mGLSurfaceView" variable
+                       (:typemodifiers ("private")
+                        :type "Cocos2dxGLSurfaceView")
+                        (reparse-symbol class_member_declaration) [454 499])
+                    ("mHandler" variable
+                       (:typemodifiers ("private")
+                        :type "Cocos2dxHandler")
+                        (reparse-symbol class_member_declaration) [504 537])
+                    ("onCreate" function
+                       (:typemodifiers ("protected")
+                        :arguments 
+                          ( ("paramBundle" variable (:type "Bundle") (reparse-symbol formal_parameters) [567 585]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [543 886])
+                    ("onCreateView" function
+                       (:typemodifiers ("public")
+                        :type "Cocos2dxGLSurfaceView")
+                        (reparse-symbol class_member_declaration) [892 1842])
+                    ("onDestroy" function
+                       (:typemodifiers ("protected")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1848 1964])
+                    ("onPause" function
+                       (:typemodifiers ("protected")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1970 2101])
+                    ("onResume" function
+                       (:typemodifiers ("protected")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2107 2241])
+                    ("onStart" function
+                       (:typemodifiers ("protected")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2247 2337])
+                    ("onStop" function
+                       (:typemodifiers ("protected")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2343 2450])
+                    ("runOnGLThread" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramRunnable" variable (:type "Runnable") (reparse-symbol formal_parameters) [2482 2504]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2456 2568])
+                    ("showDialog" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramString1" variable (:type "String") (reparse-symbol formal_parameters) [2597 2616])
+                            ("paramString2" variable (:type "String") (reparse-symbol formal_parameters) [2618 2637]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2574 2862])
+                    ("showEditTextDialog" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramString1" variable (:type "String") (reparse-symbol formal_parameters) [2899 2918])
+                            ("paramString2" variable (:type "String") (reparse-symbol formal_parameters) [2920 2939])
+                            ("paramInt1" variable (:type "int") (reparse-symbol formal_parameters) [2941 2954])
+                            ("paramInt2" variable (:type "int") (reparse-symbol formal_parameters) [2956 2969])
+                            ("paramInt3" variable (:type "int") (reparse-symbol formal_parameters) [2971 2984])
+                            ("paramInt4" variable (:type "int") (reparse-symbol formal_parameters) [2986 2999]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2868 3269])
+                    ("onBackPressed" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3275 3420]))                  
+                :type "class")
+                nil [228 3422]))          
+    :file "Cocos2dxActivity.java"
+    :pointmax 3445
+    :fsize 3595
+    :lastmodtime '(22258 4114 2961 138000)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "Cocos2dxHelper.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("org.cocos2dx.lib" package nil nil [1 26])
+            ("android.content.Context" include nil nil [28 59])
+            ("android.content.pm.ApplicationInfo" include nil nil [60 102])
+            ("android.content.res.AssetManager" include nil nil [103 143])
+            ("android.os.Build" include nil nil [144 168])
+            ("android.os.Environment" include nil nil [169 199])
+            ("android.os.Process" include nil nil [200 226])
+            ("java.io.UnsupportedEncodingException" include nil nil [227 271])
+            ("java.util.Locale" include nil nil [272 296])
+            ("Cocos2dxHelper" type
+               (:typemodifiers ("public")
+                :members 
+                  ( ("sAccelerometerEnabled" variable
+                       (:typemodifiers ("private" "static")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [330 375])
+                    ("sAssetManager" variable
+                       (:typemodifiers ("private" "static")
+                        :type "AssetManager")
+                        (reparse-symbol class_member_declaration) [378 420])
+                    ("sCocos2dMusic" variable
+                       (:typemodifiers ("private" "static")
+                        :type "Cocos2dxMusic")
+                        (reparse-symbol class_member_declaration) [423 466])
+                    ("sCocos2dSound" variable
+                       (:typemodifiers ("private" "static")
+                        :type "Cocos2dxSound")
+                        (reparse-symbol class_member_declaration) [469 512])
+                    ("sCocos2dxAccelerometer" variable
+                       (:typemodifiers ("private" "static")
+                        :type "Cocos2dxAccelerometer")
+                        (reparse-symbol class_member_declaration) [515 575])
+                    ("sCocos2dxHelperListener" variable
+                       (:typemodifiers ("private" "static")
+                        :type "Cocos2dxHelperListener")
+                        (reparse-symbol class_member_declaration) [578 640])
+                    ("sPackageName" variable
+                       (:typemodifiers ("private" "static")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [643 678])
+                    ("disableAccelerometer" function
+                       (:typemodifiers ("public" "static")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [682 804])
+                    ("enableAccelerometer" function
+                       (:typemodifiers ("public" "static")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [808 927])
+                    ("end" function
+                       (:typemodifiers ("public" "static")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [931 1013])
+                    ("getAbsolutePathOnExternalStorage" function
+                       (:typemodifiers ("private" "static")
+                        :arguments 
+                          ( ("paramApplicationInfo" variable (:type "ApplicationInfo") (reparse-symbol formal_parameters) [1072 1108])
+                            ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [1110 1128]))                          
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [1017 1271])
+                    ("getAssetManager" function
+                       (:typemodifiers ("public" "static")
+                        :type "AssetManager")
+                        (reparse-symbol class_member_declaration) [1275 1353])
+                    ("getBackgroundMusicVolume" function
+                       (:typemodifiers ("public" "static")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [1357 1459])
+                    ("getCocos2dxPackageName" function
+                       (:typemodifiers ("public" "static")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [1463 1541])
+                    ("getCurrentLanguage" function
+                       (:typemodifiers ("public" "static")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [1545 1640])
+                    ("getDeviceModel" function
+                       (:typemodifiers ("public" "static")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [1644 1713])
+                    ("getEffectsVolume" function
+                       (:typemodifiers ("public" "static")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [1717 1808])
+                    ("init" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("paramContext" variable (:type "Context") (reparse-symbol formal_parameters) [1836 1856])
+                            ("paramCocos2dxHelperListener" variable (:type "Cocos2dxHelperListener") (reparse-symbol formal_parameters) [1858 1908]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1812 2683])
+                    ("isBackgroundMusicPlaying" function
+                       (:typemodifiers ("public" "static")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [2687 2796])
+                    ("nativeSetApkPath" function
+                       (:typemodifiers ("public" "static" "native")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [2843 2861]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2800 2863])
+                    ("nativeSetEditTextDialogResult" function
+                       (:typemodifiers ("private" "static" "native")
+                        :arguments 
+                          ( ("paramArrayOfByte" variable
+                               (:dereference 1
+                                :type "byte")
+                                (reparse-symbol formal_parameters) [2924 2947]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2867 2949])
+                    ("nativeSetExternalAssetPath" function
+                       (:typemodifiers ("private" "static" "native")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [3007 3025]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2953 3027])
+                    ("onPause" function
+                       (:typemodifiers ("public" "static")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3031 3138])
+                    ("onResume" function
+                       (:typemodifiers ("public" "static")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3142 3249])
+                    ("pauseAllEffects" function
+                       (:typemodifiers ("public" "static")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3253 3334])
+                    ("pauseBackgroundMusic" function
+                       (:typemodifiers ("public" "static")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3338 3429])
+                    ("pauseEffect" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("paramInt" variable (:type "int") (reparse-symbol formal_parameters) [3464 3476]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3433 3526])
+                    ("playBackgroundMusic" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [3569 3587])
+                            ("paramBoolean" variable (:type "boolean") (reparse-symbol formal_parameters) [3589 3609]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3530 3684])
+                    ("playEffect" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [3717 3735])
+                            ("paramBoolean" variable (:type "boolean") (reparse-symbol formal_parameters) [3737 3757]))                          
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [3688 3830])
+                    ("preloadBackgroundMusic" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [3876 3894]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3834 3958])
+                    ("preloadEffect" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [3995 4013]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3962 4068])
+                    ("resumeAllEffects" function
+                       (:typemodifiers ("public" "static")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [4072 4155])
+                    ("resumeBackgroundMusic" function
+                       (:typemodifiers ("public" "static")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [4159 4252])
+                    ("resumeEffect" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("paramInt" variable (:type "int") (reparse-symbol formal_parameters) [4288 4300]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [4256 4351])
+                    ("rewindBackgroundMusic" function
+                       (:typemodifiers ("public" "static")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [4355 4448])
+                    ("setAccelerometerInterval" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("paramFloat" variable (:type "float") (reparse-symbol formal_parameters) [4496 4512]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [4452 4573])
+                    ("setBackgroundMusicVolume" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("paramFloat" variable (:type "float") (reparse-symbol formal_parameters) [4621 4637]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [4577 4697])
+                    ("setEditTextDialogResult" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [4744 4762]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [4701 5149])
+                    ("setEffectsVolume" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("paramFloat" variable (:type "float") (reparse-symbol formal_parameters) [5189 5205]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5153 5262])
+                    ("showDialog" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("paramString1" variable (:type "String") (reparse-symbol formal_parameters) [5296 5315])
+                            ("paramString2" variable (:type "String") (reparse-symbol formal_parameters) [5317 5336]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5266 5413])
+                    ("showEditTextDialog" function
+                       (:typemodifiers ("private" "static")
+                        :arguments 
+                          ( ("paramString1" variable (:type "String") (reparse-symbol formal_parameters) [5456 5475])
+                            ("paramString2" variable (:type "String") (reparse-symbol formal_parameters) [5477 5496])
+                            ("paramInt1" variable (:type "int") (reparse-symbol formal_parameters) [5498 5511])
+                            ("paramInt2" variable (:type "int") (reparse-symbol formal_parameters) [5513 5526])
+                            ("paramInt3" variable (:type "int") (reparse-symbol formal_parameters) [5528 5541])
+                            ("paramInt4" variable (:type "int") (reparse-symbol formal_parameters) [5543 5556]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5417 5685])
+                    ("stopAllEffects" function
+                       (:typemodifiers ("public" "static")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5689 5768])
+                    ("stopBackgroundMusic" function
+                       (:typemodifiers ("public" "static")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5772 5861])
+                    ("stopEffect" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("paramInt" variable (:type "int") (reparse-symbol formal_parameters) [5895 5907]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5865 5956])
+                    ("terminateProcess" function
+                       (:typemodifiers ("public" "static")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5960 6047])
+                    ("unloadEffect" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [6083 6101]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [6051 6155])
+                    ("Cocos2dxHelperListener" type
+                       (:typemodifiers ("public" "static" "abstract")
+                        :members 
+                          ( ("runOnGLThread" function
+                               (:typemodifiers ("public" "abstract")
+                                :arguments 
+                                  ( ("paramRunnable" variable (:type "Runnable") (reparse-symbol formal_parameters) [6258 6280]))                                  
+                                :type "void")
+                                (reparse-symbol interface_member_declaration) [6223 6282])
+                            ("showDialog" function
+                               (:typemodifiers ("public" "abstract")
+                                :arguments 
+                                  ( ("paramString1" variable (:type "String") (reparse-symbol formal_parameters) [6320 6339])
+                                    ("paramString2" variable (:type "String") (reparse-symbol formal_parameters) [6341 6360]))                                  
+                                :type "void")
+                                (reparse-symbol interface_member_declaration) [6288 6362])
+                            ("showEditTextDialog" function
+                               (:typemodifiers ("public" "abstract")
+                                :arguments 
+                                  ( ("paramString1" variable (:type "String") (reparse-symbol formal_parameters) [6408 6427])
+                                    ("paramString2" variable (:type "String") (reparse-symbol formal_parameters) [6429 6448])
+                                    ("paramInt1" variable (:type "int") (reparse-symbol formal_parameters) [6450 6463])
+                                    ("paramInt2" variable (:type "int") (reparse-symbol formal_parameters) [6465 6478])
+                                    ("paramInt3" variable (:type "int") (reparse-symbol formal_parameters) [6480 6493])
+                                    ("paramInt4" variable (:type "int") (reparse-symbol formal_parameters) [6495 6508]))                                  
+                                :type "void")
+                                (reparse-symbol interface_member_declaration) [6368 6510]))                          
+                        :type "interface")
+                        (reparse-symbol class_member_declaration) [6159 6514]))                  
+                :type "class")
+                nil [298 6516]))          
+    :file "Cocos2dxHelper.java"
+    :pointmax 6687
+    :fsize 7087
+    :lastmodtime '(22258 4443 968597 355000)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "Cocos2dxSound.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("org.cocos2dx.lib" package nil nil [1 26])
+            ("android.content.Context" include nil nil [28 59])
+            ("android.content.res.AssetFileDescriptor" include nil nil [60 107])
+            ("android.content.res.AssetManager" include nil nil [108 148])
+            ("android.media.SoundPool" include nil nil [149 180])
+            ("android.media.SoundPool.OnLoadCompleteListener" include nil nil [181 235])
+            ("android.util.Log" include nil nil [236 260])
+            ("com.android.vending.expansion.zipfile.ZipResourceFile" include nil nil [261 322])
+            ("java.util.ArrayList" include nil nil [323 350])
+            ("java.util.HashMap" include nil nil [351 376])
+            ("java.util.Iterator" include nil nil [377 403])
+            ("java.util.Map.Entry" include nil nil [404 431])
+            ("java.util.Set" include nil nil [432 453])
+            ("java.util.concurrent.Semaphore" include nil nil [454 492])
+            ("Cocos2dxSound" type
+               (:typemodifiers ("public")
+                :members 
+                  ( ("INVALID_SOUND_ID" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [527 574])
+                    ("INVALID_STREAM_ID" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [579 627])
+                    ("MAX_SIMULTANEOUS_STREAMS_DEFAULT" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [632 694])
+                    ("SOUND_PRIORITY" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [699 743])
+                    ("SOUND_QUALITY" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [748 791])
+                    ("SOUND_RATE" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [796 841])
+                    ("TAG" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [846 896])
+                    ("mContext" variable
+                       (:typemodifiers ("private" "final")
+                        :type "Context")
+                        (reparse-symbol class_member_declaration) [901 932])
+                    ("mLeftVolume" variable
+                       (:typemodifiers ("private")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [1041 1067])
+                    ("mRightVolume" variable
+                       (:typemodifiers ("private")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [1237 1264])
+                    ("mSemaphore" variable
+                       (:typemodifiers ("private")
+                        :type "Semaphore")
+                        (reparse-symbol class_member_declaration) [1269 1298])
+                    ("mSoundPool" variable
+                       (:typemodifiers ("private")
+                        :type "SoundPool")
+                        (reparse-symbol class_member_declaration) [1303 1332])
+                    ("mStreamIdSyn" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1337 1362])
+                    ("Cocos2dxSound" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("paramContext" variable (:type "Context") (reparse-symbol formal_parameters) [1389 1409]))                          )
+                        (reparse-symbol class_member_declaration) [1368 1476])
+                    ("doPlayEffect" function
+                       (:typemodifiers ("private")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [1507 1525])
+                            ("paramInt" variable (:type "int") (reparse-symbol formal_parameters) [1527 1539])
+                            ("paramBoolean" variable (:type "boolean") (reparse-symbol formal_parameters) [1541 1561]))                          
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1482 2185])
+                    ("initData" function
+                       (:typemodifiers ("private")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2191 2471])
+                    ("createSoundIDFromAsset" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [2511 2529]))                          
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [2477 3264])
+                    ("end" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3270 3545])
+                    ("getEffectsVolume" function
+                       (:typemodifiers ("public")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [3551 3652])
+                    ("pauseAllEffects" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3658 3732])
+                    ("pauseEffect" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramInt" variable (:type "int") (reparse-symbol formal_parameters) [3762 3774]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3738 3824])
+                    ("playEffect" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [3852 3870])
+                            ("paramBoolean" variable (:type "boolean") (reparse-symbol formal_parameters) [3872 3892]))                          
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [3830 4886])
+                    ("preloadEffect" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [4917 4935]))                          
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [4892 5255])
+                    ("resumeAllEffects" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5261 5836])
+                    ("resumeEffect" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramInt" variable (:type "int") (reparse-symbol formal_parameters) [5867 5879]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5842 5930])
+                    ("setEffectsVolume" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramFloat" variable (:type "float") (reparse-symbol formal_parameters) [5965 5981]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5936 6758])
+                    ("stopAllEffects" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [6764 7399])
+                    ("stopEffect" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramInt" variable (:type "int") (reparse-symbol formal_parameters) [7428 7440]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [7405 7964])
+                    ("unloadEffect" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [7995 8013]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [7970 8746])
+                    ("OnLoadCompletedListener" type
+                       (:typemodifiers ("public")
+                        :interfaces ("SoundPool.OnLoadCompleteListener")
+                        :members 
+                          ( ("OnLoadCompletedListener" function
+                               (:constructor-flag t
+                                :typemodifiers ("public"))
+                                (reparse-symbol class_member_declaration) [8851 8895])
+                            ("onLoadComplete" function
+                               (:typemodifiers ("public")
+                                :arguments 
+                                  ( ("paramSoundPool" variable (:type "SoundPool") (reparse-symbol formal_parameters) [8932 8956])
+                                    ("paramInt1" variable (:type "int") (reparse-symbol formal_parameters) [8958 8971])
+                                    ("paramInt2" variable (:type "int") (reparse-symbol formal_parameters) [8973 8986]))                                  
+                                :type "void")
+                                (reparse-symbol class_member_declaration) [8905 9992]))                          
+                        :type "class")
+                        (reparse-symbol class_member_declaration) [8752 9998])
+                    ("SoundInfoForLoadedCompleted" type
+                       (:typemodifiers ("public")
+                        :members 
+                          ( ("isLoop" variable
+                               (:typemodifiers ("public")
+                                :type "boolean")
+                                (reparse-symbol class_member_declaration) [10055 10077])
+                            ("path" variable
+                               (:typemodifiers ("public")
+                                :type "String")
+                                (reparse-symbol class_member_declaration) [10086 10105])
+                            ("soundID" variable
+                               (:typemodifiers ("public")
+                                :type "int")
+                                (reparse-symbol class_member_declaration) [10114 10133])
+                            ("SoundInfoForLoadedCompleted" function
+                               (:constructor-flag t
+                                :typemodifiers ("public")
+                                :arguments 
+                                  ( ("paramInt" variable (:type "String") (reparse-symbol formal_parameters) [10178 10193])
+                                    ("paramBoolean" variable (:type "int") (reparse-symbol formal_parameters) [10195 10211])
+                                    ("arg4" variable (:type "boolean") (reparse-symbol formal_parameters) [10213 10225]))                                  )
+                                (reparse-symbol class_member_declaration) [10143 10371]))                          
+                        :type "class")
+                        (reparse-symbol class_member_declaration) [10004 10377]))                  
+                :type "class")
+                nil [494 10379]))          
+    :file "Cocos2dxSound.java"
+    :pointmax 10582
+    :fsize 10549
+    :lastmodtime '(22258 4946 863091 61000)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "DDAdmob.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("org.cocos2dx.lib" package nil nil [1 26])
+            ("android.app.Activity" include nil nil [28 56])
+            ("android.app.Application" include nil nil [57 88])
+            ("android.content.Context" include nil nil [89 120])
+            ("android.content.DialogInterface" include nil nil [121 160])
+            ("android.content.DialogInterface.OnCancelListener" include nil nil [161 217])
+            ("android.content.DialogInterface.OnClickListener" include nil nil [218 273])
+            ("android.content.Intent" include nil nil [274 304])
+            ("android.content.pm.ApplicationInfo" include nil nil [305 347])
+            ("android.content.pm.PackageInfo" include nil nil [348 386])
+            ("android.content.pm.PackageManager" include nil nil [387 428])
+            ("android.content.pm.PackageManager.NameNotFoundException" include nil nil [429 492])
+            ("android.content.res.Configuration" include nil nil [493 534])
+            ("android.content.res.Resources" include nil nil [535 572])
+            ("android.net.Uri" include nil nil [573 596])
+            ("android.os.Build" include nil nil [597 621])
+            ("android.os.Build.VERSION" include nil nil [622 654])
+            ("android.os.Environment" include nil nil [655 685])
+            ("android.os.Handler" include nil nil [686 712])
+            ("android.os.Message" include nil nil [713 739])
+            ("android.os.StatFs" include nil nil [740 765])
+            ("android.provider.Settings.Secure" include nil nil [766 806])
+            ("com.android.vending.expansion.zipfile.APKExpansionSupport" include nil nil [807 872])
+            ("com.android.vending.expansion.zipfile.ZipResourceFile" include nil nil [873 934])
+            ("com.chartboost.sdk.Chartboost" include nil nil [935 972])
+            ("com.google.android.gms.ads.AdListener" include nil nil [973 1018])
+            ("com.google.android.gms.ads.AdRequest" include nil nil [1019 1063])
+            ("com.google.android.gms.ads.AdRequest.Builder" include nil nil [1064 1116])
+            ("com.google.android.gms.ads.InterstitialAd" include nil nil [1117 1166])
+            ("java.io.File" include nil nil [1167 1187])
+            ("java.io.IOException" include nil nil [1188 1215])
+            ("java.text.SimpleDateFormat" include nil nil [1216 1250])
+            ("java.util.ArrayList" include nil nil [1251 1278])
+            ("java.util.Calendar" include nil nil [1279 1305])
+            ("java.util.Date" include nil nil [1306 1328])
+            ("java.util.Locale" include nil nil [1329 1353])
+            ("java.util.TimeZone" include nil nil [1354 1380])
+            ("DDAdmob" type
+               (:typemodifiers ("public")
+                :members 
+                  ( ("s_ZipResourceFile" variable
+                       (:typemodifiers ("public" "static")
+                        :type "ZipResourceFile")
+                        (reparse-symbol class_member_declaration) [1409 1457])
+                    ("s_apkExtentionFlag" variable
+                       (:typemodifiers ("private" "static")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [1462 1511])
+                    ("s_apkExtentionResourceFile" variable
+                       (:typemodifiers ("public" "static")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [1516 1564])
+                    ("s_ddadmob" variable
+                       (:typemodifiers ("private" "static")
+                        :type "DDAdmob")
+                        (reparse-symbol class_member_declaration) [1569 1609])
+                    ("activity_" variable
+                       (:typemodifiers ("public")
+                        :type "Activity")
+                        (reparse-symbol class_member_declaration) [1614 1647])
+                    ("admob_real_status" variable
+                       (:typemodifiers ("public")
+                        :type "ADMOB_REAL_STATUS")
+                        (reparse-symbol class_member_declaration) [1652 1695])
+                    ("applicationContext_" variable
+                       (:typemodifiers ("public")
+                        :type "Context")
+                        (reparse-symbol class_member_declaration) [1700 1742])
+                    ("application_" variable
+                       (:typemodifiers ("public")
+                        :type "Application")
+                        (reparse-symbol class_member_declaration) [1747 1786])
+                    ("cbDelegate_" variable
+                       (:typemodifiers ("public")
+                        :type "CBDelegate")
+                        (reparse-symbol class_member_declaration) [1791 1840])
+                    ("cb_" variable
+                       (:typemodifiers ("public")
+                        :type "Chartboost")
+                        (reparse-symbol class_member_declaration) [1845 1874])
+                    ("interstitialAd" variable (:type "InterstitialAd") (reparse-symbol class_member_declaration) [1879 1916])
+                    ("isAForNextShow_" variable
+                       (:typemodifiers ("public")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [1921 1959])
+                    ("isShowingDialog" variable
+                       (:typemodifiers ("private")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [1964 2004])
+                    ("isSkipNextFGEvent" variable
+                       (:typemodifiers ("private")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [2009 2051])
+                    ("myHandle" variable
+                       (:typemodifiers ("public")
+                        :type "DDAdmobHandler")
+                        (reparse-symbol class_member_declaration) [2056 2094])
+                    ("DDAdmob" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("paramActivity" variable (:type "Activity") (reparse-symbol formal_parameters) [2115 2137]))                          )
+                        (reparse-symbol class_member_declaration) [2100 2722])
+                    ("getInstance" function
+                       (:typemodifiers ("public" "static")
+                        :type "DDAdmob")
+                        (reparse-symbol class_member_declaration) [2728 2797])
+                    ("isApkUsingExtention" function
+                       (:typemodifiers ("public" "static")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [2803 4290])
+                    ("log" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [4319 4337]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [4296 4341])
+                    ("nativeGetExtentionVersionCode" function
+                       (:typemodifiers ("public" "static" "native")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [4346 4403])
+                    ("nativeIsApkUsingExtention" function
+                       (:typemodifiers ("public" "static" "native")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [4408 4465])
+                    ("cached" function
+                       (:typemodifiers ("public" "native")
+                        :arguments 
+                          ( ("paramBoolean" variable (:type "boolean") (reparse-symbol formal_parameters) [4496 4516]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [4470 4518])
+                    ("canShowAdmob" function
+                       (:typemodifiers ("public")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [4524 4647])
+                    ("canShowCB" function
+                       (:typemodifiers ("public")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [4653 4724])
+                    ("createCB" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [4730 4893])
+                    ("doAd" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramString1" variable (:type "String") (reparse-symbol formal_parameters) [4916 4935])
+                            ("paramString2" variable (:type "String") (reparse-symbol formal_parameters) [4937 4956])
+                            ("paramString3" variable (:type "String") (reparse-symbol formal_parameters) [4958 4977])
+                            ("paramString4" variable (:type "String") (reparse-symbol formal_parameters) [4979 4998])
+                            ("paramString5" variable (:type "String") (reparse-symbol formal_parameters) [5000 5019]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [4899 5023])
+                    ("doLogEvent" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [5052 5070])
+                            ("paramBoolean" variable (:type "boolean") (reparse-symbol formal_parameters) [5072 5092]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5029 5096])
+                    ("doLogEventEndTimed" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [5133 5151]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5102 5155])
+                    ("doRate" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramString1" variable (:type "String") (reparse-symbol formal_parameters) [5180 5199])
+                            ("paramString2" variable (:type "String") (reparse-symbol formal_parameters) [5201 5220]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5161 5224])
+                    ("doShare" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramString1" variable (:type "String") (reparse-symbol formal_parameters) [5250 5269])
+                            ("paramString2" variable (:type "String") (reparse-symbol formal_parameters) [5271 5290])
+                            ("paramString3" variable (:type "String") (reparse-symbol formal_parameters) [5292 5311]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5230 5315])
+                    ("getAdmobID" function
+                       (:typemodifiers ("public" "native")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [5321 5355])
+                    ("getAdmobSign" function
+                       (:typemodifiers ("public" "native")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [5361 5397])
+                    ("getAndroidModelType" function
+                       (:typemodifiers ("public")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [5403 5474])
+                    ("getAndroidOSType" function
+                       (:typemodifiers ("public")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [5480 5546])
+                    ("getAndroidOSVersion" function
+                       (:typemodifiers ("public")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [5552 5633])
+                    ("getAppID" function
+                       (:typemodifiers ("public")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [5639 5729])
+                    ("getAppTitle" function
+                       (:typemodifiers ("public")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [5735 6155])
+                    ("getAppVersionName" function
+                       (:typemodifiers ("public")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [6161 6617])
+                    ("getCountry" function
+                       (:typemodifiers ("public")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [6623 6745])
+                    ("getDeviceID" function
+                       (:typemodifiers ("public")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [6751 7061])
+                    ("getExeFile" function
+                       (:typemodifiers ("public")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [7067 7532])
+                    ("getFlurryKey" function
+                       (:typemodifiers ("public" "native")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [7538 7574])
+                    ("getLanguage" function
+                       (:typemodifiers ("public")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [7580 7704])
+                    ("getLocaleDate" function
+                       (:typemodifiers ("public")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [7710 7817])
+                    ("getLocaleTime" function
+                       (:typemodifiers ("public")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [7823 7928])
+                    ("getLocaleWeekDay" function
+                       (:typemodifiers ("public")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [7934 8093])
+                    ("getManufacturer" function
+                       (:typemodifiers ("public")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [8099 8173])
+                    ("getSDCardPath" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [8207 8225]))                          
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [8179 8780])
+                    ("getTimezoneInMinute" function
+                       (:typemodifiers ("public")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [8786 8942])
+                    ("gotoMoreApps" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [8973 8991]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [8948 8995])
+                    ("init" function
+                       (:typemodifiers ("public" "native")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [9001 9027])
+                    ("loadAdmobRealInMainThread" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [9033 9278])
+                    ("loadInmobi" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [9284 9311])
+                    ("neverRate" function
+                       (:typemodifiers ("public" "native")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [9316 9347])
+                    ("openURL" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [9373 9391]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [9353 10942])
+                    ("pauseGame" function
+                       (:typemodifiers ("public" "native")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [10948 10979])
+                    ("resumeGame" function
+                       (:typemodifiers ("public" "native")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [10984 11016])
+                    ("showAd" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramString1" variable (:type "String") (reparse-symbol formal_parameters) [11041 11060])
+                            ("paramString2" variable (:type "String") (reparse-symbol formal_parameters) [11062 11081])
+                            ("paramString3" variable (:type "String") (reparse-symbol formal_parameters) [11083 11102])
+                            ("paramString4" variable (:type "String") (reparse-symbol formal_parameters) [11104 11123])
+                            ("paramString5" variable (:type "String") (reparse-symbol formal_parameters) [11125 11144]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [11022 11584])
+                    ("showAdmobAdReal" function
+                       (:typemodifiers ("public")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [11590 12519])
+                    ("showAdmobReaInMainThread" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [12525 12814])
+                    ("showInmobiAd" function
+                       (:typemodifiers ("public")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [12820 12879])
+                    ("showInmobiUI" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [12885 12914])
+                    ("showRate" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramString1" variable (:type "String") (reparse-symbol formal_parameters) [12941 12960])
+                            ("paramString2" variable (:type "String") (reparse-symbol formal_parameters) [12962 12981]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [12920 13295])
+                    ("startAdmobReal" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [13301 14951])
+                    ("startCB" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [14957 15171])
+                    ("startInmobi" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [15177 15205])
+                    ("DDAdmobHandler" type
+                       (:typemodifiers ("private" "static")
+                        :superclasses "Handler"
+                        :members 
+                          ( ("owner" variable
+                               (:typemodifiers ("public")
+                                :type "DDAdmob")
+                                (reparse-symbol class_member_declaration) [15708 15729])
+                            ("handleMessage" function
+                               (:typemodifiers ("public")
+                                :arguments 
+                                  ( ("paramMessage" variable (:type "Message") (reparse-symbol formal_parameters) [15765 15785]))                                  
+                                :type "void")
+                                (reparse-symbol class_member_declaration) [15739 16887]))                          
+                        :type "class")
+                        (reparse-symbol class_member_declaration) [15646 16893]))                  
+                :type "class")
+                nil [1382 16895]))          
+    :file "DDAdmob.java"
+    :pointmax 17074
+    :fsize 17059
+    :lastmodtime '(22258 5358 817133 838000)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "Cocos2dxEditBoxDialog.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("org.cocos2dx.lib" package nil nil [1 26])
+            ("android.app.Dialog" include nil nil [28 54])
+            ("android.content.Context" include nil nil [55 86])
+            ("android.content.res.Resources" include nil nil [87 124])
+            ("android.graphics.drawable.ColorDrawable" include nil nil [125 172])
+            ("android.os.Bundle" include nil nil [173 198])
+            ("android.os.Handler" include nil nil [199 225])
+            ("android.text.Editable" include nil nil [226 255])
+            ("android.text.InputFilter" include nil nil [256 288])
+            ("android.text.InputFilter.LengthFilter" include nil nil [289 334])
+            ("android.util.DisplayMetrics" include nil nil [335 370])
+            ("android.view.KeyEvent" include nil nil [371 400])
+            ("android.view.Window" include nil nil [401 428])
+            ("android.view.inputmethod.InputMethodManager" include nil nil [429 480])
+            ("android.widget.EditText" include nil nil [481 512])
+            ("android.widget.LinearLayout" include nil nil [513 548])
+            ("android.widget.LinearLayout.LayoutParams" include nil nil [549 597])
+            ("android.widget.TextView" include nil nil [598 629])
+            ("android.widget.TextView.OnEditorActionListener" include nil nil [630 684])
+            ("Cocos2dxEditBoxDialog" type
+               (:typemodifiers ("public")
+                :superclasses "Dialog"
+                :members 
+                  ( ("kEditBoxInputFlagInitialCapsAllCharacters" variable
+                       (:typemodifiers ("private" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [742 806])
+                    ("kEditBoxInputFlagInitialCapsSentence" variable
+                       (:typemodifiers ("private" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [811 870])
+                    ("kEditBoxInputFlagInitialCapsWord" variable
+                       (:typemodifiers ("private" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [875 930])
+                    ("kEditBoxInputFlagPassword" variable
+                       (:typemodifiers ("private" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [935 983])
+                    ("kEditBoxInputFlagSensitive" variable
+                       (:typemodifiers ("private" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [988 1037])
+                    ("kEditBoxInputModeAny" variable
+                       (:typemodifiers ("private" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1042 1085])
+                    ("kEditBoxInputModeDecimal" variable
+                       (:typemodifiers ("private" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1090 1137])
+                    ("kEditBoxInputModeEmailAddr" variable
+                       (:typemodifiers ("private" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1142 1191])
+                    ("kEditBoxInputModeNumeric" variable
+                       (:typemodifiers ("private" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1196 1243])
+                    ("kEditBoxInputModePhoneNumber" variable
+                       (:typemodifiers ("private" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1248 1299])
+                    ("kEditBoxInputModeSingleLine" variable
+                       (:typemodifiers ("private" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1304 1354])
+                    ("kEditBoxInputModeUrl" variable
+                       (:typemodifiers ("private" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1359 1402])
+                    ("kKeyboardReturnTypeDefault" variable
+                       (:typemodifiers ("private" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1407 1456])
+                    ("kKeyboardReturnTypeDone" variable
+                       (:typemodifiers ("private" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1461 1507])
+                    ("kKeyboardReturnTypeGo" variable
+                       (:typemodifiers ("private" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1512 1556])
+                    ("kKeyboardReturnTypeSearch" variable
+                       (:typemodifiers ("private" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1561 1609])
+                    ("kKeyboardReturnTypeSend" variable
+                       (:typemodifiers ("private" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1614 1660])
+                    ("mInputEditText" variable
+                       (:typemodifiers ("private")
+                        :type "EditText")
+                        (reparse-symbol class_member_declaration) [1665 1697])
+                    ("mInputFlag" variable
+                       (:typemodifiers ("private" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1702 1731])
+                    ("mInputFlagConstraints" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1736 1770])
+                    ("mInputMode" variable
+                       (:typemodifiers ("private" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1775 1804])
+                    ("mInputModeContraints" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1809 1842])
+                    ("mIsMultiline" variable
+                       (:typemodifiers ("private")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [1847 1876])
+                    ("mMaxLength" variable
+                       (:typemodifiers ("private" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1881 1910])
+                    ("mMessage" variable
+                       (:typemodifiers ("private" "final")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [1915 1945])
+                    ("mReturnType" variable
+                       (:typemodifiers ("private" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1950 1980])
+                    ("mTextViewTitle" variable
+                       (:typemodifiers ("private")
+                        :type "TextView")
+                        (reparse-symbol class_member_declaration) [1985 2017])
+                    ("mTitle" variable
+                       (:typemodifiers ("private" "final")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [2022 2050])
+                    ("Cocos2dxEditBoxDialog" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("paramContext" variable (:type "Context") (reparse-symbol formal_parameters) [2085 2105])
+                            ("paramString1" variable (:type "String") (reparse-symbol formal_parameters) [2107 2126])
+                            ("paramString2" variable (:type "String") (reparse-symbol formal_parameters) [2128 2147])
+                            ("paramInt1" variable (:type "int") (reparse-symbol formal_parameters) [2149 2162])
+                            ("paramInt2" variable (:type "int") (reparse-symbol formal_parameters) [2164 2177])
+                            ("paramInt3" variable (:type "int") (reparse-symbol formal_parameters) [2179 2192])
+                            ("paramInt4" variable (:type "int") (reparse-symbol formal_parameters) [2194 2207]))                          )
+                        (reparse-symbol class_member_declaration) [2056 2478])
+                    ("closeKeyboard" function
+                       (:typemodifiers ("private")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2484 2662])
+                    ("convertDipsToPixels" function
+                       (:typemodifiers ("private")
+                        :arguments 
+                          ( ("paramFloat" variable (:type "float") (reparse-symbol formal_parameters) [2700 2716]))                          
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [2668 2822])
+                    ("openKeyboard" function
+                       (:typemodifiers ("private")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2828 2978])
+                    ("onCreate" function
+                       (:typemodifiers ("protected")
+                        :arguments 
+                          ( ("paramBundle" variable (:type "Bundle") (reparse-symbol formal_parameters) [3008 3026]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2984 8363]))                  
+                :type "class")
+                nil [686 8365]))          
+    :file "Cocos2dxEditBoxDialog.java"
+    :pointmax 8561
+    :fsize 8543
+    :lastmodtime '(22258 5761 539130 827000)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "Cocos2dxTextInputWraper.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("org.cocos2dx.lib" package nil nil [1 26])
+            ("android.content.Context" include nil nil [28 59])
+            ("android.text.Editable" include nil nil [60 89])
+            ("android.text.TextWatcher" include nil nil [90 122])
+            ("android.view.KeyEvent" include nil nil [123 152])
+            ("android.view.inputmethod.InputMethodManager" include nil nil [153 204])
+            ("android.widget.TextView" include nil nil [205 236])
+            ("android.widget.TextView.OnEditorActionListener" include nil nil [237 291])
+            ("Cocos2dxTextInputWraper" type
+               (:typemodifiers ("public")
+                :interfaces ("TextWatcher" "TextView.OnEditorActionListener")
+                :members 
+                  ( ("TAG" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [396 476])
+                    ("mCocos2dxGLSurfaceView" variable
+                       (:typemodifiers ("private" "final")
+                        :type "Cocos2dxGLSurfaceView")
+                        (reparse-symbol class_member_declaration) [481 540])
+                    ("mOriginText" variable
+                       (:typemodifiers ("private")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [545 572])
+                    ("mText" variable
+                       (:typemodifiers ("private")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [577 598])
+                    ("Cocos2dxTextInputWraper" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("paramCocos2dxGLSurfaceView" variable (:type "Cocos2dxGLSurfaceView") (reparse-symbol formal_parameters) [635 683]))                          )
+                        (reparse-symbol class_member_declaration) [604 758])
+                    ("isFullScreenEdit" function
+                       (:typemodifiers ("private")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [764 959])
+                    ("afterTextChanged" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramEditable" variable (:type "Editable") (reparse-symbol formal_parameters) [994 1016]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [965 1580])
+                    ("beforeTextChanged" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramCharSequence" variable (:type "CharSequence") (reparse-symbol formal_parameters) [1616 1646])
+                            ("paramInt1" variable (:type "int") (reparse-symbol formal_parameters) [1648 1661])
+                            ("paramInt2" variable (:type "int") (reparse-symbol formal_parameters) [1663 1676])
+                            ("paramInt3" variable (:type "int") (reparse-symbol formal_parameters) [1678 1691]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1586 1751])
+                    ("onEditorAction" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramTextView" variable (:type "TextView") (reparse-symbol formal_parameters) [1787 1809])
+                            ("paramInt" variable (:type "int") (reparse-symbol formal_parameters) [1811 1823])
+                            ("paramKeyEvent" variable (:type "KeyEvent") (reparse-symbol formal_parameters) [1825 1847]))                          
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [1757 2501])
+                    ("onTextChanged" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramCharSequence" variable (:type "CharSequence") (reparse-symbol formal_parameters) [2533 2563])
+                            ("paramInt1" variable (:type "int") (reparse-symbol formal_parameters) [2565 2578])
+                            ("paramInt2" variable (:type "int") (reparse-symbol formal_parameters) [2580 2593])
+                            ("paramInt3" variable (:type "int") (reparse-symbol formal_parameters) [2595 2608]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2507 2612])
+                    ("setOriginText" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [2644 2662]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2618 2711]))                  
+                :type "class")
+                nil [293 2713]))          
+    :file "Cocos2dxTextInputWraper.java"
+    :pointmax 2894
+    :fsize 2893
+    :lastmodtime '(22258 5664 302648 658000)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!home!jenny!android!SuperTetris!org!cocos2dx!lib!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

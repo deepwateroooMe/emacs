@@ -1,6 +1,7 @@
 # contributor: deepwaterooo
-# name: print ListNode
-# key: pt
+# name: print line / ListNode
+# key: ptl
+#${1:root}.levelPrintTree($1);
 # --
-${1:root}.levelPrintTree($1);
+System.out.println("${1:a}");
 $0

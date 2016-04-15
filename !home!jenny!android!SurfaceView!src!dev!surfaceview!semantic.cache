@@ -1,0 +1,66 @@
+;; Object surfaceview/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "surfaceview/"
+  :tables (list 
+   (semanticdb-table "MyThread.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("dev.surfaceview" package nil nil [1 25])
+            ("android.graphics.Canvas" include nil nil [27 58])
+            ("android.graphics.Color" include nil nil [61 91])
+            ("android.graphics.Paint" include nil nil [94 124])
+            ("android.graphics.Rect" include nil nil [127 156])
+            ("android.view.SurfaceHolder" include nil nil [159 193])
+            ("MyThread" type
+               (:typemodifiers ("public")
+                :superclasses "Thread"
+                :members 
+                  ( ("holder" variable
+                       (:typemodifiers ("private")
+                        :type "SurfaceHolder")
+                        (reparse-symbol class_member_declaration) [256 285])
+                    ("run" variable
+                       (:typemodifiers ("private")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [292 312])
+                    ("OFFSET" variable
+                       (:typemodifiers ("private")
+                        :type "Integer")
+                        (reparse-symbol class_member_declaration) [319 347])
+                    ("TOP_OFFSET" variable
+                       (:typemodifiers ("private")
+                        :type "Integer")
+                        (reparse-symbol class_member_declaration) [352 384])
+                    ("MyThread" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("holder" variable (:type "SurfaceHolder") (reparse-symbol formal_parameters) [411 431]))                          )
+                        (reparse-symbol class_member_declaration) [394 498])
+                    ("run" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [524 2050])
+                    ("isRun" function
+                       (:typemodifiers ("public")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [2060 2116])
+                    ("setRun" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("run" variable (:type "boolean") (reparse-symbol formal_parameters) [2153 2164]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2134 2203]))                  
+                :type "class")
+                nil [209 2207]))          
+    :file "MyThread.java"
+    :pointmax 2209
+    :fsize 2276
+    :lastmodtime '(22253 44103 741870 403000)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!home!jenny!android!SurfaceView!src!dev!surfaceview!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

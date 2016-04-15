@@ -1,0 +1,113 @@
+;; Object view/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "view/"
+  :tables (list 
+   (semanticdb-table "CubeBatchGeometry.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("dev.ttetris.view" package nil nil [1 26])
+            ("dev.ttetris.model.Cube" include nil nil [28 58])
+            ("dev.ttetris.model.CubeType" include nil nil [59 93])
+            ("java.util.ArrayList" include nil nil [94 121])
+            ("java.util.Iterator" include nil nil [122 148])
+            ("java.util.List" include nil nil [149 171])
+            ("dev.anogl.Geometry" include nil nil [172 198])
+            ("dev.anogl.Mesh" include nil nil [199 221])
+            ("CubeBatchGeometry" type
+               (:typemodifiers ("public" "final")
+                :superclasses "Geometry"
+                :members 
+                  ( ("orientations" variable
+                       (:dereference 1
+                        :typemodifiers ("private")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [331 376])
+                    ("translations" variable
+                       (:dereference 1
+                        :typemodifiers ("private")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [381 426])
+                    ("cubeType" variable
+                       (:typemodifiers ("private")
+                        :type "CubeType")
+                        (reparse-symbol class_member_declaration) [431 457])
+                    ("batchChanged" variable
+                       (:typemodifiers ("private")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [462 491])
+                    ("CubeBatchGeometry" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("paramCubeType" variable (:type "CubeType") (reparse-symbol formal_parameters) [611 633]))                          )
+                        (reparse-symbol class_member_declaration) [586 1300])
+                    ("addCube" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramCube" variable (:type "Cube") (reparse-symbol formal_parameters) [1326 1340]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1306 1502])
+                    ("isFull" function
+                       (:typemodifiers ("public")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [1508 1567])
+                    ("isEmpty" function
+                       (:typemodifiers ("public")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [1586 1643])
+                    ("getCubeType" function
+                       (:typemodifiers ("public")
+                        :type "CubeType")
+                        (reparse-symbol class_member_declaration) [1648 1703])
+                    ("updateCube" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramCube" variable (:type "Cube") (reparse-symbol formal_parameters) [1731 1745]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1708 1776])
+                    ("removeCube" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramCube" variable (:type "Cube") (reparse-symbol formal_parameters) [1805 1819]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1782 1900])
+                    ("update" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramFloat" variable (:type "float") (reparse-symbol formal_parameters) [1925 1941]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1906 2672]))                  
+                :type "class")
+                nil [223 2674]))          
+    :file "CubeBatchGeometry.java"
+    :pointmax 2675
+    :fsize 2674
+    :lastmodtime '(22277 48348 527500 0)
+    :unmatched-syntax '((SEMICOLON 325 . 326) (NEW 310 . 313) (EQ 308 . 309) (GT 300 . 301) (PRIVATE 283 . 290) (LT 295 . 296))
+    )
+   (semanticdb-table "BackgroundGeometry.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("dev.ttetris.view" package nil nil [1 26])
+            ("dev.anogl.Geometry" include nil nil [61 87])
+            ("BackgroundGeometry" type
+               (:typemodifiers ("public")
+                :superclasses "Geometry"
+                :members 
+                  ( ("BackgroundGeometry" function
+                       (:constructor-flag t
+                        :typemodifiers ("public"))
+                        (reparse-symbol class_member_declaration) [265 474]))                  
+                :type "class")
+                nil [144 476]))          
+    :file "BackgroundGeometry.java"
+    :pointmax 475
+    :fsize 476
+    :lastmodtime '(22283 7088 688356 974000)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!home!jenny!android!TetrisLR!TetrisDoc!TetrisGlar-dev-bk!ttetris!view!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

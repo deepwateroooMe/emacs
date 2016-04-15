@@ -1,0 +1,136 @@
+;; Object view/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "view/"
+  :tables (list 
+   (semanticdb-table "BoardView.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("ru.igsoft.tetris.view" package nil nil [1 31])
+            ("ru.igsoft.anogl.AssetManager" include nil nil [33 69])
+            ("ru.igsoft.anogl.Node" include nil nil [70 98])
+            ("ru.igsoft.anogl.ParticleGenerator" include nil nil [99 140])
+            ("ru.igsoft.anogl.ParticleParams" include nil nil [141 179])
+            ("ru.igsoft.anogl.ParticleSystem" include nil nil [180 218])
+            ("ru.igsoft.anogl.ParticleSystemParams" include nil nil [219 263])
+            ("ru.igsoft.tetris.model.Board" include nil nil [264 300])
+            ("ru.igsoft.tetris.model.BoardListener" include nil nil [301 345])
+            ("BoardView" type
+               (:typemodifiers ("public" "abstract")
+                :interfaces ("BoardListener")
+                :superclasses "Node"
+                :members 
+                  ( ("assetManager" variable
+                       (:typemodifiers ("protected")
+                        :type "AssetManager")
+                        (reparse-symbol class_member_declaration) [423 459])
+                    ("board" variable
+                       (:typemodifiers ("protected")
+                        :type "Board")
+                        (reparse-symbol class_member_declaration) [464 486])
+                    ("disappearingTrailNodes" variable
+                       (:dereference 1
+                        :typemodifiers ("private")
+                        :type "Node")
+                        (reparse-symbol class_member_declaration) [491 529])
+                    ("disappearingTrails" variable
+                       (:dereference 1
+                        :typemodifiers ("private")
+                        :type "ParticleSystem")
+                        (reparse-symbol class_member_declaration) [534 578])
+                    ("BoardView" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("paramAssetManager" variable (:type "AssetManager") (reparse-symbol formal_parameters) [601 631])
+                            ("paramBoard" variable (:type "Board") (reparse-symbol formal_parameters) [633 649]))                          )
+                        (reparse-symbol class_member_declaration) [584 2863])
+                    ("getHeight" function
+                       (:typemodifiers ("public")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [2869 2940])
+                    ("getWidth" function
+                       (:typemodifiers ("public")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [2946 3015])
+                    ("lineDisappearing" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramInt" variable (:type "int") (reparse-symbol formal_parameters) [3050 3062]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3021 3158]))                  
+                :type "class")
+                nil [347 3160]))          
+    :file "BoardView.java"
+    :pointmax 3330
+    :fsize 3160
+    :lastmodtime '(22275 64292 883527 17000)
+    :unmatched-syntax '((BRACE_BLOCK 2271 . 2857) (PAREN_BLOCK 2252 . 2270) (FOR 2248 . 2251) (SEMICOLON 1187 . 1188) (STRING_LITERAL 1168 . 1187) (EQ 1166 . 1167) (SEMICOLON 1118 . 1119) (STRING_LITERAL 1099 . 1118) (EQ 1097 . 1098) (SEMICOLON 1048 . 1049) (PAREN_BLOCK 1020 . 1048) (IDENTIFIER 979 . 1004) (EQ 1018 . 1019) (SEMICOLON 884 . 885) (NEW 863 . 866) (EQ 861 . 862) (DOT 841 . 842) (THIS 837 . 841) (SEMICOLON 827 . 828) (NEW 816 . 819) (EQ 814 . 815) (DOT 790 . 791) (THIS 786 . 790) (SEMICOLON 731 . 732) (EQ 719 . 720) (DOT 712 . 713) (THIS 708 . 712) (SEMICOLON 698 . 699) (EQ 679 . 680) (DOT 665 . 666) (THIS 661 . 665))
+    )
+   (semanticdb-table "BlockView.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("dev.ttetris.view" package nil nil [1 26])
+            ("dev.anogl.Node" include nil nil [61 83])
+            ("dev.ttetris.model.Cube" include nil nil [84 114])
+            ("dev.ttetris.model.Block" include nil nil [115 146])
+            ("BlockView" type
+               (:typemodifiers ("public")
+                :superclasses "Node"
+                :members 
+                  ( ("block" variable
+                       (:typemodifiers ("private")
+                        :type "Block")
+                        (reparse-symbol class_member_declaration) [190 210])
+                    ("BlockView" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("paramAssetManager" variable (:type "AssetManager") (reparse-symbol formal_parameters) [233 263])
+                            ("paramBlock" variable (:type "Block") (reparse-symbol formal_parameters) [265 281]))                          )
+                        (reparse-symbol class_member_declaration) [216 881])
+                    ("getBlock" function
+                       (:typemodifiers ("public")
+                        :type "Block")
+                        (reparse-symbol class_member_declaration) [886 932]))                  
+                :type "class")
+                nil [148 934]))          
+    :file "BlockView.java"
+    :pointmax 977
+    :fsize 934
+    :lastmodtime '(22277 26930 721150 344000)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "BrickBatch.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("ru.igsoft.tetris.view" package nil nil [1 31])
+            ("BrickBatch" type
+               (:typemodifiers ("public" "abstract")
+                :members 
+                  ( ("updateBatch" function
+                       (:typemodifiers ("public" "abstract")
+                        :arguments 
+                          ( ("paramInt" variable (:type "int") (reparse-symbol formal_parameters) [107 119])
+                            ("paramArrayOfFloat1" variable
+                               (:dereference 1
+                                :type "float")
+                                (reparse-symbol formal_parameters) [121 147])
+                            ("paramArrayOfFloat2" variable
+                               (:dereference 1
+                                :type "float")
+                                (reparse-symbol formal_parameters) [149 175]))                          
+                        :type "void")
+                        (reparse-symbol interface_member_declaration) [74 177]))                  
+                :type "interface")
+                nil [33 179]))          
+    :file "BrickBatch.java"
+    :pointmax 349
+    :fsize 348
+    :lastmodtime '(22275 25832 0 0)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!home!jenny!android!TetrisLR!TetrisDoc!TetrisGlar!ru!igsoft!tetris!view!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

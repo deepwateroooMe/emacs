@@ -1,0 +1,9 @@
+# contributor: deepwaterooo
+# name: print int arr
+# key: pir
+# --
+cout << endl;
+for(int val : ${1})
+    cout << val << ", ";
+cout << endl;
+$0

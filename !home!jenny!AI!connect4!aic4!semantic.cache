@@ -1,0 +1,1314 @@
+;; Object aic4/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "aic4/"
+  :tables (list 
+   (semanticdb-table "cnt4c.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("iostream" include (:system-flag t) nil [128 146])
+            ("conio.h" include (:system-flag t) nil [147 164])
+            ("stdio.h" include (:system-flag t) nil [165 182])
+            ("stdlib.h" include (:system-flag t) nil [183 201])
+            ("time.h" include (:system-flag t) nil [202 218])
+            ("std" using (:type ("std" type
+                 (:prototype t
+                  :type "namespace")
+                  nil nil)) nil [219 239])
+            ("CONNECT_FOUR" type
+               (:prototype t
+                :type "class")
+                nil [240 259])
+            ("SITE" type
+               (:prototype t
+                :type "class")
+                nil [260 271])
+            ("HASH_FLAGS" type
+               (:members 
+                  ( ("hash_exact" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [288 299])
+                    ("hash_alpha" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [299 310])
+                    ("hash_beta" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [310 320])
+                    ("hash_null" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [320 330]))                  
+                :type "enum")
+                nil [272 331])
+            ("HASH_TABLE" type
+               (:members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [356 363])
+                    ("x_key" variable (:type "unsigned long long") (reparse-symbol classsubparts) [365 390])
+                    ("o_key" variable (:type "unsigned long long") (reparse-symbol classsubparts) [412 437])
+                    ("ply" variable (:type "int") (reparse-symbol classsubparts) [459 467])
+                    ("value" variable (:type "int") (reparse-symbol classsubparts) [473 483])
+                    ("flags" variable (:type ("HASH_FLAGS" type (:type "class") nil nil)) (reparse-symbol classsubparts) [489 506])
+                    ("best" variable (:type "int") (reparse-symbol classsubparts) [532 541])
+                    ("my" variable (:type "char") (reparse-symbol classsubparts) [574 582])
+                    ("HASH_TABLE" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :typemodifiers ("inline")
+                        :type ("HASH_TABLE" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [611 631]))                  
+                :type "class")
+                nil [332 634])
+            ("HASH_TABLE" function
+               (:constructor-flag t
+                :parent "HASH_TABLE"
+                :typemodifiers ("inline")
+                :type ("HASH_TABLE" type (:type "class") nil nil))
+                nil [635 767])
+            ("MAIN_LINE" type
+               (:members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [786 793])
+                    ("move_array_max_index" variable (:type "int") (reparse-symbol classsubparts) [795 820])
+                    ("move_array" variable
+                       (:dereference 1
+                        :type "int")
+                        (reparse-symbol classsubparts) [822 841])
+                    ("MAIN_LINE" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :typemodifiers ("inline")
+                        :type ("MAIN_LINE" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [843 862]))                  
+                :type "class")
+                nil [768 865])
+            ("MAIN_LINE" function
+               (:constructor-flag t
+                :parent "MAIN_LINE"
+                :typemodifiers ("inline")
+                :type ("MAIN_LINE" type (:type "class") nil nil))
+                nil [866 924])
+            ("BOARD_LINE" type
+               (:members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [944 951])
+                    ("last" variable
+                       (:pointer 1
+                        :type ("BOARD_LINE" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [953 970])
+                    ("now_player" variable (:type "int") (reparse-symbol classsubparts) [976 991])
+                    ("board" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol classsubparts) [1001 1018])
+                    ("undo" function
+                       (:prototype-flag t
+                        :type "bool")
+                        (reparse-symbol classsubparts) [1039 1051])
+                    ("next" variable
+                       (:pointer 1
+                        :type ("BOARD_LINE" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1057 1074])
+                    ("BOARD_LINE" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :typemodifiers ("inline")
+                        :type ("BOARD_LINE" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1080 1100])
+                    ("BOARD_LINE" function
+                       (:prototype-flag t
+                        :destructor-flag t
+                        :typemodifiers ("inline")
+                        :type "void")
+                        (reparse-symbol classsubparts) [1102 1123]))                  
+                :type "class")
+                nil [925 1126])
+            ("SITE" type
+               (:members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [1140 1147])
+                    ("boole" variable (:type "bool") (reparse-symbol classsubparts) [1188 1199])
+                    ("value" variable (:type "int") (reparse-symbol classsubparts) [1227 1237])
+                    ("x" variable (:type "int") (reparse-symbol classsubparts) [1245 1251])
+                    ("y" variable (:type "int") (reparse-symbol classsubparts) [1253 1259])
+                    ("index" variable (:type "int") (reparse-symbol classsubparts) [1261 1271])
+                    ("main_line_pointer" variable
+                       (:pointer 1
+                        :type ("MAIN_LINE" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1280 1309])
+                    ("SITE" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :typemodifiers ("inline")
+                        :type ("SITE" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1320 1334]))                  
+                :type "class")
+                nil [1127 1337])
+            ("CONNECT_FOUR" type
+               (:members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [1366 1373])
+                    ("my" variable
+                       (:typemodifiers ("static")
+                        :type "char")
+                        (reparse-symbol classsubparts) [1375 1390])
+                    ("foe" variable
+                       (:typemodifiers ("static")
+                        :type "char")
+                        (reparse-symbol classsubparts) [1397 1413])
+                    ("board" variable
+                       (:dereference 2
+                        :typemodifiers ("static")
+                        :type "char")
+                        (reparse-symbol classsubparts) [1420 1444])
+                    ("board_bit_site" variable
+                       (:dereference 2
+                        :typemodifiers ("static")
+                        :constant-flag t
+                        :type "int")
+                        (reparse-symbol classsubparts) [1465 1503])
+                    ("now_player" variable
+                       (:typemodifiers ("static")
+                        :type "int")
+                        (reparse-symbol classsubparts) [1529 1551])
+                    ("hash_max_now_player" variable
+                       (:typemodifiers ("static")
+                        :type "int")
+                        (reparse-symbol classsubparts) [1559 1590])
+                    ("ply" variable
+                       (:typemodifiers ("static")
+                        :type "int")
+                        (reparse-symbol classsubparts) [1631 1646])
+                    ("last" variable
+                       (:pointer 1
+                        :typemodifiers ("static")
+                        :type ("BOARD_LINE" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1654 1678])
+                    ("unknown" variable
+                       (:typemodifiers ("static")
+                        :type "int")
+                        (reparse-symbol classsubparts) [1687 1723])
+                    ("infinite" variable
+                       (:typemodifiers ("static")
+                        :type "int")
+                        (reparse-symbol classsubparts) [1725 1770])
+                    ("win" variable
+                       (:typemodifiers ("static")
+                        :type "int")
+                        (reparse-symbol classsubparts) [1777 1815])
+                    ("lose" variable
+                       (:typemodifiers ("static")
+                        :type "int")
+                        (reparse-symbol classsubparts) [1821 1848])
+                    ("draw" variable
+                       (:typemodifiers ("static")
+                        :type "int")
+                        (reparse-symbol classsubparts) [1854 1878])
+                    ("iterative_deepening" variable
+                       (:typemodifiers ("static")
+                        :type "bool")
+                        (reparse-symbol classsubparts) [1884 1916])
+                    ("hash_table_size" variable
+                       (:typemodifiers ("static")
+                        :constant-flag t
+                        :type "unsigned int")
+                        (reparse-symbol classsubparts) [1926 1977])
+                    ("hash_table" variable
+                       (:pointer 1
+                        :typemodifiers ("static")
+                        :type ("HASH_TABLE" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1979 2009])
+                    ("now_main_line" variable
+                       (:pointer 1
+                        :typemodifiers ("static")
+                        :type ("MAIN_LINE" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [2020 2052])
+                    ("hash_key_update" function
+                       (:prototype-flag t
+                        :typemodifiers ("inline")
+                        :arguments 
+                          ( ("x_key" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type "unsigned long long")
+                                (reparse-symbol arg-sub-list) [2090 2122])
+                            ("o_key" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type "unsigned long long")
+                                (reparse-symbol arg-sub-list) [2122 2154])
+                            ("next_x_key" variable
+                               (:reference 1
+                                :type "unsigned long long")
+                                (reparse-symbol arg-sub-list) [2154 2185])
+                            ("next_o_key" variable
+                               (:reference 1
+                                :type "unsigned long long")
+                                (reparse-symbol arg-sub-list) [2185 2216])
+                            ("move" variable
+                               (:reference 1
+                                :type ("SITE" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [2216 2227]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [2062 2228])
+                    ("player_switch" function
+                       (:prototype-flag t
+                        :typemodifiers ("inline")
+                        :type "bool")
+                        (reparse-symbol classsubparts) [2244 2272])
+                    ("scanf_board" function
+                       (:prototype-flag t
+                        :typemodifiers ("inline")
+                        :arguments 
+                          ( ("player" variable (:type "char") (reparse-symbol arg-sub-list) [2304 2316])
+                            ("site" variable
+                               (:reference 1
+                                :type ("SITE" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [2316 2327])
+                            ("undo" variable
+                               (:reference 1
+                                :type "bool")
+                                (reparse-symbol arg-sub-list) [2327 2338]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [2280 2339])
+                    ("printf_board" function
+                       (:prototype-flag t
+                        :typemodifiers ("inline")
+                        :arguments 
+                          ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [2366 2371]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [2341 2372])
+                    ("evaluate" function
+                       (:prototype-flag t
+                        :typemodifiers ("inline")
+                        :arguments 
+                          ( ("my" variable (:type "char") (reparse-symbol arg-sub-list) [2402 2410])
+                            ("game_end" variable
+                               (:reference 1
+                                :type "bool")
+                                (reparse-symbol arg-sub-list) [2410 2425]))                          
+                        :type "int")
+                        (reparse-symbol classsubparts) [2382 2426])
+                    ("connect_evaluate" function
+                       (:prototype-flag t
+                        :typemodifiers ("inline")
+                        :arguments 
+                          ( ("player" variable (:type "char") (reparse-symbol arg-sub-list) [2464 2476])
+                            ("x" variable (:type "int") (reparse-symbol arg-sub-list) [2476 2482])
+                            ("y" variable (:type "int") (reparse-symbol arg-sub-list) [2482 2488]))                          
+                        :type "int")
+                        (reparse-symbol classsubparts) [2436 2489])
+                    ("go" function
+                       (:prototype-flag t
+                        :typemodifiers ("inline")
+                        :arguments 
+                          ( ("best_move" variable
+                               (:reference 1
+                                :type ("SITE" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [2506 2522]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [2491 2523])
+                    ("seek" function
+                       (:prototype-flag t
+                        :typemodifiers ("inline")
+                        :arguments 
+                          ( ("x_key" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type "unsigned long long")
+                                (reparse-symbol arg-sub-list) [2541 2573])
+                            ("o_key" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type "unsigned long long")
+                                (reparse-symbol arg-sub-list) [2573 2605])
+                            ("alpha" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type "int")
+                                (reparse-symbol arg-sub-list) [2605 2622])
+                            ("beta" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type "int")
+                                (reparse-symbol arg-sub-list) [2622 2638])
+                            ("ply" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type "int")
+                                (reparse-symbol arg-sub-list) [2638 2653])
+                            ("my" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type "char")
+                                (reparse-symbol arg-sub-list) [2653 2668])
+                            ("hash_best_boole" variable
+                               (:reference 1
+                                :type "bool")
+                                (reparse-symbol arg-sub-list) [2668 2690]))                          
+                        :type "int")
+                        (reparse-symbol classsubparts) [2525 2691])
+                    ("save" function
+                       (:prototype-flag t
+                        :typemodifiers ("inline")
+                        :arguments 
+                          ( ("x_key" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type "unsigned long long")
+                                (reparse-symbol arg-sub-list) [2719 2751])
+                            ("o_key" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type "unsigned long long")
+                                (reparse-symbol arg-sub-list) [2751 2783])
+                            ("value" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type "int")
+                                (reparse-symbol arg-sub-list) [2783 2800])
+                            ("ply" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type "int")
+                                (reparse-symbol arg-sub-list) [2800 2815])
+                            ("my" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type "char")
+                                (reparse-symbol arg-sub-list) [2815 2830])
+                            ("hash_flags" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("HASH_FLAGS" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [2830 2859])
+                            ("best_move" variable
+                               (:constant-flag t
+                                :type "int")
+                                (reparse-symbol arg-sub-list) [2859 2879]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [2702 2880])
+                    ("search" function
+                       (:prototype-flag t
+                        :typemodifiers ("inline")
+                        :arguments 
+                          ( ("alpha" variable (:type "int") (reparse-symbol arg-sub-list) [2909 2919])
+                            ("beta" variable (:type "int") (reparse-symbol arg-sub-list) [2919 2928])
+                            ("my" variable (:type "char") (reparse-symbol arg-sub-list) [2928 2936])
+                            ("foe" variable (:type "char") (reparse-symbol arg-sub-list) [2936 2945])
+                            ("ply" variable (:type "int") (reparse-symbol arg-sub-list) [2945 2953])
+                            ("last_move_array" variable
+                               (:dereference 1
+                                :type ("SITE" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [2953 2977])
+                            ("line_pointer" variable
+                               (:pointer 1
+                                :type ("MAIN_LINE" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [2977 3001])
+                            ("ply_counter" variable (:type "int") (reparse-symbol arg-sub-list) [3001 3017])
+                            ("last_move" variable
+                               (:reference 1
+                                :type ("SITE" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [3017 3033])
+                            ("x_key" variable (:type "unsigned long long") (reparse-symbol arg-sub-list) [3033 3058])
+                            ("o_key" variable (:type "unsigned long long") (reparse-symbol arg-sub-list) [3058 3083]))                          
+                        :type "int")
+                        (reparse-symbol classsubparts) [2891 3084]))                  
+                :type "class")
+                nil [1338 3087])
+            ("CONNECT_FOUR::hash_table" variable
+               (:pointer 1
+                :type ("HASH_TABLE" type (:type "class") nil nil))
+                nil [3088 3157])
+            ("CONNECT_FOUR::last" variable
+               (:pointer 1
+                :type ("BOARD_LINE" type (:type "class") nil nil))
+                nil [3167 3203])
+            ("CONNECT_FOUR::board_bit_site" variable
+               (:dereference 2
+                :constant-flag t
+                :type "int")
+                nil [3211 3374])
+            ("CONNECT_FOUR::board" variable
+               (:dereference 2
+                :type "char")
+                nil [3398 3436])
+            ("CONNECT_FOUR::my" variable (:type "char") nil [3442 3469])
+            ("CONNECT_FOUR::foe" variable (:type "char") nil [3476 3504])
+            ("CONNECT_FOUR::now_player" variable (:type "int") nil [3511 3542])
+            ("CONNECT_FOUR::ply" variable (:type "int") nil [3550 3575])
+            ("CONNECT_FOUR::hash_max_now_player" variable (:type "int") nil [3583 3624])
+            ("CONNECT_FOUR::now_main_line" variable
+               (:pointer 1
+                :type ("MAIN_LINE" type (:type "class") nil nil))
+                nil [3664 3703])
+            ("CONNECT_FOUR::iterative_deepening" variable (:type "bool") nil [3712 3757])
+            ("SITE" function
+               (:constructor-flag t
+                :parent "SITE"
+                :typemodifiers ("inline")
+                :type ("SITE" type (:type "class") nil nil))
+                nil [3767 3907])
+            ("save" function
+               (:parent "CONNECT_FOUR"
+                :typemodifiers ("inline")
+                :arguments 
+                  ( ("x_key" variable
+                       (:reference 1
+                        :constant-flag t
+                        :type "unsigned long long")
+                        (reparse-symbol arg-sub-list) [3940 3972])
+                    ("o_key" variable
+                       (:reference 1
+                        :constant-flag t
+                        :type "unsigned long long")
+                        (reparse-symbol arg-sub-list) [3972 4004])
+                    ("value" variable
+                       (:reference 1
+                        :constant-flag t
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [4004 4021])
+                    ("ply" variable
+                       (:reference 1
+                        :constant-flag t
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [4021 4036])
+                    ("my" variable
+                       (:reference 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4036 4051])
+                    ("hash_flags" variable
+                       (:reference 1
+                        :constant-flag t
+                        :type ("HASH_FLAGS" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4051 4080])
+                    ("best_move" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [4080 4100]))                  
+                :type "void")
+                nil [3909 4766])
+            ("seek" function
+               (:parent "CONNECT_FOUR"
+                :typemodifiers ("inline")
+                :arguments 
+                  ( ("x_key" variable
+                       (:reference 1
+                        :constant-flag t
+                        :type "unsigned long long")
+                        (reparse-symbol arg-sub-list) [4798 4830])
+                    ("o_key" variable
+                       (:reference 1
+                        :constant-flag t
+                        :type "unsigned long long")
+                        (reparse-symbol arg-sub-list) [4830 4862])
+                    ("alpha" variable
+                       (:reference 1
+                        :constant-flag t
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [4862 4879])
+                    ("beta" variable
+                       (:reference 1
+                        :constant-flag t
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [4879 4895])
+                    ("ply" variable
+                       (:reference 1
+                        :constant-flag t
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [4895 4910])
+                    ("my" variable
+                       (:reference 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4910 4925])
+                    ("hash_best_boole" variable
+                       (:reference 1
+                        :type "bool")
+                        (reparse-symbol arg-sub-list) [4925 4947]))                  
+                :type "int")
+                nil [4768 5859])
+            ("hash_key_update" function
+               (:parent "CONNECT_FOUR"
+                :typemodifiers ("inline")
+                :arguments 
+                  ( ("x_key" variable
+                       (:reference 1
+                        :constant-flag t
+                        :type "unsigned long long")
+                        (reparse-symbol arg-sub-list) [5903 5935])
+                    ("o_key" variable
+                       (:reference 1
+                        :constant-flag t
+                        :type "unsigned long long")
+                        (reparse-symbol arg-sub-list) [5935 5967])
+                    ("next_x_key" variable
+                       (:reference 1
+                        :type "unsigned long long")
+                        (reparse-symbol arg-sub-list) [5967 5998])
+                    ("next_o_key" variable
+                       (:reference 1
+                        :type "unsigned long long")
+                        (reparse-symbol arg-sub-list) [5998 6029])
+                    ("move" variable
+                       (:reference 1
+                        :type ("SITE" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6029 6040]))                  
+                :type "void")
+                nil [5861 6440])
+            ("connect_evaluate" function
+               (:parent "CONNECT_FOUR"
+                :typemodifiers ("inline")
+                :arguments 
+                  ( ("player" variable (:type "char") (reparse-symbol arg-sub-list) [6484 6496])
+                    ("x" variable (:type "int") (reparse-symbol arg-sub-list) [6496 6502])
+                    ("y" variable (:type "int") (reparse-symbol arg-sub-list) [6502 6508]))                  
+                :type "int")
+                nil [6442 8805])
+            ("evaluate" function
+               (:parent "CONNECT_FOUR"
+                :typemodifiers ("inline")
+                :arguments 
+                  ( ("my" variable (:type "char") (reparse-symbol arg-sub-list) [8841 8849])
+                    ("game_end" variable
+                       (:reference 1
+                        :type "bool")
+                        (reparse-symbol arg-sub-list) [8849 8864]))                  
+                :type "int")
+                nil [8807 9680])
+            ("search" function
+               (:parent "CONNECT_FOUR"
+                :typemodifiers ("inline")
+                :arguments 
+                  ( ("alpha" variable (:type "int") (reparse-symbol arg-sub-list) [9714 9724])
+                    ("beta" variable (:type "int") (reparse-symbol arg-sub-list) [9724 9733])
+                    ("my" variable (:type "char") (reparse-symbol arg-sub-list) [9733 9741])
+                    ("foe" variable (:type "char") (reparse-symbol arg-sub-list) [9741 9750])
+                    ("ply" variable (:type "int") (reparse-symbol arg-sub-list) [9750 9758])
+                    ("last_move_array" variable
+                       (:dereference 1
+                        :type ("SITE" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [9758 9782])
+                    ("line_pointer" variable
+                       (:pointer 1
+                        :type ("MAIN_LINE" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [9782 9806])
+                    ("ply_counter" variable (:type "int") (reparse-symbol arg-sub-list) [9806 9822])
+                    ("last_move" variable
+                       (:reference 1
+                        :type ("SITE" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [9822 9838])
+                    ("x_key" variable (:type "unsigned long long") (reparse-symbol arg-sub-list) [9838 9863])
+                    ("o_key" variable (:type "unsigned long long") (reparse-symbol arg-sub-list) [9863 9888]))                  
+                :type "int")
+                nil [9682 17722])
+            ("go" function
+               (:parent "CONNECT_FOUR"
+                :typemodifiers ("inline")
+                :arguments 
+                  ( ("best_move" variable
+                       (:reference 1
+                        :type ("SITE" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [17753 17769]))                  
+                :type "void")
+                nil [17724 23394])
+            ("player_switch" function
+               (:parent "CONNECT_FOUR"
+                :typemodifiers ("inline")
+                :type "bool")
+                nil [23396 25899])
+            ("scanf_board" function
+               (:parent "CONNECT_FOUR"
+                :typemodifiers ("inline")
+                :arguments 
+                  ( ("player" variable (:type "char") (reparse-symbol arg-sub-list) [25939 25951])
+                    ("site" variable
+                       (:reference 1
+                        :type ("SITE" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [25951 25962])
+                    ("undo" variable
+                       (:reference 1
+                        :type "bool")
+                        (reparse-symbol arg-sub-list) [25962 25973]))                  
+                :type "void")
+                nil [25901 26529])
+            ("printf_board" function
+               (:parent "CONNECT_FOUR"
+                :typemodifiers ("inline")
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [26570 26575]))                  
+                :type "void")
+                nil [26531 27441])
+            ("BOARD_LINE" function
+               (:constructor-flag t
+                :parent "BOARD_LINE"
+                :typemodifiers ("inline")
+                :type ("BOARD_LINE" type (:type "class") nil nil))
+                nil [27444 27685])
+            ("BOARD_LINE" function
+               (:destructor-flag t
+                :parent "BOARD_LINE"
+                :typemodifiers ("inline")
+                :type "void")
+                nil [27687 27753])
+            ("undo" function
+               (:parent "BOARD_LINE"
+                :typemodifiers ("inline")
+                :type "bool")
+                nil [27754 28262])
+            ("main" function (:type "int") nil [28263 29091]))          
+    :file "cnt4c.cpp"
+    :pointmax 29092
+    :fsize 31778
+    :lastmodtime '(20789 38262 0 0)
+    :unmatched-syntax '((punctuation 27441 . 27442))
+    )
+   (semanticdb-table "cntf.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("iostream" include (:system-flag t) nil [68 87])
+            ("string" include (:system-flag t) nil [88 105])
+            ("cstdlib" include (:system-flag t) nil [106 124])
+            ("std" using (:type ("std" type
+                 (:prototype t
+                  :type "namespace")
+                  nil nil)) nil [125 145])
+            ("point" type
+               (:members 
+                  ( ("row" variable (:type "int") (reparse-symbol classsubparts) [166 174])
+                    ("col" variable (:type "int") (reparse-symbol classsubparts) [180 188]))                  
+                :type "struct")
+                nil [147 191])
+            ("X" variable
+               (:constant-flag t
+                :type "char")
+                nil [213 232])
+            ("O" variable
+               (:constant-flag t
+                :type "char")
+                nil [234 253])
+            ("EMPTY" variable
+               (:constant-flag t
+                :type "char")
+                nil [254 277])
+            ("TIE" variable
+               (:constant-flag t
+                :type "char")
+                nil [278 299])
+            ("NO_ONE" variable
+               (:constant-flag t
+                :type "char")
+                nil [300 324])
+            ("Board" variable
+               (:dereference 2
+                :type "char")
+                nil [325 342])
+            ("INT_MAX" variable
+               (:constant-flag t
+                :type "int")
+                nil [346 377])
+            ("instruction" function
+               (:prototype-flag t
+                :type "void")
+                nil [402 421])
+            ("PrintBoard" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [439 453]))                  
+                :type "void")
+                nil [422 454])
+            ("humanPiece" function
+               (:prototype-flag t
+                :type "char")
+                nil [455 473])
+            ("askYesNo" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("question" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [488 504]))                  
+                :type "char")
+                nil [474 505])
+            ("opponent" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("piece" variable (:type "char") (reparse-symbol arg-sub-list) [520 531]))                  
+                :type "char")
+                nil [506 532])
+            ("askNumber" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("question" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [547 563])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [564 576]))                  
+                :type "int")
+                nil [533 577])
+            ("isLegal" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("move" variable (:type "int") (reparse-symbol arg-sub-list) [591 600])
+                    ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [601 614]))                  
+                :type "bool")
+                nil [578 615])
+            ("findRow" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [628 641])
+                    ("col" variable (:type "int") (reparse-symbol arg-sub-list) [642 650]))                  
+                :type "int")
+                nil [616 651])
+            ("humanMove" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [669 681])
+                    ("human" variable (:type "char") (reparse-symbol arg-sub-list) [682 693]))                  
+                :type ("point" type (:type "class") nil nil))
+                nil [653 694])
+            ("drop_piece" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [731 744])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [745 757])
+                    ("col" variable (:type "int") (reparse-symbol arg-sub-list) [758 766]))                  
+                :type "int")
+                nil [716 767])
+            ("CheckVertical" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [786 799])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [800 812])
+                    ("cnt" variable (:type "int") (reparse-symbol arg-sub-list) [813 821])
+                    ("curr" variable (:type ("point" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [822 833]))                  
+                :type "int")
+                nil [768 834])
+            ("CheckHorizontal" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [880 893])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [894 906])
+                    ("cnt" variable (:type "int") (reparse-symbol arg-sub-list) [907 915])
+                    ("curr" variable (:type ("point" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [916 927]))                  
+                :type "int")
+                nil [860 928])
+            ("CheckUpLeftDiagonal" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [954 967])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [968 980])
+                    ("cnt" variable (:type "int") (reparse-symbol arg-sub-list) [981 989])
+                    ("curr" variable (:type ("point" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [990 1001]))                  
+                :type "int")
+                nil [930 1002])
+            ("CheckUpRightDiagonal" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1029 1042])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [1043 1055])
+                    ("cnt" variable (:type "int") (reparse-symbol arg-sub-list) [1056 1064])
+                    ("curr" variable (:type ("point" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1065 1076]))                  
+                :type "int")
+                nil [1004 1077])
+            ("CheckWin" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1093 1106])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [1107 1119])
+                    ("cnt" variable (:type "int") (reparse-symbol arg-sub-list) [1120 1128])
+                    ("curr" variable (:type ("point" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1129 1140]))                  
+                :type "bool")
+                nil [1079 1141])
+            ("CheckWin_board" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1162 1175])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [1176 1188])
+                    ("cnt" variable (:type "int") (reparse-symbol arg-sub-list) [1189 1197]))                  
+                :type "bool")
+                nil [1142 1198])
+            ("CheckTie" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1213 1226]))                  
+                :type "bool")
+                nil [1199 1227])
+            ("ScoreVertical" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1246 1259])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [1260 1272])
+                    ("curr" variable (:type ("point" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1273 1284]))                  
+                :type "int")
+                nil [1228 1285])
+            ("ScoreHorizontal" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1306 1319])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [1320 1332])
+                    ("curr" variable (:type ("point" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1333 1344]))                  
+                :type "int")
+                nil [1286 1345])
+            ("ScoreUpLeftDiagonal" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1370 1383])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [1384 1396])
+                    ("curr" variable (:type ("point" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1397 1408]))                  
+                :type "int")
+                nil [1346 1409])
+            ("ScoreUpRightDiagonal" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1435 1448])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [1449 1461])
+                    ("curr" variable (:type ("point" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1462 1473]))                  
+                :type "int")
+                nil [1410 1474])
+            ("evaluate_move" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1520 1533])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [1534 1546])
+                    ("row" variable (:type "int") (reparse-symbol arg-sub-list) [1547 1555])
+                    ("col" variable (:type "int") (reparse-symbol arg-sub-list) [1556 1564]))                  
+                :type "int")
+                nil [1502 1565])
+            ("evaluate_board" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1629 1642])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [1643 1655]))                  
+                :type "int")
+                nil [1610 1656])
+            ("evaluate_bestMove" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1722 1735])
+                    ("player" variable (:type "int") (reparse-symbol arg-sub-list) [1736 1747])
+                    ("level" variable (:type "int") (reparse-symbol arg-sub-list) [1748 1758])
+                    ("alpha" variable (:type "int") (reparse-symbol arg-sub-list) [1759 1769])
+                    ("beta" variable (:type "int") (reparse-symbol arg-sub-list) [1770 1779]))                  
+                :type "int")
+                nil [1700 1780])
+            ("bestMove_minmax" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1801 1813])
+                    ("depth" variable (:type "int") (reparse-symbol arg-sub-list) [1814 1824])
+                    ("alpha" variable (:type "int") (reparse-symbol arg-sub-list) [1825 1835])
+                    ("beta" variable (:type "int") (reparse-symbol arg-sub-list) [1836 1845])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [1846 1858]))                  
+                :type "int")
+                nil [1781 1859])
+            ("bestMove_max" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1877 1890])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [1891 1903])
+                    ("level" variable (:type "int") (reparse-symbol arg-sub-list) [1904 1914])
+                    ("alpha" variable (:type "int") (reparse-symbol arg-sub-list) [1915 1925])
+                    ("beta" variable (:type "int") (reparse-symbol arg-sub-list) [1926 1935]))                  
+                :type "int")
+                nil [1860 1936])
+            ("bestMove_min" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1954 1967])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [1968 1980])
+                    ("level" variable (:type "int") (reparse-symbol arg-sub-list) [1981 1991])
+                    ("alpha" variable (:type "int") (reparse-symbol arg-sub-list) [1992 2002])
+                    ("beta" variable (:type "int") (reparse-symbol arg-sub-list) [2003 2012]))                  
+                :type "int")
+                nil [1937 2013])
+            ("Heuristic" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("arr" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2028 2043]))                  
+                :type "int")
+                nil [2014 2044])
+            ("checkhole" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("arr" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2059 2074])
+                    ("thn" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2075 2090])
+                    ("x" variable (:type "int") (reparse-symbol arg-sub-list) [2091 2097])
+                    ("y" variable (:type "int") (reparse-symbol arg-sub-list) [2097 2103]))                  
+                :type "int")
+                nil [2045 2104])
+            ("score_pos" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2119 2132])
+                    ("curr" variable (:type ("point" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2133 2144])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [2145 2157]))                  
+                :type "int")
+                nil [2105 2158])
+            ("main" function (:type "int") nil [2355 3451])
+            ("bestMove_minmax" function
+               (:arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [3668 3680])
+                    ("depth" variable (:type "int") (reparse-symbol arg-sub-list) [3681 3691])
+                    ("alpha" variable (:type "int") (reparse-symbol arg-sub-list) [3692 3702])
+                    ("beta" variable (:type "int") (reparse-symbol arg-sub-list) [3703 3712])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [3713 3725]))                  
+                :type "int")
+                nil [3648 4373])
+            ("bestMove_max" function
+               (:arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4392 4405])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [4406 4418])
+                    ("level" variable (:type "int") (reparse-symbol arg-sub-list) [4419 4429])
+                    ("alpha" variable (:type "int") (reparse-symbol arg-sub-list) [4430 4440])
+                    ("beta" variable (:type "int") (reparse-symbol arg-sub-list) [4441 4450]))                  
+                :type "int")
+                nil [4375 6336])
+            ("bestMove_min" function
+               (:arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [6355 6368])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [6369 6381])
+                    ("level" variable (:type "int") (reparse-symbol arg-sub-list) [6382 6392])
+                    ("alpha" variable (:type "int") (reparse-symbol arg-sub-list) [6393 6403])
+                    ("beta" variable (:type "int") (reparse-symbol arg-sub-list) [6404 6413]))                  
+                :type "int")
+                nil [6338 8490])
+            ("evaluate_move" function
+               (:arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8510 8523])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [8524 8536])
+                    ("row" variable (:type "int") (reparse-symbol arg-sub-list) [8537 8545])
+                    ("col" variable (:type "int") (reparse-symbol arg-sub-list) [8546 8554]))                  
+                :type "int")
+                nil [8492 8850])
+            ("evaluate_board" function
+               (:arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8871 8884])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [8885 8897]))                  
+                :type "int")
+                nil [8852 9624])
+            ("score_pos" function
+               (:arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9641 9654])
+                    ("curr" variable (:type ("point" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [9655 9666])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [9667 9679]))                  
+                :type "int")
+                nil [9627 11718])
+            ("evaluate_bestMove" function
+               (:arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [11756 11769])
+                    ("player" variable (:type "int") (reparse-symbol arg-sub-list) [11770 11781])
+                    ("level" variable (:type "int") (reparse-symbol arg-sub-list) [11782 11792])
+                    ("alpha" variable (:type "int") (reparse-symbol arg-sub-list) [11793 11803])
+                    ("beta" variable (:type "int") (reparse-symbol arg-sub-list) [11804 11813]))                  
+                :type "int")
+                nil [11734 12932])
+            ("CheckWin" function
+               (:arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [12948 12961])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [12962 12974])
+                    ("cnt" variable (:type "int") (reparse-symbol arg-sub-list) [12975 12983])
+                    ("curr" variable (:type ("point" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [12984 12995]))                  
+                :type "bool")
+                nil [12934 14023])
+            ("CheckWin_board" function
+               (:arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [14045 14058])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [14059 14071])
+                    ("cnt" variable (:type "int") (reparse-symbol arg-sub-list) [14072 14080]))                  
+                :type "bool")
+                nil [14025 14687])
+            ("CheckTie" function
+               (:arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [14703 14716]))                  
+                :type "bool")
+                nil [14689 14884])
+            ("isLegal" function
+               (:arguments 
+                  ( ("move" variable (:type "int") (reparse-symbol arg-sub-list) [14899 14908])
+                    ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [14909 14922]))                  
+                :type "bool")
+                nil [14886 14960])
+            ("ScoreVertical" function
+               (:arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [15137 15150])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [15151 15163])
+                    ("curr" variable (:type ("point" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [15164 15175]))                  
+                :type "int")
+                nil [15119 15567])
+            ("ScoreHorizontal" function
+               (:arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [15589 15602])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [15603 15615])
+                    ("curr" variable (:type ("point" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [15616 15627]))                  
+                :type "int")
+                nil [15569 16030])
+            ("ScoreUpLeftDiagonal" function
+               (:arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [16056 16069])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [16070 16082])
+                    ("curr" variable (:type ("point" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [16083 16094]))                  
+                :type "int")
+                nil [16032 16517])
+            ("ScoreUpRightDiagonal" function
+               (:arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [16544 16557])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [16558 16570])
+                    ("curr" variable (:type ("point" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [16571 16582]))                  
+                :type "int")
+                nil [16519 17010])
+            ("CheckVertical" function
+               (:arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [17030 17043])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [17044 17056])
+                    ("cnt" variable (:type "int") (reparse-symbol arg-sub-list) [17057 17065])
+                    ("curr" variable (:type ("point" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [17066 17077]))                  
+                :type "int")
+                nil [17012 17602])
+            ("CheckHorizontal" function
+               (:arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [17624 17637])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [17638 17650])
+                    ("cnt" variable (:type "int") (reparse-symbol arg-sub-list) [17651 17659])
+                    ("curr" variable (:type ("point" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [17660 17671]))                  
+                :type "int")
+                nil [17604 18251])
+            ("CheckUpLeftDiagonal" function
+               (:arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [18277 18290])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [18291 18303])
+                    ("cnt" variable (:type "int") (reparse-symbol arg-sub-list) [18304 18312])
+                    ("curr" variable (:type ("point" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [18313 18324]))                  
+                :type "int")
+                nil [18253 19071])
+            ("CheckUpRightDiagonal" function
+               (:arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [19099 19112])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [19113 19125])
+                    ("cnt" variable (:type "int") (reparse-symbol arg-sub-list) [19126 19134])
+                    ("curr" variable (:type ("point" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [19135 19146]))                  
+                :type "int")
+                nil [19074 19893])
+            ("instruction" function (:type "void") nil [19896 20221])
+            ("PrintBoard" function
+               (:arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [20240 20254]))                  
+                :type "void")
+                nil [20223 20677])
+            ("humanPiece" function (:type "char") nil [20679 20996])
+            ("askYesNo" function
+               (:arguments 
+                  ( ("question" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [21012 21028]))                  
+                :type "char")
+                nil [20998 21199])
+            ("opponent" function
+               (:arguments 
+                  ( ("piece" variable (:type "char") (reparse-symbol arg-sub-list) [21215 21226]))                  
+                :type "char")
+                nil [21201 21296])
+            ("askNumber" function
+               (:arguments 
+                  ( ("question" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [21312 21328])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [21329 21341]))                  
+                :type "int")
+                nil [21298 21536])
+            ("findRow" function
+               (:arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [21550 21563])
+                    ("col" variable (:type "int") (reparse-symbol arg-sub-list) [21564 21572]))                  
+                :type "int")
+                nil [21538 21698])
+            ("humanMove" function
+               (:arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [21716 21728])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [21729 21741]))                  
+                :type ("point" type (:type "class") nil nil))
+                nil [21700 22185])
+            ("drop_piece" function
+               (:arguments 
+                  ( ("A" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [22202 22215])
+                    ("player" variable (:type "char") (reparse-symbol arg-sub-list) [22216 22228])
+                    ("col" variable (:type "int") (reparse-symbol arg-sub-list) [22229 22237]))                  
+                :type "int")
+                nil [22187 22313])
+            ("Heuristic" function
+               (:arguments 
+                  ( ("arr" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [22329 22344]))                  
+                :type "int")
+                nil [22315 24496])
+            ("checkhole" function
+               (:arguments 
+                  ( ("arr" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [24512 24527])
+                    ("thn" variable
+                       (:dereference 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [24528 24543])
+                    ("x" variable (:type "int") (reparse-symbol arg-sub-list) [24544 24550])
+                    ("y" variable (:type "int") (reparse-symbol arg-sub-list) [24550 24556]))                  
+                :type "int")
+                nil [24498 30561]))          
+    :file "cntf.cpp"
+    :pointmax 30540
+    :fsize 30562
+    :lastmodtime '(22191 3490 904057 486000)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "cntf.java"
+    :major-mode 'jde-mode
+    :tags nil
+    :file "cntf.java"
+    :pointmax 30336
+    :fsize 30335
+    :lastmodtime '(22219 62454 561726 680000)
+    :unmatched-syntax '((BRACE_BLOCK 24330 . 30334) (PAREN_BLOCK 24284 . 24329) (IDENTIFIER 24275 . 24284) (INT 24271 . 24274) (BRACE_BLOCK 22118 . 24269) (PAREN_BLOCK 22101 . 22117) (IDENTIFIER 22092 . 22101) (INT 22088 . 22091) (BRACE_BLOCK 22011 . 22086) (PAREN_BLOCK 21974 . 22010) (IDENTIFIER 21964 . 21974) (INT 21960 . 21963) (BRACE_BLOCK 21515 . 21958) (PAREN_BLOCK 21488 . 21514) (IDENTIFIER 21479 . 21488) (IDENTIFIER 21473 . 21478) (BRACE_BLOCK 21346 . 21471) (PAREN_BLOCK 21322 . 21345) (IDENTIFIER 21315 . 21322) (INT 21311 . 21314) (BRACE_BLOCK 21115 . 21309) (PAREN_BLOCK 21084 . 21114) (IDENTIFIER 21075 . 21084) (INT 21071 . 21074) (BRACE_BLOCK 21000 . 21069) (PAREN_BLOCK 20987 . 20999) (IDENTIFIER 20979 . 20987) (CHAR 20974 . 20978) (BRACE_BLOCK 20802 . 20972) (PAREN_BLOCK 20784 . 20801) (IDENTIFIER 20776 . 20784) (CHAR 20771 . 20775) (BRACE_BLOCK 20470 . 20769) (PAREN_BLOCK 20467 . 20469) (IDENTIFIER 20457 . 20467) (CHAR 20452 . 20456) (BRACE_BLOCK 20028 . 20450) (PAREN_BLOCK 20011 . 20027) (IDENTIFIER 20001 . 20011) (VOID 19996 . 20000) (BRACE_BLOCK 19688 . 19994) (PAREN_BLOCK 19685 . 19687) (IDENTIFIER 19674 . 19685) (VOID 19669 . 19673) (BRACE_BLOCK 18920 . 19666) (PAREN_BLOCK 18871 . 18919) (IDENTIFIER 18851 . 18871) (INT 18847 . 18850) (BRACE_BLOCK 18098 . 18844) (PAREN_BLOCK 18049 . 18097) (IDENTIFIER 18030 . 18049) (INT 18026 . 18029) (BRACE_BLOCK 17445 . 18024) (PAREN_BLOCK 17396 . 17444) (IDENTIFIER 17381 . 17396) (INT 17377 . 17380) (BRACE_BLOCK 16851 . 17375) (PAREN_BLOCK 16802 . 16850) (IDENTIFIER 16789 . 16802) (INT 16785 . 16788) (BRACE_BLOCK 16356 . 16783) (PAREN_BLOCK 16316 . 16355) (IDENTIFIER 16296 . 16316) (INT 16292 . 16295) (BRACE_BLOCK 15868 . 16290) (PAREN_BLOCK 15828 . 15867) (IDENTIFIER 15809 . 15828) (INT 15805 . 15808) (BRACE_BLOCK 15401 . 15803) (PAREN_BLOCK 15361 . 15400) (IDENTIFIER 15346 . 15361) (INT 15342 . 15345) (BRACE_BLOCK 14949 . 15340) (PAREN_BLOCK 14909 . 14948) (IDENTIFIER 14896 . 14909) (INT 14892 . 14895) (BRACE_BLOCK 14769 . 14806) (PAREN_BLOCK 14744 . 14768) (IDENTIFIER 14737 . 14744) (IDENTIFIER 14732 . 14736) (BRACE_BLOCK 14563 . 14730) (PAREN_BLOCK 14548 . 14562) (IDENTIFIER 14540 . 14548) (IDENTIFIER 14535 . 14539) (BRACE_BLOCK 13983 . 14533) (PAREN_BLOCK 13946 . 13982) (IDENTIFIER 13932 . 13946) (IDENTIFIER 13927 . 13931) (BRACE_BLOCK 12898 . 13925) (PAREN_BLOCK 12849 . 12897) (IDENTIFIER 12841 . 12849) (IDENTIFIER 12836 . 12840) (BRACE_BLOCK 11732 . 12834) (PAREN_BLOCK 11673 . 11731) (IDENTIFIER 11656 . 11673) (INT 11652 . 11655) (BRACE_BLOCK 9598 . 11636) (PAREN_BLOCK 9558 . 9597) (IDENTIFIER 9549 . 9558) (INT 9545 . 9548) (BRACE_BLOCK 8816 . 9542) (PAREN_BLOCK 8788 . 8815) (IDENTIFIER 8774 . 8788) (INT 8770 . 8773) (BRACE_BLOCK 8474 . 8768) (PAREN_BLOCK 8427 . 8472) (IDENTIFIER 8414 . 8427) (INT 8410 . 8413) (BRACE_BLOCK 6332 . 8408) (PAREN_BLOCK 6272 . 6331) (IDENTIFIER 6260 . 6272) (INT 6256 . 6259) (BRACE_BLOCK 4369 . 6254) (PAREN_BLOCK 4309 . 4368) (IDENTIFIER 4297 . 4309) (INT 4293 . 4296) (BRACE_BLOCK 3644 . 4291) (PAREN_BLOCK 3585 . 3643) (IDENTIFIER 3570 . 3585) (INT 3566 . 3569) (BRACE_BLOCK 2284 . 3369) (PAREN_BLOCK 2281 . 2283) (IDENTIFIER 2277 . 2281) (INT 2273 . 2276) (PAREN_BLOCK 2036 . 2075) (IDENTIFIER 2027 . 2036) (INT 2023 . 2026) (PAREN_BLOCK 1976 . 2021) (IDENTIFIER 1967 . 1976) (INT 1963 . 1966) (PAREN_BLOCK 1945 . 1961) (IDENTIFIER 1936 . 1945) (INT 1932 . 1935) (PAREN_BLOCK 1871 . 1930) (IDENTIFIER 1859 . 1871) (INT 1855 . 1858) (PAREN_BLOCK 1794 . 1853) (IDENTIFIER 1782 . 1794) (INT 1778 . 1781) (PAREN_BLOCK 1718 . 1776) (IDENTIFIER 1703 . 1718) (INT 1699 . 1702) (PAREN_BLOCK 1639 . 1697) (IDENTIFIER 1622 . 1639) (INT 1618 . 1621) (PAREN_BLOCK 1546 . 1573) (IDENTIFIER 1532 . 1546) (INT 1528 . 1531) (PAREN_BLOCK 1437 . 1482) (IDENTIFIER 1424 . 1437) (INT 1420 . 1423) (PAREN_BLOCK 1352 . 1391) (IDENTIFIER 1332 . 1352) (INT 1328 . 1331) (PAREN_BLOCK 1287 . 1326) (IDENTIFIER 1268 . 1287) (INT 1264 . 1267) (PAREN_BLOCK 1223 . 1262) (IDENTIFIER 1208 . 1223) (INT 1204 . 1207) (PAREN_BLOCK 1163 . 1202) (IDENTIFIER 1150 . 1163) (INT 1146 . 1149) (PAREN_BLOCK 1130 . 1144) (IDENTIFIER 1122 . 1130) (IDENTIFIER 1117 . 1121) (PAREN_BLOCK 1079 . 1115) (IDENTIFIER 1065 . 1079) (IDENTIFIER 1060 . 1064) (PAREN_BLOCK 1010 . 1058) (IDENTIFIER 1002 . 1010) (IDENTIFIER 997 . 1001) (PAREN_BLOCK 946 . 994) (IDENTIFIER 926 . 946) (INT 922 . 925) (PAREN_BLOCK 871 . 919) (IDENTIFIER 852 . 871) (INT 848 . 851) (PAREN_BLOCK 797 . 845) (IDENTIFIER 782 . 797) (INT 778 . 781) (PAREN_BLOCK 703 . 751) (IDENTIFIER 690 . 703) (INT 686 . 689) (PAREN_BLOCK 648 . 684) (IDENTIFIER 638 . 648) (INT 634 . 637) (PAREN_BLOCK 586 . 611) (IDENTIFIER 577 . 586) (IDENTIFIER 571 . 576) (PAREN_BLOCK 545 . 568) (IDENTIFIER 538 . 545) (INT 534 . 537) (PAREN_BLOCK 508 . 532) (IDENTIFIER 501 . 508) (IDENTIFIER 496 . 500) (PAREN_BLOCK 464 . 494) (IDENTIFIER 455 . 464) (INT 451 . 454) (PAREN_BLOCK 437 . 449) (IDENTIFIER 429 . 437) (CHAR 424 . 428) (PAREN_BLOCK 405 . 422) (IDENTIFIER 397 . 405) (CHAR 392 . 396) (PAREN_BLOCK 388 . 390) (IDENTIFIER 378 . 388) (CHAR 373 . 377) (PAREN_BLOCK 355 . 371) (IDENTIFIER 345 . 355) (VOID 340 . 344) (PAREN_BLOCK 336 . 338) (IDENTIFIER 325 . 336) (VOID 320 . 324) (NUMBER_LITERAL 284 . 294) (EQ 282 . 283) (IDENTIFIER 274 . 281) (INT 270 . 273) (CONST 264 . 269) (BRACK_BLOCK 256 . 259) (BRACK_BLOCK 253 . 256) (IDENTIFIER 248 . 253) (CHAR 243 . 247) (STRING_LITERAL 238 . 241) (EQ 236 . 237) (IDENTIFIER 229 . 235) (CHAR 224 . 228) (CONST 218 . 223) (STRING_LITERAL 213 . 216) (EQ 211 . 212) (IDENTIFIER 207 . 210) (CHAR 202 . 206) (CONST 196 . 201) (STRING_LITERAL 191 . 194) (EQ 189 . 190) (IDENTIFIER 183 . 188) (CHAR 178 . 182) (CONST 172 . 177) (STRING_LITERAL 167 . 170) (EQ 165 . 166) (IDENTIFIER 163 . 164) (CHAR 158 . 162) (CONST 152 . 157) (STRING_LITERAL 146 . 149) (EQ 144 . 145) (IDENTIFIER 142 . 143) (CHAR 137 . 141) (CONST 131 . 136) (BRACE_BLOCK 24339 . 30343) (PAREN_BLOCK 24293 . 24338) (IDENTIFIER 24284 . 24293) (INT 24280 . 24283) (BRACE_BLOCK 22127 . 24278) (PAREN_BLOCK 22110 . 22126) (IDENTIFIER 22101 . 22110) (INT 22097 . 22100) (BRACE_BLOCK 22020 . 22095) (PAREN_BLOCK 21983 . 22019) (IDENTIFIER 21973 . 21983) (INT 21969 . 21972) (BRACE_BLOCK 21524 . 21967) (PAREN_BLOCK 21497 . 21523) (IDENTIFIER 21488 . 21497) (IDENTIFIER 21482 . 21487) (BRACE_BLOCK 21355 . 21480) (PAREN_BLOCK 21331 . 21354) (IDENTIFIER 21324 . 21331) (INT 21320 . 21323) (BRACE_BLOCK 21124 . 21318) (PAREN_BLOCK 21093 . 21123) (IDENTIFIER 21084 . 21093) (INT 21080 . 21083) (BRACE_BLOCK 21009 . 21078) (PAREN_BLOCK 20996 . 21008) (IDENTIFIER 20988 . 20996) (CHAR 20983 . 20987) (BRACE_BLOCK 20811 . 20981) (PAREN_BLOCK 20793 . 20810) (IDENTIFIER 20785 . 20793) (CHAR 20780 . 20784) (BRACE_BLOCK 20479 . 20778) (PAREN_BLOCK 20476 . 20478) (IDENTIFIER 20466 . 20476) (CHAR 20461 . 20465) (BRACE_BLOCK 20037 . 20459) (PAREN_BLOCK 20020 . 20036) (IDENTIFIER 20010 . 20020) (VOID 20005 . 20009) (BRACE_BLOCK 19697 . 20003) (PAREN_BLOCK 19694 . 19696) (IDENTIFIER 19683 . 19694) (VOID 19678 . 19682) (BRACE_BLOCK 18929 . 19675) (PAREN_BLOCK 18880 . 18928) (IDENTIFIER 18860 . 18880) (INT 18856 . 18859) (BRACE_BLOCK 18107 . 18853) (PAREN_BLOCK 18058 . 18106) (IDENTIFIER 18039 . 18058) (INT 18035 . 18038) (BRACE_BLOCK 17454 . 18033) (PAREN_BLOCK 17405 . 17453) (IDENTIFIER 17390 . 17405) (INT 17386 . 17389) (BRACE_BLOCK 16860 . 17384) (PAREN_BLOCK 16811 . 16859) (IDENTIFIER 16798 . 16811) (INT 16794 . 16797) (BRACE_BLOCK 16365 . 16792) (PAREN_BLOCK 16325 . 16364) (IDENTIFIER 16305 . 16325) (INT 16301 . 16304) (BRACE_BLOCK 15877 . 16299) (PAREN_BLOCK 15837 . 15876) (IDENTIFIER 15818 . 15837) (INT 15814 . 15817) (BRACE_BLOCK 15410 . 15812) (PAREN_BLOCK 15370 . 15409) (IDENTIFIER 15355 . 15370) (INT 15351 . 15354) (BRACE_BLOCK 14958 . 15349) (PAREN_BLOCK 14918 . 14957) (IDENTIFIER 14905 . 14918) (INT 14901 . 14904) (BRACE_BLOCK 14769 . 14806) (PAREN_BLOCK 14744 . 14768) (IDENTIFIER 14737 . 14744) (IDENTIFIER 14732 . 14736) (BRACE_BLOCK 14563 . 14730) (PAREN_BLOCK 14548 . 14562) (IDENTIFIER 14540 . 14548) (IDENTIFIER 14535 . 14539) (BRACE_BLOCK 13983 . 14533) (PAREN_BLOCK 13946 . 13982) (IDENTIFIER 13932 . 13946) (IDENTIFIER 13927 . 13931) (BRACE_BLOCK 12898 . 13925) (PAREN_BLOCK 12849 . 12897) (IDENTIFIER 12841 . 12849) (IDENTIFIER 12836 . 12840) (BRACE_BLOCK 11732 . 12834) (PAREN_BLOCK 11673 . 11731) (IDENTIFIER 11656 . 11673) (INT 11652 . 11655) (BRACE_BLOCK 9598 . 11636) (PAREN_BLOCK 9558 . 9597) (IDENTIFIER 9549 . 9558) (INT 9545 . 9548) (BRACE_BLOCK 8816 . 9542) (PAREN_BLOCK 8788 . 8815) (IDENTIFIER 8774 . 8788) (INT 8770 . 8773) (BRACE_BLOCK 8474 . 8768) (PAREN_BLOCK 8427 . 8472) (IDENTIFIER 8414 . 8427) (INT 8410 . 8413) (BRACE_BLOCK 6332 . 8408) (PAREN_BLOCK 6272 . 6331) (IDENTIFIER 6260 . 6272) (INT 6256 . 6259) (BRACE_BLOCK 4369 . 6254) (PAREN_BLOCK 4309 . 4368) (IDENTIFIER 4297 . 4309) (INT 4293 . 4296) (BRACE_BLOCK 3644 . 4291) (PAREN_BLOCK 3585 . 3643) (IDENTIFIER 3570 . 3585) (INT 3566 . 3569) (BRACE_BLOCK 2284 . 3369) (PAREN_BLOCK 2281 . 2283) (IDENTIFIER 2277 . 2281) (INT 2273 . 2276) (PAREN_BLOCK 2036 . 2075) (IDENTIFIER 2027 . 2036) (INT 2023 . 2026) (PAREN_BLOCK 1976 . 2021) (IDENTIFIER 1967 . 1976) (INT 1963 . 1966) (PAREN_BLOCK 1945 . 1961) (IDENTIFIER 1936 . 1945) (INT 1932 . 1935) (PAREN_BLOCK 1871 . 1930) (IDENTIFIER 1859 . 1871) (INT 1855 . 1858) (PAREN_BLOCK 1794 . 1853) (IDENTIFIER 1782 . 1794) (INT 1778 . 1781) (PAREN_BLOCK 1718 . 1776) (IDENTIFIER 1703 . 1718) (INT 1699 . 1702) (PAREN_BLOCK 1639 . 1697) (IDENTIFIER 1622 . 1639) (INT 1618 . 1621) (PAREN_BLOCK 1546 . 1573) (IDENTIFIER 1532 . 1546) (INT 1528 . 1531) (PAREN_BLOCK 1437 . 1482) (IDENTIFIER 1424 . 1437) (INT 1420 . 1423) (PAREN_BLOCK 1352 . 1391) (IDENTIFIER 1332 . 1352) (INT 1328 . 1331) (PAREN_BLOCK 1287 . 1326) (IDENTIFIER 1268 . 1287) (INT 1264 . 1267) (PAREN_BLOCK 1223 . 1262) (IDENTIFIER 1208 . 1223) (INT 1204 . 1207) (PAREN_BLOCK 1163 . 1202) (IDENTIFIER 1150 . 1163) (INT 1146 . 1149) (PAREN_BLOCK 1130 . 1144) (IDENTIFIER 1122 . 1130) (IDENTIFIER 1117 . 1121) (PAREN_BLOCK 1079 . 1115) (IDENTIFIER 1065 . 1079) (IDENTIFIER 1060 . 1064) (PAREN_BLOCK 1010 . 1058) (IDENTIFIER 1002 . 1010) (IDENTIFIER 997 . 1001) (PAREN_BLOCK 946 . 994) (IDENTIFIER 926 . 946) (INT 922 . 925) (PAREN_BLOCK 871 . 919) (IDENTIFIER 852 . 871) (INT 848 . 851) (PAREN_BLOCK 797 . 845) (IDENTIFIER 782 . 797) (INT 778 . 781) (PAREN_BLOCK 703 . 751) (IDENTIFIER 690 . 703) (INT 686 . 689) (PAREN_BLOCK 648 . 684) (IDENTIFIER 638 . 648) (INT 634 . 637) (PAREN_BLOCK 586 . 611) (IDENTIFIER 577 . 586) (IDENTIFIER 571 . 576) (PAREN_BLOCK 545 . 568) (IDENTIFIER 538 . 545) (INT 534 . 537) (PAREN_BLOCK 508 . 532) (IDENTIFIER 501 . 508) (IDENTIFIER 496 . 500) (PAREN_BLOCK 464 . 494) (IDENTIFIER 455 . 464) (INT 451 . 454) (PAREN_BLOCK 437 . 449) (IDENTIFIER 429 . 437) (CHAR 424 . 428) (PAREN_BLOCK 405 . 422) (IDENTIFIER 397 . 405) (CHAR 392 . 396) (PAREN_BLOCK 388 . 390) (IDENTIFIER 378 . 388) (CHAR 373 . 377) (PAREN_BLOCK 355 . 371) (IDENTIFIER 345 . 355) (VOID 340 . 344) (PAREN_BLOCK 336 . 338) (IDENTIFIER 325 . 336) (VOID 320 . 324) (NUMBER_LITERAL 284 . 294) (EQ 282 . 283) (IDENTIFIER 274 . 281) (INT 270 . 273) (CONST 264 . 269) (BRACK_BLOCK 256 . 259) (BRACK_BLOCK 253 . 256) (IDENTIFIER 248 . 253) (CHAR 243 . 247) (STRING_LITERAL 238 . 241) (EQ 236 . 237) (IDENTIFIER 229 . 235) (CHAR 224 . 228) (CONST 218 . 223) (STRING_LITERAL 213 . 216) (EQ 211 . 212) (IDENTIFIER 207 . 210) (CHAR 202 . 206) (CONST 196 . 201) (STRING_LITERAL 191 . 194) (EQ 189 . 190) (IDENTIFIER 183 . 188) (CHAR 178 . 182) (CONST 172 . 177) (STRING_LITERAL 167 . 170) (EQ 165 . 166) (IDENTIFIER 163 . 164) (CHAR 158 . 162) (CONST 152 . 157) (STRING_LITERAL 146 . 149) (EQ 144 . 145) (IDENTIFIER 142 . 143) (CHAR 137 . 141) (CONST 131 . 136) (BRACE_BLOCK 24403 . 30407) (PAREN_BLOCK 24357 . 24402) (IDENTIFIER 24348 . 24357) (INT 24344 . 24347) (BRACE_BLOCK 22191 . 24342) (PAREN_BLOCK 22174 . 22190) (IDENTIFIER 22165 . 22174) (INT 22161 . 22164) (BRACE_BLOCK 22084 . 22159) (PAREN_BLOCK 22047 . 22083) (IDENTIFIER 22037 . 22047) (INT 22033 . 22036) (BRACE_BLOCK 21588 . 22031) (PAREN_BLOCK 21561 . 21587) (IDENTIFIER 21552 . 21561) (IDENTIFIER 21546 . 21551) (BRACE_BLOCK 21419 . 21544) (PAREN_BLOCK 21395 . 21418) (IDENTIFIER 21388 . 21395) (INT 21384 . 21387) (BRACE_BLOCK 21188 . 21382) (PAREN_BLOCK 21157 . 21187) (IDENTIFIER 21148 . 21157) (INT 21144 . 21147) (BRACE_BLOCK 21073 . 21142) (PAREN_BLOCK 21060 . 21072) (IDENTIFIER 21052 . 21060) (CHAR 21047 . 21051) (BRACE_BLOCK 20875 . 21045) (PAREN_BLOCK 20857 . 20874) (IDENTIFIER 20849 . 20857) (CHAR 20844 . 20848) (BRACE_BLOCK 20543 . 20842) (PAREN_BLOCK 20540 . 20542) (IDENTIFIER 20530 . 20540) (CHAR 20525 . 20529) (BRACE_BLOCK 20101 . 20523) (PAREN_BLOCK 20084 . 20100) (IDENTIFIER 20074 . 20084) (VOID 20069 . 20073) (BRACE_BLOCK 19761 . 20067) (PAREN_BLOCK 19758 . 19760) (IDENTIFIER 19747 . 19758) (VOID 19742 . 19746) (BRACE_BLOCK 18993 . 19739) (PAREN_BLOCK 18944 . 18992) (IDENTIFIER 18924 . 18944) (INT 18920 . 18923) (BRACE_BLOCK 18171 . 18917) (PAREN_BLOCK 18122 . 18170) (IDENTIFIER 18103 . 18122) (INT 18099 . 18102) (BRACE_BLOCK 17518 . 18097) (PAREN_BLOCK 17469 . 17517) (IDENTIFIER 17454 . 17469) (INT 17450 . 17453) (BRACE_BLOCK 16924 . 17448) (PAREN_BLOCK 16875 . 16923) (IDENTIFIER 16862 . 16875) (INT 16858 . 16861) (BRACE_BLOCK 16429 . 16856) (PAREN_BLOCK 16389 . 16428) (IDENTIFIER 16369 . 16389) (INT 16365 . 16368) (BRACE_BLOCK 15941 . 16363) (PAREN_BLOCK 15901 . 15940) (IDENTIFIER 15882 . 15901) (INT 15878 . 15881) (BRACE_BLOCK 15474 . 15876) (PAREN_BLOCK 15434 . 15473) (IDENTIFIER 15419 . 15434) (INT 15415 . 15418) (BRACE_BLOCK 15022 . 15413) (PAREN_BLOCK 14982 . 15021) (IDENTIFIER 14969 . 14982) (INT 14965 . 14968) (BRACE_BLOCK 14769 . 14806) (PAREN_BLOCK 14744 . 14768) (IDENTIFIER 14737 . 14744) (IDENTIFIER 14732 . 14736) (BRACE_BLOCK 14563 . 14730) (PAREN_BLOCK 14548 . 14562) (IDENTIFIER 14540 . 14548) (IDENTIFIER 14535 . 14539) (BRACE_BLOCK 13983 . 14533) (PAREN_BLOCK 13946 . 13982) (IDENTIFIER 13932 . 13946) (IDENTIFIER 13927 . 13931) (BRACE_BLOCK 12898 . 13925) (PAREN_BLOCK 12849 . 12897) (IDENTIFIER 12841 . 12849) (IDENTIFIER 12836 . 12840) (BRACE_BLOCK 11732 . 12834) (PAREN_BLOCK 11673 . 11731) (IDENTIFIER 11656 . 11673) (INT 11652 . 11655) (BRACE_BLOCK 9598 . 11636) (PAREN_BLOCK 9558 . 9597) (IDENTIFIER 9549 . 9558) (INT 9545 . 9548) (BRACE_BLOCK 8816 . 9542) (PAREN_BLOCK 8788 . 8815) (IDENTIFIER 8774 . 8788) (INT 8770 . 8773) (BRACE_BLOCK 8474 . 8768) (PAREN_BLOCK 8427 . 8472) (IDENTIFIER 8414 . 8427) (INT 8410 . 8413) (BRACE_BLOCK 6332 . 8408) (PAREN_BLOCK 6272 . 6331) (IDENTIFIER 6260 . 6272) (INT 6256 . 6259) (BRACE_BLOCK 4369 . 6254) (PAREN_BLOCK 4309 . 4368) (IDENTIFIER 4297 . 4309) (INT 4293 . 4296) (BRACE_BLOCK 3644 . 4291) (PAREN_BLOCK 3585 . 3643) (IDENTIFIER 3570 . 3585) (INT 3566 . 3569) (BRACE_BLOCK 2284 . 3369) (PAREN_BLOCK 2281 . 2283) (IDENTIFIER 2277 . 2281) (INT 2273 . 2276) (PAREN_BLOCK 2036 . 2075) (IDENTIFIER 2027 . 2036) (INT 2023 . 2026) (PAREN_BLOCK 1976 . 2021) (IDENTIFIER 1967 . 1976) (INT 1963 . 1966) (PAREN_BLOCK 1945 . 1961) (IDENTIFIER 1936 . 1945) (INT 1932 . 1935) (PAREN_BLOCK 1871 . 1930) (IDENTIFIER 1859 . 1871) (INT 1855 . 1858) (PAREN_BLOCK 1794 . 1853) (IDENTIFIER 1782 . 1794) (INT 1778 . 1781) (PAREN_BLOCK 1718 . 1776) (IDENTIFIER 1703 . 1718) (INT 1699 . 1702) (PAREN_BLOCK 1639 . 1697) (IDENTIFIER 1622 . 1639) (INT 1618 . 1621) (PAREN_BLOCK 1546 . 1573) (IDENTIFIER 1532 . 1546) (INT 1528 . 1531) (PAREN_BLOCK 1437 . 1482) (IDENTIFIER 1424 . 1437) (INT 1420 . 1423) (PAREN_BLOCK 1352 . 1391) (IDENTIFIER 1332 . 1352) (INT 1328 . 1331) (PAREN_BLOCK 1287 . 1326) (IDENTIFIER 1268 . 1287) (INT 1264 . 1267) (PAREN_BLOCK 1223 . 1262) (IDENTIFIER 1208 . 1223) (INT 1204 . 1207) (PAREN_BLOCK 1163 . 1202) (IDENTIFIER 1150 . 1163) (INT 1146 . 1149) (PAREN_BLOCK 1130 . 1144) (IDENTIFIER 1122 . 1130) (IDENTIFIER 1117 . 1121) (PAREN_BLOCK 1079 . 1115) (IDENTIFIER 1065 . 1079) (IDENTIFIER 1060 . 1064) (PAREN_BLOCK 1010 . 1058) (IDENTIFIER 1002 . 1010) (IDENTIFIER 997 . 1001) (PAREN_BLOCK 946 . 994) (IDENTIFIER 926 . 946) (INT 922 . 925) (PAREN_BLOCK 871 . 919) (IDENTIFIER 852 . 871) (INT 848 . 851) (PAREN_BLOCK 797 . 845) (IDENTIFIER 782 . 797) (INT 778 . 781) (PAREN_BLOCK 703 . 751) (IDENTIFIER 690 . 703) (INT 686 . 689) (PAREN_BLOCK 648 . 684) (IDENTIFIER 638 . 648) (INT 634 . 637) (PAREN_BLOCK 586 . 611) (IDENTIFIER 577 . 586) (IDENTIFIER 571 . 576) (PAREN_BLOCK 545 . 568) (IDENTIFIER 538 . 545) (INT 534 . 537) (PAREN_BLOCK 508 . 532) (IDENTIFIER 501 . 508) (IDENTIFIER 496 . 500) (PAREN_BLOCK 464 . 494) (IDENTIFIER 455 . 464) (INT 451 . 454) (PAREN_BLOCK 437 . 449) (IDENTIFIER 429 . 437) (CHAR 424 . 428) (PAREN_BLOCK 405 . 422) (IDENTIFIER 397 . 405) (CHAR 392 . 396) (PAREN_BLOCK 388 . 390) (IDENTIFIER 378 . 388) (CHAR 373 . 377) (PAREN_BLOCK 355 . 371) (IDENTIFIER 345 . 355) (VOID 340 . 344) (PAREN_BLOCK 336 . 338) (IDENTIFIER 325 . 336) (VOID 320 . 324) (NUMBER_LITERAL 284 . 294) (EQ 282 . 283) (IDENTIFIER 274 . 281) (INT 270 . 273) (CONST 264 . 269) (BRACK_BLOCK 256 . 259) (BRACK_BLOCK 253 . 256) (IDENTIFIER 248 . 253) (CHAR 243 . 247) (STRING_LITERAL 238 . 241) (EQ 236 . 237) (IDENTIFIER 229 . 235) (CHAR 224 . 228) (CONST 218 . 223) (STRING_LITERAL 213 . 216) (EQ 211 . 212) (IDENTIFIER 207 . 210) (CHAR 202 . 206) (CONST 196 . 201) (STRING_LITERAL 191 . 194) (EQ 189 . 190) (IDENTIFIER 183 . 188) (CHAR 178 . 182) (CONST 172 . 177) (STRING_LITERAL 167 . 170) (EQ 165 . 166) (IDENTIFIER 163 . 164) (CHAR 158 . 162) (CONST 152 . 157) (STRING_LITERAL 146 . 149) (EQ 144 . 145) (IDENTIFIER 142 . 143) (CHAR 137 . 141) (CONST 131 . 136) (BRACE_BLOCK 24459 . 30463) (PAREN_BLOCK 24413 . 24458) (IDENTIFIER 24404 . 24413) (INT 24400 . 24403) (BRACE_BLOCK 22247 . 24398) (PAREN_BLOCK 22230 . 22246) (IDENTIFIER 22221 . 22230) (INT 22217 . 22220) (BRACE_BLOCK 22140 . 22215) (PAREN_BLOCK 22103 . 22139) (IDENTIFIER 22093 . 22103) (INT 22089 . 22092) (BRACE_BLOCK 21644 . 22087) (PAREN_BLOCK 21617 . 21643) (IDENTIFIER 21608 . 21617) (IDENTIFIER 21602 . 21607) (BRACE_BLOCK 21475 . 21600) (PAREN_BLOCK 21451 . 21474) (IDENTIFIER 21444 . 21451) (INT 21440 . 21443) (BRACE_BLOCK 21244 . 21438) (PAREN_BLOCK 21213 . 21243) (IDENTIFIER 21204 . 21213) (INT 21200 . 21203) (BRACE_BLOCK 21129 . 21198) (PAREN_BLOCK 21116 . 21128) (IDENTIFIER 21108 . 21116) (CHAR 21103 . 21107) (BRACE_BLOCK 20931 . 21101) (PAREN_BLOCK 20913 . 20930) (IDENTIFIER 20905 . 20913) (CHAR 20900 . 20904) (BRACE_BLOCK 20599 . 20898) (PAREN_BLOCK 20596 . 20598) (IDENTIFIER 20586 . 20596) (CHAR 20581 . 20585) (BRACE_BLOCK 20157 . 20579) (PAREN_BLOCK 20140 . 20156) (IDENTIFIER 20130 . 20140) (VOID 20125 . 20129) (BRACE_BLOCK 19817 . 20123) (PAREN_BLOCK 19814 . 19816) (IDENTIFIER 19803 . 19814) (VOID 19798 . 19802) (BRACE_BLOCK 19049 . 19795) (PAREN_BLOCK 19000 . 19048) (IDENTIFIER 18980 . 19000) (INT 18976 . 18979) (BRACE_BLOCK 18227 . 18973) (PAREN_BLOCK 18178 . 18226) (IDENTIFIER 18159 . 18178) (INT 18155 . 18158) (BRACE_BLOCK 17574 . 18153) (PAREN_BLOCK 17525 . 17573) (IDENTIFIER 17510 . 17525) (INT 17506 . 17509) (BRACE_BLOCK 16980 . 17504) (PAREN_BLOCK 16931 . 16979) (IDENTIFIER 16918 . 16931) (INT 16914 . 16917) (BRACE_BLOCK 16485 . 16912) (PAREN_BLOCK 16445 . 16484) (IDENTIFIER 16425 . 16445) (INT 16421 . 16424) (BRACE_BLOCK 15997 . 16419) (PAREN_BLOCK 15957 . 15996) (IDENTIFIER 15938 . 15957) (INT 15934 . 15937) (BRACE_BLOCK 15530 . 15932) (PAREN_BLOCK 15490 . 15529) (IDENTIFIER 15475 . 15490) (INT 15471 . 15474) (BRACE_BLOCK 15078 . 15469) (PAREN_BLOCK 15038 . 15077) (IDENTIFIER 15025 . 15038) (INT 15021 . 15024) (BRACE_BLOCK 14825 . 14862) (PAREN_BLOCK 14800 . 14824) (IDENTIFIER 14793 . 14800) (IDENTIFIER 14788 . 14792) (BRACE_BLOCK 14619 . 14786) (PAREN_BLOCK 14604 . 14618) (IDENTIFIER 14596 . 14604) (IDENTIFIER 14591 . 14595) (BRACE_BLOCK 13983 . 14589) (PAREN_BLOCK 13946 . 13982) (IDENTIFIER 13932 . 13946) (IDENTIFIER 13927 . 13931) (BRACE_BLOCK 12898 . 13925) (PAREN_BLOCK 12849 . 12897) (IDENTIFIER 12841 . 12849) (IDENTIFIER 12836 . 12840) (BRACE_BLOCK 11732 . 12834) (PAREN_BLOCK 11673 . 11731) (IDENTIFIER 11656 . 11673) (INT 11652 . 11655) (BRACE_BLOCK 9598 . 11636) (PAREN_BLOCK 9558 . 9597) (IDENTIFIER 9549 . 9558) (INT 9545 . 9548) (BRACE_BLOCK 8816 . 9542) (PAREN_BLOCK 8788 . 8815) (IDENTIFIER 8774 . 8788) (INT 8770 . 8773) (BRACE_BLOCK 8474 . 8768) (PAREN_BLOCK 8427 . 8472) (IDENTIFIER 8414 . 8427) (INT 8410 . 8413) (BRACE_BLOCK 6332 . 8408) (PAREN_BLOCK 6272 . 6331) (IDENTIFIER 6260 . 6272) (INT 6256 . 6259) (BRACE_BLOCK 4369 . 6254) (PAREN_BLOCK 4309 . 4368) (IDENTIFIER 4297 . 4309) (INT 4293 . 4296) (BRACE_BLOCK 3644 . 4291) (PAREN_BLOCK 3585 . 3643) (IDENTIFIER 3570 . 3585) (INT 3566 . 3569) (BRACE_BLOCK 2284 . 3369) (PAREN_BLOCK 2281 . 2283) (IDENTIFIER 2277 . 2281) (INT 2273 . 2276) (PAREN_BLOCK 2036 . 2075) (IDENTIFIER 2027 . 2036) (INT 2023 . 2026) (PAREN_BLOCK 1976 . 2021) (IDENTIFIER 1967 . 1976) (INT 1963 . 1966) (PAREN_BLOCK 1945 . 1961) (IDENTIFIER 1936 . 1945) (INT 1932 . 1935) (PAREN_BLOCK 1871 . 1930) (IDENTIFIER 1859 . 1871) (INT 1855 . 1858) (PAREN_BLOCK 1794 . 1853) (IDENTIFIER 1782 . 1794) (INT 1778 . 1781) (PAREN_BLOCK 1718 . 1776) (IDENTIFIER 1703 . 1718) (INT 1699 . 1702) (PAREN_BLOCK 1639 . 1697) (IDENTIFIER 1622 . 1639) (INT 1618 . 1621) (PAREN_BLOCK 1546 . 1573) (IDENTIFIER 1532 . 1546) (INT 1528 . 1531) (PAREN_BLOCK 1437 . 1482) (IDENTIFIER 1424 . 1437) (INT 1420 . 1423) (PAREN_BLOCK 1352 . 1391) (IDENTIFIER 1332 . 1352) (INT 1328 . 1331) (PAREN_BLOCK 1287 . 1326) (IDENTIFIER 1268 . 1287) (INT 1264 . 1267) (PAREN_BLOCK 1223 . 1262) (IDENTIFIER 1208 . 1223) (INT 1204 . 1207) (PAREN_BLOCK 1163 . 1202) (IDENTIFIER 1150 . 1163) (INT 1146 . 1149) (PAREN_BLOCK 1130 . 1144) (IDENTIFIER 1122 . 1130) (IDENTIFIER 1117 . 1121) (PAREN_BLOCK 1079 . 1115) (IDENTIFIER 1065 . 1079) (IDENTIFIER 1060 . 1064) (PAREN_BLOCK 1010 . 1058) (IDENTIFIER 1002 . 1010) (IDENTIFIER 997 . 1001) (PAREN_BLOCK 946 . 994) (IDENTIFIER 926 . 946) (INT 922 . 925) (PAREN_BLOCK 871 . 919) (IDENTIFIER 852 . 871) (INT 848 . 851) (PAREN_BLOCK 797 . 845) (IDENTIFIER 782 . 797) (INT 778 . 781) (PAREN_BLOCK 703 . 751) (IDENTIFIER 690 . 703) (INT 686 . 689) (PAREN_BLOCK 648 . 684) (IDENTIFIER 638 . 648) (INT 634 . 637) (PAREN_BLOCK 586 . 611) (IDENTIFIER 577 . 586) (IDENTIFIER 571 . 576) (PAREN_BLOCK 545 . 568) (IDENTIFIER 538 . 545) (INT 534 . 537) (PAREN_BLOCK 508 . 532) (IDENTIFIER 501 . 508) (IDENTIFIER 496 . 500) (PAREN_BLOCK 464 . 494) (IDENTIFIER 455 . 464) (INT 451 . 454) (PAREN_BLOCK 437 . 449) (IDENTIFIER 429 . 437) (CHAR 424 . 428) (PAREN_BLOCK 405 . 422) (IDENTIFIER 397 . 405) (CHAR 392 . 396) (PAREN_BLOCK 388 . 390) (IDENTIFIER 378 . 388) (CHAR 373 . 377) (PAREN_BLOCK 355 . 371) (IDENTIFIER 345 . 355) (VOID 340 . 344) (PAREN_BLOCK 336 . 338) (IDENTIFIER 325 . 336) (VOID 320 . 324) (NUMBER_LITERAL 284 . 294) (EQ 282 . 283) (IDENTIFIER 274 . 281) (INT 270 . 273) (CONST 264 . 269) (BRACK_BLOCK 256 . 259) (BRACK_BLOCK 253 . 256) (IDENTIFIER 248 . 253) (CHAR 243 . 247) (STRING_LITERAL 238 . 241) (EQ 236 . 237) (IDENTIFIER 229 . 235) (CHAR 224 . 228) (CONST 218 . 223) (STRING_LITERAL 213 . 216) (EQ 211 . 212) (IDENTIFIER 207 . 210) (CHAR 202 . 206) (CONST 196 . 201) (STRING_LITERAL 191 . 194) (EQ 189 . 190) (IDENTIFIER 183 . 188) (CHAR 178 . 182) (CONST 172 . 177) (STRING_LITERAL 167 . 170) (EQ 165 . 166) (IDENTIFIER 163 . 164) (CHAR 158 . 162) (CONST 152 . 157) (STRING_LITERAL 146 . 149) (EQ 144 . 145) (IDENTIFIER 142 . 143) (CHAR 137 . 141) (CONST 131 . 136) (BRACE_BLOCK 24475 . 30479) (PAREN_BLOCK 24429 . 24474) (IDENTIFIER 24420 . 24429) (INT 24416 . 24419) (BRACE_BLOCK 22263 . 24414) (PAREN_BLOCK 22246 . 22262) (IDENTIFIER 22237 . 22246) (INT 22233 . 22236) (BRACE_BLOCK 22156 . 22231) (PAREN_BLOCK 22119 . 22155) (IDENTIFIER 22109 . 22119) (INT 22105 . 22108) (BRACE_BLOCK 21660 . 22103) (PAREN_BLOCK 21633 . 21659) (IDENTIFIER 21624 . 21633) (IDENTIFIER 21618 . 21623) (BRACE_BLOCK 21491 . 21616) (PAREN_BLOCK 21467 . 21490) (IDENTIFIER 21460 . 21467) (INT 21456 . 21459) (BRACE_BLOCK 21260 . 21454) (PAREN_BLOCK 21229 . 21259) (IDENTIFIER 21220 . 21229) (INT 21216 . 21219) (BRACE_BLOCK 21145 . 21214) (PAREN_BLOCK 21132 . 21144) (IDENTIFIER 21124 . 21132) (CHAR 21119 . 21123) (BRACE_BLOCK 20947 . 21117) (PAREN_BLOCK 20929 . 20946) (IDENTIFIER 20921 . 20929) (CHAR 20916 . 20920) (BRACE_BLOCK 20615 . 20914) (PAREN_BLOCK 20612 . 20614) (IDENTIFIER 20602 . 20612) (CHAR 20597 . 20601) (BRACE_BLOCK 20173 . 20595) (PAREN_BLOCK 20156 . 20172) (IDENTIFIER 20146 . 20156) (VOID 20141 . 20145) (BRACE_BLOCK 19833 . 20139) (PAREN_BLOCK 19830 . 19832) (IDENTIFIER 19819 . 19830) (VOID 19814 . 19818) (BRACE_BLOCK 19065 . 19811) (PAREN_BLOCK 19016 . 19064) (IDENTIFIER 18996 . 19016) (INT 18992 . 18995) (BRACE_BLOCK 18243 . 18989) (PAREN_BLOCK 18194 . 18242) (IDENTIFIER 18175 . 18194) (INT 18171 . 18174) (BRACE_BLOCK 17590 . 18169) (PAREN_BLOCK 17541 . 17589) (IDENTIFIER 17526 . 17541) (INT 17522 . 17525) (BRACE_BLOCK 16996 . 17520) (PAREN_BLOCK 16947 . 16995) (IDENTIFIER 16934 . 16947) (INT 16930 . 16933) (BRACE_BLOCK 16501 . 16928) (PAREN_BLOCK 16461 . 16500) (IDENTIFIER 16441 . 16461) (INT 16437 . 16440) (BRACE_BLOCK 16013 . 16435) (PAREN_BLOCK 15973 . 16012) (IDENTIFIER 15954 . 15973) (INT 15950 . 15953) (BRACE_BLOCK 15546 . 15948) (PAREN_BLOCK 15506 . 15545) (IDENTIFIER 15491 . 15506) (INT 15487 . 15490) (BRACE_BLOCK 15094 . 15485) (PAREN_BLOCK 15054 . 15093) (IDENTIFIER 15041 . 15054) (INT 15037 . 15040) (BRACE_BLOCK 14841 . 14878) (PAREN_BLOCK 14816 . 14840) (IDENTIFIER 14809 . 14816) (IDENTIFIER 14804 . 14808) (BRACE_BLOCK 14635 . 14802) (PAREN_BLOCK 14620 . 14634) (IDENTIFIER 14612 . 14620) (IDENTIFIER 14607 . 14611) (BRACE_BLOCK 13999 . 14605) (PAREN_BLOCK 13962 . 13998) (IDENTIFIER 13948 . 13962) (IDENTIFIER 13943 . 13947) (BRACE_BLOCK 12914 . 13941) (PAREN_BLOCK 12865 . 12913) (IDENTIFIER 12857 . 12865) (IDENTIFIER 12852 . 12856) (BRACE_BLOCK 11732 . 12850) (PAREN_BLOCK 11673 . 11731) (IDENTIFIER 11656 . 11673) (INT 11652 . 11655) (BRACE_BLOCK 9598 . 11636) (PAREN_BLOCK 9558 . 9597) (IDENTIFIER 9549 . 9558) (INT 9545 . 9548) (BRACE_BLOCK 8816 . 9542) (PAREN_BLOCK 8788 . 8815) (IDENTIFIER 8774 . 8788) (INT 8770 . 8773) (BRACE_BLOCK 8474 . 8768) (PAREN_BLOCK 8427 . 8472) (IDENTIFIER 8414 . 8427) (INT 8410 . 8413) (BRACE_BLOCK 6332 . 8408) (PAREN_BLOCK 6272 . 6331) (IDENTIFIER 6260 . 6272) (INT 6256 . 6259) (BRACE_BLOCK 4369 . 6254) (PAREN_BLOCK 4309 . 4368) (IDENTIFIER 4297 . 4309) (INT 4293 . 4296) (BRACE_BLOCK 3644 . 4291) (PAREN_BLOCK 3585 . 3643) (IDENTIFIER 3570 . 3585) (INT 3566 . 3569) (BRACE_BLOCK 2284 . 3369) (PAREN_BLOCK 2281 . 2283) (IDENTIFIER 2277 . 2281) (INT 2273 . 2276) (PAREN_BLOCK 2036 . 2075) (IDENTIFIER 2027 . 2036) (INT 2023 . 2026) (PAREN_BLOCK 1976 . 2021) (IDENTIFIER 1967 . 1976) (INT 1963 . 1966) (PAREN_BLOCK 1945 . 1961) (IDENTIFIER 1936 . 1945) (INT 1932 . 1935) (PAREN_BLOCK 1871 . 1930) (IDENTIFIER 1859 . 1871) (INT 1855 . 1858) (PAREN_BLOCK 1794 . 1853) (IDENTIFIER 1782 . 1794) (INT 1778 . 1781) (PAREN_BLOCK 1718 . 1776) (IDENTIFIER 1703 . 1718) (INT 1699 . 1702) (PAREN_BLOCK 1639 . 1697) (IDENTIFIER 1622 . 1639) (INT 1618 . 1621) (PAREN_BLOCK 1546 . 1573) (IDENTIFIER 1532 . 1546) (INT 1528 . 1531) (PAREN_BLOCK 1437 . 1482) (IDENTIFIER 1424 . 1437) (INT 1420 . 1423) (PAREN_BLOCK 1352 . 1391) (IDENTIFIER 1332 . 1352) (INT 1328 . 1331) (PAREN_BLOCK 1287 . 1326) (IDENTIFIER 1268 . 1287) (INT 1264 . 1267) (PAREN_BLOCK 1223 . 1262) (IDENTIFIER 1208 . 1223) (INT 1204 . 1207) (PAREN_BLOCK 1163 . 1202) (IDENTIFIER 1150 . 1163) (INT 1146 . 1149) (PAREN_BLOCK 1130 . 1144) (IDENTIFIER 1122 . 1130) (IDENTIFIER 1117 . 1121) (PAREN_BLOCK 1079 . 1115) (IDENTIFIER 1065 . 1079) (IDENTIFIER 1060 . 1064) (PAREN_BLOCK 1010 . 1058) (IDENTIFIER 1002 . 1010) (IDENTIFIER 997 . 1001) (PAREN_BLOCK 946 . 994) (IDENTIFIER 926 . 946) (INT 922 . 925) (PAREN_BLOCK 871 . 919) (IDENTIFIER 852 . 871) (INT 848 . 851) (PAREN_BLOCK 797 . 845) (IDENTIFIER 782 . 797) (INT 778 . 781) (PAREN_BLOCK 703 . 751) (IDENTIFIER 690 . 703) (INT 686 . 689) (PAREN_BLOCK 648 . 684) (IDENTIFIER 638 . 648) (INT 634 . 637) (PAREN_BLOCK 586 . 611) (IDENTIFIER 577 . 586) (IDENTIFIER 571 . 576) (PAREN_BLOCK 545 . 568) (IDENTIFIER 538 . 545) (INT 534 . 537) (PAREN_BLOCK 508 . 532) (IDENTIFIER 501 . 508) (IDENTIFIER 496 . 500) (PAREN_BLOCK 464 . 494) (IDENTIFIER 455 . 464) (INT 451 . 454) (PAREN_BLOCK 437 . 449) (IDENTIFIER 429 . 437) (CHAR 424 . 428) (PAREN_BLOCK 405 . 422) (IDENTIFIER 397 . 405) (CHAR 392 . 396) (PAREN_BLOCK 388 . 390) (IDENTIFIER 378 . 388) (CHAR 373 . 377) (PAREN_BLOCK 355 . 371) (IDENTIFIER 345 . 355) (VOID 340 . 344) (PAREN_BLOCK 336 . 338) (IDENTIFIER 325 . 336) (VOID 320 . 324) (NUMBER_LITERAL 284 . 294) (EQ 282 . 283) (IDENTIFIER 274 . 281) (INT 270 . 273) (CONST 264 . 269) (BRACK_BLOCK 256 . 259) (BRACK_BLOCK 253 . 256) (IDENTIFIER 248 . 253) (CHAR 243 . 247) (STRING_LITERAL 238 . 241) (EQ 236 . 237) (IDENTIFIER 229 . 235) (CHAR 224 . 228) (CONST 218 . 223) (STRING_LITERAL 213 . 216) (EQ 211 . 212) (IDENTIFIER 207 . 210) (CHAR 202 . 206) (CONST 196 . 201) (STRING_LITERAL 191 . 194) (EQ 189 . 190) (IDENTIFIER 183 . 188) (CHAR 178 . 182) (CONST 172 . 177) (STRING_LITERAL 167 . 170) (EQ 165 . 166) (IDENTIFIER 163 . 164) (CHAR 158 . 162) (CONST 152 . 157) (STRING_LITERAL 146 . 149) (EQ 144 . 145) (IDENTIFIER 142 . 143) (CHAR 137 . 141) (CONST 131 . 136) (BRACE_BLOCK 24472 . 30476) (PAREN_BLOCK 24426 . 24471) (IDENTIFIER 24417 . 24426) (INT 24413 . 24416) (BRACE_BLOCK 22260 . 24411) (PAREN_BLOCK 22243 . 22259) (IDENTIFIER 22234 . 22243) (INT 22230 . 22233) (BRACE_BLOCK 22153 . 22228) (PAREN_BLOCK 22116 . 22152) (IDENTIFIER 22106 . 22116) (INT 22102 . 22105) (BRACE_BLOCK 21657 . 22100) (PAREN_BLOCK 21630 . 21656) (IDENTIFIER 21621 . 21630) (IDENTIFIER 21615 . 21620) (BRACE_BLOCK 21488 . 21613) (PAREN_BLOCK 21464 . 21487) (IDENTIFIER 21457 . 21464) (INT 21453 . 21456) (BRACE_BLOCK 21257 . 21451) (PAREN_BLOCK 21226 . 21256) (IDENTIFIER 21217 . 21226) (INT 21213 . 21216) (BRACE_BLOCK 21142 . 21211) (PAREN_BLOCK 21129 . 21141) (IDENTIFIER 21121 . 21129) (CHAR 21116 . 21120) (BRACE_BLOCK 20944 . 21114) (PAREN_BLOCK 20926 . 20943) (IDENTIFIER 20918 . 20926) (CHAR 20913 . 20917) (BRACE_BLOCK 20612 . 20911) (PAREN_BLOCK 20609 . 20611) (IDENTIFIER 20599 . 20609) (CHAR 20594 . 20598) (BRACE_BLOCK 20170 . 20592) (PAREN_BLOCK 20153 . 20169) (IDENTIFIER 20143 . 20153) (VOID 20138 . 20142) (BRACE_BLOCK 19830 . 20136) (PAREN_BLOCK 19827 . 19829) (IDENTIFIER 19816 . 19827) (VOID 19811 . 19815) (BRACE_BLOCK 19062 . 19808) (PAREN_BLOCK 19013 . 19061) (IDENTIFIER 18993 . 19013) (INT 18989 . 18992) (BRACE_BLOCK 18240 . 18986) (PAREN_BLOCK 18191 . 18239) (IDENTIFIER 18172 . 18191) (INT 18168 . 18171) (BRACE_BLOCK 17587 . 18166) (PAREN_BLOCK 17538 . 17586) (IDENTIFIER 17523 . 17538) (INT 17519 . 17522) (BRACE_BLOCK 16993 . 17517) (PAREN_BLOCK 16944 . 16992) (IDENTIFIER 16931 . 16944) (INT 16927 . 16930) (BRACE_BLOCK 16498 . 16925) (PAREN_BLOCK 16458 . 16497) (IDENTIFIER 16438 . 16458) (INT 16434 . 16437) (BRACE_BLOCK 16010 . 16432) (PAREN_BLOCK 15970 . 16009) (IDENTIFIER 15951 . 15970) (INT 15947 . 15950) (BRACE_BLOCK 15543 . 15945) (PAREN_BLOCK 15503 . 15542) (IDENTIFIER 15488 . 15503) (INT 15484 . 15487) (BRACE_BLOCK 15091 . 15482) (PAREN_BLOCK 15051 . 15090) (IDENTIFIER 15038 . 15051) (INT 15034 . 15037) (BRACE_BLOCK 14838 . 14875) (PAREN_BLOCK 14813 . 14837) (IDENTIFIER 14806 . 14813) (IDENTIFIER 14801 . 14805) (BRACE_BLOCK 14632 . 14799) (PAREN_BLOCK 14617 . 14631) (IDENTIFIER 14609 . 14617) (IDENTIFIER 14604 . 14608) (BRACE_BLOCK 13996 . 14602) (PAREN_BLOCK 13959 . 13995) (IDENTIFIER 13945 . 13959) (IDENTIFIER 13940 . 13944) (BRACE_BLOCK 12911 . 13938) (PAREN_BLOCK 12862 . 12910) (IDENTIFIER 12854 . 12862) (IDENTIFIER 12849 . 12853) (BRACE_BLOCK 11729 . 12847) (PAREN_BLOCK 11670 . 11728) (IDENTIFIER 11653 . 11670) (INT 11649 . 11652) (BRACE_BLOCK 9598 . 11633) (PAREN_BLOCK 9558 . 9597) (IDENTIFIER 9549 . 9558) (INT 9545 . 9548) (BRACE_BLOCK 8816 . 9542) (PAREN_BLOCK 8788 . 8815) (IDENTIFIER 8774 . 8788) (INT 8770 . 8773) (BRACE_BLOCK 8474 . 8768) (PAREN_BLOCK 8427 . 8472) (IDENTIFIER 8414 . 8427) (INT 8410 . 8413) (BRACE_BLOCK 6332 . 8408) (PAREN_BLOCK 6272 . 6331) (IDENTIFIER 6260 . 6272) (INT 6256 . 6259) (BRACE_BLOCK 4369 . 6254) (PAREN_BLOCK 4309 . 4368) (IDENTIFIER 4297 . 4309) (INT 4293 . 4296) (BRACE_BLOCK 3644 . 4291) (PAREN_BLOCK 3585 . 3643) (IDENTIFIER 3570 . 3585) (INT 3566 . 3569) (BRACE_BLOCK 2284 . 3369) (PAREN_BLOCK 2281 . 2283) (IDENTIFIER 2277 . 2281) (INT 2273 . 2276) (PAREN_BLOCK 2036 . 2075) (IDENTIFIER 2027 . 2036) (INT 2023 . 2026) (PAREN_BLOCK 1976 . 2021) (IDENTIFIER 1967 . 1976) (INT 1963 . 1966) (PAREN_BLOCK 1945 . 1961) (IDENTIFIER 1936 . 1945) (INT 1932 . 1935) (PAREN_BLOCK 1871 . 1930) (IDENTIFIER 1859 . 1871) (INT 1855 . 1858) (PAREN_BLOCK 1794 . 1853) (IDENTIFIER 1782 . 1794) (INT 1778 . 1781) (PAREN_BLOCK 1718 . 1776) (IDENTIFIER 1703 . 1718) (INT 1699 . 1702) (PAREN_BLOCK 1639 . 1697) (IDENTIFIER 1622 . 1639) (INT 1618 . 1621) (PAREN_BLOCK 1546 . 1573) (IDENTIFIER 1532 . 1546) (INT 1528 . 1531) (PAREN_BLOCK 1437 . 1482) (IDENTIFIER 1424 . 1437) (INT 1420 . 1423) (PAREN_BLOCK 1352 . 1391) (IDENTIFIER 1332 . 1352) (INT 1328 . 1331) (PAREN_BLOCK 1287 . 1326) (IDENTIFIER 1268 . 1287) (INT 1264 . 1267) (PAREN_BLOCK 1223 . 1262) (IDENTIFIER 1208 . 1223) (INT 1204 . 1207) (PAREN_BLOCK 1163 . 1202) (IDENTIFIER 1150 . 1163) (INT 1146 . 1149) (PAREN_BLOCK 1130 . 1144) (IDENTIFIER 1122 . 1130) (IDENTIFIER 1117 . 1121) (PAREN_BLOCK 1079 . 1115) (IDENTIFIER 1065 . 1079) (IDENTIFIER 1060 . 1064) (PAREN_BLOCK 1010 . 1058) (IDENTIFIER 1002 . 1010) (IDENTIFIER 997 . 1001) (PAREN_BLOCK 946 . 994) (IDENTIFIER 926 . 946) (INT 922 . 925) (PAREN_BLOCK 871 . 919) (IDENTIFIER 852 . 871) (INT 848 . 851) (PAREN_BLOCK 797 . 845) (IDENTIFIER 782 . 797) (INT 778 . 781) (PAREN_BLOCK 703 . 751) (IDENTIFIER 690 . 703) (INT 686 . 689) (PAREN_BLOCK 648 . 684) (IDENTIFIER 638 . 648) (INT 634 . 637) (PAREN_BLOCK 586 . 611) (IDENTIFIER 577 . 586) (IDENTIFIER 571 . 576) (PAREN_BLOCK 545 . 568) (IDENTIFIER 538 . 545) (INT 534 . 537) (PAREN_BLOCK 508 . 532) (IDENTIFIER 501 . 508) (IDENTIFIER 496 . 500) (PAREN_BLOCK 464 . 494) (IDENTIFIER 455 . 464) (INT 451 . 454) (PAREN_BLOCK 437 . 449) (IDENTIFIER 429 . 437) (CHAR 424 . 428) (PAREN_BLOCK 405 . 422) (IDENTIFIER 397 . 405) (CHAR 392 . 396) (PAREN_BLOCK 388 . 390) (IDENTIFIER 378 . 388) (CHAR 373 . 377) (PAREN_BLOCK 355 . 371) (IDENTIFIER 345 . 355) (VOID 340 . 344) (PAREN_BLOCK 336 . 338) (IDENTIFIER 325 . 336) (VOID 320 . 324) (NUMBER_LITERAL 284 . 294) (EQ 282 . 283) (IDENTIFIER 274 . 281) (INT 270 . 273) (CONST 264 . 269) (BRACK_BLOCK 256 . 259) (BRACK_BLOCK 253 . 256) (IDENTIFIER 248 . 253) (CHAR 243 . 247) (STRING_LITERAL 238 . 241) (EQ 236 . 237) (IDENTIFIER 229 . 235) (CHAR 224 . 228) (CONST 218 . 223) (STRING_LITERAL 213 . 216) (EQ 211 . 212) (IDENTIFIER 207 . 210) (CHAR 202 . 206) (CONST 196 . 201) (STRING_LITERAL 191 . 194) (EQ 189 . 190) (IDENTIFIER 183 . 188) (CHAR 178 . 182) (CONST 172 . 177) (STRING_LITERAL 167 . 170) (EQ 165 . 166) (IDENTIFIER 163 . 164) (CHAR 158 . 162) (CONST 152 . 157) (STRING_LITERAL 146 . 149) (EQ 144 . 145) (IDENTIFIER 142 . 143) (CHAR 137 . 141) (CONST 131 . 136) (BRACE_BLOCK 24475 . 30479) (PAREN_BLOCK 24429 . 24474) (IDENTIFIER 24420 . 24429) (INT 24416 . 24419) (BRACE_BLOCK 22263 . 24414) (PAREN_BLOCK 22246 . 22262) (IDENTIFIER 22237 . 22246) (INT 22233 . 22236) (BRACE_BLOCK 22156 . 22231) (PAREN_BLOCK 22119 . 22155) (IDENTIFIER 22109 . 22119) (INT 22105 . 22108) (BRACE_BLOCK 21660 . 22103) (PAREN_BLOCK 21633 . 21659) (IDENTIFIER 21624 . 21633) (IDENTIFIER 21618 . 21623) (BRACE_BLOCK 21491 . 21616) (PAREN_BLOCK 21467 . 21490) (IDENTIFIER 21460 . 21467) (INT 21456 . 21459) (BRACE_BLOCK 21260 . 21454) (PAREN_BLOCK 21229 . 21259) (IDENTIFIER 21220 . 21229) (INT 21216 . 21219) (BRACE_BLOCK 21145 . 21214) (PAREN_BLOCK 21132 . 21144) (IDENTIFIER 21124 . 21132) (CHAR 21119 . 21123) (BRACE_BLOCK 20947 . 21117) (PAREN_BLOCK 20929 . 20946) (IDENTIFIER 20921 . 20929) (CHAR 20916 . 20920) (BRACE_BLOCK 20615 . 20914) (PAREN_BLOCK 20612 . 20614) (IDENTIFIER 20602 . 20612) (CHAR 20597 . 20601) (BRACE_BLOCK 20173 . 20595) (PAREN_BLOCK 20156 . 20172) (IDENTIFIER 20146 . 20156) (VOID 20141 . 20145) (BRACE_BLOCK 19833 . 20139) (PAREN_BLOCK 19830 . 19832) (IDENTIFIER 19819 . 19830) (VOID 19814 . 19818) (BRACE_BLOCK 19065 . 19811) (PAREN_BLOCK 19016 . 19064) (IDENTIFIER 18996 . 19016) (INT 18992 . 18995) (BRACE_BLOCK 18243 . 18989) (PAREN_BLOCK 18194 . 18242) (IDENTIFIER 18175 . 18194) (INT 18171 . 18174) (BRACE_BLOCK 17590 . 18169) (PAREN_BLOCK 17541 . 17589) (IDENTIFIER 17526 . 17541) (INT 17522 . 17525) (BRACE_BLOCK 16996 . 17520) (PAREN_BLOCK 16947 . 16995) (IDENTIFIER 16934 . 16947) (INT 16930 . 16933) (BRACE_BLOCK 16501 . 16928) (PAREN_BLOCK 16461 . 16500) (IDENTIFIER 16441 . 16461) (INT 16437 . 16440) (BRACE_BLOCK 16013 . 16435) (PAREN_BLOCK 15973 . 16012) (IDENTIFIER 15954 . 15973) (INT 15950 . 15953) (BRACE_BLOCK 15546 . 15948) (PAREN_BLOCK 15506 . 15545) (IDENTIFIER 15491 . 15506) (INT 15487 . 15490) (BRACE_BLOCK 15094 . 15485) (PAREN_BLOCK 15054 . 15093) (IDENTIFIER 15041 . 15054) (INT 15037 . 15040) (BRACE_BLOCK 14841 . 14878) (PAREN_BLOCK 14816 . 14840) (IDENTIFIER 14809 . 14816) (IDENTIFIER 14804 . 14808) (BRACE_BLOCK 14635 . 14802) (PAREN_BLOCK 14620 . 14634) (IDENTIFIER 14612 . 14620) (IDENTIFIER 14607 . 14611) (BRACE_BLOCK 13999 . 14605) (PAREN_BLOCK 13962 . 13998) (IDENTIFIER 13948 . 13962) (IDENTIFIER 13943 . 13947) (BRACE_BLOCK 12914 . 13941) (PAREN_BLOCK 12865 . 12913) (IDENTIFIER 12857 . 12865) (IDENTIFIER 12852 . 12856) (BRACE_BLOCK 11732 . 12850) (PAREN_BLOCK 11673 . 11731) (IDENTIFIER 11656 . 11673) (INT 11652 . 11655) (BRACE_BLOCK 9598 . 11636) (PAREN_BLOCK 9558 . 9597) (IDENTIFIER 9549 . 9558) (INT 9545 . 9548) (BRACE_BLOCK 8816 . 9542) (PAREN_BLOCK 8788 . 8815) (IDENTIFIER 8774 . 8788) (INT 8770 . 8773) (BRACE_BLOCK 8474 . 8768) (PAREN_BLOCK 8427 . 8472) (IDENTIFIER 8414 . 8427) (INT 8410 . 8413) (BRACE_BLOCK 6332 . 8408) (PAREN_BLOCK 6272 . 6331) (IDENTIFIER 6260 . 6272) (INT 6256 . 6259) (BRACE_BLOCK 4369 . 6254) (PAREN_BLOCK 4309 . 4368) (IDENTIFIER 4297 . 4309) (INT 4293 . 4296) (BRACE_BLOCK 3644 . 4291) (PAREN_BLOCK 3585 . 3643) (IDENTIFIER 3570 . 3585) (INT 3566 . 3569) (BRACE_BLOCK 2284 . 3369) (PAREN_BLOCK 2281 . 2283) (IDENTIFIER 2277 . 2281) (INT 2273 . 2276) (PAREN_BLOCK 2036 . 2075) (IDENTIFIER 2027 . 2036) (INT 2023 . 2026) (PAREN_BLOCK 1976 . 2021) (IDENTIFIER 1967 . 1976) (INT 1963 . 1966) (PAREN_BLOCK 1945 . 1961) (IDENTIFIER 1936 . 1945) (INT 1932 . 1935) (PAREN_BLOCK 1871 . 1930) (IDENTIFIER 1859 . 1871) (INT 1855 . 1858) (PAREN_BLOCK 1794 . 1853) (IDENTIFIER 1782 . 1794) (INT 1778 . 1781) (PAREN_BLOCK 1718 . 1776) (IDENTIFIER 1703 . 1718) (INT 1699 . 1702) (PAREN_BLOCK 1639 . 1697) (IDENTIFIER 1622 . 1639) (INT 1618 . 1621) (PAREN_BLOCK 1546 . 1573) (IDENTIFIER 1532 . 1546) (INT 1528 . 1531) (PAREN_BLOCK 1437 . 1482) (IDENTIFIER 1424 . 1437) (INT 1420 . 1423) (PAREN_BLOCK 1352 . 1391) (IDENTIFIER 1332 . 1352) (INT 1328 . 1331) (PAREN_BLOCK 1287 . 1326) (IDENTIFIER 1268 . 1287) (INT 1264 . 1267) (PAREN_BLOCK 1223 . 1262) (IDENTIFIER 1208 . 1223) (INT 1204 . 1207) (PAREN_BLOCK 1163 . 1202) (IDENTIFIER 1150 . 1163) (INT 1146 . 1149) (PAREN_BLOCK 1130 . 1144) (IDENTIFIER 1122 . 1130) (IDENTIFIER 1117 . 1121) (PAREN_BLOCK 1079 . 1115) (IDENTIFIER 1065 . 1079) (IDENTIFIER 1060 . 1064) (PAREN_BLOCK 1010 . 1058) (IDENTIFIER 1002 . 1010) (IDENTIFIER 997 . 1001) (PAREN_BLOCK 946 . 994) (IDENTIFIER 926 . 946) (INT 922 . 925) (PAREN_BLOCK 871 . 919) (IDENTIFIER 852 . 871) (INT 848 . 851) (PAREN_BLOCK 797 . 845) (IDENTIFIER 782 . 797) (INT 778 . 781) (PAREN_BLOCK 703 . 751) (IDENTIFIER 690 . 703) (INT 686 . 689) (PAREN_BLOCK 648 . 684) (IDENTIFIER 638 . 648) (INT 634 . 637) (PAREN_BLOCK 586 . 611) (IDENTIFIER 577 . 586) (IDENTIFIER 571 . 576) (PAREN_BLOCK 545 . 568) (IDENTIFIER 538 . 545) (INT 534 . 537) (PAREN_BLOCK 508 . 532) (IDENTIFIER 501 . 508) (IDENTIFIER 496 . 500) (PAREN_BLOCK 464 . 494) (IDENTIFIER 455 . 464) (INT 451 . 454) (PAREN_BLOCK 437 . 449) (IDENTIFIER 429 . 437) (CHAR 424 . 428) (PAREN_BLOCK 405 . 422) (IDENTIFIER 397 . 405) (CHAR 392 . 396) (PAREN_BLOCK 388 . 390) (IDENTIFIER 378 . 388) (CHAR 373 . 377) (PAREN_BLOCK 355 . 371) (IDENTIFIER 345 . 355) (VOID 340 . 344) (PAREN_BLOCK 336 . 338) (IDENTIFIER 325 . 336) (VOID 320 . 324) (NUMBER_LITERAL 284 . 294) (EQ 282 . 283) (IDENTIFIER 274 . 281) (INT 270 . 273) (CONST 264 . 269) (BRACK_BLOCK 256 . 259) (BRACK_BLOCK 253 . 256) (IDENTIFIER 248 . 253) (CHAR 243 . 247) (STRING_LITERAL 238 . 241) (EQ 236 . 237) (IDENTIFIER 229 . 235) (CHAR 224 . 228) (CONST 218 . 223) (STRING_LITERAL 213 . 216) (EQ 211 . 212) (IDENTIFIER 207 . 210) (CHAR 202 . 206) (CONST 196 . 201) (STRING_LITERAL 191 . 194) (EQ 189 . 190) (IDENTIFIER 183 . 188) (CHAR 178 . 182) (CONST 172 . 177) (STRING_LITERAL 167 . 170) (EQ 165 . 166) (IDENTIFIER 163 . 164) (CHAR 158 . 162) (CONST 152 . 157) (STRING_LITERAL 146 . 149) (EQ 144 . 145) (IDENTIFIER 142 . 143) (CHAR 137 . 141) (CONST 131 . 136) (BRACE_BLOCK 24490 . 30494) (PAREN_BLOCK 24444 . 24489) (IDENTIFIER 24435 . 24444) (INT 24431 . 24434) (BRACE_BLOCK 22278 . 24429) (PAREN_BLOCK 22261 . 22277) (IDENTIFIER 22252 . 22261) (INT 22248 . 22251) (BRACE_BLOCK 22171 . 22246) (PAREN_BLOCK 22134 . 22170) (IDENTIFIER 22124 . 22134) (INT 22120 . 22123) (BRACE_BLOCK 21675 . 22118) (PAREN_BLOCK 21648 . 21674) (IDENTIFIER 21639 . 21648) (IDENTIFIER 21633 . 21638) (BRACE_BLOCK 21506 . 21631) (PAREN_BLOCK 21482 . 21505) (IDENTIFIER 21475 . 21482) (INT 21471 . 21474) (BRACE_BLOCK 21275 . 21469) (PAREN_BLOCK 21244 . 21274) (IDENTIFIER 21235 . 21244) (INT 21231 . 21234) (BRACE_BLOCK 21160 . 21229) (PAREN_BLOCK 21147 . 21159) (IDENTIFIER 21139 . 21147) (CHAR 21134 . 21138) (BRACE_BLOCK 20962 . 21132) (PAREN_BLOCK 20944 . 20961) (IDENTIFIER 20936 . 20944) (CHAR 20931 . 20935) (BRACE_BLOCK 20630 . 20929) (PAREN_BLOCK 20627 . 20629) (IDENTIFIER 20617 . 20627) (CHAR 20612 . 20616) (BRACE_BLOCK 20188 . 20610) (PAREN_BLOCK 20171 . 20187) (IDENTIFIER 20161 . 20171) (VOID 20156 . 20160) (BRACE_BLOCK 19848 . 20154) (PAREN_BLOCK 19845 . 19847) (IDENTIFIER 19834 . 19845) (VOID 19829 . 19833) (BRACE_BLOCK 19080 . 19826) (PAREN_BLOCK 19031 . 19079) (IDENTIFIER 19011 . 19031) (INT 19007 . 19010) (BRACE_BLOCK 18258 . 19004) (PAREN_BLOCK 18209 . 18257) (IDENTIFIER 18190 . 18209) (INT 18186 . 18189) (BRACE_BLOCK 17605 . 18184) (PAREN_BLOCK 17556 . 17604) (IDENTIFIER 17541 . 17556) (INT 17537 . 17540) (BRACE_BLOCK 17011 . 17535) (PAREN_BLOCK 16962 . 17010) (IDENTIFIER 16949 . 16962) (INT 16945 . 16948) (BRACE_BLOCK 16516 . 16943) (PAREN_BLOCK 16476 . 16515) (IDENTIFIER 16456 . 16476) (INT 16452 . 16455) (BRACE_BLOCK 16028 . 16450) (PAREN_BLOCK 15988 . 16027) (IDENTIFIER 15969 . 15988) (INT 15965 . 15968) (BRACE_BLOCK 15561 . 15963) (PAREN_BLOCK 15521 . 15560) (IDENTIFIER 15506 . 15521) (INT 15502 . 15505) (BRACE_BLOCK 15109 . 15500) (PAREN_BLOCK 15069 . 15108) (IDENTIFIER 15056 . 15069) (INT 15052 . 15055) (BRACE_BLOCK 14856 . 14893) (PAREN_BLOCK 14831 . 14855) (IDENTIFIER 14824 . 14831) (IDENTIFIER 14819 . 14823) (BRACE_BLOCK 14650 . 14817) (PAREN_BLOCK 14635 . 14649) (IDENTIFIER 14627 . 14635) (IDENTIFIER 14622 . 14626) (BRACE_BLOCK 14014 . 14620) (PAREN_BLOCK 13977 . 14013) (IDENTIFIER 13963 . 13977) (IDENTIFIER 13958 . 13962) (BRACE_BLOCK 12929 . 13956) (PAREN_BLOCK 12880 . 12928) (IDENTIFIER 12872 . 12880) (IDENTIFIER 12867 . 12871) (BRACE_BLOCK 11747 . 12865) (PAREN_BLOCK 11688 . 11746) (IDENTIFIER 11671 . 11688) (INT 11667 . 11670) (BRACE_BLOCK 9613 . 11651) (PAREN_BLOCK 9573 . 9612) (IDENTIFIER 9564 . 9573) (INT 9560 . 9563) (BRACE_BLOCK 8831 . 9557) (PAREN_BLOCK 8803 . 8830) (IDENTIFIER 8789 . 8803) (INT 8785 . 8788) (BRACE_BLOCK 8489 . 8783) (PAREN_BLOCK 8442 . 8487) (IDENTIFIER 8429 . 8442) (INT 8425 . 8428) (BRACE_BLOCK 6347 . 8423) (PAREN_BLOCK 6287 . 6346) (IDENTIFIER 6275 . 6287) (INT 6271 . 6274) (BRACE_BLOCK 4384 . 6269) (PAREN_BLOCK 4324 . 4383) (IDENTIFIER 4312 . 4324) (INT 4308 . 4311) (BRACE_BLOCK 3659 . 4306) (PAREN_BLOCK 3600 . 3658) (IDENTIFIER 3585 . 3600) (INT 3581 . 3584) (BRACE_BLOCK 2299 . 3384) (PAREN_BLOCK 2296 . 2298) (IDENTIFIER 2292 . 2296) (INT 2288 . 2291) (PAREN_BLOCK 2051 . 2090) (IDENTIFIER 2042 . 2051) (INT 2038 . 2041) (PAREN_BLOCK 1991 . 2036) (IDENTIFIER 1982 . 1991) (INT 1978 . 1981) (PAREN_BLOCK 1960 . 1976) (IDENTIFIER 1951 . 1960) (INT 1947 . 1950) (PAREN_BLOCK 1886 . 1945) (IDENTIFIER 1874 . 1886) (INT 1870 . 1873) (PAREN_BLOCK 1809 . 1868) (IDENTIFIER 1797 . 1809) (INT 1793 . 1796) (PAREN_BLOCK 1733 . 1791) (IDENTIFIER 1718 . 1733) (INT 1714 . 1717) (PAREN_BLOCK 1654 . 1712) (IDENTIFIER 1637 . 1654) (INT 1633 . 1636) (PAREN_BLOCK 1561 . 1588) (IDENTIFIER 1547 . 1561) (INT 1543 . 1546) (PAREN_BLOCK 1452 . 1497) (IDENTIFIER 1439 . 1452) (INT 1435 . 1438) (PAREN_BLOCK 1367 . 1406) (IDENTIFIER 1347 . 1367) (INT 1343 . 1346) (PAREN_BLOCK 1302 . 1341) (IDENTIFIER 1283 . 1302) (INT 1279 . 1282) (PAREN_BLOCK 1238 . 1277) (IDENTIFIER 1223 . 1238) (INT 1219 . 1222) (PAREN_BLOCK 1178 . 1217) (IDENTIFIER 1165 . 1178) (INT 1161 . 1164) (PAREN_BLOCK 1145 . 1159) (IDENTIFIER 1137 . 1145) (IDENTIFIER 1132 . 1136) (PAREN_BLOCK 1094 . 1130) (IDENTIFIER 1080 . 1094) (IDENTIFIER 1075 . 1079) (PAREN_BLOCK 1025 . 1073) (IDENTIFIER 1017 . 1025) (IDENTIFIER 1012 . 1016) (PAREN_BLOCK 961 . 1009) (IDENTIFIER 941 . 961) (INT 937 . 940) (PAREN_BLOCK 886 . 934) (IDENTIFIER 867 . 886) (INT 863 . 866) (PAREN_BLOCK 812 . 860) (IDENTIFIER 797 . 812) (INT 793 . 796) (PAREN_BLOCK 718 . 766) (IDENTIFIER 705 . 718) (INT 701 . 704) (PAREN_BLOCK 663 . 699) (IDENTIFIER 653 . 663) (INT 649 . 652) (PAREN_BLOCK 601 . 626) (IDENTIFIER 592 . 601) (IDENTIFIER 586 . 591) (PAREN_BLOCK 560 . 583) (IDENTIFIER 553 . 560) (INT 549 . 552) (PAREN_BLOCK 523 . 547) (IDENTIFIER 516 . 523) (IDENTIFIER 511 . 515) (PAREN_BLOCK 479 . 509) (IDENTIFIER 470 . 479) (INT 466 . 469) (PAREN_BLOCK 452 . 464) (IDENTIFIER 444 . 452) (CHAR 439 . 443) (PAREN_BLOCK 420 . 437) (IDENTIFIER 412 . 420) (CHAR 407 . 411) (PAREN_BLOCK 403 . 405) (IDENTIFIER 393 . 403) (CHAR 388 . 392) (PAREN_BLOCK 370 . 386) (IDENTIFIER 360 . 370) (VOID 355 . 359) (PAREN_BLOCK 351 . 353) (IDENTIFIER 340 . 351) (VOID 335 . 339) (NUMBER_LITERAL 299 . 309) (EQ 297 . 298) (IDENTIFIER 289 . 296) (INT 285 . 288) (CONST 279 . 284) (BRACK_BLOCK 271 . 274) (BRACK_BLOCK 268 . 271) (IDENTIFIER 263 . 268) (CHAR 258 . 262) (STRING_LITERAL 253 . 256) (EQ 251 . 252) (IDENTIFIER 244 . 250) (CHAR 239 . 243) (CONST 233 . 238) (STRING_LITERAL 228 . 231) (EQ 226 . 227) (IDENTIFIER 222 . 225) (CHAR 217 . 221) (CONST 211 . 216) (STRING_LITERAL 206 . 209) (EQ 204 . 205) (IDENTIFIER 198 . 203) (CHAR 193 . 197) (CONST 187 . 192) (STRING_LITERAL 182 . 185) (EQ 180 . 181) (IDENTIFIER 178 . 179) (CHAR 173 . 177) (CONST 167 . 172) (STRING_LITERAL 161 . 164) (EQ 159 . 160) (IDENTIFIER 157 . 158) (CHAR 152 . 156) (CONST 146 . 151) (BRACE_BLOCK 93 . 123) (IDENTIFIER 87 . 92) (IDENTIFIER 80 . 86) (IDENTIFIER 74 . 77) (IDENTIFIER 64 . 73) (IDENTIFIER 58 . 63) (GT 56 . 57) (IDENTIFIER 49 . 56) (LT 48 . 49) (IDENTIFIER 40 . 47) (punctuation 39 . 40) (GT 37 . 38) (IDENTIFIER 31 . 37) (LT 30 . 31) (IDENTIFIER 22 . 29) (punctuation 21 . 22) (GT 19 . 20) (IDENTIFIER 11 . 19) (LT 10 . 11) (IDENTIFIER 2 . 9) (punctuation 1 . 2) (BRACE_BLOCK 24557 . 30561) (PAREN_BLOCK 24511 . 24556) (IDENTIFIER 24502 . 24511) (INT 24498 . 24501) (BRACE_BLOCK 22345 . 24496) (PAREN_BLOCK 22328 . 22344) (IDENTIFIER 22319 . 22328) (INT 22315 . 22318) (BRACE_BLOCK 22238 . 22313) (PAREN_BLOCK 22201 . 22237) (IDENTIFIER 22191 . 22201) (INT 22187 . 22190) (BRACE_BLOCK 21742 . 22185) (PAREN_BLOCK 21715 . 21741) (IDENTIFIER 21706 . 21715) (IDENTIFIER 21700 . 21705) (BRACE_BLOCK 21573 . 21698) (PAREN_BLOCK 21549 . 21572) (IDENTIFIER 21542 . 21549) (INT 21538 . 21541) (BRACE_BLOCK 21342 . 21536) (PAREN_BLOCK 21311 . 21341) (IDENTIFIER 21302 . 21311) (INT 21298 . 21301) (BRACE_BLOCK 21227 . 21296) (PAREN_BLOCK 21214 . 21226) (IDENTIFIER 21206 . 21214) (CHAR 21201 . 21205) (BRACE_BLOCK 21029 . 21199) (PAREN_BLOCK 21011 . 21028) (IDENTIFIER 21003 . 21011) (CHAR 20998 . 21002) (BRACE_BLOCK 20697 . 20996) (PAREN_BLOCK 20694 . 20696) (IDENTIFIER 20684 . 20694) (CHAR 20679 . 20683) (BRACE_BLOCK 20255 . 20677) (PAREN_BLOCK 20238 . 20254) (IDENTIFIER 20228 . 20238) (VOID 20223 . 20227) (BRACE_BLOCK 19915 . 20221) (PAREN_BLOCK 19912 . 19914) (IDENTIFIER 19901 . 19912) (VOID 19896 . 19900) (BRACE_BLOCK 19147 . 19893) (PAREN_BLOCK 19098 . 19146) (IDENTIFIER 19078 . 19098) (INT 19074 . 19077) (BRACE_BLOCK 18325 . 19071) (PAREN_BLOCK 18276 . 18324) (IDENTIFIER 18257 . 18276) (INT 18253 . 18256) (BRACE_BLOCK 17672 . 18251) (PAREN_BLOCK 17623 . 17671) (IDENTIFIER 17608 . 17623) (INT 17604 . 17607) (BRACE_BLOCK 17078 . 17602) (PAREN_BLOCK 17029 . 17077) (IDENTIFIER 17016 . 17029) (INT 17012 . 17015) (BRACE_BLOCK 16583 . 17010) (PAREN_BLOCK 16543 . 16582) (IDENTIFIER 16523 . 16543) (INT 16519 . 16522) (BRACE_BLOCK 16095 . 16517) (PAREN_BLOCK 16055 . 16094) (IDENTIFIER 16036 . 16055) (INT 16032 . 16035) (BRACE_BLOCK 15628 . 16030) (PAREN_BLOCK 15588 . 15627) (IDENTIFIER 15573 . 15588) (INT 15569 . 15572) (BRACE_BLOCK 15176 . 15567) (PAREN_BLOCK 15136 . 15175) (IDENTIFIER 15123 . 15136) (INT 15119 . 15122) (BRACE_BLOCK 14923 . 14960) (PAREN_BLOCK 14898 . 14922) (IDENTIFIER 14891 . 14898) (IDENTIFIER 14886 . 14890) (BRACE_BLOCK 14717 . 14884) (PAREN_BLOCK 14702 . 14716) (IDENTIFIER 14694 . 14702) (IDENTIFIER 14689 . 14693) (BRACE_BLOCK 14081 . 14687) (PAREN_BLOCK 14044 . 14080) (IDENTIFIER 14030 . 14044) (IDENTIFIER 14025 . 14029) (BRACE_BLOCK 12996 . 14023) (PAREN_BLOCK 12947 . 12995) (IDENTIFIER 12939 . 12947) (IDENTIFIER 12934 . 12938) (BRACE_BLOCK 11814 . 12932) (PAREN_BLOCK 11755 . 11813) (IDENTIFIER 11738 . 11755) (INT 11734 . 11737) (BRACE_BLOCK 9680 . 11718) (PAREN_BLOCK 9640 . 9679) (IDENTIFIER 9631 . 9640) (INT 9627 . 9630) (BRACE_BLOCK 8898 . 9624) (PAREN_BLOCK 8870 . 8897) (IDENTIFIER 8856 . 8870) (INT 8852 . 8855) (BRACE_BLOCK 8556 . 8850) (PAREN_BLOCK 8509 . 8554) (IDENTIFIER 8496 . 8509) (INT 8492 . 8495) (BRACE_BLOCK 6414 . 8490) (PAREN_BLOCK 6354 . 6413) (IDENTIFIER 6342 . 6354) (INT 6338 . 6341) (BRACE_BLOCK 4451 . 6336) (PAREN_BLOCK 4391 . 4450) (IDENTIFIER 4379 . 4391) (INT 4375 . 4378) (BRACE_BLOCK 3726 . 4373) (PAREN_BLOCK 3667 . 3725) (IDENTIFIER 3652 . 3667) (INT 3648 . 3651) (BRACE_BLOCK 2366 . 3451) (PAREN_BLOCK 2363 . 2365) (IDENTIFIER 2359 . 2363) (INT 2355 . 2358) (PAREN_BLOCK 2118 . 2157) (IDENTIFIER 2109 . 2118) (INT 2105 . 2108) (PAREN_BLOCK 2058 . 2103) (IDENTIFIER 2049 . 2058) (INT 2045 . 2048) (PAREN_BLOCK 2027 . 2043) (IDENTIFIER 2018 . 2027) (INT 2014 . 2017) (PAREN_BLOCK 1953 . 2012) (IDENTIFIER 1941 . 1953) (INT 1937 . 1940) (PAREN_BLOCK 1876 . 1935) (IDENTIFIER 1864 . 1876) (INT 1860 . 1863) (PAREN_BLOCK 1800 . 1858) (IDENTIFIER 1785 . 1800) (INT 1781 . 1784) (PAREN_BLOCK 1721 . 1779) (IDENTIFIER 1704 . 1721) (INT 1700 . 1703) (PAREN_BLOCK 1628 . 1655) (IDENTIFIER 1614 . 1628) (INT 1610 . 1613) (PAREN_BLOCK 1519 . 1564) (IDENTIFIER 1506 . 1519) (INT 1502 . 1505) (PAREN_BLOCK 1434 . 1473) (IDENTIFIER 1414 . 1434) (INT 1410 . 1413) (PAREN_BLOCK 1369 . 1408) (IDENTIFIER 1350 . 1369) (INT 1346 . 1349) (PAREN_BLOCK 1305 . 1344) (IDENTIFIER 1290 . 1305) (INT 1286 . 1289) (PAREN_BLOCK 1245 . 1284) (IDENTIFIER 1232 . 1245) (INT 1228 . 1231) (PAREN_BLOCK 1212 . 1226) (IDENTIFIER 1204 . 1212) (IDENTIFIER 1199 . 1203) (PAREN_BLOCK 1161 . 1197) (IDENTIFIER 1147 . 1161) (IDENTIFIER 1142 . 1146) (PAREN_BLOCK 1092 . 1140) (IDENTIFIER 1084 . 1092) (IDENTIFIER 1079 . 1083) (PAREN_BLOCK 1028 . 1076) (IDENTIFIER 1008 . 1028) (INT 1004 . 1007) (PAREN_BLOCK 953 . 1001) (IDENTIFIER 934 . 953) (INT 930 . 933) (PAREN_BLOCK 879 . 927) (IDENTIFIER 864 . 879) (INT 860 . 863) (PAREN_BLOCK 785 . 833) (IDENTIFIER 772 . 785) (INT 768 . 771) (PAREN_BLOCK 730 . 766) (IDENTIFIER 720 . 730) (INT 716 . 719) (PAREN_BLOCK 668 . 693) (IDENTIFIER 659 . 668) (IDENTIFIER 653 . 658) (PAREN_BLOCK 627 . 650) (IDENTIFIER 620 . 627) (INT 616 . 619) (PAREN_BLOCK 590 . 614) (IDENTIFIER 583 . 590) (IDENTIFIER 578 . 582) (PAREN_BLOCK 546 . 576) (IDENTIFIER 537 . 546) (INT 533 . 536) (PAREN_BLOCK 519 . 531) (IDENTIFIER 511 . 519) (CHAR 506 . 510) (PAREN_BLOCK 487 . 504) (IDENTIFIER 479 . 487) (CHAR 474 . 478) (PAREN_BLOCK 470 . 472) (IDENTIFIER 460 . 470) (CHAR 455 . 459) (PAREN_BLOCK 437 . 453) (IDENTIFIER 427 . 437) (VOID 422 . 426) (PAREN_BLOCK 418 . 420) (IDENTIFIER 407 . 418) (VOID 402 . 406) (NUMBER_LITERAL 366 . 376) (EQ 364 . 365) (IDENTIFIER 356 . 363) (INT 352 . 355) (CONST 346 . 351) (BRACK_BLOCK 338 . 341) (BRACK_BLOCK 335 . 338) (IDENTIFIER 330 . 335) (CHAR 325 . 329) (STRING_LITERAL 320 . 323) (EQ 318 . 319) (IDENTIFIER 311 . 317) (CHAR 306 . 310) (CONST 300 . 305) (STRING_LITERAL 295 . 298) (EQ 293 . 294) (IDENTIFIER 289 . 292) (CHAR 284 . 288) (CONST 278 . 283) (STRING_LITERAL 273 . 276) (EQ 271 . 272) (IDENTIFIER 265 . 270) (CHAR 260 . 264) (CONST 254 . 259) (STRING_LITERAL 249 . 252) (EQ 247 . 248) (IDENTIFIER 245 . 246) (CHAR 240 . 244) (CONST 234 . 239) (STRING_LITERAL 228 . 231) (EQ 226 . 227) (IDENTIFIER 224 . 225) (CHAR 219 . 223) (CONST 213 . 218) (BRACE_BLOCK 160 . 190) (IDENTIFIER 154 . 159) (IDENTIFIER 147 . 153) (IDENTIFIER 141 . 144) (IDENTIFIER 131 . 140) (IDENTIFIER 125 . 130) (GT 123 . 124) (IDENTIFIER 116 . 123) (LT 115 . 116) (IDENTIFIER 107 . 114) (punctuation 106 . 107) (GT 104 . 105) (IDENTIFIER 98 . 104) (LT 97 . 98) (IDENTIFIER 89 . 96) (punctuation 88 . 89) (GT 86 . 87) (IDENTIFIER 78 . 86) (LT 77 . 78) (IDENTIFIER 69 . 76) (punctuation 68 . 69))
+    )
+   )
+  :file "!home!jenny!AI!connect4!aic4!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

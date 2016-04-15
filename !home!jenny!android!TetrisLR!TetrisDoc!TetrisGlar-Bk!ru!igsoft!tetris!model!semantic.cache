@@ -1,0 +1,287 @@
+;; Object model/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "model/"
+  :tables (list 
+   (semanticdb-table "Game.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("ru.igsoft.tetris.model" package nil nil [1 32])
+            ("java.io.IOException" include nil nil [34 61])
+            ("java.io.ObjectInputStream" include nil nil [62 95])
+            ("java.io.ObjectOutputStream" include nil nil [96 130])
+            ("java.io.Serializable" include nil nil [131 159])
+            ("java.util.ArrayList" include nil nil [160 187])
+            ("java.util.Iterator" include nil nil [188 214])
+            ("java.util.List" include nil nil [215 237])
+            ("ru.igsoft.angam.Interpolator" include nil nil [238 274])
+            ("Game" type
+               (:typemodifiers ("public")
+                :interfaces ("BoardListener2" "Serializable")
+                :members 
+                  ( ("serialVersionUID" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "long")
+                        (reparse-symbol class_member_declaration) [340 407])
+                    ("active" variable
+                       (:typemodifiers ("private")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [410 433])
+                    ("activeBoard" variable
+                       (:typemodifiers ("private")
+                        :type "Board")
+                        (reparse-symbol class_member_declaration) [436 462])
+                    ("activeFigure" variable
+                       (:typemodifiers ("private")
+                        :type "Figure")
+                        (reparse-symbol class_member_declaration) [465 493])
+                    ("board1" variable
+                       (:typemodifiers ("private")
+                        :type "Board")
+                        (reparse-symbol class_member_declaration) [496 540])
+                    ("board2" variable
+                       (:typemodifiers ("private")
+                        :type "Board")
+                        (reparse-symbol class_member_declaration) [543 564])
+                    ("boardsObserveAngle" variable
+                       (:typemodifiers ("private" "transient")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [567 610])
+                    ("boardsRotation" variable
+                       (:typemodifiers ("private")
+                        :type "Interpolator")
+                        (reparse-symbol class_member_declaration) [613 649])
+                    ("fallTime" variable
+                       (:typemodifiers ("private")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [652 675])
+                    ("fallTimer" variable
+                       (:typemodifiers ("private")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [678 702])
+                    ("level" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [705 723])
+                    ("nextFigure" variable
+                       (:typemodifiers ("private")
+                        :type "Figure")
+                        (reparse-symbol class_member_declaration) [776 802])
+                    ("paused" variable
+                       (:typemodifiers ("private" "transient")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [805 838])
+                    ("playTime" variable
+                       (:typemodifiers ("private")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [841 864])
+                    ("points" variable
+                       (:typemodifiers ("private")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [867 886])
+                    ("rotationAngle" variable
+                       (:typemodifiers ("private")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [889 917])
+                    ("state" variable
+                       (:typemodifiers ("private")
+                        :type "GameState")
+                        (reparse-symbol class_member_declaration) [920 961])
+                    ("Game" function
+                       (:constructor-flag t
+                        :typemodifiers ("public"))
+                        (reparse-symbol class_member_declaration) [965 1327])
+                    ("addPoints" function
+                       (:typemodifiers ("private")
+                        :arguments 
+                          ( ("paramInt" variable (:type "int") (reparse-symbol formal_parameters) [1354 1366]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1331 1604])
+                    ("createRandomFigure" function
+                       (:typemodifiers ("private")
+                        :type "Figure")
+                        (reparse-symbol class_member_declaration) [1608 1765])
+                    ("getActiveBoardAngle" function
+                       (:typemodifiers ("private")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [1769 1861])
+                    ("getFallTime" function
+                       (:typemodifiers ("private")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [1865 1969])
+                    ("noitfyBoardChangeDenied" function
+                       (:typemodifiers ("private")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1973 2220])
+                    ("notifyChangeBoard" function
+                       (:typemodifiers ("private")
+                        :arguments 
+                          ( ("paramBoard" variable (:type "Board") (reparse-symbol formal_parameters) [2255 2271]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2224 2486])
+                    ("notifyFigureFalled" function
+                       (:typemodifiers ("private")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2490 2727])
+                    ("notifyFigureFreezed" function
+                       (:typemodifiers ("private")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2731 2970])
+                    ("notifyFigureRotateDenied" function
+                       (:typemodifiers ("private")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2974 3223])
+                    ("notifyGameOver" function
+                       (:typemodifiers ("private")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3227 3456])
+                    ("notifyLevelChanged" function
+                       (:typemodifiers ("private")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3460 3707])
+                    ("notifyLineDisappearing" function
+                       (:typemodifiers ("private")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3711 3956])
+                    ("notifyNextFigureGenerated" function
+                       (:typemodifiers ("private")
+                        :arguments 
+                          ( ("paramFigure" variable (:type "Figure") (reparse-symbol formal_parameters) [3999 4017]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3960 4240])
+                    ("notifyPauseChanged" function
+                       (:typemodifiers ("private")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [4244 4492])
+                    ("notifyPointsChanged" function
+                       (:typemodifiers ("private")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [4496 4746])
+                    ("notifyStateChanged" function
+                       (:typemodifiers ("private")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [4750 4997])
+                    ("readObject" function
+                       (:throws ("IOException" "ClassNotFoundException")
+                        :typemodifiers ("private")
+                        :arguments 
+                          ( ("paramObjectInputStream" variable (:type "ObjectInputStream") (reparse-symbol formal_parameters) [5025 5065]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5001 5380])
+                    ("setState" function
+                       (:typemodifiers ("private")
+                        :arguments 
+                          ( ("paramGameState" variable (:type "GameState") (reparse-symbol formal_parameters) [5406 5430]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5384 5498])
+                    ("writeObject" function
+                       (:throws ("IOException")
+                        :typemodifiers ("private")
+                        :arguments 
+                          ( ("paramObjectOutputStream" variable (:type "ObjectOutputStream") (reparse-symbol formal_parameters) [5527 5569]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5502 5765])
+                    ("addListener" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramGameListener" variable (:type "GameListener") (reparse-symbol formal_parameters) [5793 5823]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5769 6393])
+                    ("brickDisappeared" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [6397 6453])
+                    ("changeBoard" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [6457 7322])
+                    ("getActiveBoard" function
+                       (:typemodifiers ("public")
+                        :type "Board")
+                        (reparse-symbol class_member_declaration) [7326 7529])
+                    ("getLevel" function
+                       (:typemodifiers ("public")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [7533 7702])
+                    ("getPlayTime" function
+                       (:typemodifiers ("public")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [7706 7885])
+                    ("getPoints" function
+                       (:typemodifiers ("public")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [7889 8060])
+                    ("getRotationAngle" function
+                       (:typemodifiers ("public")
+                        :type "float")
+                        (reparse-symbol class_member_declaration) [8064 8253])
+                    ("getState" function
+                       (:typemodifiers ("public")
+                        :type "GameState")
+                        (reparse-symbol class_member_declaration) [8257 8464])
+                    ("isActive" function
+                       (:typemodifiers ("public")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [8468 8652])
+                    ("isPaused" function
+                       (:typemodifiers ("public")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [8656 8840])
+                    ("moveFigureLeft" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [8844 9128])
+                    ("moveFigureRight" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [9132 9416])
+                    ("removeListener" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramGameListener" variable (:type "GameListener") (reparse-symbol formal_parameters) [9447 9477]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [9420 9646])
+                    ("rotateFigureLeft" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [9650 9968])
+                    ("rotateFigureRight" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [9972 10292])
+                    ("setPaused" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramBoolean" variable (:type "boolean") (reparse-symbol formal_parameters) [10318 10338]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [10296 10559])
+                    ("stopScoreSubmitting" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [10563 10797])
+                    ("testFill" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [10801 11003])
+                    ("throwFigure" function
+                       (:typemodifiers ("public")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [11007 11384])
+                    ("update" function
+                       (:typemodifiers ("public")
+                        :arguments 
+                          ( ("paramFloat" variable (:type "float") (reparse-symbol formal_parameters) [11407 11423]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [11388 13530]))                  
+                :type "class")
+                nil [276 13532]))          
+    :file "Game.java"
+    :pointmax 13699
+    :fsize 13698
+    :lastmodtime '(22276 43782 0 0)
+    :unmatched-syntax '((SEMICOLON 772 . 773) (GT 761 . 762) (PRIVATE 726 . 733) (LT 748 . 749))
+    )
+   )
+  :file "!home!jenny!android!TetrisLR!TetrisDoc!TetrisGlar-Bk!ru!igsoft!tetris!model!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

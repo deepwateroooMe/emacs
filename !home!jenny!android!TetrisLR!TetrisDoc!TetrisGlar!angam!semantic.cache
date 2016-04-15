@@ -1,0 +1,205 @@
+;; Object angam/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "angam/"
+  :tables (list 
+   (semanticdb-table "GameActivity.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("ru.igsoft.angam" package nil nil [1 25])
+            ("android.accounts.Account" include nil nil [27 59])
+            ("android.accounts.AccountManager" include nil nil [60 99])
+            ("android.accounts.AccountManagerFuture" include nil nil [100 145])
+            ("android.accounts.AuthenticatorException" include nil nil [146 193])
+            ("android.accounts.OperationCanceledException" include nil nil [194 245])
+            ("android.app.Activity" include nil nil [246 274])
+            ("android.app.AlertDialog" include nil nil [275 306])
+            ("android.app.AlertDialog.Builder" include nil nil [307 346])
+            ("android.app.ProgressDialog" include nil nil [347 381])
+            ("android.content.DialogInterface" include nil nil [382 421])
+            ("android.content.DialogInterface.OnCancelListener" include nil nil [422 478])
+            ("android.content.DialogInterface.OnClickListener" include nil nil [479 534])
+            ("android.content.Intent" include nil nil [535 565])
+            ("android.content.SharedPreferences" include nil nil [566 607])
+            ("android.content.SharedPreferences.Editor" include nil nil [608 656])
+            ("android.os.AsyncTask" include nil nil [657 685])
+            ("android.os.Bundle" include nil nil [686 711])
+            ("android.util.Log" include nil nil [712 736])
+            ("android.view.Window" include nil nil [737 764])
+            ("java.io.IOException" include nil nil [765 792])
+            ("java.util.Iterator" include nil nil [793 819])
+            ("java.util.List" include nil nil [820 842])
+            ("org.apache.http.HttpResponse" include nil nil [843 879])
+            ("org.apache.http.StatusLine" include nil nil [880 914])
+            ("org.apache.http.client.CookieStore" include nil nil [915 957])
+            ("org.apache.http.client.methods.HttpGet" include nil nil [958 1004])
+            ("org.apache.http.client.methods.HttpUriRequest" include nil nil [1005 1058])
+            ("org.apache.http.cookie.Cookie" include nil nil [1059 1096])
+            ("org.apache.http.impl.client.AbstractHttpClient" include nil nil [1097 1151])
+            ("org.apache.http.impl.client.DefaultHttpClient" include nil nil [1152 1205])
+            ("org.apache.http.params.HttpParams" include nil nil [1206 1247])
+            ("ru.igsoft.anogl.AssetManager" include nil nil [1248 1284])
+            ("ru.igsoft.anogl.SceneView" include nil nil [1285 1318])
+            ("ru.igsoft.anogl.SceneView.OnAssetManagerCreated" include nil nil [1319 1374])
+            ("GameActivity" type
+               (:typemodifiers ("public")
+                :superclasses "Activity"
+                :members 
+                  ( ("DEF_PREF" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [1423 1472])
+                    ("REQUEST_AUTHENTICATE" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [1475 1525])
+                    ("TAG" variable
+                       (:typemodifiers ("private" "static" "final")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [1528 1577])
+                    ("account" variable
+                       (:typemodifiers ("private")
+                        :type "Account")
+                        (reparse-symbol class_member_declaration) [1580 1604])
+                    ("accountManager" variable
+                       (:typemodifiers ("private")
+                        :type "AccountManager")
+                        (reparse-symbol class_member_declaration) [1607 1645])
+                    ("alertDialog" variable
+                       (:typemodifiers ("protected")
+                        :type "AlertDialog")
+                        (reparse-symbol class_member_declaration) [1648 1682])
+                    ("authToken" variable
+                       (:typemodifiers ("private")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [1685 1710])
+                    ("authTokenTask" variable
+                       (:typemodifiers ("private")
+                        :type "AuthTokenTask")
+                        (reparse-symbol class_member_declaration) [1713 1749])
+                    ("loginListener" variable
+                       (:typemodifiers ("private")
+                        :type "LoginListener")
+                        (reparse-symbol class_member_declaration) [1752 1788])
+                    ("loginTask" variable
+                       (:typemodifiers ("private")
+                        :type "LoginTask")
+                        (reparse-symbol class_member_declaration) [1791 1819])
+                    ("sceneView" variable
+                       (:typemodifiers ("protected")
+                        :type "SceneView")
+                        (reparse-symbol class_member_declaration) [1822 1852])
+                    ("secondLoginAttempt" variable
+                       (:typemodifiers ("private")
+                        :type "boolean")
+                        (reparse-symbol class_member_declaration) [1855 1890])
+                    ("serverUri" variable
+                       (:typemodifiers ("private")
+                        :type "String")
+                        (reparse-symbol class_member_declaration) [1893 1918])
+                    ("authenticatedClientLogin" function
+                       (:typemodifiers ("private")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [1960 1978]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [1922 2067])
+                    ("cancelAuthTokenTask" function
+                       (:typemodifiers ("private")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2071 2312])
+                    ("cancelLoginTask" function
+                       (:typemodifiers ("private")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2316 2537])
+                    ("getAccountManager" function
+                       (:typemodifiers ("private")
+                        :type "AccountManager")
+                        (reparse-symbol class_member_declaration) [2541 2714])
+                    ("getAuthToken" function
+                       (:typemodifiers ("private")
+                        :arguments 
+                          ( ("paramAccount" variable (:type "Account") (reparse-symbol formal_parameters) [2744 2764])
+                            ("paramBoolean" variable (:type "boolean") (reparse-symbol formal_parameters) [2766 2786]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [2718 3091])
+                    ("showAccountNotFoundDialog" function
+                       (:typemodifiers ("private")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3095 3646])
+                    ("showAuthenticationProgressDialog" function
+                       (:typemodifiers ("private")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [3650 4125])
+                    ("showSelectAccountDialog" function
+                       (:typemodifiers ("private")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [4129 5348])
+                    ("OnCancelAllTasks" function
+                       (:typemodifiers ("protected")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5352 5443])
+                    ("dismissAlertDialog" function
+                       (:typemodifiers ("protected")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5447 5601])
+                    ("login" function
+                       (:typemodifiers ("protected")
+                        :arguments 
+                          ( ("paramString" variable (:type "String") (reparse-symbol formal_parameters) [5626 5644])
+                            ("paramLoginListener" variable (:type "LoginListener") (reparse-symbol formal_parameters) [5646 5678]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [5605 6542])
+                    ("onActivityResult" function
+                       (:typemodifiers ("protected")
+                        :arguments 
+                          ( ("paramInt1" variable (:type "int") (reparse-symbol formal_parameters) [6578 6591])
+                            ("paramInt2" variable (:type "int") (reparse-symbol formal_parameters) [6593 6606])
+                            ("paramIntent" variable (:type "Intent") (reparse-symbol formal_parameters) [6608 6626]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [6546 6917])
+                    ("onAssetManagerCreated" function
+                       (:typemodifiers ("protected")
+                        :arguments 
+                          ( ("paramAssetManager" variable (:type "AssetManager") (reparse-symbol formal_parameters) [6958 6988]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [6921 6997])
+                    ("onCreate" function
+                       (:typemodifiers ("protected")
+                        :arguments 
+                          ( ("paramBundle" variable (:type "Bundle") (reparse-symbol formal_parameters) [7025 7043]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [7001 7401])
+                    ("onPause" function
+                       (:typemodifiers ("protected")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [7405 7538])
+                    ("onResume" function
+                       (:typemodifiers ("protected")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [7542 7628])
+                    ("showConnectionErrorDialog" function
+                       (:typemodifiers ("protected")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [7632 7737])
+                    ("showInfoDialog" function
+                       (:typemodifiers ("protected")
+                        :arguments 
+                          ( ("paramInt" variable (:type "int") (reparse-symbol formal_parameters) [7771 7783]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [7741 8251])
+                    ("showServerErrorDialog" function
+                       (:typemodifiers ("protected")
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [8255 8352]))                  
+                :type "class")
+                nil [1376 12627]))          
+    :file "GameActivity.java"
+    :pointmax 12793
+    :fsize 12792
+    :lastmodtime '(22275 25832 0 0)
+    :unmatched-syntax '((GT 10433 . 10434) (COMMA 10427 . 10428) (PRIVATE 10380 . 10387) (LT 10422 . 10423) (GT 8420 . 8421) (COMMA 8412 . 8413) (COMMA 8406 . 8407) (PRIVATE 8356 . 8363) (LT 8401 . 8402))
+    )
+   )
+  :file "!home!jenny!android!TetrisLR!TetrisDoc!TetrisGlar!angam!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )
