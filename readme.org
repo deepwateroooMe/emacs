@@ -1,0 +1,4 @@
+Tasks for the weekend: 
+1. will clearn this repository, to make it nice and neat. 
+2. configure and organize emacs better so that it won't take too much time when initializing. 
+3. make android studio environment ready for OpenGL Tetris, DorkyMonkey, together with configuring out necessary debugging tools ready for studio, so I could have debugging weapons with studio for getting necessary debugging information. 
