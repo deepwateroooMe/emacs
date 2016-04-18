@@ -31,62 +31,6 @@
 (require 'package)
 
 
-;(setq default-directory "~/docu/gs/")
-;(setq default-directory "~/docu/cv/interview/")
-
-(setq truncate-lines nil) ;;;解决编辑中文不会自动折行的问题 
-
-;;; delete backward one char
-(global-set-key [(control h)] 'delete-backward-char)
-;;; prohibit auto-generate backup files
-(setq-default make-backup-files nil)
-;;; show line number
-(global-linum-mode 1)
-;;; no startup buffer
-(setq inhibit-splash-screen t)
-(setq initial-scratch-message "")
-;;; frame titile file name
-(setq use-file-dialog nil
-      frame-title-format '(buffer-file-name "%b"))
-;;; 设置字体
-(defvar font-list '("Microsoft Yahei" "SimHei" "NSimSun" "FangSong" "SimSun"))
-
-
-;;; fullscreen
-;(defun fullscreen (&optional f)
-;       (interactive)
-;       (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-;               '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0))
-;       (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-;               '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0)))
-;(fullscreen)
-;;; set startup frame size & location
-(setq default-frame-alist
-      '(
-
-;;; My monitor
-	(top . 0)(left . 0)(height . 83)(width . 120)(menubar-lines . 20)(tool-bar-line . 0))) 
-;(top . 0)(left . 1620)(height . 83)(width . 120)(menubar-lines . 20)(tool-bar-line . 0))) 
-;;; Steven's office
-;(top . 0)(left . 1200)(height . 70)(width . 86)(menubar-lines . 20)(tool-bar-line . 0))) 
-
-
-;(top . 0)(left . 800)(height . 85)(width . 86)(menubar-lines . 20)(tool-bar-line . 0)))
-;;; left most
-;(top . 0)(left . 0)(height . 85)(width . 120)(menubar-lines . 20)(tool-bar-line . 0)))   
-;;; middle a little bit
-;(top . 0)(left . 600)(height . 85)(width . 93)(menubar-lines . 20)(tool-bar-line . 0)))   
-
-;;; HOME display
-;(top . 0)(left . 1750)(height . 100)(width . 152)(menubar-lines . 20)(tool-bar-line . 0))) ;;; right most
-;(top . 0)(left . 1700)(height . 93)(width . 100)(menubar-lines . 20)(tool-bar-line . 0))) ;;; right most
-
-;;; for Java LeetCode Summary
-;(top . 0)(left . 1900)(height . 83)(width . 100)(menubar-lines . 20)(tool-bar-line . 0))) ;;; right most, for lc
-
-
-
-
 ;;;自动补全
 (add-to-list 'load-path "~/.emacs.d/elpa/auto-complete-1.4")
 (require 'auto-complete-config)
@@ -111,6 +55,9 @@
   (setq ac-sources (append '(ac-source-yasnippet) ac-sources)))
 (add-hook 'latex-mode-hook 'ac-latex-mode-setup)
 
+;;;;;;;;;; for LATEX:
+;(load-file "~/.emacs.d/auto-complete-yasnippet.el")
+;(load-file "~/.emacs.d/auto-complete-auctex.el")
 
 (add-to-list 'load-path "~/.emacs.d/wubi")
 (require 'wubi)
@@ -170,10 +117,9 @@
 (list (expand-file-name "/")));semantic检索范围
 ;;设置semantic cache临时文件的路径，避免到处都是临时文件
 (setq semanticdb-default-save-directory "~/.emacs.d/")
-
 ;;;;; yasnippet-bundle.el
-(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-bundle-0.6.1") ;拓展文件(插件)目录
-(require 'yasnippet-bundle)     ;;; remove this one for java-mode
+;(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-bundle-0.6.1") ;拓展文件(插件)目录
+;(require 'yasnippet-bundle)     ;;; remove this one for java-mode
 
 
 ;;;我的C/C++语言编辑策略
@@ -260,7 +206,7 @@
 ;(add−hook 'org−mode−hook 'folding−mode)
 
 ;; iimage mode
-(require 'iimage)
+(load-file "~/.emacs.d/iimage.el")
 (autoload 'iimage-mode "iimage" "Support Inline image minor mode." t)
 (autoload 'turn-on-iimage-mode "iimage" "Turn on Inline image minor mode." t)
 ;;; for resize
@@ -561,11 +507,11 @@ marginparsep=7pt, marginparwidth=.6in}
 
 
 ;; outline-mode
-(add-to-list 'auto-mode-alist
-  '("\\.outline\\'" . outline-mode))
-(require 'outline-presentation)
-(add-hook 'outline-presentation-mode-hook
-          (lambda () (text-scale-increase 3)))
+;(add-to-list 'auto-mode-alist
+;  '("\\.outline\\'" . outline-mode))
+;(require 'outline-presentation)
+;(add-hook 'outline-presentation-mode-hook
+;          (lambda () (text-scale-increase 3)))
 
 
 (require 'exec-path-from-shell)
@@ -590,8 +536,10 @@ marginparsep=7pt, marginparwidth=.6in}
 ;(setq gc-cons-threshold 20000000)
 
 
+
 ;;; org-mode auto complete
-(require 'org-ac)
+;(require 'org-ac)
+(load-file "~/.emacs.d/org-ac.el")     ;;; change this one, byte-compile file for require use
 (org-ac/config-default)
 
 
@@ -601,6 +549,120 @@ marginparsep=7pt, marginparwidth=.6in}
 			(flyspell-mode t)))
 (setq org-mode-hook '(lambda()
 			(flyspell-mode t)))
+
+
+
+
+;(org-babel-do-load-languages
+;      'org-babel-load-languages
+;      '((emacs-lisp . nil)
+;        (java . t)))
+
+;;; auto-indent-mode
+;(load-file "~/.emacs.d/auto-indent-mode.el")
+;(auto-indent-global-mode t)
+;(add-to-list 'auto-indent-known-indent-levels 'c-basic-offset)
+;(setq auto-indent-assign-indent-level 4)
+;(setq auto-indent-newline-function 'newline-and-indent)
+
+
+
+;;; copy from https://github.com/purcell/emacs.d/blob/master/init.el
+
+;(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+;;(require 'init-benchmarking) ;; Measure startup time
+;(defconst *spell-check-support-enabled* nil) ;; Enable with t if you prefer
+;
+;;;----------------------------------------------------------------------------
+;;; Bootstrap config
+;;;----------------------------------------------------------------------------
+;;(require 'init-compat)
+;;(require 'init-utils)
+;;(require 'init-site-lisp) ;; Must come before elpa, as it may provide package.el
+;;(require 'init-elpa)      ;; Machinery for installing required packages
+;;(require 'init-exec-path) ;; Set up $PATH
+;
+;;;----------------------------------------------------------------------------
+;;; Allow users to provide an optional "init-preload-local.el"
+;;;----------------------------------------------------------------------------
+;(require 'init-preload-local nil t)
+;
+;;;----------------------------------------------------------------------------
+;;; Load configs for specific features and modes
+;;;----------------------------------------------------------------------------
+;
+;;(require-package 'wgrep)
+;;(require-package 'project-local-variables)
+;;(require-package 'diminish)
+;;(require-package 'scratch)
+;;(require-package 'mwe-log-commands)
+;
+;(require 'init-flycheck)
+;(require 'init-ido)
+;(require 'init-hippie-expand)
+;(require 'init-auto-complete)
+;(require 'init-org)
+;(require 'init-html)
+;(require 'init-css)
+;(require 'init-python-mode)
+;
+;(when (>= emacs-major-version 24)
+;  (require 'init-clojure-cider))
+;(require 'init-common-lisp)
+;
+;(when *spell-check-support-enabled*
+;  (require 'init-spelling))
+;
+;;(require 'init-marmalade)
+;;(require 'init-misc)
+;
+;;(require 'init-dash)
+;;(require 'init-ledger)
+;;; Extra packages which don't require any configuration
+;
+;;(require-package 'gnuplot)
+;;(require-package 'lua-mode)
+;;(require-package 'htmlize)
+;;(require-package 'dsvn)
+;;(require-package 'regex-tool)
+;
+;;;----------------------------------------------------------------------------
+;;; Allow access from emacsclient
+;;;----------------------------------------------------------------------------
+;(require 'server)
+;(unless (server-running-p)
+;  (server-start))
+;
+;;;----------------------------------------------------------------------------
+;;; Variables configured via the interactive 'customize' interface
+;;;----------------------------------------------------------------------------
+;(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+;(when (file-exists-p custom-file)
+;  (load custom-file))
+;
+;;;----------------------------------------------------------------------------
+;;; Allow users to provide an optional "init-local" containing personal settings
+;;;----------------------------------------------------------------------------
+;(when (file-exists-p (expand-file-name "init-local.el" user-emacs-directory))
+;  (error "Please move init-local.el to ~/.emacs.d/lisp"))
+;(require 'init-local nil t)
+;
+;;;----------------------------------------------------------------------------
+;;; Locales (setting them earlier in this file doesn't work in X)
+;;;----------------------------------------------------------------------------
+;(require 'init-locales)
+;
+;(add-hook 'after-init-hook
+;          (lambda ()
+;            (message "init completed in %.2fms"
+;                     (sanityinc/time-subtract-millis after-init-time before-init-time))))
+;
+;(provide 'init)
+
+;; Local Variables:
+;; coding: utf-8
+;; no-byte-compile: 
+;; End:
 
 
 ;;; for lisp
@@ -793,10 +855,7 @@ marginparsep=7pt, marginparwidth=.6in}
 ;(require 'ajc-java-complete-config)
 ;(add-hook 'java-mode-hook 'ajc-java-complete-mode)
 ;(add-hook 'find-file-hook 'ajc-4-jsp-find-file-hook)
-
-					;(require 'cdb-gud)
-					;(require 'cdb-gud)
-(load-file "~/.emacs.d/lisp/cdb-gud.el")
+(load-file "~/.emacs.d/cdb-gud.el")
 (add-hook 'jdb-mode-hook '(lambda ()  
 			    (setq jdb-need-run t)                    
 			    (global-set-key [(f4)]   'gud-kill)  

@@ -1,4 +1,7 @@
-Tasks for the weekend: 
+a new emacs 24.5 configuration for my temporatery use. 
+
+So far leave it this way cause I have other higher priority tasks want to be finished first. Will combe back to this repository later when I get chance. 
+
 1. will clearn this repository, to make it nice and neat. 
+
 2. configure and organize emacs better so that it won't take too much time when initializing. 
-3. make android studio environment ready for OpenGL Tetris, DorkyMonkey, together with configuring out necessary debugging tools ready for studio, so I could have debugging weapons with studio for getting necessary debugging information. 

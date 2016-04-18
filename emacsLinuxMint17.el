@@ -1,36 +1,50 @@
-;(add-to-list 'load-path (expand-file-name "lisp" /usr/local/Cellar/emacs/24.5/))
-
-;; This is the main Emacs initialization file - .emacs.
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
-;(add-to-list 'load-path (expand-file-name "~/.emacs.d"))
-
-;;; Meta
-;(global-set-key "\C-SPC" 'set-mark-command)  ;;; doesn't have to set
-(global-set-key "\M-p" 'replace-string)
-(global-set-key "\M-g" 'goto-line)
-;(global-set-key "\M-\C-h" 'backward-kill-word)
-;(global-set-key "\M-\C-r" 'query-replace)
-;(global-set-key "\M-h" 'help-command)
-
-;;; autopair 
-(require 'autopair)
-(autopair-global-mode) ;; enable autopair in all buffers
-
-;;; autorevert buffer
-(require 'autorevert)
-(global-auto-revert-mode 1)
-
-
 ;;; basic initialization, (require) non-ELPA packages, etc.
-;(setq package-enable-at-startup nil)
+(setq package-enable-at-startup nil)
 
 ;;; Initialize & Install Package
-;(package-initialize)
+(package-initialize)
 
 ;;; (require) your ELPA packages, configure them as normal
 (require 'package)
 
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+			 ("marmalade" . "http://marmalade-repo.org/packages/")
+			 ("melpa" . "http://melpa.milkbox.net/packages/")))
 
+(when (not package-archive-contents)
+  (package-refresh-contents))
+;(dolist (pkg jpk-packages)
+;  (when (and (not (package-installed-p pkg))
+;           (assoc pkg package-archive-contents))
+;    (package-install pkg)))
+(defun package-list-unaccounted-packages ()
+  "Like `package-list-packages', but shows only the packages that
+  are installed and are not in `jpk-packages'.  Useful for
+  cleaning out unwanted packages."
+  (interactive)
+  (package-show-package-list
+   (remove-if-not (lambda (x) (and (not (memq x jpk-packages))
+                            (not (package-built-in-p x))
+                            (package-installed-p x)))
+                  (mapcar 'car package-archive-contents))))
+
+;(setq default-directory "~/Spring16/JavaOOP/")
+;(setq default-directory "~/android/TTetris/src/dev/ttetris/")
+(setq default-directory "~/android/TTetris/res/layout/")
+;(setq default-directory "~/android/TriangleRotate/src/com/manyou/opengl/")
+;(setq default-directory "~/android/Tetris/src/dev/tetris/")
+;(setq default-directory "~/android/TetrisLR/AndDoc/")
+;(setq default-directory "~/AI/connect4/")
+;(setq default-directory "~/android/DorkyMonkey/src/dev/dorkymonkey/")
+;(setq default-directory "~/android/TetrisLR/src/dev/tetrislr/")
+;(setq default-directory "~/RubyOnRails/gosu/scripts/")
+;(setq default-directory "~/php/project/trial/")
+;(setq default-directory "~/AngularJS/lifelove/")
+;(setq default-directory "~/meetqun/frontEnd/")
+;(setq default-directory "~/lc/")
+;(setq default-directory "~/lc/Java/")
+;(setq default-directory "~/LintCode/")
+;(setq default-directory "~/mit/")
 ;(setq default-directory "~/docu/gs/")
 ;(setq default-directory "~/docu/cv/interview/")
 
@@ -51,7 +65,6 @@
 ;;; 设置字体
 (defvar font-list '("Microsoft Yahei" "SimHei" "NSimSun" "FangSong" "SimSun"))
 
-
 ;;; fullscreen
 ;(defun fullscreen (&optional f)
 ;       (interactive)
@@ -65,7 +78,7 @@
       '(
 
 ;;; My monitor
-	(top . 0)(left . 0)(height . 83)(width . 120)(menubar-lines . 20)(tool-bar-line . 0))) 
+	(top . 0)(left . 1900)(height . 83)(width . 120)(menubar-lines . 20)(tool-bar-line . 0))) 
 ;(top . 0)(left . 1620)(height . 83)(width . 120)(menubar-lines . 20)(tool-bar-line . 0))) 
 ;;; Steven's office
 ;(top . 0)(left . 1200)(height . 70)(width . 86)(menubar-lines . 20)(tool-bar-line . 0))) 
@@ -84,6 +97,171 @@
 ;;; for Java LeetCode Summary
 ;(top . 0)(left . 1900)(height . 83)(width . 100)(menubar-lines . 20)(tool-bar-line . 0))) ;;; right most, for lc
 
+
+;;; 编码设置 begin
+(set-language-environment 'Chinese-GB)
+;; default-buffer-file-coding-system变量在emacs23.2之后已被废弃，使用buffer-file-coding-system代替
+
+;(set-language-environment 'Chinese-GB)
+(set-keyboard-coding-system 'euc-cn)
+(set-clipboard-coding-system 'euc-cn)
+(set-terminal-coding-system 'euc-cn)
+;(set-buffer-file-coding-system 'euc-cn)
+
+(unless (eq system-type 'windows-nt) (set-selection-coding-system 'utf-8))
+;(set-selection-coding-system 'euc-cn)   ;;; modified today, this one can not copy in emacs for chinese
+
+(modify-coding-system-alist 'process "*" 'euc-cn)
+(setq default-process-coding-system '(euc-cn . euc-cn))
+;(setq-default pathname-coding-system 'euc-cn)
+
+(set-default buffer-file-coding-system 'utf-8-unix)
+(set-default-coding-systems 'utf-8-unix)
+
+;(setq-default pathname-coding-system 'euc-cn)
+(setq-default pathname-coding-system 'utf-8)
+
+;(setq file-name-coding-system 'euc-cn)
+(setq file-name-coding-system 'utf-8)
+
+;; 另外建议按下面的先后顺序来设置中文编码识别方式。
+;; 重要提示:写在最后一行的，实际上最优先使用; 最前面一行，反而放到最后才识别。
+;; utf-16le-with-signature 相当于 Windows 下的 Unicode 编码，这里也可写成
+;; utf-16 (utf-16 实际上还细分为 utf-16le, utf-16be, utf-16le-with-signature等多种)
+(prefer-coding-system 'cp950)
+(prefer-coding-system 'gb2312)
+(prefer-coding-system 'cp936)
+(prefer-coding-system 'gb18030)
+;(prefer-coding-system 'utf-16le-with-signature)
+(prefer-coding-system 'utf-16)
+;; 新建文件使用utf-8-unix方式
+;; 如果不写下面两句，只写
+(prefer-coding-system 'utf-8)
+;; 这一句的话，新建文件以utf-8编码，行末结束符平台相关
+;(prefer-coding-system 'utf-8-dos)
+;(prefer-coding-system 'utf-8-unix)
+;; 编码设置 end
+
+
+;;; Meta
+(global-set-key "\M-p" 'replace-string)
+(global-set-key "\M-g" 'goto-line)
+;(global-set-key "\M- " 'set-mark-command)
+;(global-set-key "\M-\C-h" 'backward-kill-word)
+;(global-set-key "\M-\C-r" 'query-replace)
+;(global-set-key "\M-h" 'help-command)
+
+;;设置括号匹配
+(show-paren-mode t)
+(setq show-paren-style 'parentheses)
+
+;;; 设置默认tab宽度为4
+(setq tab-width 4
+      indent-tabs-mode t
+      c-basic-offset 4)
+
+;;;设置HTML-mode的默认tab宽度为4
+;(add-hook 'web-mode-hook
+;	  (lambda()
+;	    (setq sgml-basic-offset 4)
+;	    (setq indent-tabs-mode t)))
+
+;;; http://web-mode.org/
+;;; web-mode for .jax file js-2 function indent and highlight 
+(add-to-list 'load-path "~/.emacs.d/web-mode")
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+;;; Using web-mode for editing plain HTML files can be done this way
+;;; You can also edit plain js, jsx, css, scss, xml files.
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
+(defun my-web-mode-hook ()
+  "Hooks for Web mode."
+  (setq web-mode-markup-indent-offset 2)
+  )
+(add-hook 'web-mode-hook  'my-web-mode-hook)
+;;; Indentation
+;;; HTML element offset indentation
+(setq web-mode-markup-indent-offset 2)
+;;; CSS offset indentation
+(setq web-mode-css-indent-offset 2)
+;;; Script/code offset indentation (for JavaScript, Java, PHP, Ruby, VBScript, Python, etc.)
+(setq web-mode-code-indent-offset 2)
+(setq web-mode-style-padding 1)
+;;; For <script> parts
+(setq web-mode-script-padding 1)
+;;; For multi-line blocks
+(setq web-mode-block-padding 0)
+;;; Comments
+;;; You can choose to comment with server comment instead of client (HTML/CSS/Js) comment with
+(setq web-mode-comment-style 2)
+;;; Syntax Highlighting
+;;; Change face color
+;(set-face-attribute 'web-mode-css-rule-face nil :foreground "Pink3")
+
+
+
+
+;;; 设定行距
+(setq default-line-spacing 1)
+;;; 开启语法高亮
+(global-font-lock-mode 1)
+;;; 高亮显示区域选择
+(transient-mark-mode t)
+;;; 将yes/no替换为y/n
+(fset 'yes-or-no-p 'y-or-n-p)  
+;;; 显示列号
+(column-number-mode t) 
+;;; 闪屏报警
+(setq visible-bell t)
+;;; 锁定行高
+(setq resize-mini-windows nil)
+;;; 递妆mimibuffer
+(setq enable-recursive-minibuffers t)
+
+
+;;; Yasnippet
+(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-0.8.0")
+(require 'yasnippet)
+;;; followed three lines for java-mode snippets
+(yas/initialize)
+(yas/load-directory "~/.emacs.d/elpa/yasnippet-0.8.0/snippets")
+;(setq yas/trigger-key (kbd "TAB")) 
+
+(setq yas/prompt-functions 
+   '(yas/dropdown-prompt yas/x-prompt yas/completing-prompt yas/ido-prompt yas/no-prompt))
+(yas/global-mode 1)
+;(yas/minor-mode-on) ; 以minor mode打开，这样才能配合主mode使用
+
+;;; added for java-mode  
+;(define-key yas/minor-mode-map [(tab)] nil)
+;(define-key yas/minor-mode-map (kbd "TAB") nil)
+;(setq yas/trigger-key "")
+;(setq yas/next-field-key "")
+;(setq yas/prev-field-key "")
+
+(add-to-list 'auto-mode-alist '("\\.l\\'" . c-mode))
+(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+(add-to-list 'auto-mode-alist '("\\.java\\'" . java-mode))
+(add-to-list 'auto-mode-alist '("\\.jax\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.cpp\\'" . c++-mode))
+
+(autoload 'latex-math-preview-expression "latex-math-preview" nil t)
+(autoload 'latex-math-preview-insert-symbol "latex-math-preview" nil t)
+(autoload 'latex-math-preview-save-image-file "latex-math-preview" nil t)
+(autoload 'latex-math-preview-beamer-frame "latex-math-preview" nil t)
+(setq latex-math-preview-command-path-alist
+      '((latex . "/usr/bin/latex") (dvipng . "/usr/bin/dvipng") (dvips . "/usr/bin/dvips")))
+;(setq tex-dvi-view-command &quot;xdvi&quot;)
 
 
 
@@ -111,6 +289,9 @@
   (setq ac-sources (append '(ac-source-yasnippet) ac-sources)))
 (add-hook 'latex-mode-hook 'ac-latex-mode-setup)
 
+;;;;;;;;;; for LATEX:
+;(load-file "~/.emacs.d/auto-complete-yasnippet.el")
+;(load-file "~/.emacs.d/auto-complete-auctex.el")
 
 (add-to-list 'load-path "~/.emacs.d/wubi")
 (require 'wubi)
@@ -170,10 +351,9 @@
 (list (expand-file-name "/")));semantic检索范围
 ;;设置semantic cache临时文件的路径，避免到处都是临时文件
 (setq semanticdb-default-save-directory "~/.emacs.d/")
-
 ;;;;; yasnippet-bundle.el
-(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-bundle-0.6.1") ;拓展文件(插件)目录
-(require 'yasnippet-bundle)     ;;; remove this one for java-mode
+;(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-bundle-0.6.1") ;拓展文件(插件)目录
+;(require 'yasnippet-bundle)     ;;; remove this one for java-mode
 
 
 ;;;我的C/C++语言编辑策略
@@ -212,6 +392,16 @@
   (c-set-style "stroustrup")
 ;;  (define-key c++-mode-map [f3] 'replace-regexp)
 )
+
+
+;;; autopair 
+(add-to-list 'load-path "~/.emacs.d/") ;; comment if autopair.el is in standard load path 
+(require 'autopair)
+(autopair-global-mode) ;; enable autopair in all buffers
+
+;;; autorevert buffer
+(load-file "~/.emacs.d/autorevert.el")
+(global-auto-revert-mode 1)
 
 
 ;;; 把org-mode给黑了
@@ -260,7 +450,7 @@
 ;(add−hook 'org−mode−hook 'folding−mode)
 
 ;; iimage mode
-(require 'iimage)
+(load-file "~/.emacs.d/iimage.el")
 (autoload 'iimage-mode "iimage" "Support Inline image minor mode." t)
 (autoload 'turn-on-iimage-mode "iimage" "Turn on Inline image minor mode." t)
 ;;; for resize
@@ -561,6 +751,7 @@ marginparsep=7pt, marginparwidth=.6in}
 
 
 ;; outline-mode
+(add-to-list 'load-path "~/.emacs.d/")
 (add-to-list 'auto-mode-alist
   '("\\.outline\\'" . outline-mode))
 (require 'outline-presentation)
@@ -568,6 +759,7 @@ marginparsep=7pt, marginparwidth=.6in}
           (lambda () (text-scale-increase 3)))
 
 
+(add-to-list 'load-path "~/.emacs.d/")
 (require 'exec-path-from-shell)
 ;(require 'expand-region)
 (require 'ido-ubiquitous)
@@ -590,8 +782,11 @@ marginparsep=7pt, marginparwidth=.6in}
 ;(setq gc-cons-threshold 20000000)
 
 
+
 ;;; org-mode auto complete
-(require 'org-ac)
+;(setq 'load-path "~/.emacs.d/")
+;(require 'org-ac)
+(load-file "~/.emacs.d/org-ac.el")
 (org-ac/config-default)
 
 
@@ -601,6 +796,120 @@ marginparsep=7pt, marginparwidth=.6in}
 			(flyspell-mode t)))
 (setq org-mode-hook '(lambda()
 			(flyspell-mode t)))
+
+
+
+
+;(org-babel-do-load-languages
+;      'org-babel-load-languages
+;      '((emacs-lisp . nil)
+;        (java . t)))
+
+;;; auto-indent-mode
+;(load-file "~/.emacs.d/auto-indent-mode.el")
+;(auto-indent-global-mode t)
+;(add-to-list 'auto-indent-known-indent-levels 'c-basic-offset)
+;(setq auto-indent-assign-indent-level 4)
+;(setq auto-indent-newline-function 'newline-and-indent)
+
+
+
+;;; copy from https://github.com/purcell/emacs.d/blob/master/init.el
+
+;(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+;;(require 'init-benchmarking) ;; Measure startup time
+;(defconst *spell-check-support-enabled* nil) ;; Enable with t if you prefer
+;
+;;;----------------------------------------------------------------------------
+;;; Bootstrap config
+;;;----------------------------------------------------------------------------
+;;(require 'init-compat)
+;;(require 'init-utils)
+;;(require 'init-site-lisp) ;; Must come before elpa, as it may provide package.el
+;;(require 'init-elpa)      ;; Machinery for installing required packages
+;;(require 'init-exec-path) ;; Set up $PATH
+;
+;;;----------------------------------------------------------------------------
+;;; Allow users to provide an optional "init-preload-local.el"
+;;;----------------------------------------------------------------------------
+;(require 'init-preload-local nil t)
+;
+;;;----------------------------------------------------------------------------
+;;; Load configs for specific features and modes
+;;;----------------------------------------------------------------------------
+;
+;;(require-package 'wgrep)
+;;(require-package 'project-local-variables)
+;;(require-package 'diminish)
+;;(require-package 'scratch)
+;;(require-package 'mwe-log-commands)
+;
+;(require 'init-flycheck)
+;(require 'init-ido)
+;(require 'init-hippie-expand)
+;(require 'init-auto-complete)
+;(require 'init-org)
+;(require 'init-html)
+;(require 'init-css)
+;(require 'init-python-mode)
+;
+;(when (>= emacs-major-version 24)
+;  (require 'init-clojure-cider))
+;(require 'init-common-lisp)
+;
+;(when *spell-check-support-enabled*
+;  (require 'init-spelling))
+;
+;;(require 'init-marmalade)
+;;(require 'init-misc)
+;
+;;(require 'init-dash)
+;;(require 'init-ledger)
+;;; Extra packages which don't require any configuration
+;
+;;(require-package 'gnuplot)
+;;(require-package 'lua-mode)
+;;(require-package 'htmlize)
+;;(require-package 'dsvn)
+;;(require-package 'regex-tool)
+;
+;;;----------------------------------------------------------------------------
+;;; Allow access from emacsclient
+;;;----------------------------------------------------------------------------
+;(require 'server)
+;(unless (server-running-p)
+;  (server-start))
+;
+;;;----------------------------------------------------------------------------
+;;; Variables configured via the interactive 'customize' interface
+;;;----------------------------------------------------------------------------
+;(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+;(when (file-exists-p custom-file)
+;  (load custom-file))
+;
+;;;----------------------------------------------------------------------------
+;;; Allow users to provide an optional "init-local" containing personal settings
+;;;----------------------------------------------------------------------------
+;(when (file-exists-p (expand-file-name "init-local.el" user-emacs-directory))
+;  (error "Please move init-local.el to ~/.emacs.d/lisp"))
+;(require 'init-local nil t)
+;
+;;;----------------------------------------------------------------------------
+;;; Locales (setting them earlier in this file doesn't work in X)
+;;;----------------------------------------------------------------------------
+;(require 'init-locales)
+;
+;(add-hook 'after-init-hook
+;          (lambda ()
+;            (message "init completed in %.2fms"
+;                     (sanityinc/time-subtract-millis after-init-time before-init-time))))
+;
+;(provide 'init)
+
+;; Local Variables:
+;; coding: utf-8
+;; no-byte-compile: 
+;; End:
 
 
 ;;; for lisp
@@ -789,14 +1098,11 @@ marginparsep=7pt, marginparwidth=.6in}
 (add-hook 'jde-mode-hook (lambda () (push 'ac-source-semantic ac-sources)))
 ;(load-file "~/.emacs.d/ajc-java-complete-my-config-example.el")
 ;;my config file
-;(add-to-list 'load-path "~/.emacs.d/auto-java-complete")
-;(require 'ajc-java-complete-config)
-;(add-hook 'java-mode-hook 'ajc-java-complete-mode)
-;(add-hook 'find-file-hook 'ajc-4-jsp-find-file-hook)
-
-					;(require 'cdb-gud)
-					;(require 'cdb-gud)
-(load-file "~/.emacs.d/lisp/cdb-gud.el")
+(add-to-list 'load-path "~/.emacs.d/auto-java-complete")
+(require 'ajc-java-complete-config)
+(add-hook 'java-mode-hook 'ajc-java-complete-mode)
+(add-hook 'find-file-hook 'ajc-4-jsp-find-file-hook)
+(load-file "~/.emacs.d/cdb-gud.el")
 (add-hook 'jdb-mode-hook '(lambda ()  
 			    (setq jdb-need-run t)                    
 			    (global-set-key [(f4)]   'gud-kill)  
