@@ -7,18 +7,97 @@
 
 ;; ----- ido-work-directory-list -----
 (
+ "/Users/qunyan/AndroidStudioProjects/plantsZombies/"
+ "/Users/qunyan/AndroidStudioProjects/Cube/"
+ "/Users/qunyan/Documents/spring16/java/hw3/"
+ "/Users/qunyan/Documents/spring16/java/hw2/"
+ "/Users/qunyan/AndroidStudioProjects/Cube/app/src/main/java/dev/cube/"
+ "/Users/qunyan/AndroidStudioProjects/DorkyMonkey/app/src/main/java/dev/dorkymonkey/"
+ "/Users/qunyan/AndroidStudioProjects/DorkyMonkey/app/src/main/res/drawable/"
  "/home/heyan/"
  "/home/heyan/docu/iv/lc/"
 )
 
 ;; ----- ido-work-file-list -----
 (
- ".emacs"
- "levelOrder.cpp"
+ "readme2.org"
+ "readme.log"
+ "SecretPhrase.java"
+ "CreatePurchase.java"
+ "TestInvoice2.java"
+ "Invoice2.java"
+ "Invoice.java"
+ "Sandwich.java"
+ "Grid.java"
+ "MyFragment.java"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
+ ("/Users/qunyan/AndroidStudioProjects/plantsZombies/" (22314 57780 0 0) "readme.tex" "readme.pdf" "readme.org" ".git/" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/Cube/" (22314 21467 0 0) "transformation.jpg" "settings.gradle" "Screenshot_2016-04-30-10-39-54.png" "Screenshot_2016-04-30-10-32-08.png" "readme.toc" "readme.tex" "readme.pdf" "readme.out" "readme.org" "readme.log" "readme.aux" "local.properties" "gradlew.bat" "gradlew" "gradle.properties" "gradle/" "Cube.iml" "build.gradle" "build/" "app/" ".idea/" ".gradle/" ".gitignore" ".git/" ".DS_Store" "#readme.tex#" "../" "./")
+
+ ("/Users/qunyan/Documents/spring16/java/hw3/" (22313 23593 0 0) "TestInvoice2.java" "TestInvoice2.class" "TestInvoice.java" "TestInvoice.class" "StudentIDArray.java" "StudentIDArray.class" "SecretPhrase.java" "Purchase.java" "Purchase.class" "PhoneBook.java" "PhoneBook.class" "Invoice2.java" "Invoice2.class" "Invoice.java" "Invoice.class" "CreatePurchase.java" "CreatePurchase.class" "ConvertDate.java" "ConvertDate.class" ".DS_Store" ".#Schedule.java" "../" "./")
+
+ ("/Users/qunyan/Documents/spring16/java/" (22313 4720 0 0) "Programming__in_Java_Assignment_3.docx" "MT_Ch1to4_All_WOA.rtf" "Java_Ch5-9_Quiz_All.rtf" "hw3/" "hw2/" "Demo presentation.pptx" "Demo outline.docx" "Ch1_Ch9_Slides.zip" "Ch10_Ch17_Slides.zip" "9781285081953_PPT_ch09.ppt" "9781285081953_PPT_ch08.ppt" "9781285081953_PPT_ch07.ppt" "9781285081953_PPT_ch06.ppt" "9781285081953_PPT_ch05.ppt" "9781285081953_PPT_ch04.ppt" "9781285081953_PPT_ch03.ppt" "9781285081953_PPT_ch02.ppt" "9781285081953_PPT_ch01.ppt" "1285081951_428963.zip" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/Documents/spring16/java/hw2/" (22312 62414 0 0) "TestSandwich.java" "TestPainting.java" "Sandwich.java" "Painting.java" "GreenSandwich.java" ".#TestSandwich.java" "#TestSandwich.java#" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/Cube/app/src/main/java/dev/cube/" (22306 59342 0 0) "Vector4f.java" "Vector3f.java" "RayPickRenderer.java" "RayPickActivity.java" "Ray.java" "Quat4f.java" "Projector.java" "PickFactory.java" "OnSurfacePickedListener.java" "MyGLSurfaceView.java" "Matrix4f.java" "IBufferFactory.java" "Frame.java" "Cube.java" "AppConfig.java" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/Cube/app/src/main/java/dev/" (22298 48182 0 0) "cube/" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/Cube/app/src/main/java/" (22298 48182 0 0) "dev/" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/Cube/app/" (22306 57867 0 0) "src/" "proguard-rules.pro" "libs/" "build.gradle" "build/" "app.iml" ".gitignore" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/" (22303 60259 0 0) "ttetris-2d/" "tetris3D/" "Tetris/" "DorkyMonkey/" "Cube/" "andrAppPracOpenSrc/" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/tetris3D/" (22296 30745 0 0) "tetris3D.iml" "settings.gradle" "local.properties" "import-summary.txt" "gradlew.bat" "gradlew" "gradle/" "build.gradle" "build/" "app/" ".idea/" ".gradle/" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/tetris3D/app/" (22296 30745 0 0) "src/" "lint.xml" "build.gradle" "build/" "app.iml" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/tetris3D/app/src/" (22296 30750 0 0) "main/" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/tetris3D/app/src/main/" (22296 30750 0 0) "res/" "java/" "AndroidManifest.xml" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/tetris3D/app/src/main/java/" (22296 30750 0 0) "com/" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/tetris3D/app/src/main/java/com/" (22296 30750 0 0) "trippleit/" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/tetris3D/app/src/main/java/com/trippleit/" (22296 30750 0 0) "android/" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/tetris3D/app/src/main/java/com/trippleit/android/" (22296 30750 0 0) "tetris3d/" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/tetris3D/app/src/main/java/com/trippleit/android/tetris3d/" (22306 54839 0 0) "Start.java" "Splash.java" "shapes/" "render/" "MainActivity.java" "Instructions.java" "GameStatus.java" "controls/" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/tetris3D/app/src/main/java/com/trippleit/android/tetris3d/shapes/" (22306 59631 0 0) "ObjectZ.java" "ObjectT.java" "ObjectS.java" "ObjectL.java" "ObjectI.java" "ObjectC.java" "IShape.java" "Grid.java" "Cube.java" "Coords.java" "AbstractDraw.java" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/DorkyMonkey/app/src/main/java/dev/dorkymonkey/" (22302 17078 0 0) "MipcaActivityCapture.java" "MainActivity.java" "Fragment2.java" "Fragment1.java" "Attendance.java" "Account.java" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/DorkyMonkey/app/src/main/res/drawable/" (22301 36138 0 0) "textViewRect.xml" "mmtitle_bg_alpha.PNG" "mm_title_back_pressed.PNG" "mm_title_back_normal.PNG" "mm_title_back_focused.PNG" "mm_title_back_btn.xml" "editTextRect.xml" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/DorkyMonkey/app/src/main/res/" (22294 41951 0 0) "values-w820dp/" "values-v14/" "values-v11/" "values/" "raw/" "menu/" "layout/" "drawable-xxhdpi/" "drawable-xhdpi/" "drawable-mdpi/" "drawable-hdpi/" "drawable/" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/DorkyMonkey/app/src/main/" (22298 33751 0 0) "res/" "java/" "AndroidManifest.xml" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/DorkyMonkey/app/src/" (22294 33019 0 0) "main/" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/DorkyMonkey/app/" (22298 30845 0 0) "src/" "build.gradle" "build/" "app.iml" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/DorkyMonkey/" (22298 36041 0 0) "settings.gradle" "readme.tex" "readme.pdf" "readme.org" "pic/" "local.properties" "import-summary.txt" "ic_launcher-web.png" "gradlew.bat" "gradlew" "gradle/" "DorkyMonkey.iml" "Dorky In.pdf" "build.gradle" "build/" "app/" ".idea/" ".gradle/" ".git/" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/Cube/app/src/" (22298 48182 0 0) "test/" "main/" "androidTest/" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/Cube/app/src/main/" (22298 48182 0 0) "res/" "java/" "AndroidManifest.xml" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/Cube/app/src/main/res/" (22298 50463 0 0) "values-w820dp/" "values/" "mipmap-xxxhdpi/" "mipmap-xxhdpi/" "mipmap-xhdpi/" "mipmap-mdpi/" "mipmap-hdpi/" "layout/" "drawable/" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/Cube/app/src/main/res/drawable/" (22301 35798 0 0) "snow_leopard.png" "rect.xml" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/mine/Undertable-Blackmail/" (22297 17585 0 0) "我爱我家－2.mp4" "我爱我家－1.mp4" "readme.tex" "readme.pdf" "readme.org" "pic/" "comments.tex" "comments.pdf" "comments.org" "4.png" "3.png" "2.png" "1.png" ".git/" ".DS_Store" ".#readme.org" "#readme.org#" "../" "./")
+
  ("/home/heyan/" (21325 40739 757197 884000) "q.log" ".xsession-errors.old" "\351\237\263\344\271\220/" ".xinput.d/" ".pulse-cookie" "Ubuntu One/" ".ssh/" ".cache/" ".bash_history" "./" ".pki/" "emacs.el~" "emacs.el" ".goutputstream-9GOB3W" ".pulse/" ".config/" "\346\241\214\351\235\242/" ".dbus/" "andrew_init.el" ".gconf/" ".bash_logout" ".gstreamer-0.10/" ".gnome2/" ".ICEauthority" ".gksu.lock" ".emacs" ".profile" ".ibus/" "tmp.cpp" ".local/" "\345\233\276\347\211\207/" ".xsession-errors" ".mission-control/" "download/" "wore.el~" "\350\247\206\351\242\221/" ".bashrc" "../" ".dmrc" ".hplip/" "#a#" "*message*-20130923-133147" "introcs/" "install/" "\345\205\254\345\205\261\347\232\204/" "docu/" ".goutputstream-8TNADX" ".emacs.d/" ".compiz/" "tmp.cpp~" "模\346\235\277/" "wore.el" ".putty/" "missfont.log" ".emacs~" ".bashrc~" ".profile~" ".texmf-var/" ".Xauthority" ".gtk-bookmarks" ".icons/" ".mozilla/")
 
  ("/home/heyan/docu/iv/lc/" (21325 40754 745272 198000) "isNumberValidNumber.cpp" "sumNumbersforTree.cpp~" "isMatchd.cpp" "lengthOfLastWord.cpp~" "ques.txt" "sortlist.cpp" "addBinary.cpp~" "canJumpJumpGame.cpp~" "a.out" "./" ".#canJumpJumpGame.cpp" "existWordSearch.cpp" "divide.cpp" "sortlist.cpp~" "MedianOfTwoSortedArrays.cpp" "findLadders.cpp" "mergesortArray.c~" "../" "topdownSortArray.cpp" "atoi.cpp" "copyRandomList.cpp" "topdownSortArray.cpp~" "uniquePaths.cpp~" "removeDuplicates.cpp" "WrsumNumbers.cpp" "twoSum.cpp~" "mergeSortedArray.cpp~" "existWordSearch.cpp~" "done/" "canJumpJumpGame.cpp" "InsertionSortList.cpp~" "uniquePaths.cpp" "minWindow.cpp" "pow.cpp" "twoSum.cpp" "copyRandomList.cpp~")

@@ -1,7 +1,21 @@
-a new emacs 24.5 configuration for my temporatery use. 
+#+latex_class: cn-article
+#+latex_header: \lstset{language=c++,numbers=left,numberstyle=\tiny,basicstyle=\ttfamily\small,tabsize=4,frame=none,escapeinside=``,extendedchars=false,keywordstyle=\color{blue!70},commentstyle=\color{red!55!green!55!blue!55!},rulesepcolor=\color{red!20!green!20!blue!20!}}
+#+title: Emacs Configuration
+#+author: deepwaterooo
 
-So far leave it this way cause I have other higher priority tasks want to be finished first. Will combe back to this repository later when I get chance. 
+* Updates
+- MacTex (2.5G version) + (Emacs)Acutex +  (Emacs)org-mode for Mac Latex environment, emacs export to pdf supporting Chinese. 
 
-1. will clearn this repository, to make it nice and neat. 
+* TODOs
+  - configure and organize emacs better so that it won't take too much time when initializing. 
 
-2. configure and organize emacs better so that it won't take too much time when initializing. 
+* References
+- 截图： http://www.kohn.com.cn/wordpress/?p=78 could be configured later. 
+- https://m.oschina.net/blog/171296 ./configure --with-emacs=/Applications/Emacs.app/Contents/MacOS/Emacs --with-lispdir=/Applications/Emacs.app/Contents/Resources/site-lisp --with-texmf-dir=/usr/local/texlive/texmf-local
+- mac subline http://www.readern.com/sublime-text-latex-chinese-under-mac.html
+- supporting Chinese: http://liam0205.me/2014/11/02/latex-mactex-chinese-support/
+- http://blog.sina.com.cn/s/blog_61f013b801010cdh.html
+- http://blog.csdn.net/wdkirchhoff/article/details/41704027
+- http://philip.pixnet.net/blog/post/18367221-%5Bmac%5D%E5%9C%A8mac%E4%B8%8A%E5%AE%89%E8%A3%9Dlatex%E6%95%99%E5%AD%B8
+- https://github.com/wuyao721/51docs/blob/master/it/emacs-org-mode-pdf.org
+- very helpful: http://www.cnblogs.com/rex-tech/p/3483137.html

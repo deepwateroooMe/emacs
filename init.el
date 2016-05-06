@@ -1,8 +1,12 @@
-;(add-to-list 'load-path (expand-file-name "lisp" /usr/local/Cellar/emacs/24.5/))
-
-;; This is the main Emacs initialization file - .emacs.
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
-;(add-to-list 'load-path (expand-file-name "~/.emacs.d"))
+
+
+(setq default-directory "/Users/qunyan/AndroidStudioProjects/tetris/3d/app/src/main/java/dev/ttetris/")
+;(setq default-directory "/Users/qunyan/AndroidStudioProjects/tetris/3d/")
+;(setq default-directory "/Users/qunyan/Documents/spring16/java/hw2/")
+;(setq default-directory "/Users/qunyan/AndroidStudioProjects/Cube/app/src/main/java/dev/cube/")
+;(setq default-directory "/Users/qunyan/AndroidStudioProjects/DorkyMonkey/app/src/main/res/layout/")
+
 
 ;;; Meta
 ;(global-set-key "\C-SPC" 'set-mark-command)  ;;; doesn't have to set
@@ -12,9 +16,11 @@
 ;(global-set-key "\M-\C-r" 'query-replace)
 ;(global-set-key "\M-h" 'help-command)
 
+
 ;;; autopair 
 (require 'autopair)
 (autopair-global-mode) ;; enable autopair in all buffers
+
 
 ;;; autorevert buffer
 (require 'autorevert)
@@ -30,10 +36,6 @@
 ;;; (require) your ELPA packages, configure them as normal
 (require 'package)
 
-
-;(setq default-directory "~/docu/gs/")
-;(setq default-directory "~/docu/cv/interview/")
-
 (setq truncate-lines nil) ;;;解决编辑中文不会自动折行的问题 
 
 ;;; delete backward one char
@@ -48,9 +50,10 @@
 ;;; frame titile file name
 (setq use-file-dialog nil
       frame-title-format '(buffer-file-name "%b"))
+
 ;;; 设置字体
 (defvar font-list '("Microsoft Yahei" "SimHei" "NSimSun" "FangSong" "SimSun"))
-
+;(defvar font-list '("Microsoft Yahei" "SimHei" "NSimSun" "FangSong" "STSong"))
 
 ;;; fullscreen
 ;(defun fullscreen (&optional f)
@@ -59,32 +62,84 @@
 ;               '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0))
 ;       (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
 ;               '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0)))
-;(fullscreen)
+					;(fullscreen)
+
 ;;; set startup frame size & location
 (setq default-frame-alist
-      '(
-
-;;; My monitor
-	(top . 0)(left . 0)(height . 83)(width . 120)(menubar-lines . 20)(tool-bar-line . 0))) 
-;(top . 0)(left . 1620)(height . 83)(width . 120)(menubar-lines . 20)(tool-bar-line . 0))) 
-;;; Steven's office
-;(top . 0)(left . 1200)(height . 70)(width . 86)(menubar-lines . 20)(tool-bar-line . 0))) 
+      '((top . 0)(left . 400)(height . 74)(width . 120)(menubar-lines . 20)(tool-bar-line . 0))) 
 
 
-;(top . 0)(left . 800)(height . 85)(width . 86)(menubar-lines . 20)(tool-bar-line . 0)))
-;;; left most
-;(top . 0)(left . 0)(height . 85)(width . 120)(menubar-lines . 20)(tool-bar-line . 0)))   
-;;; middle a little bit
-;(top . 0)(left . 600)(height . 85)(width . 93)(menubar-lines . 20)(tool-bar-line . 0)))   
+;; Workaround for Emacs (MacOS) bug where you can't set :height too large.
+;; Bug is described here: http://emacswiki.org/emacs/SetFonts#toc14
+;; This workaround is taken from http://www.emacswiki.org/emacs/GlobalTextScaleMode
+;; If it interacts badly with some minor modes, that link offers an explanation.
+;; Also, the modeline will still be the smaller size. The minibuffer will also start out small,
+;; but get bigger if you type into it.
+;; https://gist.github.com/tjg/aacf48cf4bfe692a4d6b
+;;(define-globalized-minor-mode 
+;;  global-text-scale-mode
+;;  text-scale-mode
+;;  (lambda () (text-scale-mode 1)))
+;;(defun global-text-scale-adjust (inc) (interactive)
+;;       (text-scale-set 1)
+;;       (kill-local-variable 'text-scale-mode-amount)
+;;       (setq-default text-scale-mode-amount (+ text-scale-mode-amount inc))
+;;       (global-text-scale-mode 1))
+;;;; Example: you want Monaco 14, but that'd clip your frames' tops?
+;;(set-face-attribute 'default nil :height 100)
+;;(global-text-scale-adjust 1)
 
-;;; HOME display
-;(top . 0)(left . 1750)(height . 100)(width . 152)(menubar-lines . 20)(tool-bar-line . 0))) ;;; right most
-;(top . 0)(left . 1700)(height . 93)(width . 100)(menubar-lines . 20)(tool-bar-line . 0))) ;;; right most
 
-;;; for Java LeetCode Summary
-;(top . 0)(left . 1900)(height . 83)(width . 100)(menubar-lines . 20)(tool-bar-line . 0))) ;;; right most, for lc
+;;设置括号匹配
+(show-paren-mode t)
+(setq show-paren-style 'parentheses)
+
+;;; 设置默认tab宽度为4
+(setq tab-width 4
+      indent-tabs-mode t
+      c-basic-offset 4)
 
 
+;;; 设定行距
+(setq default-line-spacing 1)
+;;; 开启语法高亮
+(global-font-lock-mode 1)
+;;; 高亮显示区域选择
+(transient-mark-mode t)
+;;; 将yes/no替换为y/n
+(fset 'yes-or-no-p 'y-or-n-p)  
+;;; 显示列号
+(column-number-mode t) 
+;;; 闪屏报警
+(setq visible-bell t)
+;;; 锁定行高
+(setq resize-mini-windows nil)
+;;; 递妆mimibuffer
+(setq enable-recursive-minibuffers t)
+
+
+;;; Yasnippet
+(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-0.8.0")
+(require 'yasnippet)
+;;; followed three lines for java-mode snippets
+					;(yas/initialize)
+(yas--initialize)
+;(yas-global-mode 1)
+(yas/load-directory "~/.emacs.d/elpa/yasnippet-0.8.0/snippets")
+(setq yas/trigger-key (kbd "TAB")) 
+
+(setq yas/prompt-functions 
+   '(yas/dropdown-prompt yas/x-prompt yas/completing-prompt yas/ido-prompt yas/no-prompt))
+(yas/global-mode 1)
+(yas-global-mode 1)
+;(yas/minor-mode-on) ; 以minor mode打开，这样才能配合主mode使用
+
+;;; added for java-mode  
+;(define-key yas/minor-mode-map [(tab)] nil)
+;(define-key yas/minor-mode-map (kbd "TAB") nil)
+;(setq yas/trigger-key "")
+;(setq yas/next-field-key "")
+;(setq yas/prev-field-key "")
 
 
 ;;;自动补全
@@ -127,7 +182,6 @@
 
 ;;; for company-mode
 (add-to-list 'load-path "~/.emacs.d/elpa/company-20140928.1830") ;拓展文件(插件)目录
-;(load "/usr/local/emacs23/my_plus/cedet/common/cedet" nil t)
 (autoload 'company-mode "company" nil t)
 (setq company-idle-delay t)
 
@@ -155,10 +209,13 @@
            (setq load-path (cons my-lisp-dir load-path))
            (normal-top-level-add-subdirs-to-load-path)))
 (autoload 'python-mode "python-mode" "Python Mode." t)
+
+(add-to-list 'auto-mode-alist '("\\.java\\'" . java-mode))
+(add-to-list 'auto-mode-alist '("\\.el\\'" . emacs-lisp-mode))
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
-(add-to-list 'interpreter-mode-alist '("python" . python-mode))
+;(add-to-list 'interpreter-mode-alist '("\\.py\\'" . python-mode))
 
 
 ;(setq semanticdb-default-save-directory "~/.emacs.d/semanticdb")
@@ -214,8 +271,17 @@
 )
 
 
-;;; 把org-mode给黑了
-;(setq load-file "~/.emacs.d/org-latex-hack.el")
+;;;; auto indent for ruby-mode                           
+(define-key global-map (kbd "RET") 'newline-and-indent)
+(add-hook 'ruby-mode-hook (lambda () (local-set-key "\r" 'newline-and-indent)))
+(setq ruby-indent-level 4)
+
+;(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+(add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+
+
 ;;; org-mode
 (setq load-path (cons "~/.emacs.d/elpa/org-20140901" load-path))
 (require 'ox)
@@ -226,23 +292,28 @@
 (require 'ox-beamer)
 (require 'ox-md)
 (require 'ox-org)
+(setq org-src-fontify-natively t)  ;;; 要对代码进行语法高亮    ;;; added this one
 
-;(require 'ox-latex)
 (setq org-latex-listings t)
 (add-to-list 'org-latex-packages-alist '("" "listings"))
 (add-to-list 'org-latex-packages-alist '("" "color"))
-;(add-to-list 'org-latex-packages-alist '(\"\" \"minted\"))
-;(setq org-latex-listings 'minted)
+;(add-to-list 'org-latex-packages-alist '(\"\" \"minted\"))  ;;; added this one
 
-(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
-(add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 
-;;;; auto indent for ruby-mode                           
-(define-key global-map (kbd "RET") 'newline-and-indent)
-(add-hook 'ruby-mode-hook (lambda () (local-set-key "\r" 'newline-and-indent)))
-(setq ruby-indent-level 4)
+; (setq org-latex-listings 'minted)  ;;; added this one
+; ;;; add frame and line number for source code
+; (setq org-latex-minted-options
+;       '(("frame" "single")
+; 	("linenos" "true")))
+
+
+
+;; Specify default packages to be included in every tex file, whether pdflatex or xelatex
+(setq org-latex-default-packages-alist
+      '(("" "graphicx" t)
+        ("" "longtable" nil)
+        ("" "float" nil)))
+
 
 (add-hook 'org-mode-hook 'turn-on-font-lock)
 (add-hook 'org-mode-hook 
@@ -267,36 +338,72 @@
 
 
 ;;; 使用一步生成 xelatexPDF
-;;;(setq org-latex-to-pdf-process   ;;; old versions
+;; Use XeLaTeX to export PDF in Org-mode
 (setq org-latex-pdf-process
-      '("xelatex -interaction nonstopmode %f"
-	 "xelatex -interaction nonstopmode %f"))
-;      '("xelatex -interaction nonstopmode %b"
-;	 "xelatex -interaction nonstopmode %b"))
-
-;(setq org-latex-to-pdf-process
-;  '("pdflatex -interaction nonstopmode -output-directory %o %f"
-;    "iconv -f utf-8 -t gbk %b.out > %b.out.bak"
-;    "mv %b.out.bak %b.out"
-;    "gbk2uni %b.out"
-;    "pdflatex -interaction nonstopmode -output-directory %o %f"
-;    "rm %b.out.bak %b.tex"))
-
-;(setq org-latex-pdf-process (quote ("texi2dvi -p -b -V %f")))
+      '("xelatex -interaction nonstopmode -output-directory %o %f"
+        "xelatex -interaction nonstopmode -output-directory %o %f"
+        "xelatex -interaction nonstopmode -output-directory %o %f"))
 
 ;; 默认主模式为 org−mode
 ;(setq default−major−mode 'org−mode)
 
 ;; Make Org use ido−completing−read for most of its completing prompts.
-;(setq org−completion−use−ido t)
+(setq org−completion−use−ido t)
 
 ;; 执行免应答( codeEval code without ) confirm
-;(setq org−confirm−babel−evaluate nil)
+(setq org−confirm−babel−evaluate nil)
+
 
 ;; Auctex
-;(setq TeX−auto−save t)
-;(setq TeX−parse−self t)
+(setq TeX−auto−save t)
+(setq TeX−parse−self t)
 ;(setq−default TeX−master nil)
+
+
+;; set default tex engine to xetex, which has better support for chinese
+(setq TeX-engine 'xetex)
+
+
+;;; adapted to use latexmk 4.20 or higher, don't want this one, set default engine to be XeTeX
+;(defun my-auto-tex-cmd (backend)
+;  "When exporting from .org with latex, automatically run latex, pdflatex, or xelatex as appropriate, using latexmk."
+;  (let ((texcmd)))
+;  ;; default command: oldsyte alex via dvi
+;  (setq texcmd "latexmk -dvi -pdfps -quiet %f")
+;  ;; pdflatex -> .pdf
+;  (if (string-match "LATEX_CMD: pdflatex" (buffer-string))
+;      (setq texcmd "latex -pdf -quiet %f"))
+;  ;; xelatx -> .pdf
+;  (if (string-match "LATEX_CMD: xelatex" (buffer-string))
+;      (setq texcmd "latexmk -pdflatex=xelatex -shell-escape -pdf -quiet %f"))
+;  (setq org-latex-pdf-process (list texcmd)))
+;(add-hook 'org-export-before-parsing-hook 'my-auto-tex-cmd)
+
+
+;; generate pdf rather then dvi
+(setq TeX-PDF-mode t)
+(setq latex-run-command 'xetex)
+(add-hook 'LaTeX-mode-hook 'auto-fill-mode)
+(add-hook 'LaTeX-mode-hook 'flyspell-mode)
+(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+(add-hook 'LaTeX-mode-hook 'turn-on-cdlatex) ; auto enable cdlatex-mode when use auctex
+(setq reftex-plug-into-AUCTeX t)
+
+;; add "-shell-escape" option to LaTeX command, which is needed by packages like minted
+(eval-after-load "tex"
+  '(setcdr (assoc "LaTeX" TeX-command-list)
+           '("%`%l%(mode) -shell-escape%' %t"
+             TeX-run-TeX nil (latex-mode doctex-mode) :help "Run LaTeX")
+           )
+  )
+
+
+;;; for .tex file modifications   ;;; I set this through emacs menu instead
+;(setq tex-compile-commands '(("xelatex %r")))
+;(setq tex-command "xelatex")
+;(setq-default TeX-engine 'xelatex)
+
 
 (add-to-list 'org-latex-classes
              '("article"
@@ -313,6 +420,44 @@
                ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                ("\\paragraph{%s}" . "\\paragraph*{%s}")
                ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+
+;;; \\usepackage[utf8]{inputenc}   ;; I added this one, may need to remove later. can NOT add this one
+;;; \\usepackage{fancyhdr}  ;;; 459
+;;; \\setCJKmainfont{SimSun} SimSun does NOT work
+;;; \\usepackage{xeCJK}   ;;; after xcolor 不再显示中文
+;;; \\setmainfont{STSong} ;;; after fontspec
+(add-to-list 'org-latex-classes
+                  '("cn-article"
+                    "\\documentclass[9pt,b5paper]{article}
+\\usepackage{fontspec}
+\\setmainfont{STSong} 
+\\usepackage{graphicx}
+\\usepackage{xcolor}
+\\usepackage{xeCJK}
+\\setCJKmainfont{STSong}
+\\usepackage{longtable}
+\\usepackage{float}
+\\usepackage{textcomp}
+\\usepackage{geometry}
+\\geometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
+\\usepackage{multirow}
+\\usepackage{multicol}
+\\usepackage{listings}
+\\usepackage{algorithm}
+\\usepackage{algorithmic}
+\\usepackage{latexsym}
+\\usepackage{natbib}
+\\usepackage[xetex,colorlinks=true,CJKbookmarks=true,linkcolor=blue,urlcolor=blue,menucolor=blue]{hyperref}
+[NO-DEFAULT-PACKAGES]
+[NO-PACKAGES]"
+("\\section{%s}" . "\\section*{%s}")
+("\\subsection{%s}" . "\\subsection*{%s}")
+("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+("\\paragraph{%s}" . "\\paragraph*{%s}")
+("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+;\\lstset{language=c++,numbers=left,numberstyle=\tiny,basicstyle=\ttfamily\tiny,tabsize=4,frame=none,escapeinside=``,extendedchars=false}
+
 
 (add-to-list 'org-latex-classes
              '("org-article"
@@ -335,35 +480,7 @@
              ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
 ;\\usepackage[unicode,dvipdfm]{hyperref}  ;; still don't want to use this one, so let it be
-(add-to-list 'org-latex-classes
-                  '("cn-article"
-                    "\\documentclass[9pt,b5paper]{article}
-\\usepackage{graphicx}
-\\usepackage{xcolor}
-\\usepackage{xeCJK}
-\\setCJKmainfont{SimSun}
-\\usepackage{longtable}
-\\usepackage{float}
-\\usepackage{textcomp}
-\\usepackage{geometry}
-\\geometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
-\\usepackage{multirow}
-\\usepackage{multicol}
-\\usepackage{listings}
-\\usepackage{algorithm}
-\\usepackage{algorithmic}
-\\usepackage{latexsym}
-\\usepackage{natbib}
-\\usepackage{fancyhdr}
-\\usepackage[xetex,colorlinks=true,CJKbookmarks=true,linkcolor=blue,urlcolor=blue,menucolor=blue]{hyperref}
-[NO-DEFAULT-PACKAGES]
-[NO-PACKAGES]"
-("\\section{%s}" . "\\section*{%s}")
-("\\subsection{%s}" . "\\subsection*{%s}")
-("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-("\\paragraph{%s}" . "\\paragraph*{%s}")
-("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
-;\\lstset{language=c++,numbers=left,numberstyle=\tiny,basicstyle=\ttfamily\tiny,tabsize=4,frame=none,escapeinside=``,extendedchars=false}
+
 
 ;; #+LaTeX_CLASS: beamer in org files
 (unless (boundp 'org-export-latex-classes)
@@ -377,13 +494,14 @@
 
 ;; want one for book
 ;;; http://wenku.baidu.com/view/3d20436caf1ffc4ffe47ac25.html
+;;; \\setCJKmainfont{SimSun}  SimSun
 (add-to-list 'org-latex-classes
              '("book"
                "\\documentclass[12pt]{book}
 \\usepackage{graphicx}
 \\usepackage{xcolor}
 \\usepackage{xeCJK}
-\\setCJKmainfont{SimSun}
+\\setCJKmainfont{STSong} 
 \\usepackage{longtable}
 \\usepackage{float}
 \\usepackage{textcomp}
@@ -569,6 +687,8 @@ marginparsep=7pt, marginparwidth=.6in}
 
 
 (require 'exec-path-from-shell)
+(add-to-list 'exec-path "/usr/local/texlive/2015/bin/x86_64-darwin/")
+
 ;(require 'expand-region)
 (require 'ido-ubiquitous)
 (require 'undo-tree)
@@ -773,47 +893,42 @@ marginparsep=7pt, marginparwidth=.6in}
 (require 'semantic/analyze/refs)
 (global-ede-mode t)
 
+
+
 ;;; 解压缩放入load-path目录。然后load，require。
-(add-to-list 'load-path "~/.emacs.d/jdee-2.4.1/lisp")
-;(add-to-list 'load-path "~/.emacs.d/elpa/elib-1.0")
-(add-to-list 'load-path "~/.emacs.d/elpa/ecb-20140215.114")
-(require 'font-lock)
-(require 'ecb)
-(require 'ecb-autoloads)
-(require 'jde)
+;(add-to-list 'load-path "~/.emacs.d/jdee-2.4.1/lisp")
+;(add-to-list 'load-path "~/.emacs.d/elpa/ecb-20140215.114")
+;(require 'font-lock)
+;(require 'ecb)
+;(require 'ecb-autoloads)
+;(require 'jde)
 
-;(load-file "~/.emacs.d/elpa/yasnippet-java-mode/java-snippets.el")
-;(push 'jde-mode ac-modes)
-(add-to-list 'ac-modes 'jde-mode)
+;(add-to-list 'ac-modes 'jde-mode)
 (add-to-list 'ac-modes 'java-mode)
-(add-hook 'jde-mode-hook (lambda () (push 'ac-source-semantic ac-sources)))
-;(load-file "~/.emacs.d/ajc-java-complete-my-config-example.el")
-;;my config file
-;(add-to-list 'load-path "~/.emacs.d/auto-java-complete")
-;(require 'ajc-java-complete-config)
-;(add-hook 'java-mode-hook 'ajc-java-complete-mode)
-;(add-hook 'find-file-hook 'ajc-4-jsp-find-file-hook)
+;(add-hook 'jde-mode-hook (lambda () (push 'ac-source-semantic ac-sources)))
+;(autoload 'jde-mode "jde" "JDE mode." t)
+;(setq auto-mode-alist (append '(("\\.java\\'" . java-mode)) auto-mode-alist))
 
-					;(require 'cdb-gud)
-					;(require 'cdb-gud)
-(load-file "~/.emacs.d/lisp/cdb-gud.el")
-(add-hook 'jdb-mode-hook '(lambda ()  
-			    (setq jdb-need-run t)                    
-			    (global-set-key [(f4)]   'gud-kill)  
-			    (global-set-key [(f5)]   'jdb-run-cont)  
-			    (global-set-key [(f7)]   'gud-print)  
-			    (global-set-key [(f8)]   'gud-remove)  
-			    (global-set-key [(f9)]   'gud-break)  
-			    (global-set-key [(f10)]  'gud-step)  
-			    (global-set-key [(f11)]  'gud-next)  
-			    (global-set-key [(f12)]  'gud-finish)  
-			    
-			    (split-window-horizontally)   
-			    (tabbar-backward-group)  
-			    )) 
+;(load-file "~/.emacs.d/lisp/cdb-gud.el")
+;(add-hook 'jdb-mode-hook '(lambda ()  
+;			    (setq jdb-need-run t)                    
+;			    (global-set-key [(f4)]   'gud-kill)  
+;			    (global-set-key [(f5)]   'jdb-run-cont)  
+;			    (global-set-key [(f7)]   'gud-print)  
+;			    (global-set-key [(f8)]   'gud-remove)  
+;			    (global-set-key [(f9)]   'gud-break)  
+;			    (global-set-key [(f10)]  'gud-step)  
+;			    (global-set-key [(f11)]  'gud-next)  
+;			    (global-set-key [(f12)]  'gud-finish)  
+;			    
+;			    (split-window-horizontally)   
+;			    (tabbar-backward-group)  
+;			    )) 
+
 (defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
   "Prevent annoying \"Active processes exist\" query when you quit Emacs."
-  (flet ((process-list ())) ad-do-it))
+;  (flet ((process-list ())) ad-do-it))
+  (cl-flet ((process-list ())) ad-do-it))
 
 (define-key process-menu-mode-map (kbd "C-k") 'joaot/delete-process-at-point)
 (defun joaot/delete-process-at-point ()
@@ -830,7 +945,7 @@ marginparsep=7pt, marginparwidth=.6in}
   "Make lines wrap at window edge and on word boundary, in current buffer."
   (interactive)
   (setq truncate-lines nil)
-  (setq word-wrap t))
+  (setq word-wrap t));;; 1)
 ;(setq soft-wrap-lines t) ;; for chinese
 ;(setq debug-on-error t)
 
@@ -860,6 +975,7 @@ marginparsep=7pt, marginparwidth=.6in}
 (require 'sr-speedbar)
 ;(add-hook 'after-init-hook '(lambda () (sr-speedbar-toggle)));;开启程序即启用
 (global-set-key [(f4)] 'speedbar-get-focus) 
+(speedbar 1)
 
 ;;;; for speedbar
 ;;;; 在site-lisp/subdirs.el中加入 
@@ -889,18 +1005,20 @@ marginparsep=7pt, marginparwidth=.6in}
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(column-number-mode t)
  '(jde-jdk-registry (quote (("1.6.0" . "/usr/lib/jvm/jdk1.8.0_25"))))
  '(jde-sourcepath (quote ("/home/jenny/lc/")))
+ '(show-paren-mode t)
  '(speedbar-default-position (quote left-right))
  '(sr-speedbar-default-width 28)
  '(sr-speedbar-max-width 30)
  '(sr-speedbar-right-side nil))
-(custom-set-faces
+;;(custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+;; )
 
 (fset 'mt
    "\346\342//\C-n\C-a")
