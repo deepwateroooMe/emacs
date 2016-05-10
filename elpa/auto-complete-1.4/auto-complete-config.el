@@ -21,7 +21,10 @@
 
 ;;; Commentary:
 
-;; 
+;;
+
+(defalias 'yas/get-snippet-tables 'yas--get-snippet-tables)
+(defalias 'yas/table-hash 'yas--table-hash)
 
 ;;; Code:
 

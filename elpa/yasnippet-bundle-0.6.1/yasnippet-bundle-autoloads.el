@@ -34,7 +34,7 @@ Key bindings:
 \\{yas/minor-mode-map}
 
 \(fn &optional ARG)" t nil)
-(require 'yasnippet-bundle)
+;(require 'yasnippet-bundle)
 
 ;;;***
 

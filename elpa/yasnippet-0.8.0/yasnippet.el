@@ -862,9 +862,9 @@ Do this unless `yas--dont-activate' is truish "
 ;;
 (defvar yas--font-lock-keywords
   (append '(("^#.*$" . font-lock-comment-face))
-          lisp-font-lock-keywords
-          lisp-font-lock-keywords-1
-          lisp-font-lock-keywords-2
+          lisp-el-font-lock-keywords
+          lisp-el-font-lock-keywords-1
+          lisp-el-font-lock-keywords-2
           '(("$\\([0-9]+\\)"
              (0 font-lock-keyword-face)
              (1 font-lock-string-face t))
@@ -1703,7 +1703,7 @@ Optional USE-JIT use jit-loading of snippets."
         (if use-jit
             (yas--schedule-jit mode-sym form)
             (eval form)))))
-  (when (interactive-p)
+  (when (called-interactively-p)
     (yas--message 3 "Loaded snippets from %s." top-level-dir)))
 
 (defun yas--load-directory-1 (directory mode-sym parents &optional no-compiled-snippets)
@@ -1844,13 +1844,14 @@ foo\"bar\\! -> \"foo\\\"bar\\\\!\""
 This works by stubbing a few functions, then calling
 `yas-load-directory'."
   (interactive "DTop level snippet directory?")
-  (flet ((yas--load-yas-setup-file
+  (cl-flet ((yas--load-yas-setup-file
           (file)
           (let ((elfile (concat file ".el")))
             (when (file-exists-p elfile)
               (insert ";;; .yas-setup.el support file if any:\n;;;\n")
               (insert-file-contents elfile)
-              (end-of-buffer)
+;              (end-of-buffer)
+	      (goto-char (point-max))
               )))
          (yas-define-snippets
           (mode snippets)
@@ -3654,7 +3655,7 @@ Returns the newly created snippet."
 
 This is according to their relative positions in the buffer, and
 has to be called before the $-constructs are deleted."
-  (flet ((yas--fom-set-next-fom (fom nextfom)
+  (cl-flet ((yas--fom-set-next-fom (fom nextfom)
                                (cond ((yas--field-p fom)
                                       (setf (yas--field-next fom) nextfom))
                                      ((yas--mirror-p fom)

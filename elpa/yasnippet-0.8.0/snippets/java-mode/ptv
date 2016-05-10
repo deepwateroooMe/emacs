@@ -1,0 +1,5 @@
+# name: printlnVar
+# key: ptv
+# --
+System.out.println(${1:v});
+$0
