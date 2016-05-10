@@ -4,13 +4,21 @@
 #+author: deepwaterooo
 
 * Updates
-- got java-mode autocomplete & yasnippet & yasnippet-bundle do not work properly as before any more. As an Emacs heavy-user, without Emacs autocomplete && yasnippets working, it is impossible for me to write any codes. Most of the java-mode snippets are based on previous linux system. Have worked on it for two hours, will get this problem solved before processing tetris 3d. org-mode autocomplete funcs as before. 
-- The intial reason was in the moring, tried snippets fo && foo, made another ptv, and then autoindent snippets. It worked perfect in the moring, and I have byte-compiled yasnippet-bundle.el file, then in the afternoon, when I started MatrixState.java (tetris 3d) thinking how am I going to manipulate my matrix, I realized my emacs got messy now. 
+- Luck we have git, so after a reasonable amount of search, I checkout previous versions and got java-mode all back to work full functionally for autocomplete + yasnippet mode. 
+- finished one hour earlier, figure out git. 
+- will work on my interested projects, and do further search next time when I have issues for emacs. And hopefully next time would be my beloved cousin to guide me how to debug emacs at run-time. I look forward to that day. 
+- will work on tetris 3d for some time tonight, and make a commitment before tomorrow morning. 
+- 
+- got java-mode autocomplete & yasnippet & yasnippet-bundle do not work properly as before any more. As an Emacs heavy-user, without Emacs autocomplete && yasnippets working, it is impossible for me to write any codes. Most of the java-mode snippets are based on previous linux system. Have worked on it for two hours, will get this problem solved before processing tetris 3d. org-mode autocomplete funcs as before.
+- The intial reason was in the moring, tried snippets fo && foo, made another ptv, and then autoindent snippets. It worked perfect in the moring, and I have byte-compiled yasnippet-bundle.el file, then in the afternoon, when I started MatrixState.java (tetris 3d) thinking how am I going to manipulate my matrix, I realized my emacs got messy now.
 - I may spend tonight & tomorrow morning (as this evening I may not have clear enough mind to solve my half-understand lisp emacs configuration problems).
-- the source reason could be a wrongly replaced lisp-interactively-p in yasnippet-bundle.el file. but I have to check out, and for this time, I may be challegeed with run-time lisp debugging (Since using mac and installed emacs 24.5.1, I haven't really devote time on it much yet except latex searched once. I will have to learn and debug it through this time then). 
-- Make a Commit for later References (has set latex exec path differently since last). 
+- the source reason could be a wrongly replaced lisp-interactively-p in yasnippet-bundle.el file. but I have to check out, and for this time, I may be challegeed with run-time lisp debugging (Since using mac and installed emacs 24.5.1, I haven’t really devote time on it much yet except latex searched once. I will have to learn and debug it through this time then).
+- Make a Commit for later References (has set latex exec path differently since last).
 - 
 - MacTex (2.5G version) + (Emacs)Acutex +  (Emacs)org-mode for Mac Latex environment, emacs export to pdf supporting Chinese. 
+
+* TODOs
+  - configure and organize emacs better so that it won't take too much time when initializing. 
 
 * References
 - 截图： http://www.kohn.com.cn/wordpress/?p=78 could be configured later. 
@@ -22,4 +30,3 @@
 - http://philip.pixnet.net/blog/post/18367221-%5Bmac%5D%E5%9C%A8mac%E4%B8%8A%E5%AE%89%E8%A3%9Dlatex%E6%95%99%E5%AD%B8
 - https://github.com/wuyao721/51docs/blob/master/it/emacs-org-mode-pdf.org
 - very helpful: http://www.cnblogs.com/rex-tech/p/3483137.html
-- for snippets: https://github.com/capitaomorte/yasnippet/issues/414 										

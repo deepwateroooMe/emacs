@@ -2,18 +2,11 @@
 
 ;; ----- ido-last-directory-list -----
 (
- ("/Users/qunyan/.emacs.d/elpa/" . "yasnippet-bundle-0.6.1/")
- ("/Users/qunyan/.emacs.d/" . "elpa/")
- ("/Users/" . "qunyan/")
- ("/Users/qunyan/" . ".emacs.d/")
  ("/home/heyan/" . ".emacs.d/")
 )
 
 ;; ----- ido-work-directory-list -----
 (
- "/Users/qunyan/.emacs.d/elpa/yasnippet-bundle-0.6.1/"
- "/Users/qunyan/.emacs.d/"
- "/Users/qunyan/"
  "/Users/qunyan/AndroidStudioProjects/plantsZombies/"
  "/Users/qunyan/AndroidStudioProjects/Cube/"
  "/Users/qunyan/Documents/spring16/java/hw3/"
@@ -27,9 +20,6 @@
 
 ;; ----- ido-work-file-list -----
 (
- "yasnippet-bundle-autoloads.el"
- "init.el"
- ".zshrc"
  "readme2.org"
  "readme.log"
  "SecretPhrase.java"
@@ -37,44 +27,13 @@
  "TestInvoice2.java"
  "Invoice2.java"
  "Invoice.java"
+ "Sandwich.java"
+ "Grid.java"
+ "MyFragment.java"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/Users/qunyan/.emacs.d/elpa/yasnippet-bundle-0.6.1/" (22320 58367 0 0) "yasnippet-bundle.elc" "yasnippet-bundle.el" "yasnippet-bundle-pkg.elc" "yasnippet-bundle-pkg.el" "yasnippet-bundle-autoloads.el" "../" "./")
-
- ("/Users/qunyan/.emacs.d/elpa/" (22315 60653 0 0) "yasnips/" "yasnippet-java-mode/" "yasnippet-bundle-0.6.1/" "yasnippet-0.8.0/" "xkcd-readme.txt" "xcscope-20140510.1437/" "xclip-1.3/" "web-mode-8.0.4/" "undo-tree-0.6.5/" "tmp/" "sr-speedbar-20141004.532/" "snippets/" "python-mode-6.1.3/" "popup-0.5/" "pkg-info-0.5/" "org-20140901/" "lex-1.1/" "js2-mode-20140114/" "flymake-0.4.16/" "flycheck-0.20/" "expand-region-20140610.1519/" "epl-0.7/" "emmet-mode-1.0.5/" "ecb-20140215.114/" "dash-2.8.0/" "csharp-mode-20130824.1200/" "company-20140928.1830/" "color-theme-6.6.1/" "cedet-1.1/" "bbdb2erc-readme.txt" "autopair-0.3/" "auto-complete-clang-async-20130526.814/" "auto-complete-clang-20140409.52/" "auto-complete-chunk-20140225.146/" "auto-complete-c-headers-20140325.835/" "auto-complete-1.4/" "auctex-readme.txt" "auctex-11.89.3/" "ascope-20130824.1158/" "archives/" "anything-obsolete-0.1/" "anything-complete-1.86/" "anything-1.287/" "ac-python-20110519/" "../" "./")
-
- ("/Users/qunyan/.emacs.d/" (22320 59053 0 0) "wubi/" "readme.tex" "readme.pdf" "readme.org" "lisp/" "jdee-2.4.1/" "init.el" "ido.last" "gccsense-0.1/" "elpa/" "ede-projects.el" "ecb-upgrade.el" "auto-save-list/" "auto-complete-1.3.1/" "ac-comphist.dat" "abbrev_defs" ".org-id-locations" ".git/" "!Users!qunyan!Tetris!3d!app!src!main!java!dev!ttetris!model!semantic.cache" "!Users!qunyan!opensrc!TriangleRotate!src!com!manyou!opengl!semantic.cache" "!Users!qunyan!opensrc!OpenGLSETest_Example!src!com!tomatozq!opengl!rubik!semantic.cache" "!Users!qunyan!opensrc!gles20texture!glsurfaceviewproject!semantic.cache" "!Users!qunyan!AndroidStudioProjects!tetris!glar3d!app!src!main!java!dev!ttetris!util!semantic.cache" "!Users!qunyan!AndroidStudioProjects!tetris!3d!app!src!main!java!dev!ttetris!util!semantic.cache" "!Users!qunyan!AndroidStudioProjects!tetris!3d!app!src!main!java!dev!ttetris!semantic.cache" "!Users!qunyan!AndroidStudioProjects!tetris!3d!app!src!main!java!dev!ttetris!model!semantic.cache" "!Users!qunyan!AndroidStudioProjects!src_java!tryGLES20!semantic.cache" "!Users!qunyan!AndroidStudioProjects!src_java!triangleRotate!semantic.cache" "!Users!qunyan!AndroidStudioProjects!src_java!myreal2dgame!semantic.cache" "!Users!qunyan!AndroidStudioProjects!src_java!myfirst3dcube!semantic.cache" "!Users!qunyan!AndroidStudioProjects!src_java!cube!semantic.cache" "!Users!qunyan!AndroidStudioProjects!openglesT!app!src!main!java!com!tomatozq!opengl!rubik!acts!semantic.cache" "!Users!qunyan!AndroidStudioProjects!DorkyMonkey!dorkyDeepwateroooWang!app!src!main!java!com!zxing!view!semantic.cache" "!Users!qunyan!AndroidStudioProjects!Cube!app!src!main!java!dev!cube!semantic.cache" "!Users!qunyan!AndroidStudioProjects!andrAppPracOpenSrc!GLSurfaceViewProject!app!src!main!java!com!example!liyuanjing!util!semantic.cache" "!Users!qunyan!AndroidStudioProjects!andrAppPracOpenSrc!GLSurfaceViewProject!app!src!main!java!com!example!liyuanjing!programs!semantic.cache" "!Users!qunyan!AndroidStudioProjects!andrAppPracOpenSrc!GLSurfaceViewProject!app!src!main!java!com!example!liyuanjing!glsurfaceviewproject!semantic.cache" "!Users!qunyan!AndroidStudioProjects!andrAppPracOpenSrc!GLSurfaceViewProject!app!src!main!java!com!example!liyuanjing!data!semantic.cache" "../" "./")
-
- ("/Users/" (22213 31935 0 0) "Shared/" "qunyan/" "Guest/" ".localized" "../" "./")
-
- ("/Users/qunyan/" (22320 59047 0 0) "unity/" "Tetris_ref/" "testChinese.org" "Public/" "Pictures/" "opensrc/" "Music/" "Movies/" "mine/" "Library/" "Downloads/" "Documents/" "Desktop/" "Cube_ref/" "Applications/" "AndroidStudioProjects/" ".zshrc.pre-oh-my-zsh" ".zshrc" ".zsh_history" ".zsh-update" ".zcompdump-qunyan’s MacBook Pro-5.0.8" ".zcompdump" ".wget-hsts" ".wapi/" ".viminfo" ".Trash/" ".subversion/" ".ssh/" ".oh-my-zsh/" ".middle-click.sh" ".local/" ".gradle/" ".gitconfig" ".fonts.conf/" ".emacs.d/" ".DS_Store" ".dbus-keyrings/" ".cups/" ".config/" ".CFUserTextEncoding" ".cache/" ".bashrc" ".bash_sessions/" ".bash_history" ".AndroidStudio2.0/" ".android/" "../" "./")
-
- ("/Users/qunyan/AndroidStudioProjects/tetris/" (22320 54305 0 0) "readme.tex" "readme.pdf" "readme.org" "lame2d/" "glar3d/" "3d/" "2d/" ".gitignore" ".git/" ".DS_Store" "../" "./")
-
- ("/Users/qunyan/AndroidStudioProjects/tetris/3d/" (22319 50323 0 0) "StarRenderer.java" "settings.gradle" "local.properties" "import-summary.txt" "gradlew.bat" "gradlew" "gradle/" "build.gradle" "build/" "app/" "3d.iml" ".idea/" ".gradle/" ".DS_Store" "../" "./")
-
- ("/Users/qunyan/AndroidStudioProjects/tetris/3d/app/" (22320 53302 0 0) "src/" "libs/" "build.gradle" "build/" "app.iml" ".DS_Store" "../" "./")
-
- ("/Users/qunyan/AndroidStudioProjects/tetris/3d/app/src/main/java/dev/ttetris/" (22320 53911 0 0) "util/" "TTetris.java" "StarGLSurfaceView.java" "model/" "Constant.java" "ActivityGame.java" "ActGameover.java" ".DS_Store" "../" "./")
-
- ("/Users/qunyan/AndroidStudioProjects/tetris/3d/app/src/main/java/dev/ttetris/util/" (22320 58977 0 0) "Shader.java" "MatrixState.java" ".DS_Store" "../" "./")
-
- ("/Users/qunyan/AndroidStudioProjects/" (22319 45686 0 0) "tryGLES20/" "triangleRotate/" "tetris3D_gl10/" "tetris/" "src_java/" "plantsZombies/" "DorkyMonkey/" "Cube/" "andrAppPracOpenSrc/" ".DS_Store" "../" "./")
-
- ("/Users/qunyan/AndroidStudioProjects/src_java/" (22319 45276 0 0) "tryGLES20/" "triangleRotate/" "myreal2dgame/" "myfirst3dcube/" "butterflyTexture/" ".DS_Store" "../" "./")
-
- ("/Users/qunyan/AndroidStudioProjects/src_java/tryGLES20/" (22319 46763 0 0) "TryGL.java" "Triangle.java" "Square.java" "MyGLSurfaceView.java" "MyGLRenderer.java" ".#MyGLRenderer.java" "#MyGLRenderer.java#" "../" "./")
-
- ("/Users/qunyan/AndroidStudioProjects/tetris/3d/app/src/" (22314 52287 0 0) "main/" ".DS_Store" "../" "./")
-
- ("/Users/qunyan/AndroidStudioProjects/tetris/3d/app/src/main/" (22314 52287 0 0) "resources/" "res/" "java/" "assets/" "AndroidManifest.xml" ".DS_Store" "../" "./")
-
- ("/Users/qunyan/AndroidStudioProjects/tetris/3d/app/src/main/java/" (22315 45055 0 0) "dev/" ".DS_Store" "../" "./")
-
- ("/Users/qunyan/AndroidStudioProjects/tetris/3d/app/src/main/java/dev/" (22315 45061 0 0) "ttetris/" ".DS_Store" "../" "./")
-
  ("/Users/qunyan/AndroidStudioProjects/plantsZombies/" (22314 57780 0 0) "readme.tex" "readme.pdf" "readme.org" ".git/" "../" "./")
 
  ("/Users/qunyan/AndroidStudioProjects/Cube/" (22314 21467 0 0) "transformation.jpg" "settings.gradle" "Screenshot_2016-04-30-10-39-54.png" "Screenshot_2016-04-30-10-32-08.png" "readme.toc" "readme.tex" "readme.pdf" "readme.out" "readme.org" "readme.log" "readme.aux" "local.properties" "gradlew.bat" "gradlew" "gradle.properties" "gradle/" "Cube.iml" "build.gradle" "build/" "app/" ".idea/" ".gradle/" ".gitignore" ".git/" ".DS_Store" "#readme.tex#" "../" "./")
@@ -92,6 +51,8 @@
  ("/Users/qunyan/AndroidStudioProjects/Cube/app/src/main/java/" (22298 48182 0 0) "dev/" ".DS_Store" "../" "./")
 
  ("/Users/qunyan/AndroidStudioProjects/Cube/app/" (22306 57867 0 0) "src/" "proguard-rules.pro" "libs/" "build.gradle" "build/" "app.iml" ".gitignore" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/" (22303 60259 0 0) "ttetris-2d/" "tetris3D/" "Tetris/" "DorkyMonkey/" "Cube/" "andrAppPracOpenSrc/" ".DS_Store" "../" "./")
 
  ("/Users/qunyan/AndroidStudioProjects/tetris3D/" (22296 30745 0 0) "tetris3D.iml" "settings.gradle" "local.properties" "import-summary.txt" "gradlew.bat" "gradlew" "gradle/" "build.gradle" "build/" "app/" ".idea/" ".gradle/" ".DS_Store" "../" "./")
 

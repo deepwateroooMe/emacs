@@ -3,4 +3,4 @@
 # key: prl
 # --
 System.out.println("${1:a}: " + $1);
-$0
+    $0

@@ -1,15 +1,10 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
 
-(setq default-directory "/Users/qunyan/AndroidStudioProjects/src_java/")
 
-;;; tetris 3d
-;(setq default-directory "/Users/qunyan/AndroidStudioProjects/tetris/3d/app/src/main/java/dev/ttetris/")
-;;; reference GLSurfaceViewProject butterfly texture
-
-; Cube
+(setq default-directory "/Users/qunyan/AndroidStudioProjects/tetris/3d/app/src/main/java/dev/ttetris/")
+;(setq default-directory "/Users/qunyan/AndroidStudioProjects/tetris/3d/")
+;(setq default-directory "/Users/qunyan/Documents/spring16/java/hw2/")
 ;(setq default-directory "/Users/qunyan/AndroidStudioProjects/Cube/app/src/main/java/dev/cube/")
-
-; dorkymonkey
 ;(setq default-directory "/Users/qunyan/AndroidStudioProjects/DorkyMonkey/app/src/main/res/layout/")
 
 
@@ -21,8 +16,6 @@
 ;(global-set-key "\M-\C-r" 'query-replace)
 ;(global-set-key "\M-h" 'help-command)
 
-; for dubugging
-;(setq debug-on-error t)   ;;; troublesome
 
 ;;; autopair 
 (require 'autopair)
@@ -59,8 +52,8 @@
       frame-title-format '(buffer-file-name "%b"))
 
 ;;; 设置字体
-;(defvar font-list '("Microsoft Yahei" "SimHei" "NSimSun" "FangSong" "SimSun"))
-(defvar font-list '("Microsoft Yahei" "SimHei" "NSimSun" "FangSong" "STSong"))
+(defvar font-list '("Microsoft Yahei" "SimHei" "NSimSun" "FangSong" "SimSun"))
+;(defvar font-list '("Microsoft Yahei" "SimHei" "NSimSun" "FangSong" "STSong"))
 
 ;;; fullscreen
 ;(defun fullscreen (&optional f)
@@ -129,7 +122,9 @@
 (add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-0.8.0")
 (require 'yasnippet)
 ;;; followed three lines for java-mode snippets
+					;(yas/initialize)
 (yas--initialize)
+;(yas-global-mode 1)
 (yas/load-directory "~/.emacs.d/elpa/yasnippet-0.8.0/snippets")
 (setq yas/trigger-key (kbd "TAB")) 
 
@@ -139,10 +134,12 @@
 (yas-global-mode 1)
 ;(yas/minor-mode-on) ; 以minor mode打开，这样才能配合主mode使用
 
-
-; for snippets auto-indent, seems do NOT work
-;(yas-indent-line 'auto)
-;(setq yas-also-auto-indent-first-line t)
+;;; added for java-mode  
+;(define-key yas/minor-mode-map [(tab)] nil)
+;(define-key yas/minor-mode-map (kbd "TAB") nil)
+;(setq yas/trigger-key "")
+;(setq yas/next-field-key "")
+;(setq yas/prev-field-key "")
 
 
 ;;;自动补全
@@ -162,22 +159,9 @@
 ;; menu设置为12 lines
 (setq ac-menu-height 12)
 
-
-;; set ac-sources
-(setq-default ac-sources '(ac-source-yasnippet
-			   ac-source-filename
-			   ac-source-words-in-all-buffer
-			   ac-source-functions
-			   ac-source-variables
-			   ac-source-symbols
-			   ac-source-features
-			   ac-source-abbrev
-			   ac-source-words-in-same-mode-buffers
-			   ac-source-dictionary))
-
-
-;;;; for latex-mode       
+;;;; for latex-mode
 (add-to-list 'ac-modes 'latex-mode)
+
 (defun ac-latex-mode-setup()
   (setq ac-sources (append '(ac-source-yasnippet) ac-sources)))
 (add-hook 'latex-mode-hook 'ac-latex-mode-setup)
@@ -244,10 +228,10 @@
 ;;设置semantic cache临时文件的路径，避免到处都是临时文件
 (setq semanticdb-default-save-directory "~/.emacs.d/")
 
-
 ;;;;; yasnippet-bundle.el
-;(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-bundle-0.6.1") ;拓展文件(插件)目录
-;(require 'yasnippet-bundle)     ;;; remove this one for java-mode
+(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-bundle-0.6.1") ;拓展文件(插件)目录
+(require 'yasnippet-bundle)     ;;; remove this one for java-mode
+
 
 ;;;我的C/C++语言编辑策略
 (defun my-c-mode-common-hook()
@@ -702,10 +686,8 @@ marginparsep=7pt, marginparwidth=.6in}
           (lambda () (text-scale-increase 3)))
 
 
-(require 'exec-path-from-shell)
-;(add-to-list 'exec-path "/Library/Tex/texbin/")
+;(require 'exec-path-from-shell)
 ;(add-to-list 'exec-path "/usr/local/texlive/2015/bin/x86_64-darwin/")
-
 (setenv "PATH" (concat (getenv "PATH") ":/Library/Tex/texbin/"))
 (setq exec-path (append exec-path '("/Library/Tex/texbin/")))
 
@@ -865,10 +847,7 @@ marginparsep=7pt, marginparwidth=.6in}
    [?\M-g ?1 return ?\M-p ?\C-q ?\C-j ?\{ delete return ?  ?\{ delete return ?\M-g ?1 return ?\M-p ?\C-q ?\C-j ?  ?  ?  ?  ?\{ delete return ?  ?\{ delete return ?\M-g ?1 return ?\M-p ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?\{ delete return ?  ?\{ delete return ?\M-g ?1 return ?\M-p ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?\{ delete return ?  ?\{ delete return ?\M-g ?1 return ?\M-p ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?\{ delete return ?  ?\{ delete return ?\M-g ?1 return ?\M-p ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?\{ delete return ?  ?\{ delete return])
 
 (fset 'f
-  ;   [?\M-g ?1 return ?\M-x ?f ?o return ?\C-x ?h tab ?\C-  ?\C-  ?\C-v])
-      [?\M-g ?1 return ?\M-x ?f ?o return ?\C-x ?h tab ?\C-  ?\C-  ?\C-v ?\M-g ?1 return ?\M-x ?f ?o return ?\C-x ?h tab ?\C-  ?\C-  ?\C-v])
-(global-set-key (kbd "C-c f") 'f)
-(put 'f 'kmacro t)
+   [?\M-g ?1 return ?\M-x ?f ?o return ?\C-x ?h tab ?\C-  ?\C-  ?\C-v])
 
 (fset 'vi
    "typedef vector<int> vi;")
@@ -930,7 +909,7 @@ marginparsep=7pt, marginparwidth=.6in}
 (add-to-list 'ac-modes 'java-mode)
 ;(add-hook 'jde-mode-hook (lambda () (push 'ac-source-semantic ac-sources)))
 ;(autoload 'jde-mode "jde" "JDE mode." t)
-(add-hook 'java-mode-hook (lambda () (push 'ac-source-semantic ac-sources)))
+;(setq auto-mode-alist (append '(("\\.java\\'" . java-mode)) auto-mode-alist))
 
 ;(load-file "~/.emacs.d/lisp/cdb-gud.el")
 ;(add-hook 'jdb-mode-hook '(lambda ()  
@@ -975,11 +954,11 @@ marginparsep=7pt, marginparwidth=.6in}
 (add-hook 'org-mode-hook
           (lambda ()
             ;; yasnippet                                                        
-            (make-variable-buffer-local 'yas-trigger-key)
-            (org-set-local 'yas-trigger-key [tab])
-            (define-key yas-keymap [tab] 'yas-next-field)  ;;; next-field-group, no
+            (make-variable-buffer-local 'yas/trigger-key)
+            (org-set-local 'yas/trigger-key [tab])
+            (define-key yas/keymap [tab] 'yas/next-field)  ;;; next-field-group, no
             ;; flyspell mode for spell checking everywhere                      
-	    (flyspell-mode 1)                                                 
+	    ;;            (flyspell-mode 1)                                                 
             ;; auto-fill mode on      
 	    (soft-wrap-lines t) ;;; this one works
             (auto-fill-mode 1)))
@@ -1049,9 +1028,3 @@ marginparsep=7pt, marginparwidth=.6in}
    "\346\342\C-h\C-h\C-n\C-a")
 
 (put 'downcase-region 'disabled nil)
-
-					; java-mode one
-(fset 'one
-   [?\C-a ?\C-e ?\C-  ?\C-n ?\C-a ?\M-f ?\M-b ?\C-w ?  ?\C-e ?\C-  ?\C-n ?\C-b ?\C-w ?  ?\C-n ?\C-a ?\C-k])
-(global-set-key (kbd "C-c o") 'one)
-(put 'one 'kmacro t)
