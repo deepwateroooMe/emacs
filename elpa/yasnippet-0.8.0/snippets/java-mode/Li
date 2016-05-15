@@ -1,6 +1,6 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: List
-# key: Li
+# contributor: deepwaterooo
+# name: Log.i
+# key: li
 # --
-List<Integer> ${1:path} = new ArrayList<Integer>();
-$0
+Log.i("${1:i}: ", "" + $1);
+    $0

@@ -7,6 +7,8 @@
 
 ;; ----- ido-work-directory-list -----
 (
+ "/Users/qunyan/AndroidStudioProjects/tetris/"
+ "/Users/qunyan/AndroidStudioProjects/tetris/3d/app/src/main/java/dev/ttetris/util/"
  "/Users/qunyan/AndroidStudioProjects/plantsZombies/"
  "/Users/qunyan/AndroidStudioProjects/Cube/"
  "/Users/qunyan/Documents/spring16/java/hw3/"
@@ -20,6 +22,8 @@
 
 ;; ----- ido-work-file-list -----
 (
+ "readme.org"
+ "MatrixState.java"
  "readme2.org"
  "readme.log"
  "SecretPhrase.java"
@@ -28,31 +32,41 @@
  "Invoice2.java"
  "Invoice.java"
  "Sandwich.java"
- "Grid.java"
- "MyFragment.java"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/Users/qunyan/AndroidStudioProjects/plantsZombies/" (22314 57780 0 0) "readme.tex" "readme.pdf" "readme.org" ".git/" "../" "./")
+ ("/Users/qunyan/AndroidStudioProjects/tetris/" (22327 48110 0 0) "readme.tex" "readme.pdf" "readme.org" "pic/" "lame2d/" "glar3d/" "3d/" "2d/" ".gitignore" ".git/" ".DS_Store" "../" "./")
 
- ("/Users/qunyan/AndroidStudioProjects/Cube/" (22314 21467 0 0) "transformation.jpg" "settings.gradle" "Screenshot_2016-04-30-10-39-54.png" "Screenshot_2016-04-30-10-32-08.png" "readme.toc" "readme.tex" "readme.pdf" "readme.out" "readme.org" "readme.log" "readme.aux" "local.properties" "gradlew.bat" "gradlew" "gradle.properties" "gradle/" "Cube.iml" "build.gradle" "build/" "app/" ".idea/" ".gradle/" ".gitignore" ".git/" ".DS_Store" "#readme.tex#" "../" "./")
+ ("/Users/qunyan/AndroidStudioProjects/Cube/app/src/main/java/dev/cube/" (22318 34384 0 0) "Vector4f.java" "Vector3f.java" "RayPickRenderer.java" "RayPickActivity.java" "Ray.java" "Quat4f.java" "Projector.java" "PickFactory.java" "OnSurfacePickedListener.java" "MyGLSurfaceView.java" "Matrix4f.java" "IBufferFactory.java" "GLImage.java" "Cube.java" "AppConfig.java" ".DS_Store" "../" "./")
 
- ("/Users/qunyan/Documents/spring16/java/hw3/" (22313 23593 0 0) "TestInvoice2.java" "TestInvoice2.class" "TestInvoice.java" "TestInvoice.class" "StudentIDArray.java" "StudentIDArray.class" "SecretPhrase.java" "Purchase.java" "Purchase.class" "PhoneBook.java" "PhoneBook.class" "Invoice2.java" "Invoice2.class" "Invoice.java" "Invoice.class" "CreatePurchase.java" "CreatePurchase.class" "ConvertDate.java" "ConvertDate.class" ".DS_Store" ".#Schedule.java" "../" "./")
+ ("/Users/qunyan/Documents/spring16/java/hw2/" (22313 28004 0 0) "TestSandwich.java" "TestSandwich.class" "TestPainting.java" "TestPainting.class" "Sandwich.java" "Sandwich.class" "Painting.java" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/Documents/spring16/java/hw3/" (22313 26099 0 0) "TestInvoice2.java" "TestInvoice2.class" "TestInvoice.java" "TestInvoice.class" "StudentIDArray.java" "StudentIDArray.class" "SecretPhrase.java" "SecretPhrase.class" "Schedule.java" "Purchase.java" "Purchase.class" "PhoneBook.java" "PhoneBook.class" "Invoice2.java" "Invoice2.class" "Invoice.java" "Invoice.class" "CreatePurchase.java" "CreatePurchase.class" "ConvertDate.java" "ConvertDate.class" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/Cube/" (22318 34567 0 0) "settings.gradle" "Screenshot_2016-05-06-18-08-06.png" "Screenshot_2016-04-30-10-39-54.png" "Screenshot_2016-04-30-10-32-08.png" "readme.tex" "readme.pdf" "readme.org" "local.properties" "gradlew.bat" "gradlew" "gradle.properties" "gradle/" "Cube.iml" "build.gradle" "build/" "app/" "2016_05_06_18_34_23.mp4" "2016_05_06_18_04_56.mp4" ".idea/" ".gradle/" ".gitignore" ".git/" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/plantsZombies/" (22314 58060 0 0) "readme.tex" "readme.pdf" "readme.org" ".git/" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/tetris/3d/app/src/main/java/dev/ttetris/util/" (22324 9543 0 0) "Vector4f.java" "Vector3f.java" "Shader.java" "Ray.java" "Quat4f.java" "Projector.java" "PickFactory.java" "MatrixState.java" "Matrix4f.java" "IBufferFactory.java" "AppConfig.java" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/tetris/3d/app/src/main/java/dev/ttetris/" (22327 27959 0 0) "util/" "TTetris.java" "StarGLSurfaceView.java" "OnSurfacePickedListener.java" "model/" "control/" "ActivityGame.java" "ActGameover.java" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/" (22319 45686 0 0) "tryGLES20/" "triangleRotate/" "tetris3D_gl10/" "tetris/" "src_java/" "plantsZombies/" "DorkyMonkey/" "Cube/" "andrAppPracOpenSrc/" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/src_java/" (22325 58377 0 0) "tryGLES20/" "triangleRotate/" "t3dCamera/" "myreal2dgame/" "myfirst3dcube/" "MousePicker Code.txt" "cube/" "butterflyTexture/" "bomb/" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/src_java/t3dCamera/" (22324 56753 0 0) "Start.java" "Splash.java" "shapes/" "render/" "MainActivity.java" "Instructions.java" "GameStatus.java" "controls/" ".DS_Store" "../" "./")
+
+ ("/Users/qunyan/AndroidStudioProjects/src_java/t3dCamera/controls/" (22324 57080 0 0) "SwipeControls.java" "ButtonControls.java" "../" "./")
 
  ("/Users/qunyan/Documents/spring16/java/" (22313 4720 0 0) "Programming__in_Java_Assignment_3.docx" "MT_Ch1to4_All_WOA.rtf" "Java_Ch5-9_Quiz_All.rtf" "hw3/" "hw2/" "Demo presentation.pptx" "Demo outline.docx" "Ch1_Ch9_Slides.zip" "Ch10_Ch17_Slides.zip" "9781285081953_PPT_ch09.ppt" "9781285081953_PPT_ch08.ppt" "9781285081953_PPT_ch07.ppt" "9781285081953_PPT_ch06.ppt" "9781285081953_PPT_ch05.ppt" "9781285081953_PPT_ch04.ppt" "9781285081953_PPT_ch03.ppt" "9781285081953_PPT_ch02.ppt" "9781285081953_PPT_ch01.ppt" "1285081951_428963.zip" ".DS_Store" "../" "./")
-
- ("/Users/qunyan/Documents/spring16/java/hw2/" (22312 62414 0 0) "TestSandwich.java" "TestPainting.java" "Sandwich.java" "Painting.java" "GreenSandwich.java" ".#TestSandwich.java" "#TestSandwich.java#" "../" "./")
-
- ("/Users/qunyan/AndroidStudioProjects/Cube/app/src/main/java/dev/cube/" (22306 59342 0 0) "Vector4f.java" "Vector3f.java" "RayPickRenderer.java" "RayPickActivity.java" "Ray.java" "Quat4f.java" "Projector.java" "PickFactory.java" "OnSurfacePickedListener.java" "MyGLSurfaceView.java" "Matrix4f.java" "IBufferFactory.java" "Frame.java" "Cube.java" "AppConfig.java" ".DS_Store" "../" "./")
 
  ("/Users/qunyan/AndroidStudioProjects/Cube/app/src/main/java/dev/" (22298 48182 0 0) "cube/" ".DS_Store" "../" "./")
 
  ("/Users/qunyan/AndroidStudioProjects/Cube/app/src/main/java/" (22298 48182 0 0) "dev/" ".DS_Store" "../" "./")
 
  ("/Users/qunyan/AndroidStudioProjects/Cube/app/" (22306 57867 0 0) "src/" "proguard-rules.pro" "libs/" "build.gradle" "build/" "app.iml" ".gitignore" ".DS_Store" "../" "./")
-
- ("/Users/qunyan/AndroidStudioProjects/" (22303 60259 0 0) "ttetris-2d/" "tetris3D/" "Tetris/" "DorkyMonkey/" "Cube/" "andrAppPracOpenSrc/" ".DS_Store" "../" "./")
 
  ("/Users/qunyan/AndroidStudioProjects/tetris3D/" (22296 30745 0 0) "tetris3D.iml" "settings.gradle" "local.properties" "import-summary.txt" "gradlew.bat" "gradlew" "gradle/" "build.gradle" "build/" "app/" ".idea/" ".gradle/" ".DS_Store" "../" "./")
 

@@ -17,14 +17,45 @@
 ;(global-set-key "\M-h" 'help-command)
 
 
-;;; autopair 
+;;; autopair
 (require 'autopair)
 (autopair-global-mode) ;; enable autopair in all buffers
+
+
+;csharp-mode {}} fix:  ;;; old version of c#
+;(add-hook 'csharp-mode
+;	  #'(lambda ()
+;	      (push ?{
+;		    (getf autopair-dont-pair :comment))))
+
+;(setq skeleton-pair t)
+;(global-set-key "(" 'skeleton-pair-insert-maybe)
+;(global-set-key "[" 'skeleton-pair-insert-maybe)
+;(global-set-key "{" 'skeleton-pair-insert-maybe)
 
 
 ;;; autorevert buffer
 (require 'autorevert)
 (global-auto-revert-mode 1)
+
+
+;;;auto indent yank
+(defun yank-and-indent ()
+  "Yank and then indent the newly formed region according to mode."
+  (interactive)
+  (yank)
+  (call-interactively 'indent-region))
+
+
+;;;for csharp-mode ; {} autoindent
+(defun csharp-autoindent ()
+  (when (and (eq major-mode 'csharp-mode) (looking-back "[;]"))
+    (newline-and-indent)))
+(add-hook 'post-self-insert-hook 'csharp-autoindent)
+
+
+;让Emacs在保存时自动清除行尾空格及文件结尾空行
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 
 ;;; basic initialization, (require) non-ELPA packages, etc.
@@ -36,7 +67,7 @@
 ;;; (require) your ELPA packages, configure them as normal
 (require 'package)
 
-(setq truncate-lines nil) ;;;解决编辑中文不会自动折行的问题 
+(setq truncate-lines nil) ;;;解决编辑中文不会自动折行的问题
 
 ;;; delete backward one char
 (global-set-key [(control h)] 'delete-backward-char)
@@ -66,7 +97,7 @@
 
 ;;; set startup frame size & location
 (setq default-frame-alist
-      '((top . 0)(left . 400)(height . 74)(width . 120)(menubar-lines . 20)(tool-bar-line . 0))) 
+      '((top . 0)(left . 360)(height . 74)(width . 120)(menubar-lines . 20)(tool-bar-line . 0)))
 
 
 ;; Workaround for Emacs (MacOS) bug where you can't set :height too large.
@@ -76,7 +107,7 @@
 ;; Also, the modeline will still be the smaller size. The minibuffer will also start out small,
 ;; but get bigger if you type into it.
 ;; https://gist.github.com/tjg/aacf48cf4bfe692a4d6b
-;;(define-globalized-minor-mode 
+;;(define-globalized-minor-mode
 ;;  global-text-scale-mode
 ;;  text-scale-mode
 ;;  (lambda () (text-scale-mode 1)))
@@ -107,9 +138,9 @@
 ;;; 高亮显示区域选择
 (transient-mark-mode t)
 ;;; 将yes/no替换为y/n
-(fset 'yes-or-no-p 'y-or-n-p)  
+(fset 'yes-or-no-p 'y-or-n-p)
 ;;; 显示列号
-(column-number-mode t) 
+(column-number-mode t)
 ;;; 闪屏报警
 (setq visible-bell t)
 ;;; 锁定行高
@@ -117,6 +148,9 @@
 ;;; 递妆mimibuffer
 (setq enable-recursive-minibuffers t)
 
+(show-paren-mode t);显示括号匹配
+(setq show-paren-mode t) ;;打开括号匹配显示模式
+(setq show-paren-style 'parenthesis)
 
 ;;; Yasnippet
 (add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-0.8.0")
@@ -126,15 +160,15 @@
 (yas--initialize)
 ;(yas-global-mode 1)
 (yas/load-directory "~/.emacs.d/elpa/yasnippet-0.8.0/snippets")
-(setq yas/trigger-key (kbd "TAB")) 
+(setq yas/trigger-key (kbd "TAB"))
 
-(setq yas/prompt-functions 
+(setq yas/prompt-functions
    '(yas/dropdown-prompt yas/x-prompt yas/completing-prompt yas/ido-prompt yas/no-prompt))
 (yas/global-mode 1)
 (yas-global-mode 1)
 ;(yas/minor-mode-on) ; 以minor mode打开，这样才能配合主mode使用
 
-;;; added for java-mode  
+;;; added for java-mode
 ;(define-key yas/minor-mode-map [(tab)] nil)
 ;(define-key yas/minor-mode-map (kbd "TAB") nil)
 ;(setq yas/trigger-key "")
@@ -161,6 +195,7 @@
 
 ;;;; for latex-mode
 (add-to-list 'ac-modes 'latex-mode)
+(add-to-list 'ac-modes 'csharp-mode) ;;; csharp-mode
 
 (defun ac-latex-mode-setup()
   (setq ac-sources (append '(ac-source-yasnippet) ac-sources)))
@@ -180,13 +215,17 @@
 (setq default-input-method "chinese-wubi")
 
 
+;;; for csharp-mode
+;(add-to-list 'load-path "~/.emacs.d/elpa/csharp-mode-20130824.1200") ;拓展文件(插件)目录
+(add-to-list 'load-path "~/.emacs.d/elpa/csharp-mode") ;拓展文件(插件)目录
+(require 'csharp-mode)
+;(add-hook 'csharp-mode 'my-c++-mode-hook)
+
+
 ;;; for company-mode
 (add-to-list 'load-path "~/.emacs.d/elpa/company-20140928.1830") ;拓展文件(插件)目录
 (autoload 'company-mode "company" nil t)
 (setq company-idle-delay t)
-
-;;; for csharp-mode
-(add-to-list 'load-path "~/.emacs.d/elpa/csharp-mode-20130824.1200") ;拓展文件(插件)目录
 
 ;;; for python-mode
 ;(add-to-list 'load-path "~/.emacs.d/elpa/python-mode-6.1.3") ;拓展文件(插件)目录
@@ -215,6 +254,7 @@
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
 ;(add-to-list 'interpreter-mode-alist '("\\.py\\'" . python-mode))
 
 
@@ -222,7 +262,7 @@
 ;(semantic-load-enable-code-helpers)
 ;(semantic-load-enable-code-helpers)
 ;;;;semantic的自动补全快捷键
-(global-set-key [(control tab)] 'semantic-ia-complete-symbol-menu) 
+(global-set-key [(control tab)] 'semantic-ia-complete-symbol-menu)
 (setq semanticdb-project-roots
 (list (expand-file-name "/")));semantic检索范围
 ;;设置semantic cache临时文件的路径，避免到处都是临时文件
@@ -271,7 +311,7 @@
 )
 
 
-;;;; auto indent for ruby-mode                           
+;;;; auto indent for ruby-mode
 (define-key global-map (kbd "RET") 'newline-and-indent)
 (add-hook 'ruby-mode-hook (lambda () (local-set-key "\r" 'newline-and-indent)))
 (setq ruby-indent-level 4)
@@ -316,9 +356,9 @@
 
 
 (add-hook 'org-mode-hook 'turn-on-font-lock)
-(add-hook 'org-mode-hook 
+(add-hook 'org-mode-hook
 	  (lambda ()
-	    (setq truncate-lines nil) ;;;解决编辑中文不会自动折行的问题 
+	    (setq truncate-lines nil) ;;;解决编辑中文不会自动折行的问题
 	    (setq org-startup-indented t)
 	    (setq org-startup-truncated nil)
             (setq auto-indent-assign-indent-level 4)))
@@ -431,7 +471,7 @@
                   '("cn-article"
                     "\\documentclass[9pt,b5paper]{article}
 \\usepackage{fontspec}
-\\setmainfont{STSong} 
+\\setmainfont{STSong}
 \\usepackage{graphicx}
 \\usepackage{xcolor}
 \\usepackage{xeCJK}
@@ -501,7 +541,7 @@
 \\usepackage{graphicx}
 \\usepackage{xcolor}
 \\usepackage{xeCJK}
-\\setCJKmainfont{STSong} 
+\\setCJKmainfont{STSong}
 \\usepackage{longtable}
 \\usepackage{float}
 \\usepackage{textcomp}
@@ -556,9 +596,9 @@ linkcolor=blue,
 urlcolor=blue,
 menucolor=blue]{hyperref}
 \\usepackage{fontspec,xunicode,xltxtra}
-\\setmainfont[BoldFont=Adobe Heiti Std]{Adobe Song Std}  
-\\setsansfont[BoldFont=Adobe Heiti Std]{AR PL UKai CN}  
-\\setmonofont{Bitstream Vera Sans Mono}  
+\\setmainfont[BoldFont=Adobe Heiti Std]{Adobe Song Std}
+\\setsansfont[BoldFont=Adobe Heiti Std]{AR PL UKai CN}
+\\setmonofont{Bitstream Vera Sans Mono}
 \\newcommand\\fontnamemono{AR PL UKai CN}%等宽字体
 \\newfontinstance\\MONO{\\fontnamemono}
 \\newcommand{\\mono}[1]{{\\MONO #1}}
@@ -657,10 +697,10 @@ marginparsep=7pt, marginparwidth=.6in}
     ("emacs" .      (:background "white" :foreground "red" :weight bold))
     ("git" .      (:background "white" :foreground "red" :weight bold))
     ("clanguage" .      (:background "white" :foreground "red" :weight bold))
-    ("interview" .      (:foreground "MediumBlue" :weight bold)) 
+    ("interview" .      (:foreground "MediumBlue" :weight bold))
     ("PENDING" .   (:background "LightGreen" :foreground "gray" :weight bold))
     ("TODO" .      (:background "DarkOrange" :foreground "black" :weight bold))
-    ("DONE" .      (:background "azure" :foreground "Darkgreen" :weight bold)) 
+    ("DONE" .      (:background "azure" :foreground "Darkgreen" :weight bold))
     ("ABORT" .     (:background "gray" :foreground "black"))
 ))
 
@@ -848,6 +888,8 @@ marginparsep=7pt, marginparwidth=.6in}
 
 (fset 'f
    [?\M-g ?1 return ?\M-x ?f ?o return ?\C-x ?h tab ?\C-  ?\C-  ?\C-v])
+(global-set-key (kbd "C-c f") 'f)
+(put 'f 'kmacro t)
 
 (fset 'vi
    "typedef vector<int> vi;")
@@ -872,7 +914,7 @@ marginparsep=7pt, marginparwidth=.6in}
 ;(fset 'on
 ;   " ")
 (fset 'fu
-   [?\M-x ?t ?w ?\C-p ?\M-x ?o ?n return ?\C-p ?\M-x ?o ?n]) 
+   [?\M-x ?t ?w ?\C-p ?\M-x ?o ?n return ?\C-p ?\M-x ?o ?n])
 
 ;;; for c++/c
 (fset 'el
@@ -912,20 +954,20 @@ marginparsep=7pt, marginparwidth=.6in}
 ;(setq auto-mode-alist (append '(("\\.java\\'" . java-mode)) auto-mode-alist))
 
 ;(load-file "~/.emacs.d/lisp/cdb-gud.el")
-;(add-hook 'jdb-mode-hook '(lambda ()  
-;			    (setq jdb-need-run t)                    
-;			    (global-set-key [(f4)]   'gud-kill)  
-;			    (global-set-key [(f5)]   'jdb-run-cont)  
-;			    (global-set-key [(f7)]   'gud-print)  
-;			    (global-set-key [(f8)]   'gud-remove)  
-;			    (global-set-key [(f9)]   'gud-break)  
-;			    (global-set-key [(f10)]  'gud-step)  
-;			    (global-set-key [(f11)]  'gud-next)  
-;			    (global-set-key [(f12)]  'gud-finish)  
-;			    
-;			    (split-window-horizontally)   
-;			    (tabbar-backward-group)  
-;			    )) 
+;(add-hook 'jdb-mode-hook '(lambda ()
+;			    (setq jdb-need-run t)
+;			    (global-set-key [(f4)]   'gud-kill)
+;			    (global-set-key [(f5)]   'jdb-run-cont)
+;			    (global-set-key [(f7)]   'gud-print)
+;			    (global-set-key [(f8)]   'gud-remove)
+;			    (global-set-key [(f9)]   'gud-break)
+;			    (global-set-key [(f10)]  'gud-step)
+;			    (global-set-key [(f11)]  'gud-next)
+;			    (global-set-key [(f12)]  'gud-finish)
+;
+;			    (split-window-horizontally)
+;			    (tabbar-backward-group)
+;			    ))
 
 (defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
   "Prevent annoying \"Active processes exist\" query when you quit Emacs."
@@ -953,13 +995,13 @@ marginparsep=7pt, marginparwidth=.6in}
 
 (add-hook 'org-mode-hook
           (lambda ()
-            ;; yasnippet                                                        
+            ;; yasnippet
             (make-variable-buffer-local 'yas/trigger-key)
             (org-set-local 'yas/trigger-key [tab])
             (define-key yas/keymap [tab] 'yas/next-field)  ;;; next-field-group, no
-            ;; flyspell mode for spell checking everywhere                      
-	    ;;            (flyspell-mode 1)                                                 
-            ;; auto-fill mode on      
+            ;; flyspell mode for spell checking everywhere
+	    ;;            (flyspell-mode 1)
+            ;; auto-fill mode on
 	    (soft-wrap-lines t) ;;; this one works
             (auto-fill-mode 1)))
 (add-to-list 'ac-modes 'org-mode)
@@ -976,20 +1018,24 @@ marginparsep=7pt, marginparwidth=.6in}
 (setq load-path (cons "~/.emacs.d/elpa/sr-speedbar-20141004.532" load-path))
 (require 'sr-speedbar)
 ;(add-hook 'after-init-hook '(lambda () (sr-speedbar-toggle)));;开启程序即启用
-(global-set-key [(f4)] 'speedbar-get-focus) 
+(global-set-key [(f4)] 'speedbar-get-focus)
 (speedbar 1)
+;;; ### Speedbar ###
+;;; --- 资源管理器
+(setq speedbar-show-unknown-files t)    ;显示文件
+
 
 ;;;; for speedbar
-;;;; 在site-lisp/subdirs.el中加入 
-;(add-to-list 'load-path "~/.emacs.d/elpa/cedet-1.1/speedbar") 
-;(autoload 'speedbar-frame-mode "speedbar" "Popup a speedbar frame" t) 
-;(autoload 'speedbar-get-focus "speedbar" "Jump to speedbar frame" t) 
-;(global-set-key [(f4)] 'speedbar-get-focus) 
-;;;如果你用Emacs,加入: 
-;(define-key-after (lookup-key global-map [menu-bar tools]) 
-;[speedbar] '("Speedbar" . speedbar-frame-mode) [calendar]) 
+;;;; 在site-lisp/subdirs.el中加入
+;(add-to-list 'load-path "~/.emacs.d/elpa/cedet-1.1/speedbar")
+;(autoload 'speedbar-frame-mode "speedbar" "Popup a speedbar frame" t)
+;(autoload 'speedbar-get-focus "speedbar" "Jump to speedbar frame" t)
+;(global-set-key [(f4)] 'speedbar-get-focus)
+;;;如果你用Emacs,加入:
+;(define-key-after (lookup-key global-map [menu-bar tools])
+;[speedbar] '("Speedbar" . speedbar-frame-mode) [calendar])
 ;(speedbar 1)
-;;;; 设置它的出现位置 
+;;;; 设置它的出现位置
 ;;;设置speedbar默认出现在左侧
 ;(add-hook 'speedbar-mode-hook
 ;        (lambda ()
@@ -1028,3 +1074,8 @@ marginparsep=7pt, marginparwidth=.6in}
    "\346\342\C-h\C-h\C-n\C-a")
 
 (put 'downcase-region 'disabled nil)
+
+(fset 'one
+      [?\C-a ?\C-e ?\C-  ?\C-n ?\C-a ?\M-f ?\M-b ?\C-w ?  ?\C-e ?\C-  ?\C-n ?\C-b ?\C-w ?  ?\C-n ?\C-a ?\C-k])
+(global-set-key (kbd "C-c o") 'one)
+(put 'one 'kmacro t)

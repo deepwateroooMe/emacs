@@ -1,7 +1,7 @@
-% Created 2016-05-09 Mon 21:17
+% Created 2016-05-15 Sun 14:13
 \documentclass[9pt,b5paper]{article}
 \usepackage{fontspec}
-\setmainfont{STSong} 
+\setmainfont{STSong}
 \usepackage{graphicx}
 \usepackage{xcolor}
 \usepackage{xeCJK}
@@ -38,18 +38,13 @@
 \section{Updates}
 \label{sec-1}
 \begin{itemize}
+\item configured csharp-mode (require 'csharp-mode), with several frequently used snippets, minor fixes.
+\item csharp-mode autocomplete \&\& yasnippet work perfectly, except minor inconvenience in autopairing '\{'.
+\item installed new csharp-mode package \textasciitilde{}/.emacs.d/elpa/csharp-mode. old version has a '\{' autopair "\}\}" problem. tried add autopair mode exceptions for csharp-mode pair '\{' but does not work.
+\item installed new csharp-mode, while have to fix \{\} unformatted inconvenience.
+\item Don't understand emacs lisp indent and format \{\} theories (will try to understand later), so far walk around it by adding a csharp-mode snippet of Bracket, but I still have to type a RET after '\{' in order to make it work. Want to skip the one more type of RET, will fix it sometime later when I understand lisp format \{\} later.
+\item
 \item Luck we have git, so after a reasonable amount of search, I checkout previous versions and got java-mode all back to work full functionally for autocomplete + yasnippet mode.
-\item finished one hour earlier, figure out git.
-\item will work on my interested projects, and do further search next time when I have issues for emacs. And hopefully next time would be my beloved cousin to guide me how to debug emacs at run-time. I look forward to that day.
-\item will work on tetris 3d for some time tonight, and make a commitment before tomorrow morning.
-\item 
-\item got java-mode autocomplete \& yasnippet \& yasnippet-bundle do not work properly as before any more. As an Emacs heavy-user, without Emacs autocomplete \&\& yasnippets working, it is impossible for me to write any codes. Most of the java-mode snippets are based on previous linux system. Have worked on it for two hours, will get this problem solved before processing tetris 3d. org-mode autocomplete funcs as before.
-\item The intial reason was in the moring, tried snippets fo \&\& foo, made another ptv, and then autoindent snippets. It worked perfect in the moring, and I have byte-compiled yasnippet-bundle.el file, then in the afternoon, when I started MatrixState.java (tetris 3d) thinking how am I going to manipulate my matrix, I realized my emacs got messy now.
-\item I may spend tonight \& tomorrow morning (as this evening I may not have clear enough mind to solve my half-understand lisp emacs configuration problems).
-\item the source reason could be a wrongly replaced lisp-interactively-p in yasnippet-bundle.el file. but I have to check out, and for this time, I may be challegeed with run-time lisp debugging (Since using mac and installed emacs 24.5.1, I haven’t really devote time on it much yet except latex searched once. I will have to learn and debug it through this time then).
-\item Make a Commit for later References (has set latex exec path differently since last).
-\item 
-\item MacTex (2.5G version) + (Emacs)Acutex +  (Emacs)org-mode for Mac Latex environment, emacs export to pdf supporting Chinese.
 \end{itemize}
 
 \section{TODOs}

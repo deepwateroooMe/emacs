@@ -1,5 +1,5 @@
 # contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: if (...) { ... }
+# name: if
 # key: if
 # --
 if (${1:condition}) {
