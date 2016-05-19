@@ -1,7 +1,7 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
 
-
-(setq default-directory "/Users/qunyan/AndroidStudioProjects/tetris/3d/app/src/main/java/dev/ttetris/")
+(setq default-directory "~/Documents/summer16/programmingLT/hw1_racket/")
+;(setq default-directory "/Users/qunyan/AndroidStudioProjects/tetris/3d/app/src/main/java/dev/ttetris/")
 ;(setq default-directory "/Users/qunyan/AndroidStudioProjects/tetris/3d/")
 ;(setq default-directory "/Users/qunyan/Documents/spring16/java/hw2/")
 ;(setq default-directory "/Users/qunyan/AndroidStudioProjects/Cube/app/src/main/java/dev/cube/")
@@ -55,17 +55,34 @@
 
 
 ;让Emacs在保存时自动清除行尾空格及文件结尾空行
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+;(add-hook 'before-save-hook 'delete-trailing-whitespace)  ;; don't like, especially for org-mode
 
 
 ;;; basic initialization, (require) non-ELPA packages, etc.
 ;(setq package-enable-at-startup nil)
 
-;;; Initialize & Install Package
-;(package-initialize)
-
 ;;; (require) your ELPA packages, configure them as normal
-(require 'package)
+;(when (>= emacs-major-version 24)
+;  (require 'package)
+;  (package-initialize)
+;  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+;  )
+
+
+;for racket mode
+(add-to-list 'load-path "~/.emacs.d/elpa/racket-mode-20160213.904")
+(require 'racket-mode)
+;(setq racket-racket-program "racket")
+;(setq racket-raco-program "raco")
+(add-hook 'racket-mode-hook
+          (lambda ()
+	    (setq-default tab-width 4)
+	    ;(setq tab-width 4 indent-tabs-mode nil)
+					;(define-key racket-mode-map (kbd "C-x C-j") 'racket-run)))
+	    (define-key racket-mode-map (kbd "C-c r") 'racket-run)))
+(add-hook 'racket-mode-hook 'rainbow-delimiters-mode)
+(setq tab-always-indent 'complete)  ;使用tab自动补全
+
 
 (setq truncate-lines nil) ;;;解决编辑中文不会自动折行的问题
 
@@ -196,6 +213,8 @@
 ;;;; for latex-mode
 (add-to-list 'ac-modes 'latex-mode)
 (add-to-list 'ac-modes 'csharp-mode) ;;; csharp-mode
+(add-to-list 'ac-modes 'racket-mode) ;;; csharp-mode
+
 
 (defun ac-latex-mode-setup()
   (setq ac-sources (append '(ac-source-yasnippet) ac-sources)))
@@ -255,6 +274,7 @@
 (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
+(add-to-list 'auto-mode-alist '("\\.rkt\\'" . racket-mode))
 ;(add-to-list 'interpreter-mode-alist '("\\.py\\'" . python-mode))
 
 
@@ -267,6 +287,7 @@
 (list (expand-file-name "/")));semantic检索范围
 ;;设置semantic cache临时文件的路径，避免到处都是临时文件
 (setq semanticdb-default-save-directory "~/.emacs.d/")
+
 
 ;;;;; yasnippet-bundle.el
 (add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-bundle-0.6.1") ;拓展文件(插件)目录
@@ -340,12 +361,11 @@
 ;(add-to-list 'org-latex-packages-alist '(\"\" \"minted\"))  ;;; added this one
 
 
-; (setq org-latex-listings 'minted)  ;;; added this one
-; ;;; add frame and line number for source code
-; (setq org-latex-minted-options
-;       '(("frame" "single")
+;(setq org-latex-listings 'minted)  ;;; added this one
+ ;;; add frame and line number for source code
+;(setq org-latex-minted-options
+;      '(("frame" "single")
 ; 	("linenos" "true")))
-
 
 
 ;; Specify default packages to be included in every tex file, whether pdflatex or xelatex
@@ -726,8 +746,11 @@ marginparsep=7pt, marginparwidth=.6in}
           (lambda () (text-scale-increase 3)))
 
 
-;(require 'exec-path-from-shell)
-;(add-to-list 'exec-path "/usr/local/texlive/2015/bin/x86_64-darwin/")
+; for racket-mode
+(require 'exec-path-from-shell)
+(add-to-list 'exec-path "/Applications/Racket v6.5/bin/")
+
+;for latex
 (setenv "PATH" (concat (getenv "PATH") ":/Library/Tex/texbin/"))
 (setq exec-path (append exec-path '("/Library/Tex/texbin/")))
 

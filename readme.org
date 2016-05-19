@@ -4,13 +4,14 @@
 #+author: deepwaterooo
 
 * Updates
+- Zsh Alt <-- --> works, as well as M-f M-b works by enable Alt key. 
+- configured racket-mode for programming language theory course, together with rainbow-identifier mode.
+-
 - configured csharp-mode (require 'csharp-mode), with several frequently used snippets, minor fixes.
 - csharp-mode autocomplete && yasnippet work perfectly, except minor inconvenience in autopairing '{'.
 - installed new csharp-mode package ~/.emacs.d/elpa/csharp-mode. old version has a '{' autopair "}}" problem. tried add autopair mode exceptions for csharp-mode pair '{' but does not work.
 - installed new csharp-mode, while have to fix {} unformatted inconvenience.
 - Don't understand emacs lisp indent and format {} theories (will try to understand later), so far walk around it by adding a csharp-mode snippet of Bracket, but I still have to type a RET after '{' in order to make it work. Want to skip the one more type of RET, will fix it sometime later when I understand lisp format {} later.
--
-- Luck we have git, so after a reasonable amount of search, I checkout previous versions and got java-mode all back to work full functionally for autocomplete + yasnippet mode.
 
 * TODOs
   - configure and organize emacs better so that it won't take too much time when initializing.
