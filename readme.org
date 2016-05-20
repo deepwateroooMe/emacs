@@ -4,14 +4,15 @@
 #+author: deepwaterooo
 
 * Updates
+- gets csharp-mode {} works for String s = "{}", works for int [] a = {_cursor_} together with autopair global mode; but not for scope yet public void foo() {_cursor_}.
+- 
+- Will work 2 - 3 hours on Racket animation demo tonight for coming Wednesday till feel familiar and confident to be able to finish in time.
+- Will study unity tutorial about 2 hours daily to build some background.
+- Will continue work on tetris 3d tonight to try to finish, work on it tonight, tomorrow, the day after till finish.
+- Will commit and checkin at least one reposotory tonight (either racket, or tetris) before tomorrow morning. 
+- 
 - Zsh Alt <-- --> works, as well as M-f M-b works by enable Alt key. 
 - configured racket-mode for programming language theory course, together with rainbow-identifier mode.
--
-- configured csharp-mode (require 'csharp-mode), with several frequently used snippets, minor fixes.
-- csharp-mode autocomplete && yasnippet work perfectly, except minor inconvenience in autopairing '{'.
-- installed new csharp-mode package ~/.emacs.d/elpa/csharp-mode. old version has a '{' autopair "}}" problem. tried add autopair mode exceptions for csharp-mode pair '{' but does not work.
-- installed new csharp-mode, while have to fix {} unformatted inconvenience.
-- Don't understand emacs lisp indent and format {} theories (will try to understand later), so far walk around it by adding a csharp-mode snippet of Bracket, but I still have to type a RET after '{' in order to make it work. Want to skip the one more type of RET, will fix it sometime later when I understand lisp format {} later.
 
 * TODOs
   - configure and organize emacs better so that it won't take too much time when initializing.
@@ -26,3 +27,11 @@
 - http://philip.pixnet.net/blog/post/18367221-%5Bmac%5D%E5%9C%A8mac%E4%B8%8A%E5%AE%89%E8%A3%9Dlatex%E6%95%99%E5%AD%B8
 - https://github.com/wuyao721/51docs/blob/master/it/emacs-org-mode-pdf.org
 - very helpful: http://www.cnblogs.com/rex-tech/p/3483137.html
+- csharp-mode http://stackoverflow.com/questions/20909396/emacs-csharp-mode-disable-auto-pair-braces
+- http://stackoverflow.com/questions/848624/smart-electric-brace-in-cc-modes-c-java-etc
+- http://stackoverflow.com/questions/2893585/emacs-add-do-while-if-else-as-exceptions-to-electric-c-mode
+- http://www.delorie.com/gnu/docs/emacs/cc-mode_29.html
+- 
+- 
+- 
+

@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: {}
-# key: {}
+# key: {}a
 # binding: direct-keybinding
 # expand-env: ((yas-indent-line 'fixed))
 # type: command
