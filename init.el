@@ -1,22 +1,36 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
 
-(setq default-directory "/Users/qunyan/Documents/summer16/programmingLT/plt-git/hw1_racket/")
-;(setq default-directory "/Users/qunyan/AndroidStudioProjects/tetris/3d/app/src/main/java/dev/ttetris/")
-;(setq default-directory "/Users/qunyan/AndroidStudioProjects/tetris/3d/")
-;(setq default-directory "/Users/qunyan/Documents/spring16/java/hw2/")
-;(setq default-directory "/Users/qunyan/AndroidStudioProjects/Cube/app/src/main/java/dev/cube/")
-;(setq default-directory "/Users/qunyan/AndroidStudioProjects/DorkyMonkey/app/src/main/res/layout/")
+
+;(setq default-directory "/Users/qunyan/unity/dance/Dancing/Assets/animation/scripts/")
+;(setq default-directory "/Users/qunyan/Documents/summer16/programmingLT/plt-git/hw1_racket/")
+;(setq default-directory "/Users/qunyan/AndroidStudioProjects/tetris/")
+(setq default-directory "/Users/qunyan/AndroidStudioProjects/tetris/3d/app/src/main/java/dev/ttetris/")
+
+(setq default-frame-alist
+      '((top . 0)(left . 360)(height . 74)(width . 120)(menubar-lines . 20)(tool-bar-line . 0)))
+; for laptop only
+;      '((top . 0)(left . 360)(height . 48)(width . 120)(menubar-lines . 20)(tool-bar-line . 0)))
 
 
-;;; Meta
-;(global-set-key "\C-SPC" 'set-mark-command)  ;;; doesn't have to set
-(global-set-key "\M-p" 'replace-string)
+;;; fullscreen
+;(defun fullscreen (&optional f)
+;       (interactive)
+;       (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
+;               '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0))
+;       (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
+;               '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0)))
+					;(fullscreen)
+
+;;; meta
+(global-set-key "\M-l" 'replace-string) ; originally lowercase folling word
 (global-set-key "\M-g" 'goto-line)
-;(global-set-key "\M-\C-h" 'backward-kill-word)
-;(global-set-key "\M-\C-r" 'query-replace)
-;(global-set-key "\M-h" 'help-command)
-
 (setq c-brace-imaginary-offset 1)
+
+(setq mac-option-key-is-meta nil)
+(setq mac-command-key-is-meta t)
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier nil)
+
 
 ;;; autopair
 (require 'autopair)
@@ -26,10 +40,32 @@
 (show-paren-mode 1)
 (setq show-paren-style 'parenthesis) ; 只高亮括号
 
-
 ;;; autorevert buffer
 (require 'autorevert)
 (global-auto-revert-mode 1)
+								
+
+;;; 设置字体
+(defvar font-list '("Microsoft Yahei" "SimHei" "NSimSun" "FangSong" "SimSun"))
+;(defvar font-list '("Microsoft Yahei" "SimHei" "NSimSun" "FangSong" "STSong"))
+;让Emacs在保存时自动清除行尾空格及文件结尾空行
+;(add-hook 'before-save-hook 'delete-trailing-whitespace)  ;; don't like, especially for org-mode
+
+
+;;; basic initialization, (require) non-ELPA packages, etc. 
+;(setq package-enable-at-startup nil) ; 8
+;
+;;;; (require) your ELPA packages, configure them as normal
+;(when (>= emacs-major-version 24)
+;  (require 'package)
+;  (package-initialize)
+;  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+;  )
+
+
+; haskell-mode
+(add-to-list 'load-path "~/.emacs.d/elpa/haskell-mode-20160601.1345")
+(require 'haskell-mode)
 
 
 ;;;auto indent yank
@@ -39,38 +75,6 @@
   (yank)
   (call-interactively 'indent-region))
 
-
-;让Emacs在保存时自动清除行尾空格及文件结尾空行
-;(add-hook 'before-save-hook 'delete-trailing-whitespace)  ;; don't like, especially for org-mode
-
-
-;;; basic initialization, (require) non-ELPA packages, etc.
-;(setq package-enable-at-startup nil)
-
-;;; (require) your ELPA packages, configure them as normal
-;(when (>= emacs-major-version 24)
-;  (require 'package)
-;  (package-initialize)
-;  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-;  )
-
-
-;for racket mode
-(add-to-list 'load-path "~/.emacs.d/elpa/racket-mode-20160213.904")
-(require 'racket-mode)
-;(setq racket-racket-program "racket")
-;(setq racket-raco-program "raco")
-(add-hook 'racket-mode-hook
-          (lambda ()
-	    (setq-default tab-width 4)
-	    ;(setq tab-width 4 indent-tabs-mode nil)
-					;(define-key racket-mode-map (kbd "C-x C-j") 'racket-run)))
-	    (define-key racket-mode-map (kbd "C-c r") 'racket-run)))
-(add-hook 'racket-mode-hook 'rainbow-delimiters-mode)
-(setq tab-always-indent 'complete)  ;使用tab自动补全
-
-
-(setq truncate-lines nil) ;;;解决编辑中文不会自动折行的问题
 
 ;;; delete backward one char
 (global-set-key [(control h)] 'delete-backward-char)
@@ -84,23 +88,20 @@
 ;;; frame titile file name
 (setq use-file-dialog nil
       frame-title-format '(buffer-file-name "%b"))
+(setq truncate-lines nil) ;;;解决编辑中文不会自动折行的问题
 
-;;; 设置字体
-(defvar font-list '("Microsoft Yahei" "SimHei" "NSimSun" "FangSong" "SimSun"))
-;(defvar font-list '("Microsoft Yahei" "SimHei" "NSimSun" "FangSong" "STSong"))
 
-;;; fullscreen
-;(defun fullscreen (&optional f)
-;       (interactive)
-;       (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-;               '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0))
-;       (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-;               '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0)))
-					;(fullscreen)
-
-;;; set startup frame size & location
-(setq default-frame-alist
-      '((top . 0)(left . 360)(height . 74)(width . 120)(menubar-lines . 20)(tool-bar-line . 0)))
+;for racket mode
+(add-to-list 'load-path "~/.emacs.d/elpa/racket-mode-20160213.904")
+(require 'racket-mode)
+(add-hook 'racket-mode-hook
+          (lambda ()
+	    (setq-default tab-width 4)
+	    ;(setq tab-width 4 indent-tabs-mode nil)
+					;(define-key racket-mode-map (kbd "C-x C-j") 'racket-run)))
+	    (define-key racket-mode-map (kbd "C-c r") 'racket-run)))
+(add-hook 'racket-mode-hook 'rainbow-delimiters-mode)
+(setq tab-always-indent 'complete)  ;使用tab自动补全
 
 
 ;; Workaround for Emacs (MacOS) bug where you can't set :height too large.
@@ -158,10 +159,7 @@
 ;;; Yasnippet
 (add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-0.8.0")
 (require 'yasnippet)
-;;; followed three lines for java-mode snippets
-					;(yas/initialize)
 (yas--initialize)
-;(yas-global-mode 1)
 (yas/load-directory "~/.emacs.d/elpa/yasnippet-0.8.0/snippets")
 (setq yas/trigger-key (kbd "TAB"))
 
@@ -171,9 +169,9 @@
 (yas-global-mode 1)
 ;(yas/minor-mode-on) ; 以minor mode打开，这样才能配合主mode使用
 
-;;; added for java-mode
-;(define-key yas/minor-mode-map [(tab)] nil)
-;(define-key yas/minor-mode-map (kbd "TAB") nil)
+;;; added for java-mode ; 6
+;;(define-key yas/minor-mode-map [(tab)] nil)
+;;(define-key yas/minor-mode-map (kbd "TAB") nil)
 ;(setq yas/trigger-key "")
 ;(setq yas/next-field-key "")
 ;(setq yas/prev-field-key "")
@@ -193,6 +191,8 @@
 (setq ac-use-menu-map t)
 (define-key ac-menu-map "\C-n" 'ac-next)
 (define-key ac-menu-map "\C-p" 'ac-previous)
+
+
 ;; menu设置为12 lines
 (setq ac-menu-height 12)
 
@@ -218,6 +218,11 @@
     (setup-chinese-gb-environment)
   (set-language-environment 'Chinese-GB))
 (setq default-input-method "chinese-wubi")
+
+;;; key bindings of WuBi
+(global-set-key [?\C-+] 'add-wubi)
+(global-set-key [?\C--] 'del-wubi)
+(global-set-key "\M- " 'toggle-input-method)
 
 
 ;;; for csharp-mode
@@ -267,7 +272,7 @@
    ((c-got-face-at (point) c-literal-faces)
     ;; if so, then just insert a pair of braces and put the point between them
     (self-insert-command 1)
-					(insert "")) ; this one works great now
+    (insert "")) ; this one works great now
 
    ;; was the last non-space an equals sign? or square brackets?  Then it's an initializer.
    ((cheeso-looking-back-at-equals-or-array-init)
@@ -283,8 +288,7 @@
     (self-insert-command 1))  ;;; so far only upto here, don't know how to eval & expand {}
     (insert "") 
     (c-indent-line-or-region)
-
-;	(self-insert-command 1))
+;   (self-insert-command 1))
 ;   (newline-and-indent)
 ;   (eval-last-sexp)
 ;   (newline-and-indent)
@@ -296,7 +300,54 @@
 ;;; for company-mode
 (add-to-list 'load-path "~/.emacs.d/elpa/company-20140928.1830") ;拓展文件(插件)目录
 (autoload 'company-mode "company" nil t)
-(setq company-idle-delay t)
+(require 'company)
+
+;(require 'company-bundled-completions)  ; mass install
+;(require 'company-gtags-completions)
+
+;(setq company-idle-delay t)
+(add-hook 'after-init-hook 'global-company-mode)  
+
+;(dolist (hook (list ; 13 for specific modes company-mode on
+;               'emacs-lisp-mode-hook
+;               'lisp-mode-hook
+;               'lisp-interaction-mode-hook
+;               'scheme-mode-hook
+;               'c-mode-common-hook
+;               'python-mode-hook
+;               'haskell-mode-hook
+;	       'csharp-mode
+;               'asm-mode-hook
+;               'emms-tag-editor-mode-hook
+;               'sh-mode-hook))
+;  (add-hook hook 'company-mode))
+
+(defun sucha-install-company-completion-rules ()
+  "gtags and dabbref completions for C and C++ mode"
+  (company-clear-completion-rules)
+
+;;   (company-install-dabbrev-completions)
+  (company-install-file-name-completions)
+  (eval-after-load 'company-gtags-completions
+    '(company-install-gtags-completions))
+  )
+
+(add-hook
+ 'c-mode-common-hook
+ (lambda ()
+   (company-mode 1)
+   (sucha-install-company-completion-rules) ; refers to the function
+ )
+t)
+
+;; company mode map  ; 7 mute for java-mode
+;(define-key company-mode-map [(tab)] 'indent-for-tab-command) ; tab should NOT be reset to anything else than yas/trigger-key
+(define-key company-mode-map [(meta n)] 'company-cycle)
+(define-key company-mode-map [(meta p)] 'company-cycle-backwards)
+(define-key company-mode-map [(backtab)] 'company-expand-common)
+(define-key company-mode-map [?\C-\)] 'company-expand-anything) ; M-SPC
+(define-key company-mode-map [(meta return)] 'company-expand-common)
+
 
 ;;; for python-mode
 ;(add-to-list 'load-path "~/.emacs.d/elpa/python-mode-6.1.3") ;拓展文件(插件)目录
@@ -372,8 +423,7 @@
   (setq c-macro-cppflags " ")
   (setq c-macro-prompt-flag t)
   (setq hs-minor-mode t)
-  (setq abbrev-mode t)
-)
+  (setq abbrev-mode t))
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
 
 ;;;;我的C++语言编辑策略
@@ -388,6 +438,7 @@
 (define-key global-map (kbd "RET") 'newline-and-indent)
 (add-hook 'ruby-mode-hook (lambda () (local-set-key "\r" 'newline-and-indent)))
 (setq ruby-indent-level 4)
+
 
 ;(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
@@ -407,17 +458,16 @@
 (require 'ox-org)
 (setq org-src-fontify-natively t)  ;;; 要对代码进行语法高亮    ;;; added this one
 
-(setq org-latex-listings t)
-(add-to-list 'org-latex-packages-alist '("" "listings"))
+(setq org-latex-listings t)                           ;;; added this one∫
 (add-to-list 'org-latex-packages-alist '("" "color"))
-;(add-to-list 'org-latex-packages-alist '(\"\" \"minted\"))  ;;; added this one
-
-
-;(setq org-latex-listings 'minted)  ;;; added this one
- ;;; add frame and line number for source code
-;(setq org-latex-minted-options
-;      '(("frame" "single")
-; 	("linenos" "true")))
+(add-to-list 'org-latex-packages-alist '("" "minted")) ; 转化为minted时自动添加minted包     ;;; added this one
+(setq org-latex-listings 'minted)                           ;;; added this one
+;;; add frame and line number for source code
+(setq org-latex-minted-options
+      '(
+;	("frame" "single")
+ 	("linenos" "true")))
+(setq org-export-latex-minted t)                            ;;; added this one
 
 
 ;; Specify default packages to be included in every tex file, whether pdflatex or xelatex
@@ -427,14 +477,50 @@
         ("" "float" nil)))
 
 
+(defun my-org-screenshot (basename)
+  "Take a screenshot into a time stamped unique-named file in the
+same directory as the org-buffer and insert a link to this file."
+  (interactive "sScreenshot name: ")
+  (if (equal basename "")
+      (setq basename (format-time-string "%Y%m%d_%H%M%S")))
+  (setq filename
+        (concat (file-name-directory (buffer-file-name))
+                "pic/"
+                (file-name-base (buffer-file-name))
+                "_"
+                basename
+                ".png"))
+  (call-process "screencapture" nil nil nil "-s" filename)
+  (insert "#+CAPTION:")
+  (insert basename)
+  (insert "\n")
+  (insert (concat "[[" filename "]]"))
+  (org-display-inline-images))
+(global-set-key "\M-s" 'my-org-screenshot)
+
+
 (add-hook 'org-mode-hook 'turn-on-font-lock)
 (add-hook 'org-mode-hook
 	  (lambda ()
 	    (setq truncate-lines nil) ;;;解决编辑中文不会自动折行的问题
 	    (setq org-startup-indented t)
 	    (setq org-startup-truncated nil)
-            (setq auto-indent-assign-indent-level 4)))
+;            (setq auto-indent-assign-indent-level 4)))
+            (setq auto-indent-assign-indent-level 4)
+            ;; yasnippet
+;            (make-variable-buffer-local 'yas/trigger-key)
+;	    (org-set-local 'yas/trigger-key [tab]) ; original 
+;	    (org-set-global 'yas/trigger-key [tab])	    
+;	    (setq yas-insert-snippet)
+;            (define-key yas/keymap [tab] 'yas/next-field)  ;;; next-field-group, no
+            ;; flyspell mode for spell checking everywhere
+	    ;;(flyspell-mode 1)
+            ;; auto-fill mode on
+	    (soft-wrap-lines t) ;;; this one works
+            (auto-fill-mode 1)))
 (setq org-startup-truncated nil)
+(add-to-list 'ac-modes 'org-mode)
+
 
 ;;; folding related
 (load "folding" 'nomessage 'noerror)
@@ -451,10 +537,10 @@
 
 ;;; 使用一步生成 xelatexPDF
 ;; Use XeLaTeX to export PDF in Org-mode
-(setq org-latex-pdf-process
-      '("xelatex -interaction nonstopmode -output-directory %o %f"
-        "xelatex -interaction nonstopmode -output-directory %o %f"
-        "xelatex -interaction nonstopmode -output-directory %o %f"))
+(setq org-latex-pdf-process 
+      '("xelatex -shell-escape -interaction nonstopmode %f"
+        "xelatex -shell-escape -interaction nonstopmode %f"))
+; 上面xelatex命令的参数-shell-escape是为了调用minted包, 如果不加这个参数,代码高亮这部分会出错
 
 ;; 默认主模式为 org−mode
 ;(setq default−major−mode 'org−mode)
@@ -465,6 +551,10 @@
 ;; 执行免应答( codeEval code without ) confirm
 (setq org−confirm−babel−evaluate nil)
 
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((R . t)
+   (latex . t)))
 
 ;; Auctex
 (setq TeX−auto−save t)
@@ -538,28 +628,29 @@
 ;;; \\usepackage{fancyhdr}  ;;; 459
 ;;; \\setCJKmainfont{SimSun} SimSun does NOT work
 ;;; \\usepackage{xeCJK}   ;;; after xcolor 不再显示中文
-;;; \\setmainfont{STSong} ;;; after fontspec
+;;; \\setmainfont{STSong} ;;; after fontspec 这两行的作用是在生成的.tex文件中加入两行引入xeCJK包, 并设置中文的字体,这样在用xelatex编译.tex文件就不会出错
+;\\setmainfont{STSong} ; after fontspec
 (add-to-list 'org-latex-classes
                   '("cn-article"
                     "\\documentclass[9pt,b5paper]{article}
 \\usepackage{fontspec}
-\\setmainfont{STSong}
 \\usepackage{graphicx}
 \\usepackage{xcolor}
 \\usepackage{xeCJK}
-\\setCJKmainfont{STSong}
+\\setCJKmainfont{Songti SC}
 \\usepackage{longtable}
 \\usepackage{float}
 \\usepackage{textcomp}
 \\usepackage{geometry}
-\\geometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
+\\geometry{left=0.1cm,right=0.1cm,top=0.1cm,bottom=0.1cm}
 \\usepackage{multirow}
 \\usepackage{multicol}
-\\usepackage{listings}
 \\usepackage{algorithm}
 \\usepackage{algorithmic}
 \\usepackage{latexsym}
 \\usepackage{natbib}
+\\usepackage{listings}
+\\usepackage{minted}
 \\usepackage[xetex,colorlinks=true,CJKbookmarks=true,linkcolor=blue,urlcolor=blue,menucolor=blue]{hyperref}
 [NO-DEFAULT-PACKAGES]
 [NO-PACKAGES]"
@@ -568,7 +659,6 @@
 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
 ("\\paragraph{%s}" . "\\paragraph*{%s}")
 ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
-;\\lstset{language=c++,numbers=left,numberstyle=\tiny,basicstyle=\ttfamily\tiny,tabsize=4,frame=none,escapeinside=``,extendedchars=false}
 
 
 (add-to-list 'org-latex-classes
@@ -725,10 +815,9 @@ marginparsep=7pt, marginparwidth=.6in}
   \\includegraphics[width=0.75\\textwidth]
 }"))
 
-;(load-file "~/.emacs.d/org-presie.el")
 
-;; 使用Listings宏包格式化源代码(只是把代码框用listing环境框起来，还需要额外的设置)
-(setq org-export-latex-listings t)
+;; 使用Listings宏包格式化源代码(只是把代码框用listing环境框起来，还需要额外的设置) ; 31
+;(setq org-export-latex-listings t)
 ;; Options for \lset command（reference to listing Manual)
 (setq org-export-latex-listings-options
       '(
@@ -798,13 +887,18 @@ marginparsep=7pt, marginparwidth=.6in}
           (lambda () (text-scale-increase 3)))
 
 
-; for racket-mode
-(require 'exec-path-from-shell)
-(add-to-list 'exec-path "/Applications/Racket v6.5/bin/")
-
 ;for latex
 (setenv "PATH" (concat (getenv "PATH") ":/Library/Tex/texbin/"))
 (setq exec-path (append exec-path '("/Library/Tex/texbin/")))
+
+; for racket-mode
+(require 'exec-path-from-shell)
+(add-to-list 'exec-path "/Applications/Racket v6.5/bin/")
+; for pygments
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin/"))
+;(add-to-list 'exec-path "/usr/local/bin/") ; somehow does NOT work this way
+(setq exec-path (append exec-path '("/usr/local/bin/")))
+
 
 ;(require 'expand-region)
 (require 'ido-ubiquitous)
@@ -1023,7 +1117,9 @@ marginparsep=7pt, marginparwidth=.6in}
 ;(require 'jde)
 
 ;(add-to-list 'ac-modes 'jde-mode)
-(add-to-list 'ac-modes 'java-mode)
+;(add-to-list 'ac-modes 'java-mode)
+;(add-hook 'java-mode-hook (lambda () ; this one does not help
+;			    (company-mode 0)))
 ;(add-hook 'jde-mode-hook (lambda () (push 'ac-source-semantic ac-sources)))
 ;(autoload 'jde-mode "jde" "JDE mode." t)
 ;(setq auto-mode-alist (append '(("\\.java\\'" . java-mode)) auto-mode-alist))
@@ -1068,18 +1164,6 @@ marginparsep=7pt, marginparwidth=.6in}
 ;(setq soft-wrap-lines t) ;; for chinese
 ;(setq debug-on-error t)
 
-(add-hook 'org-mode-hook
-          (lambda ()
-            ;; yasnippet
-            (make-variable-buffer-local 'yas/trigger-key)
-            (org-set-local 'yas/trigger-key [tab])
-            (define-key yas/keymap [tab] 'yas/next-field)  ;;; next-field-group, no
-            ;; flyspell mode for spell checking everywhere
-	    ;;            (flyspell-mode 1)
-            ;; auto-fill mode on
-	    (soft-wrap-lines t) ;;; this one works
-            (auto-fill-mode 1)))
-(add-to-list 'ac-modes 'org-mode)
 
 ;;; java macro
 (fset 'lm
@@ -1154,3 +1238,14 @@ marginparsep=7pt, marginparwidth=.6in}
       [?\C-a ?\C-e ?\C-  ?\C-n ?\C-a ?\M-f ?\M-b ?\C-w ?  ?\C-e ?\C-  ?\C-n ?\C-b ?\C-w ?  ?\C-n ?\C-a ?\C-k])
 (global-set-key (kbd "C-c o") 'one)
 (put 'one 'kmacro t)
+
+; for racket comment decomment
+(fset 'lcomment
+   "\C-a;\C-n\C-a")
+(global-set-key (kbd "C-c c") 'lcomment)
+(put 'lcomment 'kmacro t)
+
+(fset 'ldecomment
+   "\C-a\C-d\C-n\C-a")
+(global-set-key (kbd "C-c d") 'ldecomment)
+(put 'ldecomment 'kmacro t)

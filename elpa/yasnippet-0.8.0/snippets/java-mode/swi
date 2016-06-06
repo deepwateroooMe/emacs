@@ -1,0 +1,13 @@
+# name: switch
+# key: swi
+# --
+switch ($1) {
+    case $2:
+        $4
+        break;
+    case $3:
+        $5
+        break;
+    default:
+        $6
+}

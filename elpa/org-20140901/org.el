@@ -12045,11 +12045,12 @@ keywords relative to each registered export back-end."
 
 (defcustom org-structure-template-alist
 ;  '(("s" "#+BEGIN_SRC ?\n\n#+END_SRC" "<src lang=\"?\">\n\n</src>")   ;;; original
+  '(("s" "#+BEGIN_SRC java\n?#+END_SRC" "<src lang=\java>\n?\n</src>")      ;;; java
 ;  '(("s" "#+BEGIN_SRC python\n?#+END_SRC" "<src lang=\python>\n?\n</src>") ;;; python
-;   '(("s" "#+BEGIN_SRC ruby\n?#+END_SRC" "<src lang=\ruby>\n?\n</src>")    ;;; ruby
-  '(("s" "#+BEGIN_SRC php\n?#+END_SRC" "<src lang=\php>\n?\n</src>")      ;;; php
+;  '(("s" "#+BEGIN_SRC ruby\n?#+END_SRC" "<src lang=\ruby>\n?\n</src>")    ;;; ruby
+;  '(("s" "#+BEGIN_SRC php\n?#+END_SRC" "<src lang=\php>\n?\n</src>")      ;;; php
     ("e" "#+BEGIN_EXAMPLE\n?\n#+END_EXAMPLE" "<example>\n?\n</example>")
-;;; added by myself, remember to byte-compile-file
+;;; added by myself, remember to BYTE-COMPILE-FILE
     ("p" "#+CAPTION: \n[[./pic/?.png]]\n")
     ("q" "#+BEGIN_QUOTE\n?\n#+END_QUOTE" "<quote>\n?\n</quote>")
     ("v" "#+BEGIN_VERSE\n?\n#+END_VERSE" "<verse>\n?\n</verse>")
