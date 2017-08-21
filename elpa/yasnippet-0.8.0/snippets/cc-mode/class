@@ -1,9 +1,0 @@
-# name: class ... { ... }
-# key: cla
-# --
-class ${1:Name} {
-public:
-    $1();
-    $0
-    virtual ~$1();
-};

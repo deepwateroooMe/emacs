@@ -1,72 +1,77 @@
+;;; original came from https://github.com/redguardtoo/emacs.d
+
+;; -*- coding: utf-8 -*-
+					;(defvar best-gc-cons-threshold gc-cons-threshold "Best default gc threshold value. Should't be too big.")
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
+(package-initialize)
+
+(defvar best-gc-cons-threshold 4000000 "Best default gc threshold value. Should't be too big.")
+;; don't GC during startup to save time
+(setq gc-cons-threshold most-positive-fixnum)
+
+(setq emacs-load-start-time (current-time))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
 
+;(setq default-directory "~/sp-infra-tools/spanda/tools/")
+(setq default-directory "~/.emacs.d/")
 
-;(setq default-directory "/Users/qunyan/unity/dance/Dancing/Assets/animation/scripts/")
-;(setq default-directory "/Users/qunyan/Documents/summer16/programmingLT/plt-git/hw1_racket/")
-;(setq default-directory "/Users/qunyan/AndroidStudioProjects/tetris/")
-(setq default-directory "/Users/qunyan/AndroidStudioProjects/tetris/3d/app/src/main/java/dev/ttetris/")
+;;----------------------------------------------------------------------------
+;; Which functionality to enable (use t or nil for true and false)
+;;----------------------------------------------------------------------------
+(setq *is-a-mac* (eq system-type 'darwin))
+(setq *win64* (eq system-type 'windows-nt) )
+(setq *cygwin* (eq system-type 'cygwin) )
+(setq *linux* (or (eq system-type 'gnu/linux) (eq system-type 'linux)) )
+(setq *unix* (or *linux* (eq system-type 'usg-unix-v) (eq system-type 'berkeley-unix)) )
+(setq *emacs24* (and (not (featurep 'xemacs)) (or (>= emacs-major-version 24))) )
+(setq *no-memory* (cond
+                   (*is-a-mac*
+                    (< (string-to-number (nth 1 (split-string (shell-command-to-string "sysctl hw.physmem")))) 4000000000))
+                   (*linux* nil)
+                   (t nil)))
+
+(setq *emacs24old*  (or (and (= emacs-major-version 24) (= emacs-minor-version 3))
+                        (not *emacs24*)))
+
+;; *Message* buffer should be writable in 24.4+
+(defadvice switch-to-buffer (after switch-to-buffer-after-hack activate)
+  (if (string= "*Messages*" (buffer-name))
+      (read-only-mode -1)))
+
+
+;;; setup defaults for all modes
 
 (setq default-frame-alist
-      '((top . 0)(left . 360)(height . 74)(width . 120)(menubar-lines . 20)(tool-bar-line . 0)))
-; for laptop only
-;      '((top . 0)(left . 360)(height . 48)(width . 120)(menubar-lines . 20)(tool-bar-line . 0)))
+      '((top . 0)(left . 500)(height . 74)(width . 120)(menubar-lines . 20)(tool-bar-line . 0)))
+					; for laptop only
+					;      '((top . 0)(left . 360)(height . 48)(width . 120)(menubar-lines . 20)(tool-bar-line . 0)))
 
-
-;;; fullscreen
-;(defun fullscreen (&optional f)
-;       (interactive)
-;       (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-;               '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0))
-;       (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-;               '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0)))
-					;(fullscreen)
-
-;;; meta
-(global-set-key "\M-l" 'replace-string) ; originally lowercase folling word
-(global-set-key "\M-g" 'goto-line)
-(setq c-brace-imaginary-offset 1)
-
-(setq mac-option-key-is-meta nil)
-(setq mac-command-key-is-meta t)
-(setq mac-command-modifier 'meta)
-(setq mac-option-modifier nil)
 
 
 ;;; autopair
 (require 'autopair)
 (defun turn-on-autopair-mode () (autopair-mode 1))
 (autopair-global-mode) ;; enable autopair in all buffers
-;(electric-pair-mode 1) ;;; emacs 24
+					;(electric-pair-mode 1) ;;; emacs 24
 (show-paren-mode 1)
 (setq show-paren-style 'parenthesis) ; 只高亮括号
 
 ;;; autorevert buffer
 (require 'autorevert)
 (global-auto-revert-mode 1)
-								
 
 ;;; 设置字体
 (defvar font-list '("Microsoft Yahei" "SimHei" "NSimSun" "FangSong" "SimSun"))
-;(defvar font-list '("Microsoft Yahei" "SimHei" "NSimSun" "FangSong" "STSong"))
-;让Emacs在保存时自动清除行尾空格及文件结尾空行
-;(add-hook 'before-save-hook 'delete-trailing-whitespace)  ;; don't like, especially for org-mode
-
-
-;;; basic initialization, (require) non-ELPA packages, etc. 
-;(setq package-enable-at-startup nil) ; 8
-;
-;;;; (require) your ELPA packages, configure them as normal
-;(when (>= emacs-major-version 24)
-;  (require 'package)
-;  (package-initialize)
-;  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-;  )
-
-
-; haskell-mode
-(add-to-list 'load-path "~/.emacs.d/elpa/haskell-mode-20160601.1345")
-(require 'haskell-mode)
-
+					;(defvar font-list '("Microsoft Yahei" "SimHei" "NSimSun" "FangSong" "STSong"))
+					;让Emacs在保存时自动清除行尾空格及文件结尾空行
+					;(add-hook 'before-save-hook 'delete-trailing-whitespace)  ;; don't like, especially for org-mode
 
 ;;;auto indent yank
 (defun yank-and-indent ()
@@ -80,8 +85,13 @@
 (global-set-key [(control h)] 'delete-backward-char)
 ;;; prohibit auto-generate backup files
 (setq-default make-backup-files nil)
+
 ;;; show line number
+(add-to-list 'load-path "~/.emacs.d/") ;拓展文件(插件)目录
+(autoload 'linum "linum" nil t)
+(require 'linum)
 (global-linum-mode 1)
+
 ;;; no startup buffer
 (setq inhibit-splash-screen t)
 (setq initial-scratch-message "")
@@ -89,41 +99,6 @@
 (setq use-file-dialog nil
       frame-title-format '(buffer-file-name "%b"))
 (setq truncate-lines nil) ;;;解决编辑中文不会自动折行的问题
-
-
-;for racket mode
-(add-to-list 'load-path "~/.emacs.d/elpa/racket-mode-20160213.904")
-(require 'racket-mode)
-(add-hook 'racket-mode-hook
-          (lambda ()
-	    (setq-default tab-width 4)
-	    ;(setq tab-width 4 indent-tabs-mode nil)
-					;(define-key racket-mode-map (kbd "C-x C-j") 'racket-run)))
-	    (define-key racket-mode-map (kbd "C-c r") 'racket-run)))
-(add-hook 'racket-mode-hook 'rainbow-delimiters-mode)
-(setq tab-always-indent 'complete)  ;使用tab自动补全
-
-
-;; Workaround for Emacs (MacOS) bug where you can't set :height too large.
-;; Bug is described here: http://emacswiki.org/emacs/SetFonts#toc14
-;; This workaround is taken from http://www.emacswiki.org/emacs/GlobalTextScaleMode
-;; If it interacts badly with some minor modes, that link offers an explanation.
-;; Also, the modeline will still be the smaller size. The minibuffer will also start out small,
-;; but get bigger if you type into it.
-;; https://gist.github.com/tjg/aacf48cf4bfe692a4d6b
-;;(define-globalized-minor-mode
-;;  global-text-scale-mode
-;;  text-scale-mode
-;;  (lambda () (text-scale-mode 1)))
-;;(defun global-text-scale-adjust (inc) (interactive)
-;;       (text-scale-set 1)
-;;       (kill-local-variable 'text-scale-mode-amount)
-;;       (setq-default text-scale-mode-amount (+ text-scale-mode-amount inc))
-;;       (global-text-scale-mode 1))
-;;;; Example: you want Monaco 14, but that'd clip your frames' tops?
-;;(set-face-attribute 'default nil :height 100)
-;;(global-text-scale-adjust 1)
-
 
 ;;设置括号匹配
 (show-paren-mode t)
@@ -133,7 +108,6 @@
 (setq tab-width 4
       indent-tabs-mode t
       c-basic-offset 4)
-
 
 ;;; 设定行距
 (setq default-line-spacing 1)
@@ -157,25 +131,16 @@
 (setq show-paren-style 'parenthesis)
 
 ;;; Yasnippet
-(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-0.8.0")
-(require 'yasnippet)
-(yas--initialize)
-(yas/load-directory "~/.emacs.d/elpa/yasnippet-0.8.0/snippets")
-(setq yas/trigger-key (kbd "TAB"))
-
-(setq yas/prompt-functions
-   '(yas/dropdown-prompt yas/x-prompt yas/completing-prompt yas/ido-prompt yas/no-prompt))
-(yas/global-mode 1)
-(yas-global-mode 1)
-;(yas/minor-mode-on) ; 以minor mode打开，这样才能配合主mode使用
-
-;;; added for java-mode ; 6
-;;(define-key yas/minor-mode-map [(tab)] nil)
-;;(define-key yas/minor-mode-map (kbd "TAB") nil)
-;(setq yas/trigger-key "")
-;(setq yas/next-field-key "")
-;(setq yas/prev-field-key "")
-
+					;(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-0.8.0")
+					;(require 'yasnippet)
+					;(yas--initialize)
+					;(yas/load-directory "~/.emacs.d/elpa/yasnippet-0.8.0/snippets")
+					;(setq yas/trigger-key (kbd "TAB"))
+					;(setq yas/prompt-functions
+					;   '(yas/dropdown-prompt yas/x-prompt yas/completing-prompt yas/ido-prompt yas/no-prompt))
+					;(yas/global-mode 1)
+					;(yas-global-mode 1)
+;;;;;(yas/minor-mode-on) ; 以minor mode打开，这样才能配合主mode使用
 
 ;;;自动补全
 (add-to-list 'load-path "~/.emacs.d/elpa/auto-complete-1.4")
@@ -199,8 +164,8 @@
 ;;;; for latex-mode
 (add-to-list 'ac-modes 'latex-mode)
 (add-to-list 'ac-modes 'csharp-mode) ;;; csharp-mode
-(add-to-list 'ac-modes 'racket-mode) ;;; csharp-mode
-
+;(add-to-list 'ac-modes 'racket-mode) ;;; csharp-mode
+(add-to-list 'ac-modes 'python-mode) 
 
 (defun ac-latex-mode-setup()
   (setq ac-sources (append '(ac-source-yasnippet) ac-sources)))
@@ -226,8 +191,8 @@
 
 
 ;;; for csharp-mode
-;(add-to-list 'load-path "~/.emacs.d/elpa/csharp-mode-20130824.1200") ;拓展文件(插件)目录
-;(require 'csharp-mode)
+					;(add-to-list 'load-path "~/.emacs.d/elpa/csharp-mode-20130824.1200") ;拓展文件(插件)目录
+					;(require 'csharp-mode)
 
 (add-to-list 'load-path "~/.emacs.d/elpa/csharp-mode") ;拓展文件(插件)目录
 (require 'csharp-mode)
@@ -240,7 +205,7 @@
 	  #'(lambda ()
 	      (local-set-key (kbd "{") 'cheeso-insert-open-brace)))
 
-; work with autopair for {
+					; work with autopair for {
 (defun cheeso-looking-back-at-regexp (regexp)
   "calls backward-sexp and then checks for the regexp.  Returns t if it is found, else nil"
   (interactive "s")
@@ -260,8 +225,8 @@
     (let ((curline (line-number-at-pos))
           (curpoint (point))
           (aftline (progn
-                      (backward-sexp)
-                      (line-number-at-pos))) )
+		     (backward-sexp)
+		     (line-number-at-pos))) )
       (= curline aftline))))  
 
 (defun cheeso-insert-open-brace ()
@@ -285,619 +250,175 @@
    ;; therefore, insert paired braces with an intervening newline, and indent everything appropriately.
    (t
     (if (cheeso-prior-sexp-same-statement-same-line)
-    (self-insert-command 1))  ;;; so far only upto here, don't know how to eval & expand {}
+	(self-insert-command 1))  ;;; so far only upto here, don't know how to eval & expand {}
     (insert "") 
     (c-indent-line-or-region)
-;   (self-insert-command 1))
-;   (newline-and-indent)
-;   (eval-last-sexp)
-;   (newline-and-indent)
-;   (c-indent-line-or-region)
-;   (previous-line)
+					;   (self-insert-command 1))
+					;   (newline-and-indent)
+					;   (eval-last-sexp)
+					;   (newline-and-indent)
+					;   (c-indent-line-or-region)
+					;   (previous-line)
     )))
 
 
-;;; for company-mode
-(add-to-list 'load-path "~/.emacs.d/elpa/company-20140928.1830") ;拓展文件(插件)目录
-(autoload 'company-mode "company" nil t)
-(require 'company)
+;; @see https://www.reddit.com/r/emacs/comments/3kqt6e/2_easy_little_known_steps_to_speed_up_emacs_start/
+;; Normally file-name-handler-alist is set to
+;; (("\\`/[^/]*\\'" . tramp-completion-file-name-handler)
+;; ("\\`/[^/|:][^/|]*:" . tramp-file-name-handler)
+;; ("\\`/:" . file-name-non-special))
+;; Which means on every .el and .elc file loaded during start up, it has to runs those regexps against the filename.
+(let ((file-name-handler-alist nil))
+;  (require 'init-autoload)  ;; too many, commented this one out
+  (require 'init-modeline)
+  ;; (require 'cl-lib) ; it's built in since Emacs v24.3
+  (require 'init-compat)
+  (require 'init-site-lisp) ;; Must come before elpa, as it may provide package.el
+;  (require 'init-utils)
 
-;(require 'company-bundled-completions)  ; mass install
-;(require 'company-gtags-completions)
-
-;(setq company-idle-delay t)
-(add-hook 'after-init-hook 'global-company-mode)  
-
-;(dolist (hook (list ; 13 for specific modes company-mode on
-;               'emacs-lisp-mode-hook
-;               'lisp-mode-hook
-;               'lisp-interaction-mode-hook
-;               'scheme-mode-hook
-;               'c-mode-common-hook
-;               'python-mode-hook
-;               'haskell-mode-hook
-;	       'csharp-mode
-;               'asm-mode-hook
-;               'emms-tag-editor-mode-hook
-;               'sh-mode-hook))
-;  (add-hook hook 'company-mode))
-
-(defun sucha-install-company-completion-rules ()
-  "gtags and dabbref completions for C and C++ mode"
-  (company-clear-completion-rules)
-
-;;   (company-install-dabbrev-completions)
-  (company-install-file-name-completions)
-  (eval-after-load 'company-gtags-completions
-    '(company-install-gtags-completions))
-  )
-
-(add-hook
- 'c-mode-common-hook
- (lambda ()
-   (company-mode 1)
-   (sucha-install-company-completion-rules) ; refers to the function
- )
-t)
-
-;; company mode map  ; 7 mute for java-mode
-;(define-key company-mode-map [(tab)] 'indent-for-tab-command) ; tab should NOT be reset to anything else than yas/trigger-key
-(define-key company-mode-map [(meta n)] 'company-cycle)
-(define-key company-mode-map [(meta p)] 'company-cycle-backwards)
-(define-key company-mode-map [(backtab)] 'company-expand-common)
-(define-key company-mode-map [?\C-\)] 'company-expand-anything) ; M-SPC
-(define-key company-mode-map [(meta return)] 'company-expand-common)
+  ;; Windows configuration, assuming that cygwin is installed at "c:/cygwin"
+  ;; (condition-case nil
+  ;;     (when *win64*
+  ;;       ;; (setq cygwin-mount-cygwin-bin-directory "c:/cygwin/bin")
+  ;;       (setq cygwin-mount-cygwin-bin-directory "c:/cygwin64/bin")
+  ;;       (require 'setup-cygwin)
+  ;;       ;; better to set HOME env in GUI
+  ;;       ;; (setenv "HOME" "c:/cygwin/home/someuser")
+  ;;       )
+  ;;   (error
+  ;;    (message "setup-cygwin failed, continue anyway")
+  ;;    ))
 
 
-;;; for python-mode
-;(add-to-list 'load-path "~/.emacs.d/elpa/python-mode-6.1.3") ;拓展文件(插件)目录
-;;; Indentation for python
-;; Ignoring electric indentation
-;(defun electric-indent-ignore-python (char)
-;  "Ignore electric indentation for python-mode"
-;  (if (equal major-mode 'python-mode)
-;      `no-indent'
-;    nil))
-;(add-hook 'electric-indent-functions 'electric-indent-ignore-python)
-;;; Enter key executes newline-and-indent
-;(defun set-newline-and-indent ()
-;  "Map the return key with `newline-and-indent'"
-;  (local-set-key (kbd "RET") 'newline-and-indent))
-;(add-hook 'python-mode-hook 'set-newline-and-indent)
-(if (fboundp 'normal-top-level-add-subdirs-to-load-path)
-        (let* ((my-lisp-dir "~/.emacs.d/elpa/python-mode-6.1.3")
-              (default-directory my-lisp-dir))
-           (setq load-path (cons my-lisp-dir load-path))
-           (normal-top-level-add-subdirs-to-load-path)))
-(autoload 'python-mode "python-mode" "Python Mode." t)
+  (require 'idle-require)
+  (require 'init-elpa)
+  (require 'init-exec-path) ;; Set up $PATH
+  ;; any file use flyspell should be initialized after init-spelling.el
+  ;; actually, I don't know which major-mode use flyspell.
+  (require 'init-spelling)
+;  (require 'init-gui-frames)
+  (require 'init-ido)
+;  (require 'init-dired)
+;  (require 'init-uniquify)
+;  (require 'init-ibuffer)
+;  (require 'init-ivy)
+  (require 'init-hippie-expand)
+;  (require 'init-windows)
+;  (require 'init-sessions)
+  (require 'init-git)
+;  (require 'init-crontab)
+;  (require 'init-markdown)
+;  (require 'init-erlang)
+;  (require 'init-javascript)
+  (require 'init-org)
+;  (require 'init-css)
+  (require 'init-python-mode)
+;  (require 'init-haskell)
+  (require 'init-ruby-mode)
+  (require 'init-lisp)
+  (require 'init-elisp)
 
-(add-to-list 'auto-mode-alist '("\\.java\\'" . java-mode))
-(add-to-list 'auto-mode-alist '("\\.el\\'" . emacs-lisp-mode))
-(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-(add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
-(add-to-list 'auto-mode-alist '("\\.rkt\\'" . racket-mode))
-;(add-to-list 'interpreter-mode-alist '("\\.py\\'" . python-mode))
+  (require 'init-yasnippet)
+  (setq yas/trigger-key (kbd "TAB"))
+  (setq yas/prompt-functions
+     '(yas/dropdown-prompt yas/x-prompt yas/completing-prompt yas/ido-prompt yas/no-prompt))
+  (yas/global-mode 1)
+  (yas-global-mode 1)
 
+  ;; Use bookmark instead
+  (require 'init-cc-mode)
+  (require 'init-gud)
+  (require 'init-linum-mode)
+;  (require 'init-moz)
+;  (require 'init-gtags)
+  ;; init-evil dependent on init-clipboard
+;  (require 'init-clipboard)
+  ;; use evil mode (vi key binding)
+;  (require 'init-evil)
+;  (require 'init-multiple-cursors)
+;  (require 'init-sh)
+;  (require 'init-ctags)
+;  (require 'init-bbdb)
+;  (require 'init-gnus)
+;  (require 'init-lua-mode)
+;  (require 'init-workgroups2)
+;  (require 'init-term-mode)
+;  (require 'init-web-mode)
+;  (require 'init-slime)
+  (require 'init-company)
+  ;; need statistics of keyfreq asap
+ ; (require 'init-keyfreq)
 
-;(setq semanticdb-default-save-directory "~/.emacs.d/semanticdb")
-;(semantic-load-enable-code-helpers)
-;(semantic-load-enable-code-helpers)
-;;;;semantic的自动补全快捷键
-(global-set-key [(control tab)] 'semantic-ia-complete-symbol-menu)
-(setq semanticdb-project-roots
-(list (expand-file-name "/")));semantic检索范围
-;;设置semantic cache临时文件的路径，避免到处都是临时文件
-(setq semanticdb-default-save-directory "~/.emacs.d/")
+  ;; projectile costs 7% startup time
 
+  ;; misc has some crucial tools I need immediately
+;  (require 'init-misc)
 
-;;;;; yasnippet-bundle.el
-(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-bundle-0.6.1") ;拓展文件(插件)目录
-(require 'yasnippet-bundle)     ;;; remove this one for java-mode
+  ;; comment below line if you want to setup color theme in your own way
+;  (if (or (display-graphic-p) (string-match-p "256color"(getenv "TERM"))) (require 'init-color-theme))
 
+;  (require 'init-emacs-w3m)
+;  (require 'init-hydra)
 
-;;;我的C/C++语言编辑策略
-(defun my-c-mode-common-hook()
-  (setq tab-width 4 indent-tabs-mode nil)
-  ;;; hungry-delete and auto-newline
-  (c-toggle-auto-hungry-state 1)
-  ;;按键定义
-  (define-key c-mode-base-map [(control \`)] 'hs-toggle-hiding)
-  (define-key c-mode-base-map [(return)] 'newline-and-indent)
+  ;;; {{ idle require other stuff
+;  (setq idle-require-idle-delay 2)
+;  (setq idle-require-symbols '(init-perforce
+;                               init-misc-lazy
+;                               init-which-func
+;                               init-fonts
+;                               init-hs-minor-mode
+;                               init-writting
+;                               init-pomodoro
+;                               init-artbollocks-mode
+;                               init-semantic))
+;  (idle-require-mode 1) ;; starts loading
+  ;;;; }}
 
-  ;;这里的f6为调试，即用gdb调试，f7是调用make来对原文件进行编译
-  (define-key c-mode-base-map [(f7)] 'compile)
-  ;;默认情况下，emacs的compile命令是调用make -k，我把它改成了make。
-  ;;你也可以把它改成其他的，比如gcc之类的。改下面的“make”就行了。
-  '(compile-command "make")
+					; I commemted here  
+					;  (when (require 'time-date nil t)
+					;    (message "Emacs startup time: %d seconds."
+					;             (time-to-seconds (time-since emacs-load-start-time))))
 
-  (define-key c-mode-base-map [(meta \`)] 'c-indent-command)
-  ;;  (define-key c-mode-base-map [(tab)] 'hippie-expand)
-  ;;  (define-key c-mode-base-map [(tab)] 'my-indent-or-complete)
-  (define-key c-mode-base-map [(meta ?/)] 'semantic-ia-complete-symbol-menu)
-
-;;预处理设置
-  (setq c-macro-shrink-window-flag t)
-  (setq c-macro-preprocessor "cpp")
-  (setq c-macro-cppflags " ")
-  (setq c-macro-prompt-flag t)
-  (setq hs-minor-mode t)
-  (setq abbrev-mode t))
-(add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
-
-;;;;我的C++语言编辑策略
-(defun my-c++-mode-hook()
-  (setq tab-width 4 indent-tabs-mode nil)
-  (c-set-style "stroustrup")
-;;  (define-key c++-mode-map [f3] 'replace-regexp)
-)
-
-
-;;;; auto indent for ruby-mode
-(define-key global-map (kbd "RET") 'newline-and-indent)
-(add-hook 'ruby-mode-hook (lambda () (local-set-key "\r" 'newline-and-indent)))
-(setq ruby-indent-level 4)
-
-
-;(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
-(add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
-
-
-;;; org-mode
-(setq load-path (cons "~/.emacs.d/elpa/org-20140901" load-path))
-(require 'ox)
-(require 'org-install)
-(require 'ob-ditaa)  ;;; for cn-article
-(require 'ox-publish)
-(require 'ox-latex)
-(require 'ox-beamer)
-(require 'ox-md)
-(require 'ox-org)
-(setq org-src-fontify-natively t)  ;;; 要对代码进行语法高亮    ;;; added this one
-
-(setq org-latex-listings t)                           ;;; added this one∫
-(add-to-list 'org-latex-packages-alist '("" "color"))
-(add-to-list 'org-latex-packages-alist '("" "minted")) ; 转化为minted时自动添加minted包     ;;; added this one
-(setq org-latex-listings 'minted)                           ;;; added this one
-;;; add frame and line number for source code
-(setq org-latex-minted-options
-      '(
-;	("frame" "single")
- 	("linenos" "true")))
-(setq org-export-latex-minted t)                            ;;; added this one
-
-
-;; Specify default packages to be included in every tex file, whether pdflatex or xelatex
-(setq org-latex-default-packages-alist
-      '(("" "graphicx" t)
-        ("" "longtable" nil)
-        ("" "float" nil)))
-
-
-(defun my-org-screenshot (basename)
-  "Take a screenshot into a time stamped unique-named file in the
-same directory as the org-buffer and insert a link to this file."
-  (interactive "sScreenshot name: ")
-  (if (equal basename "")
-      (setq basename (format-time-string "%Y%m%d_%H%M%S")))
-  (setq filename
-        (concat (file-name-directory (buffer-file-name))
-                "pic/"
-                (file-name-base (buffer-file-name))
-                "_"
-                basename
-                ".png"))
-  (call-process "screencapture" nil nil nil "-s" filename)
-  (insert "#+CAPTION:")
-  (insert basename)
-  (insert "\n")
-  (insert (concat "[[" filename "]]"))
-  (org-display-inline-images))
-(global-set-key "\M-s" 'my-org-screenshot)
-
-
-(add-hook 'org-mode-hook 'turn-on-font-lock)
-(add-hook 'org-mode-hook
-	  (lambda ()
-	    (setq truncate-lines nil) ;;;解决编辑中文不会自动折行的问题
-	    (setq org-startup-indented t)
-	    (setq org-startup-truncated nil)
-;            (setq auto-indent-assign-indent-level 4)))
-            (setq auto-indent-assign-indent-level 4)
-            ;; yasnippet
-;            (make-variable-buffer-local 'yas/trigger-key)
-;	    (org-set-local 'yas/trigger-key [tab]) ; original 
-;	    (org-set-global 'yas/trigger-key [tab])	    
-;	    (setq yas-insert-snippet)
-;            (define-key yas/keymap [tab] 'yas/next-field)  ;;; next-field-group, no
-            ;; flyspell mode for spell checking everywhere
-	    ;;(flyspell-mode 1)
-            ;; auto-fill mode on
-	    (soft-wrap-lines t) ;;; this one works
-            (auto-fill-mode 1)))
-(setq org-startup-truncated nil)
-(add-to-list 'ac-modes 'org-mode)
-
-
-;;; folding related
-(load "folding" 'nomessage 'noerror)
-;(folding−mode−add−find−file−hook)
-;(folding−add−to−marks−list 'org−mode "# {{{" "# }}}" nil t)
-;(add−hook 'org−mode−hook 'folding−mode)
-
-;; iimage mode
-(require 'iimage)
-(autoload 'iimage-mode "iimage" "Support Inline image minor mode." t)
-(autoload 'turn-on-iimage-mode "iimage" "Turn on Inline image minor mode." t)
-;;; for resize
-
-
-;;; 使用一步生成 xelatexPDF
-;; Use XeLaTeX to export PDF in Org-mode
-(setq org-latex-pdf-process 
-      '("xelatex -shell-escape -interaction nonstopmode %f"
-        "xelatex -shell-escape -interaction nonstopmode %f"))
-; 上面xelatex命令的参数-shell-escape是为了调用minted包, 如果不加这个参数,代码高亮这部分会出错
-
-;; 默认主模式为 org−mode
-;(setq default−major−mode 'org−mode)
-
-;; Make Org use ido−completing−read for most of its completing prompts.
-(setq org−completion−use−ido t)
-
-;; 执行免应答( codeEval code without ) confirm
-(setq org−confirm−babel−evaluate nil)
-
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((R . t)
-   (latex . t)))
-
-;; Auctex
-(setq TeX−auto−save t)
-(setq TeX−parse−self t)
-;(setq−default TeX−master nil)
-
-
-;; set default tex engine to xetex, which has better support for chinese
-(setq TeX-engine 'xetex)
-
-
-;;; adapted to use latexmk 4.20 or higher, don't want this one, set default engine to be XeTeX
-;(defun my-auto-tex-cmd (backend)
-;  "When exporting from .org with latex, automatically run latex, pdflatex, or xelatex as appropriate, using latexmk."
-;  (let ((texcmd)))
-;  ;; default command: oldsyte alex via dvi
-;  (setq texcmd "latexmk -dvi -pdfps -quiet %f")
-;  ;; pdflatex -> .pdf
-;  (if (string-match "LATEX_CMD: pdflatex" (buffer-string))
-;      (setq texcmd "latex -pdf -quiet %f"))
-;  ;; xelatx -> .pdf
-;  (if (string-match "LATEX_CMD: xelatex" (buffer-string))
-;      (setq texcmd "latexmk -pdflatex=xelatex -shell-escape -pdf -quiet %f"))
-;  (setq org-latex-pdf-process (list texcmd)))
-;(add-hook 'org-export-before-parsing-hook 'my-auto-tex-cmd)
-
-
-;; generate pdf rather then dvi
-(setq TeX-PDF-mode t)
-(setq latex-run-command 'xetex)
-(add-hook 'LaTeX-mode-hook 'auto-fill-mode)
-(add-hook 'LaTeX-mode-hook 'flyspell-mode)
-(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
-(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-(add-hook 'LaTeX-mode-hook 'turn-on-cdlatex) ; auto enable cdlatex-mode when use auctex
-(setq reftex-plug-into-AUCTeX t)
-
-;; add "-shell-escape" option to LaTeX command, which is needed by packages like minted
-(eval-after-load "tex"
-  '(setcdr (assoc "LaTeX" TeX-command-list)
-           '("%`%l%(mode) -shell-escape%' %t"
-             TeX-run-TeX nil (latex-mode doctex-mode) :help "Run LaTeX")
-           )
+  ;; my personal setup, other major-mode specific setup need it.
+  ;; It's dependent on init-site-lisp.el
+;  (if (file-exists-p "~/.custom.el") (load-file "~/.custom.el"))
   )
 
 
-;;; for .tex file modifications   ;;; I set this through emacs menu instead
-;(setq tex-compile-commands '(("xelatex %r")))
-;(setq tex-command "xelatex")
-;(setq-default TeX-engine 'xelatex)
+;;; meta
+(global-set-key "\M-l" 'replace-string) ; originally lowercase folling word
+(global-set-key "\M-g" 'goto-line)
+(setq c-brace-imaginary-offset 1)
+
+          ;(setq mac-option-key-is-meta nil)
+          ;(setq mac-command-key-is-meta t)
+          ;(setq mac-command-modifier 'meta)
+          ;(setq mac-option-modifier nil)
 
 
-(add-to-list 'org-latex-classes
-             '("article"
-               "\\documentclass{article}    ;;; use the article class by default
-                 [NO-DEFAULT-PACKAGES]
-                 [EXTRA]"
-               ("\\section{%s}" . "\\section*{%s}")))   ;;; map org headlines and lists to latex sections
-
-(add-to-list 'org-latex-classes
-             '("article"
-               "\\documentclass{article}"
-               ("\\section{%s}" . "\\section*{%s}")
-               ("\\subsection{%s}" . "\\subsection*{%s}")
-               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-               ("\\paragraph{%s}" . "\\paragraph*{%s}")
-               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+;(define-key global-map "\C-n" 'next-line)
+;(define-key global-map "\C-p" 'previous-line)
+;(define-key global-map "\C-f" 'forward-char)
+;(define-key global-map "\C-b" 'backward-char)
+;(define-key global-map "\M-f" 'forward-word)
+;(define-key global-map "\M-b" 'backward-word)
 
 
-;;; \\usepackage[utf8]{inputenc}   ;; I added this one, may need to remove later. can NOT add this one
-;;; \\usepackage{fancyhdr}  ;;; 459
-;;; \\setCJKmainfont{SimSun} SimSun does NOT work
-;;; \\usepackage{xeCJK}   ;;; after xcolor 不再显示中文
-;;; \\setmainfont{STSong} ;;; after fontspec 这两行的作用是在生成的.tex文件中加入两行引入xeCJK包, 并设置中文的字体,这样在用xelatex编译.tex文件就不会出错
-;\\setmainfont{STSong} ; after fontspec
-(add-to-list 'org-latex-classes
-                  '("cn-article"
-                    "\\documentclass[9pt,b5paper]{article}
-\\usepackage{fontspec}
-\\usepackage{graphicx}
-\\usepackage{xcolor}
-\\usepackage{xeCJK}
-\\setCJKmainfont{Songti SC}
-\\usepackage{longtable}
-\\usepackage{float}
-\\usepackage{textcomp}
-\\usepackage{geometry}
-\\geometry{left=0.1cm,right=0.1cm,top=0.1cm,bottom=0.1cm}
-\\usepackage{multirow}
-\\usepackage{multicol}
-\\usepackage{algorithm}
-\\usepackage{algorithmic}
-\\usepackage{latexsym}
-\\usepackage{natbib}
-\\usepackage{listings}
-\\usepackage{minted}
-\\usepackage[xetex,colorlinks=true,CJKbookmarks=true,linkcolor=blue,urlcolor=blue,menucolor=blue]{hyperref}
-[NO-DEFAULT-PACKAGES]
-[NO-PACKAGES]"
-("\\section{%s}" . "\\section*{%s}")
-("\\subsection{%s}" . "\\subsection*{%s}")
-("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-("\\paragraph{%s}" . "\\paragraph*{%s}")
-("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+;;;auto indent yank
+(defun yank-and-indent ()
+  "Yank and then indent the newly formed region according to mode."
+  (interactive)
+  (yank)
+  (call-interactively 'indent-region))
 
 
-(add-to-list 'org-latex-classes
-             '("org-article"
-               "\\documentclass{org-article}
-                 [NO-DEFAULT-PACKAGES]
-                 [EXTRA]"
-               ("\\section{%s}" . "\\section*{%s}")
-               ("\\subsection{%s}" . "\\subsection*{%s}")
-               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-               ("\\paragraph{%s}" . "\\paragraph*{%s}")
-               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
-
-(add-to-list 'org-latex-classes
-          '("koma-article"
-             "\\documentclass{scrartcl}"
-             ("\\section{%s}" . "\\section*{%s}")
-             ("\\subsection{%s}" . "\\subsection*{%s}")
-             ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-             ("\\paragraph{%s}" . "\\paragraph*{%s}")
-             ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
-
-;\\usepackage[unicode,dvipdfm]{hyperref}  ;; still don't want to use this one, so let it be
+;;; delete backward one char
+(global-set-key [(control h)] 'delete-backward-char)
+;;; prohibit auto-generate backup files
+(setq-default make-backup-files nil)
 
 
-;; #+LaTeX_CLASS: beamer in org files
-(unless (boundp 'org-export-latex-classes)
-  (setq org-export-latex-classes nil))
-(add-to-list 'org-latex-classes
-             '("beamer"
-               "\\documentclass\[presentation\]\{beamer\}"
-               ("\\section\{%s\}" . "\\section*\{%s\}")
-               ("\\subsection\{%s\}" . "\\subsection*\{%s\}")
-               ("\\subsubsection\{%s\}" . "\\subsubsection*\{%s\}")))
-
-;; want one for book
-;;; http://wenku.baidu.com/view/3d20436caf1ffc4ffe47ac25.html
-;;; \\setCJKmainfont{SimSun}  SimSun
-(add-to-list 'org-latex-classes
-             '("book"
-               "\\documentclass[12pt]{book}
-\\usepackage{graphicx}
-\\usepackage{xcolor}
-\\usepackage{xeCJK}
-\\setCJKmainfont{STSong}
-\\usepackage{longtable}
-\\usepackage{float}
-\\usepackage{textcomp}
-\\usepackage{geometry}
-\\geometry{left=1.5cm,right=1.5cm,top=2cm,bottom=1.5cm}
-\\usepackage{multirow}
-\\usepackage{multicol}
-\\usepackage{listings}
-\\usepackage{algorithm}
-\\usepackage{algorithmic}
-\\usepackage{latexsym}
-\\usepackage{natbib}
-\\usepackage{fancyhdr}
-\\usepackage[xetex,colorlinks=true,CJKbookmarks=true,linkcolor=blue,urlcolor=blue,menucolor=blue]{hyperref}
-[NO-DEFAULT-PACKAGES]
-[NO-PACKAGES]"
-;               ("\\part{%s}" . "\\part*{%s}")
-               ("\\chapter{%s}" . "\\chapter*{%s}")
-               ("\\section{%s}" . "\\section*{%s}")
-               ("\\subsection{%s}" . "\\subsection*{%s}")
-               ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))
-             )
-
-(add-to-list 'org-latex-classes
-             '("cjk-article"
-               "\\documentclass[10pt,b5paper]{article}
-\\usepackage{graphicx}
-\\usepackage{xcolor}
-\\usepackage{xeCJK}
-\\usepackage{lmodern}
-\\usepackage{verbatim}
-\\usepackage{fixltx2e}
-\\usepackage{longtable}
-\\usepackage{float}
-\\usepackage{tikz}
-\\usepackage{wrapfig}
-\\usepackage{soul}
-\\usepackage{textcomp}
-\\usepackage{geometry}
-\\geometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
-\\usepackage{listings}
-\\lstset[language=c++,numbers=left,numberstyle=\tiny,basicstyle=\ttfamily\small,tabsize=4,frame=none,escapeinside=``,extendedchars=false]{listings}
-\\usepackage{algorithm}
-\\usepackage{algorithmic}
-\\usepackage{marvosym}
-\\usepackage{wasysym}
-\\usepackage{latexsym}
-\\usepackage{natbib}
-\\usepackage{fancyhdr}
-\\usepackage[xetex,colorlinks=true,CJKbookmarks=true,
-linkcolor=blue,
-urlcolor=blue,
-menucolor=blue]{hyperref}
-\\usepackage{fontspec,xunicode,xltxtra}
-\\setmainfont[BoldFont=Adobe Heiti Std]{Adobe Song Std}
-\\setsansfont[BoldFont=Adobe Heiti Std]{AR PL UKai CN}
-\\setmonofont{Bitstream Vera Sans Mono}
-\\newcommand\\fontnamemono{AR PL UKai CN}%等宽字体
-\\newfontinstance\\MONO{\\fontnamemono}
-\\newcommand{\\mono}[1]{{\\MONO #1}}
-\\setCJKmainfont[Scale=0.9]{Adobe Heiti Std}%中文字体
-\\setCJKmonofont[Scale=0.9]{Adobe Heiti Std}
-\\hypersetup{unicode=true}
-\\geometry{a4paper, textwidth=6.5in, textheight=10in,
-marginparsep=7pt, marginparwidth=.6in}
-\\definecolor{foreground}{RGB}{220,220,204}%浅灰
-\\definecolor{background}{RGB}{62,62,62}%浅黑
-\\definecolor{preprocess}{RGB}{250,187,249}%浅紫
-\\definecolor{var}{RGB}{239,224,174}%浅肉色
-\\definecolor{string}{RGB}{154,150,230}%浅紫色
-\\definecolor{type}{RGB}{225,225,116}%浅黄
-\\definecolor{function}{RGB}{140,206,211}%浅天蓝
-\\definecolor{keyword}{RGB}{239,224,174}%浅肉色
-\\definecolor{comment}{RGB}{180,98,4}%深褐色
-
-\\definecolor{comdil}{RGB}{111,128,111}%深灰
-\\definecolor{constant}{RGB}{220,162,170}%粉红
-\\definecolor{buildin}{RGB}{127,159,127}%深铅绿
-\\punctstyle{kaiming}
-\\title{}
-\\fancyfoot[C]{\\bfseries\\thepage}
-\\chead{\\MakeUppercase\\sectionmark}
-\\pagestyle{fancy}
-\\tolerance=1000
-[NO-DEFAULT-PACKAGES]
-[NO-PACKAGES]"
-("\\section{%s}" . "\\section*{%s}")
-("\\subsection{%s}" . "\\subsection*{%s}")
-("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-("\\paragraph{%s}" . "\\paragraph*{%s}")
-("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
-;\\definecolor{doc}{RGB}{175,215,175}%浅铅绿
-;\\usepackage{CJKutf8}
-;\\begin{CJK}{UTF8}{gbsn}
-
-(setq org-latex-packages-alist '(
-    (""   "CJK"   t)
-    (""     "indentfirst"  nil)
-    ("pdftex"     "graphicx"  t)
-    (""     "fancyhdr" nil)
-    ("CJKbookmarks=true"     "hyperref"  nil)
-"%% Define a museincludegraphics command, which is
-%%   able to handle escaped special characters in image filenames.
-\\def\\museincludegraphics{%
-  \\begingroup
-  \\catcode`\\\|=0
-  \\catcode`\\\\=12
-  \\catcode`\\\#=12
-  \\includegraphics[width=0.75\\textwidth]
-}"))
-
-
-;; 使用Listings宏包格式化源代码(只是把代码框用listing环境框起来，还需要额外的设置) ; 31
-;(setq org-export-latex-listings t)
-;; Options for \lset command（reference to listing Manual)
-(setq org-export-latex-listings-options
-      '(
-        ("basicstyle" "\\color{foreground}\\small\\mono")           ; 源代码字体样式
-        ("keywordstyle" "\\color{function}\\bfseries\\small\\mono") ; 关键词字体样式
-        ("identifierstyle" "\\color{doc}\\small\\mono")
-        ("commentstyle" "\\color{comment}\\small\\itshape")         ; 批注样式
-        ("stringstyle" "\\color{string}\\small")                    ; 字符串样式
-        ("showstringspaces" "false")                                ; 字符串空格显示
-        ("numbers" "left")                                          ; 行号显示
-        ("numberstyle" "\\color{preprocess}")                       ; 行号样式
-        ("stepnumber" "1")                                          ; 行号递增
-        ("backgroundcolor" "\\color{background}")                   ; 代码框背景色
-        ("tabsize" "4")                                             ; TAB等效空格数
-        ("captionpos" "t")                                          ; 标题位置 top or buttom(t|b)
-        ("breaklines" "true")                                       ; 自动断行
-        ("breakatwhitespace" "true")                                ; 只在空格分行
-        ("showspaces" "false")                                      ; 显示空格
-        ("columns" "flexible")                                      ; 列样式
-        ("frame" "single")                                          ; 代码框：阴影盒
-        ("frameround" "tttt")                                       ; 代码框： 圆角
-        ("framesep" "0pt")
-        ("framerule" "8pt")
-        ("rulecolor" "\\color{background}")
-        ("fillcolor" "\\color{white}")
-        ("rulesepcolor" "\\color{comdil}")
-        ("framexleftmargin" "10mm")
-        ))
-(setq org-src-preserve-indentation t)
-
-(setq org-todo-keywords
-      '((type "job(j!)" "emacs(s!)" "git(g!)" "clanguage(c!)" "homework(h!)" "interview(i!)")
-      (sequence "PENDING(p!)" "TODO(t!)" "|" "DONE(d!)" "ABORT(a@/!)")
-))
-
-(setq org-todo-keyword-faces
-  '(("job" .      (:background "red" :foreground "white" :weight bold))
-    ("emacs" .      (:background "white" :foreground "red" :weight bold))
-    ("git" .      (:background "white" :foreground "red" :weight bold))
-    ("clanguage" .      (:background "white" :foreground "red" :weight bold))
-    ("interview" .      (:foreground "MediumBlue" :weight bold))
-    ("PENDING" .   (:background "LightGreen" :foreground "gray" :weight bold))
-    ("TODO" .      (:background "DarkOrange" :foreground "black" :weight bold))
-    ("DONE" .      (:background "azure" :foreground "Darkgreen" :weight bold))
-    ("ABORT" .     (:background "gray" :foreground "black"))
-))
-
-;; 优先级范围和默认任务的优先级
-(setq org-highest-priority ?A)
-(setq org-lowest-priority  ?E)
-(setq org-default-priority ?E)
-;; 优先级醒目外观
-(setq org-priority-faces
-  '((?A . (:background "red" :foreground "white" :weight bold))
-    (?B . (:background "DarkOrange" :foreground "white" :weight bold))
-    (?C . (:background "yellow" :foreground "DarkGreen" :weight bold))
-    (?D . (:background "DodgerBlue" :foreground "black" :weight bold))
-    (?E . (:background "SkyBlue" :foreground "black" :weight bold))
-))
-
-
-;; outline-mode
-(add-to-list 'auto-mode-alist
-  '("\\.outline\\'" . outline-mode))
-(require 'outline-presentation)
-(add-hook 'outline-presentation-mode-hook
-          (lambda () (text-scale-increase 3)))
-
-
-;for latex
-(setenv "PATH" (concat (getenv "PATH") ":/Library/Tex/texbin/"))
-(setq exec-path (append exec-path '("/Library/Tex/texbin/")))
-
-; for racket-mode
-(require 'exec-path-from-shell)
-(add-to-list 'exec-path "/Applications/Racket v6.5/bin/")
-; for pygments
-(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin/"))
-;(add-to-list 'exec-path "/usr/local/bin/") ; somehow does NOT work this way
-(setq exec-path (append exec-path '("/usr/local/bin/")))
 
 
 ;(require 'expand-region)
@@ -942,7 +463,7 @@ marginparsep=7pt, marginparwidth=.6in}
 
 ;;; for python
 (fset 'mpy
-   [?# ?! ?/ ?u ?s ?r ?/ ?b ?i ?n ?/ ?p ?y ?t ?h ?o ?n return return])
+   [?# ?! ?/ ?u ?s ?r ?/ ?l ?o ?c ?a ?l ?/ ?b ?i ?n ?/ ?p ?y ?t ?h ?o ?n ?3 return return])
 (fset 'apt
    "print \C-n\C-a")
 (fset 'dpt
@@ -1091,20 +612,20 @@ marginparsep=7pt, marginparwidth=.6in}
 
 
 ;;; for Java environment
-(require 'cedet)
+;(require 'cedet) ; cannot find the package
 ;semantiec基本配置
 ;见http://emacser.com/built-in-cedet.htm
 (setq semantic-default-submodes '(global-semantic-idle-scheduler-mode
 				  global-semanticdb-minor-mode
 				  global-semantic-idle-summary-mode
 				  global-semantic-mru-bookmark-mode))
-(semantic-mode 1)
-(global-semantic-highlight-edits-mode (if window-system 1 -1))
-(global-semantic-show-unmatched-syntax-mode 1)
-(global-semantic-show-parser-state-mode 1)
+;(semantic-mode 1)
+;(global-semantic-highlight-edits-mode (if window-system 1 -1))
+;(global-semantic-show-unmatched-syntax-mode 1)
+;(global-semantic-show-parser-state-mode 1)
 ;代码跳转和官方版本一样还是用semantic-ia-fast-jump命令，不过在emacs-23.2里直接用这个命令可能会报下面的错误,所以运行时这个feature没被load进来，我们需要自己load一下：
-(require 'semantic/analyze/refs)
-(global-ede-mode t)
+;(require 'semantic/analyze/refs)
+;(global-ede-mode t)
 
 
 
@@ -1145,16 +666,16 @@ marginparsep=7pt, marginparwidth=.6in}
 ;  (flet ((process-list ())) ad-do-it))
   (cl-flet ((process-list ())) ad-do-it))
 
-(define-key process-menu-mode-map (kbd "C-k") 'joaot/delete-process-at-point)
-(defun joaot/delete-process-at-point ()
-  (interactive)
-  (let ((process (get-text-property (point) 'tabulated-list-id)))
-    (cond ((and process
-                (processp process))
-           (delete-process process)
-           (revert-buffer))
-          (t
-           (error "no process at point!")))))
+;(define-key process-menu-mode-map (kbd "C-k") 'joaot/delete-process-at-point)
+;(defun joaot/delete-process-at-point ()
+;  (interactive)
+;  (let ((process (get-text-property (point) 'tabulated-list-id)))
+;    (cond ((and process
+;                (processp process))
+;           (delete-process process)
+;           (revert-buffer))
+;          (t
+;           (error "no process at point!")))))
 
 (defun soft-wrap-lines ()
   "Make lines wrap at window edge and on word boundary, in current buffer."
@@ -1177,55 +698,15 @@ marginparsep=7pt, marginparwidth=.6in}
 (setq load-path (cons "~/.emacs.d/elpa/sr-speedbar-20141004.532" load-path))
 (require 'sr-speedbar)
 ;(add-hook 'after-init-hook '(lambda () (sr-speedbar-toggle)));;开启程序即启用
-(global-set-key [(f4)] 'speedbar-get-focus)
+(global-set-key [(f5)] 'speedbar-get-focus)
 (speedbar 1)
 ;;; ### Speedbar ###
 ;;; --- 资源管理器
 (setq speedbar-show-unknown-files t)    ;显示文件
 
 
-;;;; for speedbar
-;;;; 在site-lisp/subdirs.el中加入
-;(add-to-list 'load-path "~/.emacs.d/elpa/cedet-1.1/speedbar")
-;(autoload 'speedbar-frame-mode "speedbar" "Popup a speedbar frame" t)
-;(autoload 'speedbar-get-focus "speedbar" "Jump to speedbar frame" t)
-;(global-set-key [(f4)] 'speedbar-get-focus)
-;;;如果你用Emacs,加入:
-;(define-key-after (lookup-key global-map [menu-bar tools])
-;[speedbar] '("Speedbar" . speedbar-frame-mode) [calendar])
-;(speedbar 1)
-;;;; 设置它的出现位置
-;;;设置speedbar默认出现在左侧
-;(add-hook 'speedbar-mode-hook
-;        (lambda ()
-;         (auto-raise-mode 1)
-;         (add-to-list 'speedbar-frame-parameters '(top . 0))
-;         (add-to-list 'speedbar-frame-parameters '(left . 10))
-;         ))
-;;显示所有文件
-;(setq speedbar-show-unknown-files t)
-;;;设置tags排列顺序为按照出现的先后次序排列
-;(setq speedbar-tag-hierarchy-method '(speedbar-prefix-group-tag-hierarchy))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(column-number-mode t)
- '(jde-jdk-registry (quote (("1.6.0" . "/usr/lib/jvm/jdk1.8.0_25"))))
- '(jde-sourcepath (quote ("/home/jenny/lc/")))
- '(show-paren-mode t)
- '(speedbar-default-position (quote left-right))
- '(sr-speedbar-default-width 28)
- '(sr-speedbar-max-width 30)
- '(sr-speedbar-right-side nil))
-;;(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
-;; )
+
 
 (fset 'mt
    "\346\342//\C-n\C-a")
@@ -1249,3 +730,41 @@ marginparsep=7pt, marginparwidth=.6in}
    "\C-a\C-d\C-n\C-a")
 (global-set-key (kbd "C-c d") 'ldecomment)
 (put 'ldecomment 'kmacro t)
+
+
+;;; for python-mode comment (cpy) and decommment (dcp)
+(fset 'cpy
+   "\C-a#\C-n\C-a")
+(fset 'dcp
+   "\C-a\C-d\C-n\C-a")
+;;; for python-mode comment and decomment
+(global-set-key (kbd "C-c c") 'cpy)
+(put 'cpy 'kmacro t)
+(global-set-key (kbd "C-c d") 'dcp)
+(put 'dcp 'kmacro t)
+
+
+;; @see https://www.reddit.com/r/emacs/comments/4q4ixw/how_to_forbid_emacs_to_touch_configuration_files/
+;(setq custom-file (concat user-emacs-directory "custom-set-variables.el"))
+;(load custom-file 'noerror)
+
+;(setq gc-cons-threshold best-gc-cons-threshold)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(git-gutter:handled-backends (quote (svn hg git)))
+ '(package-selected-packages
+(quote
+ (yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode lua-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-lua flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word csharp-mode crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+	;;; Local Variables:
+;;; no-byte-compile: t
+;;; End:
+;(put 'erase-buffer 'disabled nil)

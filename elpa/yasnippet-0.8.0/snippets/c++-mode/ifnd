@@ -1,9 +1,0 @@
-# name: #ifndef #define #endif
-# key: ifnd
-# --
-#ifndef ${1:condition}
-#define $1
-
-$0
-
-#endif // $1

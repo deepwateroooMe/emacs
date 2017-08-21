@@ -8,6 +8,7 @@
 ;; Maintainer: Fanael Linithien <fanael4@gmail.com>
 ;; Created: 2010-09-02
 ;; Version: 2.1.3
+;; Package-Version: 2.1.3
 ;; Keywords: faces, convenience, lisp, tools
 ;; Homepage: https://github.com/Fanael/rainbow-delimiters
 

@@ -1,5 +1,0 @@
-# name: #include <...>
-# key: incd
-# --
-#include <${}>
-$0

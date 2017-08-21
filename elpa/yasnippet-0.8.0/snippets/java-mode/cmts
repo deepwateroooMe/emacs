@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: dock
-# key: /*
-# --
-/*
- * $1
- */
-$0

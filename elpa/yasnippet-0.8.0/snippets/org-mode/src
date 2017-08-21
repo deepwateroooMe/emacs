@@ -1,6 +1,0 @@
-# name: src
-# key: src
-# --
-#+BIGAN_SRC java 
-  $0
-#+END_SRC

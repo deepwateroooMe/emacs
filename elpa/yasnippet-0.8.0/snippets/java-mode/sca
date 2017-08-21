@@ -1,5 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: s.charAt()
-# key: sca
-# --
-${1:s}.charAt(${2:i})$0

@@ -1,6 +1,0 @@
-# contributor: deepwaterooo
-# name: Log.d
-# key: ld
-# --
-Log.d("${1:i}: ", "${2:Action Up}");
-    $0

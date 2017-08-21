@@ -1,86 +1,200 @@
-(require-package 'magit)
-(require-package 'git-blame)
-(require-package 'git-commit-mode)
-(require-package 'git-rebase-mode)
-(require-package 'gitignore-mode)
-(require-package 'gitconfig-mode)
-(require-package 'git-messenger) ;; Though see also vc-annotate's "n" & "p" bindings
-(require-package 'git-timemachine)
+;; Solution 1: disable all vc backends
+;; @see http://stackoverflow.com/questions/5748814/how-does-one-disable-vc-git-in-emacs
+;; (setq vc-handled-backends ())
 
-(setq-default
- magit-save-some-buffers nil
- magit-process-popup-time 10
- magit-diff-refine-hunk t
- magit-completing-read-function 'magit-ido-completing-read)
+;; ;; Solution 2: if NO network mounted drive involved
+(setq vc-handled-backends '(Git SVN Hg))
 
-;; Hint: customize `magit-repo-dirs' so that you can use C-u M-F12 to
-;; quickly open magit on any one of your projects.
-(global-set-key [(meta f12)] 'magit-status)
+;; @see https://www.reddit.com/r/emacs/comments/4c0mi3/the_biggest_performance_improvement_to_emacs_ive/
+;; open files faster but you can't check if file is version
+;; controlled. other vcs functionality still works.
+(remove-hook 'find-file-hooks 'vc-find-file-hook)
 
-(after-load 'magit
-  (define-key magit-status-mode-map (kbd "C-M-<up>") 'magit-goto-parent-section))
+;; ;; Solution 3: setup vc-handled-backends per project
+;; (setq vc-handled-backends ())
+;; (defun my-setup-develop-environment ()
+;;   (interactive)
+;;   (cond
+;;    ((string-match-p (file-truename "~/.emacs.d") (file-name-directory (buffer-file-name))
+;;     (setq vc-handled-backends '(Git)))
+;;    (t (setq vc-handled-backends nil)))))
+;; (add-hook 'java-mode-hook 'my-setup-develop-environment)
+;; (add-hook 'emacs-lisp-mode-hook 'my-setup-develop-environment)
+;; (add-hook 'org-mode-hook 'my-setup-develop-environment)
+;; (add-hook 'js2-mode-hook 'my-setup-develop-environment)
+;; (add-hook 'js-mode-hook 'my-setup-develop-environment)
+;; (add-hook 'javascript-mode-hook 'my-setup-develop-environment)
+;; (add-hook 'web-mode-hook 'my-setup-develop-environment)
+;; (add-hook 'c++-mode-hook 'my-setup-develop-environment)
+;; (add-hook 'c-mode-hook 'my-setup-develop-environment)
 
-(require-package 'fullframe)
-(after-load 'magit
-  (fullframe magit-status magit-mode-quit-window))
+;; {{ git-gutter
+(require 'git-gutter)
 
-(add-hook 'git-commit-mode-hook 'goto-address-mode)
+(defun git-gutter-reset-to-head-parent()
+  (interactive)
+  (let (parent (filename (buffer-file-name)))
+    (if (eq git-gutter:vcs-type 'svn)
+        (setq parent "PREV")
+      (setq parent (if filename (concat (shell-command-to-string (concat "git --no-pager log --oneline -n1 --pretty='format:%H' " filename)) "^") "HEAD^")))
+    (git-gutter:set-start-revision parent)
+    (message "git-gutter:set-start-revision HEAD^")))
 
-
-;;; When we start working on git-backed files, use git-wip if available
-
-(after-load 'magit
-  (global-magit-wip-save-mode)
-  (diminish 'magit-wip-save-mode))
-
-(after-load 'magit
-  (diminish 'magit-auto-revert-mode))
-
-
-(when *is-a-mac*
-  (after-load 'magit
-    (add-hook 'magit-mode-hook (lambda () (local-unset-key [(meta h)])))))
+(defun git-gutter-reset-to-default ()
+  (interactive)
+  (git-gutter:set-start-revision nil)
+  (message "git-gutter reset"))
 
 
-
-;; Convenient binding for vc-git-grep
-(global-set-key (kbd "C-x v f") 'vc-git-grep)
+;; If you enable global minor mode
+(global-git-gutter-mode t)
 
+;; nobody use bzr
+;; people are forced use subversion or hg, so they take priority
+(custom-set-variables '(git-gutter:handled-backends '(svn hg git)))
 
-
-;;; git-svn support
+(git-gutter:linum-setup)
 
-(require-package 'magit-svn)
-(autoload 'magit-svn-enabled "magit-svn")
-(defun sanityinc/maybe-enable-magit-svn-mode ()
-  (when (magit-svn-enabled)
-    (magit-svn-mode)))
-(add-hook 'magit-status-mode-hook #'sanityinc/maybe-enable-magit-svn-mode)
+(global-set-key (kbd "C-x C-g") 'git-gutter:toggle)
+(global-set-key (kbd "C-x v =") 'git-gutter:popup-hunk)
+;; Stage current hunk
+(global-set-key (kbd "C-x v s") 'git-gutter:stage-hunk)
+;; Revert current hunk
+(global-set-key (kbd "C-x v r") 'git-gutter:revert-hunk)
+;; }}
 
-(after-load 'compile
-  (dolist (defn (list '(git-svn-updated "^\t[A-Z]\t\\(.*\\)$" 1 nil nil 0 1)
-                      '(git-svn-needs-update "^\\(.*\\): needs update$" 1 nil nil 2 1)))
-    (add-to-list 'compilation-error-regexp-alist-alist defn)
-    (add-to-list 'compilation-error-regexp-alist (car defn))))
+;; {{ git-timemachine
+(defun my-git-timemachine-show-selected-revision ()
+  "Show last (current) revision of file."
+  (interactive)
+  (let* ((collection (mapcar (lambda (rev)
+                    ;; re-shape list for the ivy-read
+                    (cons (concat (substring-no-properties (nth 0 rev) 0 7) "|" (nth 5 rev) "|" (nth 6 rev)) rev))
+                  (git-timemachine--revisions))))
+    (ivy-read "commits:"
+              collection
+              :action (lambda (rev)
+                        ;; compatible with ivy 8+ and later ivy version
+                        (unless (string-match-p "^[a-z0-9]*$" (car rev))
+                          (setq rev (cdr rev)))
+                        (git-timemachine-show-revision rev)))))
+
+(defun my-git-timemachine ()
+  "Open git snapshot with the selected version.  Based on ivy-mode."
+  (interactive)
+  (unless (featurep 'git-timemachine)
+    (require 'git-timemachine))
+  (git-timemachine--start #'my-git-timemachine-show-selected-revision))
+;; }}
+
+;;----------------------------------------------------------------------------
+;; git-svn conveniences
+;;----------------------------------------------------------------------------
+(eval-after-load 'compile
+  '(progn
+     (dolist (defn (list '(git-svn-updated "^\t[A-Z]\t\\(.*\\)$" 1 nil nil 0 1)
+                         '(git-svn-needs-update "^\\(.*\\): needs update$" 1 nil nil 2 1)))
+       (add-to-list 'compilation-error-regexp-alist-alist defn))
+     (dolist (defn '(git-svn-updated git-svn-needs-update))
+       (add-to-list 'compilation-error-regexp-alist defn))))
 
 (defvar git-svn--available-commands nil "Cached list of git svn subcommands")
 
 (defun git-svn (dir)
-  "Run a git svn subcommand in DIR."
+  "Run git svn"
   (interactive "DSelect directory: ")
   (unless git-svn--available-commands
     (setq git-svn--available-commands
-          (sanityinc/string-all-matches
-           "^  \\([a-z\\-]+\\) +"
-           (shell-command-to-string "git svn help") 1)))
+          (string-all-matches "^  \\([a-z\\-]+\\) +" (shell-command-to-string "git svn help") 1)))
   (let* ((default-directory (vc-git-root dir))
          (compilation-buffer-name-function (lambda (major-mode-name) "*git-svn*")))
     (compile (concat "git svn "
                      (ido-completing-read "git-svn command: " git-svn--available-commands nil t)))))
 
-
-(require-package 'git-messenger)
-(global-set-key (kbd "C-x v p") #'git-messenger:popup-message)
+(defun git-get-current-file-relative-path ()
+  (replace-regexp-in-string (concat "^" (file-name-as-directory default-directory))
+                            ""
+                            buffer-file-name))
 
+(defun git-checkout-current-file ()
+  "git checkout urrent file"
+  (interactive)
+  (when (and (buffer-file-name)
+             (yes-or-no-p (format "git checkout %s?"
+                                  (file-name-nondirectory (buffer-file-name)))))
+    (let* ((filename (git-get-current-file-relative-path)))
+      (shell-command (concat "git checkout " filename))
+      (message "DONE! git checkout %s" filename))))
+
+(defun git-add-current-file ()
+  "git add file of current buffer"
+  (interactive)
+  (let ((filename))
+    (when buffer-file-name
+      (setq filename (git-get-current-file-relative-path))
+      (shell-command (concat "git add " filename))
+      (message "DONE! git add %s" filename))))
+
+;; {{ goto next/previous hunk
+(defun my-goto-next-hunk (arg)
+  (interactive "p")
+  (if (memq major-mode '(diff-mode))
+      (diff-hunk-next)
+    (forward-line)
+    (if (re-search-forward "\\(^<<<<<<<\\|^=======\\|^>>>>>>>\\)" (point-max) t)
+        (goto-char (line-beginning-position))
+      (forward-line -1)
+      (git-gutter:next-hunk arg))))
+
+(defun my-goto-previous-hunk (arg)
+  (interactive "p")
+  (if (memq major-mode '(diff-mode))
+      (diff-hunk-prev)
+    (forward-line -1)
+    (if (re-search-backward "\\(^>>>>>>>\\|^=======\\|^<<<<<<<\\)" (point-min) t)
+        (goto-char (line-beginning-position))
+      (forward-line -1)
+      (git-gutter:previous-hunk arg))))
+;; }}
+
+;; {{ git-gutter use ivy
+(defun my-reshape-git-gutter (gutter)
+  "Re-shape gutter for `ivy-read'."
+  (let* ((linenum-start (aref gutter 3))
+         (linenum-end (aref gutter 4))
+         (target-line "")
+         (target-linenum 1)
+         (tmp-line "")
+         (max-line-length 0))
+    (save-excursion
+      (while (<= linenum-start linenum-end)
+        (goto-line linenum-start)
+        (setq tmp-line (replace-regexp-in-string "^[ \t]*" ""
+                                                 (buffer-substring (line-beginning-position)
+                                                                   (line-end-position))))
+        (when (> (length tmp-line) max-line-length)
+          (setq target-linenum linenum-start)
+          (setq target-line tmp-line)
+          (setq max-line-length (length tmp-line)))
+
+        (setq linenum-start (1+ linenum-start))))
+    ;; build (key . linenum-start)
+    (cons (format "%s %d: %s"
+                  (if (eq 'deleted (aref gutter 1)) "-" "+")
+                  target-linenum target-line)
+          target-linenum)))
+
+(defun my-goto-git-gutter ()
+  (interactive)
+  (if git-gutter:diffinfos
+      (ivy-read "git-gutters:"
+                (mapcar 'my-reshape-git-gutter git-gutter:diffinfos)
+                :action (lambda (e)
+                          (unless (numberp e) (setq e (cdr e)))
+                          (goto-line e)))
+    (message "NO git-gutters!")))
+
+;; }}
 
 (provide 'init-git)
+

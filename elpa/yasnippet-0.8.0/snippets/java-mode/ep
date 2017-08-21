@@ -1,6 +1,0 @@
-# contributor: deepwaterooo
-# name: system.out.println("got here");
-# key: ep
-# --
-System.out.println(${1:""});
-$0

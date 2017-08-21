@@ -3,34 +3,20 @@
 #+author: deepwaterooo
 
 * Updates
-- haskell-mode ready for use.
-- org-mode minted works with pygments to get syntax highlight for source codes, including chinese characters comments.
-- Screenshot works. 
-- Rebounded emacs keys for convenience for alt, commands. 
-- keybounded "Command- " for both mac and emacs for wubi input so I don't have to rethink whenever I need switch (and the key bounds are easy to use). 
-- babel org-mode so I don't have to copy from specific babeled source org-mode files in order for chinese characters to work. 
-- company-mode needs more work to imoprove efficiency.
-- As I am getting more and more modes in init file, will need to initialize emacs accroding to modes pretty soon. Will find a good time to work on this one when tetris 3d is done. 
-- 
-- gets csharp-mode {} works for String s = "{}", works for int [] a = {_cursor_} together with autopair global mode; but not for scope yet public void foo() {_cursor_}.
-
+* starting point
+- It is a new computer, and I did try to git clone from my own repository to new laptop, but after fixed errors and tried, *I promise I do NOT and can NOT bare the out-dated emacs 22.X any more, I have to move on.* I have to install newer versions for my own later on convenience. 
+- Instead of configuring my own again, this time, I tried from some "big" person's repository and try to make it work on my laptop (fixing errors, installing necessary packages etc), as well as comment out some complicated modes and customize so that I would still be able to use and like my current emacs interface.
+- It is the first time I tried from some big person's (or any person's configurature completely), it was tidious to fix all the errors at beginning (I spent more than 2 days on it last week. For me it just took too much time), but so far I like some of the feather's that annoying me, but I have not found good solutions to solve it, like how to auto-complete when in scripte comment line or in quotes. I like these detailed feathers which I tried by writing my own snippets from yasnippet mode before. 
+- So far, org-mode is not perfect, but still like the previous verison in master branch, it is a fully functional one that I could use. 
+- Will devote more time to understand email better, and to solove my own problems and make it more convenient for me to use when I want some feather. 
+  
 * TODOs
-  - configure and organize emacs better so that it won't take too much time when initializing.
+- org-mode src code highlight need to be fixed as soon as possible.
+- some minor warnings, modes fixes needs to be done for user convenience.
+- emacs key-bound for mac keyboard, so that it would be convenient for me to type some specific keys. 
+- babel org-mode so I don't have to copy from specific babeled source org-mode files in order for chinese characters to work. 
+- other major-modes need to be configured, for example: *java-mode*, *csharp-mode*, which I would need to use pretty soon. 
+- configure and organize emacs better so that it won't take too much time responding.j
 
 * References
-- 截图： http://www.kohn.com.cn/wordpress/?p=78 could be configured later.
-- https://m.oschina.net/blog/171296 ./configure --with-emacs=/Applications/Emacs.app/Contents/MacOS/Emacs --with-lispdir=/Applications/Emacs.app/Contents/Resources/site-lisp --with-texmf-dir=/usr/local/texlive/texmf-local
-- mac subline http://www.readern.com/sublime-text-latex-chinese-under-mac.html
-- supporting Chinese: http://liam0205.me/2014/11/02/latex-mactex-chinese-support/
-- http://blog.sina.com.cn/s/blog_61f013b801010cdh.html
-- http://blog.csdn.net/wdkirchhoff/article/details/41704027
-- http://philip.pixnet.net/blog/post/18367221-%5Bmac%5D%E5%9C%A8mac%E4%B8%8A%E5%AE%89%E8%A3%9Dlatex%E6%95%99%E5%AD%B8
-- https://github.com/wuyao721/51docs/blob/master/it/emacs-org-mode-pdf.org
-- very helpful: http://www.cnblogs.com/rex-tech/p/3483137.html
-- csharp-mode http://stackoverflow.com/questions/20909396/emacs-csharp-mode-disable-auto-pair-braces
-- http://stackoverflow.com/questions/848624/smart-electric-brace-in-cc-modes-c-java-etc
-- http://stackoverflow.com/questions/2893585/emacs-add-do-while-if-else-as-exceptions-to-electric-c-mode
-- http://www.delorie.com/gnu/docs/emacs/cc-mode_29.html
-- company-mode gtags completion http://suchang.net/blog/2008-06.html
-- 
-- 
+- https://github.com/redguardtoo/emacs.d

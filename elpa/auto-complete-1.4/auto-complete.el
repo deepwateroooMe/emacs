@@ -774,7 +774,7 @@ You can not use it in source definition like (prefix . `NAME')."
 (defun ac-menu-delete ()
   (when ac-menu
     (popup-delete ac-menu)
-    (setq ac-menu)))
+    (setq ac-menu nil))) ;; I added nil here
 
 (defsubst ac-inline-overlay ()
   (nth 0 ac-inline))

@@ -1,17 +1,19 @@
-% Created 2016-06-05 Sun 16:20
-\documentclass[9pt,b5paper]{article}
+% Created 2017-08-21 Mon 15:26
+% Intended LaTeX compiler: pdflatex
+\documentclass[9pt, b5paper]{article}
 \usepackage{fontspec}
 \usepackage{graphicx}
 \usepackage{xcolor}
 \usepackage{xeCJK}
-\setCJKmainfont{Songti SC}
-\usepackage{longtable}
+\setCJKmainfont[Boldfont = STSong SC Black, ItalicFont = STKaiti]{STSong}
+\setCJKsansfont{STHeiti}
+\setCJKmonofont{STFangsong}
+\usepackage{multirow}
+\usepackage{multicol}
 \usepackage{float}
 \usepackage{textcomp}
 \usepackage{geometry}
 \geometry{left=0.1cm,right=0.1cm,top=0.1cm,bottom=0.1cm}
-\usepackage{multirow}
-\usepackage{multicol}
 \usepackage{algorithm}
 \usepackage{algorithmic}
 \usepackage{latexsym}
@@ -23,9 +25,12 @@
 \date{\today}
 \title{Emacs Configuration}
 \hypersetup{
-  pdfkeywords={},
-  pdfsubject={},
-  pdfcreator={Emacs 24.5.1 (Org mode 8.2.7c)}}
+ pdfauthor={deepwaterooo},
+ pdftitle={Emacs Configuration},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.2.1 (Org mode 9.0.9)}, 
+ pdflang={English}}
 \begin{document}
 
 \maketitle
@@ -33,45 +38,31 @@
 
 
 \section{Updates}
-\label{sec-1}
+\label{sec:org5f8fe13}
+\section{starting point}
+\label{sec:org8791210}
 \begin{itemize}
-\item haskell-mode ready for use.
-\item org-mode minted works with pygments to get syntax highlight for source codes, including chinese characters comments.
-\item Screenshot works.
-\item Rebounded emacs keys for convenience for alt, commands.
-\item keybounded "Command- " for both mac and emacs for wubi input so I don't have to rethink whenever I need switch (and the key bounds are easy to use).
-\item babel org-mode so I don't have to copy from specific babeled source org-mode files in order for chinese characters to work.
-\item company-mode needs more work to imoprove efficiency.
-\item As I am getting more and more modes in init file, will need to initialize emacs accroding to modes pretty soon. Will find a good time to work on this one when tetris 3d is done.
-\item 
-\item gets csharp-mode \{\} works for String s = "\{\}", works for int [] a = \{$_{\text{cursor}}$\_\} together with autopair global mode; but not for scope yet public void foo() \{$_{\text{cursor}}$\_\}.
+\item It is a new computer, and I did try to git clone from my own repository to new laptop, but after fixed errors and tried, \textbf{I promise I do NOT and can NOT bare the out-dated emacs 22.X any more, I have to move on.} I have to install newer versions for my own later on convenience.
+\item Instead of configuring my own again, this time, I tried from some "big" person's repository and try to make it work on my laptop (fixing errors, installing necessary packages etc), as well as comment out some complicated modes and customize so that I would still be able to use and like my current emacs interface.
+\item It is the first time I tried from some big person's (or any person's configurature completely), it was tidious to fix all the errors at beginning (I spent more than 2 days on it last week. For me it just took too much time), but so far I like some of the feather's that annoying me, but I have not found good solutions to solve it, like how to auto-complete when in scripte comment line or in quotes. I like these detailed feathers which I tried by writing my own snippets from yasnippet mode before.
+\item So far, org-mode is not perfect, but still like the previous verison in master branch, it is a fully functional one that I could use.
+\item Will devote more time to understand email better, and to solove my own problems and make it more convenient for me to use when I want some feather.
 \end{itemize}
 
-\section{TODOs}
-\label{sec-2}
+\section{{\bfseries\sffamily TODO} s}
+\label{sec:orgf216e25}
 \begin{itemize}
-\item configure and organize emacs better so that it won't take too much time when initializing.
+\item org-mode src code highlight need to be fixed as soon as possible.
+\item some minor warnings, modes fixes needs to be done for user convenience.
+\item emacs key-bound for mac keyboard, so that it would be convenient for me to type some specific keys.
+\item babel org-mode so I don't have to copy from specific babeled source org-mode files in order for chinese characters to work.
+\item other major-modes need to be configured, for example: \textbf{java-mode}, \textbf{csharp-mode}, which I would need to use pretty soon.
+\item configure and organize emacs better so that it won't take too much time responding.j
 \end{itemize}
 
 \section{References}
-\label{sec-3}
+\label{sec:orgeeb6f7a}
 \begin{itemize}
-\item 截图： \url{http://www.kohn.com.cn/wordpress/?p=78} could be configured later.
-\item \url{https://m.oschina.net/blog/171296} ./configure --with-emacs=/Applications/Emacs.app/Contents/MacOS/Emacs --with-lispdir=/Applications/Emacs.app/Contents/Resources/site-lisp --with-texmf-dir=/usr/local/texlive/texmf-local
-\item mac subline \url{http://www.readern.com/sublime-text-latex-chinese-under-mac.html}
-\item supporting Chinese: \url{http://liam0205.me/2014/11/02/latex-mactex-chinese-support/}
-\item \url{http://blog.sina.com.cn/s/blog_61f013b801010cdh.html}
-\item \url{http://blog.csdn.net/wdkirchhoff/article/details/41704027}
-\item \url{http://philip.pixnet.net/blog/post/18367221-\%5Bmac\%5D\%E5\%9C\%A8mac\%E4\%B8\%8A\%E5\%AE\%89\%E8\%A3\%9Dlatex\%E6\%95\%99\%E5\%AD\%B8}
-\item \url{https://github.com/wuyao721/51docs/blob/master/it/emacs-org-mode-pdf.org}
-\item very helpful: \url{http://www.cnblogs.com/rex-tech/p/3483137.html}
-\item csharp-mode \url{http://stackoverflow.com/questions/20909396/emacs-csharp-mode-disable-auto-pair-braces}
-\item \url{http://stackoverflow.com/questions/848624/smart-electric-brace-in-cc-modes-c-java-etc}
-\item \url{http://stackoverflow.com/questions/2893585/emacs-add-do-while-if-else-as-exceptions-to-electric-c-mode}
-\item \url{http://www.delorie.com/gnu/docs/emacs/cc-mode_29.html}
-\item company-mode gtags completion \url{http://suchang.net/blog/2008-06.html}
-\item 
-\item 
+\item \url{https://github.com/redguardtoo/emacs.d}
 \end{itemize}
-% Emacs 24.5.1 (Org mode 8.2.7c)
 \end{document}
