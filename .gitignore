@@ -1,4 +1,5 @@
 .depend
+.DS_Store
 pyim/
 anaconda-mode/
 .wg-file.el
@@ -8,6 +9,7 @@ anaconda-mode/
 /.session
 /session.*
 /custom.el
+/snippets
 *.elc
 company-statistics-cache.el
 CVS

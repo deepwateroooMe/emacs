@@ -614,6 +614,7 @@ any functions that use `display-buffer' can't split windows
 to display buffer, even option `pop-up-windows' is enable.
 
 And the example function that can occur above problem is `pop-to-buffer'."
+  (defvar helm-alive-p)
   (when (and pop-up-windows                            ;`pop-up-windows' is enable
              (sr-speedbar-window-dedicated-only-one-p) ;just have one `non-dedicated' window
              (sr-speedbar-window-exist-p sr-speedbar-window)

@@ -84,4 +84,12 @@
 
 (add-hook 'emacs-lisp-mode-hook 'elisp-mode-hook-setup)
 
+
+;;; for lisp mute de-mute
+(fset 'dmut
+   "\C-d\C-n")
+(fset 'mut
+   ";\C-n\C-a")
+
+
 (provide 'init-elisp)

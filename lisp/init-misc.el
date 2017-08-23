@@ -243,7 +243,6 @@
 (defun generic-prog-mode-hook-setup ()
   ;; turn off `linum-mode' when there are more than 5000 lines
   (if (buffer-too-big-p) (linum-mode -1))
-
   (unless (is-buffer-file-temp)
 
     ;; @see http://xugx2007.blogspot.com.au/2007/06/benjamin-rutts-emacs-c-development-tips.html

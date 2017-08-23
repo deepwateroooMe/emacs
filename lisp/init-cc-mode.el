@@ -36,6 +36,7 @@
   ;;   void fn() // press ENTER here, zero means no indentation
   (fix-c-indent-offset-according-to-syntax-context 'func-decl-cont 0))
 
+;;; some error here flymake 
 (defun my-c-mode-setup ()
   "C/C++ only setup"
   (message "my-c-mode-setup called (buffer-file-name)=%s" (buffer-file-name))
@@ -52,16 +53,16 @@
   (setq c-electric-pound-behavior (quote (alignleft)))
 
   (when buffer-file-name
-
     ;; @see https://github.com/redguardtoo/cpputils-cmake
     ;; Make sure your project use cmake!
     ;; Or else, you need comment out below code:
     ;; {{
-    (flymake-mode 1)
-    (if (executable-find "cmake")
-        (if (not (or (string-match "^/usr/local/include/.*" buffer-file-name)
-                     (string-match "^/usr/src/linux/include/.*" buffer-file-name)))
-            (cppcm-reload-all)))
+;    (flymake-mode 1)
+;
+;   (if (executable-find "cmake")
+;   (if (not (or (string-match "^/usr/local/include/.*" buffer-file-name)
+;		 (string-match "^/usr/src/linux/include/.*" buffer-file-name)))
+;	(cppcm-reload-all)))
     ;; }}
 
     ))
@@ -83,5 +84,38 @@
       (eldoc-mode 1))
     ))
 (add-hook 'c-mode-common-hook 'c-mode-common-hook-setup)
+
+
+;;; cc-mode c++-mode macros
+
+(fset 'cpp  ;;; C++ enter enter enter --> ""
+;  [?\M-x ?r ?e ?p ?l ?  ?s return ?C ?+ ?+ ?\C-q ?\C-j ?\C-q ?\C-j ?\C-q ?\C-j return return])
+   [?\M-x ?r ?e ?p ?l ?  ?s return ?C ?+ ?+ ?\C-q ?\C-j ?\C-q ?\C-j return return])
+
+;;; c++ macro
+(fset 'ou ; cout << _  << endl; and mode cursor on place
+   [?c ?o ?u ?t ?  ?< ?< ?  ?\" ?\C-f ?  ?< ?< ?\S-  ?e ?n ?d ?l ?\; ?\C-p ?\M-f ?\C-f ?\C-f ?\C-f ?\C-f ?\C-f])
+(fset 'ot ; cout << _ << endl; difference?
+   [?c ?o ?u ?t ?  ?< ?< ?\S-  ?\" ?: ?  ?\C-f ?  ?< ?< ?  ?< ?< ?  ?e ?n ?d ?l ?\; ?\C-p ?\M-f ?\C-f ?\C-f ?\C-f ?\C-f ?\C-f])
+(fset 'out
+   "cout <<  << endl;\C-p\C-f\C-f\C-f\C-f\C-f\C-f\C-f\C-f")
+
+; c++-mode
+(fset 'vi
+   "typedef vector<int> vi;")
+(fset 'vvi
+   "typedef vector<vector<int> > vvi;")
+(fset 'vc
+   "typedef vector<char> vc;")
+(fset 'vvc
+   "typedef vector<vector<char> > vvc;")
+(fset 'vs
+   "typedef vector<string> vs;")
+(fset 'vvs
+   "typedef vector<vector<string> > vvs;")
+;;; for c++/c
+(fset 'el
+   [?c ?o ?u ?t ?  ?< ?< ?\S-  ?e ?n ?d ?l ?\;])
+
 
 (provide 'init-cc-mode)

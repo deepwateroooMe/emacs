@@ -143,6 +143,7 @@ happen, so this feature may simply not work in some cases."
 (defadvice completing-read (around ido-ubiquitous-legacy activate)
   "Ido-based method for reading from the minibuffer with completion.
    See `completing-read' for the meaning of the arguments."
+  (defvar ido-cur-item)
   (if (or inherit-input-method          ; Can't handle this arg
           (not ido-mode)
           (not ido-ubiquitous-mode)
@@ -377,6 +378,9 @@ compatibility mode in non-interactive functions, customize
 
 See `ido-ubiquitous-enable-compatibility', which controls whether
 this advice has any effect."
+  (defvar ido-cur-list)
+  (defvar ido-default-item)
+  (defvar ido-cur-item)
   (if (and (eq ido-cur-item 'list)
            ido-ubiquitous-enable-compatibility
            ;; Only enable if we are replacing `completing-read'

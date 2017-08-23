@@ -199,6 +199,7 @@ If use-indirect-buffer is not nil, use `indirect-buffer' to hold the widen conte
 
 (defadvice org-publish (around org-publish-advice activate)
   "Stop running major-mode hook when org-publish"
+  (defvar load-user-customized-major-mode-hook)
   (let ((old load-user-customized-major-mode-hook))
     (setq load-user-customized-major-mode-hook nil)
     ad-do-it
@@ -241,7 +242,6 @@ If use-indirect-buffer is not nil, use `indirect-buffer' to hold the widen conte
   "Better org-mode agenda view."
   (interactive "P")
   (org-agenda arg "n"))
-
 
 
 
@@ -343,8 +343,6 @@ same directory as the org-buffer and insert a link to this file."
 (setq org-latex-pdf-process 
       '("xelatex -shell-escape -interaction nonstopmode %f"
         "xelatex -shell-escape -interaction nonstopmode %f"))
-;      '("xelatex -interaction nonstopmode %f"
-;        "xelatex -interaction nonstopmode %f"))
 ; 上面xelatex命令的参数-shell-escape是为了调用minted包, 如果不加这个参数,代码高亮这部分会出错
 
 ;; 默认主模式为 org−mode
@@ -699,8 +697,6 @@ marginparsep=7pt, marginparwidth=.6in}
 
 
 ;for latex
-;(setenv "PATH" (concat (getenv "PATH") ":/Library/Tex/texbin/"))
-;(setq exec-path (append exec-path '("/Library/Tex/texbin/")))
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/texlive/2017/bin/x86_64-darwin"))
 (setq exec-path (append exec-path '("/usr/local/texlive/2017/bin/x86_64-darwin")))
 
@@ -708,8 +704,17 @@ marginparsep=7pt, marginparwidth=.6in}
 (setenv "ESHELL" (expand-file-name "~/.eshell"))
 
 
+;;; all the org-mode macros
 
+(fset 'und  ;;; "_" to be "\_"
+   [?\M-x ?r ?e ?p ?l ?  ?s return ?_ return ?\\ ?_ return])
+; org-mode
+(fset 'cp
+   "#+caption: ")
 
+;;; for org-mode
+(fset 'oo
+   [?# ?+ ?t ?i ?t ?l ?e ?: ?  return ?# ?+ ?a ?u ?t ?h ?o ?r ?: ?  ?H ?e ?y ?a ?n ?  ?H ?u ?a ?n ?g return ?# ?+ ?s ?t ?a ?r ?t ?u ?p ?: ?  ?b ?e ?a ?m ?e ?r return ?# ?+ ?l ?a ?t ?e ?x ?_ ?c ?l ?a ?s ?s ?: ?  ?b ?e ?a ?m ?e ?r return ?# ?+ ?o ?p ?t ?i ?o ?n ?s ?: ?  ?H ?: ?1 ?  ?n ?u ?m ?: ?t ?  ?t ?o ?c ?: ?n ?i ?l ?\C-p ?\C-p ?\C-p ?\C-p])
 
 
 (provide 'init-org)

@@ -13,4 +13,27 @@
 
 (add-hook 'python-mode-hook 'python-mode-hook-setup)
 
+
+;;; for python-mode comment (cpy) and decommment (dcp)
+(fset 'cpy
+   "\C-a#\C-n\C-a")
+(fset 'dcp
+   "\C-a\C-d\C-n\C-a")
+;;; for python-mode comment and decomment
+(global-set-key (kbd "C-c c") 'cpy)
+(put 'cpy 'kmacro t)
+(global-set-key (kbd "C-c d") 'dcp)
+(put 'dcp 'kmacro t)
+
+
+;;; for python
+(fset 'mpy    ;  #!/usr/local/bin/python3
+   [?# ?! ?/ ?u ?s ?r ?/ ?l ?o ?c ?a ?l ?/ ?b ?i ?n ?/ ?p ?y ?t ?h ?o ?n ?3 return return])
+(fset 'apt
+   "print \C-n\C-a")
+(fset 'dpt
+   "\C-d\C-d\C-d\C-d\C-d\C-d\C-n")
+
+
+
 (provide 'init-python-mode)

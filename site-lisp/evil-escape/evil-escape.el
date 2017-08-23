@@ -198,6 +198,7 @@ with a key sequence."
 
 (defun evil-escape-p ()
   "Return non-nil if evil-escape can run."
+  (defvar helm-alive-p)
   (and evil-escape-key-sequence
        (not evil-escape-inhibit)
        (or (window-minibuffer-p)
@@ -222,6 +223,7 @@ with a key sequence."
 
 (defun evil-escape--escape-normal-state ()
   "Return the function to escape from normal state."
+  (defvar helm-alive-p)
   (cond
    ((and (fboundp 'helm-alive-p) (helm-alive-p)) 'helm-keyboard-quit)
    ((eq 'ibuffer-mode major-mode) 'ibuffer-quit)
