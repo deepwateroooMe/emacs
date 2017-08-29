@@ -18,8 +18,8 @@
 
 
 ;(setq default-directory "~/sp-infra-tools/spanda/tools/")
-;(setq default-directory "~/.emacs.d/")
-(setq default-directory "~/")
+(setq default-directory "~/.emacs.d/elpa/yasnippet-0.12.1/snippets/swift-mode/")
+;(setq default-directory "~/")
 
 (setq emacs-load-start-time (current-time))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
@@ -106,7 +106,7 @@
   (require 'init-dired)
   (require 'init-uniquify)
   (require 'init-ibuffer)
-  (require 'init-ivy)
+;  (require 'init-ivy) ; don't like the swiper from this mode
   (require 'init-hippie-expand)
   (require 'init-windows)
   (require 'init-sessions)
@@ -193,15 +193,6 @@
 ;;; setup defaults for all modes
 (setq default-frame-alist
       '((top . 0)(left . 500)(height . 74)(width . 120)(menubar-lines . 20)(tool-bar-line . 0)))
-
-
-;;; autopair
-(require 'autopair)
-(defun turn-on-autopair-mode () (autopair-mode 1))
-(autopair-global-mode) ;; enable autopair in all buffers
-;(electric-pair-mode 1) ;;; emacs 24
-(show-paren-mode 1)
-(setq show-paren-style 'parenthesis) ; 只高亮括号
 
 
 ;;; autorevert buffer
@@ -333,6 +324,20 @@
 (global-set-key [(control h)] 'delete-backward-char)
 ;;; prohibit auto-generate backup files
 (setq-default make-backup-files nil)
+
+
+(require 'autopair)
+(defun turn-on-autopair-mode () (autopair-mode 1))
+
+;(autopair-global-mode) ;; enable autopair in all buffers
+; turn off auto-pair for this mode
+(setq autopair-global-modes
+      '(not
+        ;eshell-mode comint-mode erc-mode gud-mode rcirc-mode ; later on examples
+        swift-mode))
+
+(show-paren-mode 1)
+(setq show-paren-style 'parenthesis) ; 只高亮括号
 
 
 ;(require 'expand-region) 

@@ -24,12 +24,12 @@
 (add-hook 'swift-mode-hook
   '(lambda()
      (add-to-list 'flycheck-checkers 'swift)
+     (setq autopair-dont-activate t)
      (setq flycheck-swift-sdk-path
        (replace-regexp-in-string
         "\n+$" "" (shell-command-to-string
                    "xcrun --show-sdk-path --sdk macosx")))
   )
 )
-
 
 (provide 'init-swift-mode)
