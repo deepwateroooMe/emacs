@@ -18,8 +18,8 @@
 
 
 ;(setq default-directory "~/sp-infra-tools/spanda/tools/")
-(setq default-directory "~/.emacs.d/")
-
+;(setq default-directory "~/.emacs.d/")
+(setq default-directory "~/")
 
 (setq emacs-load-start-time (current-time))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
@@ -94,8 +94,7 @@
   ;;   (error
   ;;    (message "setup-cygwin failed, continue anyway")
   ;;    ))
-
-
+  
   (require 'idle-require)
   (require 'init-elpa)
   (require 'init-exec-path) ;; Set up $PATH
@@ -155,6 +154,7 @@
   (require 'init-web-mode)
   (require 'init-slime)
   (require 'init-company)
+  
   ;; need statistics of keyfreq asap
   (require 'init-keyfreq)
   ;; projectile costs 7% startup time
@@ -164,25 +164,26 @@
 ;  (if (or (display-graphic-p) (string-match-p "256color"(getenv "TERM"))) (require 'init-color-theme)) ; don't like
 ;  (require 'init-emacs-w3m) ; don't like the interface
   (require 'init-hydra)
-
+  (require 'swift-mode)
+  
   ;;; {{ idle require other stuff
-  (setq idle-require-idle-delay 2)
-  (setq idle-require-symbols '(init-perforce
-                               init-misc-lazy
-                               init-which-func
-                               init-fonts
-                               init-hs-minor-mode
-                               init-writting
-                               init-pomodoro
-                               init-artbollocks-mode
-                               init-semantic))
-  (idle-require-mode 1) ;; starts loading
+;  (setq idle-require-idle-delay 2)
+; (setq idle-require-symbols '(init-perforce
+;                               init-misc-lazy
+;                               init-which-func
+;                               init-fonts
+;                               init-hs-minor-mode
+;                               init-writting
+;                               init-pomodoro
+;                               init-artbollocks-mode
+;                               init-semantic))
+;  (idle-require-mode 1) ;; starts loading
   ;;;; }}
 
-					; I commemted here  
-					;  (when (require 'time-date nil t)
-					;    (message "Emacs startup time: %d seconds."
-					;             (time-to-seconds (time-since emacs-load-start-time))))
+                                        ; I commemted here  
+                                        ;  (when (require 'time-date nil t)
+                                        ;    (message "Emacs startup time: %d seconds."
+                                        ;             (time-to-seconds (time-since emacs-load-start-time))))
 
   ;; my personal setup, other major-mode specific setup need it.
   ;; It's dependent on init-site-lisp.el
@@ -307,12 +308,17 @@
 (setq c-brace-imaginary-offset 1)
 
 
-;(define-key global-map "\C-n" 'next-line)
-;(define-key global-map "\C-p" 'previous-line)
-;(define-key global-map "\C-f" 'forward-char)
-;(define-key global-map "\C-b" 'backward-char)
-;(define-key global-map "\M-f" 'forward-word)
-;(define-key global-map "\M-b" 'backward-word)
+(setq utf-translate-cjk-mode nil) ; disable CJK coding/encoding (Chinese/Japanese/Korean characters)
+(set-language-environment 'utf-8)
+;(set-keyboard-coding-system 'utf-8-mac) ; For old Carbon emacs on OS X only, uncommented this one for temp
+(setq locale-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(unless (eq system-type 'windows-nt)
+  (set-selection-coding-system 'utf-8))
+(prefer-coding-system 'utf-8)
+
+;(setq desktop-restore-frames nil)
 
 
 ;;;auto indent yank
@@ -382,6 +388,7 @@
 ;;; --- 资源管理器
 (setq speedbar-show-unknown-files t)    ;显示文件
 
+
 (put 'downcase-region 'disabled nil)
 
 
@@ -443,14 +450,15 @@
  ;; If there is more than one, they won't work right.
  '(git-gutter:handled-backends (quote (svn hg git)))
  '(package-selected-packages
-(quote
- (yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode lua-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-lua flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word csharp-mode crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link))))
+   (quote
+    (flycheck-swift3 flycheck-swift flycheck swift3-mode swift-mode yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode lua-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-lua flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word csharp-mode crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link)))
+ '(session-use-package t nil (session)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(window-numbering-face ((t (:foreground "DeepPink" :underline "DeepPink" :weight bold))) t))
 	;;; Local Variables:
 ;;; no-byte-compile: t
 ;;; End:
