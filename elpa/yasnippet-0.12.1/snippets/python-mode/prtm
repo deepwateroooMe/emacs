@@ -1,0 +1,5 @@
+# name: print("")
+# key: prtm
+# --
+print("${1:var}")
+$0

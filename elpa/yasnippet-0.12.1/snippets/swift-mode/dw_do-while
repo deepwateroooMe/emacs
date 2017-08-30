@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: do-while
+# key: dw
+# --
+do {
+  $0
+} while $1

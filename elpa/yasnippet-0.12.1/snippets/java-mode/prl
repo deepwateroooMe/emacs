@@ -1,0 +1,6 @@
+# contributor: deepwaterooo
+# name: println
+# key: prl
+# --
+System.out.println("${1:a}: " + $1);
+    $0

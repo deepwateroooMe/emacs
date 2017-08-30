@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: println(var)OneLine
+# key: pvo
+# --
+print(${1:x})$0

@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: enum
+# key: en
+# --
+enum ${1:Name} {
+  $0
+}

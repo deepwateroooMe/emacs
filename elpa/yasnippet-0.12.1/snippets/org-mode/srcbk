@@ -1,0 +1,6 @@
+# name: <s
+# key: <s
+# --
+#+BEGIN_SRC c++
+$0
+#+END_SRC

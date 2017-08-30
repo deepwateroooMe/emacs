@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: println(var)
+# key: pv
+# --
+print(${1:x})
+$0

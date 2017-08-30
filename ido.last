@@ -33,27 +33,27 @@
 
 ;; ----- ido-work-file-list -----
 (
+ "plo_printlnOneLine"
  "pl_println"
+ "pmo_printMsgOneLine"
+ "pm_printMsg"
+ "pvo_printVarOneLine"
+ "pv_printVar"
+ "ife_ifelse"
+ "wh_while"
  "c_case"
  "init.el"
- "fo_for"
- "fi_for-in"
- "while"
- "switch"
- "struct"
- "let"
- "if"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/Users/jenny/.emacs.d/elpa/yasnippet-0.12.1/snippets/swift-mode/" (22949 2763 0 0) "wh_while" "sw_switch" "st_struct" "pl_println" "l_let" "i_if" "fo_for" "fi_for-in" "f_func" "en_enum" "e_else" "dw_do-while" "cl_class" "c_case" ".DS_Store" "../" "./")
+ ("/Users/jenny/.emacs.d/elpa/yasnippet-0.12.1/snippets/swift-mode/" (22949 53936 0 0) "wh_while" "sw_switch" "st_struct" "pvo_printVarOneLine" "pv_printVar" "pmo_printMsgOneLine" "pm_printMsg" "plo_printlnOneLine" "pl_println" "l_let" "ife_ifelse" "i_if" "fo_for" "fi_for-in" "f_func" "en_enum" "e_else" "dw_do-while" "cl_class" "c_case" ".DS_Store" "../" "./")
+
+ ("/Users/jenny/" (22949 51036 0 0) "youtubeV/" "tmp/" "sp-teacher-portal/" "sp-infra-tools/" "sp-cloud-services/" "Public/" "Pictures/" "orgTemplate.org" "Music/" "Movies/" "me/" "Library/" "emacs-master.zip" "Dropbox (Square Panda)/" "Dropbox/" "Downloads/" "Documents/" "Desktop/" "Applications/" "_minted-testChinese/" ".zshrc_bk" ".zshrc" ".zshenv" ".zsh_history" ".zprofile" ".zpreztorc" ".zprezto/" ".zlogout" ".zlogin" ".zhistory" ".zcompdump.zwc" ".zcompdump-Jenny’s MacBook Pro-5.2" ".zcompdump" ".wine/" ".Trash/" ".ssh/" ".smex-items" ".oracle_jre_usage/" ".local/" ".gitconfig" ".eshell" ".emacs.keyfreq" ".emacs.d/" ".DS_Store" ".dropbox/" ".cups/" ".config/" ".CFUserTextEncoding" ".cache/" ".bash_sessions/" ".bash_history" ".backups/" ".android/" "../" "./")
+
+ ("/Users/jenny/me/ios/" (22949 51002 0 0) "tmp.swift" "../" "./")
 
  ("/Users/jenny/.emacs.d/" (22949 2374 0 0) "wubi/" "tramp" "snippets/" "site-lisp/" "recentf" "readme.tex" "readme.pdf" "readme.org" "network-security.data" "localelpa/" "lisp/" "init.el" "ido.last" "history" "emms/" "elpa/" "company-statistics-cache.el" "auto-save-list/" "ac-comphist.dat" "_minted-tmp/" "_minted-readme/" ".session" ".gitignore" ".git/" ".DS_Store" "../" "./")
-
- ("/Users/jenny/" (22949 2660 0 0) "youtubeV/" "tmp/" "sp-teacher-portal/" "sp-infra-tools/" "sp-cloud-services/" "Public/" "Pictures/" "orgTemplate.org" "Music/" "Movies/" "me/" "Library/" "emacs-master.zip" "Dropbox (Square Panda)/" "Dropbox/" "Downloads/" "Documents/" "Desktop/" "Applications/" "_minted-testChinese/" ".zshrc_bk" ".zshrc" ".zshenv" ".zsh_history" ".zprofile" ".zpreztorc" ".zprezto/" ".zlogout" ".zlogin" ".zhistory" ".zcompdump.zwc" ".zcompdump-Jenny’s MacBook Pro-5.2" ".zcompdump" ".wine/" ".Trash/" ".ssh/" ".smex-items" ".oracle_jre_usage/" ".local/" ".gitconfig" ".eshell" ".emacs.keyfreq" ".emacs.d/" ".DS_Store" ".dropbox/" ".cups/" ".config/" ".CFUserTextEncoding" ".cache/" ".bash_sessions/" ".bash_history" ".backups/" ".android/" "../" "./")
-
- ("/Users/jenny/me/ios/" (22949 2406 0 0) "tmp.swift" "../" "./")
 
  ("/Users/jenny/sp-infra-tools/" (22940 53800 0 0) "spanda/" "README.md" ".gitignore" ".git/" ".DS_Store" "../" "./")
 
