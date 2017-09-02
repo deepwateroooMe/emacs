@@ -1,9 +1,8 @@
 ;;; for csharp-mode
 
-;(add-to-list 'load-path "~/.emacs.d/elpa/csharp-mode-20130824.1200") ;拓展文件(插件)目录
-;(require 'csharp-mode)
 (add-to-list 'load-path (expand-file-name "/Users/jenny/.emacs.d/elpa/csharp-mode")) ;拓展文件(插件)目录
 (require 'csharp-mode)
+
 
 ;;;for csharp-mode ; {} autoindent
 (defun csharp-autoindent ()
@@ -59,27 +58,16 @@
    ;; therefore, insert paired braces with an intervening newline, and indent everything appropriately.
    (t
     (if (cheeso-prior-sexp-same-statement-same-line)
-	(self-insert-command 1))  ;;; so far only upto here, don't know how to eval & expand {}
-    (insert "") 
+        (self-insert-command 1))  ;;; so far only upto here, don't know how to eval & expand {}
+    (insert "")
+    (newline-and-indent)
     (c-indent-line-or-region)
-					;   (self-insert-command 1))
-					;   (newline-and-indent)
-					;   (eval-last-sexp)
-					;   (newline-and-indent)
-					;   (c-indent-line-or-region)
-					;   (previous-line)
     )))
 
 
 (setq interpreter-mode-alist
       (cons '("cs" . csharp-mode) interpreter-mode-alist))
 (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
-
-;;; csharp-mode ? now using snippets
-(fset 'apf
-   "printf(\": %5.8f\\n\",);\C-a\346\C-f\C-f")
-(fset 'pf
-   "printf(\": %\\n\C-f, \C-f;\C-p\346\C-f\C-f")
 
 
 (provide 'init-csharp-mode)

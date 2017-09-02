@@ -187,7 +187,8 @@
 
   ;; my personal setup, other major-mode specific setup need it.
   ;; It's dependent on init-site-lisp.el
-  (if (file-exists-p "~/.custom.el") (load-file "~/.custom.el")))
+;  (if (file-exists-p "~/.custom.el") (load-file "~/.custom.el"))
+  )
 
 
 ;;; setup defaults for all modes
@@ -329,13 +330,13 @@
 (require 'autopair)
 (defun turn-on-autopair-mode () (autopair-mode 1))
 
-;(autopair-global-mode) ;; enable autopair in all buffers
-; turn off auto-pair for this mode
+; turn off auto-pair for these modes
 (setq autopair-global-modes
       '(not
         ;eshell-mode comint-mode erc-mode gud-mode rcirc-mode ; later on examples
         swift-mode))
 
+;(autopair-global-mode) ;; enable autopair in all buffers
 (show-paren-mode 1)
 (setq show-paren-style 'parenthesis) ; 只高亮括号
 
@@ -392,6 +393,13 @@
 ;;; ### Speedbar ###
 ;;; --- 资源管理器
 (setq speedbar-show-unknown-files t)    ;显示文件
+
+
+;;; try to exchange windows & Alt keys in windows keyboard
+;(setq mac-option-key-is-meta nil)
+;(setq mac-command-key-is-meta t)
+;(setq mac-command-modifier 'meta)
+;(setq mac-option-modifier nil)
 
 
 (put 'downcase-region 'disabled nil)

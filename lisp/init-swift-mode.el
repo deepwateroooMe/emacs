@@ -32,4 +32,13 @@
   )
 )
 
+
+;;; mute one line of codes
+(fset 'mu
+      "\C-a//\C-n\C-a")
+;;; de-mute one line of codes
+(fset 'dm
+   "\C-a\C-d\C-d\C-n\C-a")
+
+
 (provide 'init-swift-mode)

@@ -3,6 +3,8 @@
 #+author: deepwaterooo
 
 * Updates 
+- csharp-mode: fixed minor bugs for autopairing, as well as expand {} for function scope.
+- swift-mode using swift3
 - org-mode src code highlight is on, just I forgot to specify language before.
 - emacs key-bound for mac keyboard, so that it would be convenient for me to type some specific keys. 
   - exchanged the position of ^Control and Capslock;
