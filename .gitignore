@@ -29,10 +29,12 @@ cookies
 /newsticker
 /ac-comphist.dat
 \#*
+\_minted-readme/
 /elpa
+!/elpa/crontab-mode-20090510.1355
+!/elpa/csharp-mode
 !/elpa/yasnippet-0.12.1/snippets
-/elpa/yasnippet-0.12.1/snippets/.DS_Store
-/elpa/yasnippet-0.12.1/snippets/swift-mode/.DS_Store
+>>>>>>> csharp-mode
 eshell/
 semanticdb/
 *.swp

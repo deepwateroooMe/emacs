@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: deinit
+# key: di
+# --
+deinit {
+  $0
+}
