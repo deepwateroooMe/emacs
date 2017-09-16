@@ -13,35 +13,16 @@
 (package-initialize)
 
 (defvar best-gc-cons-threshold 4000000 "Best default gc threshold value. Should't be too big.")
-;; don't GC during startup to save time
-(setq gc-cons-threshold most-positive-fixnum)
+(setq gc-cons-threshold most-positive-fixnum) ;; don't GC during startup to save time
 
 
 ;(setq default-directory "~/sp-infra-tools/spanda/tools/")
-(setq default-directory "~/.emacs.d/elpa/yasnippet-0.12.1/snippets/swift-mode/")
-;(setq default-directory "~/")
+;(setq default-directory "~/spsdk_s/sp/spsdk/src/main/java/com/sp/sdk_Javaself")
+(setq default-directory "~/sp-bubbles-bk/Assets/SquarePanda/Scripts/SDK/")
+
 
 (setq emacs-load-start-time (current-time))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
-
-
-;;;自动补全
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/elpa/auto-complete-1.4"))
-(require 'auto-complete-config)
-(ac-config-default)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete-1.4/dict")
-(setq ac-use-quick-help nil)
-(setq ac-auto-start 3) ;; 输入4个字符才开始补全
-(global-set-key "\M-/" 'auto-complete)  ;; 补全的快捷键，用于需要提前补全
-;;; Show menu 0.8 second later
-(setq ac-auto-show-menu 0.2)
-;; 选择菜单项的快捷键
-(setq ac-use-menu-map t)
-(define-key ac-menu-map "\C-n" 'ac-next)
-(define-key ac-menu-map "\C-p" 'ac-previous)
-;; menu设置为12 lines
-(setq ac-menu-height 12)
-
 
 ;;----------------------------------------------------------------------------
 ;; Which functionality to enable (use t or nil for true and false)
@@ -106,7 +87,7 @@
   (require 'init-dired)
   (require 'init-uniquify)
   (require 'init-ibuffer)
-;  (require 'init-ivy) ; don't like the swiper from this mode
+  (require 'init-ivy)
   (require 'init-hippie-expand)
   (require 'init-windows)
   (require 'init-sessions)
@@ -115,11 +96,12 @@
   (require 'init-markdown)
   (require 'init-erlang)
   (require 'init-javascript)
-  (require 'init-org)
   (require 'init-css)
+  (require 'init-auto-complete)
   (require 'init-python-mode)
   (require 'init-csharp-mode)
   (require 'init-java-mode)
+  (require 'init-org)
   (require 'init-haskell)
   (require 'init-ruby-mode)
   (require 'init-lisp)
@@ -132,6 +114,7 @@
   (yas/global-mode 1)
   (yas-global-mode 1)
 
+  
   (require 'cpputils-cmake) ; to do more work on this one
   ;; Use bookmark instead
   (require 'init-cc-mode)
@@ -142,7 +125,7 @@
   ;; init-evil dependent on init-clipboard
   (require 'init-clipboard)
   ;; use evil mode (vi key binding)
-;  (require 'init-evil)
+  ;(require 'init-evil)
   (require 'init-multiple-cursors)
   (require 'init-sh)
   (require 'init-ctags)
@@ -159,27 +142,26 @@
   (require 'init-keyfreq)
   ;; projectile costs 7% startup time
   ;; misc has some crucial tools I need immediately
-  (require 'init-misc)
+  (require 'init-misc)  ;; comment for replace-string
   ;; comment below line if you want to setup color theme in your own way
-;  (if (or (display-graphic-p) (string-match-p "256color"(getenv "TERM"))) (require 'init-color-theme)) ; don't like
-;  (require 'init-emacs-w3m) ; don't like the interface
+                                        ;  (if (or (display-graphic-p) (string-match-p "256color"(getenv "TERM"))) (require 'init-color-theme)) ; don't like
+                                        ;  (require 'init-emacs-w3m) ; don't like the interface
   (require 'init-hydra)
   (require 'swift-mode)
-  
-  ;;; {{ idle require other stuff
-;  (setq idle-require-idle-delay 2)
-; (setq idle-require-symbols '(init-perforce
-;                               init-misc-lazy
-;                               init-which-func
-;                               init-fonts
-;                               init-hs-minor-mode
-;                               init-writting
-;                               init-pomodoro
-;                               init-artbollocks-mode
-;                               init-semantic))
-;  (idle-require-mode 1) ;; starts loading
-  ;;;; }}
 
+  ;;; {{ idle require other stuff
+                                        ;  (setq idle-require-idle-delay 2)
+                                        ; (setq idle-require-symbols '(init-perforce
+                                        ;                               init-misc-lazy
+                                        ;                               init-which-func
+                                        ;                               init-fonts
+                                        ;                               init-hs-minor-mode
+                                        ;                               init-writting
+                                        ;                               init-pomodoro
+                                        ;                               init-artbollocks-mode
+                                        ;                               init-semantic))
+                                        ;  (idle-require-mode 1) ;; starts loading
+  ;;;; }}
                                         ; I commemted here  
                                         ;  (when (require 'time-date nil t)
                                         ;    (message "Emacs startup time: %d seconds."
@@ -187,13 +169,13 @@
 
   ;; my personal setup, other major-mode specific setup need it.
   ;; It's dependent on init-site-lisp.el
-;  (if (file-exists-p "~/.custom.el") (load-file "~/.custom.el"))
+                                        ;  (if (file-exists-p "~/.custom.el") (load-file "~/.custom.el"))
   )
 
 
 ;;; setup defaults for all modes
 (setq default-frame-alist
-      '((top . 0)(left . 500)(height . 74)(width . 120)(menubar-lines . 20)(tool-bar-line . 0)))
+      '((top . 0)(left . 500)(height . 75)(width . 120)(menubar-lines . 20)(tool-bar-line . 0)))
 
 
 ;;; autorevert buffer
@@ -267,8 +249,7 @@
 
 ;;;; for latex-mode
 (add-to-list 'ac-modes 'latex-mode)
-(add-to-list 'ac-modes 'csharp-mode) ;;; csharp-mode
-;(add-to-list 'ac-modes 'racket-mode) ;;; csharp-mode
+(add-to-list 'ac-modes 'csharp-mode) 
 (add-to-list 'ac-modes 'python-mode) 
 
 (defun ac-latex-mode-setup()
@@ -291,8 +272,7 @@
 ;;; key bindings of WuBi
 (global-set-key [?\C-+] 'add-wubi)
 (global-set-key [?\C--] 'del-wubi)
-(global-set-key "\M- " 'toggle-input-method)
-
+;(global-set-key "\M- " 'toggle-input-method)
 
 ;;; meta
 (global-set-key "\M-l" 'replace-string) ; originally lowercase folling word
@@ -394,33 +374,28 @@
 ;;; --- 资源管理器
 (setq speedbar-show-unknown-files t)    ;显示文件
 
-
-;;; try to exchange windows & Alt keys in windows keyboard
-;(setq mac-option-key-is-meta nil)
-;(setq mac-command-key-is-meta t)
-;(setq mac-command-modifier 'meta)
-;(setq mac-option-modifier nil)
-
-
 (put 'downcase-region 'disabled nil)
 
 
-(fset 'one
-      [?\C-a ?\C-e ?\C-  ?\C-n ?\C-a ?\M-f ?\M-b ?\C-w ?  ?\C-e ?\C-  ?\C-n ?\C-b ?\C-w ?  ?\C-n ?\C-a ?\C-k])
-(global-set-key (kbd "C-c o") 'one)
-(put 'one 'kmacro t)
+;;; indent buffer
+(defun indent-buffer ()
+      (interactive)
+      (save-excursion
+        (indent-region (point-min) (point-max) nil)))
+    (global-set-key [f12] 'indent-buffer)
+
+
+;;; lisp mute & dmute
+(fset 'ldm
+   [?\C-a ?\C-  ?\C-f ?\C-w ?\C-n ?\C-a])
 
 
 ;;; for formating files when copying codes from online or somewhere which format I don't like
 (fset 'ta   ;;; C-i to be " & "  tab
    [?\M-x ?r ?e ?p ?l ?  ?s return ?\C-q ?\C-i return ?  ?& ?  return])
 
-(fset 'fo   ;;; same short no C-i
-   [?\M-x ?r ?e ?p ?l ?  ?s return ?\C-q ?\C-j ?\{ ?  ?  ?\C-q ?\C-j return ?\{ ?\C-q ?\C-j return])
 (fset 'fom  ;;; { to be inline
    [?\M-x ?r ?e ?p ?l ?  ?s return ?\C-q ?\C-j ?\C-q ?\C-i ?\{ ?\C-q ?\C-j return ?  ?\{ ?\C-q ?\C-j return])
-;(fset 'el   ;;; same short no C-i
-;   [?\M-x ?r ?e ?p ?l ?  ?s return ?\C-q ?\C-j ?\} ?  ?  ?\C-q ?\C-j ?e ?l ?s ?e ?  ?  ?\C-q ?\C-j ?\{ ?  ?  ?\C-q ?\C-j return ?\C-q ?\C-j ?\} ?  ?e ?l ?s ?e ?  ?\{ ?\C-q ?\C-j return])
 (fset 'el
    "\C-n\C-k\C-p\C-e\C-y\C-n\C-n\C-b\C-b\C-k\C-p\C-p\C-e\C-y\C-k\C-k\C-n\C-n\C-a")
 
@@ -435,12 +410,84 @@
 (fset 'st
    [?\C-  ?\C-p ?\C-p ?\C-p ?\C-p ?\C-p ?\C-p ?\M-p ?* return return ?\C-p ?\C-p])
 
-(fset 'fo
-   [?\M-g ?1 return ?\M-p ?\C-q ?\C-j ?\{ delete return ?  ?\{ delete return ?\M-g ?1 return ?\M-p ?\C-q ?\C-j ?  ?  ?  ?  ?\{ delete return ?  ?\{ delete return ?\M-g ?1 return ?\M-p ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?\{ delete return ?  ?\{ delete return ?\M-g ?1 return ?\M-p ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?\{ delete return ?  ?\{ delete return ?\M-g ?1 return ?\M-p ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?\{ delete return ?  ?\{ delete return ?\M-g ?1 return ?\M-p ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?\{ delete return ?  ?\{ delete return])
+(fset 'fo ;;; M-p --> M--l global replace-string commands changed
+      [?\M-g ?1 return
+             ?\M-l ?\C-q ?\C-j ?\{ delete return ?  ?\{ delete return
+             ?\M-g ?1 return
+             ?\M-l ?\C-q ?\C-j ?  ?  ?  ?  ?\{ delete return ?  ?\{ delete return
+             ?\M-g ?1 return
+             ?\M-l ?\C-q ?\C-j ?\C-q ?\C-i ?\{ delete return ?  ?\{ delete return
+             ?\M-g ?1 return
+             ?\M-l ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?\{ delete return ?  ?\{ delete return
+             ?\M-g ?1 return
+             ?\M-l ?\C-q ?\C-j ?\C-q ?\C-i ?\C-q ?\C-i ?\{ delete return ?  ?\{ delete return
+             ?\M-g ?1 return
+             ?\M-l ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?\{ delete return ?  ?\{ delete return
+             ?\M-g ?1 return
+             ?\M-l ?\C-q ?\C-j ?\C-q ?\C-i ?\C-q ?\C-i ?\C-q ?\C-i ?\{ delete return ?  ?\{ delete return
+             ?\M-g ?1 return
+             ?\M-l ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?\{ delete return ?  ?\{ delete return
+             ?\M-g ?1 return
+             ?\M-l ?\C-q ?\C-j ?\C-q ?\C-i ?\C-q ?\C-i ?\C-q ?\C-i ?\C-q ?\C-i ?\{ delete return ?  ?\{ delete return
+;             ?\M-g ?1 return
+;             ?\M-l ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?\{ delete return ?  ?\{ delete return
+;             ?\M-g ?1 return
+;             ?\M-l ?\C-q ?\C-j ?\C-q ?\C-i ?\C-q ?\C-i ?\C-q ?\C-i ?\C-q ?\C-i ?\C-q ?\C-i ?\{ delete return ?  ?\{ delete return
+             ?\M-g ?1 return
+             ?\M-l ?\} ?\C-q ?\C-j ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e return 
+             ?\M-g ?1 return
+             ?\M-l ?\} ?\C-q ?\C-j ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
+             ?\M-g ?1 return
+             ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
+             ?\M-g ?1 return
+             ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
+             ?\M-g ?1 return
+             ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
+             ?\M-g ?1 return
+             ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?  ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
+             ?\M-g ?1 return
+             ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
+             ?\M-g ?1 return
+             ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
+             ?\M-g ?1 return
+             ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
+             ?\M-g ?1 return
+             ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
+             ?\M-g ?1 return
+             ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
+             ?\M-g ?1 return
+             ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
+             ?\M-g ?1 return
+             ?\M-l ?\} ?\C-q ?\C-j ?\C-q ?\C-i ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return ;; 1 \t
+             ?\M-g ?1 return
+             ?\M-l ?\} ?\C-q ?\C-j ?\C-q ?\C-i ?\C-q ?\C-i ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
+             ?\M-g ?1 return
+             ?\M-l ?\} ?\C-q ?\C-j ?\C-q ?\C-i ?\C-q ?\C-i ?\C-q ?\C-i ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
+             ?\M-g ?1 return
+             ?\M-l ?\} ?\C-q ?\C-j ?\C-q ?\C-i ?\C-q ?\C-i ?\C-q ?\C-i ?\C-q ?\C-i ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e return
+             ?\M-g ?1 return
+             ?\M-l ?\C-q ?\C-j ?\C-q ?\C-j ?\C-q ?\C-j return ?\C-q ?\C-j ?\C-q ?\C-j return
+             ?\M-g ?1 return ;;; for {} in one line
+             ?\M-l ?\{ ?\C-q ?\C-j ?\C-q ?\C-j ?  ?  ?  ?  ?\} return ?\{ ?\} return
+             ?\M-g ?1 return
+             ?\M-l ?\{ ?\C-q ?\C-j ?\C-q ?\C-j ?\C-q ?\C-i ?\} return ?\{ ?\} return
+             ?\M-g ?1 return
+             ?\M-l ?\{ ?  ?\C-q ?\C-j ?\C-q ?\C-j ?  ?  ?  ?  ?\} return ?\{ ?\} return
+             ?\M-g ?1 return
+             ?\M-l ?\{ ?  ?\C-q ?\C-j ?\C-q ?\C-j ?\C-q ?\C-i ?\} return ?\{ ?\} return
+             ?\M-g ?1 return
+             ?\M-l ?\{ ?  ?  ?\C-q ?\C-j ?\C-q ?\C-j ?  ?  ?  ?  ?\} return ?\{ ?\} return
+             ?\M-g ?1 return
+             ?\M-l ?\{ ?  ?  ?\C-q ?\C-j ?\C-q ?\C-j ?\C-q ?\C-i ?\} return ?\{ ?\} return
+             ?\M-g ?1 return
+             ?\M-l ?\C-q ?\C-j ?\C-q ?\C-j return ?\C-q ?\C-j return
+             ?\M-g ?1 return ;;; go back to beginning of file
+	     ])
 (fset 'f
-   [?\M-g ?1 return ?\M-x ?f ?o return ?\C-x ?h tab ?\C-  ?\C-  ?\C-v])
+   [?\M-g ?1 return ?\M-x ?f ?o return ?\C-x ?h f12]) ;; indent region
 (global-set-key (kbd "C-c f") 'f) ; very useful
 (put 'f 'kmacro t)
+
 
 ;;; don't really remember what I were doing here
 (fset 'tw
@@ -464,7 +511,7 @@
  '(git-gutter:handled-backends (quote (svn hg git)))
  '(package-selected-packages
    (quote
-    (flycheck-swift3 flycheck-swift flycheck swift3-mode swift-mode yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode lua-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-lua flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word csharp-mode crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link)))
+    (auto-complete-clang-async flycheck-swift3 flycheck-swift flycheck swift3-mode swift-mode yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode lua-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-lua flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word csharp-mode crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link)))
  '(session-use-package t nil (session)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

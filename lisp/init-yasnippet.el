@@ -13,7 +13,7 @@
     (yas-minor-mode 1)))
 
 (add-hook 'prog-mode-hook 'yasnippet-generic-setup-for-mode-hook)
-(add-hook 'text-mode-hook 'yasnippet-generic-setup-for-mode-hook)
+(add-hook 'text-mode-hook 'yasnippet-generic-setup-for-mode-hook)  
 ;; below modes does NOT inherit from prog-mode
 (add-hook 'cmake-mode-hook 'yasnippet-generic-setup-for-mode-hook)
 (add-hook 'web-mode-hook 'yasnippet-generic-setup-for-mode-hook)
@@ -23,7 +23,8 @@
   (interactive)
   (yas-compile-directory (file-truename "~/.emacs.d/snippets"))
   (yas-reload-all)
-  (yas-minor-mode 1))
+  (yas-minor-mode 1)
+  )
 
 (defun my-yas-field-to-statement(str sep)
   "If STR=='a.b.c' and SEP=' && ',
@@ -91,7 +92,7 @@
                         "\" "
                         (mapconcat (lambda (i) (format "%s" i)) top-kill-ring " ")
                         )))
-     ((memq major-mode '(c-mode c++-mode))
+     ((memq major-mode '(c-mode c++-mode java-mode python-mode csharp-mode swift-mode)) ;; I modifed here
       (setq rlt (concat (mapconcat (lambda (i) (format "%s=%%s" i)) top-kill-ring ", ")
                         "\\n\", "
                         (mapconcat (lambda (i) (format "%s" i)) top-kill-ring ", ")

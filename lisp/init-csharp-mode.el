@@ -3,6 +3,9 @@
 (add-to-list 'load-path (expand-file-name "/Users/jenny/.emacs.d/elpa/csharp-mode")) ;拓展文件(插件)目录
 (require 'csharp-mode)
 
+(setq interpreter-mode-alist
+      (cons '("cs" . csharp-mode) interpreter-mode-alist))
+(add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
 
 ;;;for csharp-mode ; {} autoindent
 (defun csharp-autoindent ()
@@ -50,9 +53,11 @@
    ;; was the last non-space an equals sign? or square brackets?  Then it's an initializer.
    ((cheeso-looking-back-at-equals-or-array-init)
     (self-insert-command 1)
-    (insert ";")
-    (backward-char 1)) ; this one works great now
+    (forward-char 1)
+    (insert ";") 
+    (backward-char 2)) 
 
+   
    ;; doesn't cooperate well with autopair
    ;; else, it's a new scope., 
    ;; therefore, insert paired braces with an intervening newline, and indent everything appropriately.
@@ -63,11 +68,6 @@
     (newline-and-indent)
     (c-indent-line-or-region)
     )))
-
-
-(setq interpreter-mode-alist
-      (cons '("cs" . csharp-mode) interpreter-mode-alist))
-(add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
 
 
 (provide 'init-csharp-mode)

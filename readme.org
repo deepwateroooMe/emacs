@@ -3,6 +3,8 @@
 #+author: deepwaterooo
 
 * Updates 
+- C-c f formating files according to needs. Fix minor bugs for java python csharp-mode swift-mode auto complete.
+- clean auto-complete-mode, made repository more consistant.
 - csharp-mode: fixed minor bugs for autopairing, as well as expand {} for function scope.
 - swift-mode using swift3
 - org-mode src code highlight is on, just I forgot to specify language before.

@@ -1,13 +1,13 @@
 (add-hook 'after-init-hook 'global-company-mode)
 
-(if (fboundp 'evil-declare-change-repeat)
-    (mapc #'evil-declare-change-repeat
-          '(company-complete-common
-            company-select-next
-            company-select-previous
-            company-complete-selection
-            company-complete-number
-            )))
+                                        ;(if (fboundp 'evil-declare-change-repeat)
+                                        ;    (mapc #'evil-declare-change-repeat
+                                        ;          '(company-complete-common
+                                        ;            company-select-next
+                                        ;            company-select-previous
+                                        ;            company-complete-selection
+                                        ;            company-complete-number
+                                        ;            )))
 
 (eval-after-load 'company
   '(progn
@@ -45,7 +45,7 @@
      ;; press SPACE will accept the highlighted candidate and insert a space
      ;; `M-x describe-variable company-auto-complete-chars` for details
      ;; That's BAD idea.
-     (setq company-auto-complete nil)
+                                        ;     (setq company-auto-complete nil)
 
      ;; NOT to load company-mode for certain major modes.
      ;; Ironic that I suggested this feature but I totally forgot it
@@ -53,8 +53,9 @@
      ;; https://github.com/company-mode/company-mode/issues/29
      (setq company-global-modes
            '(not
-             eshell-mode comint-mode erc-mode gud-mode rcirc-mode
+             eshell-mode comint-mode erc-mode gud-mode rcirc-mode 
              minibuffer-inactive-mode))))
+
 
 ;; {{ setup company-ispell
 (defun toggle-company-ispell ()
@@ -90,20 +91,21 @@
      (add-to-list 'company-etags-modes 'lua-mode)))
 
 
-
-
-;(setq company-idle-delay t)
+                                        ;(setq company-idle-delay t)
+(setq company-idle-delay nil)
 (add-hook 'after-init-hook 'global-company-mode)  
 
 (dolist (hook (list ; 13 for specific modes company-mode on
                'emacs-lisp-mode-hook
                'lisp-mode-hook
                'lisp-interaction-mode-hook
-;               'scheme-mode-hook
+               'scheme-mode-hook
                'c-mode-common-hook
+               'java-mode
                'python-mode-hook
-;               'haskell-mode-hook
-         'csharp-mode
+               'csharp-mode
+               'swift-mode
+               'haskell-mode-hook
                'asm-mode-hook
                'emms-tag-editor-mode-hook
                'sh-mode-hook))
@@ -112,8 +114,7 @@
 (defun sucha-install-company-completion-rules ()
   "gtags and dabbref completions for C and C++ mode"
   (company-clear-completion-rules)
-
-;;   (company-install-dabbrev-completions)
+  (company-install-dabbrev-completions)
   (company-install-file-name-completions)
   (eval-after-load 'company-gtags-completions
     '(company-install-gtags-completions))
@@ -124,18 +125,15 @@
  (lambda ()
    (company-mode 1)
    (sucha-install-company-completion-rules) ; refers to the function
- )
-t)
+   )
+ t)
 
 ;; company mode map  ; 7 mute for java-mode
-;(define-key company-mode-map [(tab)] 'indent-for-tab-command) ; tab should NOT be reset to anything else than yas/trigger-key
-(define-key company-mode-map [(meta n)] 'company-cycle)
-(define-key company-mode-map [(meta p)] 'company-cycle-backwards)
-(define-key company-mode-map [(backtab)] 'company-expand-common)
-(define-key company-mode-map [?\C-\)] 'company-expand-anything) ; M-SPC
-(define-key company-mode-map [(meta return)] 'company-expand-common)
-
-
-
+;;(define-key company-mode-map [(tab)] 'indent-for-tab-command) ; tab should NOT be reset to anything else than yas/trigger-key
+;(global-set-key [(meta n)] 'company-cycle)
+;(global-set-key [(meta p)] 'company-cycle-backwards)
+;(global-set-key [(backtab)] 'company-expand-common)
+;(global-set-key [?\C-/] 'company-expand-anything) ; M-SPC
+;(global-set-key [(meta return)] 'company-expand-common)
 
 (provide 'init-company)

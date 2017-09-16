@@ -65,8 +65,84 @@
 ;           (error "no process at point!")))))
 
 
-;(setq interpreter-mode-alist
-;      (cons '("python" . python-mode) interpreter-mode-alist))
+(setq interpreter-mode-alist
+     (cons '("java" . java-mode) interpreter-mode-alist))
+
+
+;(defun my-create-newline-and-allman-format (&rest _ignored)
+;  "Allman-style formatting for C."
+;  (interactive)
+;  (progn
+;    (newline-and-indent)
+;    (previous-line) (previous-line) (search-forward "{") (backward-char) (newline-and-indent)
+;    (next-line) (indent-according-to-mode)))
+;(sp-local-pair '(java-mode) "{" nil :post-handlers '((my-create-newline-and-allman-format "RET")))
+
+
+;;;for java-mode ; {} auto-expand
+(defun java-autoindent ()
+  (when (and (eq major-mode 'java-mode) (looking-back "[;]"))
+    (newline-and-indent)))
+(add-hook 'post-self-insert-hook 'java-autoindent)
+(add-hook 'java-mode-hook
+          #'(lambda ()
+              (local-set-key (kbd "{") 'cheeso-insert-open-brace-for-java)))
+
+; work with autopair for {
+(defun cheeso-looking-back-at-regexp (regexp)
+  "calls backward-sexp and then checks for the regexp.  Returns t if it is found, else nil"
+  (interactive "s")
+  (save-excursion
+    (backward-sexp)
+    (looking-at regexp)))
+
+(defun cheeso-looking-back-at-equals-or-array-init-java ()
+  "returns t if an equals or [] is immediate preceding. else nil."
+  (interactive)
+  (cheeso-looking-back-at-regexp "\\(\\w+\\b *=\\|[[]]+\\)"))  
+
+(defun cheeso-prior-sexp-same-statement-same-line-java ()
+  "returns t if the prior sexp is on the same line. else nil"
+  (interactive)
+  (save-excursion
+    (let ((curline (line-number-at-pos))
+          (curpoint (point))
+          (aftline (progn
+		     (backward-sexp)
+		     (line-number-at-pos))) )
+      (= curline aftline))))  
+
+;;; kbd-macro that used to expand {|}
+(fset 'expand
+   [return])
+
+(defun cheeso-insert-open-brace-for-java ()
+  "if point is not within a quoted string literal, insert an open brace, two newlines, and a close brace; indent everything and leave point on the empty line. If point is within a string literal, just insert a pair or braces, and leave point between them."
+  (interactive)
+  (cond
+   ;; are we inside a string literan? 
+   ((c-got-face-at (point) c-literal-faces)
+    ;; if so, then just insert a pair of braces and put the point between them
+    (self-insert-command 1)
+    (insert "")) ; this one works great now
+
+   ;; was the last non-space an equals sign? or square brackets?  Then it's an initializer.
+   ((cheeso-looking-back-at-equals-or-array-init-java)
+    (self-insert-command 1)
+    (forward-char 1)
+    (insert ";") 
+    (backward-char 2)) ; this one works great now
+
+   ;; else, it's a new scope., 
+   ;; therefore, insert paired braces with an intervening newline, and indent everything appropriately.
+   (t
+   (if (cheeso-prior-sexp-same-statement-same-line-java)
+        (self-insert-command 1)) ;;; so far only upto here, don't know how to eval & expand {}
+   (insert "")
+   (newline-and-indent)
+   (c-indent-line-or-region)
+   (execute-kbd-macro (symbol-function 'expand))
+    )))
 
 
 ;;; java macro

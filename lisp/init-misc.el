@@ -16,7 +16,7 @@
 ;; - `aya-create' at first, input ~ to mark the thing next
 ;; - `aya-expand' to expand snippet
 ;; - `aya-open-line' to finish
-(global-set-key (kbd "C-q") #'aya-open-line)
+;(global-set-key (kbd "C-q") #'aya-open-line)
 ;; }}
 
 ;; {{ ace-link
@@ -582,7 +582,7 @@ If step is -1, go backward."
 ;; }}
 
 (defun my-minibuffer-setup-hook ()
-  (local-set-key (kbd "M-y") 'paste-from-x-clipboard)
+;  (local-set-key (kbd "M-y") 'paste-from-x-clipboard)
   (local-set-key (kbd "C-k") 'kill-line)
   (setq gc-cons-threshold most-positive-fixnum))
 
