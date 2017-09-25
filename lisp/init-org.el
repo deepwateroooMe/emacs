@@ -324,7 +324,7 @@ same directory as the org-buffer and insert a link to this file."
       (soft-wrap-lines t) ;;; this one works
             (auto-fill-mode 1)))
 (setq org-startup-truncated nil)
-(add-to-list 'ac-modes 'org-mode)
+;(add-to-list 'ac-modes 'org-mode)
 
 
 ;;; folding related

@@ -33,6 +33,12 @@
 )
 
 
+;;; kbd-macro that used to expand {|}
+(fset 'expand
+      [return])
+;(global-set-key (kbd "{") '(execute-kbd-macro (symbol-function 'expand))) ; should work for function scope only
+
+
 ;;; mute one line of codes
 (fset 'mu
       "\C-a//\C-n\C-a")

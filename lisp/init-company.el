@@ -1,5 +1,6 @@
 (add-hook 'after-init-hook 'global-company-mode)
 
+
                                         ;(if (fboundp 'evil-declare-change-repeat)
                                         ;    (mapc #'evil-declare-change-repeat
                                         ;          '(company-complete-common
@@ -21,19 +22,24 @@
      (setq company-backends (delete 'company-ropemacs company-backends))
      ;; (setq company-backends (delete 'company-capf company-backends))
 
-     ;; I don't like the downcase word in company-dabbrev!
-     (setq company-dabbrev-downcase nil
+     
+     (setq company-dabbrev-downcase nil ;; I don't like the downcase word in company-dabbrev!
            ;; make previous/next selection in the popup cycles
-           company-selection-wrap-around t
-           ;; Some languages use camel case naming convention,
-           ;; so company should be case sensitive.
+           company-selection-wrap-around t ;在弹出的补全列表里移动时可以前后循环，默认如果移动到了最后一个是没有办法再往下移动的
+           ;; Some languages use camel case naming convention, so company should be case sensitive.
            company-dabbrev-ignore-case nil
            ;; press M-number to choose candidate
-           company-show-numbers t
-           company-idle-delay 0.2
+           company-show-numbers t ; 显示序号 ; display serial number
+           company-idle-delay 0.2 ;菜单延迟 ; menu delay
+           company-minimum-prefix-length 3 ; 开始补全字数 ; start completelyness number
            company-clang-insert-arguments nil
            company-require-match nil
+; 补全列表里的项按照使用的频次排序，这样经常使用到的会放在前面，减少按键次数    
+           company-transformers '(company-sort-by-backend-importance)
+           company-tooltip-align-annotations t ; 让补全列表里的各项左右对齐
+           company-continue-commands '(not helm-dabbrev) ;;; this one, not very sure
            company-etags-ignore-case t)
+
 
      ;; @see https://github.com/redguardtoo/emacs.d/commit/2ff305c1ddd7faff6dc9fa0869e39f1e9ed1182d
      (defadvice company-in-string-or-comment (around company-in-string-or-comment-hack activate)
@@ -91,8 +97,31 @@
      (add-to-list 'company-etags-modes 'lua-mode)))
 
 
-                                        ;(setq company-idle-delay t)
-(setq company-idle-delay nil)
+;(setq company-idle-delay nil) ;;; for auto-complete to work ; t
+
+
+;; grammal check: flycheck
+(add-hook 'after-init-hook #'global-flycheck-mode);global enable 
+                                        ; close flymake,  start flycheck                                        
+(when (require 'flycheck nil t)
+  (setq elpy-modules(delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
+
+                                        ; 补全后端使用anaconda
+(add-to-list 'company-backends '(company-anaconda :with company-yasnippet))
+                                        ; 默认使用 M-n 和 M-p 来在补全列表里移动，改成 C-n 和 C-p
+(define-key company-active-map (kbd "M-n") nil)
+(define-key company-active-map (kbd "M-p") nil)
+(define-key company-active-map (kbd "C-n") 'company-select-next)
+(define-key company-active-map (kbd "C-p") 'company-select-previous)
+                                        ; 设置让 TAB 也具备相同的功能
+(define-key company-active-map (kbd "TAB") 'company-complete-common) ; -or-cycle
+(define-key company-active-map (kbd "<tab>") 'company-complete-common) ; -or-cycle
+(define-key company-active-map (kbd "S-TAB") 'company-select-previous)
+(define-key company-active-map (kbd "<backtab>") 'company-select-previous)
+(global-set-key (kbd "<C-return>") 'company-complete) ; oir, kbd "<C-tab> ; (kbd "<C-return>") works
+
+
 (add-hook 'after-init-hook 'global-company-mode)  
 
 (dolist (hook (list ; 13 for specific modes company-mode on
@@ -128,12 +157,8 @@
    )
  t)
 
+
 ;; company mode map  ; 7 mute for java-mode
 ;;(define-key company-mode-map [(tab)] 'indent-for-tab-command) ; tab should NOT be reset to anything else than yas/trigger-key
-;(global-set-key [(meta n)] 'company-cycle)
-;(global-set-key [(meta p)] 'company-cycle-backwards)
-;(global-set-key [(backtab)] 'company-expand-common)
-;(global-set-key [?\C-/] 'company-expand-anything) ; M-SPC
-;(global-set-key [(meta return)] 'company-expand-common)
 
 (provide 'init-company)
