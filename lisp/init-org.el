@@ -249,7 +249,7 @@ If use-indirect-buffer is not nil, use `indirect-buffer' to hold the widen conte
 
 
 ;;; org-mode
-（require 'linum）
+;（require 'linum）
 (global-linum-mode 1)
 (setq load-path (cons "~/.emacs.d/elpa/org-9.0.9/lisp" load-path))
 (add-to-list 'load-path "~/.emacs.d/elpa/org-9.0.9/contrib/lisp" t)

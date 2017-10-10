@@ -27,8 +27,10 @@
                                 (message "window-fringes %S" (window-fringes))
                                 (set-window-fringes nil 0)))
 ;(add-to-list 'speedbar-frame-parameters '(left-fringe . 0)) ; doesn't seem to work
-;(setq sr-speedbar-width 50)
+(setq sr-speedbar-width 35)
+(setq window-size-fixed 'width)
 (global-set-key [(f5)] 'speedbar-get-focus)
-(speedbar 1)
+;(speedbar 1)
+
 
 (provide 'init-sr-speedbar)

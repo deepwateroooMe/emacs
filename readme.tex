@@ -1,5 +1,4 @@
-% Created 2017-09-15 Fri 18:21
-% Intended LaTeX compiler: pdflatex
+% Created 2017-10-10 Tue 11:52
 \documentclass[9pt, b5paper]{article}
 \usepackage{fontspec}
 \usepackage{graphicx}
@@ -25,12 +24,9 @@
 \date{\today}
 \title{Emacs Configuration}
 \hypersetup{
- pdfauthor={deepwaterooo},
- pdftitle={Emacs Configuration},
- pdfkeywords={},
- pdfsubject={},
- pdfcreator={Emacs 25.2.1 (Org mode 9.0.9)}, 
- pdflang={English}}
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 25.2.1 (Org mode 8.2.10)}}
 \begin{document}
 
 \maketitle
@@ -38,8 +34,11 @@
 
 
 \section{Updates}
-\label{sec:org713bcad}
+\label{sec-1}
 \begin{itemize}
+\item sr-speedbar set fixed width cater to current project file name length;
+\item fixed previously existing tab cannot indent line and region problem;
+\item company mode works convinient and as I expected;
 \item C-c f formating files according to needs. Fix minor bugs for java python csharp-mode swift-mode auto complete.
 \item clean auto-complete-mode, made repository more consistant.
 \item csharp-mode: fixed minor bugs for autopairing, as well as expand \{\} for function scope.
@@ -58,7 +57,7 @@
 \end{itemize}
 
 \section{starting point}
-\label{sec:org78686ba}
+\label{sec-2}
 \begin{itemize}
 \item It is a new computer, and I did try to git clone from my own repository to new laptop, but after fixed errors and tried, \textbf{I promise I do NOT and can NOT bare the out-dated emacs 22.X any more, I have to move on.} I have to install newer versions for my own later on convenience.
 \item Instead of configuring my own again, this time, I tried from some "big" person's repository and try to make it work on my laptop (fixing errors, installing necessary packages etc), as well as comment out some complicated modes and customization so that I would still be able to use and like my current emacs interface.
@@ -67,16 +66,17 @@
 \item Will devote more time to understand emacs better, and to solve my own problems and make it more convenient for me to use when I need some specific features.
 \end{itemize}
 
-\section{{\bfseries\sffamily TODO} s}
-\label{sec:orgf5befe8}
+\section{TODOs}
+\label{sec-3}
 \begin{itemize}
 \item get cmake work later, not urgent though.
 \item babel org-mode so I don't have to copy from specific babeled source org-mode files in order for chinese characters to work.
 \end{itemize}
 
 \section{References}
-\label{sec:org9768827}
+\label{sec-4}
 \begin{itemize}
 \item \url{https://github.com/redguardtoo/emacs.d}
 \end{itemize}
+% Emacs 25.2.1 (Org mode 8.2.10)
 \end{document}
