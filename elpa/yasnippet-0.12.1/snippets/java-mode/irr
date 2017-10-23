@@ -1,6 +1,0 @@
-# contributor: deepwaterooo
-# name: Int [][] ${1:s} = {$0};
-# key: irr
-# --
-int [][] ${1:a} = {$0};
-

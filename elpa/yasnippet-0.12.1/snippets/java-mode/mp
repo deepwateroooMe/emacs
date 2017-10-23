@@ -1,5 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: mp
-# key: mp
-# --
-Math.pow(${1:10}, ${2})$0

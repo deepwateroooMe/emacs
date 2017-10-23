@@ -1,5 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: println("")OneLine
-# key: pmo
-# --
-print("${1:x}")$0

@@ -1,6 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: println
-# key: pl
-# --
-print("The value of ${1:x} is \($1).")
-$0

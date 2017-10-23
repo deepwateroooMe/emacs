@@ -235,5 +235,5 @@
 
 ;; And use keyfreq-show to see how many times you used a command.
 ;; comment out below line if there is performance impact
-(turnon-keyfreq-mode)
+;(turnon-keyfreq-mode)
 (provide 'init-keyfreq)

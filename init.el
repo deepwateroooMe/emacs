@@ -18,24 +18,20 @@
 
 ;(setq default-directory "~/youtubeV/unity/PacMan/Assets/Scripts/")
 ;(setq default-directory "~/sp-infra-tools/spanda/tools/")
-;(setq default-directory "~/spsdk_s/Squarepanda/spsdk/src/main/java/com/squarepanda/sdk")
+(setq default-directory "~/spsdk_s/Squarepanda/spsdk/src/main/java/com/squarepanda/sdk/")
 ;(setq default-directory "~/spsdk_sBk/Squarepanda/spsdk/src/main/java/com/squarepanda/sdk/")
-(setq default-directory "~/.emacs.d/")
+;(setq default-directory "~/.emacs.d/")
 ;(setq default-directory "~/spsdk_s/logs/log9/")
-; game
 ;(setq default-directory "~/sp-bubbles-bk/Assets/SquarePanda/Scripts/SDK/")
-
 
 ;;; setup defaults for all modes
 (setq default-frame-alist
-;      '((top . 0)(left . 500)(height . 75)(width . 120)(menubar-lines . 100)(tool-bar-line . 0))
-      '((top . 0)(left . 300)(height . 75)(width . 120)(menubar-lines . 100)(tool-bar-line . 0))
-      )
+      '((top . 0)(left . 300)(height . 78)(width . 230)(menubar-lines . 100)(tool-bar-line . 0))) ; 75 230
+
 
 
 (setq emacs-load-start-time (current-time))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
-
 ;;----------------------------------------------------------------------------
 ;; Which functionality to enable (use t or nil for true and false)
 ;;----------------------------------------------------------------------------
@@ -120,9 +116,6 @@
   (require 'init-elisp)
 ;  (require 'init-auto-complete)
   (require 'init-yasnippet)
-;  (setq yas/trigger-key (kbd "TAB"))
-                                        ;  (setq yas/trigger-key (kbd "\M-/"))
-  
   (require 'cpputils-cmake) ; to do more work on this one
   ;; Use bookmark instead
   (require 'init-cc-mode)
@@ -133,7 +126,7 @@
   ;; init-evil dependent on init-clipboard
   (require 'init-clipboard)
   ;; use evil mode (vi key binding)
-                                        ;(require 'init-evil)
+  ;(require 'init-evil)
   (require 'init-multiple-cursors)
   (require 'init-sh)
   (require 'init-ctags)
@@ -144,9 +137,9 @@
   (require 'init-term-mode)
   (require 'init-web-mode)
   (require 'init-slime)
-  
+  (require 'init-text)
   ;; need statistics of keyfreq asap
-  (require 'init-keyfreq)
+;  (require 'init-keyfreq) ;;; don't like this too much
   ;; projectile costs 7% startup time
   ;; misc has some crucial tools I need immediately
   (require 'init-misc)  ;; comment for replace-string
@@ -563,7 +556,7 @@
              ?\M-g ?1 return ;;; go back to beginning of file
              ])
 (fset 'f
-      [?\M-g ?1 return ?\M-x ?f ?o return ?\C-x ?h f12]) ;; indent region
+      [?\M-g ?1 return ?\M-x ?f ?o return ?\C-x ?h tab]) ;; indent region f12
 (global-set-key (kbd "C-c f") 'f) ; very useful
 (put 'f 'kmacro t)
 

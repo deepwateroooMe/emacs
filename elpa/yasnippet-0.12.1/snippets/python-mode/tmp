@@ -1,5 +1,0 @@
-# name: user[''] = 
-# key: tmp
-# --
-user['${1:var}'] = $1
-$0

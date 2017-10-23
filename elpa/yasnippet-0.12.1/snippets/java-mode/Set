@@ -1,6 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: Set
-# key: Set
-# --
-HashSet<${1:String}> ${3:set} = new HashSet<$1>();
-$0
