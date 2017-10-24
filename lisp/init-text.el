@@ -55,7 +55,7 @@
 (add-to-list 'auto-mode-alist '("\\.txt$" . textile-mode))
 ;(add-to-list 'auto-mode-alist '("\\.log$" . textile-mode))
 
-(add-hook 'textile-mode-hook 'text-hook)
+;(add-hook 'textile-mode-hook 'text-hook)
 ;(add-hook 'textile-mode-hook (list 'text-hook 'syslog-mode-hook))
 
 
@@ -69,10 +69,10 @@
 ;      indent-region-mode t
 ;      rng-nxml-auto-validate-flag nil)
 
-(add-to-list 'auto-mode-alist '("\\.xml$" . nxml-mode))
+;(add-to-list 'auto-mode-alist '("\\.xml$" . nxml-mode))
 
 ;; CSS
-(add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
+;(add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
 
 (linum-mode 1)
 

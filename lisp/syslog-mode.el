@@ -171,6 +171,105 @@
 (defvar syslog-mode-load-hook nil
   "*Hook to run when `syslog-mode' is loaded.")
 
+
+(defun textile-acronym-matcher ()
+  "Return the matcher regexp for an acronym"
+  (concat
+   "\\w+" "(.*?)"))
+(defvar textile-blocks
+  '("^p" "^bq" "^fn[0-9]+" "^#+ " "^\\*+ " "^table"))
+(defvar textile-attributes
+  '("{[^}]*}" "([^)]*)" "\\[[^]]*\\]"))
+(defvar textile-inline-markup
+  '("\\*" "\\*\\*" "_" "__" "\\?\\?" "@" "-" "\\+" "^" "~" "%"))
+(defvar textile-alignments
+  '( "<>" "<" ">" "=" "(+" ")+"))
+(defun textile-re-concat (l)
+  "Concatenate the elements of a list with a \\| separator and
+non-matching parentheses"
+  (concat
+   "\\(?:"
+   (mapconcat 'identity l "\\|")
+   "\\)"))
+(defun textile-alignments-matcher ()
+  "Return the matcher regexp for an alignments or indentation"
+  (concat
+   "\\(?:" (textile-re-concat textile-blocks) "\\|" "!" "\\)"
+   "\\(" (textile-re-concat textile-alignments) "+" "\\)"))
+(defun textile-attribute-matcher (attr-start attr-end)
+  "Return the matcher regexp for an attribute"
+  (concat
+   (textile-re-concat (append textile-blocks textile-inline-markup))
+   (textile-re-concat textile-alignments) "*"
+   (textile-re-concat textile-attributes) "*"
+   "\\(" attr-start "[^"
+   (if (string-equal attr-end "\\]") "]" attr-end)
+   "]*" attr-end "\\)"))
+
+
+;; Keywords
+;; Todo: Seperate the keywords into a list for each format, rather
+;; than one for all.
+(defvar syslog-font-lock-keywords
+;  '(
+  (list
+  ;; Hours: 17:36:00
+    `("\\(?:^\\|[[:space:]]\\)\\([[:digit:]]\\{1,2\\}:[[:digit:]]\\{1,2\\}\\(:[[:digit:]]\\{1,2\\}\\)?\\)\\(?:$\\|[[:space:]]\\)" 1 'syslog-hour t t)
+    ;; Date
+    `("\\(?:^\\|[[:space:]]\\)\\([[:digit:]]\\{1,2\\}/[[:digit:]]\\{1,2\\}/[[:digit:]]\\{2,4\\}\\)\\(?:$\\|[[:space:]]\\)" 1 'syslog-hour t t)
+    ;; Dates: May  9 15:52:34
+    `("^\\(\\(?:[[:alpha:]]\\{3\\}\\)?[[:space:]]*[[:alpha:]]\\{3\\}\\s-+[0-9]+\\s-+[0-9:]+\\)" 1 'font-lock-type-face t)
+    ;; Su events
+    `("\\(su:.*$\\)" 1 'syslog-su t)
+    `("\\(sudo:.*$\\)" 1 'syslog-su t)
+    `("\\[[^]]*\\]" . 'font-lock-comment-face)
+    ;; IPs
+    `("[[:digit:]]\\{1,3\\}\\.[[:digit:]]\\{1,3\\}\\.[[:digit:]]\\{1,3\\}\\.[[:digit:]]\\{1,3\\}" 0 'syslog-ip t t)
+    `("[Ee][Rr][Rr]\\(?:[Oo][Rr]\\)?" 0 'syslog-error t t)
+    `("[Ii][Nn][Ff][Oo]" 0 'syslog-info t t)
+    `("STARTUP" 0 'syslog-info t t)
+    `("CMD" 0 'syslog-info t t)
+    `("[Ww][Aa][Rr][Nn]\\(?:[Ii][Nn][Gg]\\)?" 0 'syslog-warn t t)
+    `("[Dd][Ee][Bb][Uu][Gg]" 0 'syslog-debug t t)
+    `("(E/)" 0 'syslog-error t t)
+    `("(W/)" 0 'syslog-warn t t)
+    `("(I/)" 0 'syslog-info t t)
+    `("(NI)" 0 'syslog-warn t t)
+    `("(D/)" 0 'syslog-debug t t)
+    `("(--)" 0 'syslog-debug t t)
+    `("(\\*\\*)" 0 'syslog-debug t t)
+    `("(==)" 0 'syslog-debug t t)
+    `("(\\+\\+)" 0 'syslog-debug t t)
+
+    ;; acronyms
+    `(,(textile-acronym-matcher) 0 'textile-acronym-face t t)
+    ;; style
+    `(,(textile-attribute-matcher "{" "}") 1 'textile-style-face t t)
+    ;; class
+    `(,(textile-attribute-matcher "(" ")") 1 'textile-class-face t t)
+    ;; lang
+    `(,(textile-attribute-matcher "\\[" "\\]") 1 'textile-lang-face t t)
+    ;; alignments and indentation
+    `(,(textile-alignments-matcher) 1 'textile-alignments-face t t)
+    ;; <pre> blocks
+    '("<pre>\\(.\\|\n\\)*?</pre>\n?" 0 'textile-pre-face t)
+    ;; <code> blocks
+    '("<code>\\(.\\|\n\\)*?</code>\n?" 0 'textile-code-face t)
+
+    )
+  "Expressions to hilight in `syslog-mode'.")
+
+
+;;; Setup functions
+(defun syslog-find-file-func ()
+  "Invoke `syslog-mode' if the buffer appears to be a system logfile.
+and another mode is not active.
+This function is added to `find-file-hooks'."
+  (if (and (eq major-mode 'fundamental-mode)
+           (looking-at syslog-sequence-start-regexp))
+      (syslog-mode)))
+
+
 ;;;###autoload
 (defvar syslog-setup-on-load nil
   "*If not nil setup syslog mode on load by running syslog-add-hooks.")
@@ -374,83 +473,64 @@ With prefix arg: remove lines between dates."
   (search-forward-regexp syslog-boot-start-regexp (point-max) t)
   (beginning-of-line))
 
+(defface textile-acronym-face
+  '((t (:foreground "magenta"))) ;; ori cyan
+  "Face used to highlight acronyms links."
+  :group 'syslog-faces)
+(defface textile-style-face 
+  '((t (:foreground "sandy brown")))
+  "Face used to highlight style parameters."
+  :group 'syslog-faces)
+(defface textile-class-face
+  '((t (:foreground "yellow green")))
+  "Face used to highlight class and id parameters."
+  :group 'syslog-faces)
+(defface textile-lang-face
+  '((t (:foreground "red"))) ;; ori sky blue
+  "Face used to highlight lang parameters."
+  :group 'syslog-faces)
+(defface textile-alignments-face
+  '((t (:foreground "indian red"))) ;; ori cyan
+  "Face used to highlight alignments."
+  :group 'syslog-faces)
+(defface textile-code-face
+  '((t (:foreground "ivory3")))
+  "Face used to highlight inline code."
+  :group 'syslog-faces)
+(defface textile-pre-face
+  '((t (:foreground "green")))
+  "Face used to highlight <pre> blocks."
+  :group 'syslog-faces)
+
 (defface syslog-ip
   '((t :underline t :slant italic :weight bold))
   "Face for IPs"
   :group 'syslog)
-
 (defface syslog-hour
   '((t :weight bold  :inherit font-lock-type-face))
   "Face for IPs"
   :group 'syslog)
-
 (defface syslog-error
   '((t  :weight bold :foreground "red"))
   "Face for IPs"
   :group 'syslog)
-
 (defface syslog-warn
   '((t  :weight bold :foreground "goldenrod"))
   "Face for IPs"
   :group 'syslog)
-
 (defface syslog-info
   '((t  :weight bold :foreground "deep sky blue"))
   "Face for IPs"
   :group 'syslog)
-
 (defface syslog-debug
   '((t  :weight bold :foreground "medium spring green"))
   "Face for IPs"
   :group 'syslog)
-
 (defface syslog-su
   '((t  :weight bold :foreground "firebrick"))
   "Face for IPs"
   :group 'syslog)
 
-;; Keywords
-;; Todo: Seperate the keywords into a list for each format, rather
-;; than one for all.
-(defvar syslog-font-lock-keywords
-  '(
-    ;; Hours: 17:36:00
-    ("\\(?:^\\|[[:space:]]\\)\\([[:digit:]]\\{1,2\\}:[[:digit:]]\\{1,2\\}\\(:[[:digit:]]\\{1,2\\}\\)?\\)\\(?:$\\|[[:space:]]\\)" 1 'syslog-hour append)
-    ;; Date
-    ("\\(?:^\\|[[:space:]]\\)\\([[:digit:]]\\{1,2\\}/[[:digit:]]\\{1,2\\}/[[:digit:]]\\{2,4\\}\\)\\(?:$\\|[[:space:]]\\)" 1 'syslog-hour append)
-    ;; Dates: May  9 15:52:34
-    ("^\\(\\(?:[[:alpha:]]\\{3\\}\\)?[[:space:]]*[[:alpha:]]\\{3\\}\\s-+[0-9]+\\s-+[0-9:]+\\)" 1 'font-lock-type-face t)
-    ;; Su events
-    ("\\(su:.*$\\)" 1 'syslog-su t)
-    ("\\(sudo:.*$\\)" 1 'syslog-su t)
-    ("\\[[^]]*\\]" . 'font-lock-comment-face)
-    ;; IPs
-    ("[[:digit:]]\\{1,3\\}\\.[[:digit:]]\\{1,3\\}\\.[[:digit:]]\\{1,3\\}\\.[[:digit:]]\\{1,3\\}" 0 'syslog-ip append)
-    ("[Ee][Rr][Rr]\\(?:[Oo][Rr]\\)?" 0 'syslog-error append)
-    ("[Ii][Nn][Ff][Oo]" 0 'syslog-info append)
-    ("STARTUP" 0 'syslog-info append)
-    ("CMD" 0 'syslog-info append)
-    ("[Ww][Aa][Rr][Nn]\\(?:[Ii][Nn][Gg]\\)?" 0 'syslog-warn append)
-    ("[Dd][Ee][Bb][Uu][Gg]" 0 'syslog-debug append)
-    ("(EE)" 0 'syslog-error append)
-    ("(WW)" 0 'syslog-warn append)
-    ("(II)" 0 'syslog-info append)
-    ("(NI)" 0 'syslog-warn append)
-    ("(!!)" 0 'syslog-debug append)
-    ("(--)" 0 'syslog-debug append)
-    ("(\\*\\*)" 0 'syslog-debug append)
-    ("(==)" 0 'syslog-debug append)
-    ("(\\+\\+)" 0 'syslog-debug append))
-  "Expressions to hilight in `syslog-mode'.")
-
-;;; Setup functions
-(defun syslog-find-file-func ()
-  "Invoke `syslog-mode' if the buffer appears to be a system logfile.
-and another mode is not active.
-This function is added to `find-file-hooks'."
-  (if (and (eq major-mode 'fundamental-mode)
-           (looking-at syslog-sequence-start-regexp))
-      (syslog-mode)))
 
 (defun syslog-add-hooks ()
   "Add a default set of syslog-hooks.

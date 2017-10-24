@@ -1,12 +1,11 @@
-;;; init-logview.el --- Basic text editing features
+;;; init-syslog.el --- Basic log viewing editing features
 
-(require 'logview-mode)
 
-;; Logview mode
-(autoload 'logview-mode "logview-mode.el"
+;; syslog-mode
+(autoload 'syslog-mode "syslog-mode.el"
   "Major mode for editing Textile files" t)
 
-(add-to-list 'auto-mode-alist '("\\.log$" . logview-mode))
+(add-to-list 'auto-mode-alist '("\\.log$" . syslog-mode))
 
 
 ;; No tabs, please
@@ -37,7 +36,7 @@
 
 
 ;; Logview mode
-(defun logview-hook ()
+(defun syslog-mode-hook ()
   (lambda ()
     (auto-fill-mode)
     (flyspell-mode)))
@@ -46,11 +45,10 @@
 (dolist (hook (list            ; 13 for specific modes company-mode on
                'java-mode-hook
                'log4j-mode-hook))
-  (add-hook hook 'logview-mode))
-                                        ;(setq 'logview-choose-submode)
-;(logview-choose-submode (Log4j ({d.M.yy H.mm.ss,SSS})))
+  (add-hook hook 'syslog-mode))
 
 (linum-mode 1)
 
-(provide 'init-logview)
-;;; init-logview.el ends here
+
+(provide 'init-syslog-mode)
+;;; init-syslog-mode.el ends here

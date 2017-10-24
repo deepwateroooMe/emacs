@@ -139,9 +139,11 @@
   (require 'init-slime)
   (require 'init-text)
   (require 'hide-lines)
-  (require 'syslog-mode)
+  (require 'init-syslog-mode)
+;  (require 'logviewer)
 ;  (require 'init-log4j-mode)
-  (require 'init-logview)
+;  (require 'init-logview)
+  
   ;; need statistics of keyfreq asap
 ;  (require 'init-keyfreq) ;;; don't like this too much
   ;; projectile costs 7% startup time
