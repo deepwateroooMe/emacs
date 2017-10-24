@@ -149,6 +149,9 @@
   (execute-kbd-macro (symbol-function 'expand))
   ) 
 
+(autoload 'jtags-extras "jtags-extras" "Load jtags-extras.")
+(add-hook 'java-mode-hook 'jtags-extras)
+
 ;;; java macro
 (fset 'lm   ; line message
       "System.out.println(\"\C-f);\C-p\C-e\C-b\C-b\C-b")

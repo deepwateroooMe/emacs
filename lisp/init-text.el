@@ -53,8 +53,11 @@
 
 (add-to-list 'auto-mode-alist '("\\.textile$" . textile-mode))
 (add-to-list 'auto-mode-alist '("\\.txt$" . textile-mode))
+;(add-to-list 'auto-mode-alist '("\\.log$" . textile-mode))
 
 (add-hook 'textile-mode-hook 'text-hook)
+;(add-hook 'textile-mode-hook (list 'text-hook 'syslog-mode-hook))
+
 
 ;; nxhtml stuff
 ;; this must be loaded before ELPA since it bundles its own

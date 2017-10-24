@@ -3,6 +3,8 @@
 #+author: deepwaterooo
 
 * Updates 
+- logview-mode, log4j-mode, syslog-mode, in progress, so far only syslog-mode works, needs to combine textile-mode functions/hooks.
+- textile-mode for android logs;
 - sr-speedbar set fixed hight and width cater to current project file names length;
 - fixed previously existing tab cannot indent line and region problem;
 - company mode works convenient and as I expected;
