@@ -231,11 +231,11 @@ non-matching parentheses"
     `("CMD" 0 'syslog-info t t)
     `("[Ww][Aa][Rr][Nn]\\(?:[Ii][Nn][Gg]\\)?" 0 'syslog-warn t t)
     `("[Dd][Ee][Bb][Uu][Gg]" 0 'syslog-debug t t)
-    `("(E/)" 0 'syslog-error t t)
-    `("(W/)" 0 'syslog-warn t t)
-    `("(I/)" 0 'syslog-info t t)
+    `("(EE)" 0 'syslog-error t t)
+    `("(WW)" 0 'syslog-warn t t)
+    `("(II)" 0 'syslog-info t t)
     `("(NI)" 0 'syslog-warn t t)
-    `("(D/)" 0 'syslog-debug t t)
+    `("(!!)" 0 'syslog-debug t t)
     `("(--)" 0 'syslog-debug t t)
     `("(\\*\\*)" 0 'syslog-debug t t)
     `("(==)" 0 'syslog-debug t t)
@@ -278,23 +278,23 @@ This function is added to `find-file-hooks'."
 (defvar syslog-mode-map
   (let ((map (make-sparse-keymap)))
     ;; Ctrl bindings
-    (define-key map [C-down] 'syslog-boot-start)
-    (define-key map "R" 'revert-buffer)
-    (define-key map "/" 'syslog-filter-lines)
-    (define-key map "g" 'hide-lines-show-all)
+;    (define-key map [C-down] 'syslog-boot-start)
+;    (define-key map "R" 'revert-buffer) ;;; R
+;    (define-key map "/" 'syslog-filter-lines) ;;; / ;;; Filter Line
+;    (define-key map "g" 'hide-lines-show-all) ;;; g ;;; Bac K
     (define-prefix-command 'syslog-highlight-map)
-    (define-key map "h" 'syslog-highlight-map)
+;    (define-key map "h" 'syslog-highlight-map) ;;; h ;;; remember r p l u
     (define-key map (kbd "h r") 'highlight-regexp)
     (define-key map (kbd "h p") 'highlight-phrase)
     (define-key map (kbd "h l") 'highlight-lines-matching-regexp)
     (define-key map (kbd "h u") 'unhighlight-regexp)
-    (define-key map (kbd "C-/") 'syslog-filter-dates)
-    (define-key map "D" (lambda nil (interactive) (dired syslog-log-file-directory)))
-    (define-key map "j" 'ffap)
-    (define-key map "<" 'syslog-previous-file)
-    (define-key map ">" 'syslog-next-file)
-    (define-key map "o" 'syslog-open-files)
-    (define-key map "q" 'quit-window)
+;    (define-key map (kbd "C-/") 'syslog-filter-dates) ;;; C-/ ;;; tmp not using
+;    (define-key map "D" (lambda nil (interactive) (dired syslog-log-file-directory))) ;;; D ;;; Open Diretory
+;    (define-key map "j" 'ffap) ;;; j
+    (define-key map "<" 'syslog-previous-file) ;;; <
+    (define-key map ">" 'syslog-next-file)     ;;; >
+;    (define-key map "o" 'syslog-open-files)    ;;; o ;;; Open File
+;    (define-key map "q" 'quit-window)          ;;; q
     ;; XEmacs does not like the Alt bindings
     (if (string-match "XEmacs" (emacs-version))
         t)
@@ -391,7 +391,7 @@ With prefix arg: remove lines matching regexp."
   :group 'syslog
   :type 'regexp)
 
-(defcustom syslog-log-file-directory "/var/log/"
+(defcustom syslog-log-file-directory "/Users/jenny/spsdk_s/log/"
   "The directory in which log files are stored."
   :group 'syslog
   :type 'directory)
@@ -474,11 +474,11 @@ With prefix arg: remove lines between dates."
   (beginning-of-line))
 
 (defface textile-acronym-face
-  '((t (:foreground "magenta"))) ;; ori cyan
+  '((t (:foreground "blue"))) ;; ori cyan
   "Face used to highlight acronyms links."
   :group 'syslog-faces)
 (defface textile-style-face 
-  '((t (:foreground "sandy brown")))
+  '((t (:foreground "sandy brown"))) ;; ori sandy brown
   "Face used to highlight style parameters."
   :group 'syslog-faces)
 (defface textile-class-face

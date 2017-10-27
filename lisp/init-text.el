@@ -17,7 +17,7 @@
 
 ;; Snippets
 (require 'yasnippet)
-(yas-initialize)
+(yas-global-mode 1)
 ;(yas/load-directory (concat dotfiles-dir "/vendor/yasnippet/snippets"))
 
 ;; Whitespace mode
@@ -53,10 +53,9 @@
 
 (add-to-list 'auto-mode-alist '("\\.textile$" . textile-mode))
 (add-to-list 'auto-mode-alist '("\\.txt$" . textile-mode))
-;(add-to-list 'auto-mode-alist '("\\.log$" . textile-mode))
+(add-to-list 'auto-mode-alist '("\\.log$" . textile-mode))
 
-;(add-hook 'textile-mode-hook 'text-hook)
-;(add-hook 'textile-mode-hook (list 'text-hook 'syslog-mode-hook))
+(add-hook 'textile-mode-hook 'text-hook)
 
 
 ;; nxhtml stuff
@@ -64,15 +63,15 @@
 ;; out-of-date js stuff. TODO: fix it to use ELPA dependencies
 ;(load "vendor/nxhtml/autostart")
 
-;(setq mumamo-chunk-coloring 'submode-colored
-;      nxhtml-skip-welcome t
-;      indent-region-mode t
-;      rng-nxml-auto-validate-flag nil)
+(setq mumamo-chunk-coloring 'submode-colored
+      nxhtml-skip-welcome t
+      indent-region-mode t
+      rng-nxml-auto-validate-flag nil)
 
-;(add-to-list 'auto-mode-alist '("\\.xml$" . nxml-mode))
+(add-to-list 'auto-mode-alist '("\\.xml$" . nxml-mode))
 
 ;; CSS
-;(add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
+(add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
 
 (linum-mode 1)
 
