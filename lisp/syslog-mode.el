@@ -280,8 +280,8 @@ This function is added to `find-file-hooks'."
     ;; Ctrl bindings
 ;    (define-key map [C-down] 'syslog-boot-start)
 ;    (define-key map "R" 'revert-buffer) ;;; R
-;    (define-key map "/" 'syslog-filter-lines) ;;; / ;;; Filter Line
-;    (define-key map "g" 'hide-lines-show-all) ;;; g ;;; Bac K
+    (define-key map "/" 'syslog-filter-lines) ;;; / ;;; Filter Line
+    (define-key map "g" 'hide-lines-show-all) ;;; g ;;; Bac K
     (define-prefix-command 'syslog-highlight-map)
 ;    (define-key map "h" 'syslog-highlight-map) ;;; h ;;; remember r p l u
     (define-key map (kbd "h r") 'highlight-regexp)

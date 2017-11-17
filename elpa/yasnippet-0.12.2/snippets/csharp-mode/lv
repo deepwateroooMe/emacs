@@ -1,0 +1,5 @@
+# contributor: deepwaterooo
+# name: Debug.Log
+# key: lv
+# --
+Debug.Log(string.Format("{1}: ${1:func}() ${2:var}: {0}", $2, TAG)); $0

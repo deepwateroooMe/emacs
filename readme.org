@@ -3,6 +3,7 @@
 #+author: deepwaterooo
 
 * Updates 
+- Adding snippets for csharp-mode when debugging unity games.
 - Remove not frequently used bothering commands from syslog-mode, and define simplified customized macro command for android SDK log analysis. 
 - *Enhanced syslog-mode*, with simplified textile-mode feature integrated for personal debugging log viewing propose. Will continuously improve relative features. 
 - logview-mode, log4j-mode, syslog-mode, in progress, so far only syslog-mode works, needs to combine textile-mode functions/hooks.

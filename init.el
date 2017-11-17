@@ -18,11 +18,15 @@
 
 ;(setq default-directory "~/youtubeV/unity/PacMan/Assets/Scripts/")
 ;(setq default-directory "~/sp-infra-tools/spanda/tools/")
-(setq default-directory "~/spsdk_s/Squarepanda/spsdk/src/main/java/com/squarepanda/sdk/")
+;(setq default-directory "~/spsdk_s/Squarepanda/spsdk/src/main/java/com/squarepanda/sdk/")
 ;(setq default-directory "~/spsdk_sBk/Squarepanda/spsdk/src/main/java/com/squarepanda/sdk/")
 ;(setq default-directory "~/.emacs.d/")
 ;(setq default-directory "~/spsdk_s/logs/log9/")
 ;(setq default-directory "~/sp-bubbles-bk/Assets/SquarePanda/Scripts/SDK/")
+
+(setq default-directory "~/letterlullaby/Assets/Scripts/")
+;(setq default-directory "~/tmp/letterlullaby/Assets/Scripts/")
+;(setq default-directory "~/mixTasks/mws/")
 
 ;;; setup defaults for all modes
 (setq default-frame-alist
