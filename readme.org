@@ -3,6 +3,7 @@
 #+author: deepwaterooo
 
 * Updates 
+- configured company jedi environment for python3.
 - Adding snippets for csharp-mode when debugging unity games.
 - Remove not frequently used bothering commands from syslog-mode, and define simplified customized macro command for android SDK log analysis. 
 - *Enhanced syslog-mode*, with simplified textile-mode feature integrated for personal debugging log viewing propose. Will continuously improve relative features. 

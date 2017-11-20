@@ -23,15 +23,16 @@
 ;(setq default-directory "~/.emacs.d/")
 ;(setq default-directory "~/spsdk_s/logs/log9/")
 ;(setq default-directory "~/sp-bubbles-bk/Assets/SquarePanda/Scripts/SDK/")
+(setq default-directory "~/tmp/")
 
-(setq default-directory "~/letterlullaby/Assets/Scripts/")
+;(setq default-directory "~/letterlullaby/Assets/Scripts/")
 ;(setq default-directory "~/tmp/letterlullaby/Assets/Scripts/")
 ;(setq default-directory "~/mixTasks/mws/")
 
 ;;; setup defaults for all modes
 (setq default-frame-alist
-      '((top . 0)(left . 300)(height . 78)(width . 230)(menubar-lines . 100)(tool-bar-line . 0))) ; 75 230
-
+;      '((top . 0)(left . 300)(height . 78)(width . 230)(menubar-lines . 100)(tool-bar-line . 0))) ; ori
+      '((top . 0)(left . 300)(height . 78)(width . 100)(menubar-lines . 100)(tool-bar-line . 0))) ; tmp.py
 
 
 (setq emacs-load-start-time (current-time))
@@ -496,7 +497,7 @@
  '(git-gutter:handled-backends (quote (svn hg git)))
  '(package-selected-packages
    (quote
-    (logview virtualenvwrapper company-jedi flycheck-color-mode-line auto-complete-clang-async flycheck-swift3 flycheck-swift flycheck swift3-mode swift-mode yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode lua-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-lua flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word csharp-mode crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link)))
+    (py-autopep8 logview virtualenvwrapper company-jedi flycheck-color-mode-line auto-complete-clang-async flycheck-swift3 flycheck-swift flycheck swift3-mode swift-mode yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode lua-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-lua flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word csharp-mode crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link)))
  '(session-use-package t nil (session))
  '(speedbar-frame-parameters
    (quote

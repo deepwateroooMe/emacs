@@ -29,6 +29,7 @@ cookies
 /newsticker
 /ac-comphist.dat
 \#*
+/.python-environments
 /elpa
 !/elpa/crontab-mode-20090510.1355
 !/elpa/csharp-mode
