@@ -113,6 +113,7 @@
   (require 'init-css)
   (require 'init-sr-speedbar)
   (require 'init-org)
+  (require 'org-move-tree)
   (require 'init-python-mode)
   (require 'init-csharp-mode)
   (require 'init-java-mode)

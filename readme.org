@@ -3,6 +3,7 @@
 #+author: deepwaterooo
 
 * Updates 
+- org-move-tree make it slightly easier than before for manipulating small org files, and followed by integrating into one book file, and export into one pdf book. Seek for auto-updating integrated book file according to small chapter file updates later on when get spare time.
 - fixed emacs org-mode export to pdf broken environment for personal laptop. 
 - configured company jedi environment for python3.
 - Adding snippets for csharp-mode when debugging unity games.
