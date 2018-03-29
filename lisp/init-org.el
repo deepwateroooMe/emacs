@@ -1,4 +1,5 @@
-;; some cool org tricks
+;;;
+;;; some cool org tricks
 ;; @see http://emacs.stackexchange.com/questions/13820/inline-verbatim-and-code-with-quotes-in-org-mode
 
 ;; {{ NO spell check for embedded snippets
@@ -38,11 +39,11 @@
 ;; and you need install texlive-xetex on different platforms
 ;; To install texlive-xetex:
 ;;    `sudo USE="cjk" emerge texlive-xetex` on Gentoo Linux
-(setq org-latex-to-pdf-process ;; org v7
-      '("xelatex -interaction nonstopmode -output-directory %o %f"
-        "xelatex -interaction nonstopmode -output-directory %o %f"
-        "xelatex -interaction nonstopmode -output-directory %o %f"))
-(setq org-latex-pdf-process org-latex-to-pdf-process) ;; org v8
+;(setq org-latex-to-pdf-process ;; org v7
+;'("xelatex -interaction nonstopmode -output-directory %o %f"
+                                        ;  "xelatex -interaction nonstopmode -output-directory %o %f"
+                                        ;  "xelatex -interaction nonstopmode -output-directory %o %f"))
+                                        ;(setq org-latex-pdf-process org-latex-to-pdf-process) ;; org v8
 ;; }}
 
 (defun my-setup-odt-org-convert-process ()
@@ -249,13 +250,11 @@ If use-indirect-buffer is not nil, use `indirect-buffer' to hold the widen conte
 
 
 ;;; org-mode
-;（require 'linum）
 (global-linum-mode 1)
-(setq load-path (cons "~/.emacs.d/elpa/org-9.0.9/lisp" load-path))
-(add-to-list 'load-path "~/.emacs.d/elpa/org-9.0.9/contrib/lisp" t)
+(setq load-path (cons "~/.emacs.d/elpa/org-20140901/" load-path))
 (require 'ox)
 (require 'org-install)
-(require 'ob-ditaa)  ;;; for cn-article
+(require 'ob-ditaa)  
 (require 'ox-publish)
 (require 'ox-latex)
 (require 'ox-beamer)
@@ -374,18 +373,18 @@ same directory as the org-buffer and insert a link to this file."
 
 ;;; adapted to use latexmk 4.20 or higher, don't want this one, set default engine to be XeTeX
 ;(defun my-auto-tex-cmd (backend)
-;  "When exporting from .org with latex, automatically run latex, pdflatex, or xelatex as appropriate, using latexmk."
-;  (let ((texcmd)))
-;  ;; default command: oldsyte alex via dvi
-;  (setq texcmd "latexmk -dvi -pdfps -quiet %f")
-;  ;; pdflatex -> .pdf
-;  (if (string-match "LATEX_CMD: pdflatex" (buffer-string))
-;      (setq texcmd "latex -pdf -quiet %f"))
-;  ;; xelatx -> .pdf
-;  (if (string-match "LATEX_CMD: xelatex" (buffer-string))
-;      (setq texcmd "latexmk -pdflatex=xelatex -shell-escape -pdf -quiet %f"))
-;  (setq org-latex-pdf-process (list texcmd)))
-;(add-hook 'org-export-before-parsing-hook 'my-auto-tex-cmd)
+                                        ;  "When exporting from .org with latex, automatically run latex, pdflatex, or xelatex as appropriate, using latexmk."
+                                        ;  (let ((texcmd)))
+                                        ;  ;; default command: oldsyte alex via dvi
+                                        ;  (setq texcmd "latexmk -dvi -pdfps -quiet %f")
+                                        ;  ;; pdflatex -> .pdf
+                                        ;  (if (string-match "LATEX_CMD: pdflatex" (buffer-string))
+                                        ;      (setq texcmd "latex -pdf -quiet %f"))
+                                        ;  ;; xelatx -> .pdf
+                                        ;  (if (string-match "LATEX_CMD: xelatex" (buffer-string))
+                                        ;      (setq texcmd "latexmk -pdflatex=xelatex -shell-escape -pdf -quiet %f"))
+                                        ;  (setq org-latex-pdf-process (list texcmd)))
+                                        ;(add-hook 'org-export-before-parsing-hook 'my-auto-tex-cmd)
 
 
 ;; generate pdf rather then dvi
@@ -438,8 +437,6 @@ same directory as the org-buffer and insert a link to this file."
 ;\\setmainfont{STSong} ; after fontspec
 
 ;\\usepackage{longtable} ; 20170821 to install later
-;\\usepackage{multirow}
-;\\usepackage{multicol}
 (add-to-list 'org-latex-classes
                   '("cn-article"
                     "\\documentclass[9pt, b5paper]{article}
@@ -447,7 +444,7 @@ same directory as the org-buffer and insert a link to this file."
 \\usepackage{graphicx}
 \\usepackage{xcolor}
 \\usepackage{xeCJK}
-\\setCJKmainfont[Boldfont = STSong SC Black, ItalicFont = STKaiti]{STSong}
+\\setCJKmainfont[BoldFont = Songti SC Bold, ItalicFont = STFangsong]{Songti SC}
 \\setCJKsansfont{STHeiti}
 \\setCJKmonofont{STFangsong}
 \\usepackage{multirow}
@@ -528,6 +525,8 @@ same directory as the org-buffer and insert a link to this file."
 \\usepackage{latexsym}
 \\usepackage{natbib}
 \\usepackage{fancyhdr}
+\\usepackage{listings}
+\\usepackage{minted}
 \\usepackage[xetex,colorlinks=true,CJKbookmarks=true,linkcolor=blue,urlcolor=blue,menucolor=blue]{hyperref}
 [NO-DEFAULT-PACKAGES]
 [NO-PACKAGES]"

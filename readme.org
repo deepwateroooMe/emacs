@@ -3,6 +3,7 @@
 #+author: deepwaterooo
 
 * Updates 
+- fixed emacs org-mode export to pdf broken environment for personal laptop. 
 - configured company jedi environment for python3.
 - Adding snippets for csharp-mode when debugging unity games.
 - Remove not frequently used bothering commands from syslog-mode, and define simplified customized macro command for android SDK log analysis. 

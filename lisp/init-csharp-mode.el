@@ -1,6 +1,6 @@
 ;;; for csharp-mode
 
-(add-to-list 'load-path (expand-file-name "/Users/jenny/.emacs.d/elpa/csharp-mode")) ;拓展文件(插件)目录
+(add-to-list 'load-path (expand-file-name "/Users/qunyan/.emacs.d/elpa/csharp-mode")) ;拓展文件(插件)目录
 (require 'csharp-mode)
 
 (setq interpreter-mode-alist
