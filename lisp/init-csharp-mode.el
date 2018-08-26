@@ -16,6 +16,10 @@
 	  #'(lambda ()
 	      (local-set-key (kbd "{") 'cheeso-insert-open-brace)))
 
+;;; for auto-indent when insert snippets
+(add-hook 'csharp-mode-hook
+          '(lambda () (set (make-local-variable 'yas-indent-line) 'fixed)))
+
 ; work with autopair for {
 (defun cheeso-looking-back-at-regexp (regexp)
   "calls backward-sexp and then checks for the regexp.  Returns t if it is found, else nil"

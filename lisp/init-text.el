@@ -32,8 +32,11 @@
 ;; Text mode
 (defun text-hook ()
   (lambda ()
-    (auto-fill-mode)
-    (flyspell-mode)))
+                                        ;    (auto-fill-mode)
+    (set-fill-column 37)
+    (turn-on-auto-fill)
+;    (flyspell-mode)
+    ))
 
 (add-hook 'text-mode-hook 'text-hook)
 

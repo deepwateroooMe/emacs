@@ -2,4 +2,4 @@
 # name: Log.d
 # key: ld
 # --
-Debug.Log("{0}: ${1:func}() $2", TAG); $0
+Debug.Log(TAG + ": ${1:func}() start"); $0

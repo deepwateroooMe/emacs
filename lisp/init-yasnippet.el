@@ -19,6 +19,10 @@
 (add-hook 'web-mode-hook 'yasnippet-generic-setup-for-mode-hook)
 (add-hook 'scss-mode-hook 'yasnippet-generic-setup-for-mode-hook)
 
+(add-hook 'java-mode-hook 'yasnippet-generic-setup-for-mode-hook)
+(add-hook 'csharp-mode-hook 'yasnippet-generic-setup-for-mode-hook)
+(add-hook 'python-mode-hook 'yasnippet-generic-setup-for-mode-hook)
+
 (defun my-yas-reload-all ()
   (interactive)
   (yas-compile-directory (file-truename "~/.emacs.d/snippets"))

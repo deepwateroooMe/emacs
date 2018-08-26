@@ -262,6 +262,37 @@ If use-indirect-buffer is not nil, use `indirect-buffer' to hold the widen conte
 (require 'ox-org)
 (setq org-src-fontify-natively t)  ;;; 要对代码进行语法高亮   
 
+
+;;; shift region for source code trials:
+(defun shift-region (distance)
+  (let ((mark (mark)))
+    (save-excursion
+      (indent-rigidly (region-beginning) (region-end) distance)
+      (push-mark mark t t)
+      ;; Tell the command loop not to deactivate the mark
+      ;; for transient mark mode
+      (setq deactivate-mark nil))))
+
+(defun shift-right ()
+  (interactive)
+  (shift-region 4))
+
+(defun shift-left ()
+  (interactive)
+  (shift-region -4))
+
+(eval-after-load 'org
+  '(progn
+     (define-key org-mode-map (kbd "<C-S-left>") nil)
+     (define-key org-mode-map (kbd "<C-S-right>") nil)
+     ))
+;  '(define-key org-mode-map [(C-right)] 'shift-right))
+;(eval-after-load 'org
+;  '(define-key org-mode-map [(C-left)] 'shift-left))
+;(global-set-key [C-S-right] 'shift-right)
+;(global-set-key [C-S-left] 'shift-left)
+
+
 (setq org-latex-listings t)                           ;;; added this one
 (add-to-list 'org-latex-packages-alist '("" "color"))
 (add-to-list 'org-latex-packages-alist '("" "minted")) ; 转化为minted时自动添加minted包     ;;; added this one
@@ -437,14 +468,15 @@ same directory as the org-buffer and insert a link to this file."
 ;\\setmainfont{STSong} ; after fontspec
 
 ;\\usepackage{longtable} ; 20170821 to install later
+;\\setCJKmainfont[BoldFont = Songti SC Bold, ItalicFont = STFangsong]{Songti SC}
 (add-to-list 'org-latex-classes
                   '("cn-article"
                     "\\documentclass[9pt, b5paper]{article}
 \\usepackage{fontspec}
 \\usepackage{graphicx}
 \\usepackage{xcolor}
-\\usepackage{xeCJK}
-\\setCJKmainfont[BoldFont = Songti SC Bold, ItalicFont = STFangsong]{Songti SC}
+\\usepackage[slantfont,boldfont]{xeCJK}
+\\setCJKmainfont[BoldFont = Heiti SC, ItalicFont = STFangsong]{STSong}
 \\setCJKsansfont{STHeiti}
 \\setCJKmonofont{STFangsong}
 \\usepackage{multirow}
@@ -698,8 +730,8 @@ marginparsep=7pt, marginparwidth=.6in}
 
 
 ;for latex
-(setenv "PATH" (concat (getenv "PATH") ":/usr/local/texlive/2017/bin/x86_64-darwin"))
-(setq exec-path (append exec-path '("/usr/local/texlive/2017/bin/x86_64-darwin")))
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/texlive/2015/bin/x86_64-darwin"))
+(setq exec-path (append exec-path '("/usr/local/texlive/2015/bin/x86_64-darwin")))
 
 ; for emacs zsh
 (setenv "ESHELL" (expand-file-name "~/.eshell"))
@@ -716,6 +748,17 @@ marginparsep=7pt, marginparwidth=.6in}
 ;;; for org-mode
 (fset 'oo
    [?# ?+ ?t ?i ?t ?l ?e ?: ?  return ?# ?+ ?a ?u ?t ?h ?o ?r ?: ?  ?H ?e ?y ?a ?n ?  ?H ?u ?a ?n ?g return ?# ?+ ?s ?t ?a ?r ?t ?u ?p ?: ?  ?b ?e ?a ?m ?e ?r return ?# ?+ ?l ?a ?t ?e ?x ?_ ?c ?l ?a ?s ?s ?: ?  ?b ?e ?a ?m ?e ?r return ?# ?+ ?o ?p ?t ?i ?o ?n ?s ?: ?  ?H ?: ?1 ?  ?n ?u ?m ?: ?t ?  ?t ?o ?c ?: ?n ?i ?l ?\C-p ?\C-p ?\C-p ?\C-p])
+;#+title: 
+;#+author: Heyan Huang
+;#+startup: beamer
+;#+latex_class: beamer
+;#+options: H:1 num:t toc:nil
+
+;#+latex_class: cn-article
+;#+title: 
+;#+author: deepwaterooo
+(fset 'ocn
+      [?# ?+ ?l ?a ?t ?e ?x ?_ ?c ?l ?a ?s ?s ?: ?  ?c ?n ?- ?a ?r ?t ?i ?c ?l ?e return ?# ?+ ?t ?i ?t ?l ?e ?: ?  return ?# ?+ ?a ?u ?t ?h ?o ?r ?: ?  ?d ?e ?e ?p ?w ?a ?t ?e ?r ?o ?o ?o return return])
 
 
 (provide 'init-org)
