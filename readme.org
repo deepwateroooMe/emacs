@@ -3,6 +3,8 @@
 #+author: deepwaterooo
 
 * Updates 
+- Applied portable dumper for slightly faster dumper emacs initiation, as well as making normal emacs initiation fully functional working the same time. Convenient. 
+- fixed yasnippet not working on my new install of Emacs 27.1
 - java-mode csharp-mode file organiation scripts update
 - Unhighlight leading or trailing whitespace
 - org-move-tree make it slightly easier than before for manipulating small org files, and followed by integrating into one book file, and export into one pdf book. Seek for auto-updating integrated book file according to small chapter file updates later on when get spare time.

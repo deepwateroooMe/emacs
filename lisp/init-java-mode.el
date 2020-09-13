@@ -1,6 +1,6 @@
 ;;;
 ;;; for Java environment
-                                        ;(require 'cedet) ; cannot find the package
+                                       ;(require 'cedet) ; cannot find the package
                                         ;semantiec基本配置
                                         ;见http://emacser.com/built-in-cedet.htm
 (setq semantic-default-submodes '(global-semantic-idle-scheduler-mode
@@ -271,6 +271,8 @@
              ?\M-l ?\{ ?  ?  ?\C-q ?\C-j ?\C-q ?\C-j ?  ?  ?  ?  ?\} return ?\{ ?\} return
              ?\M-g ?1 return
              ?\M-l ?\{ ?  ?  ?\C-q ?\C-j ?\C-q ?\C-j ?\C-q ?\C-i ?\} return ?\{ ?\} return
+             ;;; tab ---> ____
+             ?\M-g ?1 return ?\M-l ?\C-q ?\C-i return  ?  ?  ?  ?  return
              ?\M-g ?1 return ?\M-l ?/ ?/ ?/ ?  return ?/ ?/ ?  return ?\M-g ?1 return    ;;; /// --> //
              ?\M-g ?1 return ?\M-l ?\C-q ?\C-j ?/ ?/ ?  ?< ?s ?u ?m ?m ?a ?r ?y ?> ?\C-q ?\C-j return ?\C-q ?\C-j return  
              ?\M-g ?1 return ?\M-l ?\C-q ?\C-j ?  ?  ?  ?  ?/ ?/ ?  ?< ?s ?u ?m ?m ?a ?r ?y ?> ?\C-q ?\C-j return ?\C-q ?\C-j return    
@@ -310,7 +312,15 @@
              ?\M-g ?1 return
              ?\M-l ?\C-q ?\C-j ?\C-q ?\C-j return ?\C-q ?\C-j return
              ?\M-g ?1 return
+             ?\M-l ?\C-q ?\C-j ? ?\C-q ?\C-j return ?\C-q ?\C-j return
+             ?\M-g ?1 return
+             ?\M-l ?\C-q ?\C-j ? ? ?\C-q ?\C-j return ?\C-q ?\C-j return
+             ?\M-g ?1 return
+             ?\M-l ?\C-q ?\C-j ? ? ? ?\C-q ?\C-j return ?\C-q ?\C-j return
+             ?\M-g ?1 return
              ?\M-l ?A ?A ?A ?A return ?\C-q ?\C-j ?\C-q ?\C-j return
+             ?\M-g ?1 return
+             ?\M-l ?/ ?/ ?/ return return
              ?\M-g ?1 return  ;;; go back to beginning of file
              ])
 (fset 'f

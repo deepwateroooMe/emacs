@@ -102,8 +102,9 @@
 
 ;; grammal check: flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode);global enable 
-                                        ; close flymake,  start flycheck                                        
-(when (require 'flycheck nil t)
+                                        ; close flymake,  start flycheck
+
+(when (require 'flycheck nil t)  ;;;; commented out for temp, for portable dumper to be able to work
   (setq elpy-modules(delq 'elpy-module-flymake elpy-modules))
   (add-hook 'elpy-mode-hook 'flycheck-mode))
 

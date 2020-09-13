@@ -1,35 +1,38 @@
 ;;;
 ;;; original came from https://github.com/redguardtoo/emacs.d
 
-;; -*- coding: utf-8 -*-
-                                        ;(defvar best-gc-cons-threshold gc-cons-threshold "Best default gc threshold value. Should't be too big.")
-
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
-(package-initialize)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+;(package-initialize)
+
+(defvar luna-dumped nil
+  "non-nil when a dump file is loaded (because dump.el sets this variable).")
+
+
+;; Bootstrap 'use-package'
+(eval-after-load 'gnutls
+  '(add-to-list 'gnutls-trustfiles "/etc/ssl/cert.pem"))
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+(eval-when-compile
+  (require 'use-package))
+(require 'bind-key)
+(setq use-package-always-ensure t)
+
+
+;(debug-on-entry 'package-initialize)    
+
 
 (defvar best-gc-cons-threshold 4000000 "Best default gc threshold value. Should't be too big.")
 (setq gc-cons-threshold most-positive-fixnum) ;; don't GC during startup to save time
 
 
-;(setq default-directory "~/youtubeV/unity/PacMan/Assets/Scripts/")
-;(setq default-directory "~/sp-infra-tools/spanda/tools/")
-;(setq default-directory "~/spsdk_s/Squarepanda/spsdk/src/main/java/com/squarepanda/sdk/")
-;(setq default-directory "~/spsdk_sBk/Squarepanda/spsdk/src/main/java/com/squarepanda/sdk/")
-;(setq default-directory "~/.emacs.d/")
-;(setq default-directory "~/spsdk_s/logs/log9/")
-;(setq default-directory "~/sp-bubbles-bk/Assets/SquarePanda/Scripts/SDK/")
-;(setq default-directory "~/tmp/")
-;(setq default-directory "/Users/qunyan/unity/practiceProjs/BuffaloSlotClone_Signal/Assets/Scripts/")
-;(setq default-directory "/Users/qunyan/YunLangZuZuoIOS/trunk/client/trunk/Assets/Scripts/")
-(setq default-directory "/Users/qunyan/workspace/trunk/Assets/")
-;(setq default-directory "~/letterlullaby/Assets/Scripts/")
-;(setq default-directory "~/tmp/letterlullaby/Assets/Scripts/")
+(setq default-directory "/Volumes/e/uMVVM/Assets/Sources/")
+;;; (setq default-directory "~/.emacs.d/")
 
 ;;; setup defaults for all modes
 (setq default-frame-alist
@@ -38,7 +41,9 @@
 
 
 (setq emacs-load-start-time (current-time))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
+;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
+(add-to-list 'load-path (expand-file-name "/Users/heyan/.emacs.d/lisp"))
+
 ;;----------------------------------------------------------------------------
 ;; Which functionality to enable (use t or nil for true and false)
 ;;----------------------------------------------------------------------------
@@ -113,17 +118,16 @@
   (require 'init-javascript)
   (require 'init-css)
   (require 'init-sr-speedbar)
-  (require 'init-org)
+
   (require 'org-move-tree)
-  (require 'init-python-mode)
-  (require 'init-csharp-mode)
+
   (require 'init-java-mode)
   (require 'init-haskell)
   (require 'init-ruby-mode)
   (require 'init-lisp)
   (require 'init-elisp)
 ;  (require 'init-auto-complete)
-  (require 'init-yasnippet)
+
   (require 'cpputils-cmake) ; to do more work on this one
   ;; Use bookmark instead
   (require 'init-cc-mode)
@@ -145,44 +149,96 @@
   (require 'init-term-mode)
   (require 'init-web-mode)
   (require 'init-slime)
-  (require 'init-text)
-  (require 'init-syslog-mode)
   (require 'shader-mode)
+;  (require 'swift-mode)
+  ;; (require 'init-company)
   
-  ;; need statistics of keyfreq asap
-;  (require 'init-keyfreq) ;;; don't like this too much
-  ;; projectile costs 7% startup time
-  ;; misc has some crucial tools I need immediately
-  (require 'init-misc)  ;; comment for replace-string
-  ;; comment below line if you want to setup color theme in your own way
-                                        ;  (if (or (display-graphic-p) (string-match-p "256color"(getenv "TERM"))) (require 'init-color-theme)) ; don't like
-                                        ;  (require 'init-emacs-w3m) ; don't like the interface
-  (require 'init-hydra)
-  (require 'swift-mode)
-  (require 'init-company)
+;; have NOT passed  
+ (require 'init-org)			
+ (require 'init-yasnippet)
+ (require 'init-text)
+ (require 'init-syslog-mode)
+ (require 'init-misc)  ;; comment for replace-string
+ (require 'init-hydra)
 
-  ;;; {{ idle require other stuff
-                                        ;  (setq idle-require-idle-delay 2)
-                                        ; (setq idle-require-symbols '(init-perforce
-                                        ;                               init-misc-lazy
-                                        ;                               init-which-func
-                                        ;                               init-fonts
-                                        ;                               init-hs-minor-mode
-                                        ;                               init-writting
-                                        ;                               init-pomodoro
-                                        ;                               init-artbollocks-mode
-                                        ;                               init-semantic))
-                                        ;  (idle-require-mode 1) ;; starts loading
-  ;;;; }}
-                                        ; I commemted here  
-                                        ;  (when (require 'time-date nil t)
-                                        ;    (message "Emacs startup time: %d seconds."
-                                        ;             (time-to-seconds (time-since emacs-load-start-time))))
-
-  ;; my personal setup, other major-mode specific setup need it.
-  ;; It's dependent on init-site-lisp.el
-                                        ;  (if (file-exists-p "~/.custom.el") (load-file "~/.custom.el"))
+ 
+;(require 'init-python-mode)
+;(require 'init-csharp-mode)
+;(require 'init-company)
   )
+
+;; ;;; org-mode auto complete, commented out only for dump fixes
+;; (require 'org-ac)
+;; (org-ac/config-default)
+
+
+;; (defmacro luna-if-dump (then &rest else)
+;;   "Evaluate IF if running with a dump file, else evaluate ELSE."
+;;   (declare (indent 1))
+;;   `(if luna-dumped
+;;        ,then
+;;      ,@else))
+
+;; (luna-if-dump
+;;     (progn
+;;       (setq load-path luna-dumped-load-path)
+;;       (global-font-lock-mode)
+;;       (transient-mark-mode)
+;;       (add-hook 'after-init-hook
+;;                 (lambda ()
+;;                   (save-excursion
+;;                     ;; (switch-to-buffer "*scratch*")
+;;                     (lisp-interaction-mode)))))
+;;   ;; add load-path’s and load autoload files
+;;   ;; (package-initialize)
+;;   )
+
+(defun spacemacs|load-modes (modes)
+  (dolist (mode modes)
+    (with-temp-buffer
+      (funcall-interactively
+       (intern (concat (symbol-name mode) "-mode"))))))
+;; (spacemacs|load-modes '(dired emacs-lisp markdown org python))
+
+(defmacro luna-if-dump ()
+  "Evaluate IF if running with a dump file, else evaluate ELSE."
+  (declare (indent 1))
+  `(if (eq luna-dumped t)
+       (progn
+         (setq load-path luna-dumped-load-path)
+         (global-font-lock-mode)
+         (transient-mark-mode)
+         (add-hook 'after-init-hook
+                   (lambda ()
+                     (save-excursion
+                       (lisp-interaction-mode)))))
+     (progn
+       (let ((file-name-handler-alist nil))
+         (require 'init-python-mode)
+         (require 'init-csharp-mode)
+         (require 'init-company)
+         (require 'init-sr-speedbar)
+         )
+       ;; (spacemacs|load-modes '(company csharp))
+       (add-hook 'after-init-hook
+                 (lambda ()
+                   (save-excursion
+                     (lisp-interaction-mode)
+                   ))))))
+
+(luna-if-dump)
+
+;; (defun luna-dump ()
+;;   "Dump Emacs."
+;;   (interactive)
+;;   (let ((buf "*dump process*"))
+;;     (make-process
+;;      :name "dump"
+;;      :buffer buf
+;;      :command (list "emacs" "--batch" "-q"
+;;                     "-l" (expand-file-name "dump.el"
+;;                                            user-emacs-directory)))
+;;     (display-buffer buf)))
 
 
 ;;; make tab key always call a indent command
@@ -313,7 +369,7 @@
 (add-hook 'latex-mode-hook 'ac-latex-mode-setup)
 
 
-(add-to-list 'load-path "~/.emacs.d/wubi")
+(add-to-list 'load-path "/Users/heyan/.emacs.d/wubi")
 (require 'wubi)
 (wubi-load-local-phrases) ; add user's Wubi phrases
 (register-input-method
@@ -354,6 +410,8 @@
 (setq-default make-backup-files nil)
 
 
+
+(add-to-list 'load-path (expand-file-name "/Users/heyan/.emacs.d/lisp/")) ;拓展文件(插件)目录
 (require 'autopair)
 (defun turn-on-autopair-mode () (autopair-mode 1))
 
@@ -389,9 +447,6 @@
                                         ;(setq gc-cons-threshold 20000000)
 
 
-;;; org-mode auto complete
-(require 'org-ac)
-(org-ac/config-default)
 
 
 ;;; check for spelling
@@ -512,25 +567,29 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(git-gutter:handled-backends (quote (svn hg git)))
+ '(column-number-mode t)
+ '(display-time-mode t)
+ '(git-gutter:handled-backends '(svn hg git))
  '(latex-run-command "latex --shell-escape")
+ '(menu-bar-mode nil)
  '(org-support-shift-select nil)
  '(package-selected-packages
-   (quote
-    (py-autopep8 logview virtualenvwrapper company-jedi flycheck-color-mode-line auto-complete-clang-async flycheck-swift3 flycheck-swift flycheck swift3-mode swift-mode yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode lua-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-lua flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word csharp-mode crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link)))
+   '(py-autopep8 logview virtualenvwrapper company-jedi flycheck-color-mode-line auto-complete-clang-async flycheck-swift3 flycheck-swift flycheck swift3-mode swift-mode yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode lua-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-lua flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word csharp-mode crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link))
  '(session-use-package t nil (session))
+ '(show-paren-mode t)
  '(speedbar-frame-parameters
-   (quote
-    ((minibuffer)
+   '((minibuffer)
      (width . 35)
      (border-width . 0)
      (menu-bar-lines . 0)
      (tool-bar-lines . 0)
      (unsplittable . t)
-     (left-fringe . 0))))
+     (left-fringe . 0)))
+ '(speedbar-show-unknown-files nil)
  '(tex-run-command "\"latex --shell-escape\"")
  '(tex-start-commands "\"latex -ini -shell-escape\"")
- '(tex-start-options "\"latex -ini --shell-escape\""))
+ '(tex-start-options "\"latex -ini --shell-escape\"")
+ '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

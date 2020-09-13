@@ -1,9 +1,11 @@
 ;; loading yasnippet will slow the startup
 ;; but it's necessary cost
+(add-to-list 'load-path (expand-file-name "/Users/heyan/.emacs.d/elpa/yasnippet-0.12.2/")) ;拓展文件(插件)目录
 (require 'yasnippet)
 
 ;; my private snippets, should be placed before enabling yasnippet
-(setq my-yasnippets (expand-file-name "~/my-yasnippets"))
+
+(setq my-yasnippets (expand-file-name "/Users/heyan/.emacs.d/my-yasnippets")) ;;; I commented it out
 (if (and  (file-exists-p my-yasnippets) (not (member my-yasnippets yas-snippet-dirs)))
     (add-to-list 'yas-snippet-dirs my-yasnippets))
 
@@ -19,6 +21,7 @@
 (add-hook 'web-mode-hook 'yasnippet-generic-setup-for-mode-hook)
 (add-hook 'scss-mode-hook 'yasnippet-generic-setup-for-mode-hook)
 
+(add-hook 'kotlin-mode-hook 'yasnippet-generic-setup-for-mode-hook)
 (add-hook 'java-mode-hook 'yasnippet-generic-setup-for-mode-hook)
 (add-hook 'csharp-mode-hook 'yasnippet-generic-setup-for-mode-hook)
 (add-hook 'python-mode-hook 'yasnippet-generic-setup-for-mode-hook)
@@ -105,6 +108,9 @@
     rlt))
 
 (add-to-list 'auto-mode-alist '("\\.yasnippet\\'" . snippet-mode))
+
+(add-to-list 'load-path (expand-file-name "/Users/heyan/.emacs.d/elpa/dropdown-list-20120329.936/")) ;拓展文件(插件)目录
+(require 'dropdown-list)
 
 (eval-after-load 'yasnippet
   '(progn

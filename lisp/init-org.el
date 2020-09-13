@@ -470,7 +470,7 @@ same directory as the org-buffer and insert a link to this file."
 ;\\usepackage{longtable} ; 20170821 to install later
 ;\\setCJKmainfont[BoldFont = Songti SC Bold, ItalicFont = STFangsong]{Songti SC}
 (add-to-list 'org-latex-classes
-                  '("cn-article"
+                  '("cn-article-ori"
                     "\\documentclass[9pt, b5paper]{article}
 \\usepackage{fontspec}
 \\usepackage{graphicx}
@@ -499,6 +499,78 @@ same directory as the org-buffer and insert a link to this file."
 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
 ("\\paragraph{%s}" . "\\paragraph*{%s}")
 ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+;\\usepackage[slantfont,boldfont]{xeCJK}
+;\\setCJKmainfont[BoldFont = Heiti SC, ItalicFont = STFangsong]{STSong}
+;\\setCJKsansfont{STHeiti}
+;\\setCJKmonofont{STFangsong}
+
+;\\usepackage{longtable} ; 20170821 to install later
+;\\setCJKmainfont[BoldFont = Songti SC Bold, ItalicFont = STFangsong]{Songti SC}
+(add-to-list 'org-latex-classes
+             '("cn-article"
+               "\\documentclass[9pt, b5paper]{article}
+\\usepackage[UTF8]{ctex}
+\\usepackage{fontspec}
+\\usepackage{graphicx}
+\\usepackage{xcolor}
+\\usepackage{multirow}
+\\usepackage{multicol}
+\\usepackage{float}
+\\usepackage{textcomp}
+\\usepackage{geometry}
+\\geometry{left=1.2cm,right=1.2cm,top=1.5cm,bottom=1.2cm}
+\\usepackage{algorithm}
+\\usepackage{algorithmic}
+\\usepackage{latexsym}
+\\usepackage{natbib}
+\\usepackage{listings}
+\\usepackage{minted}
+\\usepackage[xetex,colorlinks=true,CJKbookmarks=true,linkcolor=blue,urlcolor=blue,menucolor=blue]{hyperref}
+[NO-DEFAULT-PACKAGES]
+[NO-PACKAGES]"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+;; want one for book
+;;; http://wenku.baidu.com/view/3d20436caf1ffc4ffe47ac25.html
+;;; \\setCJKmainfont{SimSun}  SimSun
+;\\usepackage{xeCJK}
+;\\setCJKmainfont{STSong}
+(add-to-list 'org-latex-classes
+             '("book"
+               "\\documentclass[9pt, b5paaper]{book}
+\\usepackage[UTF8]{ctex}
+\\usepackage{fontspec}
+\\usepackage{graphicx}
+\\usepackage{xcolor}
+\\usepackage{longtable}
+\\usepackage{float}
+\\usepackage{textcomp}
+\\usepackage{geometry}
+\\geometry{left=1.2cm,right=1.2cm,top=1.5cm,bottom=1.2cm}
+\\usepackage{multirow}
+\\usepackage{multicol}
+\\usepackage{listings}
+\\usepackage{algorithm}
+\\usepackage{algorithmic}
+\\usepackage{latexsym}
+\\usepackage{natbib}
+\\usepackage{fancyhdr}
+\\usepackage{listings}
+\\usepackage{minted}
+\\usepackage[xetex,colorlinks=true,CJKbookmarks=true,linkcolor=blue,urlcolor=blue,menucolor=blue]{hyperref}
+[NO-DEFAULT-PACKAGES]
+[NO-PACKAGES]"
+                                        ;               ("\\part{%s}" . "\\part*{%s}")
+               ("\\chapter{%s}" . "\\chapter*{%s}")
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))
+             )
 
 
 (add-to-list 'org-latex-classes
@@ -534,40 +606,6 @@ same directory as the org-buffer and insert a link to this file."
                ("\\subsection\{%s\}" . "\\subsection*\{%s\}")
                ("\\subsubsection\{%s\}" . "\\subsubsection*\{%s\}")))
 
-;; want one for book
-;;; http://wenku.baidu.com/view/3d20436caf1ffc4ffe47ac25.html
-;;; \\setCJKmainfont{SimSun}  SimSun
-(add-to-list 'org-latex-classes
-             '("book"
-               "\\documentclass[12pt]{book}
-\\usepackage{graphicx}
-\\usepackage{xcolor}
-\\usepackage{xeCJK}
-\\setCJKmainfont{STSong}
-\\usepackage{longtable}
-\\usepackage{float}
-\\usepackage{textcomp}
-\\usepackage{geometry}
-\\geometry{left=1.5cm,right=1.5cm,top=2cm,bottom=1.5cm}
-\\usepackage{multirow}
-\\usepackage{multicol}
-\\usepackage{listings}
-\\usepackage{algorithm}
-\\usepackage{algorithmic}
-\\usepackage{latexsym}
-\\usepackage{natbib}
-\\usepackage{fancyhdr}
-\\usepackage{listings}
-\\usepackage{minted}
-\\usepackage[xetex,colorlinks=true,CJKbookmarks=true,linkcolor=blue,urlcolor=blue,menucolor=blue]{hyperref}
-[NO-DEFAULT-PACKAGES]
-[NO-PACKAGES]"
-;               ("\\part{%s}" . "\\part*{%s}")
-               ("\\chapter{%s}" . "\\chapter*{%s}")
-               ("\\section{%s}" . "\\section*{%s}")
-               ("\\subsection{%s}" . "\\subsection*{%s}")
-               ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))
-             )
 
 (add-to-list 'org-latex-classes
              '("cjk-article"
@@ -690,6 +728,19 @@ marginparsep=7pt, marginparwidth=.6in}
         ))
 (setq org-src-preserve-indentation t)
 
+(setq org-publish-project-alist
+      '(
+        ("org-files"
+         :base-directory "./"
+         :base-extension "org"
+         :publishing-directory "./"
+        ;:publishing-function org-html-publish-to-html
+         :publishing-function org-latex-pdf-process
+        ("example" :components ("org-files"))
+        )
+      ))
+
+
 (setq org-todo-keywords
       '((type "job(j!)" "emacs(s!)" "git(g!)" "clanguage(c!)" "homework(h!)" "interview(i!)")
       (sequence "PENDING(p!)" "TODO(t!)" "|" "DONE(d!)" "ABORT(a@/!)")
@@ -731,7 +782,7 @@ marginparsep=7pt, marginparwidth=.6in}
 
 ;for latex
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/texlive/2015/bin/x86_64-darwin"))
-(setq exec-path (append exec-path '("/usr/local/texlive/2015/bin/x86_64-darwin")))
+(setq exec-path (append exec-path '("d:/texlive/2018/bin/win32")))
 
 ; for emacs zsh
 (setenv "ESHELL" (expand-file-name "~/.eshell"))

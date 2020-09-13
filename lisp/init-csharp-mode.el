@@ -1,11 +1,12 @@
 ;;; for csharp-mode
 
-(add-to-list 'load-path (expand-file-name "/Users/qunyan/.emacs.d/elpa/csharp-mode")) ;拓展文件(插件)目录
+(add-to-list 'load-path (expand-file-name "/Users/heyan/.emacs.d/elpa/csharp-mode")) ;拓展文件(插件)目录
 (require 'csharp-mode)
 
 (setq interpreter-mode-alist
       (cons '("cs" . csharp-mode) interpreter-mode-alist))
 (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
+(add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-mode))
 
 ;;;for csharp-mode ; {} autoindent
 (defun csharp-autoindent ()

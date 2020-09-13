@@ -1,9 +1,9 @@
 ;;; ### Speedbar ###
-(setq load-path (cons (expand-file-name "~/.emacs.d/elpa/sr-speedbar-20141004.532") load-path))
+(setq load-path (cons (expand-file-name "/Users/heyan/.emacs.d/elpa/sr-speedbar-20141004.532") load-path))
 (require 'sr-speedbar)
 
 ;(autoload 'sr-speedbar-toggle "sr-speedbar") ; avoid init until used
-(setq speedbar-show-unknown-files t) ; 可以显示所有目录以及文件
+;; (setq speedbar-show-unknown-files t) ; 可以显示所有目录以及文件
 (setq speedbar-use-images nil)       ; Turn off the ugly icons
 (setq sr-speedbar-right-side nil)    ; Left-side pane
 (setq sr-speedbar-auto-refresh nil) ; Don't refresh on buffer changes
@@ -26,6 +26,20 @@
                                 (message "FROM SPEEDBAR HOOK")
                                 (message "window-fringes %S" (window-fringes))
                                 (set-window-fringes nil 0)))
+
+                                        ;(custom-set-variables '(speedbar-show-unknown-files f))
+(setq speedbar-show-unknown-files nil)
+(speedbar-add-supported-extension ".cs")
+(add-to-list 'speedbar-fetch-etags-parse-list
+		     '("\\.cs" . speedbar-parse-c-or-c++tag))
+(speedbar-add-supported-extension ".shader")
+(add-to-list 'speedbar-fetch-etags-parse-list
+		     '("\\.shader" . speedbar-parse-c-or-c++tag))
+(speedbar-add-supported-extension ".org")
+(add-to-list 'speedbar-fetch-etags-parse-list
+		     '("\\.org" . speedbar-parse-c-or-c++tag))
+
+
 ;(add-to-list 'speedbar-frame-parameters '(left-fringe . 0)) ; doesn't seem to work
 (setq sr-speedbar-width 35)
 (setq window-size-fixed 'width)
@@ -34,3 +48,4 @@
 
 
 (provide 'init-sr-speedbar)
+

@@ -86,6 +86,34 @@
 (add-hook 'c-mode-common-hook 'c-mode-common-hook-setup)
 
 
+
+(defun my/c-mode-insert-space (arg)
+  (interactive "*P")
+  (let ((prev (char-before))
+        (next (char-after)))
+    (self-insert-command (prefix-numeric-value arg))
+    (if (and prev next
+             (string-match-p "[[({]" (string prev))
+             (string-match-p "[])}]" (string next)))
+        (save-excursion (self-insert-command 1)))))
+
+(defun my/c-mode-delete-space (arg &amp &optional killp)
+                                   (interactive "*p\nP")
+                                   (let ((prev (char-before))
+                                         (next (char-after))
+                                         (pprev (char-before (- (point) 1))))
+                                     (if (and prev next pprev
+                                              (char-equal prev ?\s) (char-equal next ?\s)
+                                              (string-match "[[({]" (string pprev)))
+                                         (delete-char 1))
+                                     (backward-delete-char-untabify arg killp)))
+;;;  They can be bound in c-mode and c-mode derivatives like this:
+  (add-hook 'c-mode-common-hook
+            (lambda ()
+              (local-set-key " " 'my/c-mode-insert-space)
+              (local-set-key "\177" 'my/c-mode-delete-space))) ;;; backspace
+
+  
 ;;; cc-mode c++-mode macros
 
 (fset 'cpp  ;;; C++ enter enter enter --> ""
