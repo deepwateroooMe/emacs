@@ -1,6 +1,6 @@
 ;;; kotlin-mode
 
-(add-to-list 'load-path (expand-file-name "c:/Users/blue_/AppData/Roaming/.emacs.d/elpa/kotlin-mode")) ;拓展文件(插件)目录
+;(add-to-list 'load-path (expand-file-name "c:/Users/blue_/AppData/Roaming/.emacs.d/elpa/kotlin-mode")) ;拓展文件(插件)目录
 (require 'kotlin-mode)
 
 (setq debug-on-error t)

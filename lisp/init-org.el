@@ -305,6 +305,32 @@ If use-indirect-buffer is not nil, use `indirect-buffer' to hold the widen conte
 (setq org-export-latex-minted t)                            ;;; added this one
 
 
+;; 中文与英文字体设置
+;; Setting English Font
+;; (set-face-attribute
+;;  'default nil :font "Monaco 14")
+;; Chinese Font
+(dolist (charset '(kana han symbol cjk-misc bopomofo))
+  (set-fontset-font (frame-parameter nil 'font)
+                    charset
+                    (font-spec :family "WenQuanYi Micro Hei Mono" :size 16)))
+
+
+(defvar md/font-size 125) ;; 125
+(defun md/set-default-font ()
+  (interactive)
+  (set-face-attribute 'default nil
+                      :height md/font-size
+                      ;; :family "Inconsolata-dz for Powerline")
+                      :family "Inconsolata")
+  (setq-default line-spacing 0.1)
+  (run-hooks 'after-setting-font-hook 'after-setting-font-hooks))
+
+(md/set-default-font)
+
+
+
+
 ;; Specify default packages to be included in every tex file, whether pdflatex or xelatex
 (setq org-latex-default-packages-alist
       '(("" "graphicx" t)
@@ -389,7 +415,9 @@ same directory as the org-buffer and insert a link to this file."
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((R . t)
-   (latex . t)))
+   (latex . t)
+   (kotlin . t)
+   ))
 
 ;; Auctex
 (setq TeX−auto−save t)
@@ -435,6 +463,47 @@ same directory as the org-buffer and insert a link to this file."
              TeX-run-TeX nil (latex-mode doctex-mode) :help "Run LaTeX")
            )
   )
+
+
+;; (add-to-list 'org-structure-template-alist
+;;              '("s" "#+NAME: ?\n#+BEGIN_SRC \n\n#+END_SRC"))
+
+;; (defun org-insert-src-block (src-code-type)
+;;   "Insert a `SRC-CODE-TYPE' type source code block in org-mode."
+;;   (interactive
+;;    (let ((src-code-types
+;;           '("emacs-lisp" "python" "C" "sh" "java" "js" "clojure" "C++" "css"
+;;             "calc" "asymptote" "dot" "gnuplot" "kotlin" "ledger" "lilypond" "mscgen"
+;;             "octave" "oz" "plantuml" "R" "sass" "screen" "sql" "awk" "ditaa"
+;;             "haskell" "latex" "lisp" "matlab" "ocaml" "org" "perl" "ruby"
+;;             "scheme" "sqlite")))
+;;      (list (ido-completing-read "Source code type: " src-code-types))))
+;;   (progn
+;;     (newline-and-indent)
+;;     (insert (format "#+BEGIN_SRC %s\n" src-code-type))
+;;     (newline-and-indent)
+;;     (insert "#+END_SRC\n")
+;;     (previous-line 2)
+;;     (org-edit-src-code)))
+;; (add-hook 'org-mode-hook '(lambda ()
+;;                             ;; turn on flyspell-mode by default
+;;                             (flyspell-mode 1)
+;;                             ;; C-TAB for expanding
+;;                             (local-set-key (kbd "C-<tab>")
+;;                                            'yas/expand-from-trigger-key)
+;;                             ;; keybinding for editing source code blocks
+;;                             (local-set-key (kbd "C-c s e")
+;;                                            'org-edit-src-code)
+;;                             ;; keybinding for inserting code blocks
+;;                             (global-set-key (kbd "C-c i")
+;;                                            'org-insert-src-block)
+;;                             ))
+
+(defun insert-src-block ()
+  (interactive)
+  (insert "#+BEGIN_SRC java\n\n#+END_SRC"))
+(setq org-src-fontify-natively t)
+(define-key org-mode-map (kbd "C-c i") #'insert-src-block)
 
 
 ;;; for .tex file modifications   ;;; I set this through emacs menu instead
@@ -504,7 +573,7 @@ same directory as the org-buffer and insert a link to this file."
 ;\\setCJKmainfont[BoldFont = Heiti SC, ItalicFont = STFangsong]{STSong}
 ;\\setCJKsansfont{STHeiti}
 ;\\setCJKmonofont{STFangsong}
-
+                                       
 ;\\usepackage{longtable} ; 20170821 to install later
 ;\\setCJKmainfont[BoldFont = Songti SC Bold, ItalicFont = STFangsong]{Songti SC}
 (add-to-list 'org-latex-classes
@@ -512,6 +581,9 @@ same directory as the org-buffer and insert a link to this file."
                "\\documentclass[9pt, b5paper]{article}
 \\usepackage[UTF8]{ctex}
 \\usepackage{fontspec}
+\\setmainfont{Linux Libertine O}
+\\setsansfont{DejaVu Sans}
+\\setmonofont[Scale=0.85]{DejaVu Sans Mono}
 \\usepackage{graphicx}
 \\usepackage{xcolor}
 \\usepackage{multirow}
@@ -525,6 +597,7 @@ same directory as the org-buffer and insert a link to this file."
 \\usepackage{latexsym}
 \\usepackage{natbib}
 \\usepackage{listings}
+\\lstset{basicstyle=\\scriptsize\\ttfamily}
 \\usepackage{minted}
 \\usepackage[xetex,colorlinks=true,CJKbookmarks=true,linkcolor=blue,urlcolor=blue,menucolor=blue]{hyperref}
 [NO-DEFAULT-PACKAGES]

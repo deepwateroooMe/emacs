@@ -31,13 +31,27 @@
 (setq gc-cons-threshold most-positive-fixnum) ;; don't GC during startup to save time
 
 
-(setq default-directory "/Volumes/e/uMVVM/Assets/Sources/")
+(setq default-directory "/Volumes/h/leetcodeCoding/")
+;(setq default-directory "/Volumes/e/androidTests/myMVVMTests/app/src/main/")
+;;(setq default-directory "/Volumes/e/androidTests/examples/DataBindingSamples/app/src/main/")
 ;;; (setq default-directory "~/.emacs.d/")
 
 ;;; setup defaults for all modes
 (setq default-frame-alist
 ;      '((top . 0)(left . 270)(height . 84)(width . 230)(menubar-lines . 100)(tool-bar-line . 0))) ; ori
-      '((top . 0)(left . 400)(height . 84)(width . 180)(menubar-lines . 100)(tool-bar-line . 0))) ; tmp.py
+      '((top . 0)(left . 1600)(height . 84)(width . 180)(menubar-lines . 100)(tool-bar-line . 0))) ; tmp.py
+
+
+(defvar md/font-size 125) ;; 125
+(defun md/set-default-font ()
+  (interactive)
+  (set-face-attribute 'default nil
+                      :height md/font-size
+                      ;; :family "Inconsolata-dz for Powerline")
+                      :family "Inconsolata")
+  (setq-default line-spacing 0.1)
+  (run-hooks 'after-setting-font-hook 'after-setting-font-hooks))
+(md/set-default-font)
 
 
 (setq emacs-load-start-time (current-time))
@@ -109,7 +123,7 @@
   (require 'init-ibuffer)
   (require 'init-ivy)
   (require 'init-hippie-expand)
-  (require 'init-windows)
+;  (require 'init-windows)
   (require 'init-sessions)
   (require 'init-git)
   (require 'init-crontab)
@@ -160,7 +174,8 @@
  (require 'init-syslog-mode)
  (require 'init-misc)  ;; comment for replace-string
  (require 'init-hydra)
-
+; (require 'init-kotlin-mode)
+; (require 'dedicate-windows-mannually)
  
 ;(require 'init-python-mode)
 ;(require 'init-csharp-mode)
@@ -345,7 +360,7 @@
 ;;; 设定行距
 (setq default-line-spacing 1)
 ;;; 开启语法高亮
-(global-font-lock-mode 1)
+;; (global-font-lock-mode 1)
 ;;; 高亮显示区域选择
 (transient-mark-mode t)
 ;;; 将yes/no替换为y/n
@@ -498,7 +513,7 @@
       (set-frame-position (selected-frame) x y))  )
   )
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
-(setq ediff-split-window-function 'split-window-horizontally)
+;; (setq ediff-split-window-function 'split-window-horizontally)
 
 (defun local-ediff-before-setup-hook ()
   (setq local-ediff-saved-frame-configuration (current-frame-configuration))
@@ -530,6 +545,8 @@
   (exit-recursive-edit))
 (add-hook 'ediff-after-quit-hooks 'git-mergetool-emacsclient-ediff-after-quit-hook 'append)
 
+(setq tab-always-indent 'complete)
+(setq c-default-style '((java-mode . "java") (awk-mode . "awk")))
 
 ;;; lisp mute & dmute
 (fset 'ldm
@@ -567,7 +584,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
  '(column-number-mode t)
+ '(custom-enabled-themes '(deeper-blue))
  '(display-time-mode t)
  '(git-gutter:handled-backends '(svn hg git))
  '(latex-run-command "latex --shell-escape")
@@ -589,12 +609,15 @@
  '(tex-run-command "\"latex --shell-escape\"")
  '(tex-start-commands "\"latex -ini -shell-escape\"")
  '(tex-start-options "\"latex -ini --shell-escape\"")
- '(tool-bar-mode nil))
+ '(tool-bar-mode nil)
+ '(yas-also-auto-indent-first-line t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(speedbar-directory-face ((t (:foreground "RoyalBlue1" :height 115 :family "Lucida Grande"))))
+ '(speedbar-file-face ((t (:foreground "cyan4" :height 115 :family "Lucida Grande"))))
  '(window-numbering-face ((t (:foreground "DeepPink" :underline "DeepPink" :weight bold))) t))
 	;;; Local Variables:
 ;;; no-byte-compile: t

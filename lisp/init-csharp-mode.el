@@ -13,9 +13,9 @@
   (when (and (eq major-mode 'csharp-mode) (looking-back "[;]"))
     (newline-and-indent)))
 (add-hook 'post-self-insert-hook 'csharp-autoindent)
-(add-hook 'csharp-mode-hook
-	  #'(lambda ()
-	      (local-set-key (kbd "{") 'cheeso-insert-open-brace)))
+;; (add-hook 'csharp-mode-hook
+;; 	  #'(lambda ()
+;; 	      (local-set-key (kbd "{") 'cheeso-insert-open-brace)))
 
 ;;; for auto-indent when insert snippets
 (add-hook 'csharp-mode-hook
