@@ -1,4 +1,5 @@
-;;; ### Speedbar ###
+;;;;; ### Speedbar ###
+
 (setq load-path (cons (expand-file-name "/Users/heyan/.emacs.d/elpa/sr-speedbar-20141004.532") load-path))
 (require 'sr-speedbar)
 
@@ -38,7 +39,8 @@
 ;;                                 (set-window-fringes nil 0)))
 
 
-(setq speedbar-show-unknown-files nil)
+;; (setq speedbar-show-unknown-files nil)
+(setq speedbar-show-unknown-files t)
 (speedbar-add-supported-extension ".cs")
 (add-to-list 'speedbar-fetch-etags-parse-list
 		     '("\\.cs" . speedbar-parse-c-or-c++tag))
@@ -66,6 +68,25 @@
 
 ;(setq speedbar-directory-unshown-regexp "^\\(\\.\\.?\\)$") ;; you won’t see . or .. --mykphyre
 
+;; (defun nm-speedbar-expand-line-list (&optional arg)
+;;   (when arg
+;;     (message (car arg))
+;;     (re-search-forward (concat " " (car arg) "$"))
+;;     (speedbar-expand-line (car arg))
+;;     (speedbar-next 1) ;; Move into the list.
+;;     (nm-speedbar-expand-line-list (cdr arg))))
+;; (defun nm-speedbar-open-current-buffer-in-tree ()
+;;   (interactive)
+;;   (let* ((root-dir (cdr (project-root-fetch)))
+;;          (original-buffer-file-directory (file-name-directory (buffer-file-name)))
+;;          (relative-buffer-path (car (cdr (split-string original-buffer-file-directory root-dir))))
+;;          (parents (butlast (split-string relative-buffer-path "/"))))
+;;     (save-excursion 
+;;       (sr-speedbar-open) ;; <--- or whatever speedbar you have e.g. (speedbar 1)
+;;       (set-buffer speedbar-buffer)
+;;       (beginning-of-buffer)
+;;       (nm-speedbar-expand-line-list parents))))
+;; ;; (nm-speedbar--open-current-buffer-in-tree ())
 
 ;(add-to-list 'speedbar-frame-parameters '(left-fringe . 0)) ; doesn't seem to work
 (setq sr-speedbar-width 35)
@@ -74,8 +95,20 @@
 
 (global-set-key (kbd "<f5>") (lambda()  
                                (interactive)  
+                               ;; (nm-speedbar-open-current-buffer-in-tree ())
                                (sr-speedbar-toggle)))
 ;; (global-set-key [(f5)] 'speedbar-get-focus)
+
+
+(setq var_start-path default-directory)
+(define-key speedbar-file-key-map (kbd "h")
+  (lambda() (interactive)
+    (when (and (not (equal var_start-path
+                           sr-speedbar-last-refresh-dictionary))
+               (not (sr-speedbar-window-p)))
+      (setq sr-speedbar-last-refresh-dictionary var_start-path))
+    (setq default-directory var_start-path)
+    (speedbar-refresh)))
 
 
 ;(speedbar 1)

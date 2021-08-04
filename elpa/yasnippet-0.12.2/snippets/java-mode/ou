@@ -1,0 +1,5 @@
+# contributor: deepwaterooo
+# name: system.out.print("${1}" + ", ");
+# key: ou
+# --
+System.out.print(${1} + ", ");

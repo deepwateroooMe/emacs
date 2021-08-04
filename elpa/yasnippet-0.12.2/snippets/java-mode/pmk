@@ -1,0 +1,10 @@
+# contributor: deepwaterooo
+# name: print ListNode
+# key: pmk
+# --
+System.out.println("");
+System.out.println("$2.size(): " + $2.size());
+for (${1:Integer} key : ${2:map}.keySet()) 
+    System.out.print(key + ", ");
+System.out.println("");
+$0

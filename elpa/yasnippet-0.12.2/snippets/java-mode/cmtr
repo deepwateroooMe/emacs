@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: docblock
+# key: /*r
+# --
+/**
+ * ${1:name} - ${2:short description}
+ * @param ${3:argv1} $4
+ * @param ${5:argv2} $6
+ * ${7:long description}
+ * @return: $8
+ */
+$0

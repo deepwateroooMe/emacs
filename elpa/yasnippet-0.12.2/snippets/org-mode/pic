@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: pic
+# key: pic
+# --
+[[./pic/${1:img}.png]]
+$0

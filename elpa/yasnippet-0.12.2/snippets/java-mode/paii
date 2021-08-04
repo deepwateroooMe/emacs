@@ -1,0 +1,14 @@
+# contributor: deepwaterooo
+# name: print int [][] arr
+# key: paii
+# --
+System.out.println("");
+System.out.println("${1:res}.length: " + $1.length);
+for (int z = 0; z < $1.length; ++z) {
+    for (int w = 0; w < $1[z].length; w++) {
+        System.out.print($1[z][w] + ", ");
+    }
+    System.out.print("\n");
+}
+System.out.println("");
+$0

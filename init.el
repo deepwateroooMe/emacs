@@ -42,7 +42,7 @@
       '((top . 0)(left . 1600)(height . 84)(width . 180)(menubar-lines . 100)(tool-bar-line . 0))) ; tmp.py
 
 
-(defvar md/font-size 125) ;; 125
+(defvar md/font-size 145) ;; 125
 (defun md/set-default-font ()
   (interactive)
   (set-face-attribute 'default nil
@@ -360,7 +360,7 @@
 ;;; 设定行距
 (setq default-line-spacing 1)
 ;;; 开启语法高亮
-;; (global-font-lock-mode 1)
+(global-font-lock-mode 1)
 ;;; 高亮显示区域选择
 (transient-mark-mode t)
 ;;; 将yes/no替换为y/n
@@ -616,6 +616,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(region ((t (:extend t :background "dark blue"))))
  '(speedbar-directory-face ((t (:foreground "RoyalBlue1" :height 115 :family "Lucida Grande"))))
  '(speedbar-file-face ((t (:foreground "cyan4" :height 115 :family "Lucida Grande"))))
  '(window-numbering-face ((t (:foreground "DeepPink" :underline "DeepPink" :weight bold))) t))

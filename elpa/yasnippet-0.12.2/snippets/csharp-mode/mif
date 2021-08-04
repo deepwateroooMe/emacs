@@ -1,0 +1,7 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: mif
+# key: mif
+# --
+#if UNITY_${1:EDITOR}
+    $0
+#endif
