@@ -61,7 +61,7 @@
 ;;; Code:
 
 (eval-when-compile (require 'cl))
-(load-file "/Users/heyan/.emacs.d/lisp/jtags.el")
+(load-file "./jtags.el")
 ;(require 'jtags)
 
 ;; ----------------------------------------------------------------------------

@@ -1,9 +1,5 @@
 ;; @see https://github.com/abo-abo/hydra
 
-(add-to-list 'load-path (expand-file-name "/Users/heyan/.emacs.d/elpa/hydra-0.14.0/")) ;拓展文件(插件)目录
-(require 'hydra)
-
-
 ;; use similar key bindings as init-evil.el
 (defhydra hydra-launcher (:color blue)
   "?"

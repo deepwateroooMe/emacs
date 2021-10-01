@@ -1,6 +1,5 @@
-;;;;; ### Speedbar ###
-
-(setq load-path (cons (expand-file-name "/Users/heyan/.emacs.d/elpa/sr-speedbar-20141004.532") load-path))
+;;; ### Speedbar ###
+(setq load-path (cons (expand-file-name "~/.emacs.d/elpa/sr-speedbar-20141004.532") load-path))
 (require 'sr-speedbar)
 
 ;(autoload 'sr-speedbar-toggle "sr-speedbar") ; avoid init until used
@@ -8,6 +7,63 @@
 (setq speedbar-use-images nil)       ; Turn off the ugly icons
 (setq sr-speedbar-right-side nil)    ; Left-side pane
 (setq sr-speedbar-auto-refresh nil) ; Don't refresh on buffer changes
+
+
+
+;;; set faces speedbar-dirctory-face
+(defface speedbar-symlink-directory-face
+  '((((class color) (background light)) :foreground "red")
+    (((class color) (background dark)) :foreground "green"))
+  "Speedbar face for symlinked directory names."
+  :group 'speedbar-faces)
+
+(defface speedbar-symlink-filename-face
+  '((((class color) (background light)) :foreground "purple")
+    (((class color) (background dark)) :foreground "yellow"))
+  "Speedbar face for symlinked filenames."
+  :group 'speedbar-faces)
+
+(defun speedbar-insert-files-at-point (files level)
+  "Insert list of FILES starting at point, and indenting all files to LEVEL.
+Tag expandable items with a +, otherwise a ?.  Don't highlight ? as we
+don't know how to manage them.  The input parameter FILES is a cons
+cell of the form (DIRLIST . FILELIST)."
+  ;; Start inserting all the directories
+  (let ((dirs (car files)))
+    (while dirs
+      (speedbar-make-tag-line 'angle
+                              ?+
+                              'speedbar-dired
+                              (car dirs)
+                              (car dirs)
+                              'speedbar-dir-follow
+                              nil
+                              (if (file-symlink-p (car dirs))
+                                  'speedbar-symlink-directory-face
+                                'speedbar-directory-face)
+                              level)
+      (setq dirs (cdr dirs))))
+  (let ((lst (car (cdr files)))
+        (case-fold-search t))
+    (while lst
+      (let* ((known (string-match speedbar-file-regexp (car lst)))
+             (expchar (if known ?+ ??))
+             (fn (if known 'speedbar-tag-file nil)))
+        (when (or speedbar-show-unknown-files (/= expchar ??))
+          (speedbar-make-tag-line 'bracket
+                                  expchar
+                                  fn
+                                  (car lst)
+                                  (car lst)
+                                  'speedbar-find-file
+                                  nil
+                                  (if (file-symlink-p (car lst))
+                                      'speedbar-symlink-filename-face
+                                    'speedbar-file-face)
+                                  level)))
+      (setq lst (cdr lst)))))
+
+
 
 ;; Nicer fonts for speedbar when in GUI
 (when (window-system)
@@ -22,99 +78,35 @@
         (set-face-attribute face nil :family "Lucida Grande" :height 110)
       (set-face-attribute face nil :family "Droid Sans" :height 100))))
 
-
 ;; No left fringe and half-size right fringe. TODO: Doesn't work
-(add-hook 'sr-speedbar-mode-hook (lambda()
-                                   (interactive)
-                                   (other-frame 0)
-                                   (message "FROM SPEEDBAR HOOK")
-                                   (message "window-fringes %S" (window-fringes))
-                                        ;                                (speedbar-expand-all-lines ())
-                                   (set-window-fringes nil 0)))
+(add-hook 'speedbar-mode-hook (lambda()
+                                (message "FROM SPEEDBAR HOOK")
+                                (message "window-fringes %S" (window-fringes))
+                                (set-window-fringes nil 0)))
 
-;; ;; No left fringe and half-size right fringe. TODO: Doesn't work
-;; (add-hook 'speedbar-mode-hook (lambda()
-;;                                 (message "FROM SPEEDBAR HOOK")
-;;                                 (message "window-fringes %S" (window-fringes))
-;;                                 (set-window-fringes nil 0)))
+;(custom-set-variables '(speedbar-show-unknown-files t))
+ (speedbar-add-supported-extension ".cs")
+ (add-to-list 'speedbar-fetch-etags-parse-list
+ 		     '("\\.cs" . speedbar-parse-c-or-c++tag))
+ (speedbar-add-supported-extension ".shader")
+ (add-to-list 'speedbar-fetch-etags-parse-list
+ 		     '("\\.shader" . speedbar-parse-c-or-c++tag))
+ (speedbar-add-supported-extension ".org")
+ (add-to-list 'speedbar-fetch-etags-parse-list
+ 		     '("\\.org" . speedbar-parse-c-or-c++tag))
 
-
-;; (setq speedbar-show-unknown-files nil)
-(setq speedbar-show-unknown-files t)
-(speedbar-add-supported-extension ".cs")
-(add-to-list 'speedbar-fetch-etags-parse-list
-		     '("\\.cs" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".shader")
-(add-to-list 'speedbar-fetch-etags-parse-list
-		     '("\\.shader" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".glsl")
-(add-to-list 'speedbar-fetch-etags-parse-list
-		     '("\\.glsl" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".org")
-(add-to-list 'speedbar-fetch-etags-parse-list
-		     '("\\.org" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".xml")
-(add-to-list 'speedbar-fetch-etags-parse-list
-		     '("\\.xml" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".kt")
-(add-to-list 'speedbar-fetch-etags-parse-list
-		     '("\\.kt" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".gradle")
-(add-to-list 'speedbar-fetch-etags-parse-list
-		     '("\\.gradle" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".tex")
-(add-to-list 'speedbar-fetch-etags-parse-list
-		     '("\\.tex" . speedbar-parse-tex-string))
-
-;(setq speedbar-directory-unshown-regexp "^\\(\\.\\.?\\)$") ;; you won’t see . or .. --mykphyre
-
-;; (defun nm-speedbar-expand-line-list (&optional arg)
-;;   (when arg
-;;     (message (car arg))
-;;     (re-search-forward (concat " " (car arg) "$"))
-;;     (speedbar-expand-line (car arg))
-;;     (speedbar-next 1) ;; Move into the list.
-;;     (nm-speedbar-expand-line-list (cdr arg))))
-;; (defun nm-speedbar-open-current-buffer-in-tree ()
-;;   (interactive)
-;;   (let* ((root-dir (cdr (project-root-fetch)))
-;;          (original-buffer-file-directory (file-name-directory (buffer-file-name)))
-;;          (relative-buffer-path (car (cdr (split-string original-buffer-file-directory root-dir))))
-;;          (parents (butlast (split-string relative-buffer-path "/"))))
-;;     (save-excursion 
-;;       (sr-speedbar-open) ;; <--- or whatever speedbar you have e.g. (speedbar 1)
-;;       (set-buffer speedbar-buffer)
-;;       (beginning-of-buffer)
-;;       (nm-speedbar-expand-line-list parents))))
-;; ;; (nm-speedbar--open-current-buffer-in-tree ())
 
 ;(add-to-list 'speedbar-frame-parameters '(left-fringe . 0)) ; doesn't seem to work
 (setq sr-speedbar-width 35)
-;; (setq window-size-fixed 'width)
+(setq window-size-fixed 'width)
 
-
+;(setq dframe-update-speed t)        ; prevent the speedbar to update the current state, since it is always changing  
 (global-set-key (kbd "<f5>") (lambda()  
                                (interactive)  
-                               ;; (nm-speedbar-open-current-buffer-in-tree ())
-                               (sr-speedbar-toggle)))
-;; (global-set-key [(f5)] 'speedbar-get-focus)
-
-
-(setq var_start-path default-directory)
-(define-key speedbar-file-key-map (kbd "h")
-  (lambda() (interactive)
-    (when (and (not (equal var_start-path
-                           sr-speedbar-last-refresh-dictionary))
-               (not (sr-speedbar-window-p)))
-      (setq sr-speedbar-last-refresh-dictionary var_start-path))
-    (setq default-directory var_start-path)
-    (speedbar-refresh)))
-
+                               (sr-speedbar-toggle)))  
+;(global-set-key [(f5)] 'speedbar-get-focus) ;; 不及上面的效果好，容易自动往右缩进
 
 ;(speedbar 1)
 
-;(setq speedbar-initial-expansion-list-name "quick buffers")
-;; (setq speedbar-initial-expansion-list-name "buffers")
 
 (provide 'init-sr-speedbar)
-

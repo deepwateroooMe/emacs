@@ -1,0 +1,48 @@
+#+latex_class: cn-article
+#+title: Emacs Configuration
+#+author: deepwaterooo
+
+* Updates 
+- will only update this repository when there is a need. emacs version 27.01 27.02
+- working on leetcode interview questions, so have not configued any JDK IDE within emacs nor from csharp-mode, only take full advantage of emacs snippets for java algorithm problems coding. Uploaded so far some frequently used snippets for my own references. 
+- having not update this one for a while. pseudo-name .java jave-mode inside csharp-mode so that I can skip some pairs of { }-s
+- java-mode csharp-mode file organiation scripts update
+- Unhighlight leading or trailing whitespace
+- org-move-tree make it slightly easier than before for manipulating small org files, and followed by integrating into one book file, and export into one pdf book. Seek for auto-updating integrated book file according to small chapter file updates later on when get spare time.
+- fixed emacs org-mode export to pdf broken environment for personal laptop. 
+- configured company jedi environment for python3.
+- Adding snippets for csharp-mode when debugging unity games.
+- Remove not frequently used bothering commands from syslog-mode, and define simplified customized macro command for android SDK log analysis. 
+- *Enhanced syslog-mode*, with simplified textile-mode feature integrated for personal debugging log viewing propose. Will continuously improve relative features. 
+- logview-mode, log4j-mode, syslog-mode, in progress, so far only syslog-mode works, needs to combine textile-mode functions/hooks.
+- textile-mode for android logs;
+- sr-speedbar set fixed hight and width cater to current project file names length;
+- fixed previously existing tab cannot indent line and region problem;
+- company mode works convenient and as I expected;
+- C-c f formating files according to needs. Fix minor bugs for java python csharp-mode swift-mode auto complete.
+- clean auto-complete-mode, made repository more consistant.
+- csharp-mode: fixed minor bugs for autopairing, as well as expand {} for function scope.
+- swift-mode using swift3
+- org-mode src code highlight is on, just I forgot to specify language before.
+- emacs key-bound for mac keyboard, so that it would be convenient for me to type some specific keys. 
+  - exchanged the position of ^Control and Capslock;
+  - exchanged the position of Option and Command keys;
+  - through mac system preference.
+  - I tried this yesterday, but after having used window's keyboard for all these years for emacs, it is still very difficult to get used to the mac keyboard even after key exchanges. 
+  - changed keyboard today actually so that I could type more conveniently. 
+- other major-modes, for example: *java-mode*, *csharp-mode*, which I would need to use pretty soon, is ready for use now (auto-complete + yasnippet etc). 
+- All the minor warnings, warning messages when starting emacs, modes fixes are all fixed, a clean Emacs open ready for work. 
+
+* starting point
+- It is a new computer, and I did try to git clone from my own repository to new laptop, but after fixed errors and tried, *I promise I do NOT and can NOT bare the out-dated emacs 22.X any more, I have to move on.* I have to install newer versions for my own later on convenience. 
+- Instead of configuring my own again, this time, I tried from some "big" person's repository and try to make it work on my laptop (fixing errors, installing necessary packages etc), as well as comment out some complicated modes and customization so that I would still be able to use and like my current emacs interface.
+- It is the first time I tried from some big person's (or any person's configurature completely), it was tidious to fix all the errors at beginning (I spent more than 2 days on it last week. For me it just took too much time), but so far I like some of the features that had been annoying me before, but I have not and was not able to find good solutions to solve it, like how to auto-complete words when in scripte comment line or in quotes. I like these detailed features which I did try by writing my own snippets from yasnippet mode before. 
+- So far, org-mode is not perfect, but it is a fully functional one that I could use and help convenient a game developer's daily work. 
+- Will devote more time to understand emacs better, and to solve my own problems and make it more convenient for me to use when I need some specific features. 
+  
+* TODOs
+- get cmake work later, not urgent though.
+- babel org-mode so I don't have to copy from specific babeled source org-mode files in order for chinese characters to work. 
+
+* References
+- https://github.com/redguardtoo/emacs.d

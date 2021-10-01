@@ -1,7 +1,0 @@
-# contributor: deepwaterooo
-# name: TreeNode res = s.
-# key: res
-# --
-TreeNode res = s.${1: }(${2:root});
-res.levelPrintTree(res);
-$0

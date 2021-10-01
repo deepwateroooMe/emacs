@@ -1,257 +1,6 @@
-;;;
-;;; some cool org tricks
-;; @see http://emacs.stackexchange.com/questions/13820/inline-verbatim-and-code-with-quotes-in-org-mode
-
-;; {{ NO spell check for embedded snippets
-(defun org-mode-is-code-snippet ()
-  (let* (rlt
-         (begin-regexp "^[ \t]*#\\+begin_\\(src\\|html\\|latex\\|example\\)")
-         (end-regexp "^[ \t]*#\\+end_\\(src\\|html\\|latex\\|example\\)")
-         (case-fold-search t)
-         b e)
-    (save-excursion
-      (if (setq b (re-search-backward begin-regexp nil t))
-          (setq e (re-search-forward end-regexp nil t))))
-    (if (and b e (< (point) e)) (setq rlt t))
-    rlt))
-
-;; no spell check for property
-(defun org-mode-current-line-is-property ()
-  (string-match "^[ \t]+:[A-Z]+:[ \t]+" (my-line-str)))
-
-;; Please note flyspell only use ispell-word
-(defadvice org-mode-flyspell-verify (after org-mode-flyspell-verify-hack activate)
-  (let ((run-spellcheck ad-return-value))
-    (if ad-return-value
-      (cond
-       ((org-mode-is-code-snippet)
-        (setq run-spellcheck nil))
-       ((org-mode-current-line-is-property)
-        (setq run-spellcheck nil))))
-    (setq ad-return-value run-spellcheck)))
-;; }}
-
-;; Org v8 change log:
-;; @see http://orgmode.org/worg/org-8.0.html
-
-;; {{ export org-mode in Chinese into PDF
-;; @see http://freizl.github.io/posts/tech/2012-04-06-export-orgmode-file-in-Chinese.html
-;; and you need install texlive-xetex on different platforms
-;; To install texlive-xetex:
-;;    `sudo USE="cjk" emerge texlive-xetex` on Gentoo Linux
-;(setq org-latex-to-pdf-process ;; org v7
-;'("xelatex -interaction nonstopmode -output-directory %o %f"
-                                        ;  "xelatex -interaction nonstopmode -output-directory %o %f"
-                                        ;  "xelatex -interaction nonstopmode -output-directory %o %f"))
-                                        ;(setq org-latex-pdf-process org-latex-to-pdf-process) ;; org v8
-;; }}
-
-(defun my-setup-odt-org-convert-process ()
-  (interactive)
-  (let ((cmd "/Applications/LibreOffice.app/Contents/MacOS/soffice"))
-    (when (and *is-a-mac* (file-exists-p cmd))
-      ;; org v7
-      (setq org-export-odt-convert-processes '(("LibreOffice" "/Applications/LibreOffice.app/Contents/MacOS/soffice --headless --convert-to %f%x --outdir %d %i")))
-      ;; org v8
-      (setq org-odt-convert-processes '(("LibreOffice" "/Applications/LibreOffice.app/Contents/MacOS/soffice --headless --convert-to %f%x --outdir %d %i"))))
-    ))
-
-(my-setup-odt-org-convert-process)
-
-(defun narrow-to-region-indirect-buffer-maybe (start end use-indirect-buffer)
-  "Indirect buffer could multiple widen on same file."
-  (if (region-active-p) (deactivate-mark))
-  (if use-indirect-buffer
-      (with-current-buffer (clone-indirect-buffer
-                            (generate-new-buffer-name
-                             (concat (buffer-name) "-indirect-"
-                                     (number-to-string start) "-"
-                                     (number-to-string end)))
-                            'display)
-        (narrow-to-region start end)
-        (goto-char (point-min)))
-      (narrow-to-region start end)))
-
-;; @see https://gist.github.com/mwfogleman/95cc60c87a9323876c6c
-(defun narrow-or-widen-dwim (&optional use-indirect-buffer)
-  "If the buffer is narrowed, it widens.
- Otherwise, it narrows to region, or Org subtree.
-If use-indirect-buffer is not nil, use `indirect-buffer' to hold the widen content."
-  (interactive "P")
-  (cond ((buffer-narrowed-p) (widen))
-        ((region-active-p)
-         (narrow-to-region-indirect-buffer-maybe (region-beginning)
-                                                 (region-end)
-                                                 use-indirect-buffer))
-        ((equal major-mode 'org-mode)
-         (org-narrow-to-subtree))
-        ((equal major-mode 'diff-mode)
-         (let* (b e)
-           (save-excursion
-             (setq b (diff-beginning-of-file))
-             (setq e (progn (diff-end-of-file) (point))))
-           (when (and b e (< b e))
-             (narrow-to-region-indirect-buffer-maybe b e use-indirect-buffer))))
-        (t (error "Please select a region to narrow to"))))
-
-;; Various preferences
-(setq org-log-done t
-      org-completion-use-ido t
-      org-edit-src-content-indentation 0
-      org-edit-timestamp-down-means-later t
-      org-agenda-start-on-weekday nil
-      org-agenda-span 14
-      org-agenda-include-diary t
-      org-agenda-window-setup 'current-window
-      org-fast-tag-selection-single-key 'expert
-      org-export-kill-product-buffer-when-displayed t
-      ;; org v7
-      org-export-odt-preferred-output-format "doc"
-      ;; org v8
-      org-odt-preferred-output-format "doc"
-      org-tags-column 80
-      ;; org-startup-indented t
-      ;; {{ org 8.2.6 has some performance issue. Here is the workaround.
-      ;; @see http://punchagan.muse-amuse.in/posts/how-i-learnt-to-use-emacs-profiler.html
-      org-agenda-inhibit-startup t ;; ~50x speedup
-      org-agenda-use-tag-inheritance nil ;; 3-4x speedup
-      ;; }}
-      )
-
-;; Refile targets include this file and any file contributing to the agenda - up to 5 levels deep
-(setq org-refile-targets (quote ((nil :maxlevel . 5) (org-agenda-files :maxlevel . 5))))
-;; Targets start with the file name - allows creating level 1 tasks
-(setq org-refile-use-outline-path (quote file))
-;; Targets complete in steps so we start with filename, TAB shows the next level of targets etc
-(setq org-outline-path-complete-in-steps t)
-
-(setq org-todo-keywords
-      (quote ((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d!/!)")
-              (sequence "WAITING(w@/!)" "SOMEDAY(S)" "PROJECT(P@)" "|" "CANCELLED(c@/!)"))))
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Org clock
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; Change task state to STARTED when clocking in
-(setq org-clock-in-switch-to-state "STARTED")
-;; Save clock data and notes in the LOGBOOK drawer
-(setq org-clock-into-drawer t)
-;; Removes clocked tasks with 0:00 duration
-(setq org-clock-out-remove-zero-time-clocks t)
-
-;; Show the clocked-in task - if any - in the header line
-(defun sanityinc/show-org-clock-in-header-line ()
-  (setq-default header-line-format '((" " org-mode-line-string " "))))
-
-(defun sanityinc/hide-org-clock-from-header-line ()
-  (setq-default header-line-format nil))
-
-(add-hook 'org-clock-in-hook 'sanityinc/show-org-clock-in-header-line)
-(add-hook 'org-clock-out-hook 'sanityinc/hide-org-clock-from-header-line)
-(add-hook 'org-clock-cancel-hook 'sanityinc/hide-org-clock-from-header-line)
-
-(eval-after-load 'org-clock
-  '(progn
-     (define-key org-clock-mode-line-map [header-line mouse-2] 'org-clock-goto)
-     (define-key org-clock-mode-line-map [header-line mouse-1] 'org-clock-menu)))
-
-(eval-after-load 'org
-  '(progn
-     (setq org-imenu-depth 9)
-     (require 'org-clock)
-     ;; @see http://irreal.org/blog/1
-     (setq org-src-fontify-natively t)))
-
-(defun org-mode-hook-setup ()
-  (setq evil-auto-indent nil)
-  ;; org-mode's own flycheck will be loaded
-  (enable-flyspell-mode-conditionally)
-
-  ;; but I don't want to auto spell check when typing,
-  ;; please comment out `(flyspell-mode -1)` if you prefer auto spell check
-  (flyspell-mode -1)
-
-  ;; for some reason, org8 disable odt export by default
-  (add-to-list 'org-export-backends 'odt)
-  ;; (add-to-list 'org-export-backends 'org) ; for org-mime
-
-  ;; org-mime setup, run this command in org-file, than yank in `message-mode'
-  (local-set-key (kbd "C-c M-o") 'org-mime-org-buffer-htmlize)
-
-  ;; don't spell check double words
-  (setq flyspell-check-doublon nil)
-
-  ;; display wrapped lines instead of truncated lines
-  (setq truncate-lines nil)
-  (setq word-wrap t))
-(add-hook 'org-mode-hook 'org-mode-hook-setup)
-
-(defadvice org-open-at-point (around org-open-at-point-choose-browser activate)
-  "`C-u M-x org-open-at-point` open link with `browse-url-generic-program'"
-  (let* ((browse-url-browser-function
-          (cond
-           ;; open with `browse-url-generic-program'
-           ((equal (ad-get-arg 0) '(4)) 'browse-url-generic)
-           ;; open with w3m
-           (t 'w3m-browse-url))))
-    ad-do-it))
-
-(defadvice org-publish (around org-publish-advice activate)
-  "Stop running major-mode hook when org-publish"
-  (defvar load-user-customized-major-mode-hook)
-  (let ((old load-user-customized-major-mode-hook))
-    (setq load-user-customized-major-mode-hook nil)
-    ad-do-it
-    (setq load-user-customized-major-mode-hook old)))
-
-;; {{ org2nikola set up
-(setq org2nikola-output-root-directory "~/.config/nikola")
-(setq org2nikola-use-google-code-prettify t)
-(setq org2nikola-prettify-unsupported-language
-      '(elisp "lisp"
-              emacs-lisp "lisp"))
-;; }}
-
-(defun org-demote-or-promote (&optional is-promote)
-  (interactive "P")
-  (unless (region-active-p)
-    (org-mark-subtree))
-  (if is-promote (org-do-promote)
-    (org-do-demote)))
-
-;; {{ @see http://orgmode.org/worg/org-contrib/org-mime.html
-(defun org-mime-html-hook-setup ()
-  (org-mime-change-element-style "pre"
-                                 "color:#E6E1DC; background-color:#232323; padding:0.5em;")
-  (org-mime-change-element-style "blockquote"
-                                 "border-left: 2px solid gray; padding-left: 4px;"))
-
-(eval-after-load 'org-mime
-  '(progn
-     (setq org-mime-export-options '(:section-numbers nil :with-author nil :with-toc nil))
-     (add-hook 'org-mime-html-hook 'org-mime-html-hook-setup)))
-
-;; demo video: http://vimeo.com/album/1970594/video/13158054
-(add-hook 'message-mode-hook
-          (lambda ()
-            (local-set-key (kbd "C-c M-o") 'org-mime-htmlize)))
-;; }}
-
-(defun org-agenda-show-agenda-and-todo (&optional arg)
-  "Better org-mode agenda view."
-  (interactive "P")
-  (org-agenda arg "n"))
-
-
-
-
-
-
 ;;; org-mode
 (global-linum-mode 1)
-(setq load-path (cons "~/.emacs.d/elpa/org-20140901/" load-path))
+(setq load-path (cons "C:/Users/blue_/AppData/Roaming/.emacs.d/elpa/org-20140901/" load-path))
 (require 'ox)
 (require 'org-install)
 (require 'ob-ditaa)  
@@ -275,11 +24,11 @@ If use-indirect-buffer is not nil, use `indirect-buffer' to hold the widen conte
 
 (defun shift-right ()
   (interactive)
-  (shift-region 4))
+  (shift-region 8))
 
 (defun shift-left ()
   (interactive)
-  (shift-region -4))
+  (shift-region -8))
 
 (eval-after-load 'org
   '(progn
@@ -299,11 +48,14 @@ If use-indirect-buffer is not nil, use `indirect-buffer' to hold the widen conte
 (setq org-latex-listings 'minted)                           ;;; added this one
 ;;; add frame and line number for source code
 (setq org-latex-minted-options
-      '(
-; ("frame" "single")
-  ("linenos" "true")))
+      '(("frame" "lines")
+        ("fontsize" "\\scriptsize")
+        ("linenos" "false"))) ;; "true"
+;; (setq org-latex-minted-options
+;;       '(
+;; ; ("frame" "single")
+;;   ("linenos" "true")))
 (setq org-export-latex-minted t)                            ;;; added this one
-
 
 ;; 中文与英文字体设置
 ;; Setting English Font
@@ -316,7 +68,7 @@ If use-indirect-buffer is not nil, use `indirect-buffer' to hold the widen conte
                     (font-spec :family "WenQuanYi Micro Hei Mono" :size 16)))
 
 
-(defvar md/font-size 125) ;; 125
+(defvar md/font-size 100) ;; 125
 (defun md/set-default-font ()
   (interactive)
   (set-face-attribute 'default nil
@@ -327,9 +79,6 @@ If use-indirect-buffer is not nil, use `indirect-buffer' to hold the widen conte
   (run-hooks 'after-setting-font-hook 'after-setting-font-hooks))
 
 (md/set-default-font)
-
-
-
 
 ;; Specify default packages to be included in every tex file, whether pdflatex or xelatex
 (setq org-latex-default-packages-alist
@@ -415,9 +164,7 @@ same directory as the org-buffer and insert a link to this file."
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((R . t)
-   (latex . t)
-   (kotlin . t)
-   ))
+   (latex . t)))
 
 ;; Auctex
 (setq TeX−auto−save t)
@@ -465,45 +212,15 @@ same directory as the org-buffer and insert a link to this file."
   )
 
 
-;; (add-to-list 'org-structure-template-alist
-;;              '("s" "#+NAME: ?\n#+BEGIN_SRC \n\n#+END_SRC"))
-
-;; (defun org-insert-src-block (src-code-type)
-;;   "Insert a `SRC-CODE-TYPE' type source code block in org-mode."
-;;   (interactive
-;;    (let ((src-code-types
-;;           '("emacs-lisp" "python" "C" "sh" "java" "js" "clojure" "C++" "css"
-;;             "calc" "asymptote" "dot" "gnuplot" "kotlin" "ledger" "lilypond" "mscgen"
-;;             "octave" "oz" "plantuml" "R" "sass" "screen" "sql" "awk" "ditaa"
-;;             "haskell" "latex" "lisp" "matlab" "ocaml" "org" "perl" "ruby"
-;;             "scheme" "sqlite")))
-;;      (list (ido-completing-read "Source code type: " src-code-types))))
-;;   (progn
-;;     (newline-and-indent)
-;;     (insert (format "#+BEGIN_SRC %s\n" src-code-type))
-;;     (newline-and-indent)
-;;     (insert "#+END_SRC\n")
-;;     (previous-line 2)
-;;     (org-edit-src-code)))
-;; (add-hook 'org-mode-hook '(lambda ()
-;;                             ;; turn on flyspell-mode by default
-;;                             (flyspell-mode 1)
-;;                             ;; C-TAB for expanding
-;;                             (local-set-key (kbd "C-<tab>")
-;;                                            'yas/expand-from-trigger-key)
-;;                             ;; keybinding for editing source code blocks
-;;                             (local-set-key (kbd "C-c s e")
-;;                                            'org-edit-src-code)
-;;                             ;; keybinding for inserting code blocks
-;;                             (global-set-key (kbd "C-c i")
-;;                                            'org-insert-src-block)
-;;                             ))
-
-(defun insert-src-block ()
-  (interactive)
-  (insert "#+BEGIN_SRC java\n\n#+END_SRC"))
-(setq org-src-fontify-natively t)
-(define-key org-mode-map (kbd "C-c i") #'insert-src-block)
+;;; Org export to LaTeX default headers.
+;; set LaTeX default font
+(setq org-format-latex-header
+      (concat org-format-latex-header "\n" "\\setmainfont{DejaVu Sans}"))
+(setq org-format-latex-header
+      (concat org-format-latex-header "\n" "\\setsansfont{DejaVu Serif}"))
+(setq org-format-latex-header
+      (concat org-format-latex-header "\n" "\\setmonofont{DejaVu Sans Mono}"))
+      ;; (concat org-format-latex-header "\n" "\\setmonofont{JetBrains Mono}"))
 
 
 ;;; for .tex file modifications   ;;; I set this through emacs menu instead
@@ -573,17 +290,41 @@ same directory as the org-buffer and insert a link to this file."
 ;\\setCJKmainfont[BoldFont = Heiti SC, ItalicFont = STFangsong]{STSong}
 ;\\setCJKsansfont{STHeiti}
 ;\\setCJKmonofont{STFangsong}
-                                       
+
 ;\\usepackage{longtable} ; 20170821 to install later
 ;\\setCJKmainfont[BoldFont = Songti SC Bold, ItalicFont = STFangsong]{Songti SC}
+;; \\usepackage{fontspec}
+;; \\setmainfont[Ligatures=TeX]{Georgia}
+;; \\setsansfont[Ligatures=TeX]{Arial}
+
+;; :family "Inconsolata")
+;; \\setsansfont{DejaVu Sans}
+;; \\setmonofont{DejaVu Sans Mono}
+;; \\usemintedstyle{monokai}     ;;%% sets default for all source-code blocks
+;; \\setCJKmonofont[Scale=0.9]{Adobe Heiti Std}
+
+;; \\usepackage{listings}
+;; \\lstset{basicstyle=\ttfamily\small}
+;; \\usepackage{fontspec}
+;; \\setmainfont{Linux Libertine O}
+;; \\setsansfont{DejaVu Sans}
+;; \\setmonofont[Scale=0.75]{DejaVu Sans Mono}
+;; \\usemintedstyle{emacs}
+;; \\usepackage{listings}
+;; \\lstset{basicstyle=\ttfamily\small}
+;; \\lstset{basicstyle=\\scriptsize\\ttfamily}
+;; \\lstset[language=java,numbers=left,numberstyle=\tiny,basicstyle=\ttfamily\small,tabsize=4,frame=none,escapeinside=``,extendedchars=false]{listings}
+
 (add-to-list 'org-latex-classes
              '("cn-article"
                "\\documentclass[9pt, b5paper]{article}
 \\usepackage[UTF8]{ctex}
-\\usepackage{fontspec}
-\\setmainfont{Linux Libertine O}
-\\setsansfont{DejaVu Sans}
-\\setmonofont[Scale=0.85]{DejaVu Sans Mono}
+\\usepackage{xltxtra}
+\\usepackage{bera}
+\\usepackage[T1]{fontenc}
+\\usepackage[scaled]{beraserif}
+\\usepackage[scaled]{berasans}
+\\usepackage[scaled]{beramono}
 \\usepackage{graphicx}
 \\usepackage{xcolor}
 \\usepackage{multirow}
@@ -596,9 +337,8 @@ same directory as the org-buffer and insert a link to this file."
 \\usepackage{algorithmic}
 \\usepackage{latexsym}
 \\usepackage{natbib}
-\\usepackage{listings}
-\\lstset{basicstyle=\\scriptsize\\ttfamily}
 \\usepackage{minted}
+\\newminted{common-lisp}{fontsize=\footnotesize}
 \\usepackage[xetex,colorlinks=true,CJKbookmarks=true,linkcolor=blue,urlcolor=blue,menucolor=blue]{hyperref}
 [NO-DEFAULT-PACKAGES]
 [NO-PACKAGES]"
@@ -607,6 +347,80 @@ same directory as the org-buffer and insert a link to this file."
                ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                ("\\paragraph{%s}" . "\\paragraph*{%s}")
                ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+
+(add-to-list 'org-latex-classes
+             '("cjk-article"
+               "\\documentclass[10pt,b5paper]{article}
+\\usepackage{graphicx}
+\\usepackage{xcolor}
+\\usepackage{xeCJK}
+\\usepackage{lmodern}
+\\usepackage{verbatim}
+\\usepackage{fixltx2e}
+\\usepackage{longtable}
+\\usepackage{float}
+\\usepackage{tikz}
+\\usepackage{wrapfig}
+\\usepackage{soul}
+\\usepackage{textcomp}
+\\usepackage{geometry}
+\\geometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
+\\usepackage{listings}
+\\lstset[language=c++,numbers=left,numberstyle=\tiny,basicstyle=\ttfamily\small,tabsize=4,frame=none,escapeinside=``,extendedchars=false]{listings}
+\\usepackage{algorithm}
+\\usepackage{algorithmic}
+\\usepackage{marvosym}
+\\usepackage{wasysym}
+\\usepackage{latexsym}
+\\usepackage{natbib}
+\\usepackage{fancyhdr}
+\\usepackage[xetex,colorlinks=true,CJKbookmarks=true,
+linkcolor=blue,
+urlcolor=blue,
+menucolor=blue]{hyperref}
+\\usepackage{fontspec,xunicode,xltxtra}
+\\setmainfont[BoldFont=Adobe Heiti Std]{Adobe Song Std}
+\\setsansfont[BoldFont=Adobe Heiti Std]{AR PL UKai CN}
+\\setmonofont{Bitstream Vera Sans Mono}
+\\newcommand\\fontnamemono{AR PL UKai CN}%等宽字体
+\\newfontinstance\\MONO{\\fontnamemono}
+\\newcommand{\\mono}[1]{{\\MONO #1}}
+\\setCJKmainfont[Scale=0.9]{Adobe Heiti Std}%中文字体
+\\setCJKmonofont[Scale=0.9]{Adobe Heiti Std}
+\\hypersetup{unicode=true}
+\\geometry{a4paper, textwidth=6.5in, textheight=10in,
+marginparsep=7pt, marginparwidth=.6in}
+\\definecolor{foreground}{RGB}{220,220,204}%浅灰
+\\definecolor{background}{RGB}{62,62,62}%浅黑
+\\definecolor{preprocess}{RGB}{250,187,249}%浅紫
+\\definecolor{var}{RGB}{239,224,174}%浅肉色
+\\definecolor{string}{RGB}{154,150,230}%浅紫色
+\\definecolor{type}{RGB}{225,225,116}%浅黄
+\\definecolor{function}{RGB}{140,206,211}%浅天蓝
+\\definecolor{keyword}{RGB}{239,224,174}%浅肉色
+\\definecolor{comment}{RGB}{180,98,4}%深褐色
+
+\\definecolor{comdil}{RGB}{111,128,111}%深灰
+\\definecolor{constant}{RGB}{220,162,170}%粉红
+\\definecolor{buildin}{RGB}{127,159,127}%深铅绿
+\\punctstyle{kaiming}
+\\title{}
+\\fancyfoot[C]{\\bfseries\\thepage}
+\\chead{\\MakeUppercase\\sectionmark}
+\\pagestyle{fancy}
+\\tolerance=1000
+[NO-DEFAULT-PACKAGES]
+[NO-PACKAGES]"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+                                        ;\\definecolor{doc}{RGB}{175,215,175}%浅铅绿
+                                        ;\\usepackage{CJKutf8}
+                                        ;\\begin{CJK}{UTF8}{gbsn}
+
 
 ;; want one for book
 ;;; http://wenku.baidu.com/view/3d20436caf1ffc4ffe47ac25.html
@@ -680,77 +494,6 @@ same directory as the org-buffer and insert a link to this file."
                ("\\subsubsection\{%s\}" . "\\subsubsection*\{%s\}")))
 
 
-(add-to-list 'org-latex-classes
-             '("cjk-article"
-               "\\documentclass[10pt,b5paper]{article}
-\\usepackage{graphicx}
-\\usepackage{xcolor}
-\\usepackage{xeCJK}
-\\usepackage{lmodern}
-\\usepackage{verbatim}
-\\usepackage{fixltx2e}
-\\usepackage{longtable}
-\\usepackage{float}
-\\usepackage{tikz}
-\\usepackage{wrapfig}
-\\usepackage{soul}
-\\usepackage{textcomp}
-\\usepackage{geometry}
-\\geometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
-\\usepackage{listings}
-\\lstset[language=c++,numbers=left,numberstyle=\tiny,basicstyle=\ttfamily\small,tabsize=4,frame=none,escapeinside=``,extendedchars=false]{listings}
-\\usepackage{algorithm}
-\\usepackage{algorithmic}
-\\usepackage{marvosym}
-\\usepackage{wasysym}
-\\usepackage{latexsym}
-\\usepackage{natbib}
-\\usepackage{fancyhdr}
-\\usepackage[xetex,colorlinks=true,CJKbookmarks=true,
-linkcolor=blue,
-urlcolor=blue,
-menucolor=blue]{hyperref}
-\\usepackage{fontspec,xunicode,xltxtra}
-\\setmainfont[BoldFont=Adobe Heiti Std]{Adobe Song Std}
-\\setsansfont[BoldFont=Adobe Heiti Std]{AR PL UKai CN}
-\\setmonofont{Bitstream Vera Sans Mono}
-\\newcommand\\fontnamemono{AR PL UKai CN}%等宽字体
-\\newfontinstance\\MONO{\\fontnamemono}
-\\newcommand{\\mono}[1]{{\\MONO #1}}
-\\setCJKmainfont[Scale=0.9]{Adobe Heiti Std}%中文字体
-\\setCJKmonofont[Scale=0.9]{Adobe Heiti Std}
-\\hypersetup{unicode=true}
-\\geometry{a4paper, textwidth=6.5in, textheight=10in,
-marginparsep=7pt, marginparwidth=.6in}
-\\definecolor{foreground}{RGB}{220,220,204}%浅灰
-\\definecolor{background}{RGB}{62,62,62}%浅黑
-\\definecolor{preprocess}{RGB}{250,187,249}%浅紫
-\\definecolor{var}{RGB}{239,224,174}%浅肉色
-\\definecolor{string}{RGB}{154,150,230}%浅紫色
-\\definecolor{type}{RGB}{225,225,116}%浅黄
-\\definecolor{function}{RGB}{140,206,211}%浅天蓝
-\\definecolor{keyword}{RGB}{239,224,174}%浅肉色
-\\definecolor{comment}{RGB}{180,98,4}%深褐色
-
-\\definecolor{comdil}{RGB}{111,128,111}%深灰
-\\definecolor{constant}{RGB}{220,162,170}%粉红
-\\definecolor{buildin}{RGB}{127,159,127}%深铅绿
-\\punctstyle{kaiming}
-\\title{}
-\\fancyfoot[C]{\\bfseries\\thepage}
-\\chead{\\MakeUppercase\\sectionmark}
-\\pagestyle{fancy}
-\\tolerance=1000
-[NO-DEFAULT-PACKAGES]
-[NO-PACKAGES]"
-("\\section{%s}" . "\\section*{%s}")
-("\\subsection{%s}" . "\\subsection*{%s}")
-("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-("\\paragraph{%s}" . "\\paragraph*{%s}")
-("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
-;\\definecolor{doc}{RGB}{175,215,175}%浅铅绿
-;\\usepackage{CJKutf8}
-;\\begin{CJK}{UTF8}{gbsn}
 
 (setq org-latex-packages-alist '(
     (""   "CJK"   t)
@@ -843,6 +586,10 @@ marginparsep=7pt, marginparwidth=.6in}
     (?D . (:background "DodgerBlue" :foreground "black" :weight bold))
     (?E . (:background "SkyBlue" :foreground "black" :weight bold))
 ))
+
+
+;;; for iimage org-mode
+(setq org-image-actual-width nil)
 
 
 ;; outline-mode  

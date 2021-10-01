@@ -1,5 +1,0 @@
-# contributor: deepwaterooo
-# name: Char [][] ${1:s} = {$0};
-# key: crr
-# --
-char [][] ${1:s} = {$0};

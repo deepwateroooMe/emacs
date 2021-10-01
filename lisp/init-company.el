@@ -40,7 +40,6 @@
            company-continue-commands '(not helm-dabbrev) ;;; this one, not very sure
            company-etags-ignore-case t)
 
-
      ;; @see https://github.com/redguardtoo/emacs.d/commit/2ff305c1ddd7faff6dc9fa0869e39f1e9ed1182d
      (defadvice company-in-string-or-comment (around company-in-string-or-comment-hack activate)
        ;; you can use (ad-get-arg 0) and (ad-set-arg 0) to tweak the arguments
@@ -102,9 +101,8 @@
 
 ;; grammal check: flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode);global enable 
-                                        ; close flymake,  start flycheck
-
-(when (require 'flycheck nil t)  ;;;; commented out for temp, for portable dumper to be able to work
+                                        ; close flymake,  start flycheck                                        
+(when (require 'flycheck nil t)
   (setq elpy-modules(delq 'elpy-module-flymake elpy-modules))
   (add-hook 'elpy-mode-hook 'flycheck-mode))
 

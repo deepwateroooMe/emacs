@@ -1,5 +1,0 @@
-# name: Debug.Log("msg")
-# key: dl
-# --
-Debug.Log("${1:a}");
-$0

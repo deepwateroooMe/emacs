@@ -1,11 +1,9 @@
 ;; loading yasnippet will slow the startup
 ;; but it's necessary cost
-(add-to-list 'load-path (expand-file-name "/Users/heyan/.emacs.d/elpa/yasnippet-0.12.2/")) ;拓展文件(插件)目录
 (require 'yasnippet)
 
 ;; my private snippets, should be placed before enabling yasnippet
-
-(setq my-yasnippets (expand-file-name "/Users/heyan/.emacs.d/my-yasnippets")) ;;; I commented it out
+(setq my-yasnippets (expand-file-name "~/my-yasnippets"))
 (if (and  (file-exists-p my-yasnippets) (not (member my-yasnippets yas-snippet-dirs)))
     (add-to-list 'yas-snippet-dirs my-yasnippets))
 
@@ -108,9 +106,14 @@
     rlt))
 
 (add-to-list 'auto-mode-alist '("\\.yasnippet\\'" . snippet-mode))
+(defun disable-final-newline () (interactive) (set (make-local-variable 'require-final-newline) nil))
 
-(add-to-list 'load-path (expand-file-name "/Users/heyan/.emacs.d/elpa/dropdown-list-20120329.936/")) ;拓展文件(插件)目录
-(require 'dropdown-list)
+;; Bind `SPC' to `yas-expand' when snippet expansion available (it
+;; will still call `self-insert-command' otherwise).
+(define-key yas-minor-mode-map (kbd "C-c j") yas-maybe-expand)
+;; Bind `C-c y' to `yas-expand' ONLY.
+;; (define-key yas-minor-mode-map (kbd "C-c y") #'yas-expand)
+ 
 
 (eval-after-load 'yasnippet
   '(progn

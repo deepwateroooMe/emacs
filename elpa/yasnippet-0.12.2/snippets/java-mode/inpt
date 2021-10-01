@@ -1,6 +1,0 @@
-# contributor: deepwaterooo
-# name: print ListNode
-# key: inpt
-# --
-${1:root}.inOrderPrintTree($1);
-$0

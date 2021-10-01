@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: insert_source_code
-# key: <s
-# --
-#+begin_SRC $0
-        $1
-#+end_SRC

@@ -1,6 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: Stack
-# key: Sta
-# --
-Stack<${1:String}> ${2:stack} = new Stack<$1>();
-$0

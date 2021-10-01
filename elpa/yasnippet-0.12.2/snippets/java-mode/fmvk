@@ -1,8 +1,0 @@
-# contributor: deepwaterooo
-# name: for map KeyValue pair
-# key: fmvk
-# --
-for (Map.Entry<${1:Integer, Integer}> entry : ${2:m}.entrySet()) {
-    $3
-}
-$0

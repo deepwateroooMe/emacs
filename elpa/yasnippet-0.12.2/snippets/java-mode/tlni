@@ -1,6 +1,0 @@
-# contributor: deepwaterooo
-# name: print ListNode
-# key: tlni
-# --
-TreeLinkNode ${1:root} = new TreeLinkNode(${2:a}[0]);
-$0

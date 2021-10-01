@@ -10,7 +10,7 @@
 
 ;; (package-initialize) doens’t require each package, we need to load
 ;; those we want manually
-(dolist (package '(use-package ivy counsel swiper 
+(dolist (package '(use-package company ivy counsel swiper
                     rainbow-delimiters
                     buffer-move
                     savehist expand-region
@@ -28,3 +28,4 @@
 
 ;; dump image
 (dump-emacs-portable "~/.emacs.d/emacs.pdmp")
+

@@ -1,5 +1,0 @@
-# contributor: deepwaterooo
-# name: Log.d(+var)
-# key: ldv
-# --
-Debug.Log(TAG + ": ${1:func}() ${2:var}: " + $2); $0

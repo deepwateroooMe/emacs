@@ -154,11 +154,24 @@
 (autoload 'jtags-extras "jtags-extras" "Load jtags-extras.")
 (add-hook 'java-mode-hook 'jtags-extras)
 ;; (add-hook 'java-mode-hook 'java-mode-indent-annotations-setup)
+
+(require 'google-c-style)
 (add-hook 'java-mode-hook
           (lambda ()
+            (subword-mode)
+            (google-set-c-style)
+            (google-make-newline-indent)
             "Treat Java 1.5 @-style annotations as comments."
             (setq c-comment-start-regexp "(@|/(/|[*][*]?))")
             (modify-syntax-entry ?@ "< b" java-mode-syntax-table)))
+
+;; (require 'google-c-style)
+;; (add-hook 'c-mode-common-hook
+;;           (lambda()
+;;             (subword-mode)
+;;             (google-set-c-style)
+;;             (google-make-newline-indent)
+;;             (setq c-basic-offset 4)))
 
 ;;; java macro
 

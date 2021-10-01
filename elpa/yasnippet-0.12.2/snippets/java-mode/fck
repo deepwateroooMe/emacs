@@ -1,7 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: if (...) { ... }
-# key: fck
-# --
-if (${1:map}.containsKey(${2})) {
-    $0
-}

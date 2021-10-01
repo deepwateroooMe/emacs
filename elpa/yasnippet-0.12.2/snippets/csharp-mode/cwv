@@ -1,5 +1,0 @@
-# name: ConsoleWriteLine("msg" + var)
-# key: cwv
-# --
-Console.WriteLine("${2:}${1:var}: " + $1);
-$0

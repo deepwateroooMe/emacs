@@ -1,5 +1,0 @@
-# name: ifOneLine
-# key: ifo
-# --
-if (${1:condition}) 
-    $0

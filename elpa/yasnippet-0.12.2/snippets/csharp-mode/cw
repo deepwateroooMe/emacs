@@ -1,5 +1,0 @@
-# name: ConsoleWriteLine("msg")
-# key: cw
-# --
-Console.WriteLine("${1:a}");
-$0

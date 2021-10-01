@@ -1,6 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: Map
-# key: Sb
-# --
-StringBuffer ${1:tmp} = new StringBuffer();
-$0

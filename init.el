@@ -31,35 +31,26 @@
 (setq gc-cons-threshold most-positive-fixnum) ;; don't GC during startup to save time
 
 
-(setq default-directory "/Volumes/h/leetcodeCoding/")
-;(setq default-directory "/Volumes/e/androidTests/myMVVMTests/app/src/main/")
-;;(setq default-directory "/Volumes/e/androidTests/examples/DataBindingSamples/app/src/main/")
-;;; (setq default-directory "~/.emacs.d/")
+;; (setq default-directory "~/.emacs.d/")
+;; (setq default-directory "/Volumes/e/uMVVM/Assets/Sources/")
+;; (setq default-directory "/Volumes/e/ILRuntimeHotFix/ILRuntimeU3D/ILRuntimeDemo/Assets/Samples/ILRuntime/1.6.4/Demo/Scripts/Examples")
+;(setq default-directory "C:/Users/blue_/Desktop/")
+;; (setq default-directory "e:/yunlangZhuZuoAndroid/trunk/client/trunk/")
+(setq default-directory "h:/leetcodeCoding/")
 
 ;;; setup defaults for all modes
 (setq default-frame-alist
-;      '((top . 0)(left . 270)(height . 84)(width . 230)(menubar-lines . 100)(tool-bar-line . 0))) ; ori
-      '((top . 0)(left . 1600)(height . 84)(width . 180)(menubar-lines . 100)(tool-bar-line . 0))) ; tmp.py
-
-
-(defvar md/font-size 145) ;; 125
-(defun md/set-default-font ()
-  (interactive)
-  (set-face-attribute 'default nil
-                      :height md/font-size
-                      ;; :family "Inconsolata-dz for Powerline")
-                      :family "Inconsolata")
-  (setq-default line-spacing 0.1)
-  (run-hooks 'after-setting-font-hook 'after-setting-font-hooks))
-(md/set-default-font)
+      '((top . 0)(left . 290)(height . 75)(width . 160)(menubar-lines . 100)(tool-bar-line . 0)) ; ori
+     ;; '((top . 0)(left . 400)(height . 63)(width . 180)(menubar-lines . 100)(tool-bar-line . 0))
+      ) ; tmp.py
 
 
 (setq emacs-load-start-time (current-time))
 ;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
-(add-to-list 'load-path (expand-file-name "/Users/heyan/.emacs.d/lisp"))
+(add-to-list 'load-path (expand-file-name "C:/Users/blue_/AppData/Roaming/.emacs.d/lisp"))
 
 ;;----------------------------------------------------------------------------
-;; Which functionality to enable (use t or nil for true and false)
+;; which functionality to enable (use t or nil for true and false)
 ;;----------------------------------------------------------------------------
 (setq *is-a-mac* (eq system-type 'darwin))
 (setq *wind64* (eq system-type 'windows-nt) )
@@ -123,7 +114,7 @@
   (require 'init-ibuffer)
   (require 'init-ivy)
   (require 'init-hippie-expand)
-;  (require 'init-windows)
+  (require 'init-windows)
   (require 'init-sessions)
   (require 'init-git)
   (require 'init-crontab)
@@ -135,7 +126,7 @@
 
   (require 'org-move-tree)
 
-  (require 'init-java-mode)
+  ;; (require 'init-java-mode)
   (require 'init-haskell)
   (require 'init-ruby-mode)
   (require 'init-lisp)
@@ -174,8 +165,7 @@
  (require 'init-syslog-mode)
  (require 'init-misc)  ;; comment for replace-string
  (require 'init-hydra)
-; (require 'init-kotlin-mode)
-; (require 'dedicate-windows-mannually)
+
  
 ;(require 'init-python-mode)
 ;(require 'init-csharp-mode)
@@ -208,12 +198,16 @@
 ;;   ;; (package-initialize)
 ;;   )
 
-(defun spacemacs|load-modes (modes)
-  (dolist (mode modes)
-    (with-temp-buffer
-      (funcall-interactively
-       (intern (concat (symbol-name mode) "-mode"))))))
+;; (defun spacemacs|load-modes (modes)
+;;   (dolist (mode modes)
+;;     (with-temp-buffer
+;;       (funcall-interactively
+;;        (intern (concat (symbol-name mode) "-mode"))))))
 ;; (spacemacs|load-modes '(dired emacs-lisp markdown org python))
+
+(load "font-lock")
+(setq font-lock-maximum-decoration t)
+(global-font-lock-mode)
 
 (defmacro luna-if-dump ()
   "Evaluate IF if running with a dump file, else evaluate ELSE."
@@ -270,11 +264,11 @@
 
 (defun shift-right ()
   (interactive)
-  (shift-region 4))
+  (shift-region 8))
 
 (defun shift-left ()
   (interactive)
-  (shift-region -4))
+  (shift-region -8))
 
 ;; Bind (shift-right) and (shift-left) function to your favorite keys. I use
 ;; the following so that Ctrl-Shift-Right Arrow moves selected text one 
@@ -290,14 +284,14 @@
                 (lambda ()
                   (interactive)
                   (setq this-command 'next-line)
-                  (next-line 5)))
+                  (next-line 8)))
 
 ;; replaces backward-sentence
 (global-set-key (kbd "M-p")
                 (lambda ()
                   (interactive)
                   (setq this-command 'previous-line)
-                  (previous-line 5)))
+                  (previous-line 8)))
 
 
 ;;; autorevert buffer
@@ -384,7 +378,7 @@
 (add-hook 'latex-mode-hook 'ac-latex-mode-setup)
 
 
-(add-to-list 'load-path "/Users/heyan/.emacs.d/wubi")
+(add-to-list 'load-path "C:/Users/blue_/AppData/Roaming/.emacs.d/wubi")
 (require 'wubi)
 (wubi-load-local-phrases) ; add user's Wubi phrases
 (register-input-method
@@ -418,6 +412,8 @@
 (prefer-coding-system 'utf-8)
                                         ;(setq desktop-restore-frames nil)
 
+;;; for iimage org-mode
+(setq org-image-actual-width nil)
 
 ;;; delete backward one char
 (global-set-key [(control h)] 'delete-backward-char)
@@ -426,7 +422,7 @@
 
 
 
-(add-to-list 'load-path (expand-file-name "/Users/heyan/.emacs.d/lisp/")) ;拓展文件(插件)目录
+(add-to-list 'load-path (expand-file-name "C:/Users/blue_/AppData/Roaming/.emacs.d/lisp/")) ;拓展文件(插件)目录
 (require 'autopair)
 (defun turn-on-autopair-mode () (autopair-mode 1))
 
@@ -513,7 +509,7 @@
       (set-frame-position (selected-frame) x y))  )
   )
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
-;; (setq ediff-split-window-function 'split-window-horizontally)
+(setq ediff-split-window-function 'split-window-horizontally)
 
 (defun local-ediff-before-setup-hook ()
   (setq local-ediff-saved-frame-configuration (current-frame-configuration))
@@ -545,8 +541,6 @@
   (exit-recursive-edit))
 (add-hook 'ediff-after-quit-hooks 'git-mergetool-emacsclient-ediff-after-quit-hook 'append)
 
-(setq tab-always-indent 'complete)
-(setq c-default-style '((java-mode . "java") (awk-mode . "awk")))
 
 ;;; lisp mute & dmute
 (fset 'ldm
@@ -579,11 +573,20 @@
                                         ;(load custom-file 'noerror)
 
                                         ;(setq gc-cons-threshold best-gc-cons-threshold)
+
+(set-face-attribute 'region nil :background "#666" :foreground "#ffffff")
+(setq yas-indent-line 'auto)
+;(setq yas/indent-line 'auto)
+
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
  '(column-number-mode t)
@@ -591,7 +594,9 @@
  '(display-time-mode t)
  '(git-gutter:handled-backends '(svn hg git))
  '(latex-run-command "latex --shell-escape")
- '(menu-bar-mode nil)
+ '(org-format-latex-options
+   '(:foreground default :background default :scale 2.0 :html-foreground "Black" :html-background "Transparent" :html-scale 2.0 :matchers
+                 ("begin" "$1" "$" "$$" "\\(" "\\[")))
  '(org-support-shift-select nil)
  '(package-selected-packages
    '(py-autopep8 logview virtualenvwrapper company-jedi flycheck-color-mode-line auto-complete-clang-async flycheck-swift3 flycheck-swift flycheck swift3-mode swift-mode yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode lua-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-lua flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word csharp-mode crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link))
@@ -610,15 +615,24 @@
  '(tex-start-commands "\"latex -ini -shell-escape\"")
  '(tex-start-options "\"latex -ini --shell-escape\"")
  '(tool-bar-mode nil)
- '(yas-also-auto-indent-first-line t))
+ '(yas-also-auto-indent-first-line t)
+ '(yas-also-indent-empty-lines t)
+ '(yas-indent-line 'auto)
+ '(yas-wrap-around-region 'cua))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(region ((t (:extend t :background "dark blue"))))
- '(speedbar-directory-face ((t (:foreground "RoyalBlue1" :height 115 :family "Lucida Grande"))))
- '(speedbar-file-face ((t (:foreground "cyan4" :height 115 :family "Lucida Grande"))))
+ '(default ((t (:family "Inconsolata-dz" :foundry "outline" :slant normal :weight normal :height 98 :width normal))))
+ '(org-level-1 ((t (:inherit outline-6))))
+ '(org-level-2 ((t (:inherit outline-2))))
+ '(org-level-3 ((t (:inherit outline-5))))
+ '(org-level-4 ((t (:inherit outline-1))))
+ '(org-level-5 ((t (:inherit outline-3))))
+ '(org-level-6 ((t (:inherit outline-4))))
+ '(region ((t (:extend t :background "medium blue"))))
+ '(speedbar-directory-face ((t (:foreground "light slate blue" :height 100 :family "Droid Sans"))))
  '(window-numbering-face ((t (:foreground "DeepPink" :underline "DeepPink" :weight bold))) t))
 	;;; Local Variables:
 ;;; no-byte-compile: t

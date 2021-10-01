@@ -1,6 +1,0 @@
-# contributor: deepwaterooo
-# name: levelPrintTree
-# key: lt
-#${1:root}.levelPrintTree($1);
-# --
-$1.levelPrintTree($1); $0

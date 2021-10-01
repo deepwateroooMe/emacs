@@ -149,7 +149,7 @@ But you may use safer HTTPS instead.")
 ;; Fire up package.el and ensure the following packages are installed.
 ;;------------------------------------------------------------------------------
 
-;; (package-initialize)
+;(package-initialize)
 
 (require-package 'async)
 (require-package 'dash) ; required by string-edit
