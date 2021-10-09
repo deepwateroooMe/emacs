@@ -1,0 +1,7 @@
+# contributor: deepwaterooo
+# name: print line / ListNode
+# key: ptl
+#${1:root}.levelPrintTree($1);
+# --
+System.out.println("${1:i}");
+    $0

@@ -1,0 +1,5 @@
+# contributor: deepwaterooo
+# name: String [][] ${1:s} = {$0};
+# key: srr
+# --
+String [][] ${1:s} = {$0};

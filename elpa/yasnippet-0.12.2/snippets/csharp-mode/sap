@@ -1,0 +1,5 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: s.append()
+# key: sap
+# --
+${1:s}.append(${2:i})$0

@@ -1,0 +1,6 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: Queue<String>
+# key: qs
+# --
+Queue<String> ${1:q} = new LinkedList<>();
+$0

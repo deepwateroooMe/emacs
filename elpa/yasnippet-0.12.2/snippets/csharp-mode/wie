@@ -1,0 +1,7 @@
+# contributor: wie
+# name: while (!q.isEmpty())
+# key: wie
+# --
+while (!${1:q}.isEmpty()) {
+    $0
+}
