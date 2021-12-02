@@ -1,0 +1,6 @@
+# contributor: deepwaterooo
+# name: HashSet<Integer>
+# key: hsi
+# --
+HashSet<Integer> ${1:s} = new HashSet<>();
+$0

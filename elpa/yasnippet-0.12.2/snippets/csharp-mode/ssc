@@ -1,6 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: s.setCharAt(i, c)
-# key: ssc
-# --
-${1:s}.setCharAt(${2:i}, ${3:c});
-$0

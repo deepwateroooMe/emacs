@@ -41,6 +41,10 @@
                           js2-mode css-mode less-css-mode))
   (add-to-list 'ac-modes mode))
 
+
+(setq completion-at-point-functions '(elisp-completion-at-point comint-dynamic-complete-filename t))
+
+
 ;;开启ac-dwin
 ;(setq ac-dwim t)
 ;;设置ac数据文件位置

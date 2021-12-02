@@ -1,6 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: HashSet<List<Integer>>
-# key: hsli
-# --
-Set<List<Integer>> ${1:ls} = new HashSet<>();
-$0

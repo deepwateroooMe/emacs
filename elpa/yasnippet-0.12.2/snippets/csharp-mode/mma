@@ -1,5 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: Math.max(
-# key: mma
-# --
-Math.max(${1:a}, ${2:b})$0

@@ -1,8 +1,0 @@
-# contributor: deepwaterooo
-# name: for values()
-# key: fv
-# --
-for (${1:Integer} ${2:val} : ${3:arr}) {
-    $4
-}
-$0

@@ -1,0 +1,5 @@
+# name: Debug.Log("var: " + var)
+# key: dlv
+# --
+Debug.Log("${1:a}: " + $1);
+$0

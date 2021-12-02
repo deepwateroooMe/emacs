@@ -1,0 +1,6 @@
+# contributor: deepwaterooo
+# name: List<String>
+# key: ls
+# --
+List<String> ${1:l} = new ArrayList<>();
+$0

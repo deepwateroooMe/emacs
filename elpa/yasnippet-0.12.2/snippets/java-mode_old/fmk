@@ -1,0 +1,6 @@
+# name: forMayKey
+# key: fmk
+# --
+for (${1:Integer} key : ${2:map}.keySet()) {
+    $0
+}

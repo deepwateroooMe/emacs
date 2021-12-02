@@ -1,8 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: print int [][] arr
-# key: paii
-# --
-System.out.println("${1:res}.length: " + $1.length);
-for (int z = 0; z < $1.length; ++z) 
-    System.out.println(Arrays.toString($1[z]));
-$0

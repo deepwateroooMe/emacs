@@ -1,6 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# key: psti
-# --
-System.out.println("$1.size(): " + $1.size());
-System.out.println(Arrays.toString(${1:s}.toArray()));
-$0

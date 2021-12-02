@@ -1,5 +1,0 @@
-# name: System.out.println()
-# key: pf
-# --
-System.out.println("${1:}: ");
-$0

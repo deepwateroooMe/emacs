@@ -1,0 +1,6 @@
+# contributor: deepwaterooo
+# name: HashMap<Integer, List<Integer>>
+# key: hmil
+# --
+HashMap<Integer, List<Integer>> ${1:m} = new HashMap<>();
+    $0

@@ -1,5 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: s.deleteCharAt()
-# key: sd
-# --
-${1:s}.deleteCharAt(${2:i})$0

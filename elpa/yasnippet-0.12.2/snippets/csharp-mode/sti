@@ -1,6 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: Stack<Integer>
-# key: sti
-# --
-Stack<Integer> ${1:s} = new Stack<>();
-$0

@@ -1,6 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: print int []
-# key: pai
-# --
-System.out.println(Arrays.toString(${1:arr}));
-$0

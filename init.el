@@ -36,11 +36,13 @@
 ;; (setq default-directory "/Volumes/e/ILRuntimeHotFix/ILRuntimeU3D/ILRuntimeDemo/Assets/Samples/ILRuntime/1.6.4/Demo/Scripts/Examples")
 ;(setq default-directory "C:/Users/blue_/Desktop/")
 ;; (setq default-directory "e:/yunlangZhuZuoAndroid/trunk/client/trunk/")
-(setq default-directory "h:/leetcodeCoding/")
+;; (setq default-directory "h:/leetcodeCoding/")
+;; (setq default-directory "h:/andrprac/RealTimeEval/app/src/main/java/com/me/realtimeeval/")
+(setq default-directory "h:/andrprac/generalPrac/app/src/main/")
 
 ;;; setup defaults for all modes
 (setq default-frame-alist
-      '((top . 0)(left . 290)(height . 75)(width . 160)(menubar-lines . 100)(tool-bar-line . 0)) ; ori
+      '((top . 0)(left . 350)(height . 75)(width . 160)(menubar-lines . 100)(tool-bar-line . 0)) ; ori
      ;; '((top . 0)(left . 400)(height . 63)(width . 180)(menubar-lines . 100)(tool-bar-line . 0))
       ) ; tmp.py
 
@@ -72,6 +74,34 @@
   (if (string= "*Messages*" (buffer-name))
       (read-only-mode -1)))
 
+
+(defgroup gio-group nil
+  "Group for customization"
+  :prefix "gio-")
+
+(defface gio-highlight-numbers-face
+  '((t :inherit (default)
+       :foreground "#f6546a")) ;;; ori: #ffff00 #fff68f
+  "Face for numbers"
+  :group 'gio-group )
+
+(defvar gio-keywords '(("\\(\\b\\|[-]\\)\\([-]?\\([0-9]+\\)\\(\\.?[0-9]\\)*\\)\\b" . 'gio-highlight-numbers-face)) ;; Integers & Decimals
+  "Keywords for gio-minor-mode highlighting")
+
+(define-minor-mode gio-minor-mode
+  "Minor mode for customization"
+  :init-value 1
+  :lighter " GioMode"
+  :group 'gio-group
+  (when (bound-and-true-p gio-minor-mode)
+    (font-lock-add-keywords nil gio-keywords)
+    (font-lock-fontify-buffer))
+  (when (not (bound-and-true-p gio-minor-mode))
+    (font-lock-remove-keywords nil gio-keywords)
+    (font-lock-fontify-buffer)))
+
+(define-globalized-minor-mode gio-global-minor-mode gio-minor-mode gio-minor-mode :group 'gio-group)
+(gio-global-minor-mode 1)
 
 
 ;; @see https://www.reddit.com/r/emacs/comments/3kqt6e/2_easy_little_known_steps_to_speed_up_emacs_start/
@@ -477,6 +507,28 @@
                                         ;(setq debug-on-error t)
 
 
+					; wsl-copy ;;; 
+;; (defun wsl-copy (start end)
+;;   (interactive "r")
+;;   (shell-command-on-region start end "clip.exe")
+;;   (deactivate-mark))
+;; 					; wsl-paste
+;; (defun wsl-paste ()
+;;   (interactive)
+;;   (let ((clipboard
+;; 	 (shell-command-to-string "powershell.exe -command 'Get-Clipboard' 2> /dev/null")))
+;;     (setq clipboard (replace-regexp-in-string "\r" "" clipboard)) ; Remove Windows ^M characters
+;;     (setq clipboard (substring clipboard 0 -1)) ; Remove newline added by Powershell
+;;     (insert clipboard)))
+;; 					; Bind wsl-copy to C-c C-v
+;; (global-set-key
+;;  (kbd "C-c c")
+;;  'wsl-copy)
+;; 					; Bind wsl-paste to C-c C-v
+;; (global-set-key
+;;  (kbd "C-c y")
+;;  'wsl-paste)
+
 ;;; for ediff
 ;;git mergetool 使用ediff ,前提可以正常使用emacsclient ,并且Emacs已经启动。
 ;; ~/.gitconfig
@@ -577,7 +629,6 @@
 (set-face-attribute 'region nil :background "#666" :foreground "#ffffff")
 (setq yas-indent-line 'auto)
 ;(setq yas/indent-line 'auto)
-
 
 
 (custom-set-variables

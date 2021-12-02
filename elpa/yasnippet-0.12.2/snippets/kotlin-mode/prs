@@ -1,0 +1,6 @@
+# contributor: deepwaterooo
+# name: println("string")
+# key: prs
+# --
+println("$1")
+$0

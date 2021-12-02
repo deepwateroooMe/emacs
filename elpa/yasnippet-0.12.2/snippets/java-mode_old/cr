@@ -1,0 +1,6 @@
+# contributor: deepwaterooo
+# name: Char [] ${1:s} = {$0};
+# key: cr
+# --
+char [] ${1:s} = {${2}};
+$0

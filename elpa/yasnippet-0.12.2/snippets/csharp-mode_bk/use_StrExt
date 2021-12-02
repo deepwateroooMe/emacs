@@ -1,0 +1,6 @@
+#contributor : deepwaterooo
+#name : using Strange.extensions....;
+# key: use
+# --
+using strange.extensions.$1;
+$0

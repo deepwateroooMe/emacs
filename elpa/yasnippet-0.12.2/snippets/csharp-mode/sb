@@ -1,5 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: StringBuilder s
-# key: sb
-# --
-StringBuilder ${1:s}$0

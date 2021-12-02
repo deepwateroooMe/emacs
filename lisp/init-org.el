@@ -42,6 +42,18 @@
 ;(global-set-key [C-S-left] 'shift-left)
 
 
+(defun org-show-two-levels ()
+  (interactive)
+  (org-content 3))
+
+(add-hook 'org-mode-hook
+          (lambda ()
+            ;; (define-key org-mode-map "C-c m" 'org-show-two-levels)))
+	    (global-set-key (kbd "C-c m") 'org-show-two-levels))) ; very useful
+
+(setq org-link-file-path-type 'relative)
+
+
 (setq org-latex-listings t)                           ;;; added this one
 (add-to-list 'org-latex-packages-alist '("" "color"))
 (add-to-list 'org-latex-packages-alist '("" "minted")) ; 转化为minted时自动添加minted包     ;;; added this one
@@ -207,7 +219,7 @@ same directory as the org-buffer and insert a link to this file."
 (eval-after-load "tex"
   '(setcdr (assoc "LaTeX" TeX-command-list)
            '("%`%l%(mode) -shell-escape%' %t"
-             TeX-run-TeX nil (latex-mode doctex-mode) :help "Run LaTeX")
+             TeXlinu-run-TeX nil (latex-mode doctex-mode) :help "Run LaTeX")
            )
   )
 
@@ -315,38 +327,6 @@ same directory as the org-buffer and insert a link to this file."
 ;; \\lstset{basicstyle=\\scriptsize\\ttfamily}
 ;; \\lstset[language=java,numbers=left,numberstyle=\tiny,basicstyle=\ttfamily\small,tabsize=4,frame=none,escapeinside=``,extendedchars=false]{listings}
 
-(add-to-list 'org-latex-classes
-             '("cn-article"
-               "\\documentclass[9pt, b5paper]{article}
-\\usepackage[UTF8]{ctex}
-\\usepackage{xltxtra}
-\\usepackage{bera}
-\\usepackage[T1]{fontenc}
-\\usepackage[scaled]{beraserif}
-\\usepackage[scaled]{berasans}
-\\usepackage[scaled]{beramono}
-\\usepackage{graphicx}
-\\usepackage{xcolor}
-\\usepackage{multirow}
-\\usepackage{multicol}
-\\usepackage{float}
-\\usepackage{textcomp}
-\\usepackage{geometry}
-\\geometry{left=1.2cm,right=1.2cm,top=1.5cm,bottom=1.2cm}
-\\usepackage{algorithm}
-\\usepackage{algorithmic}
-\\usepackage{latexsym}
-\\usepackage{natbib}
-\\usepackage{minted}
-\\newminted{common-lisp}{fontsize=\footnotesize}
-\\usepackage[xetex,colorlinks=true,CJKbookmarks=true,linkcolor=blue,urlcolor=blue,menucolor=blue]{hyperref}
-[NO-DEFAULT-PACKAGES]
-[NO-PACKAGES]"
-               ("\\section{%s}" . "\\section*{%s}")
-               ("\\subsection{%s}" . "\\subsection*{%s}")
-               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-               ("\\paragraph{%s}" . "\\paragraph*{%s}")
-               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
 
 (add-to-list 'org-latex-classes
@@ -422,6 +402,40 @@ marginparsep=7pt, marginparwidth=.6in}
                                         ;\\begin{CJK}{UTF8}{gbsn}
 
 
+(add-to-list 'org-latex-classes
+             '("cn-article"
+               "\\documentclass[9pt, b5paper]{article}
+\\usepackage[UTF8]{ctex}
+\\usepackage{xltxtra}
+\\usepackage{bera}
+\\usepackage[T1]{fontenc}
+\\usepackage[scaled]{beraserif}
+\\usepackage[scaled]{berasans}
+\\usepackage[scaled]{beramono}
+\\usepackage{graphicx}
+\\usepackage{xcolor}
+\\usepackage{multirow}
+\\usepackage{multicol}
+\\usepackage{float}
+\\usepackage{textcomp}
+\\usepackage{geometry}
+\\geometry{left=1.2cm,right=1.2cm,top=1.5cm,bottom=1.2cm}
+\\usepackage{algorithm}
+\\usepackage{algorithmic}
+\\usepackage{latexsym}
+\\usepackage{natbib}
+\\usepackage{minted}
+\\newminted{common-lisp}{fontsize=\footnotesize}
+\\usepackage[xetex,colorlinks=true,CJKbookmarks=true,linkcolor=blue,urlcolor=blue,menucolor=blue]{hyperref}
+[NO-DEFAULT-PACKAGES]
+[NO-PACKAGES]"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+
 ;; want one for book
 ;;; http://wenku.baidu.com/view/3d20436caf1ffc4ffe47ac25.html
 ;;; \\setCJKmainfont{SimSun}  SimSun
@@ -431,33 +445,54 @@ marginparsep=7pt, marginparwidth=.6in}
              '("book"
                "\\documentclass[9pt, b5paaper]{book}
 \\usepackage[UTF8]{ctex}
-\\usepackage{fontspec}
+\\usepackage{xltxtra}
+\\usepackage{bera}
+\\usepackage[T1]{fontenc}
+\\usepackage[scaled]{beraserif}
+\\usepackage[scaled]{berasans}
+\\usepackage[scaled]{beramono}
 \\usepackage{graphicx}
 \\usepackage{xcolor}
-\\usepackage{longtable}
+\\usepackage{multirow}
+\\usepackage{multicol}
 \\usepackage{float}
 \\usepackage{textcomp}
 \\usepackage{geometry}
 \\geometry{left=1.2cm,right=1.2cm,top=1.5cm,bottom=1.2cm}
-\\usepackage{multirow}
-\\usepackage{multicol}
-\\usepackage{listings}
 \\usepackage{algorithm}
 \\usepackage{algorithmic}
 \\usepackage{latexsym}
 \\usepackage{natbib}
-\\usepackage{fancyhdr}
-\\usepackage{listings}
 \\usepackage{minted}
+\\newminted{common-lisp}{fontsize=\footnotesize}
 \\usepackage[xetex,colorlinks=true,CJKbookmarks=true,linkcolor=blue,urlcolor=blue,menucolor=blue]{hyperref}
 [NO-DEFAULT-PACKAGES]
 [NO-PACKAGES]"
-                                        ;               ("\\part{%s}" . "\\part*{%s}")
+               ;; ("\\part{%s}" . "\\part*{%s}")
                ("\\chapter{%s}" . "\\chapter*{%s}")
                ("\\section{%s}" . "\\section*{%s}")
                ("\\subsection{%s}" . "\\subsection*{%s}")
                ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))
              )
+;; \\usepackage{fontspec}
+;; \\usepackage{graphicx}
+;; \\usepackage{xcolor}
+;; \\usepackage{longtable}
+;; \\usepackage{float}
+;; \\usepackage{textcomp}
+;; \\usepackage{geometry}
+;; \\geometry{left=1.2cm,right=1.2cm,top=1.5cm,bottom=1.2cm}
+;; \\usepackage{multirow}
+;; \\usepackage{multicol}
+;; \\usepackage{listings}
+;; \\usepackage{algorithm}
+;; \\usepackage{algorithmic}
+;; \\usepackage{latexsym}
+;; \\usepackage{natbib}
+;; \\usepackage{fancyhdr}
+;; \\usepackage{listings}
+;; \\usepackage{minted}
+;; \\usepackage[xetex,colorlinks=true,CJKbookmarks=true,linkcolor=blue,urlcolor=blue,menucolor=blue]{hyperref}
 
 
 (add-to-list 'org-latex-classes

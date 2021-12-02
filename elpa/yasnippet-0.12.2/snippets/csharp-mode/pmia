@@ -1,9 +1,0 @@
-# contributor: deepwaterooo
-# name: print HashMap<Integer, int []>
-# key: pmia
-# --
-System.out.println("${2:m}.size(): " + $2.size());
-for (Map.Entry<${1:Integer, int []}> en : $2.entrySet()) {
-    System.out.println(en.getKey() + ": ");
-    System.out.println(Arrays.toString(en.getValue()));
-}$0
