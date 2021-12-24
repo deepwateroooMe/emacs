@@ -15,19 +15,25 @@
 
 ;; ----- ido-work-directory-list -----
 (
+ "h:/andrprac/"
+ "c:/Users/blue_/AppData/Roaming/.emacs.d/"
+ "c:/Users/blue_/AppData/Roaming/.emacs.d/lisp/"
  "h:/leetcodeCoding/"
+ "h:/leetcodeCoding/dynamicProgramming/"
+ "h:/andrprac/unittesting/app/src/test/java/com/me/unittesting/"
+ "h:/android/"
+ "h:/andrprac/mvx/app/src/main/"
+ "h:/leetcodeCoding/prevCmp/"
  "h:/andrprac/RealTimeEval/app/src/main/java/com/me/realtimeeval/"
  "d:/mnt/h/andrprac/RealTimeEval/app/src/main/java/com/me/realtimeeval/"
  "h:/leetcodeCoding/codeforces/"
  "h:/leetcodeCoding/summary/"
  "c:/Users/blue_/AppData/Roaming/.emacs.d/elpa/yasnippet-0.12.2/snippets/csharp-mode/"
- "c:/Users/blue_/AppData/Roaming/.emacs.d/lisp/"
  "h:/leetcodeCoding/com/"
  "h:/leetcodeCoding/myalgorithms/"
  "f:/mvvm/GoogleArchitectureDemo-master/"
  "f:/mvvm/GoogleArchitectureDemo-master/app_specific/src/main/java/google/architecture/specific/"
  "c:/Users/blue_/AppData/Roaming/.emacs.d/elpa/yasnippet-0.12.2/snippets/java-mode/"
- "c:/Users/blue_/AppData/Roaming/.emacs.d/"
  "d:/PersonalInfo/kcwang/"
  "c:/Users/blue_/Desktop/kcwang/"
  "c:/Users/blue_/Desktop/"
@@ -46,39 +52,65 @@
 
 ;; ----- ido-work-file-list -----
 (
- "grethreeedy.java"
- "binarySearch.java"
- "readme.org"
- "stack.java"
- "binarySearchinSortedArray.java"
- "twoPointers.java"
- "MainActivity.java"
- "strthreeing.java"
- "array.java"
- "prefixSum.java"
+ "jtmp.java"
+ "tmp.kt"
+ "init.el"
+ "init-csharp-mode.el"
+ "init-java-mode.el"
+ "hdsix.java"
+ "strtwoing.java"
+ "hdfive.java"
+ "bitManipulation.java"
+ "gretwoedy.java"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("h:/leetcodeCoding/" (24999 45330 0 0) "unionFind.java" "twoSum.java" "twoPointers.java" "trieProbs.java" "trieC.java" "trieB.java" "tree.java" "tmp.java" "swapNodesPairs.java" "summary/" "subrectangleQueries.java" "strtwoing.java" "strthreeing.java" "string.java" "StockPrice.java" "stack.java" "sortArray.java" "sort.java" "slidingWindow.java" "shell.sh" "segmentTree.java" "searchBST.java" "runningSumOfArray.java" "removeLeafNodes.java" "recursion.java" "readme.tex" "readme.pdf" "readme.org" "prevSingleProbs/" "prevCmp/" "prefixSum.java" "pic/" "orderedSet.java" "nRayTree.java" "myalgorithms/" "mixed.java" "minDeletionSize.java" "mergeTrees.java" "longestPalindrome.java" "log.txt" "linkedList.java" "isValidBST.java" "isSubPath.java" "isPalindrome.java" "heaptwo.java" "heap.java" "hashtwotable.java" "hashtable.java" "gretwoedy.java" "grethreeedy.java" "greedy.java" "gratwoph.java" "grathreeph.java" "graph.java" "findTargetTwoSum.java" "Fancy.java" "dynatwomicProgramming.java" "dynathreemicProgramming.java" "dynatenmicProgramming.java" "dynasixmicProgramming.java" "dynasevenmicProgramming.java" "dynaonemicProgramming.java" "dynaninemicProgramming.java" "dynamicProgramming.java" "dynafourmicProgramming.java" "dynafivemicProgramming.java" "dynaeightmicProgramming.java" "dptwo.java" "dpthree.java" "dpten.java" "dpsix.java" "dpseven.java" "dpone.java" "dpnine.java" "dpfour.java" "dpfive.java" "dpeight.java" "distanceK.java" "designProbs/" "depthtwoFirstSearch.java" "depthFirstSearch.java" "com/" "codeforces/" "Codec.java" "cmp.java" "breadtwoFirstSearch.java" "breadFirstSearch.java" "bittwoManipulation.java" "bitMask.java" "bitManipulation.java" "binarySearchinSortedArray.java" "binarySearch.java" "binaryIndexedTree.java" "backtwoTracking.java" "backTracking.java" "array.java" ".gitignore" ".git/" "../" "./")
+ ("h:/andrprac/" (25030 10616 0 0) "ViewPagerFragmentLazyLoad/" "ViewPager/" "unittesting/" "TmpKt.class" "tmp.kt" "tmp.jar" "TaskDemo/" "sunflower_java/" "Sample_AndroidTest/" "SampleNavigation/" "Rxjava_Retrofit/" "retrofit-example/" "RecyclerViewCacheDemo/" "recyclerview-json-parsing/" "RealTimeEval/" "parse/" "PagerBottomTabStrip/" "org/" "navigation/" "mvx/" "MockitoExample/" "META-INF/" "launchmode/" "jtmp.java" "Jetpack-databinding/" "gradle-retrolambda/" "generalPrac_androidX/" "generalPrac/" "FragmentsDemo/" "fragments-viewpager-example/" "Forward/" "DouBanKotlin/" "demo_android_activity_launch_mode/" "ContentProviderDemo/" "ContentProvider-interp/" "ContentProvider/" "camerax_java/" "BRV/" "backup_files/" "AndroidUT/" "AndroidTest/" "AndroidOpenSourceDemo/" "AndroidCustomView/" "android-sms-receiver/" "android-navigation/" "android-databinding/" "Android-Calculator_bk/" "Android-Activity-LaunchMode/" "ActivityLaunchMode/" "../" "./")
 
- ("h:/andrprac/RealTimeEval/app/src/main/java/com/me/realtimeeval/" (24998 26022 0 0) "MainActivity.java" "../" "./")
+ ("c:/Users/blue_/AppData/Roaming/.emacs.d/" (25030 7477 0 0) "wubi/" "snippets/" "site-lisp/" "recentf" "readme.tex" "readme.pdf" "readme.org" "network-security.data" "localelpa/" "lisp/" "init.el" "ido.last" "emacs.pdmp" "elpa/" "dump.el" "company-statistics-cache.el" "auto-save-list/" "ac-comphist.dat" "abbrev_defs" ".zshrc" ".session" ".gitignore" ".git/" ".emacs" "../" "./")
 
- ("c:/Users/blue_/AppData/Roaming/.emacs.d/" (24998 26219 0 0) "wubi/" "snippets/" "site-lisp/" "recentf" "readme.tex" "readme.pdf" "readme.org" "localelpa/" "lisp/" "init.el" "ido.last" "emacs.pdmp" "elpa/" "dump.el" "company-statistics-cache.el" "auto-save-list/" "ac-comphist.dat" "abbrev_defs" ".zshrc" ".session" ".gitignore" ".git/" ".emacs" "../" "./")
+ ("c:/Users/blue_/AppData/Roaming/.emacs.d/lisp/" (25030 7567 0 0) "yaxception.el" "word-like-count.el" "undo-tree.elc" "undo-tree.el" "syslog-mode.el" "shader-mode.el" "protobuf-mode.elc" "protobuf-mode.el" "package.el" "outline-presentation.elc" "outline-presentation.el" "org-move-tree.elc" "org-move-tree.el" "org-ac.elc" "org-ac.el" "markdown-mode.elc" "markdown-mode.el" "log4e.el" "linum.el" "jtags.el" "jtags-extras.el" "init-yasnippet.elc" "init-yasnippet.el" "init-writting.el" "init-workgroups2.el" "init-windows.el" "init-which-func.el" "init-web-mode.el" "init-utils.el" "init-uniquify.el" "init-text.el" "init-term-mode.el" "init-syslog-mode.el" "init-swift-mode.el" "init-sr-speedbar.elc" "init-sr-speedbar.el" "init-spelling.el" "init-slime.el" "init-site-lisp.el" "init-sh.el" "init-sessions.el" "init-semantic.el" "init-ruby-mode.el" "init-racket-mode.el" "init-python-mode.el" "init-pomodoro.el" "init-perforce.el" "init-org.elcYfsvd4" "init-org.elc" "init-org.el" "init-multiple-cursors.el" "init-moz.el" "init-modeline.el" "init-misc.el" "init-misc-lazy.el" "init-markdown.el" "init-lua-mode.el" "init-logview.el" "init-log4j-mode.el" "init-lisp.el" "init-linum-mode.el" "init-latex-mode.el" "init-kotlin-mode.elc" "init-kotlin-mode.el" "init-keyfreq.el" "init-javascript.el" "init-java-mode.elc" "init-java-mode.el" "init-ivy.el" "init-ido.el" "init-ibuffer.el" "init-hydra.el" "init-httpd.el" "init-hs-minor-mode.el" "init-hippie-expand.el" "init-haskell.el" "init-gui-frames.el" "init-gud.el" "init-gtags.el" "init-gnus.el" "init-git.el" "init-fonts.el" "init-exec-path.el" "init-evil.el" "init-erlang.el" "init-emacs-w3m.el" "init-elpa.el" "init-elisp.el" "init-dired.el" "init-ctags.el" "init-css.el" "init-csharp-mode.elc" "init-csharp-mode.el" "init-csharp-mode - 副本.elc" "init-crontab.el" "init-cperl-mode.el" "init-compat.el" "init-company.elc" "init-company.el" "init-color-theme.el" "init-clipboard.el" "init-chinese-pyim.el" "init-cc-mode.elc" "init-cc-mode.el" "init-bbdb.el" "init-autoload.el" "init-auto-complete.elc" "init-auto-complete.el" "init-artbollocks-mode.el" "iimage.elc" "iimage.el" "ido-ubiquitous.el" "hide-lines.el" "google-c-style.elc" "google-c-style.el" "emacs_backtrace.txt" "cpputils-cmake.el" "autopair.elc" "autopair.el" "auto-complete-pcmp.el" "../" "./")
 
- ("c:/Users/blue_/AppData/Roaming/.emacs.d/elpa/yasnippet-0.12.2/snippets/csharp-mode/" (24996 64279 0 0) "wio" "wie" "wi" "void" "value" "tss" "tsi" "ts" "tryf" "trycf" "tryc" "try" "toString" "tni" "tn" "tmsi" "tmil" "tmii" "tlni" "tln" "Thread" "this" "testClass" "test" "tca" "tag" "sync" "swi" "svo" "str" "sti" "stc" "static" "Sta" "st" "ssc" "ss" "srr" "sr" "spa" "sleep" "sio" "si" "Set" "Sd" "sca" "sbv" "sb" "sap" "sa" "rt" "rni" "rn" "rf" "res" "ras" "Que" "qs" "qia" "qi" "qc" "pvn" "pvia" "pvbn" "pvb" "pv" "public" "ptl" "pt" "psti" "psr" "psi" "psf" "prt" "prr" "protected" "prop" "private" "printf" "pr" "pqs" "pqia" "pqi" "pqc" "ppt" "pmvk" "pmv" "pmkv" "pmk" "pmil" "pmii" "pmia" "plst" "pln" "pll" "pli" "pl" "pir" "pf" "pcr" "param" "paii" "pai" "package" "override" "ou" "one" "nl" "nfckt" "nfck" "new" "mss" "msi" "ms" "mp" "mod" "mn" "mmi" "mma" "mlt" "miss" "misi" "mis" "mil" "mii" "mib" "mia" "mf" "method" "mck" "mci" "mc" "main_class" "maine" "main" "mai" "mabi" "maba" "mab" "maa" "lv" "lt" "lss" "ls" "lpt" "lpl" "lni" "ln" "lmi" "lma" "lm" "lls" "lli" "Lint" "lii" "lia" "li" "ld" "lc" "lbs" "lambda" "jj" "javadoc" "j" "its" "iterator" "it" "isr" "isl" "irr" "ipi" "inpt" "import" "implements" "imi" "ima" "iju" "ifo" "ifee" "ife" "if" "ie" "ict" "icr" "icl" "ic" "ibs" "ibc" "iav" "ia" "hss" "hsls" "hsli" "hsi" "hsc" "god" "gh" "getter" "fvo" "fv" "ftn" "fsc" "frc" "fp" "forit" "fori" "for" "fooc" "foo" "foc" "fo" "fmvk" "fmv" "fmkv" "fmk" "fme" "fln" "file_class" "fic" "fib" "fdo" "fd" "fckt" "fck" "fcc" "extends" "equals" "ep" "dvo" "dqs" "dqi" "dqc" "dpd" "doc" "do" "dir" "define test method" "dc" "d" "cv" "cuc" "ct" "cst" "crri" "crr" "cr" "constructor" "cnt" "cmv" "cmtr" "cmt" "cls" "cli" "cld" "clc" "class" "ck" "ciw" "ciu" "cil" "cid" "cia" "cd" "ca" "bt" "bs" "bl" "ba" "ats" "ass" "asm" "asl" "as" "apr_assert" "af" "ac" "abs" "aal" "#dc#" "#ats#" "../" "./")
+ ("h:/andrprac/DouBanKotlin/app/src/main/" (25029 22046 0 0) "res/" "java/" "AndroidManifest.xml" "../" "./")
+
+ ("h:/leetcodeCoding/" (25029 21213 0 0) "_minted-readme/" "unionFind.java" "twoSum.java" "twoPointers.java" "trieProbs.java" "trieC.java" "trieB.java" "tree.java" "tmp.java" "swapNodesPairs.java" "summary/" "subrectangleQueries.java" "strtwoing.java" "strthreeing.java" "string.java" "stack.java" "sortArray.java" "sort.java" "slidingWindow.java" "shell.sh" "segmentTree.java" "searchBST.java" "runningSumOfArray.java" "removeLeafNodes.java" "recursion.java" "readme.tex" "readme.pdf" "readme.org" "prevSingleProbs/" "prevCmp/" "prefixSum.java" "pic/" "orderedSet.java" "nRayTree.java" "myalgorithms/" "mixed.java" "minDeletionSize.java" "mergeTrees.java" "longestPalindrome.java" "log.txt" "linkedList.java" "isValidBST.java" "isSubPath.java" "isPalindrome.java" "heaptwo.java" "heap.java" "hdtwo.java" "hdthree.java" "hdsix.java" "hdsix.class" "hdsix$Solution.class" "hdsix$Solution$UnionFind.class" "hdsix$Solution$Trie.class" "hdsix$Solution$Trie$Node.class" "hdsix$Solution$Node.class" "hdsix$Solution$BIT.class" "hdone.java" "hdfour.java" "hdfive.java" "hashtwotable.java" "hashtable.java" "gretwoedy.java" "grethreeedy.java" "greedy.java" "gratwoph.java" "grathreeph.java" "graph.java" "findTargetTwoSum.java" "dynamicProgramming/" "distanceK.java" "designProbs/" "depthtwoFirstSearch.java" "depthFirstSearch.java" "com/" "codeforces/" "Codec.java" "cmp.java" "breadtwoFirstSearch.java" "breadFirstSearch.java" "bittwoManipulation.java" "bitMask.java" "bitManipulation.java" "binarySearchinSortedArray.java" "binarySearch.java" "binaryIndexedTree.java" "backtwoTracking.java" "backTracking.java" "array.java" ".gitignore" ".git/" "../" "./")
+
+ ("c:/Users/blue_/Desktop/" (25024 52586 0 0) "表哥.pdf" "吃货的天空.rar" "youtube-dl.exe" "youtube/" "Visual Studio Code.lnk" "Unity5.5.2f1.exe - Shortcut.lnk" "token.png" "tmp.xml" "tmp.tex" "tmp.shader" "tmp.org" "tmp.java" "tmp.cs" "tmp.cpp" "tmp/" "statement.pdf" "resume_Heyan Huang_cs.pdf" "New session.lnk" "interview/" "GitHub Desktop.lnk" "EmacsDump.bat" "dmv14.pdf" "disassembly_monito_2016411211755.pdf" "desktop.ini" "cmd_SCH.bat.lnk" "cmd_CS.bat" "cmdDirectory.bat" "Class1.cs" "bags/" "../" "./")
+
+ ("c:/Users/blue_/AppData/Roaming/.emacs.d/elpa/yasnippet-0.12.2/snippets/csharp-mode/" (25020 1654 0 0) "wio" "wie" "wi" "void" "value" "tt" "tss" "tsi" "ts" "tryf" "trycf" "tryc" "try" "toString" "tni" "tn" "tmsi" "tmil" "tmii" "tlni" "tln" "Thread" "this" "testClass" "test" "tca" "tag" "sync" "swi" "svo" "str" "sti" "stc" "static" "Sta" "st" "ssc" "ss" "srr" "sr" "spa" "sleep" "sio" "si" "Set" "Sd" "sca" "sbv" "sb" "sap" "sa" "rt" "rni" "rn" "rf" "res" "ras" "Que" "qs" "qia" "qi" "qc" "pvn" "pvia" "pvbn" "pvb" "pv" "public" "ptl" "pt" "psti" "psr" "psi" "psf" "prt" "prr" "protected" "prop" "private" "printf" "pr" "pqs" "pqia" "pqi" "pqc" "ppt" "pol" "pof" "pmvk" "pmv" "pmkv" "pmk" "pmil" "pmii" "pmia" "plst" "pln" "pll" "pli" "pl" "pkl" "pkf" "pir" "pia" "pf" "pcr" "param" "paii" "pai" "package" "ou" "one" "ofl" "off" "o" "nl" "nfckt" "nfck" "new" "mss" "msr" "msi" "ms" "mp" "mod" "mn" "mmi" "mma" "mlt" "miss" "misi" "mis" "mil" "miia" "mii" "mib" "mia" "mf" "method" "mck" "mci" "mc" "main_class" "maine" "main" "mai" "mabi" "maba" "mab" "maa" "lv" "lt" "lss" "ls" "lpt" "lpl" "lni" "ln" "lmi" "lma" "lm" "lls" "lli" "Lint" "lii" "lia" "li" "ld" "lcy" "lc" "lbs" "lambda" "jj" "javadoc" "j" "its" "iterator" "it" "isr" "isl" "irr" "ipi" "inpt" "import" "implements" "imi" "ima" "iju" "ifo" "ifee" "ife" "if" "ie" "ict" "icr" "icl" "ic" "ibs" "ibc" "iav" "ia" "hss" "hsls" "hsli" "hsi" "hsc" "god" "gh" "getter" "fvo" "fv" "ftn" "fsc" "frc" "fp" "forit" "fori" "for" "fooc" "foo" "foc" "fo" "fmvk" "fmv" "fmkv" "fmk" "fme" "fln" "file_class" "fic" "fib" "fdo" "fd" "fckt" "fck" "fcc" "extends" "eq" "ep" "dvo" "dqs" "dqia" "dqi" "dqc" "dpd" "doc" "do" "dir" "define test method" "dc" "d" "cv" "cuc" "ctu" "ctl" "ct" "cst" "crri" "crr" "cr" "constructor" "cnt" "cmv" "cmtr" "cmt" "cls" "cli" "cld" "clc" "class" "ck" "ciw" "ciu" "cilt" "cil" "cid" "cia" "cd" "ca" "bt" "bs" "bl" "ba" "ats" "ass" "asm" "asl" "as" "apr_assert" "af" "ac" "abs" "aal" "#qi#" "#qc#" "#dc#" "#ats#" "../" "./")
+
+ ("h:/leetcodeCoding/summary/" (25027 28312 0 0) "_minted-graph/" "string.pdf" "string.org" "readme_all.pdf" "readme.tex" "readme.pdf" "readme.org" "plan.org" "pic/" "others/" "hashTree.org" "graph.tex" "graph.pdf" "graph.org" "dp.tex" "dp.pdf" "dp.org" "dataStructure.tex" "dataStructure.pdf" "dataStructure.org" "bitMaskManipulation.tex" "bitMaskManipulation.pdf" "bitMaskManipulation.org" "binarySearch.org" "../" "./")
+
+ ("h:/andrprac/mvx/app/src/main/" (25023 43056 0 0) "tmp.kt" "res/" "java/" "AndroidManifest.xml" "../" "./")
+
+ ("h:/android/" (25027 18230 0 0) "_minted-andrCoding/" "view.tex" "view.pdf" "view.org" "ulti.tex" "ulti.pdf" "ulti.org" "tmp.kt" "tmp.java" "specific/" "readme.tex" "readme.pdf" "readme.org" "pic/" "interview/" "Effective Java - Programming Language Guide.pdf" "contentProvider.tex" "contentProvider.pdf" "contentProvider.org" "asynctask.tex" "asynctask.pdf" "asynctask.org" "andrCoding.tex" "andrCoding.pdf" "andrCoding.org" ".git/" "../" "./")
+
+ ("h:/andrprac/unittesting/app/src/test/java/com/me/unittesting/" (25024 56254 0 0) "TimeoutRuleTest.java" "TestParams2.java" "TestParams1.java" "TestJUnitLifeCycle.java" "TestExecOrder.java" "RepeatTest.java" "RepeatRule.java" "NameRuleTest.java" "IsMobilePhoneMatcher.java" "DateUtilTest.java" "AssertThatTest.java" "../" "./")
+
+ ("h:/andrprac/ContentProvider-interp/" (25018 35338 0 0) "settings.gradle" "local.properties" "gradlew.bat" "gradlew" "gradle.properties" "gradle/" "ContentProvider-interp.iml" "build.gradle" "app/" ".idea/" ".gradle/" ".gitignore" ".git/" "../" "./")
+
+ ("h:/andrprac/ContentProvider-interp/app/" (25019 33775 0 0) "src/" "proguard-rules.pro" "build.gradle" "build/" "app.iml" ".gitignore" "../" "./")
+
+ ("h:/andrprac/ContentProvider-interp/app/src/" (25018 33434 0 0) "test/" "main/" "androidTest/" "../" "./")
+
+ ("h:/andrprac/ContentProvider-interp/app/src/main/" (25018 33434 0 0) "res/" "java/" "AndroidManifest.xml" "../" "./")
+
+ ("h:/andrprac/FragmentsDemo/app/src/main/" (25017 7248 0 0) "res/" "java/" "AndroidManifest.xml" "../" "./")
+
+ ("h:/leetcodeCoding/prevCmp/" (25013 34414 0 0) "competition_1030_1.java" "competition.java" "cmp_12_11_2.java" "cmp_12_11_1.java" "cmp_1206.java" "cmp_11_13_weekly.java" "cmp_11_13_bi.java" "cmp_11_06.java" "cmp_1127_2.java" "cmp_1127_1.java" "cmp_1120.java" "cmp_10_30_2.java" "../" "./")
+
+ ("h:/leetcodeCoding/com/" (25006 38746 0 0) "UnionFind.java" "UnionFind.class" "UndirectedGraphNode.java" "UndirectedGraphNode.class" "TreeNode.java" "TreeNode.class" "TreeLinkNode.java" "TreeLinkNode.class" "SegNode.java" "RandomListNode.java" "RandomListNode.class" "Point.java" "Point.class" "Node.java" "Node.class" "NestedInteger.java" "MapUtil.java" "MapUtil.class" "MapUtil$ValueThenKeyComparator.class" "ListNode.java" "ListNode.class" "Interval.java" "Interval.class" "../" "./")
+
+ ("h:/leetcodeCoding/dynamicProgramming/" (25002 60625 0 0) "dynatwomicProgramming.java" "dynathreemicProgramming.java" "dynatenmicProgramming.java" "dynasixmicProgramming.java" "dynasevenmicProgramming.java" "dynaonemicProgramming.java" "dynaninemicProgramming.java" "dynamicProgramming.java" "dynafourmicProgramming.java" "dynafivemicProgramming.java" "dynaeightmicProgramming.java" "dptwo.java" "dpthree.java" "dpten.java" "dpsix.java" "dpseven.java" "dpone.java" "dpnine.java" "dpfour.java" "dpfive.java" "dpeight.java" "../" "./")
+
+ ("h:/andrprac/RealTimeEval/app/src/main/java/com/me/realtimeeval/" (25002 41248 0 0) "ReportActivity.java" "MainActivity.java" "AnalyseActivity.java" "../" "./")
+
+ ("h:/andrprac/generalPrac/app/src/main/" (25000 2512 0 0) "res/" "java/" "AndroidManifest.xml" "../" "./")
 
  ("h:/leetcodeCoding/codeforces/" (24995 46973 0 0) "two.java" "two-sur.txt" "three.java" "three.class" "three-sur.txt" "three$solution.class" "six.java" "six.class" "six-sur.txt" "six$solution.class" "one.java" "one.class" "one-sur.txt" "one$solution.class" "four.java" "four-sur.txt" "five.java" "five-sur2.txt" "five-sur.txt" "1608/" "1607/" "1606/" "../" "./")
 
- ("h:/leetcodeCoding/summary/" (24987 13950 0 0) "string.pdf" "string.org" "readme_all.pdf" "readme.tex" "readme.pdf" "readme.org" "plan.org" "pic/" "others/" "hashTree.org" "dp.tex" "dp.pdf" "dp.org" "dataStructure.tex" "dataStructure.pdf" "dataStructure.org" "bitMaskManipulation.tex" "bitMaskManipulation.pdf" "bitMaskManipulation.org" "binarySearch.org" "../" "./")
-
- ("c:/Users/blue_/AppData/Roaming/.emacs.d/lisp/" (24974 57423 0 0) "yaxception.el" "word-like-count.el" "undo-tree.elc" "undo-tree.el" "syslog-mode.el" "shader-mode.el" "protobuf-mode.elc" "protobuf-mode.el" "package.el" "outline-presentation.elc" "outline-presentation.el" "org-move-tree.elc" "org-move-tree.el" "org-ac.elc" "org-ac.el" "markdown-mode.elc" "markdown-mode.el" "log4e.el" "linum.el" "jtags.el" "jtags-extras.el" "init-yasnippet.elc" "init-yasnippet.el" "init-writting.el" "init-workgroups2.el" "init-windows.el" "init-which-func.el" "init-web-mode.el" "init-utils.el" "init-uniquify.el" "init-text.el" "init-term-mode.el" "init-syslog-mode.el" "init-swift-mode.el" "init-sr-speedbar.elc" "init-sr-speedbar.el" "init-spelling.el" "init-slime.el" "init-site-lisp.el" "init-sh.el" "init-sessions.el" "init-semantic.el" "init-ruby-mode.el" "init-racket-mode.el" "init-python-mode.el" "init-pomodoro.el" "init-perforce.el" "init-org.elc" "init-org.el" "init-multiple-cursors.el" "init-moz.el" "init-modeline.el" "init-misc.el" "init-misc-lazy.el" "init-markdown.el" "init-lua-mode.el" "init-logview.el" "init-log4j-mode.el" "init-lisp.el" "init-linum-mode.el" "init-latex-mode.el" "init-kotlin-mode.elc" "init-kotlin-mode.el" "init-keyfreq.el" "init-javascript.el" "init-java-mode.elc" "init-java-mode.el" "init-ivy.el" "init-ido.el" "init-ibuffer.el" "init-hydra.el" "init-httpd.el" "init-hs-minor-mode.el" "init-hippie-expand.el" "init-haskell.el" "init-gui-frames.el" "init-gud.el" "init-gtags.el" "init-gnus.el" "init-git.el" "init-fonts.el" "init-exec-path.el" "init-evil.el" "init-erlang.el" "init-emacs-w3m.el" "init-elpa.el" "init-elisp.el" "init-dired.el" "init-ctags.el" "init-css.el" "init-csharp-mode.elc" "init-csharp-mode.el" "init-csharp-mode - 副本.elc" "init-crontab.el" "init-cperl-mode.el" "init-compat.el" "init-company.elc" "init-company.el" "init-color-theme.el" "init-clipboard.el" "init-chinese-pyim.el" "init-cc-mode.elc" "init-cc-mode.el" "init-bbdb.el" "init-autoload.el" "init-auto-complete.elc" "init-auto-complete.el" "init-artbollocks-mode.el" "iimage.elc" "iimage.el" "ido-ubiquitous.el" "hide-lines.el" "google-c-style.elc" "google-c-style.el" "emacs_backtrace.txt" "cpputils-cmake.el" "autopair.elc" "autopair.el" "auto-complete-pcmp.el" "../" "./")
-
- ("h:/leetcodeCoding/com/" (24970 41182 0 0) "UnionFind.java" "UnionFind.class" "UndirectedGraphNode.java" "UndirectedGraphNode.class" "TreeNode.java" "TreeNode.class" "TreeLinkNode.java" "TreeLinkNode.class" "SegNode.java" "RandomListNode.java" "RandomListNode.class" "Point.java" "Point.class" "Node.java" "Node.class" "NestedInteger.java" "MapUtil.java" "MapUtil.class" "MapUtil$ValueThenKeyComparator.class" "ListNode.java" "ListNode.class" "Interval.java" "Interval.class" "../" "./")
-
  ("h:/leetcodeCoding/codeforces/1606/" (24961 19426 0 0) "two.java" "tree.java" "redBlueMatrix.cpp" "onesur.txt" "one.java" "mat.java" "another.java" "../" "./")
-
- ("c:/Users/blue_/Desktop/" (24961 18338 0 0) "表哥.pdf" "吃货的天空.rar" "吃货的天空/" "youtube-dl.exe" "youtube/" "Visual Studio Code.lnk" "Unity5.5.2f1.exe - Shortcut.lnk" "token.png" "tmp.xml" "tmp.tex" "tmp.shader" "tmp.org" "tmp.java" "tmp.cs" "tmp.cpp" "tmp/" "statement.pdf" "resume_Heyan Huang_cs.pdf" "New session.lnk" "interview/" "GitHub Desktop.lnk" "GarminDevice.xml" "EmacsDump.bat" "dmv14.pdf" "disassembly_monito_2016411211755.pdf" "desktop.ini" "cmd_SCH.bat.lnk" "cmd_CS.bat" "cmdDirectory.bat" "Class1.cs" "bags/" "../" "./")
 
  ("c:/Users/blue_/AppData/Roaming/.emacs.d/elpa/csharp-mode/" (24918 26953 0 0) "test-files/" "run-travis-ci.sh" "README.org" "makefile" "gpl-2.0.txt" "csharp-mode.elc" "csharp-mode.el" "csharp-mode-tests.el" "csharp-mode-pkg.el.template" "Cask" ".travis.yml" "../" "./")
 

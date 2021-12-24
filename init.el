@@ -30,15 +30,31 @@
 (defvar best-gc-cons-threshold 4000000 "Best default gc threshold value. Should't be too big.")
 (setq gc-cons-threshold most-positive-fixnum) ;; don't GC during startup to save time
 
-
 ;; (setq default-directory "~/.emacs.d/")
 ;; (setq default-directory "/Volumes/e/uMVVM/Assets/Sources/")
 ;; (setq default-directory "/Volumes/e/ILRuntimeHotFix/ILRuntimeU3D/ILRuntimeDemo/Assets/Samples/ILRuntime/1.6.4/Demo/Scripts/Examples")
 ;(setq default-directory "C:/Users/blue_/Desktop/")
 ;; (setq default-directory "e:/yunlangZhuZuoAndroid/trunk/client/trunk/")
+;; (setq default-directory "h:/andrprac/RealTimeEval/app/src/main/")
+;; (setq default-directory "h:/andrprac/FragmentsDemo/app/src/main/")
+;; (setq default-directory "h:/andrprac/ContentProvider/app/src/main/")
+;; (setq default-directory "h:/andrprac/ContentProvider-interp/app/src/main/")
+;; (setq default-directory "h:/contentProviderTutorial/app/src/main/")
+;; (setq default-directory "h:/andrprac/launchmode/app/src/main/")
+;; (setq default-directory "h:/andrprac/Android-Activity-LaunchMode/app/src/main/")
+;; (setq default-directory "h:/andrprac/mvx/app/src/main/")
+;; (setq default-directory "h:/andrprac/ViewPagerFragmentLazyLoad/app/src/main/")
+;; (setq default-directory "h:/andrprac/sunflower_java/app/src/main/")
+;; (setq default-directory "h:/andrprac/android-navigation/app/src/main/")
+;; (setq default-directory "h:/andrprac/SampleNavigation/app/src/main/")
+;; (setq default-directory "h:/andrprac/Jetpack-databinding/compose_hoo/app/src/main/")
+;; (setq default-directory "h:/andrprac/recyclerview-json-parsing/RecyclerJsonParsing/app/src/main/")
+;; (setq default-directory "h:/andrprac/retrofit-example/app/src/main/")
+;; (setq default-directory "h:/andrprac/MockitoExample/app/src/main/")
+;; (setq default-directory "h:/andrprac/Sample_AndroidTest/app/src/main/")
+;; (setq default-directory "h:/andrprac/DouBanKotlin/app/src/main/")
 ;; (setq default-directory "h:/leetcodeCoding/")
-;; (setq default-directory "h:/andrprac/RealTimeEval/app/src/main/java/com/me/realtimeeval/")
-(setq default-directory "h:/andrprac/generalPrac/app/src/main/")
+(setq default-directory "h:/andrprac/")
 
 ;;; setup defaults for all modes
 (setq default-frame-alist
@@ -156,7 +172,7 @@
 
   (require 'org-move-tree)
 
-  ;; (require 'init-java-mode)
+  (require 'init-java-mode)
   (require 'init-haskell)
   (require 'init-ruby-mode)
   (require 'init-lisp)
@@ -165,7 +181,7 @@
 
   (require 'cpputils-cmake) ; to do more work on this one
   ;; Use bookmark instead
-  (require 'init-cc-mode)
+  ;; (require 'init-cc-mode)
   (require 'init-gud)
   (require 'init-linum-mode)
   (require 'init-moz)
@@ -186,6 +202,7 @@
   (require 'init-slime)
   (require 'shader-mode)
 ;  (require 'swift-mode)
+  (require 'init-kotlin-mode)
   ;; (require 'init-company)
   
 ;; have NOT passed  
@@ -393,8 +410,10 @@
 (column-number-mode t)
 ;;; 闪屏报警
 (setq visible-bell t)
-;;; 锁定行高
+
+;; ;;; 锁定行高
 (setq resize-mini-windows nil)
+
 ;;; 递妆mimibuffer
 (setq enable-recursive-minibuffers t)
 
@@ -529,70 +548,98 @@
 ;;  (kbd "C-c y")
 ;;  'wsl-paste)
 
-;;; for ediff
-;;git mergetool 使用ediff ,前提可以正常使用emacsclient ,并且Emacs已经启动。
-;; ~/.gitconfig
-;; [mergetool "ediff"]
-;; cmd = emacsclient --eval \"(git-mergetool-emacsclient-ediff \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" \\\"$MERGED\\\")\"
-;; trustExitCode = false
-;; [mergetool]
-;; prompt = false
-;; [merge]
-;; tool = ediff
-;; Setup for ediff.
-;;(require 'ediff)
-(defvar ediff-after-quit-hooks nil
-  "* Hooks to run after ediff or emerge is quit.")
+;; ;;; for ediff
+;; ;;git mergetool 使用ediff ,前提可以正常使用emacsclient ,并且Emacs已经启动。
+;; ;; ~/.gitconfig
+;; ;; [mergetool "ediff"]
+;; ;; cmd = emacsclient --eval \"(git-mergetool-emacsclient-ediff \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" \\\"$MERGED\\\")\"
+;; ;; trustExitCode = false
+;; ;; [mergetool]
+;; ;; prompt = false
+;; ;; [merge]
+;; ;; tool = ediff
+;; ;; Setup for ediff.
+;; ;;(require 'ediff)
+;; (defvar ediff-after-quit-hooks nil
+;;   "* Hooks to run after ediff or emerge is quit.")
 
-(defadvice ediff-quit (after edit-after-quit-hooks activate)
-  (run-hooks 'ediff-after-quit-hooks))
+;; (defadvice ediff-quit (after edit-after-quit-hooks activate)
+;;   (run-hooks 'ediff-after-quit-hooks))
 
-(setq git-mergetool-emacsclient-ediff-active nil)
+;; (setq git-mergetool-emacsclient-ediff-active nil)
 
-(defun local-ediff-frame-maximize ()
-  (when (boundp 'display-usable-bounds)
-    (let* ((bounds (display-usable-bounds))
-           (x (nth 0 bounds))
-           (y (nth 1 bounds))
-           (width (/ (nth 2 bounds) (frame-char-width)))
-           (height (/ (nth 3 bounds) (frame-char-height))))
-      (set-frame-width (selected-frame) width)
-      (set-frame-height (selected-frame) height)
-      (set-frame-position (selected-frame) x y))  )
-  )
-(setq ediff-window-setup-function 'ediff-setup-windows-plain)
-(setq ediff-split-window-function 'split-window-horizontally)
+;; (defun local-ediff-frame-maximize ()
+;;   (when (boundp 'display-usable-bounds)
+;;     (let* ((bounds (display-usable-bounds))
+;;            (x (nth 0 bounds))
+;;            (y (nth 1 bounds))
+;;            (width (/ (nth 2 bounds) (frame-char-width)))
+;;            (height (/ (nth 3 bounds) (frame-char-height))))
+;;       (set-frame-width (selected-frame) width)
+;;       (set-frame-height (selected-frame) height)
+;;       (set-frame-position (selected-frame) x y))  )
+;;   )
+;; (setq ediff-window-setup-function 'ediff-setup-windows-plain)
+;; (setq ediff-split-window-function 'split-window-horizontally)
 
-(defun local-ediff-before-setup-hook ()
-  (setq local-ediff-saved-frame-configuration (current-frame-configuration))
-  (setq local-ediff-saved-window-configuration (current-window-configuration))
-  (local-ediff-frame-maximize)
-  (if git-mergetool-emacsclient-ediff-active
-      (raise-frame)))
+;; (defun local-ediff-before-setup-hook ()
+;;   (setq local-ediff-saved-frame-configuration (current-frame-configuration))
+;;   (setq local-ediff-saved-window-configuration (current-window-configuration))
+;;   (local-ediff-frame-maximize)
+;;   (if git-mergetool-emacsclient-ediff-active
+;;       (raise-frame)))
 
-(defun local-ediff-quit-hook ()
-  (set-frame-configuration local-ediff-saved-frame-configuration)
-  (set-window-configuration local-ediff-saved-window-configuration))
+;; (defun local-ediff-quit-hook ()
+;;   (set-frame-configuration local-ediff-saved-frame-configuration)
+;;   (set-window-configuration local-ediff-saved-window-configuration))
 
-(defun local-ediff-suspend-hook ()
-  (set-frame-configuration local-ediff-saved-frame-configuration)
-  (set-window-configuration local-ediff-saved-window-configuration))
+;; (defun local-ediff-suspend-hook ()
+;;   (set-frame-configuration local-ediff-saved-frame-configuration)
+;;   (set-window-configuration local-ediff-saved-window-configuration))
 
-(add-hook 'ediff-before-setup-hook 'local-ediff-before-setup-hook)
-(add-hook 'ediff-quit-hook 'local-ediff-quit-hook 'append)
-(add-hook 'ediff-suspend-hook 'local-ediff-suspend-hook 'append)
+;; (add-hook 'ediff-before-setup-hook 'local-ediff-before-setup-hook)
+;; (add-hook 'ediff-quit-hook 'local-ediff-quit-hook 'append)
+;; (add-hook 'ediff-suspend-hook 'local-ediff-suspend-hook 'append)
 
-;; Useful for ediff merge from emacsclient.
-(defun git-mergetool-emacsclient-ediff (local remote base merged)
-  (setq git-mergetool-emacsclient-ediff-active t)
-  (if (file-readable-p base)
-      (ediff-merge-files-with-ancestor local remote base nil merged)
-    (ediff-merge-files local remote nil merged))
-  (recursive-edit))
-(defun git-mergetool-emacsclient-ediff-after-quit-hook ()
-  (exit-recursive-edit))
-(add-hook 'ediff-after-quit-hooks 'git-mergetool-emacsclient-ediff-after-quit-hook 'append)
+;; ;; Useful for ediff merge from emacsclient.
+;; (defun git-mergetool-emacsclient-ediff (local remote base merged)
+;;   (setq git-mergetool-emacsclient-ediff-active t)
+;;   (if (file-readable-p base)
+;;       (ediff-merge-files-with-ancestor local remote base nil merged)
+;;     (ediff-merge-files local remote nil merged))
+;;   (recursive-edit))
+;; (defun git-mergetool-emacsclient-ediff-after-quit-hook ()
+;;   (exit-recursive-edit))
+;; (add-hook 'ediff-after-quit-hooks 'git-mergetool-emacsclient-ediff-after-quit-hook 'append)
 
+
+(defun wsl-copy-region-to-clipboard (start end)
+  "Copy region to Windows clipboard."
+  (interactive "r")
+  (call-process-region start end "clip.exe" nil 0))
+
+(defun wsl-cut-region-to-clipboard (start end)
+  (interactive "r")
+  (call-process-region start end "clip.exe" nil 0)
+  (kill-region start end))
+
+(defun wsl-clipboard-to-string ()
+  "Return Windows clipboard as string."
+  (let ((coding-system-for-read 'dos))
+    (substring; remove added trailing \n
+     (shell-command-to-string
+      "powershell.exe -Command Get-Clipboard") 0 -1)))
+
+(defun wsl-paste-from-clipboard (arg)
+  "Insert Windows clipboard at point. With prefix ARG, also add to kill-ring"
+  (interactive "P")
+  (let ((clip (wsl-clipboard-to-string)))
+    (insert clip)
+    (if arg (kill-new clip))))
+
+(define-key global-map (kbd "C-x C-y") 'wsl-paste-from-clipboard)
+(define-key global-map (kbd "C-x M-w") 'wsl-copy-region-to-clipboard)
+(define-key global-map (kbd "C-x C-w") 'wsl-cut-region-to-clipboard)
 
 ;;; lisp mute & dmute
 (fset 'ldm
@@ -650,7 +697,7 @@
                  ("begin" "$1" "$" "$$" "\\(" "\\[")))
  '(org-support-shift-select nil)
  '(package-selected-packages
-   '(py-autopep8 logview virtualenvwrapper company-jedi flycheck-color-mode-line auto-complete-clang-async flycheck-swift3 flycheck-swift flycheck swift3-mode swift-mode yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode lua-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-lua flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word csharp-mode crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link))
+   '(lsp-mode py-autopep8 logview virtualenvwrapper company-jedi flycheck-color-mode-line auto-complete-clang-async flycheck-swift3 flycheck-swift flycheck swift3-mode swift-mode yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode lua-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-lua flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word csharp-mode crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link))
  '(session-use-package t nil (session))
  '(show-paren-mode t)
  '(speedbar-frame-parameters

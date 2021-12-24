@@ -1,6 +1,0 @@
-# contributor: deepwaterooo
-# name: println(variable)
-# key: prv
-# --
-println($1)
-$0

@@ -3,6 +3,46 @@
 #+author: deepwaterooo
 
 * Updates 
+** BUG statement and partial fix
+- in java-mode, the code style I expected is as followed:
+#+BEGIN_SRC java
+class node {
+    int v ;
+    public node() {
+        if (a > 0) // I don't want { } blocks when I have only one line statement inside blocks
+        // a = 17;    // before fix:
+            a = 17;   // now it can auto-indent
+        b = 20;
+        while (true)  // same auto indents here
+            j++;
+    }
+}
+class dklfjdj {|} // <<==== current un-auto-expanded version, bug right now for java-mode
+class dklfjdj { 
+    | // <<==== expected feature: once I typed '{', '}' will be autopaired(it does), but also auto-expand and cursor moves and indents directly to where I expect
+}
+#+END_SRC
+- if while if while one line statement autoindent without {} fixed today for java-mode, but for kotlin-mode, this bug consists, make coders/programmers nuts.
+#+BEGIN_SRC kotlin
+fun getStringLength(obj: Any): Int? {
+    if (obj is String)
+    return obj.length  // <<<<===== BUG: need to fox auto-indent here for if else while etc without {} 
+
+    if (obj is String) {
+        // `obj` 在该条件分支内自动转换成 `String`
+        return obj.length
+    }
+    // 在离开类型检测分支后，`obj` 仍然是 `Any` 类型
+    return null
+}
+fun dslfkj { // kotlin-mode, unlike java-mode, this feature works charming
+    val a = 1720 
+}
+#+END_SRC
+        - The {|} can NOT auto-expand still bugs me a lot, I don't want to switch back to java-mode yet unless bug fixed and it auto-pands.
+        - java minor bug: Debugger entered--Lisp error: (void-function company-clear-completion-rules): this bug I will look into it recently, and expect it to be fixed so I could switch java-mode from csharp-mode as soon as possible.
+- *csharp-mode* has been the one that works perfectly for these two features, {} auto expand, also if while one line statement autoindent without {}, so I used csharp-mode as java mode.
+- today's 
 - will only update this repository when there is a need. emacs version 27.01 27.02
 - working on leetcode interview questions, so have not configued any JDK IDE within emacs nor from csharp-mode, only take full advantage of emacs snippets for java algorithm problems coding. Uploaded so far some frequently used snippets for my own references. 
 - having not update this one for a while. pseudo-name .java jave-mode inside csharp-mode so that I can skip some pairs of { }-s

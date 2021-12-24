@@ -120,6 +120,64 @@ same directory as the org-buffer and insert a link to this file."
 (global-set-key "\M-s" 'my-org-screenshot)
 
 
+
+;;------------------------------------------------------------------------------
+;;;; Org Mode: Babel: Kotlin  没有弄好，不起作用
+;;------------------------------------------------------------------------------
+
+;; (init-message 3 "Org Mode: Babel: Kotlin") 
+
+(use-package ob-kotlin
+  ;;:quelpa (ob-kotlin)
+  :straight t
+  :after (org kotlin-mode)
+  :commands (org-babel-execute:kotlin)
+  :functions (flycheck-mode
+              kotlin-send-buffer
+              org-babel-kotlin-command)
+  :defines (org-babel-kotlin-compiler)
+  :config
+  ;; customize org/babel for kotlin so it works
+  (defcustom org-babel-kotlin-command "kotlin"
+    "Name of the kotlin command.
+May be either a command in the path, like kotlin or an absolute
+path name, like /usr/local/bin/kotlin parameters may be used,
+like kotlin -verbose"
+    :group 'org-babel
+    :type 'string)
+
+  (defcustom org-babel-kotlin-compiler "kotlinc"
+    "Name of the kotlin compiler.
+May be either a command in the path, like kotlinc or an absolute
+path name, like /usr/local/bin/kotlinc parameters may be used,
+like kotlinc -verbose"
+    :group 'org-babel
+    :type 'string)
+
+  (defun org-babel-execute:kotlin (body params)
+    "If main function exists, then compile code and run jar
+otherwise, run code in `kotlin-repl'."
+    (let* ((classname (or (cdr (assq :classname params)) "main"))
+           ;;(packagename (file-name-directory classname))
+           (src-file (org-babel-temp-file classname ".kt"))
+           (jar-file (concat (file-name-sans-extension src-file) ".jar"))
+           (cmpflag (or (cdr (assq :cmpflag params)) ""))
+           (cmdline (or (cdr (assq :cmdline params)) ""))
+           (full-body (org-babel-expand-body:generic body params)))
+      (if (or (string-match "fun main(args: Array<String>)" full-body)
+              (string-match "fun main()" full-body))
+          (progn
+            (with-temp-file src-file (insert full-body))
+            (org-babel-eval
+             (concat org-babel-kotlin-compiler " " cmpflag " " src-file " -include-runtime -d " jar-file) "")
+            (message (org-babel-eval (concat org-babel-java-command " " cmdline " -jar " jar-file) ""))
+            )
+        (with-temp-buffer
+          (insert body)
+          (kotlin-send-buffer))))))
+
+
+
 (add-hook 'org-mode-hook 'turn-on-font-lock)
 (add-hook 'org-mode-hook 'word-like-count-mode)
 (add-hook 'org-mode-hook

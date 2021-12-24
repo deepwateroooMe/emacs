@@ -91,6 +91,9 @@ cell of the form (DIRLIST . FILELIST)."
 (speedbar-add-supported-extension ".xml")
 (add-to-list 'speedbar-fetch-etags-parse-list
  	     '("\\.xml" . speedbar-parse-c-or-c++tag))
+(speedbar-add-supported-extension ".kt")
+(add-to-list 'speedbar-fetch-etags-parse-list
+       '("\\.kt" . speedbar-parse-c-or-c++tag))
  (speedbar-add-supported-extension ".shader")
  (add-to-list 'speedbar-fetch-etags-parse-list
  		     '("\\.shader" . speedbar-parse-c-or-c++tag))

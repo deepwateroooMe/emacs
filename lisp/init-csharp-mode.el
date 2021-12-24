@@ -7,7 +7,7 @@
       (cons '("cs" . csharp-mode) interpreter-mode-alist))
 (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
 (add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-mode))
-(add-to-list 'auto-mode-alist '("\\.java\\'" . csharp-mode))
+;; (add-to-list 'auto-mode-alist '("\\.java\\'" . csharp-mode))
 
 
 ;;; for auto-indent when insert snippets
@@ -356,5 +356,8 @@ or terminating simple string."
 (fset 'dm
       "\C-a\C-d\C-d\C-n\C-a")
 
+(fset 'cmts
+      (kmacro-lambda-form [?\M-l ?/ ?/ return ?/ ?/ ?  return] 0 "%d"))
+(global-set-key (kbd "C-c m") 'cmts) ; very useful
 
 (provide 'init-csharp-mode)
