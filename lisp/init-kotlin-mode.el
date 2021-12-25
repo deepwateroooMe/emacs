@@ -11,7 +11,7 @@
 
 ;;; set Kotlin mode autoindent to be default 4 spaces
 (setq-default kotlin-tab-width 4)
-(setq-default indent-tabs-mode nil)
+;; (setq-default indent-tabs-mode nil)
 
 (add-hook 'kotlin-mode-hook
 	      #'(lambda ()

@@ -8,7 +8,7 @@
 (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
 (add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-mode))
 (add-to-list 'auto-mode-alist '("\\.java\\'" . csharp-mode))
-(add-to-list 'auto-mode-alist '("\\.kt\\'" . csharp-mode))
+;; (add-to-list 'auto-mode-alist '("\\.kt\\'" . csharp-mode))
 
 ;;; for auto-indent when insert snippets
 ;; (add-hook 'csharp-mode-hook

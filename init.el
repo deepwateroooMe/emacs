@@ -52,9 +52,9 @@
 ;; (setq default-directory "h:/andrprac/retrofit-example/app/src/main/")
 ;; (setq default-directory "h:/andrprac/MockitoExample/app/src/main/")
 ;; (setq default-directory "h:/andrprac/Sample_AndroidTest/app/src/main/")
-;; (setq default-directory "h:/andrprac/DouBanKotlin/app/src/main/")
-;; (setq default-directory "h:/leetcodeCoding/")
-(setq default-directory "h:/andrprac/")
+;; (setq default-directory "h:/andrprac/SnakeKotlinDemo/app/src/main/")
+(setq default-directory "h:/leetcodeCoding/")
+;; (setq default-directory "h:/andrprac/")
 
 ;;; setup defaults for all modes
 (setq default-frame-alist
@@ -202,7 +202,7 @@
   (require 'init-slime)
   (require 'shader-mode)
 ;  (require 'swift-mode)
-  ;; (require 'init-kotlin-mode)
+  (require 'init-kotlin-mode)
   ;; (require 'init-company)
   
 ;; have NOT passed  
@@ -298,7 +298,7 @@
 
 
 ;;; make tab key always call a indent command
-(setq-default tab-always-indent t)
+;; (setq-default tab-always-indent t)
 
 (defun shift-region (distance)
   (let ((mark (mark)))
@@ -395,7 +395,7 @@
 
 ;;; 设置默认tab宽度为4
 (setq tab-width 4
-      indent-tabs-mode t
+      ;; indent-tabs-mode t
       c-basic-offset 4)
 
 ;;; 设定行距
@@ -505,8 +505,6 @@
                                         ;(setq ido-use-faces nil)
 ;;; increase garbage collection threshold
                                         ;(setq gc-cons-threshold 20000000)
-
-
 
 
 ;;; check for spelling

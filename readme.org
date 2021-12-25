@@ -43,6 +43,28 @@ fun dslfkj { // kotlin-mode, unlike java-mode, this feature works charming
 - *csharp-mode* has been the one that works perfectly for these two features, {} auto expand, also if while one line statement autoindent without {}, so I used csharp-mode as java mode.
 ** so far let it be this way
 - Spent a whole day, half fixed the bug in the morning, but has broke java-mode completely and had to pull request from github once again. 
+- I actually cannot stay kotlin-mode insdie csharp's, look at following indent:
+#+BEGIN_SRC kotlin
+public fun thread(start: Boolean = true,
+                  isDaemon: Boolean = false,
+                  contextClassLoader: ClassLoader? = null,
+                  name: String? = null,
+                  priority: Int = -1,
+                  block: () -> Unit
+                  ): Thread {
+    val thread = object : Thread() {
+        public override fun run() {
+            block()
+        }
+    }
+    if (isDaemon) thread.isDaemon = true
+                      if (priority > 0) thread.priority = priority
+                                            if (name != null) thread.name = name
+                                                                  if (contextClassLoader != null) thread.contextClassLoader = contextClassLoader
+                                                                                                      if (start) thread.start()   
+                                                                                                                     return thread
+#+END_SRC
+- cause csharp-mode does not have ';' !!! so kotlin-mode stay as designed, I will have to bear the bug till I search and find good solutions.
 - Recently I have used csharp-mode less, so temportorily let java-mode and kotlin-mode stay inside csharp's for a while. And I only want to practise kotlin to get a comfortable level referring github android projects. So once I get familiar, i still mainly using java-mode insides csharp's, which could be Ok, untill I get a job, and finally settle down to work on java-mode and {|} auto-expandsion bug.
 
 - today's 

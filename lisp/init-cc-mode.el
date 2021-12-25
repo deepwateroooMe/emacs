@@ -8,7 +8,7 @@
 ;; avoid default "gnu" style, use more popular one
 (setq c-default-style "linux")
 
-(add-to-list 'auto-mode-alist '("\\.cpp\\'" . cc-mode))
+;; (add-to-list 'auto-mode-alist '("\\.cpp\\'" . cc-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.kt\\'" . c-mode))
 
 (defun fix-c-indent-offset-according-to-syntax-context (key val)
@@ -21,7 +21,7 @@
   "setup shared by all languages (java/groovy/c++ ...)"
   (setq c-basic-offset 4)
   ;; give me NO newline automatically after electric expressions are entered
-  ;; (setq c-auto-newline nil)  ;;;;
+  (setq c-auto-newline nil)  ;;;;
 
   ;; syntax-highlight aggressively
   ;; (setq font-lock-support-mode 'lazy-lock-mode)
@@ -34,10 +34,9 @@
   ;; ;; indent google "C/C++/Java code indentation in Emacs" for more
   ;; ;; advanced skills C code: if(1) // press ENTER here, zero means
   ;; ;; no indentation ;;
-  ;; ;; (fix-c-indent-offset-according-to-syntax-context 'substatement
-  ;; ;; 0) void fn() // press ENTER here, zero means no indentation ;;
-  ;; ;; (fix-c-indent-offset-according-to-syntax-context
-  ;; ;; 'func-decl-cont 0)
+  ;; (fix-c-indent-offset-according-to-syntax-context 'substatement 0)
+  ;; ;; void fn() // press ENTER here, zero means no indentation ;;
+  ;; (fix-c-indent-offset-according-to-syntax-context 'func-decl-cont 0)
   )
 
 ;;; some error here flymake 
@@ -118,78 +117,16 @@
 
 
 
-;;;for csharp-mode ; {} autoindent
-(defun cc-autoindent ()
-  (when (and (eq major-mode 'cc-mode) (looking-back "[;]"))
-    (newline-and-indent)))
-(add-hook 'post-self-insert-hook 'cc-autoindent)
-(add-hook 'c-mode-common-hook
-	      #'(lambda ()
-	          (local-set-key (kbd "{") 'cheeso-insert-open-brace)))
-
-;;; work with autopair for {
-(defun cheeso-looking-back-at-regexp (regexp)
-  "calls backward-sexp and then checks for the regexp.  Returns t if it is found, else nil"
-  (interactive "s")
-  (save-excursion
-    (backward-sexp)
-    (looking-at regexp)))
-
-(defun cheeso-looking-back-at-equals-or-array-init ()
-  "returns t if an equals or [] is immediate preceding. else nil."
-  (interactive)
-  (cheeso-looking-back-at-regexp "\\(\\w+\\b *=\\|[[]]+\\)"))  
-
-(defun cheeso-prior-sexp-same-statement-same-line ()
-  "returns t if the prior sexp is on the same line. else nil"
-  (interactive)
-  (save-excursion
-    (let ((curline (line-number-at-pos))
-          (curpoint (point))
-          (aftline (progn
-		             (backward-sexp)
-		             (line-number-at-pos))) )
-      (= curline aftline))))  
-
-(defun cheeso-insert-open-brace ()
-  "if point is not within a quoted string literal, insert an open brace, two newlines, and a close brace; indent everything and leave point on the empty line. If point is within a string literal, just insert a pair or braces, and leave point between them."
-  (interactive)
-  (cond
-   ;; are we inside a string literan? 
-   ((c-got-face-at (point) c-literal-faces)
-    ;; if so, then just insert a pair of braces and put the point between them
-    (self-insert-command 1)
-    (insert "")) ; this one works great now
-
-   ;; was the last non-space an equals sign? or square brackets?  Then it's an initializer.
-   ((cheeso-looking-back-at-equals-or-array-init)
-    (self-insert-command 1)
-    (forward-char 2) ;; 1
-    (insert ";") 
-    (backward-char 3)) ;; 2
-   
-   ;; Doesn't cooperate well with autopair
-   ;; else, it's a new scope., 
-   ;; therefore, insert paired braces with an intervening newline, and indent everything appropriately.
-   (t
-    (if (cheeso-prior-sexp-same-statement-same-line)
-        (self-insert-command 1))  ;;; so far only upto here, don't know how to eval & expand {}
-    (insert "")
-    (newline-and-indent)
-    (c-indent-line-or-region)
-    )))
-
-
-;; ;;;for java-mode ; {} auto-expand
+;; ;;;for csharp-mode ; {} autoindent
 ;; (defun cc-autoindent ()
 ;;   (when (and (eq major-mode 'cc-mode) (looking-back "[;]"))
 ;;     (newline-and-indent)))
 ;; (add-hook 'post-self-insert-hook 'cc-autoindent)
 ;; (add-hook 'c-mode-common-hook
-;;           #'(lambda ()
-;;               (local-set-key (kbd "{") 'cheeso-insert-open-brace-for-java)))
+;; 	      #'(lambda ()
+;; 	          (local-set-key (kbd "{") 'cheeso-insert-open-brace)))
 
-;;                                         ; work with autopair for {
+;; ;;; work with autopair for {
 ;; (defun cheeso-looking-back-at-regexp (regexp)
 ;;   "calls backward-sexp and then checks for the regexp.  Returns t if it is found, else nil"
 ;;   (interactive "s")
@@ -197,27 +134,23 @@
 ;;     (backward-sexp)
 ;;     (looking-at regexp)))
 
-;; (defun cheeso-looking-back-at-equals-or-array-init-java ()
+;; (defun cheeso-looking-back-at-equals-or-array-init ()
 ;;   "returns t if an equals or [] is immediate preceding. else nil."
 ;;   (interactive)
 ;;   (cheeso-looking-back-at-regexp "\\(\\w+\\b *=\\|[[]]+\\)"))  
 
-;; (defun cheeso-prior-sexp-same-statement-same-line-java ()
+;; (defun cheeso-prior-sexp-same-statement-same-line ()
 ;;   "returns t if the prior sexp is on the same line. else nil"
 ;;   (interactive)
 ;;   (save-excursion
 ;;     (let ((curline (line-number-at-pos))
 ;;           (curpoint (point))
 ;;           (aftline (progn
-;;                      (backward-sexp)
-;;                      (line-number-at-pos))) )
+;; 		             (backward-sexp)
+;; 		             (line-number-at-pos))) )
 ;;       (= curline aftline))))  
 
-;; ;;; kbd-macro that used to expand {|}
-;; (fset 'expand
-;;       [return])
-
-;; (defun cheeso-insert-open-brace-for-java ()
+;; (defun cheeso-insert-open-brace ()
 ;;   "if point is not within a quoted string literal, insert an open brace, two newlines, and a close brace; indent everything and leave point on the empty line. If point is within a string literal, just insert a pair or braces, and leave point between them."
 ;;   (interactive)
 ;;   (cond
@@ -228,29 +161,22 @@
 ;;     (insert "")) ; this one works great now
 
 ;;    ;; was the last non-space an equals sign? or square brackets?  Then it's an initializer.
-;;    ((cheeso-looking-back-at-equals-or-array-init-java)
+;;    ((cheeso-looking-back-at-equals-or-array-init)
 ;;     (self-insert-command 1)
-;;     (forward-char 1)
+;;     (forward-char 2) ;; 1
 ;;     (insert ";") 
-;;     (backward-char 2)) ; this one works great now
-
+;;     (backward-char 3)) ;; 2
+   
+;;    ;; Doesn't cooperate well with autopair
 ;;    ;; else, it's a new scope., 
 ;;    ;; therefore, insert paired braces with an intervening newline, and indent everything appropriately.
 ;;    (t
-;;     (if (cheeso-prior-sexp-same-statement-same-line-java)
-;;         (self-insert-command 1)) ;;; so far only upto here, don't know how to eval & expand {}
+;;     (if (cheeso-prior-sexp-same-statement-same-line)
+;;         (self-insert-command 1))  ;;; so far only upto here, don't know how to eval & expand {}
 ;;     (insert "")
 ;;     (newline-and-indent)
 ;;     (c-indent-line-or-region)
-;;     ;; (execute-kbd-macro (symbol-function 'expand))
-;;     ;; (execute-extended-command (symbol-function 'expand))
-;;     (`funExpand)
 ;;     )))
-
-;; ;; (defun funExpand ()
-;; ;;   (execute-kbd-macro (symbol-function 'expand))
-;; ;;   ) 
-
 
   
 ;;; cc-mode c++-mode macros

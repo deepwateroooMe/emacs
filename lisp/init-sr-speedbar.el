@@ -100,7 +100,9 @@ cell of the form (DIRLIST . FILELIST)."
  (speedbar-add-supported-extension ".org")
  (add-to-list 'speedbar-fetch-etags-parse-list
  		     '("\\.org" . speedbar-parse-c-or-c++tag))
-
+(speedbar-add-supported-extension ".kt")
+(add-to-list 'speedbar-fetch-etags-parse-list
+ 		     '("\\.kt" . speedbar-parse-c-or-c++tag))
 
 ;(add-to-list 'speedbar-frame-parameters '(left-fringe . 0)) ; doesn't seem to work
 (setq sr-speedbar-width 35)
