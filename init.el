@@ -172,7 +172,7 @@
 
   (require 'org-move-tree)
 
-  (require 'init-java-mode)
+  ;; (require 'init-java-mode)
   (require 'init-haskell)
   (require 'init-ruby-mode)
   (require 'init-lisp)
@@ -202,7 +202,7 @@
   (require 'init-slime)
   (require 'shader-mode)
 ;  (require 'swift-mode)
-  (require 'init-kotlin-mode)
+  ;; (require 'init-kotlin-mode)
   ;; (require 'init-company)
   
 ;; have NOT passed  
@@ -215,7 +215,7 @@
 
  
 ;(require 'init-python-mode)
-;(require 'init-csharp-mode)
+(require 'init-csharp-mode)
 ;(require 'init-company)
   )
 
@@ -496,7 +496,7 @@
 (require 'ido-ubiquitous) ; replaces ido-everywhere
 
 ;;; ido-mode
-(ido-mode t)
+;; (ido-mode t)
 
 ;;;; flx-ido
                                         ;(require 'flx-ido)

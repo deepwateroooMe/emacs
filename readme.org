@@ -10,7 +10,7 @@ class node {
     int v ;
     public node() {
         if (a > 0) // I don't want { } blocks when I have only one line statement inside blocks
-        // a = 17;    // before fix:
+     // a = 17;    // before fix:
             a = 17;   // now it can auto-indent
         b = 20;
         while (true)  // same auto indents here
@@ -23,13 +23,12 @@ class dklfjdj {
 }
 #+END_SRC
 - if while if while one line statement autoindent without {} fixed today for java-mode, but for kotlin-mode, this bug consists, make coders/programmers nuts.
-#+BEGIN_SRC kotlin
+#+BEGIN_SRC java
 fun getStringLength(obj: Any): Int? {
     if (obj is String)
-    return obj.length  // <<<<===== BUG: need to fox auto-indent here for if else while etc without {} 
+    return obj.length  // <<<<===== BUG: need to fix auto-indent here for if else while etc without {} 
 
     if (obj is String) {
-        // `obj` 在该条件分支内自动转换成 `String`
         return obj.length
     }
     // 在离开类型检测分支后，`obj` 仍然是 `Any` 类型
@@ -42,6 +41,10 @@ fun dslfkj { // kotlin-mode, unlike java-mode, this feature works charming
         - The {|} can NOT auto-expand still bugs me a lot, I don't want to switch back to java-mode yet unless bug fixed and it auto-pands.
         - java minor bug: Debugger entered--Lisp error: (void-function company-clear-completion-rules): this bug I will look into it recently, and expect it to be fixed so I could switch java-mode from csharp-mode as soon as possible.
 - *csharp-mode* has been the one that works perfectly for these two features, {} auto expand, also if while one line statement autoindent without {}, so I used csharp-mode as java mode.
+** so far let it be this way
+- Spent a whole day, half fixed the bug in the morning, but has broke java-mode completely and had to pull request from github once again. 
+- Recently I have used csharp-mode less, so temportorily let java-mode and kotlin-mode stay inside csharp's for a while. And I only want to practise kotlin to get a comfortable level referring github android projects. So once I get familiar, i still mainly using java-mode insides csharp's, which could be Ok, untill I get a job, and finally settle down to work on java-mode and {|} auto-expandsion bug.
+
 - today's 
 - will only update this repository when there is a need. emacs version 27.01 27.02
 - working on leetcode interview questions, so have not configued any JDK IDE within emacs nor from csharp-mode, only take full advantage of emacs snippets for java algorithm problems coding. Uploaded so far some frequently used snippets for my own references. 
