@@ -1,6 +1,6 @@
 ;;; kotlin-mode
 
-(add-to-list 'load-path (expand-file-name "c:/Users/blue_/AppData/Roaming/.emacs.d/elpa/kotlin-mode-20210917.1911")) ;拓展文件(插件)目录
+;; (add-to-list 'load-path (expand-file-name "c:/Users/blue_/AppData/Roaming/.emacs.d/elpa/kotlin-mode-20210917.1911")) ;拓展文件(插件)目录
 (require 'kotlin-mode)
 
 (setq debug-on-error t)
@@ -11,7 +11,7 @@
 
 ;;; set Kotlin mode autoindent to be default 4 spaces
 (setq-default kotlin-tab-width 4)
-;; (setq-default indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
 
 (add-hook 'kotlin-mode-hook
 	      #'(lambda ()
@@ -66,8 +66,8 @@
         (self-insert-command 1))  ;;; so far only upto here, don't know how to eval & expand {}
     (insert "")
     (newline-and-indent)
-    (c-indent-line-or-region)
+    (indent-according-to-mode)
+    ;; (c-indent-line-or-region)
     )))
-
 
 (provide 'init-kotlin-mode)

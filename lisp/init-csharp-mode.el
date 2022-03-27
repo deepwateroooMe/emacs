@@ -8,12 +8,7 @@
 (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
 (add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-mode))
 (add-to-list 'auto-mode-alist '("\\.java\\'" . csharp-mode))
-;; (add-to-list 'auto-mode-alist '("\\.kt\\'" . csharp-mode))
-
-;;; for auto-indent when insert snippets
-;; (add-hook 'csharp-mode-hook
-;;           '(lambda () (set (make-local-variable 'yas-indent-line) 'fixed)))
-
+(add-to-list 'auto-mode-alist '("\\.aidl\\'" . csharp-mode))
 
 ;;;for csharp-mode ; {} autoindent
 (defun csharp-autoindent ()
@@ -25,8 +20,6 @@
 	  #'(lambda ()
 	      (local-set-key (kbd "{") 'cheeso-insert-open-brace)))
 
-
-;;; work with autopair for {
 (defun cheeso-looking-back-at-regexp (regexp)
   "calls backward-sexp and then checks for the regexp.  Returns t if it is found, else nil"
   (interactive "s")
@@ -79,41 +72,41 @@
     )))
 
 
-;; (add-hook 'csharp-mode-hook (lambda ()
-;;                               (font-lock-add-keywords nil '(
+(add-hook 'csharp-mode-hook (lambda ()
+                              (font-lock-add-keywords nil '(
 
-;;                                         ; Valid hex number (will highlight invalid suffix though)
-;;                                                             ("\\b0x[[:xdigit:]]+[uUlL]*\\b" . font-lock-string-face)
+                                        ; Valid hex number (will highlight invalid suffix though)
+                                                            ("\\b0x[[:xdigit:]]+[uUlL]*\\b" . font-lock-string-face)
 
-;;                                         ; Invalid hex number
-;;                                                             ("\\b0x\\(\\w\\|\\.\\)+\\b" . font-lock-warning-face)
+                                        ; Invalid hex number
+                                                            ("\\b0x\\(\\w\\|\\.\\)+\\b" . font-lock-warning-face)
 
-;;                                         ; Valid floating point number.
-;;                                                             ("\\(\\b[0-9]+\\|\\)\\(\\.\\)\\([0-9]+\\(e[-]?[0-9]+\\)?\\([lL]?\\|[dD]?[fF]?\\)\\)\\b" (1 font-lock-string-face) (3 font-lock-string-face))
+                                        ; Valid floating point number.
+                                                            ("\\(\\b[0-9]+\\|\\)\\(\\.\\)\\([0-9]+\\(e[-]?[0-9]+\\)?\\([lL]?\\|[dD]?[fF]?\\)\\)\\b" (1 font-lock-string-face) (3 font-lock-string-face))
 
-;;                                         ; Invalid floating point number.  Must be before valid decimal.
-;;                                                             ("\\b[0-9].*?\\..+?\\b" . font-lock-warning-face)
+                                        ; Invalid floating point number.  Must be before valid decimal.
+                                                            ("\\b[0-9].*?\\..+?\\b" . font-lock-warning-face)
 
-;;                                         ; Valid decimal number.  Must be before octal regexes otherwise 0 and 0l
-;;                                         ; will be highlighted as errors.  Will highlight invalid suffix though.
-;;                                                             ("\\b\\(\\(0\\|[1-9][0-9]*\\)[uUlL]*\\)\\b" 1 font-lock-string-face)
+                                        ; Valid decimal number.  Must be before octal regexes otherwise 0 and 0l
+                                        ; will be highlighted as errors.  Will highlight invalid suffix though.
+                                                            ("\\b\\(\\(0\\|[1-9][0-9]*\\)[uUlL]*\\)\\b" 1 font-lock-string-face)
 
-;;                                         ; Valid octal number
-;;                                                             ("\\b0[0-7]+[uUlL]*\\b" . font-lock-string-face)
+                                        ; Valid octal number
+                                                            ("\\b0[0-7]+[uUlL]*\\b" . font-lock-string-face)
 
-;;                                         ; Floating point number with no digits after the period.  This must be
-;;                                         ; after the invalid numbers, otherwise it will "steal" some invalid
-;;                                         ; numbers and highlight them as valid.
-;;                                                             ("\\b\\([0-9]+\\)\\." (1 font-lock-string-face))
+                                        ; Floating point number with no digits after the period.  This must be
+                                        ; after the invalid numbers, otherwise it will "steal" some invalid
+                                        ; numbers and highlight them as valid.
+                                                            ("\\b\\([0-9]+\\)\\." (1 font-lock-string-face))
 
-;;                                         ; Invalid number.  Must be last so it only highlights anything not
-;;                                         ; matched above.
-;;                                                             ("\\b[0-9]\\(\\w\\|\\.\\)+?\\b" . font-lock-warning-face)
-;;                                                             ))
-;;                               ))
-;; (font-lock-add-keywords
-;;  'csharp-mode
-;;  '(("0x\\([0-9a-fA-F]+\\)" . font-lock-builtin-face)))
+                                        ; Invalid number.  Must be last so it only highlights anything not
+                                        ; matched above.
+                                                            ("\\b[0-9]\\(\\w\\|\\.\\)+?\\b" . font-lock-warning-face)
+                                                            ))
+                              ))
+(font-lock-add-keywords
+ 'csharp-mode
+ '(("0x\\([0-9a-fA-F]+\\)" . font-lock-builtin-face)))
 
 
 ;;; fix bug for font lock breaks after ' or "
@@ -124,24 +117,6 @@ or terminating simple string."
   (unless (equal major-mode 'csharp-mode)
     (apply orig-fun args)))
 (advice-add 'c-clear-string-fences :around 'csharp-disable-clear-string-fences)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ;; added for init-java-mode.el temporatorially
@@ -337,11 +312,15 @@ or terminating simple string."
       (kmacro-lambda-form [?\C-  ?\C-n ?\C-n ?\C-n ?\M-w ?\C-p ?\C-p ?\C-p ?\C-p ?\C-n ?\C-y ?\C-p ?\C-p ?\C-p ?\M-f ?\M-d ?\M-d ?  ?v ?o ?i ?d ? ?\C-e ?\M-b ?\M-d ?r ?e backspace ?\M-b ?\M-b ?\M-b ?\C-b ?R ?e ?c ?u ?r ?s ?i ?v ?e ?\C-p return ?p ?r ?i ?v ?a ?t ?e ? ] 0 "%d"))
 (global-set-key (kbd "C-c p") 'cpf) ; very useful
 
-(fset 'ccaa
-      (kmacro-lambda-form [?\M-f ?\C-f ?\C-f ?\C-f ?\[ ?\C-f ?\M-f ?\M-f ?\M-f ?\C-f ?\C-f ?\C-f ?  backspace ?\[ ?\C-f ?\C-f ?\C-f ?\C-  ?\C-e ?\C-b ?\C-b ?\C-b ?\M-l ?\[ ?\C-k ?\{ ?\C-k backspace return ?\{ ?\C-k return ?\C-p ?\C-n ?\C-a ?\M-f ?\M-f ?\M-f ?\M-f ?\M-f ?\C-  ?\C-n ?\C-e ?\M-l ?\] return ?\} return ?\C-a ?\M-f ?\M-f ?\M-f ?\M-f ?\M-f ?\M-b ?\M-b ?\C-  ?\C-e ?\M-l ?\{ ?\{ ?\{ ?\C-k return ?\{ ?\{ ?\C-k return ?\C-  ?\C-e ?\M-l ?\} ?\} ?\} return ?\} ?\} return ?\C-e ?\C-n] 0 "%d"))
-;; (fset 'cca
-;;       (kmacro-lambda-form [?\M-f ?\M-f ?\M-f ?\M-f ?\M-f ?\C-b ?\C-b ?\C-b ?\C-b ?\C-  ?\C-e ?\M-l ?\[ ?\C-k return ?\{ ?\C-k return ?\C-a ?\M-f ?\M-f ?\M-f ?\M-f ?\M-f ?\C-  ?\C-e ?\M-l ?\] return ?\} return ?\C-n] 0 "%d"))
-(global-set-key (kbd "C-c a") 'ccaa) ; very useful
+(fset 'caa
+      (kmacro-lambda-form [?\C-  ?\C-n ?\M-l ?\[ ?\C-k return ?\{ ?\C-k return ?\C-a ?\C-  ?\C-n ?\M-l ?\] return ?\} return ?\C-a ?\C-  ?\C-n ?\M-l ?\{ ?\{ ?\{ ?\C-k return ?\{ ?\{ ?\C-k return ?\C-a ?\C-  ?\C-n ?\M-l ?\} ?\} ?\} return ?\} ?\} return ?\C-a ?\C-  ?\C-n ?\M-l ?\{ ?\} return ?\[ ?\] ?\[ ?\] return ?\C-n] 0 "%d"))
+;; (fset 'ccaa
+;;       (kmacro-lambda-form [?\M-f ?\C-f ?\C-f ?\C-f ?\[ ?\C-f ?\M-f ?\M-f ?\M-f ?\C-f ?\C-f ?\C-f ?  backspace ?\[ ?\C-f ?\C-f ?\C-f ?\C-  ?\C-e ?\C-b ?\C-b ?\C-b ?\M-l ?\[ ?\C-k ?\{ ?\C-k backspace return ?\{ ?\C-k return ?\C-p ?\C-n ?\C-a ?\M-f ?\M-f ?\M-f ?\M-f ?\M-f ?\C-  ?\C-n ?\C-e ?\M-l ?\] return ?\} return ?\C-a ?\M-f ?\M-f ?\M-f ?\M-f ?\M-f ?\M-b ?\M-b ?\C-  ?\C-e ?\M-l ?\{ ?\{ ?\{ ?\C-k return ?\{ ?\{ ?\C-k return ?\C-  ?\C-e ?\M-l ?\} ?\} ?\} return ?\} ?\} return ?\C-e ?\C-n] 0 "%d"))
+(global-set-key (kbd "C-c a") 'caa) ; very useful
+
+(fset 'qt
+      (kmacro-lambda-form [?\C-a ?\C-  ?\C-n ?\M-l ?\" ?\C-k return ?\' return ?\C-n] 0 "%d"))
+(global-set-key (kbd "C-c t") 'qt) ; char [][] a = {{"a"}, {"b"}} double quote to single quote
 
 (fset 'lm   ; line message
       "System.out.println(\"\C-f);\C-p\C-e\C-b\C-b\C-b")

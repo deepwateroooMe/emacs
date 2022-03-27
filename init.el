@@ -1,6 +1,5 @@
 ;;;
 ;;; original came from https://github.com/redguardtoo/emacs.d
-
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/") t)
@@ -8,32 +7,10 @@
              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 ;(package-initialize)
 
-(defvar luna-dumped nil
-  "non-nil when a dump file is loaded (because dump.el sets this variable).")
-
-
-;; Bootstrap 'use-package'
-(eval-after-load 'gnutls
-  '(add-to-list 'gnutls-trustfiles "/etc/ssl/cert.pem"))
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-(eval-when-compile
-  (require 'use-package))
-(require 'bind-key)
-(setq use-package-always-ensure t)
-
-
-;(debug-on-entry 'package-initialize)    
-
-
-(defvar best-gc-cons-threshold 4000000 "Best default gc threshold value. Should't be too big.")
-(setq gc-cons-threshold most-positive-fixnum) ;; don't GC during startup to save time
-
-;; (setq default-directory "~/.emacs.d/")
+ (setq default-directory "C:/Users/blue_/AppData/Roaming/.emacs.d/")
 ;; (setq default-directory "/Volumes/e/uMVVM/Assets/Sources/")
 ;; (setq default-directory "/Volumes/e/ILRuntimeHotFix/ILRuntimeU3D/ILRuntimeDemo/Assets/Samples/ILRuntime/1.6.4/Demo/Scripts/Examples")
-;(setq default-directory "C:/Users/blue_/Desktop/")
+;; (setq default-directory "C:/Users/blue_/App/")
 ;; (setq default-directory "e:/yunlangZhuZuoAndroid/trunk/client/trunk/")
 ;; (setq default-directory "h:/andrprac/RealTimeEval/app/src/main/")
 ;; (setq default-directory "h:/andrprac/FragmentsDemo/app/src/main/")
@@ -53,15 +30,54 @@
 ;; (setq default-directory "h:/andrprac/MockitoExample/app/src/main/")
 ;; (setq default-directory "h:/andrprac/Sample_AndroidTest/app/src/main/")
 ;; (setq default-directory "h:/andrprac/SnakeKotlinDemo/app/src/main/")
-(setq default-directory "h:/leetcodeCoding/")
-;; (setq default-directory "h:/andrprac/")
+;; (setq default-directory "h:/andrprac/wanandroid/app/src/main/")
+;; (setq default-directory (concat "/andrprac/jv/app/src/main/java/com/me/jv/"))
+;; (setq default-directory "h:/andrprac/coroutines-sample/app/src/main/")
+;; (setq default-directory "h:/andrprac/PagingDemo/app/src/main/")
+;; (setq default-directory "h:/andrprac/RxJavaLearningMaterial/app/src/main/")
+;; (setq default-directory "h:/andrprac/AnchorTask/app/src/main/")
+;; (setq default-directory "h:/andrprac/banner/app/src/main/")
+;; (setq default-directory "h:/andrprac/Fan/app/src/main/")
+;; (setq default-directory "h:/andrprac/MultiThread_learning/app/src/main/")
+;; (setq default-directory "g:/andrprac/CameraDemo/app/src/main/")
+;; (setq default-directory "h:/andrprac/HelloAnimations/app/src/main/")
+;; (setq default-directory "h:/andrprac/listview/app/src/main/")
+;; (setq default-directory "g:/leetcodeCoding/")
+;;(setq default-directory "g:/andrprac/")
+;; (setq default-directory "g:/android/")
+;(setq default-directory "h:/andrprac/View-CustomLayout/app/src/main/")
+;; (setq default-directory "h:/andrprac/Meizikt/app/src/main/")
+;; (setq default-directory "h:/andrprac/GoodsDemo/app/src/main/")
+;; (setq default-directory "i:/cv/")
 
 ;;; setup defaults for all modes
 (setq default-frame-alist
-      '((top . 0)(left . 350)(height . 75)(width . 160)(menubar-lines . 100)(tool-bar-line . 0)) ; ori
+      '((top . 0)(left . 400)(height . 75)(width . 160)(menubar-lines . 100)(tool-bar-line . 0)) ; ori
      ;; '((top . 0)(left . 400)(height . 63)(width . 180)(menubar-lines . 100)(tool-bar-line . 0))
       ) ; tmp.py
 
+
+(global-set-key (kbd "M-SPC") 'set-mark-command)
+(menu-bar-mode 1)
+ 
+(defvar luna-dumped nil
+  "non-nil when a dump file is loaded (because dump.el sets this variable).")
+
+;; Bootstrap 'use-package'
+(eval-after-load 'gnutls
+  '(add-to-list 'gnutls-trustfiles "/etc/ssl/cert.pem"))
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+(eval-when-compile
+  (require 'use-package))
+(require 'bind-key)
+(setq use-package-always-ensure t)
+
+;(debug-on-entry 'package-initialize)    
+
+(defvar best-gc-cons-threshold 4000000 "Best default gc threshold value. Should't be too big.")
+(setq gc-cons-threshold most-positive-fixnum) ;; don't GC during startup to save time
 
 (setq emacs-load-start-time (current-time))
 ;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
@@ -84,6 +100,13 @@
 
 (setq *emacs24old*  (or (and (= emacs-major-version 24) (= emacs-minor-version 3))
                         (not *emacs24*)))
+
+;; w32-alt-is-meta
+;; w32-lwindow-modifier
+;; and w32-rwindow-modifier
+
+;; (setq mac-option-modifier 'meta)
+;; (setq mac-right-option-modifier nil)
 
 ;; *Message* buffer should be writable in 24.4+
 (defadvice switch-to-buffer (after switch-to-buffer-after-hack activate)
@@ -160,7 +183,7 @@
   (require 'init-ibuffer)
   (require 'init-ivy)
   (require 'init-hippie-expand)
-  (require 'init-windows)
+  ;; (require 'init-windows)
   (require 'init-sessions)
   (require 'init-git)
   (require 'init-crontab)
@@ -177,11 +200,11 @@
   (require 'init-ruby-mode)
   (require 'init-lisp)
   (require 'init-elisp)
-;  (require 'init-auto-complete)
+ ;; (require 'init-auto-complete)
 
   (require 'cpputils-cmake) ; to do more work on this one
   ;; Use bookmark instead
-  ;; (require 'init-cc-mode)
+  (require 'init-cc-mode)
   (require 'init-gud)
   (require 'init-linum-mode)
   (require 'init-moz)
@@ -216,7 +239,8 @@
  
 ;(require 'init-python-mode)
 (require 'init-csharp-mode)
-;(require 'init-company)
+(require 'init-auto-complete)
+;; (require 'init-company)
   )
 
 ;; ;;; org-mode auto complete, commented out only for dump fixes
@@ -272,7 +296,7 @@
        (let ((file-name-handler-alist nil))
          (require 'init-python-mode)
          (require 'init-csharp-mode)
-         (require 'init-company)
+         ;; (require 'init-company)
          (require 'init-sr-speedbar)
          )
        ;; (spacemacs|load-modes '(company csharp))
@@ -311,13 +335,16 @@
 
 (defun shift-right ()
   (interactive)
-  (shift-region 8))
+  (shift-region 2))
 
 (defun shift-left ()
   (interactive)
-  (shift-region -8))
+  (shift-region -2))
 
-;; Bind (shift-right) and (shift-left) function to your favorite keys. I use
+(setq auto-save-default nil)
+
+;; bind8
+;; (shift-right) and (shift-left) function to your favorite keys. I use
 ;; the following so that Ctrl-Shift-Right Arrow moves selected text one 
 ;; column to the right, Ctrl-Shift-Left Arrow moves selected text one
 ;; column to the left:
@@ -399,7 +426,7 @@
       c-basic-offset 4)
 
 ;;; 设定行距
-(setq default-line-spacing 1)
+(setq default-line-spacing 0.05)
 ;;; 开启语法高亮
 (global-font-lock-mode 1)
 ;;; 高亮显示区域选择
@@ -496,32 +523,39 @@
 (require 'ido-ubiquitous) ; replaces ido-everywhere
 
 ;;; ido-mode
-;; (ido-mode t)
+(ido-mode t)
 
 ;;;; flx-ido
-                                        ;(require 'flx-ido)
-                                        ;(flx-ido-mode t)
-;;; disable ido faces to see flx highlights.
-                                        ;(setq ido-use-faces nil)
-;;; increase garbage collection threshold
-                                        ;(setq gc-cons-threshold 20000000)
+(require 'flx-ido)
+(flx-ido-mode t)
+;; disable ido faces to see flx highlights.
+(setq ido-use-faces nil)
+;; increase garbage collection threshold
+(setq gc-cons-threshold 20000000)
+
+
+(require 'ido)
+(ido-mode)
+(define-key (cdr ido-minor-mode-map-entry) [remap write-file] (kbd "C-x C-w"))
 
 
 ;;; check for spelling
-(setq-default ispell-program-name "aspell")
-(setq text-mode-hook '(lambda()
-                        (flyspell-mode t)))
-(setq org-mode-hook '(lambda()
-                       (flyspell-mode t)))
+;; (setq-default ispell-program-name "aspell")
+;; (setq text-mode-hook '(lambda()
+;;                         (flyspell-mode t)))
+;; (setq org-mode-hook '(lambda()
+;;                        (flyspell-mode t)))
 
 
-(defun soft-wrap-lines ()
+(defun soft-wrap-lines (boo)
   "Make lines wrap at window edge and on word boundary, in current buffer."
-  (interactive)
+  (interactive "r")
+  ;; (interactive)
   (setq truncate-lines nil)
-  (setq word-wrap t));;; 1)
-                                        ;(setq soft-wrap-lines t) ;; for chinese
-                                        ;(setq debug-on-error t)
+  ;; (setq word-wrap t)
+  )
+                                        ;; (setq soft-wrap-lines t) ;; for chinese
+                                        ;; (setq debug-on-error t)
 
 
 					; wsl-copy ;;; 
@@ -635,13 +669,52 @@
     (insert clip)
     (if arg (kill-new clip))))
 
-(define-key global-map (kbd "C-x C-y") 'wsl-paste-from-clipboard)
-(define-key global-map (kbd "C-x M-w") 'wsl-copy-region-to-clipboard)
-(define-key global-map (kbd "C-x C-w") 'wsl-cut-region-to-clipboard)
-
-;;; lisp mute & dmute
-(fset 'ldm
-      [?\C-a ?\C-  ?\C-f ?\C-w ?\C-n ?\C-a])
+;; (load "misterioso")
+;; (require 'color-theme)
+;; (setq color-theme-is-global t)
+;; (color-theme-initialize)
+;; ;; (load "color-theme-tango-dark")
+;; ;; (load "color-theme-tangotango")
+;; ;; (load "poet-theme")
+;; ;; (load "poet-dark-theme")
+;; (load "deeper-blue")
+;; (load "misterioso")
+;; (setq my-color-themes (list
+;;                        ;; 'color-theme-tango-dark
+;;                        ;; 'color-theme-tangotango
+;;                        ;; 'poet-theme
+;;                        ;; 'poet-dark-theme
+;;                        ;; '(custom-enabled-themes '(deeper-blue))
+;;                        ;; '(custom-enabled-themes '(misterioso))
+;;                        ;; '(deeper-blue)
+;;                        ;; '(misterioso)                       
+;;                        'color-theme-deeper-blue
+;;                        '(misterioso)                       
+;;     ;; 'color-theme-tangotango
+;;                        ;; 'color-theme-colorful-obsolescence 'color-theme-zenburn
+;;                        ;; 'color-theme-leuven 'color-theme-folio 
+;;                        ;; 'color-theme-manoj 'color-theme-zenash
+;;                        ;; 'color-theme-railscast
+;;                        ))
+;; (defun my-theme-set-default () ; Set the first row
+;;   (interactive)
+;;   (setq theme-current my-color-themes)
+;;   (funcall (car theme-current)))
+;; (defun my-describe-theme () ; Show the current theme
+;;   (interactive)
+;;   (message "%s" (car theme-current)))
+;;                                         ; Set the next theme (fixed by Chris Webber - tanks)
+;; (defun my-theme-cycle ()            
+;;   (interactive)
+;;   (setq theme-current (cdr theme-current))
+;;   (if (null theme-current)
+;;       (setq theme-current my-color-themes))
+;;   (funcall (car theme-current))
+;;   (message "%S" (car theme-current)))
+;; (setq theme-current my-color-themes)
+;; (setq color-theme-is-global nil) ; Initialization
+;; ;; (my-theme-set-default)
+;; (global-set-key [f4] 'my-theme-cycle)
 
 
 ;;; for formating files when copying codes from online or somewhere which format I don't like
@@ -664,53 +737,73 @@
 (fset 'st
       [?\C-  ?\C-p ?\C-p ?\C-p ?\C-p ?\C-p ?\C-p ?\M-p ?* return return ?\C-p ?\C-p])
 
-
 ;; @see https://www.reddit.com/r/emacs/comments/4q4ixw/how_to_forbid_emacs_to_touch_configuration_files/
                                         ;(setq custom-file (concat user-emacs-directory "custom-set-variables.el"))
                                         ;(load custom-file 'noerror)
 
                                         ;(setq gc-cons-threshold best-gc-cons-threshold)
 
-(set-face-attribute 'region nil :background "#666" :foreground "#ffffff")
+(set-language-environment 'UTF-8) 
+(set-locale-environment "UTF-8")
+;; (set-fontset-font "fontset-default" 'unicode '("WenQuanYi Zen Hei" . "unicode-ttf"))
+;; (set-fontset-font t 'han (font-spec :family "Microsoft Yahei" :size 16))
+(setq face-font-rescale-alist '(("Microsoft Yahei" . 1.2) ("WenQuanYi Zen Hei" . 1.2)))                  
+;; '(default ((t (:family "Inconsolata-dz for Powerline" :foundry "outline" :slant normal :weight normal :height 98 :width normal))))
+;; (set-fontset-font "fontset-default" 'unicode '("Inconsolata-dz for Powerline" . "unicode-otf"))
+
+(set-face-attribute 'default nil :font "Fira Code Retina")
+;; (font-spec :family "Iosevka Term" :size 16 :otf '(latn nil (dlig) nil)) ;;; 是我用来参考的
+;; (set-face-attribute 'default nil :font "Inconsolata-dz" :otf '(latn nil (dlig) nil))
+
+;; (set-face-attribute 'region nil :background "#666" :foreground "#ffffff") 
 (setq yas-indent-line 'auto)
 ;(setq yas/indent-line 'auto)
 
+(setq my/for-org nil)
+;; (when (bound-and-true-p my/for-org) (load-theme 'misterioso))
+(if (bound-and-true-p my/for-org) (load-theme 'misterioso)
+  ;; (load-theme '(deeper-blue)))
+                       (load-theme 'deeper-blue))
 
+;; '(custom-enabled-themes '(deeper-blue))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-   [default default default italic underline success warning error])
+ '(an si-color-faces-vector)
  '(ansi-color-names-vector
    ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
  '(column-number-mode t)
- '(custom-enabled-themes '(deeper-blue))
+ '(custom-safe-themes
+   '("f490984d405f1a97418a92f478218b8e4bcc188cf353e5dd5d5acd2f8efd0790" "28a104f642d09d3e5c62ce3464ea2c143b9130167282ea97ddcc3607b381823f" default))
  '(display-time-mode t)
+ '(fci-rule-color "#dedede")
  '(git-gutter:handled-backends '(svn hg git))
  '(latex-run-command "latex --shell-escape")
+ '(line-spacing 0.15)
+ '(org-export-with-sub-superscripts nil)
  '(org-format-latex-options
    '(:foreground default :background default :scale 2.0 :html-foreground "Black" :html-background "Transparent" :html-scale 2.0 :matchers
                  ("begin" "$1" "$" "$$" "\\(" "\\[")))
  '(org-support-shift-select nil)
  '(package-selected-packages
-   '(lsp-mode py-autopep8 logview virtualenvwrapper company-jedi flycheck-color-mode-line auto-complete-clang-async flycheck-swift3 flycheck-swift flycheck swift3-mode swift-mode yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode lua-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-lua flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word csharp-mode crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link))
+   '(ppd-sr-speedbar lsp-mode py-autopep8 logview virtualenvwrapper company-jedi flycheck-color-mode-line auto-complete-clang-async flycheck-swift3 flycheck-swift flycheck swift3-mode swift-mode yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode lua-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-lua flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word csharp-mode crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link))
  '(session-use-package t nil (session))
  '(show-paren-mode t)
- '(speedbar-frame-parameters
-   '((minibuffer)
-     (width . 35)
-     (border-width . 0)
-     (menu-bar-lines . 0)
-     (tool-bar-lines . 0)
-     (unsplittable . t)
-     (left-fringe . 0)))
+ '(speedbar-frame-parameters '((minibuffer) (width . 26)))
  '(speedbar-show-unknown-files nil)
+ '(sr-speedbar-auto-refresh nil)
+ '(sr-speedbar-default-width 26)
+ '(sr-speedbar-max-width 26)
+ '(sr-speedbar-right-side nil)
+ '(sr-speedbar-skip-other-window-p nil)
+ '(sr-speedbar-width-x 26 t)
  '(tex-run-command "\"latex --shell-escape\"")
  '(tex-start-commands "\"latex -ini -shell-escape\"")
  '(tex-start-options "\"latex -ini --shell-escape\"")
  '(tool-bar-mode nil)
+ '(word-wrap nil)
  '(yas-also-auto-indent-first-line t)
  '(yas-also-indent-empty-lines t)
  '(yas-indent-line 'auto)
@@ -721,13 +814,14 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Inconsolata-dz" :foundry "outline" :slant normal :weight normal :height 98 :width normal))))
- '(org-level-1 ((t (:inherit outline-6))))
+ '(cursor ((t (:background "orchid"))))
+ '(org-level-1 ((t (:inherit outline-1))))
  '(org-level-2 ((t (:inherit outline-2))))
- '(org-level-3 ((t (:inherit outline-5))))
- '(org-level-4 ((t (:inherit outline-1))))
- '(org-level-5 ((t (:inherit outline-3))))
- '(org-level-6 ((t (:inherit outline-4))))
- '(region ((t (:extend t :background "medium blue"))))
+ '(org-level-3 ((t (:inherit outline-3))))
+ '(org-level-4 ((t (:inherit outline-4))))
+ '(org-level-5 ((t (:inherit outline-5))))
+ '(org-level-6 ((t (:inherit outline-6))))
+ '(region ((t (:extend t :background "dodger blue" :foreground "#e1e1e0"))))
  '(speedbar-directory-face ((t (:foreground "light slate blue" :height 100 :family "Droid Sans"))))
  '(window-numbering-face ((t (:foreground "DeepPink" :underline "DeepPink" :weight bold))) t))
 	;;; Local Variables:

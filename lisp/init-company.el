@@ -1,14 +1,7 @@
+;;; 
+(require 'company)
+
 (add-hook 'after-init-hook 'global-company-mode)
-
-
-                                        ;(if (fboundp 'evil-declare-change-repeat)
-                                        ;    (mapc #'evil-declare-change-repeat
-                                        ;          '(company-complete-common
-                                        ;            company-select-next
-                                        ;            company-select-previous
-                                        ;            company-complete-selection
-                                        ;            company-complete-number
-                                        ;            )))
 
 (eval-after-load 'company
   '(progn
@@ -21,7 +14,6 @@
      ;; can't work with TRAMP
      (setq company-backends (delete 'company-ropemacs company-backends))
      ;; (setq company-backends (delete 'company-capf company-backends))
-
      
      (setq company-dabbrev-downcase nil ;; I don't like the downcase word in company-dabbrev!
            ;; make previous/next selection in the popup cycles
@@ -43,7 +35,7 @@
      ;; @see https://github.com/redguardtoo/emacs.d/commit/2ff305c1ddd7faff6dc9fa0869e39f1e9ed1182d
      (defadvice company-in-string-or-comment (around company-in-string-or-comment-hack activate)
        ;; you can use (ad-get-arg 0) and (ad-set-arg 0) to tweak the arguments
-       (if (memq major-mode '(php-mode html-mode web-mode nxml-mode))
+       (if (memq major-mode '(php-mode html-mode web-mode nxml-mode kotlin-mode))
            (setq ad-return-value nil)
          ad-do-it))
 
@@ -102,9 +94,9 @@
 ;; grammal check: flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode);global enable 
                                         ; close flymake,  start flycheck                                        
-(when (require 'flycheck nil t)
-  (setq elpy-modules(delq 'elpy-module-flymake elpy-modules))
-  (add-hook 'elpy-mode-hook 'flycheck-mode))
+;; (when (require 'flycheck nil t)
+;;   (setq elpy-modules(delq 'elpy-module-flymake elpy-modules))
+;;   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
                                         ; 补全后端使用anaconda
 (add-to-list 'company-backends '(company-anaconda :with company-yasnippet))
@@ -155,9 +147,5 @@
    (sucha-install-company-completion-rules) ; refers to the function
    )
  t)
-
-
-;; company mode map  ; 7 mute for java-mode
-;;(define-key company-mode-map [(tab)] 'indent-for-tab-command) ; tab should NOT be reset to anything else than yas/trigger-key
 
 (provide 'init-company)

@@ -24,16 +24,22 @@
 (setq ac-auto-start 3) ;; 输入4个字符才开始补全
 (global-set-key "\M-/" 'auto-complete)  ;; "\M-/" 补全的快捷键，用于需要提前补全
 ;;; Show menu 0.8 second later
-(setq ac-auto-show-menu 0.1)
+(setq ac-auto-show-menu 0.1) ;;; 0.1
 ;; 选择菜单项的快捷键
 (setq ac-use-menu-map t)
 (define-key ac-menu-map "\C-n" 'ac-next)
 (define-key ac-menu-map "\C-p" 'ac-previous)
 ;; menu设置为12 lines
 (setq ac-menu-height 12)
-;(global-auto-complete-mode t)
+
+(global-auto-complete-mode t)
 ;; extra modes auto-complete must support
-(dolist (mode '(java-mode python-mode csharp-mode swift-mode emacs-lisp-mode org-mode web-mode
+
+;; (auto-completion :variables auto-completion-enable-sort-by-usage t
+;;                  auto-completion-enable-snippets-in-popup t)
+;;                  ;; :disabled-for org markdown)
+
+(dolist (mode '(csharp-mode kotlin-mode java-mode python-mode swift-mode emacs-lisp-mode org-mode web-mode
                           magit-log-edit-mode log-edit-mode org-mode text-mode haml-mode
                           sass-mode yaml-mode csv-mode espresso-mode haskell-mode
                           html-mode web-mode sh-mode smarty-mode clojure-mode
@@ -41,9 +47,7 @@
                           js2-mode css-mode less-css-mode))
   (add-to-list 'ac-modes mode))
 
-
 (setq completion-at-point-functions '(elisp-completion-at-point comint-dynamic-complete-filename t))
-
 
 ;;开启ac-dwin
 ;(setq ac-dwim t)
@@ -123,8 +127,10 @@
 
   (setq ac-clang-auto-save t)
   )
-(add-hook 'c-mode-hook 'my-ac-cc-mode-setup)
-(add-hook 'c++-mode-hook 'my-ac-cc-mode-setup)
+
+;;; 我把它comment掉了 22-01-29
+;; (add-hook 'c-mode-hook 'my-ac-cc-mode-setup)
+;; (add-hook 'c++-mode-hook 'my-ac-cc-mode-setup)
 
 (ac-config-default)
 

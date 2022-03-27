@@ -76,6 +76,9 @@
 ;; CSS
 (add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
 
+;; .properties
+(add-to-list 'auto-mode-alist '("\\.properties" . text-mode))
+
 (linum-mode 1)
 
 (provide 'init-text)

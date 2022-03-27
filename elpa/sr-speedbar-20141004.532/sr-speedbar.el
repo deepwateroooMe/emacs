@@ -7,17 +7,16 @@
 ;; Copyright (C) 2008, 2009, Andy Stewart, all rights reserved.
 ;; Copyright (C) 2009, Peter Lunicks, all rights reversed.
 ;; Created: 2008
-;; Version: 20141004.532
-;; X-Original-Version: 20140914.2339
+;; Version: 20210922
 ;; X-Original-Version: 0.1.10
-;; Last-Updated: 2014-08-03 11:30:00
+;; Last-Updated: 2021-09-22
 ;; URL: http://www.emacswiki.org/emacs/download/sr-speedbar.el
 ;; Keywords: speedbar, sr-speedbar.el
-;; Compatibility: GNU Emacs 22 ~ GNU Emacs 24
+;; Compatibility: GNU Emacs 22 ~ GNU Emacs 25
 ;;
 ;; Features required by this library:
 ;;
-;;  `speedbar' `advice' `cl'
+;;  `speedbar' `advice' `cl-lib'
 ;;
 
 ;;; This file is NOT part of GNU Emacs
@@ -79,6 +78,26 @@
 ;;      M-x customize-group RET sr-speedbar RET
 
 ;;; Change log:
+;; * 22 Sep 2021:
+;;   * Vasilij Schneidermann <mail@vasilij.de>
+;;     * Fix cl deprecation warning
+;;
+;; * 07 Jan 2021:
+;;   * Jacob First <jacob.first@member.fsf.org>
+;;     * Fix inconsistent window selection when opening speedbar on the right side vs. on the left.
+;;
+;; * 16 Jun 2020:
+;;   * Bo Yao <icerove@gmail.com> (submitted by him on 16 Jul 2018 to the Emacs Orphanage mirror version at GitHub)
+;;      * Always open file in most recently selected window (the one before switching to
+;;        sr-speedbar).
+;;
+;; * 25 Oct 2016:
+;;   * Hong Xu <hong@topbug.net>
+;;      * Fix compilation warning when `helm-alive-p' is not defined.
+;;
+;; * 04 Aug 2015:
+;;   * Tamas Levai <levait@tmit.bme.hu>:
+;;      * fix compilation warnings
 ;;
 ;; * 15 Sep 2014:
 ;;   * Tu, Do Hoang <tuhdo1710@gmail.com>
@@ -257,7 +276,7 @@
 ;;; Require
 (require 'speedbar)
 (require 'advice)
-(require 'cl)
+(require 'cl-lib)
 
 ;;; Code:
 
@@ -359,6 +378,11 @@ Default is nil."
 
 (defvar sr-speedbar-last-refresh-dictionary nil
   "The last refresh dictionary record of 'sr-speedbar-refresh'.")
+
+(eval-when-compile
+  (defvar ecb-activated-window-configuration nil)
+  (defun ecb-activate ())
+  (defun ecb-deactivate ()))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Interactive functions ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;###autoload
@@ -489,37 +513,26 @@ Otherwise return nil."
 
 (defun sr-speedbar-get-window ()
   "Get `sr-speedbar' window."
-  (let ((current-window (selected-window))
-        ;; Get split new window.
-        (new-window (split-window
-                     (selected-window)
-                     (if sr-speedbar-right-side
-                         (- (sr-speedbar-current-window-take-width) sr-speedbar-width)
-                       sr-speedbar-width)
-                     t)))
-    ;; Select split window.
-    (setq sr-speedbar-window
-          (if sr-speedbar-right-side
-              ;; Select right window when `sr-speedbar-right-side' is enable.
-              new-window
-            ;; Otherwise select left widnow.
-            current-window))))
+  (setq sr-speedbar-window
+        (split-window (selected-window)
+                      (- sr-speedbar-width)
+                      (if sr-speedbar-right-side 'right 'left))))
 
 (defun sr-speedbar-before-visiting-file-hook ()
   "Function that hook `speedbar-before-visiting-file-hook'."
-  (select-window (previous-window)))
+  (select-window (get-mru-window)))
 
 (defun sr-speedbar-before-visiting-tag-hook ()
   "Function that hook `speedbar-before-visiting-tag-hook'."
-  (select-window (previous-window)))
+  (select-window (get-mru-window)))
 
 (defun sr-speedbar-visiting-file-hook ()
   "Function that hook `speedbar-visiting-file-hook'."
-  (select-window (previous-window)))
+  (select-window (get-mru-window)))
 
 (defun sr-speedbar-visiting-tag-hook ()
   "Function that hook `speedbar-visiting-tag-hook'."
-  (select-window (previous-window)))
+  (select-window (get-mru-window)))
 
 (defun sr-speedbar-kill-buffer-hook ()
   "Function that hook `kill-buffer-hook'."
@@ -565,9 +578,9 @@ If WINDOW is nil, get current window."
     (walk-windows
      (lambda (w)
        (with-selected-window w
-         (incf window-number)
+         (cl-incf window-number)
          (if (window-dedicated-p w)
-             (incf dedicated-window-number)))))
+             (cl-incf dedicated-window-number)))))
     (if (and (> dedicated-window-number 0)
              (= (- window-number dedicated-window-number) 1))
         t nil)))
@@ -612,15 +625,13 @@ So function `display-buffer' conflict with `sr-speedbar' window, because
 That is to say, when current frame just have one `non-dedicated' window,
 any functions that use `display-buffer' can't split windows
 to display buffer, even option `pop-up-windows' is enable.
+
 And the example function that can occur above problem is `pop-to-buffer'."
-  (defvar helm-alive-p)
   (when (and pop-up-windows                            ;`pop-up-windows' is enable
              (sr-speedbar-window-dedicated-only-one-p) ;just have one `non-dedicated' window
              (sr-speedbar-window-exist-p sr-speedbar-window)
              (not (sr-speedbar-window-p)) ;not in `sr-speedbar' window
-             (if (featurep 'helm)
-		 (not helm-alive-p)
-	       t))
+             (not (bound-and-true-p helm-alive-p)))
     (split-window-vertically)
     (windmove-down)))
 
