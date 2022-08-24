@@ -74,6 +74,9 @@
 (speedbar-add-supported-extension ".aidl")
 (add-to-list 'speedbar-fetch-etags-parse-list
  		     '("\\.aidl" . speedbar-parse-c-or-c++tag))
+(speedbar-add-supported-extension ".yaml")
+(add-to-list 'speedbar-fetch-etags-parse-list
+ 		     '("\\.yaml" . speedbar-parse-c-or-c++tag))
 
 ;; (add-to-list 'speedbar-frame-parameters '(left-fringe . 0)) ; doesn't seem to work
 (setq sr-speedbar-width 40)

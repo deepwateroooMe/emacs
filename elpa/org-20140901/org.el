@@ -5736,15 +5736,17 @@ prompted for."
 	      string (buffer-substring beg end))
       (setq move t))
 
-    (unless char
-      (message "Emphasis marker or tag: [%s]"
-	       (mapconcat (lambda(e) (car e)) org-emphasis-alist ""))
-      (setq char (read-char-exclusive)))
-    (if (equal char ?\ )
-	(setq s "" move nil)
-      (unless (assoc (char-to-string char) org-emphasis-alist)
-	(user-error "No such emphasis marker: \"%c\"" char))
-      (setq s (char-to-string char)))
+    ;; (unless char
+    ;;   (message "Emphasis marker or tag: [%s]"
+    ;; 	       (mapconcat (lambda(e) (car e)) org-emphasis-alist ""))
+    ;;   (setq char (read-char-exclusive)))
+    (setq char ?\ )
+    ;; (if (equal char ?\ )
+	;; (setq s "" move nil)
+    ;;   ;; (unless (assoc (char-to-string char) org-emphasis-alist)
+    ;;   ;; 	(user-error "No such emphasis marker: \"%c\"" char))
+    ;;   (setq s (char-to-string char)))
+    (setq s "*")
     (while (and (> (length string) 1)
 		(equal (substring string 0 1) (substring string -1))
 		(assoc (substring string 0 1) org-emphasis-alist))

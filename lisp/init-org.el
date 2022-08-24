@@ -73,7 +73,14 @@
 (dolist (charset '(kana han symbol cjk-misc bopomofo))
   (set-fontset-font (frame-parameter nil 'font)
                     charset
-                    (font-spec :family "WenQuanYi Micro Hei Mono" :size 12))) 
+                    ;; (font-spec :family "WenQuanYi Micro Hei Mono" :size 12))) 
+                    (font-spec :family "Microsoft Yahei" :size 12)))
+
+;; (When (member "Monaco" (font-family-list))
+;;   (set-frame-font "Monaco-11" t t))
+;; (when (member "Noto Sans Mono" (font-family-list))
+;;   (set-fontset-font t 'han "Noto Sans Mono"))
+
 
 (defvar md/font-size 100) ;; 125
 (defun md/set-default-font ()
@@ -106,11 +113,12 @@ same directory as the org-buffer and insert a link to this file."
                 basename
                 ".png"))
   (call-process "screencapture" nil nil nil "-s" filename)
-  (insert "#+CAPTION:")
-  (insert basename)
-  (insert "\n")
+  ;; (insert "#+CAPTION:")
+  ;; (insert basename)
+  ;; (insert "\n")
   (insert (concat "[[" filename "]]"))
-  (org-display-inline-images))
+  ;; (org-display-inline-images)
+  )
 (global-set-key "\M-s" 'my-org-screenshot)
 
 
@@ -121,8 +129,11 @@ same directory as the org-buffer and insert a link to this file."
       (setq org-startup-indented t)
       (setq org-startup-truncated nil)
       ;; (soft-wrap-lines t) ;;; this one works
-      (auto-fill-mode 1)))
-(setq org-startup-truncated nil)
+      ;; (auto-fill-mode 1) ;;; org里直线容易折断
+      (gio-global-minor-mode 0) ;;; 这个会 break 掉 org-level-faces,暂时把它关掉
+      (linum-mode 1)
+      ))
+;; (setq org-startup-truncated nil)
 
 (load "folding" 'nomessage 'noerror)
 
@@ -481,5 +492,9 @@ otherwise, run code in `kotlin-repl'."
 (fset 'cm
       (kmacro-lambda-form [?\C-a ?- ?  ?\C-e ?\C-n ?\C-a] 0 "%d"))
 (global-set-key (kbd "C-c i") 'cm) ; very useful
+
+
+
+(global-set-key (kbd "C-c j") 'org-emphasize) ; very useful
 
 (provide 'init-org)
