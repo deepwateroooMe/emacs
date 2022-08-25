@@ -1,0 +1,4 @@
+# name: Integer.toString
+# key: its
+# --
+Integer.toString(${1:v})$0

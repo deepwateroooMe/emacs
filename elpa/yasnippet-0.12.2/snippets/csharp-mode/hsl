@@ -1,0 +1,6 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: HashSet<Long>
+# key: hsl
+# --
+Set<Long> ${1:s} = new HashSet<>();
+$0

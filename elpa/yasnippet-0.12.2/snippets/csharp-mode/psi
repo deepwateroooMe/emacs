@@ -1,0 +1,6 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# key: psi
+# --
+System.out.println("$1.size(): " + $1.size());
+System.out.println(Arrays.toString(new ArrayList<>($1).toArray()));
+$0

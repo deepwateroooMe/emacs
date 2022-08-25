@@ -1,0 +1,7 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: for (...) { ... }
+# key: fcc
+# --
+for (Character ${1:i} : ${2}) {
+    $0
+}

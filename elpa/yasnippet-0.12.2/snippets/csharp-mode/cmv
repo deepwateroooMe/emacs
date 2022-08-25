@@ -1,0 +1,5 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: Collections.m()
+# key: cmv
+# --
+Collections.${1:max}(${2:m.values()})$0

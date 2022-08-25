@@ -1,0 +1,6 @@
+# contributor: deepwaterooo
+# name: Toast.makeText()
+# key: tt
+# --
+Toast.makeText(this, $1, Toast.LENGTH_${2:SHORT}).show();
+$0

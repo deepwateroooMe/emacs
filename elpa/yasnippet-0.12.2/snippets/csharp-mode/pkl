@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: peekLast()
+# key: pkl
+# --
+peekLast()$0

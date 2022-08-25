@@ -1,0 +1,7 @@
+# contributor: whi
+# name: wi
+# key: wi
+# --
+while ($1) {
+    $0
+}

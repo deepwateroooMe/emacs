@@ -1,0 +1,5 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: Double.parseDouble()
+# key: dpd
+# --
+Double.parseDouble(${1:s})$0

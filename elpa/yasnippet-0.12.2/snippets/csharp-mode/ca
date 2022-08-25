@@ -1,0 +1,5 @@
+# contributor: deepwaterooo
+# name: char [] a = new char [] {}
+# key: ca
+# --
+char [] ${1:a} = new char [] {$2}; $0

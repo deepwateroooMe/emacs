@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: println text
+# key: prt
+# --
+System.out.println("${1:func}");
+$0

@@ -1,0 +1,6 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: System.arraycopy()
+# key: spa
+# --
+System.arraycopy(${1:src}, 0, ${2:dst}, 0, ${3:n});
+$0

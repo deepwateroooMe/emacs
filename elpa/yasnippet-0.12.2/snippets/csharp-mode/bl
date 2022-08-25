@@ -1,0 +1,6 @@
+# contributor: deepwaterooo
+# name: print ListNode
+# key: bl
+# --
+${1:head}.buildList($1, ${2:a});
+$0
