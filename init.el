@@ -11,48 +11,10 @@
 ;; (setq default-directory "/Volumes/e/uMVVM/Assets/Sources/")
 ;; (setq default-directory "/Volumes/e/ILRuntimeHotFix/ILRuntimeU3D/ILRuntimeDemo/Assets/Samples/ILRuntime/1.6.4/Demo/Scripts/Examples")
 ;; (setq default-directory "C:/Users/blue_/App/")
-;; (setq default-directory "e:/yunlangZhuZuoAndroid/trunk/client/trunk/")
-;; (setq default-directory "h:/andrprac/RealTimeEval/app/src/main/")
-;; (setq default-directory "h:/andrprac/FragmentsDemo/app/src/main/")
-;; (setq default-directory "h:/andrprac/ContentProvider/app/src/main/")
-;; (setq default-directory "h:/andrprac/ContentProvider-interp/app/src/main/")
-;; (setq default-directory "h:/contentProviderTutorial/app/src/main/")
-;; (setq default-directory "h:/andrprac/launchmode/app/src/main/")
-;; (setq default-directory "h:/andrprac/Android-Activity-LaunchMode/app/src/main/")
-;; (setq default-directory "h:/andrprac/mvx/app/src/main/")
-;; (setq default-directory "h:/andrprac/ViewPagerFragmentLazyLoad/app/src/main/")
-;; (setq default-directory "h:/andrprac/sunflower_java/app/src/main/")
-;; (setq default-directory "h:/andrprac/android-navigation/app/src/main/")
-;; (setq default-directory "h:/andrprac/SampleNavigation/app/src/main/")
-;; (setq default-directory "h:/andrprac/Jetpack-databinding/compose_hoo/app/src/main/")
-;; (setq default-directory "h:/andrprac/recyclerview-json-parsing/RecyclerJsonParsing/app/src/main/")
-;; (setq default-directory "h:/andrprac/retrofit-example/app/src/main/")
-;; (setq default-directory "h:/andrprac/MockitoExample/app/src/main/")
-;; (setq default-directory "h:/andrprac/Sample_AndroidTest/app/src/main/")
-;; (setq default-directory "h:/andrprac/SnakeKotlinDemo/app/src/main/")
-;; (setq default-directory "h:/andrprac/wanandroid/app/src/main/")
-;; (setq default-directory (concat "/andrprac/jv/app/src/main/java/com/me/jv/"))
-;; (setq default-directory "h:/andrprac/coroutines-sample/app/src/main/")
-;; (setq default-directory "h:/andrprac/PagingDemo/app/src/main/")
-;; (setq default-directory "h:/andrprac/RxJavaLearningMaterial/app/src/main/")
-;; (setq default-directory "h:/andrprac/AnchorTask/app/src/main/")
-;; (setq default-directory "h:/andrprac/banner/app/src/main/")
-;; (setq default-directory "h:/andrprac/Fan/app/src/main/")
-;; (setq default-directory "h:/andrprac/MultiThread_learning/app/src/main/")
-;; (setq default-directory "g:/andrprac/CameraDemo/app/src/main/")
-;; (setq default-directory "h:/andrprac/HelloAnimations/app/src/main/")
-;; (setq default-directory "h:/andrprac/listview/app/src/main/")
-;; (setq default-directory "g:/leetcodeCoding/")
-;;(setq default-directory "g:/andrprac/")
-;; (setq default-directory "g:/android/")
-;(setq default-directory "h:/andrprac/View-CustomLayout/app/src/main/")
-;; (setq default-directory "h:/andrprac/Meizikt/app/src/main/")
-;; (setq default-directory "h:/andrprac/GoodsDemo/app/src/main/")
-;; (setq default-directory "i:/cv/")
 
 ;;; setup defaults for all modes
 (setq default-frame-alist
-      '((top . 0)(left . 400)(height . 75)(width . 160)(menubar-lines . 100)(tool-bar-line . 0)) ; ori
+      '((top . 0)(left . 450)(height . 77)(width . 160)(menubar-lines . 100)(tool-bar-line . 0)) ; ori
      ;; '((top . 0)(left . 400)(height . 63)(width . 180)(menubar-lines . 100)(tool-bar-line . 0))
       ) ; tmp.py
 
@@ -240,6 +202,8 @@
 ;(require 'init-python-mode)
 (require 'init-csharp-mode)
 (require 'init-auto-complete)
+  (require 'pangu-spacing)
+  (require 'expand-region)
 ;; (require 'init-company)
   )
 
@@ -275,6 +239,16 @@
 ;;       (funcall-interactively
 ;;        (intern (concat (symbol-name mode) "-mode"))))))
 ;; (spacemacs|load-modes '(dired emacs-lisp markdown org python))
+
+
+
+
+
+
+
+
+(global-pangu-spacing-mode 1)
+(global-set-key (kbd "C-;") 'er/expand-region)
 
 (load "font-lock")
 (setq font-lock-maximum-decoration t)

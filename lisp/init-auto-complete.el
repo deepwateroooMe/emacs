@@ -32,6 +32,10 @@
 ;; menu设置为12 lines
 (setq ac-menu-height 12)
 
+
+
+(setq ac-disable-faces nil) ;;;; to be able to autocomplete in String and commends
+
 (global-auto-complete-mode t)
 ;; extra modes auto-complete must support
 
