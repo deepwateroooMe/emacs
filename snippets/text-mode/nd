@@ -1,0 +1,5 @@
+# name: ndk.dir=
+# key: nd
+# --
+ndk.dir=I\:\\\\selfSoft\\\\android\\\\sdk\\\\ndk\\\\android-ndk-r16b
+$0

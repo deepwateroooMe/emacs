@@ -1,0 +1,10 @@
+# contributor: deepwaterooo
+# name: print HashMap<Integer, List<Integer>>
+# key: pmil
+# --
+System.out.println("$1.size(): " + $1.size());
+for (Map.Entry<Integer, List<Integer>> en : ${1:m}.entrySet()) {
+    System.out.print(en.getKey() + ": ");
+    System.out.println(Arrays.toString(en.getValue().toArray()));
+}
+$0

@@ -1,0 +1,6 @@
+# contributor: deepwaterooo
+# name: List<Integer>
+# key: li
+# --
+List<Integer> ${1:l} = new ArrayList<>();
+$0

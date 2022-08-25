@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: equals null
+# key: en
+# --
+== null$0

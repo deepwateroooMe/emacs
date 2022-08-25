@@ -1,0 +1,5 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: String.valueOf()
+# key: svo
+# --
+String.valueOf(${1:v})$0

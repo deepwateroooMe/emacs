@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: pollFirst()
+# key: pof
+# --
+pollFirst()$0

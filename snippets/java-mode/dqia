@@ -1,0 +1,6 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: Deque<int []>
+# key: dqia
+# --
+Deque<int []> ${1:s} = new ArrayDeque<>();
+$0

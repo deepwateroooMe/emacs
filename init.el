@@ -14,7 +14,7 @@
 
 ;;; setup defaults for all modes
 (setq default-frame-alist
-      '((top . 0)(left . 450)(height . 77)(width . 160)(menubar-lines . 100)(tool-bar-line . 0)) ; ori
+      '((top . 0)(left . 450)(height . 75)(width . 160)(menubar-lines . 100)(tool-bar-line . 0)) ; ori
      ;; '((top . 0)(left . 400)(height . 63)(width . 180)(menubar-lines . 100)(tool-bar-line . 0))
       ) ; tmp.py
 
@@ -103,6 +103,28 @@
 
 (define-globalized-minor-mode gio-global-minor-mode gio-minor-mode gio-minor-mode :group 'gio-group)
 (gio-global-minor-mode 1)
+
+
+;;; bypassing default build in org-mode, and try to use customized version
+(use-package org
+  :ensure nil
+  :ensure htmlize                       ; For org-publish
+  :load-path ("~/.emacs.d/elpa/org-20140901/")
+  :init
+  :config
+  (add-to-list 'org-modules 'org-habit))
+
+(defface org-block-begin-line
+  '((t (:foreground "#008ED1" :background "#D3D3D3"))) ;; #EAEAFF
+  ;; '((t (:underline "#A7A6AA" :foreground "#008ED1" :background "#D3D3D3"))) ;; #EAEAFF
+  "Face used for the line delimiting the begin of source blocks.")
+;; (defface org-block-background
+;;   '((t (:background "#D3D3D3"))) ;;; #FFFFEA
+;;   "Face used for the source block background.")
+(defface org-block-end-line
+  '((t (:foreground "#008ED1" :background "#D3D3D3"))) ;; #EAEAFF
+  ;; '((t (:overline "#A7A6AA" :foreground "#008ED1" :background "#D3D3D3"))) ;; #EAEAFF
+  "Face used for the line delimiting the end of source blocks.")
 
 
 ;; @see https://www.reddit.com/r/emacs/comments/3kqt6e/2_easy_little_known_steps_to_speed_up_emacs_start/
@@ -250,6 +272,12 @@
 (global-pangu-spacing-mode 1)
 (global-set-key (kbd "C-;") 'er/expand-region)
 
+;;; forward word to skip _ mark
+
+(modify-syntax-entry ?_ "w" c-mode-syntax-table)
+(modify-syntax-entry ?_ "w" c++-mode-syntax-table)
+(global-set-key (kbd "M-f") 'forward-word)
+
 (load "font-lock")
 (setq font-lock-maximum-decoration t)
 (global-font-lock-mode)
@@ -309,11 +337,11 @@
 
 (defun shift-right ()
   (interactive)
-  (shift-region 2))
+  (shift-region 8))
 
 (defun shift-left ()
   (interactive)
-  (shift-region -2))
+  (shift-region -8))
 
 (setq auto-save-default nil)
 

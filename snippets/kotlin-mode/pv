@@ -1,0 +1,6 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: println(var)
+# key: pv
+# --
+println("${1:v}: " + $1)
+$0

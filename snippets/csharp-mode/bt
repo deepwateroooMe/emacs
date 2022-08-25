@@ -1,0 +1,6 @@
+# contributor: deepwaterooo
+# name: print ListNode
+# key: bt
+# --
+${1:root}.buildTree($1, ${2:a});
+$0

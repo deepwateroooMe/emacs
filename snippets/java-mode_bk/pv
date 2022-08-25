@@ -1,0 +1,7 @@
+# contributor: deepwaterooo
+# name: printlMsg
+# key: pv
+#${1:root}.levelPrintTree($1);
+# --
+System.out.println("${1:i}: " + $1);
+    $0

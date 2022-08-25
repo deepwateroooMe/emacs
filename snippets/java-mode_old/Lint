@@ -1,0 +1,6 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: List
+# key: Lint
+# --
+List<Integer> ${1:path} = new ArrayList<Integer>();
+$0

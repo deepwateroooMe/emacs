@@ -1,0 +1,5 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: Math.min(
+# key: mmi
+# --
+Math.min(${1:a}, ${2:b})$0

@@ -1,0 +1,4 @@
+# name: for value in values one line
+# key: fvo
+# --
+for (${1:i} in $2) $0

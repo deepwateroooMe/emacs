@@ -1,0 +1,6 @@
+# name: forMapValues
+# key: fmv
+# --
+for (${1:Integer} val : ${2:map}.values()) {
+    $0
+}

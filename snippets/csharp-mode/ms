@@ -1,0 +1,8 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: map sort
+# key: ms
+# --
+Map<${1:Integer, Integer}> ${2:tmp} = ${3:m}.entrySet().stream()
+    .sorted(Map.Entry.comparingByKey(Comparator.reverseOrder())) 
+    .collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (a, b) -> a, LinkedHashMap::new));
+$0

@@ -1,0 +1,9 @@
+# contributor: deepwaterooo
+# name: print int arr
+# key: pcr
+# --
+System.out.println("");
+for(char i : ${1})
+    System.out.print(i + ", ");
+System.out.println("");
+$0

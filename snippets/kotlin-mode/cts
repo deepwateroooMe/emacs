@@ -1,0 +1,5 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: .contentToString()
+# key: cts
+# --
+${1:a}.contentToString()$0

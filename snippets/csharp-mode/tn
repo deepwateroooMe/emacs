@@ -1,0 +1,5 @@
+# contributor: deepwaterooo
+# name: print ListNode
+# key: tn
+# --
+TreeNode ${1:curr} = ${2:null}$0

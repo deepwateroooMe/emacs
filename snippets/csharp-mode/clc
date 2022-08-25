@@ -1,0 +1,5 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: clc
+# key: clc
+# --
+Character.toLowerCase(${1})$0

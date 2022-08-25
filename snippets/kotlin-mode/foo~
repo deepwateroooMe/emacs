@@ -1,0 +1,6 @@
+# name: for loop
+# key: fo
+# --
+for (${1:i} in ${2:0}..$3) {
+    $0
+}

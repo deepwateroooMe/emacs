@@ -1,0 +1,6 @@
+# name: forMayKey
+# key: fmk
+# --
+foreach (${1:int} key in ${2:dic}.Keys) {
+    $0
+}

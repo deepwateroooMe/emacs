@@ -1,0 +1,6 @@
+# name: for value in values
+# key: fv
+# --
+for (${1:i} in $2) {
+    $0
+}

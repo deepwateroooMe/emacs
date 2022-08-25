@@ -1,0 +1,15 @@
+# contributor: deepwaterooo
+# name: print HashMap<Integer, List<Integer>>
+# key: pmil
+# --
+System.out.println("");
+System.out.println("$1.size(): " + $1.size());
+for (Map.Entry<Integer, List<Integer>> entry : ${1:m}.entrySet()) {
+    System.out.print(entry.getKey() + ": "); 
+    for (int z = 0; z < entry.getValue().size(); z++) {
+        System.out.print(entry.getValue().get(z) + ", ");
+    }
+    System.out.print("\n");
+}
+System.out.println("");
+$0

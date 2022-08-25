@@ -1,0 +1,7 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: print Map Keys
+# key: pmk
+# --
+System.out.println("$1.size(): " + $1.size());
+System.out.println(Arrays.toString(new ArrayList<>(${1:m}.keySet()).toArray()));
+$0

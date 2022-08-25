@@ -1,0 +1,5 @@
+# contributor: deepwaterooo
+# name: int [] a = new int [] {}
+# key: ia
+# --
+int [] ${1:a} = new int [] {$2}; $0

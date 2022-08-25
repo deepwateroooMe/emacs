@@ -1,0 +1,5 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: s.substring()
+# key: ss
+# --
+substring(${1:i})$0

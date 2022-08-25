@@ -1,0 +1,6 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: dirs = {}
+# key: dir
+# --
+int [][] dirs = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+$0

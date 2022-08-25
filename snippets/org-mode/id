@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: id
+# key: id
+# --
+**** 解题思路与分析
+#+BEGIN_SRC java
+$0#+END_SRC

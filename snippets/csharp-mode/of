@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: offer()
+# key: of
+# --
+offer(${1:a})$0

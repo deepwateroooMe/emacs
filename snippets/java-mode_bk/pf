@@ -1,0 +1,6 @@
+# name: public func
+# key: pf
+# --
+public ${1:void} ${2:set}($3) {
+    $0
+}

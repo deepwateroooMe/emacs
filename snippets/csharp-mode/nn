@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: NOt equals null
+# key: nn
+# --
+!= null$0

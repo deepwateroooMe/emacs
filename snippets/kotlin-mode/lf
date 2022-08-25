@@ -1,0 +1,6 @@
+# contributor: deepwaterooo
+# name: Log.d for fun
+# key: lf
+# --
+Log.d(TAG, "${1: }()")
+$0

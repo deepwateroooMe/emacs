@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: equals
+# key: eq
+# --
+equals(${1:s})$0

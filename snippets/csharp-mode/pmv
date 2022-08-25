@@ -1,0 +1,7 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: print Map.Values()
+# key: pmv
+# --
+System.out.println("$1.size(): " + $1.size());
+System.out.println(Arrays.toString(new ArrayList<>(${1:m}.values()).toArray()));
+$0

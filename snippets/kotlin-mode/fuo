@@ -1,0 +1,5 @@
+# name: for (i in 0 until ) one line
+# key: fuo
+# --
+for (${1:i} in $2 until $3) 
+    $0

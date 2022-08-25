@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: sc
+# key: sc
+# --
+#+BEGIN_SRC cpp
+#+END_SRC $0

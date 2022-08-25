@@ -1,0 +1,5 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: Arrays.asList()
+# key: aal
+# --
+Arrays.asList(${1:arr})$0

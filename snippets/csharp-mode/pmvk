@@ -1,0 +1,10 @@
+# contributor: deepwaterooo
+# name: print map  value key pair
+# key: pmvk
+# --
+System.out.println("");
+System.out.println("${2:m}.size(): " + $2.size());
+for (Map.Entry<${1:Integer, Integer}> entry : $2.entrySet()) 
+    System.out.print(entry.getKey() + ", " + entry.getValue() + "\n");
+System.out.println("");
+$0

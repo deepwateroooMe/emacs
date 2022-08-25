@@ -1,0 +1,6 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: List<List<String>> lls
+# key: lls
+# --
+List<List<String>> ${1:lls} = new ArrayList<>();
+$0

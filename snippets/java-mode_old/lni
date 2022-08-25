@@ -1,0 +1,5 @@
+# contributor: deepwaterooo
+# name: print ListNode
+# key: lni
+# --
+ListNode ${1:head} = new ListNode(${2:a[0]})$0

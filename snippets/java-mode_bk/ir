@@ -1,0 +1,6 @@
+# contributor: deepwaterooo
+# name: Int [] ${1:s} = {$0};
+# key: ir
+# --
+int [] ${1:a} = {${2}};
+$0

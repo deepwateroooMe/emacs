@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: sl
+# key: sl
+# --
+#+begin_SRC xml
+#+END_SRC $0

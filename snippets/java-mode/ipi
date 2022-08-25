@@ -1,0 +1,5 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: Integer.parseInt()
+# key: ipi
+# --
+Integer.parseInt(${1:s})$0

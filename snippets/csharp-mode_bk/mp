@@ -1,0 +1,5 @@
+# contributor: deepwaterooo
+# name: MathUtil.print()
+# key: mp
+# --
+MathUtil.print($1); $0

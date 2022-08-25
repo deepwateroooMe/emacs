@@ -1,0 +1,10 @@
+# contributor: deepwaterooo
+# name: print <List<Integer>
+# key: pl
+# --
+System.out.println("");
+System.out.println("${1:res}.size(): " + $1.size());
+for (int z = 0; z < $1.size(); ++z) 
+    System.out.print($1.get(z) + ", ");
+System.out.print("\n");
+$0

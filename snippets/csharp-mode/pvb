@@ -1,0 +1,7 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: printlVariables BinaryString
+# key: pvb
+#${1:root}.levelPrintTree($1);
+# --
+System.out.println("Integer.toBinaryString(${1:i}): " + Integer.toBinaryString($1));
+$0

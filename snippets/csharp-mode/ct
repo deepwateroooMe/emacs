@@ -1,0 +1,6 @@
+# contributor: deepwaterooo
+# name: char [] s = t.toCharArray()
+# key: ct
+# --
+char [] ${1:s} = ${2:t}.toCharArray();
+$0

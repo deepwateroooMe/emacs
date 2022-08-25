@@ -1,0 +1,5 @@
+# contributor: deepwaterooo
+# name: Log.d
+# key: ld
+# --
+Debug.Log(TAG + ": ${1:func}()"); $0

@@ -1,0 +1,5 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: Collections.sort()
+# key: cst
+# --
+Collections.sort(${1:arr})$0

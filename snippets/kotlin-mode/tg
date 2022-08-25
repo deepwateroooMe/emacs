@@ -1,0 +1,6 @@
+# contributor: deepwaterooo #${1:javaClass.simpleName}
+# name: TAG
+# key: tg
+# --
+private val TAG = "test $1"
+$0

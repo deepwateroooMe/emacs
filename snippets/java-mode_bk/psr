@@ -1,0 +1,9 @@
+# contributor: deepwaterooo
+# name: print int arr
+# key: psr
+# --
+System.out.println("");
+for(String i : ${1})
+    System.out.print(i + ", ");
+System.out.println("");
+$0

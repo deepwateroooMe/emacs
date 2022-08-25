@@ -1,0 +1,5 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: Double.compare()
+# key: dc
+# --
+Double.compare(${1:v})$0
