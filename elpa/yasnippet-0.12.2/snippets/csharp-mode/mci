@@ -1,6 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: HashMap<Character, Integer>
-# key: mci
-# --
-Map<Character, Integer> ${1:m} = new HashMap<>();
-$0

@@ -1,5 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: Character.isWhitespace
-# key: ciw
-# --
-Character.isWhitespace(${1})$0

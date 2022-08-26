@@ -1,6 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: HashMap<Integer, String>
-# key: mis
-# --
-Map<Integer, String> ${1:m} = new HashMap<>();
-$0

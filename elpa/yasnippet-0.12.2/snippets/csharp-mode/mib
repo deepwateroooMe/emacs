@@ -1,6 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: HashMap<Integer, Boolean>
-# key: mib
-# --
-Map<Integer, Boolean> ${1:m} = new HashMap<>();
-$0

@@ -1,6 +1,0 @@
-# contributor: deepwaterooo
-# name: print ListNode
-# key: pl
-# --
-${1:head}.printList($1);
-$0

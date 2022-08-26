@@ -1,5 +1,0 @@
-# name: System.Console.WriteLine()
-# key: pr
-# --
-Console.WriteLine("${1:a}: ");
-$0

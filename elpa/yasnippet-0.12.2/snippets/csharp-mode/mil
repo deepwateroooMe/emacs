@@ -1,6 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: HashMap<Integer, List<Integer>>
-# key: mil
-# --
-Map<Integer, List<Integer>> ${1:m} = new HashMap<>();
-$0

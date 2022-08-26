@@ -1,5 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: Character.isLowerCase()
-# key: cil
-# --
-Character.isLowerCase(${1})$0

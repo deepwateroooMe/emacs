@@ -1,8 +1,0 @@
-# contributor: deepwaterooo
-# name: TreeNode res
-# key: lpt
-#${1:root}.levelPrintTree($1);
-# --
-TreeNode ${1:res} = s.$2(root$3);
-$1.levelPrintTree($1);
-$0

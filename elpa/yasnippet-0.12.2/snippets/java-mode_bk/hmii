@@ -1,6 +1,0 @@
-# contributor: deepwaterooo
-# name: HashMap<Integer, Integer>
-# key: hmii
-# --
-HashMap<Integer, Integer> ${1:m} = new HashMap<>();
-$0

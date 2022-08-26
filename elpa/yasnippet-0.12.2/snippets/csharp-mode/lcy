@@ -1,9 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: lifecycle
-# key: lcy
-# --
-@Override protected void ${1:}() {
-    super.$1();
-    Log.d(TAG, "$1()");
-}
-$0

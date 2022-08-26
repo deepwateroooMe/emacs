@@ -1,6 +1,0 @@
-# contributor: deepwaterooo
-# name: Log.iWithClass
-# key: cli
-# --
-Log.i("${1:Class}: ", "${2:i}: " + $2);
-    $0

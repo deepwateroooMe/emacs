@@ -1,6 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: HashSet<String>
-# key: hss
-# --
-Set<String> ${1:ss} = new HashSet<>();
-$0

@@ -1,6 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: computeIfAbsent
-# key: cia
-# --
-computeIfAbsent($1, z -> new ${2:ArrayList}<>()).add($3);
-$0

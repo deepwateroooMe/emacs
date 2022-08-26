@@ -2,5 +2,4 @@
 # name: TAG
 # key: tg
 # --
-private final String TAG = "${1:Obj}";
-$0
+private final String TAG = "$1"; $0

@@ -1,8 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: reverse Arrays.sort(arr, )
-# key: ras
-# --
-int [] ${1:sorted} = Arrays.stream(${2:a}).boxed()
-.sorted(${3:Comparator.reverseOrder()}) // just use 'sorted()' for ascending order
-.mapToInt(Integer::intValue).toArray();
-$0

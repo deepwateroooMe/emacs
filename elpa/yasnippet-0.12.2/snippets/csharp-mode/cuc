@@ -1,5 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: cuc
-# key: cuc
-# --
-Character.toUpperCase(${1})$0

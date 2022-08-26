@@ -1,6 +1,0 @@
-# contributor: deepwaterooo
-# name: print ListNode
-# key: rni
-# --
-RandomListNode ${1:head} = new RandomListNode(${2:a[0]});
-$0

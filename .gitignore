@@ -34,7 +34,6 @@ cookies
 !/elpa/crontab-mode-20090510.1355
 !/elpa/csharp-mode
 !/elpa/yasnippet-0.12.1/snippets
->>>>>>> csharp-mode
 eshell/
 semanticdb/
 *.swp
@@ -64,3 +63,4 @@ projectile.cache
 srecode-map.el
 custom-set-variables.el
 .smex-items
+./**/*.elc

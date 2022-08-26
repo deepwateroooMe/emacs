@@ -2,5 +2,4 @@
 # name: TreeMap<Integer, List<Integer>>
 # key: tmil
 # --
-TreeMap<Integer, List<Integer>> ${1:m} = new TreeMap<>();
-$0
+TreeMap<Integer, List<Integer>> ${1:m} = new TreeMap<>();$0

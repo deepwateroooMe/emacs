@@ -1,6 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: Deque<Character>
-# key: dqc
-# --
-Deque<Character> ${1:q} = new ArrayDeque<>();
-$0

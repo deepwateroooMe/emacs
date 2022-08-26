@@ -1,5 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: int [] 
-# key: iav
-# --
-int [] $1 = $0

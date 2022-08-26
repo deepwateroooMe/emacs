@@ -1,6 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: TreeMap<String, Integer>
-# key: tmsi
-# --
-TreeMap<String, Integer> ${1:m} = new TreeMap<>();
-$0

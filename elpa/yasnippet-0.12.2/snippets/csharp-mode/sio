@@ -1,5 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: String.indexOf()
-# key: sio
-# --
-${1:s}.indexOf("${2:v}")$0

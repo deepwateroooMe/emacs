@@ -1,6 +1,0 @@
-# name: foreach
-# key: fe
-# --
-foreach (${1:var} item in ${2:arr}) {
-    $0
-}

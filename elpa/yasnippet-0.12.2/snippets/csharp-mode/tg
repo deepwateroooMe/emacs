@@ -1,6 +1,0 @@
-# contributor: deepwaterooo
-# name: TAG
-# key: tg
-# --
-private final String TAG = "${1:Obj}";
-$0

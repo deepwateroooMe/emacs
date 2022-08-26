@@ -1,7 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: fln (...) { ... }
-# key: fln
-# --
-for (ListNode ${1:prev} = $2) {
-    $0
-}

@@ -1,5 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: mc
-# key: mc
-# --
-Math.ceil(${1})$0

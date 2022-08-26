@@ -1,5 +1,0 @@
-# contributor: deepwaterooo
-# name: Debug.Log
-# key: lv
-# --
-Debug.Log(TAG + " $1: " + $1); $0

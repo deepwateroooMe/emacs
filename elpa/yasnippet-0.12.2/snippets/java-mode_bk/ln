@@ -1,5 +1,0 @@
-# contributor: deepwaterooo
-# name: print ListNode
-# key: ln
-# --
-ListNode ${1:curr} = ${2:null}$0

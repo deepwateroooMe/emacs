@@ -1,6 +1,0 @@
-# name: inject
-# key: inj_bk
-# --
-[Inject]
-public ${1:Object} ${2:instance} { get; set; }
-$0

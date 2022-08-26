@@ -1,6 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: List
-# key: Ls
-# --
-List<String> ${1:res} = new ArrayList<String>();
-$0

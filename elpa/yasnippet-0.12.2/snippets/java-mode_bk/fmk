@@ -1,8 +1,0 @@
-# contributor: deepwaterooo
-# name: for map keySet 
-# key: fmk
-# --
-for (${1:Integer} key : ${2:map}.keySet()) {
-    $3
-}
-$0

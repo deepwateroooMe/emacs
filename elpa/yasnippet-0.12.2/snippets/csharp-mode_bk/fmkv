@@ -1,6 +1,0 @@
-# name: forMayKeyValuepair
-# key: fmkv
-# --
-foreach (KeyValuePair<${1:int}, ${2:dynamic}> ${3:pair} in ${4:dic}) {
-    $0
-}

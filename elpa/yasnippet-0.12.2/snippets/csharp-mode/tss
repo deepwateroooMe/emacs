@@ -1,6 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: TreeSet<String>
-# key: tss
-# --
-TreeSet<String> ${1:ts} = new TreeSet<>();
-$0

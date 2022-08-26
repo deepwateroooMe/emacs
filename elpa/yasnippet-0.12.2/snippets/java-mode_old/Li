@@ -1,6 +1,0 @@
-# contributor: deepwaterooo
-# name: Log.i
-# key: li
-# --
-Log.i("${1:i}: ", "" + $1);
-    $0

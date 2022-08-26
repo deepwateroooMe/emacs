@@ -1,5 +1,0 @@
-# contributor: deepwaterooo
-# name: Log.dv
-# key: lv
-# --
-Log.d(TAG, "${1:func}() ${2:var}: " + $2); $0
