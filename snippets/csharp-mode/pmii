@@ -4,5 +4,4 @@
 # --
 System.out.println("${2:m}.size(): " + $2.size());
 for (Map.Entry<${1:Integer, Integer}> en : $2.entrySet()) 
-    System.out.print(en.getKey() + ", " + en.getValue() + "\n");
-$0
+    System.out.print(en.getKey() + ", " + en.getValue() + "\n");$0

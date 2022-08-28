@@ -9,6 +9,13 @@
 (require 'ox-beamer)
 (require 'ox-md)
 (require 'ox-org)
+
+;;; org-mode auto configure mode
+(setq interpreter-mode-alist
+      (cons '("org" . org-mode) interpreter-mode-alist))
+(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+
+
 (setq org-src-fontify-natively t)  ;;; 要对代码进行语法高亮
 (setq org-src-tab-acts-natively t)
 (setq linum-mode t)
@@ -31,10 +38,25 @@
   (interactive)
   (shift-region -8))
 
+
+;;; org mode source code comment with //
+(defun my/org-comment-tweak ()
+  (setq-local comment-start "// "))
+;; (defun my/org-comment-dwim (&optional arg)
+;;   (interactive "P")
+;; (or (org-babel-do-key-sequence-in-edit-buffer (kbd "M-;"))
+;; ;;   (setq-local comment-start "// ")
+;;   (comment-dwim arg))
+;; make `C-c C-v C-x M-;' more convenient
+;; (define-key org-mode-map
+;;   (kbd "M-;") 'my/org-comment-dwim)
+
+
 (eval-after-load 'org
   '(progn
      (define-key org-mode-map (kbd "<C-S-left>") nil)
      (define-key org-mode-map (kbd "<C-S-right>") nil)
+     (add-hook 'org-mode-hook #'my/org-comment-tweak)
      ))
 
 
@@ -67,14 +89,15 @@
 
 ;; 中文与英文字体设置
 ;; Setting English Font
-;; (set-face-attribute
-;;  'default nil :font "Monaco 14")
+(set-face-attribute
+ ;; 'default nil :font "Monaco 14")
+ 'default nil :font "Inconsolata 16")
 ;; Chinese Font
 (dolist (charset '(kana han symbol cjk-misc bopomofo))
   (set-fontset-font (frame-parameter nil 'font)
                     charset
-                    ;; (font-spec :family "WenQuanYi Micro Hei Mono" :size 12))) 
-                    (font-spec :family "Microsoft Yahei" :size 12)))
+                    (font-spec :family "WenQuanYi Micro Hei Mono" :size 12))) 
+                    ;; (font-spec :family "Microsoft Yahei" :size 12)))
 
 ;; (When (member "Monaco" (font-family-list))
 ;;   (set-frame-font "Monaco-11" t t))

@@ -337,11 +337,11 @@
 
 (defun shift-right ()
   (interactive)
-  (shift-region 8))
+  (shift-region 2))
 
 (defun shift-left ()
   (interactive)
-  (shift-region -8))
+  (shift-region -2))
 
 (setq auto-save-default nil)
 
@@ -766,6 +766,14 @@
 (if (bound-and-true-p my/for-org) (load-theme 'misterioso)
   ;; (load-theme '(deeper-blue)))
                        (load-theme 'deeper-blue))
+
+
+;;确保这一段是在所有配置文件的最后面执行,在最前面没有效果
+(dolist (charset '(kana han symbol cjk-misc bopomofo))
+  (set-fontset-font (frame-parameter nil 'font) ;
+                    charset
+                    (font-spec :family "courier new" :height 130 )))
+
 
 ;; '(custom-enabled-themes '(deeper-blue))
 (custom-set-variables
