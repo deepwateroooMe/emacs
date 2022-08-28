@@ -122,26 +122,32 @@
         ("" "longtable" nil)
         ("" "float" nil)))
 
-(defun my-org-screenshot (basename)
+(defun my-org-screenshot ()
   "Take a screenshot into a time stamped unique-named file in the
 same directory as the org-buffer and insert a link to this file."
-  (interactive "sScreenshot name: ")
-  (if (equal basename "")
-      (setq basename (format-time-string "%Y%m%d_%H%M%S")))
-  (setq filename
-        (concat (file-name-directory (buffer-file-name))
-                "pic/"
-                (file-name-base (buffer-file-name))
-                "_"
-                basename
-                ".png"))
-  (call-process "screencapture" nil nil nil "-s" filename)
-  ;; (insert "#+CAPTION:")
-  ;; (insert basename)
-  ;; (insert "\n")
-  (insert (concat "[[" filename "]]"))
-  ;; (org-display-inline-images)
-  )
+  ;; (interactive "sScreenshot name: ") ;;; 不想要这步人为的再输入一个空格键的过程
+  ;; (if (equal basename "")
+  ;;     (setq basename (format-time-string "%Y%m%d_%H%M%S")))
+  (interactive)
+  (let* ((powershell (executable-find "powershell.exe"))
+         (basename (format-time-string "%Y%m%d_%H%M%S.png"))
+         (filename (concat (file-name-base (buffer-file-name))
+                           "_"
+                           basename))
+         (file-path-wsl (concat "./pic/" filename)))
+             ;; (filename (concat (file-name-directory (buffer-file-name))
+             ;;                    "pic/"
+             ;;                    (file-name-base (buffer-file-name))
+             ;;                    "_"
+             ;;                    basename)))
+    ;; (call-process "/mnt/c/Users/blue_/OneDrive/Desktop/Snipaste.exe.lnk" nil nil nil "-s" filename) ;;; 这个是mac下可用的，可是window下要重换其它的应用
+    ;; (shell-command (concat powershell " -command \"(Get-Clipboard -Format Image).Save(\\\"C:/Users/Public/" file-name "\\\")\""))
+    (shell-command (concat powershell " -command \"(Get-Clipboard -Format Image).Save(\\\"F:/AndroidAppDevelopmentStudy/pic/" filename "\\\")\""))
+    ;; (make-directory "./pic" t)
+    ;; (rename-file (concat "/mnt/f/AndroidAppDevelopmentStudy/" filename) file-path-wsl)
+    (org-indent-line)
+    (insert (concat "[[" file-path-wsl "]]"))
+    ))
 (global-set-key "\M-s" 'my-org-screenshot)
 
 
@@ -484,6 +490,8 @@ otherwise, run code in `kotlin-repl'."
 ;for latex
 (setenv "PATH" (concat (getenv "PATH") "I:/selfSoft/texlive/texlive/bin/win32"))
 (setq exec-path (append exec-path '("I:/selfSoft/texlive/texlive/bin/win32")))
+(setenv "PATH" (concat (getenv "PATH") "C:/Users/blue_/OneDrive/Desktop"))
+(setq exec-path (append exec-path '("C:/Users/blue_/OneDrive/Desktop")))
 
 ; for emacs zsh
 (setenv "ESHELL" (expand-file-name "~/.eshell"))
