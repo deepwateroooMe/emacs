@@ -140,14 +140,13 @@ same directory as the org-buffer and insert a link to this file."
              ;;                    (file-name-base (buffer-file-name))
              ;;                    "_"
              ;;                    basename)))
-    ;; (call-process "/mnt/c/Users/blue_/OneDrive/Desktop/Snipaste.exe.lnk" nil nil nil "-s" filename) ;;; 这个是mac下可用的，可是window下要重换其它的应用
     ;; (shell-command (concat powershell " -command \"(Get-Clipboard -Format Image).Save(\\\"C:/Users/Public/" file-name "\\\")\""))
+;;; 必须先用第三方软件将截图复制到剪贴板，再调用这个命令自动生成图片和插入到org文件中，不是全自动
+;;; (需要手动F1调用Snipaste截图，C-c复制到剪贴板，再M-s)；但仍差强人意
     (shell-command (concat powershell " -command \"(Get-Clipboard -Format Image).Save(\\\"F:/AndroidAppDevelopmentStudy/pic/" filename "\\\")\""))
-    ;; (make-directory "./pic" t)
-    ;; (rename-file (concat "/mnt/f/AndroidAppDevelopmentStudy/" filename) file-path-wsl)
     (org-indent-line)
-    (insert (concat "[[" file-path-wsl "]]"))
-    ))
+     (insert (concat "\n[[" file-path-wsl "]]"))
+     ))
 (global-set-key "\M-s" 'my-org-screenshot)
 
 
@@ -286,7 +285,6 @@ otherwise, run code in `kotlin-repl'."
                ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
 ;; \\usepackage[UTF8]{ctex}
-;; \\usepackage{graphicx}
 ;; \\newminted{common-lisp}{fontsize=\footnotesize} ;; scriptsize
 ;; \\usepackage{xltxtra}
 ;; \\usepackage{bera}
@@ -299,6 +297,7 @@ otherwise, run code in `kotlin-repl'."
 \\usepackage[scaled]{beraserif}
 \\usepackage[scaled]{berasans}
 \\usepackage[scaled]{beramono}
+\\usepackage{graphicx}
 \\usepackage{xcolor}
 \\usepackage{multirow}
 \\usepackage{multicol}
