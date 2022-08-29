@@ -125,9 +125,6 @@
 (defun my-org-screenshot ()
   "Take a screenshot into a time stamped unique-named file in the
 same directory as the org-buffer and insert a link to this file."
-  ;; (interactive "sScreenshot name: ") ;;; 不想要这步人为的再输入一个空格键的过程
-  ;; (if (equal basename "")
-  ;;     (setq basename (format-time-string "%Y%m%d_%H%M%S")))
   (interactive)
   (let* ((powershell (executable-find "powershell.exe"))
          (basename (format-time-string "%Y%m%d_%H%M%S.png"))
@@ -135,19 +132,15 @@ same directory as the org-buffer and insert a link to this file."
                            "_"
                            basename))
          (file-path-wsl (concat "./pic/" filename)))
-             ;; (filename (concat (file-name-directory (buffer-file-name))
-             ;;                    "pic/"
-             ;;                    (file-name-base (buffer-file-name))
-             ;;                    "_"
-             ;;                    basename)))
-    ;; (shell-command (concat powershell " -command \"(Get-Clipboard -Format Image).Save(\\\"C:/Users/Public/" file-name "\\\")\""))
 ;;; 必须先用第三方软件将截图复制到剪贴板，再调用这个命令自动生成图片和插入到org文件中，不是全自动
-;;; (需要手动F1调用Snipaste截图，C-c复制到剪贴板，再M-s)；但仍差强人意
+;;; (需要手动F1调用Snipaste[截图+自动复制到剪贴板，再emacs org 里C-i完成自动化，得两个步骤)；但仍差强人意
+;;; 文件的自动保存地址，需要再自动化一下到当前文件所在的目录
     (shell-command (concat powershell " -command \"(Get-Clipboard -Format Image).Save(\\\"F:/AndroidAppDevelopmentStudy/pic/" filename "\\\")\""))
     (org-indent-line)
      (insert (concat "\n[[" file-path-wsl "]]"))
      ))
-(global-set-key "\M-s" 'my-org-screenshot)
+(global-set-key (kbd "C-i") 'my-org-screenshot)
+;; (global-set-key (kbd "\M-s") 'my-org-screenshot)
 
 
 (add-hook 'org-mode-hook 'turn-on-font-lock)
