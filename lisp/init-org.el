@@ -97,7 +97,9 @@
   (set-fontset-font (frame-parameter nil 'font)
                     charset
                     (font-spec :family "WenQuanYi Micro Hei Mono" :size 12))) 
-                    ;; (font-spec :family "Microsoft Yahei" :size 12)))
+                    ;; (font-spec :family "Sarasa Mono Slab SC Semibold" :size 12))) 
+                    ;; (font-spec :family "SimHei" :size 12)))
+;; '(default ((t (:inherit nil :extend nil :stipple nil :background "#181a26" :foreground "gray80" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight semi-bold :height 113 :width normal :foundry "outline" :family "Sarasa Mono Slab SC Semibold"))))
 
 ;; (When (member "Monaco" (font-family-list))
 ;;   (set-frame-font "Monaco-11" t t))
@@ -139,8 +141,8 @@ same directory as the org-buffer and insert a link to this file."
     (org-indent-line)
      (insert (concat "\n[[" file-path-wsl "]]"))
      ))
-(global-set-key (kbd "C-i") 'my-org-screenshot)
-;; (global-set-key (kbd "\M-s") 'my-org-screenshot)
+;; (global-set-key (kbd "C-i") 'my-org-screenshot)
+(global-set-key (kbd "\M-s") 'my-org-screenshot)
 
 
 (add-hook 'org-mode-hook 'turn-on-font-lock)

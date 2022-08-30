@@ -749,7 +749,7 @@
 (set-locale-environment "UTF-8")
 ;; (set-fontset-font "fontset-default" 'unicode '("WenQuanYi Zen Hei" . "unicode-ttf"))
 ;; (set-fontset-font t 'han (font-spec :family "Microsoft Yahei" :size 16))
-(setq face-font-rescale-alist '(("Microsoft Yahei" . 1.2) ("WenQuanYi Zen Hei" . 1.2)))                  
+;; (setq face-font-rescale-alist '(("Microsoft Yahei" . 1.2) ("WenQuanYi Zen Hei" . 1.2)))                  
 ;; '(default ((t (:family "Inconsolata-dz for Powerline" :foundry "outline" :slant normal :weight normal :height 98 :width normal))))
 ;; (set-fontset-font "fontset-default" 'unicode '("Inconsolata-dz for Powerline" . "unicode-otf"))
 
@@ -768,12 +768,13 @@
                        (load-theme 'deeper-blue))
 
 
-;;确保这一段是在所有配置文件的最后面执行,在最前面没有效果
+;; ;;确保这一段是在所有配置文件的最后面执行,在最前面没有效果
 (dolist (charset '(kana han symbol cjk-misc bopomofo))
   (set-fontset-font (frame-parameter nil 'font) ;
                     charset
-                    (font-spec :family "courier new" :height 130 )))
-
+                    ;; (font-spec :family "courier new" :height 130 )))
+                    ;; (font-spec :family "Sarasa Mono Slab SC Semibold" :size 12 :weight semi-bold))) 
+                    (font-spec :family "Sarasa Mono Slab SC Semibold" :height 130)))
 
 ;; '(custom-enabled-themes '(deeper-blue))
 (custom-set-variables
@@ -823,7 +824,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Inconsolata-dz" :foundry "outline" :slant normal :weight normal :height 113 :width normal))))
+ ;; '(default ((t (:family "Inconsolata-dz" :foundry "outline" :slant normal :weight normal :height 113 :width normal))))
+ '(default ((t (:inherit nil :extend nil :stipple nil :background "#181a26" :foreground "gray80" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight semi-bold :height 113 :width normal :foundry "outline" :family "Sarasa Mono Slab SC Semibold"))))
  '(cursor ((t (:background "orchid"))))
  '(org-level-1 ((t (:inherit outline-1))))
  '(org-level-2 ((t (:inherit outline-2))))
