@@ -14,7 +14,7 @@
 
 ;;; setup defaults for all modes
 (setq default-frame-alist
-      '((top . 0)(left . 450)(height . 75)(width . 160)(menubar-lines . 100)(tool-bar-line . 0)) ; ori
+      '((top . 0)(left . 550)(height . 75)(width . 160)(menubar-lines . 100)(tool-bar-line . 0)) ; ori
      ;; '((top . 0)(left . 400)(height . 63)(width . 180)(menubar-lines . 100)(tool-bar-line . 0))
       ) ; tmp.py
 
@@ -277,6 +277,14 @@
 (modify-syntax-entry ?_ "w" c-mode-syntax-table)
 (modify-syntax-entry ?_ "w" c++-mode-syntax-table)
 (global-set-key (kbd "M-f") 'forward-word)
+
+
+;; *Message* buffer should be writable in 24.4+
+(defadvice switch-to-buffer (after switch-to-buffer-after-hack activate)
+  (if (string= "*Messages*" (buffer-name))
+      (read-only-mode -1)))
+
+(setq ac-disable-faces nil) ;;; 这里再加一遍，好像 init.el-auto-complete.el 里有错，加载不好
 
 (load "font-lock")
 (setq font-lock-maximum-decoration t)
@@ -560,91 +568,11 @@
                                         ;; (setq debug-on-error t)
 
 
-					; wsl-copy ;;; 
-;; (defun wsl-copy (start end)
-;;   (interactive "r")
-;;   (shell-command-on-region start end "clip.exe")
-;;   (deactivate-mark))
-;; 					; wsl-paste
-;; (defun wsl-paste ()
-;;   (interactive)
-;;   (let ((clipboard
-;; 	 (shell-command-to-string "powershell.exe -command 'Get-Clipboard' 2> /dev/null")))
-;;     (setq clipboard (replace-regexp-in-string "\r" "" clipboard)) ; Remove Windows ^M characters
-;;     (setq clipboard (substring clipboard 0 -1)) ; Remove newline added by Powershell
-;;     (insert clipboard)))
-;; 					; Bind wsl-copy to C-c C-v
-;; (global-set-key
-;;  (kbd "C-c c")
-;;  'wsl-copy)
-;; 					; Bind wsl-paste to C-c C-v
-;; (global-set-key
-;;  (kbd "C-c y")
-;;  'wsl-paste)
 
-;; ;;; for ediff
-;; ;;git mergetool 使用ediff ,前提可以正常使用emacsclient ,并且Emacs已经启动。
-;; ;; ~/.gitconfig
-;; ;; [mergetool "ediff"]
-;; ;; cmd = emacsclient --eval \"(git-mergetool-emacsclient-ediff \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" \\\"$MERGED\\\")\"
-;; ;; trustExitCode = false
-;; ;; [mergetool]
-;; ;; prompt = false
-;; ;; [merge]
-;; ;; tool = ediff
-;; ;; Setup for ediff.
-;; ;;(require 'ediff)
-;; (defvar ediff-after-quit-hooks nil
-;;   "* Hooks to run after ediff or emerge is quit.")
 
-;; (defadvice ediff-quit (after edit-after-quit-hooks activate)
-;;   (run-hooks 'ediff-after-quit-hooks))
+;;; turn off buffer-read-only property
+(setq buffer-read-only nil)
 
-;; (setq git-mergetool-emacsclient-ediff-active nil)
-
-;; (defun local-ediff-frame-maximize ()
-;;   (when (boundp 'display-usable-bounds)
-;;     (let* ((bounds (display-usable-bounds))
-;;            (x (nth 0 bounds))
-;;            (y (nth 1 bounds))
-;;            (width (/ (nth 2 bounds) (frame-char-width)))
-;;            (height (/ (nth 3 bounds) (frame-char-height))))
-;;       (set-frame-width (selected-frame) width)
-;;       (set-frame-height (selected-frame) height)
-;;       (set-frame-position (selected-frame) x y))  )
-;;   )
-;; (setq ediff-window-setup-function 'ediff-setup-windows-plain)
-;; (setq ediff-split-window-function 'split-window-horizontally)
-
-;; (defun local-ediff-before-setup-hook ()
-;;   (setq local-ediff-saved-frame-configuration (current-frame-configuration))
-;;   (setq local-ediff-saved-window-configuration (current-window-configuration))
-;;   (local-ediff-frame-maximize)
-;;   (if git-mergetool-emacsclient-ediff-active
-;;       (raise-frame)))
-
-;; (defun local-ediff-quit-hook ()
-;;   (set-frame-configuration local-ediff-saved-frame-configuration)
-;;   (set-window-configuration local-ediff-saved-window-configuration))
-
-;; (defun local-ediff-suspend-hook ()
-;;   (set-frame-configuration local-ediff-saved-frame-configuration)
-;;   (set-window-configuration local-ediff-saved-window-configuration))
-
-;; (add-hook 'ediff-before-setup-hook 'local-ediff-before-setup-hook)
-;; (add-hook 'ediff-quit-hook 'local-ediff-quit-hook 'append)
-;; (add-hook 'ediff-suspend-hook 'local-ediff-suspend-hook 'append)
-
-;; ;; Useful for ediff merge from emacsclient.
-;; (defun git-mergetool-emacsclient-ediff (local remote base merged)
-;;   (setq git-mergetool-emacsclient-ediff-active t)
-;;   (if (file-readable-p base)
-;;       (ediff-merge-files-with-ancestor local remote base nil merged)
-;;     (ediff-merge-files local remote nil merged))
-;;   (recursive-edit))
-;; (defun git-mergetool-emacsclient-ediff-after-quit-hook ()
-;;   (exit-recursive-edit))
-;; (add-hook 'ediff-after-quit-hooks 'git-mergetool-emacsclient-ediff-after-quit-hook 'append)
 
 
 (defun wsl-copy-region-to-clipboard (start end)
@@ -670,53 +598,6 @@
   (let ((clip (wsl-clipboard-to-string)))
     (insert clip)
     (if arg (kill-new clip))))
-
-;; (load "misterioso")
-;; (require 'color-theme)
-;; (setq color-theme-is-global t)
-;; (color-theme-initialize)
-;; ;; (load "color-theme-tango-dark")
-;; ;; (load "color-theme-tangotango")
-;; ;; (load "poet-theme")
-;; ;; (load "poet-dark-theme")
-;; (load "deeper-blue")
-;; (load "misterioso")
-;; (setq my-color-themes (list
-;;                        ;; 'color-theme-tango-dark
-;;                        ;; 'color-theme-tangotango
-;;                        ;; 'poet-theme
-;;                        ;; 'poet-dark-theme
-;;                        ;; '(custom-enabled-themes '(deeper-blue))
-;;                        ;; '(custom-enabled-themes '(misterioso))
-;;                        ;; '(deeper-blue)
-;;                        ;; '(misterioso)                       
-;;                        'color-theme-deeper-blue
-;;                        '(misterioso)                       
-;;     ;; 'color-theme-tangotango
-;;                        ;; 'color-theme-colorful-obsolescence 'color-theme-zenburn
-;;                        ;; 'color-theme-leuven 'color-theme-folio 
-;;                        ;; 'color-theme-manoj 'color-theme-zenash
-;;                        ;; 'color-theme-railscast
-;;                        ))
-;; (defun my-theme-set-default () ; Set the first row
-;;   (interactive)
-;;   (setq theme-current my-color-themes)
-;;   (funcall (car theme-current)))
-;; (defun my-describe-theme () ; Show the current theme
-;;   (interactive)
-;;   (message "%s" (car theme-current)))
-;;                                         ; Set the next theme (fixed by Chris Webber - tanks)
-;; (defun my-theme-cycle ()            
-;;   (interactive)
-;;   (setq theme-current (cdr theme-current))
-;;   (if (null theme-current)
-;;       (setq theme-current my-color-themes))
-;;   (funcall (car theme-current))
-;;   (message "%S" (car theme-current)))
-;; (setq theme-current my-color-themes)
-;; (setq color-theme-is-global nil) ; Initialization
-;; ;; (my-theme-set-default)
-;; (global-set-key [f4] 'my-theme-cycle)
 
 
 ;;; for formating files when copying codes from online or somewhere which format I don't like
@@ -763,9 +644,9 @@
 
 (setq my/for-org nil)
 ;; (when (bound-and-true-p my/for-org) (load-theme 'misterioso))
-(if (bound-and-true-p my/for-org) (load-theme 'misterioso)
-  ;; (load-theme '(deeper-blue)))
-                       (load-theme 'deeper-blue))
+;; (if (bound-and-true-p my/for-org) (load-theme 'misterioso) ;;; 不知道是不是主题设置中的设置的，先去掉试一下
+;;   ;; (load-theme '(deeper-blue)))
+;;                        (load-theme 'deeper-blue))
 
 
 ;; ;;确保这一段是在所有配置文件的最后面执行,在最前面没有效果
@@ -786,6 +667,7 @@
  '(ansi-color-names-vector
    ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
  '(column-number-mode t)
+ '(custom-enabled-themes '(deeper-blue))
  '(custom-safe-themes
    '("f490984d405f1a97418a92f478218b8e4bcc188cf353e5dd5d5acd2f8efd0790" "28a104f642d09d3e5c62ce3464ea2c143b9130167282ea97ddcc3607b381823f" default))
  '(display-time-mode t)
@@ -802,14 +684,15 @@
    '(ppd-sr-speedbar lsp-mode py-autopep8 logview virtualenvwrapper company-jedi flycheck-color-mode-line auto-complete-clang-async flycheck-swift3 flycheck-swift flycheck swift3-mode swift-mode yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode lua-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-lua flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word csharp-mode crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link))
  '(session-use-package t nil (session))
  '(show-paren-mode t)
- '(speedbar-frame-parameters '((minibuffer) (width . 26)))
+ '(speedbar-frame-parameters '((minibuffer) (width . 35)))
  '(speedbar-show-unknown-files nil)
+ '(speedbar-smart-directory-expand-flag t)
  '(sr-speedbar-auto-refresh nil)
- '(sr-speedbar-default-width 26)
- '(sr-speedbar-max-width 26)
+ '(sr-speedbar-default-width 35)
+ '(sr-speedbar-max-width 35)
  '(sr-speedbar-right-side nil)
  '(sr-speedbar-skip-other-window-p nil)
- '(sr-speedbar-width-x 26 t)
+ '(sr-speedbar-width-x 35 t)
  '(tex-run-command "\"latex --shell-escape\"")
  '(tex-start-commands "\"latex -ini -shell-escape\"")
  '(tex-start-options "\"latex -ini --shell-escape\"")
@@ -824,9 +707,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- ;; '(default ((t (:family "Inconsolata-dz" :foundry "outline" :slant normal :weight normal :height 113 :width normal))))
- '(default ((t (:inherit nil :extend nil :stipple nil :background "#181a26" :foreground "gray80" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight semi-bold :height 113 :width normal :foundry "outline" :family "Sarasa Mono Slab SC Semibold"))))
+ '(default ((t (:inherit nil :extend nil :stipple nil :background "#181a26" :foreground "gray80" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width condensed :foundry "outline" :family "Inconsolata-dz"))))
  '(cursor ((t (:background "orchid"))))
+ '(hi-blue-b ((t (:foreground "systemBlueColor" :weight bold))))
+ '(hi-salmon ((t (:background "NavajoWhite1" :foreground "gray0"))))
+ '(highlight ((t (:background "medium orchid"))))
  '(org-level-1 ((t (:inherit outline-1))))
  '(org-level-2 ((t (:inherit outline-2))))
  '(org-level-3 ((t (:inherit outline-3))))
