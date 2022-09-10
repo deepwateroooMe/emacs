@@ -89,7 +89,6 @@
 (setq dframe-update-speed t)        ; prevent the speedbar to update the current state, since it is always changing  
 
 (defun sb/expand-tags ()
-
   "Expand current `sr-speedbar' buffer file."
   (interactive)
   ;; We assume that the speedbar name is the same as the file of the buffer
@@ -120,7 +119,8 @@
                  (speedbar-flush-expand-line))
                line-list))))
 ;; Add it to the save-hook
-(add-hook 'after-save-hook 'sb/expand-tags)
+;;; 下面这行会制造很多问题
+;; (add-hook 'after-save-hook 'sb/expand-tags)
 
 (global-set-key (kbd "<f5>") (lambda()  
                                (interactive)
