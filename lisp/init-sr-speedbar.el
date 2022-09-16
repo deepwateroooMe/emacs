@@ -135,8 +135,12 @@
 ;;                          ))
                 ;; 'speedbar-get-focus) ;; 不及上面的效果好，容易自动往右缩进
 
+
+;; (speedbar 1)
 (setq speedbar-mode-hook '(lambda ()
                             (interactive)
                             (other-frame 0)))
+;; (when window-system          ; start speedbar if we're using a window system
+;;   (speedbar t))
 
 (provide 'init-sr-speedbar)
