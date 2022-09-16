@@ -64,3 +64,6 @@ srecode-map.el
 custom-set-variables.el
 .smex-items
 ./**/*.elc
+.session
+ac-comphist.dat
+elpa/archives/*

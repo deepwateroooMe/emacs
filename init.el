@@ -1,10 +1,10 @@
-;;;
-;;; original came from https://github.com/redguardtoo/emacs.d
-(require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
-(add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+;;; 下面的启动太慢了；在没有必要的时候不想要它来耽误启动时间 
+;; (require 'package)
+;; (add-to-list 'package-archives
+;;              '("melpa" . "http://melpa.org/packages/") t)
+;; (add-to-list 'package-archives
+;;              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+
 ;(package-initialize)
 
  (setq default-directory "C:/Users/blue_/AppData/Roaming/.emacs.d/")

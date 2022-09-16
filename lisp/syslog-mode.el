@@ -283,18 +283,18 @@ This function is added to `find-file-hooks'."
     (define-key map "/" 'syslog-filter-lines) ;;; / ;;; Filter Line
     (define-key map "g" 'hide-lines-show-all) ;;; g ;;; Bac K
     (define-prefix-command 'syslog-highlight-map)
-;    (define-key map "h" 'syslog-highlight-map) ;;; h ;;; remember r p l u
+    ;; (define-key map "h" 'syslog-highlight-map) ;;; h ;;; remember r p l u
     (define-key map (kbd "h r") 'highlight-regexp)
     (define-key map (kbd "h p") 'highlight-phrase)
     (define-key map (kbd "h l") 'highlight-lines-matching-regexp)
     (define-key map (kbd "h u") 'unhighlight-regexp)
 ;    (define-key map (kbd "C-/") 'syslog-filter-dates) ;;; C-/ ;;; tmp not using
-;    (define-key map "D" (lambda nil (interactive) (dired syslog-log-file-directory))) ;;; D ;;; Open Diretory
-;    (define-key map "j" 'ffap) ;;; j
+   (define-key map "D" (lambda nil (interactive) (dired syslog-log-file-directory))) ;;; D ;;; Open Diretory
+   (define-key map "j" 'ffap) ;;; j
     (define-key map "<" 'syslog-previous-file) ;;; <
     (define-key map ">" 'syslog-next-file)     ;;; >
-;    (define-key map "o" 'syslog-open-files)    ;;; o ;;; Open File
-;    (define-key map "q" 'quit-window)          ;;; q
+   (define-key map "o" 'syslog-open-files)    ;;; o ;;; Open File
+   (define-key map "q" 'quit-window)          ;;; q
     ;; XEmacs does not like the Alt bindings
     (if (string-match "XEmacs" (emacs-version))
         t)
@@ -461,7 +461,7 @@ With prefix arg: remove lines between dates."
   (use-local-map syslog-mode-map)
   (make-local-variable 'font-lock-defaults)
   (setq font-lock-defaults '(syslog-font-lock-keywords))
-  (toggle-read-only 1)
+  ;; (toggle-read-only 1)
   (run-hooks 'syslog-mode-hook))
 
 (defvar syslog-boot-start-regexp "unix: SunOS"
@@ -474,7 +474,7 @@ With prefix arg: remove lines between dates."
   (beginning-of-line))
 
 (defface textile-acronym-face
-  '((t (:foreground "blue"))) ;; ori cyan
+  '((t (:foreground "cyan"))) ;; ori cyan blue
   "Face used to highlight acronyms links."
   :group 'syslog-faces)
 (defface textile-style-face 

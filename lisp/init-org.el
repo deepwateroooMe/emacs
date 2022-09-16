@@ -142,8 +142,8 @@ same directory as the org-buffer and insert a link to this file."
      (insert (concat "\n[[" file-path-wsl "]]"))
      ))
 
-(global-set-key (kbd "C-i") 'my-org-screenshot)
-;; (global-set-key (kbd "\M-s") 'my-org-screenshot)
+;; (global-set-key (kbd "C-i") 'my-org-screenshot)
+(global-set-key (kbd "\M-s") 'my-org-screenshot)
 
 
 (add-hook 'org-mode-hook 'turn-on-font-lock)
