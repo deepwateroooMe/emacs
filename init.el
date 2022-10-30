@@ -5,7 +5,7 @@
 ;; (add-to-list 'package-archives
 ;;              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
-;(package-initialize)
+;; (package-initialize)
 
  (setq default-directory "C:/Users/blue_/AppData/Roaming/.emacs.d/")
 ;; (setq default-directory "/Volumes/e/uMVVM/Assets/Sources/")
@@ -14,8 +14,8 @@
 
 ;;; setup defaults for all modes
 (setq default-frame-alist
-      '((top . 0)(left . 600)(height . 75)(width . 160)(menubar-lines . 100)(tool-bar-line . 0)) ; ori
-     ;; '((top . 0)(left . 400)(height . 63)(width . 180)(menubar-lines . 100)(tool-bar-line . 0))
+      ;; '((top . 0)(left . 400)(height . 63)(width . 180)(menubar-lines . 100)(tool-bar-line . 0))
+        '((top . 0)(left . 700)(height . 91)(width . 160)(menubar-lines . 100)(tool-bar-line . 0)) ; ori
       ) ; tmp.py
 
 
@@ -167,7 +167,7 @@
   (require 'init-ibuffer)
   (require 'init-ivy)
   (require 'init-hippie-expand)
-  ;; (require 'init-windows)
+  (require 'init-windows)
   (require 'init-sessions)
   (require 'init-git)
   (require 'init-crontab)
@@ -226,7 +226,7 @@
 (require 'init-auto-complete)
   (require 'pangu-spacing)
   (require 'expand-region)
-(require 'init-company)
+;; (require 'init-company) ;;; 不喜欢它老是跑出一大堆的路径相关的,不方便,暂时不同这个模式
   )
 
 ;; ;;; org-mode auto complete, commented out only for dump fixes
@@ -345,11 +345,11 @@
 
 (defun shift-right ()
   (interactive)
-  (shift-region 2))
+  (shift-region 4))
 
 (defun shift-left ()
   (interactive)
-  (shift-region -2))
+  (shift-region -4))
 
 (setq auto-save-default nil)
 
@@ -681,7 +681,7 @@
                  ("begin" "$1" "$" "$$" "\\(" "\\[")))
  '(org-support-shift-select nil)
  '(package-selected-packages
-   '(fuzzy ppd-sr-speedbar lsp-mode py-autopep8 logview virtualenvwrapper company-jedi flycheck-color-mode-line auto-complete-clang-async flycheck-swift3 flycheck-swift flycheck swift3-mode swift-mode yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode lua-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-lua flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word csharp-mode crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link))
+   '(auctex fuzzy ppd-sr-speedbar lsp-mode py-autopep8 logview virtualenvwrapper company-jedi flycheck-color-mode-line auto-complete-clang-async flycheck-swift3 flycheck-swift flycheck swift3-mode swift-mode yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode lua-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-lua flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word csharp-mode crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link))
  '(session-use-package t nil (session))
  '(show-paren-mode t)
  '(speedbar-frame-parameters '((minibuffer) (width . 35)))
@@ -707,7 +707,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :extend nil :stipple nil :background "#181a26" :foreground "gray80" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width condensed :foundry "outline" :family "Inconsolata-dz"))))
+ '(default ((t (:inherit nil :extend nil :stipple nil :background "#181a26" :foreground "gray80" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "outline" :family "Inconsolata-dz"))))
  '(cursor ((t (:background "orchid"))))
  '(hi-blue-b ((t (:foreground "systemBlueColor" :weight bold))))
  '(hi-salmon ((t (:background "NavajoWhite1" :foreground "gray0"))))

@@ -2,5 +2,5 @@
 # name: sj
 # key: sj
 # --
-#+BEGIN_SRC csharp
-#+END_SRC $0
+#+BEGIN_SRC java
+$0#+END_SRC 

@@ -7,6 +7,8 @@
 ;; (require 'csharp-mode)
 
 ;; (add-to-list 'auto-mode-alist '("\\.java\\'" . java-mode))
+;; (add-to-list 'auto-mode-alist '("\\.java\\'" . csharp-mode))
+;; (add-to-list 'auto-mode-alist '("\\.aidl\\'" . csharp-mode))
 
 (setq semantic-default-submodes '(global-semantic-idle-scheduler-mode
                                   global-semanticdb-minor-mode

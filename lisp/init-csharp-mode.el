@@ -289,6 +289,10 @@ or terminating simple string."
              ?\M-l ?A ?A ?A ?A return ?\C-q ?\C-j ?\C-q ?\C-j return
              ?\M-g ?1 return
              ?\M-l ?/ ?/ ?/ return return
+             ?\M-g ?1 return
+             ?\M-l ?/ ?/ return ?/ ?/ ?  return
+             ?\M-g ?1 return
+             ?\M-l ?/ ?/ ?  ?  return ?/ ?/ ?  return
              ?\M-g ?1 return  ;;; go back to beginning of file
              ])
 (fset 'f

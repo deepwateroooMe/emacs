@@ -17,8 +17,8 @@
       (funcall s-f)
       (set-window-buffer (next-window) (other-buffer)))))
 
-(global-set-key "\C-x2" (split-window-func-with-other-buffer 'split-window-vertically))
-(global-set-key "\C-x3" (split-window-func-with-other-buffer 'split-window-horizontally))
+(global-set-key "\C-x2" (split-window-func-with-other-buffer 'split-window-horizontally))
+(global-set-key "\C-x3" (split-window-func-with-other-buffer 'split-window-vertically))
 
 ;;----------------------------------------------------------------------------
 ;; Rearrange split windows
