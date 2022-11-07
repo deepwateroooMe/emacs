@@ -2,5 +2,4 @@
 # name: HashMap<Integer, Integer>
 # key: mii
 # --
-Map<Integer, Integer> ${1:m} = new HashMap<>();
-$0
+Map<Integer, Integer> ${1:m} = new HashMap<>();$0

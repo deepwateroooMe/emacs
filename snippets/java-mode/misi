@@ -2,5 +2,4 @@
 # name: HashMap<Integer, Set<Integer>>
 # key: misi
 # --
-Map<Integer, Set<Integer>> ${1:m} = new HashMap<>();
-$0
+Map<Integer, Set<Integer>> ${1:m} = new HashMap<>();$0

@@ -2,5 +2,4 @@
 # name: HashMap<Integer, Set<String>>
 # key: miss
 # --
-Map<Integer, Set<String>> ${1:m} = new HashMap<>();
-$0
+Map<Integer, Set<String>> ${1:m} = new HashMap<>();$0

@@ -2,5 +2,4 @@
 # name: Queue<Integer>
 # key: qi
 # --
-Deque<Integer> ${1:q} = new ArrayDeque<>();
-$0
+Deque<Integer> ${1:q} = new ArrayDeque<>();$0

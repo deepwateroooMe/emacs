@@ -494,6 +494,16 @@ otherwise, run code in `kotlin-repl'."
 (setenv "PATH" (concat (getenv "PATH") "C:/Users/blue_/OneDrive/Desktop"))
 (setq exec-path (append exec-path '("C:/Users/blue_/OneDrive/Desktop")))
 
+;; (add-to-list 'exec-path "C:/Program Files (x86)/Aspell/bin/")
+(add-to-list 'exec-path "C:/msys64/mingw64/bin/")
+(setq ispell-program-name "aspell")
+(require 'ispell)
+(setq ispell-dictionary "en_US")
+(setq ispell-personal-dictionary "C:/msys64/mingw64/lib/aspell-0.60/en_US") ;;; 
+
+(global-set-key (kbd "<f8>") 'ispell-word)
+(global-set-key (kbd "<f9>") 'flyspell-mode)
+
 ; for emacs zsh
 (setenv "ESHELL" (expand-file-name "~/.eshell"))
 

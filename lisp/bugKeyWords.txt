@@ -1,4 +1,28 @@
-l b MainActivity
-l y onCreate()
-y onSaveInstanceState()
-y onRestoreInstanceState() 
+y FireEvent()
+rb land
+b move
+b rotate
+rb GameView
+p GameViewModel
+b MenuView
+b MenuViewModel
+g Tetromino
+g GhostTetromino
+p nextTetromino
+b prevPreview
+b preview
+y Manager
+// ScoreManager
+y ViewManager
+g Data
+rb GloData
+a Model
+rb ModelMono
+b SaveSystem
+g LoadingSystemHelper
+g MoveCanvas
+g RotateCanvas
+// BaseBoardSkin
+// ChallLevelsView
+// ChallLevelsViewModel
+// ChallengeRules

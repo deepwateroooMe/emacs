@@ -1,5 +1,0 @@
-# contributor: deepwaterooo
-# name: MathUtil.()
-# key: mu
-# --
-MathUtil.$1($2); $0

@@ -1,5 +1,0 @@
-# name: Debug.DrawRay()
-# key: ddr
-# --
-Debug.DrawRay(${1:transform.position}, Vector3.${2:down} * ${3:deploymentHeight});
-$0

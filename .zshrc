@@ -1,16 +1,48 @@
-export ZSH=$HOME/.oh-my-zsh
-export PATH="/Users/qunyan/Library/Android/sdk/platform-tools":$PATH
-export PATH="/Applications/Unity/Unity.app/Contents/MacOS":$PATH
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
-cd /Volumes/h/leetcodeCoding
+export ZSH="$HOME/.oh-my-zsh"
+export DISPLAY=localhost:0.0
+alias powershell="/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe"
+plugins=(git)
 
-# bindkey for emacs
-bindkey -e
-#bindkey '^[[1;9C' forward-word
-#bindkey '^[[1;9D' backward-word
+cd /mnt/f/tetris3D/trunk/client/trunk/HotFix/
+# cd ~/.config/terminator/
 
-bindkey '^[[1;ƒ' forward-word
-bindkey '^[[1;∫' backward-word
+alias sl="/mnt/i/selfSoft/SublimeText3/sublime_text.exe "
+alias em="/mnt/i/selfSoft/mixed/emacs/x86_64/bin/runemacs.exe"
+alias ap="/mnt/g/andrprac/"
+alias aa="/mnt/g/android/"
+alias si="/mnt/i/selfSoft/SublimeText3/sublime_text.exe /mnt/c/Users/blue_/AppData/Roaming/.emacs.d/init.el"
+alias ei="emacs /mnt/c/Users/blue_/AppData/Roaming/.emacs.d/init.el &"
+alias emi="em /mnt/c/Users/blue_/AppData/Roaming/.emacs.d/init.el &"
+alias emo="cd /mnt/c/Users/blue_/AppData/Roaming/.emacs.d/lisp/ && em init-org.el &"
+alias eed="cd /mnt/c/Users/blue_/AppData/Roaming/.emacs.d/"
+alias el="cd /mnt/c/Users/blue_/AppData/Roaming/.emacs.d/lisp/"
+alias cy="cd /mnt/f/yunlangZhuZuoAndroid/trunk/client/trunk/Assets/"
+alias cg="cd /mnt/f/bk/tetris3D_bk_befHotFix/Assets/Scripts/"
+alias ct="cd /mnt/l/tetris3D_1220_2019_bef_MVVM/tetris3D/Assets/Scripts/"
+alias ey="em /mnt/f/yunlangZhuZuoAndroid/trunk/client/trunk/Assets/link.xml &"
+alias cil="cd /mnt/f/ILRuntime/ILRuntime/Runtime/"
+alias emil="em /mnt/f/ILRuntime/ILRuntime/Runtime/Extensions.cs &"
+alias er="cd /mnt/c/Users/blue_/AppData/Roaming/Rime/"
+
+alias edl="cd /mnt/c/Users/blue_/AppData/Roaming/.emacs.d/lisp/"
+alias esr="em ./lisp/init-sr-speedbar.el &"
+
+alias esc="cd /mnt/c/Users/blue_/AppData/Roaming/.emacs.d/snippets/csharp-mode/csharp/"
+alias esk="cd /mnt/c/Users/blue_/AppData/Roaming/.emacs.d/snippets/kotlin-mode/"
+alias ez="emacs ~/.zshrc"
+alias emz="em ~/.zshrc"
+alias ea="em ./app/src/main/AndroidManifest.xml &"
+alias edb="/mnt/i/selfSoft/mixed/emacs/x86_64/bin/runemacs.exe --debug-init"
+# alias grp='grep -rl \"'
+# alias "ass=cd /mnt/c/Users/blue_/AppData/Roaming/Google/AndroidStudio2020.3/scratches/"
+alias "ass=cd /mnt/c/Users/blue_/AppData/Roaming/Google/AndroidStudio2021.1/scratches/"
 
 # change volumens directories
 alias vd="cl /Volumes/d"
@@ -29,7 +61,7 @@ alias yd5="youtube-dl -f 135+140 "
 alias yd4="youtube-dl -f 134+140 "
 
 alias "ecd=adb logcat -v long > log.txt"
-alias "ap=adb pull /data/anr/traces.txt"
+# alias "ap=adb pull /data/anr/traces.txt"
 alias rh="rm \#*.java\# .\#*.java"
 alias rr="rm \#*.org\# .\#*.org"
 alias e="emacs"
@@ -41,14 +73,17 @@ alias e="emacs"
 alias g='g++'
 alias a="./a.out"
 alias ge="gedit"
-alias sl="/Applications/Sublime\ Text.app/Contents/MacOS/sublime_text"
 alias sch="scrcpy --lock-video-orientation 1"
 
 alias kct="kotlinc tmp.kt "
 alias kt="kotlin TmpKt"
+alias kc="kotlinc "
+alias aa="./program.kexe"
+alias k="kotlin "
+alias jj="java -jar "
 
-alias e="/Applications/Emacs.app/Contents/MacOS/Emacs"
-alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
+#alias e="/Applications/Emacs.app/Contents/MacOS/Emacs"
+#alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
 # emacs dump
 alias edm="emacs --batch -q -l ~/.emacs.d/dump.el"
 # emacs started from dump file
@@ -57,32 +92,20 @@ alias eddb="emacs --dump-file=\"/Users/heyan/.emacs.d/emacs.pdmp\" --debug-init"
 # 启动emacs client
 alias ec="emacsclient -a=emacs -c"
 
-alias "df=rm /Users/qunyan/Library/Application\ Support/deepwaterooo/AuthSampleTest/**/game*"
-alias "ggs=cl /Users/qunyan/Library/Application\ Support/deepwaterooo/AuthSampleTest/"
-
-alias "tel=cd /Users/qunyan/Library/Logs/Unity/"
-#alias "el=chmod 777 /Users/qunyan/Library/Logs/Unity/Editor.log && emacs /Users/qunyan/Library/Logs/Unity/Editor.log &"
-alias "el=emacs /Users/qunyan/Library/Application\ Support/deepwaterooo/AuthSampleTest/log.txt &"
-alias "ei=/Applications/Emacs.app/Contents/MacOS/Emacs ~/.emacs.d/init.el &"
-# alias "ed=/Applications/Emacs.app/Contents/MacOS/Emacs ~/.emacs.d/dump.el &"
-alias "si=/Applications/Sublime\ Text.app/Contents/MacOS/Sublime_Text ~/.emacs.d/init.el &"
-
-alias "edi=emacs --dump-file=\"/Users/heyan/.emacs.d/emacs.pdmp\" ~/.emacs.d/init.el &"
-alias "edd=emacs --dump-file=\"/Users/heyan/.emacs.d/emacs.pdmp\" ~/.emacs.d/dump.el &"
-
-# alias "eb=/Applications/Emacs.app/Contents/MacOS/Emacs ~/.bashrc &"
-alias "ez=/Applications/Emacs.app/Contents/MacOS/Emacs ~/.zshrc &"
-alias "edz=emacs --dump-file=\"/Users/heyan/.emacs.d/emacs.pdmp\"  ~/.zshrc &"
-alias "sz=/Applications/Sublime\ Text.app/Contents/MacOS/Sublime_Text ~/.zshrc &"
-
-alias "er=emacs readme.org &"
-alias "eed=cd ~/.emacs.d/"
-alias "edb=/Applications/Emacs.app/Contents/MacOS/Emacs --debug-init"
-alias "es=cd ~/.emacs.d/elpa/yasnippet-0.12.2/snippets/"
-alias "tv=cd /Users/qunyan/Movies/Mac\ Screen\ Recorder/tetrisVideos"
-alias "um=cd /Users/qunyan/unity/uMVVM/Assets/Sources"
-alias "yl=cd /Users/qunyan/yunlangZhuZuoAndroid/trunk/client/trunk/Assets/Scripts/Framework/TestSamples"
-
+# alias "df=rm /Users/qunyan/Library/Application\ Support/deepwaterooo/AuthSampleTest/**/game*"
+# alias "ggs=cl /Users/qunyan/Library/Application\ Support/deepwaterooo/AuthSampleTest/"
+# alias "tel=cd /Users/qunyan/Library/Logs/Unity/"
+# alias "edi=emacs --dump-file=\"/Users/heyan/.emacs.d/emacs.pdmp\" ~/.emacs.d/init.el &"
+# alias "edd=emacs --dump-file=\"/Users/heyan/.emacs.d/emacs.pdmp\" ~/.emacs.d/dump.el &"
+# alias "ez=/Applications/Emacs.app/Contents/MacOS/Emacs ~/.zshrc &"
+# alias "edz=emacs --dump-file=\"/Users/heyan/.emacs.d/emacs.pdmp\"  ~/.zshrc &"
+# alias "sz=/Applications/Sublime\ Text.app/Contents/MacOS/Sublime_Text ~/.zshrc &"
+# alias "er=emacs readme.org &"
+# alias "eed=cd ~/.emacs.d/"
+# alias "es=cd ~/.emacs.d/elpa/yasnippet-0.12.2/snippets/"
+# alias "tv=cd /Users/qunyan/Movies/Mac\ Screen\ Recorder/tetrisVideos"
+# alias "um=cd /Users/qunyan/unity/uMVVM/Assets/Sources"
+# alias "yl=cd /Users/qunyan/yunlangZhuZuoAndroid/trunk/client/trunk/Assets/Scripts/Framework/TestSamples"
 alias "mc=mpicc"
 alias "mr=mpirun"
 alias "h=cd ~"
@@ -96,48 +119,38 @@ alias up='cd ..'
 alias cl="cd";
 alias ht="history"
 alias dl="cd ~/Downloads/"
-
 alias g="ghc --make "
 alias ga="git add ."
 alias gs="git status"
 alias gr="git rm --cached "
 alias gc="git commit -m"
 alias gl="git log"
-alias gp="git push origin master"
+# alias gp="git push origin master"
+# highlight grep matched string text colors
+alias gp="grep --color=always -z"
 
-alias mn="/Library/Frameworks/Mono.framework/Versions/Current/Commands/mono" # mono
-alias cscs="mono /Users/qunyan/unity/cs-script/bin/linux/ubuntu/build/cs-script_3.27.5.0/cscs.exe"
-alias cscr="mono /Users/qunyan/unity/cs-script/bin/linux/ubuntu/build/cs-script_3.27.5.0/cscs.exe -r:/Applications/Unity_2018.1.0f2/Unity.app/Contents/Managed/UnityEngine.dll "
-alias cscra="mono /Users/qunyan/unity/cs-script/bin/linux/ubuntu/build/cs-script_3.27.5.0/cscs.exe /r:UnityEngine.dll /r:Assembly-CSharp.dll /t:library /out:myfile.dll filename.cs"
-alias nuget="mono /usr/local/bin/nuget.exe"
+# alias mn="/Library/Frameworks/Mono.framework/Versions/Current/Commands/mono" # mono
+# alias cscs="mono /Users/qunyan/unity/cs-script/bin/linux/ubuntu/build/cs-script_3.27.5.0/cscs.exe"
+# alias cscr="mono /Users/qunyan/unity/cs-script/bin/linux/ubuntu/build/cs-script_3.27.5.0/cscs.exe -r:/Applications/Unity_2018.1.0f2/Unity.app/Contents/Managed/UnityEngine.dll "
+# alias cscra="mono /Users/qunyan/unity/cs-script/bin/linux/ubuntu/build/cs-script_3.27.5.0/cscs.exe /r:UnityEngine.dll /r:Assembly-CSharp.dll /t:library /out:myfile.dll filename.cs"
+# alias nuget="mono /usr/local/bin/nuget.exe"
 alias sur="source ~/.zshrc"
-
 # show hidden files && hide hidden files
-alias sh="defaults write com.apple.finder AppleShowAllFiles -boolean true"
-alias kf="killall Finder"
-alias hh="defaults write com.apple.finder AppleShowAllFiles -boolean false"
+# alias sh="defaults write com.apple.finder AppleShowAllFiles -boolean true"
+# alias kf="killall Finder"
+# alias hh="defaults write com.apple.finder AppleShowAllFiles -boolean false"
 
 # for cd & ls in one
 chpwd () {
-      ls   
+ls   
 }
-
-#alias "ie=ibus exit"
-#alias "is=ibus-setup"
-#/usr/bin/zsh ~/ibus_run.sh   # don't need this one anymore
-#/bin/bash ~/.middle-click.sh   # keyboard layout is different now, search later for mac
-
-
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh
-
 autoload -U compinit
 compinit
-
 # For autocompletion of command line switches for aliases
 setopt completealiases
 setopt AUTO_LIST
 setopt AUTO_MENU
-
 
 #自动补全选项
 zstyle ':completion:*' verbose yes
@@ -159,6 +172,7 @@ zstyle ':completion::complete:*' '\\'
 #彩色补全菜单
 #eval $(dircolors -b)
 export ZLSCOLORS="${LS_COLORS}"
+
 zmodload zsh/complist
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
@@ -242,40 +256,43 @@ setopt extended_glob
 TOKENS_FOLLOWED_BY_COMMANDS=('|' '||' ';' '&' '&&' 'sudo' 'do' 'time' 'strace')
 
 recolor-cmd() {
-    region_highlight=()
-    colorize=true
-    start_pos=0
-    for arg in ${(z)BUFFER}; do
-        ((start_pos+=${#BUFFER[$start_pos+1,-1]}-${#${BUFFER[$start_pos+1,-1]## #}}))
-			((end_pos=$start_pos+${#arg}))
-			if $colorize; then
-			    colorize=false
-			    res=$(LC_ALL=C builtin type $arg 2>/dev/null)
-			    case $res in
-				*'reserved word'*)   style="fg=magenta,bold";;
-				*'alias for'*)       style="fg=cyan,bold";;
-				*'shell builtin'*)   style="fg=yellow,bold";;
-				*'shell function'*)  style='fg=green,bold';;
-				*"$arg is"*)
-				    [[ $arg = 'sudo' ]] && style="fg=red,bold" || style="fg=blue,bold";;
-				*)                   style='none,bold';;
-			    esac
-			    region_highlight+=("$start_pos $end_pos $style")
-			fi
-			[[ ${${TOKENS_FOLLOWED_BY_COMMANDS[(r)${arg//|/\|}]}:+yes} = 'yes' ]] && colorize=true
-			start_pos=$end_pos
-    done
-		    }
-		    check-cmd-self-insert() { zle .self-insert && recolor-cmd }
-		    check-cmd-backward-delete-char() { zle .backward-delete-char && recolor-cmd }
+region_highlight=()
+colorize=true
+start_pos=0
+for arg in ${(z)BUFFER}; do
+((start_pos+=${#BUFFER[$start_pos+1,-1]}-${#${BUFFER[$start_pos+1,-1]## #}}))
+((end_pos=$start_pos+${#arg}))
+if $colorize; then
+colorize=false
+res=$(LC_ALL=C builtin type $arg 2>/dev/null)
+case $res in
+*'reserved word'*)   style="fg=magenta,bold";;
+*'alias for'*)       style="fg=cyan,bold";;
+*'shell builtin'*)   style="fg=yellow,bold";;
+*'shell function'*)  style='fg=green,bold';;
+*"$arg is"*)
+[[ $arg = 'sudo' ]] && style="fg=red,bold" || style="fg=blue,bold";;
+*)                   style='none,bold';;
+esac
+region_highlight+=("$start_pos $end_pos $style")
+fi
+[[ ${${TOKENS_FOLLOWED_BY_COMMANDS[(r)${arg//|/\|}]}:+yes} = 'yes' ]] && colorize=true
+start_pos=$end_pos
+done
+}
+check-cmd-self-insert() { zle .self-insert && recolor-cmd }
+check-cmd-backward-delete-char() { zle .backward-delete-char && recolor-cmd }
 
-
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
-#		    ZSH_THEME="angoster"
+ZSH_THEME="powerlevel10k/powerlevel10k"
+POWERLEVEL9K_MODE='nerdfont-complete'
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status kubecontext time)
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+# If you have installed Windows 10 1903 then you can skip the next line
+POWERLEVEL9K_COLOR_SCHEME='light'
+plugins=(zsh-autosuggestions git zsh-syntax-highlighting)
+source $ZSH/oh-my-zsh.sh
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=014'
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -349,57 +366,58 @@ export PATH="/opt/adt-bundle-linux-x86_64-20140702/sdk/platform-tools/:/home/jen
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# for android sdk
-#export PATH=/home/jenny/installed/adt-bundle-linux-x86_64-20140702/sdk/platform-tools/:$PATH
+# for android adb
+export PATH=/mnt/i/selfSoft/android/sdk/platform-tools/:$PATH
+alias adb='/mnt/i/selfSoft/android/sdk/platform-tools/adb.exe'
 
-# followed this link
-# http://tutorialforlinux.com/2013/11/26/how-to-install-android-sdk-tools-only-on-linux-mint-16-petra-easy-guide/
-export PATH=/opt/adt-bundle-linux-x86_64-20140702/sdk/platform-tools/:$PATH
-# FOR mono
-export PATH=/Library/Frameworks/Mono.framework/Versions/Current/bin:${PATH}
-# export PATH=/Library/Frameworks/Mono.framework/:${PATH}
+# # followed this link
+# # http://tutorialforlinux.com/2013/11/26/how-to-install-android-sdk-tools-only-on-linux-mint-16-petra-easy-guide/
+# export PATH=/opt/adt-bundle-linux-x86_64-20140702/sdk/platform-tools/:$PATH
+# # FOR mono
+# export PATH=/Library/Frameworks/Mono.framework/Versions/Current/bin:${PATH}
+# # export PATH=/Library/Frameworks/Mono.framework/:${PATH}
+
+# # for pygmentize
+# export PATH=/Users/heyan/Library/Python/2.7/bin:${PATH}
 
 
-# for pygmentize
-export PATH=/Users/heyan/Library/Python/2.7/bin:${PATH}
-
-
-
+alias pbcopy="xclip -selection c"
+alias pbpaste="xclip -selection clipboard -o"
 pb-kill-line () {
-  zle kill-line
-  echo -n $CUTBUFFER | pbcopy
+zle kill-line
+echo -n $CUTBUFFER | pbcopy
 }
 pb-kill-whole-line () {
-  zle kill-whole-line
-  echo -n $CUTBUFFER | pbcopy
+zle kill-whole-line
+echo -n $CUTBUFFER | pbcopy
 }
 pb-backward-kill-word () {
-  zle backward-kill-word
-  echo -n $CUTBUFFER | pbcopy
+zle backward-kill-word
+echo -n $CUTBUFFER | pbcopy
 }
 pb-kill-word () {
-  zle kill-word
-  echo -n $CUTBUFFER | pbcopy
+zle kill-word
+echo -n $CUTBUFFER | pbcopy
 }
 pb-kill-buffer () {
-  zle kill-buffer
-  echo -n $CUTBUFFER | pbcopy
+zle kill-buffer
+echo -n $CUTBUFFER | pbcopy
 }
 pb-copy-region-as-kill () {
-  zle copy-region-as-kill
-  echo -n $CUTBUFFER | pbcopy
+zle copy-region-as-kill
+echo -n $CUTBUFFER | pbcopy
 }
 pb-copy-region-as-kill-deactivate-mark () {
-  zle pb-copy-region-as-kill
-  zle set-mark-command -n -1
+zle pb-copy-region-as-kill
+zle set-mark-command -n -1
 }
 pb-yank () {
-  CUTBUFFER=$(pbpaste)
-  zle yank
+CUTBUFFER=$(pbpaste)
+zle yank
 }
 pb-kill-region () {
-  zle kill-region
-  echo -n $CUTBUFFER | pbcopy
+zle kill-region
+echo -n $CUTBUFFER | pbcopy
 }
 zle -N pb-kill-line
 zle -N pb-kill-whole-line
@@ -410,24 +428,33 @@ zle -N pb-copy-region-as-kill
 zle -N pb-copy-region-as-kill-deactivate-mark
 zle -N pb-yank
 zle -N pb-kill-region
-
 bindkey -e '^SPC' set-mark-command
 bindkey '^k' pb-kill-line
 bindkey '^u' pb-kill-whole-line
 #bindkey -e '\eW' x-copy-region-as-kill
-#bindkey -e '^[w' x-copy-region-as-kill
-bindkey -e '^[w' pb-copy-region-as-kill
-bindkey '^[w' pb-copy-region-as-kill-deactivate-mark
+# bindkey -e '^v' x-copy-region-as-kill
+# bindkey -e '^[w' pb-copy-region-as-kill
+bindkey '^v' pb-copy-region-as-kill-deactivate-mark
 bindkey -e '^w' pb-kill-region
 bindkey -e '^y' pb-yank
-
-
 autoload -Uz copy-earlier-word
 zle -N copy-earlier-word
-bindkey "^[m" copy-earlier-word　＃复制前一行命令最后一个word
+bindkey "^[m"  copy-earlier-word　＃复制前一行命令最后一个word
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-export PROMPT_COMMAND="history -a"
+
+autoload -U select-word-style
+zle -N select-word-style
+bindkey '\ez' select-word-style
+
+# WORDCHARS='~!#$%^&*(){}[]<>?.+;-' # for the "normal" style
+# WORDCHARS = ' '
+select-word-style normal
+zstyle ':zle:*ward-word' word-style space
+zstyle ':zle:backward-kill-word' word-style space
+
+
+# export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+# export PROMPT_COMMAND="history -a"
 
 export PATH="$PATH:/usr/bin/"
 #export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/$USER/.openmpi/lib/"
@@ -437,24 +464,19 @@ export PATH="$PATH:/usr/bin/"
 #export PATH=$PATH:$JAVA_HOME/bin/
 #export JUNIT_HOME=/usr/lib/jvm/jdk1.8.0_25/jre/lib/
 
-# export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk8/Contents/Home
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-16.0.1.jdk/Contents/Home
-#export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home
+export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
+# export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-16.0.1.jdk/Contents/Home
+# #export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home
 export PATH=$JAVA_HOME/bin/:$PATH
 #export JUNIT_HOME=/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/
 #export CLASSPATH=$CLASSPATH:$JUNIT_HOME/junit-4.12.jar:.
 #export CLASSPATH=$CLASSPATH:$JUNIT_HOME/hamcrest-core-1.3.jar:.
 #export CLASSPATH=$CLASSPATH:/usr/share/java/vecmath.jar:.
-
-
 #export HADOOP_HOME=/usr/local/hadoop
 #JAVA_HOME=/etc/alternative/jre
 
-# Some convenient aliases and functions for running Hadoop-related commands
-unalias fs &> /dev/null
-alias fs="hadoop fs"
-unalias hls &> /dev/null
-alias hls="fs -ls"
+export KOTLIN_HOME=~/selSoft/kotlin-native-linux-x86_64-1.6.10
+export PATH="$PATH:$KOTLIN_HOME/bin"
 
 # If you have LZO compression enabled in your Hadoop cluster and
 # compress job outputs with LZOP (not covered in this tutorial):
@@ -466,38 +488,39 @@ alias hls="fs -ls"
 # Requires installed 'lzop' command.
 #
 lzohead () {
-        hadoop fs -cat $1 | lzop -dc | head -1000 | less
+hadoop fs -cat $1 | lzop -dc | head -1000 | less
 }
 
-# Add Hadoop bin/ directory to PATH
-export PATH=$PATH:$HADOOP_HOME/bin
-#source ~/.nvm/nvm.sh
-
-# for Ruby
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-# source ~/.bashrc
-
 #gradle home
-GRADLE_HOME=/Applications/Android\ Studio.app/Contents/gradle/gradle-5.0/
-export PATH=$GRADLE_HOME/bin/:$PATH
+# GRADLE_HOME=/Applications/Android\ Studio.app/Contents/gradle/gradle-5.0/
+# export PATH=$GRADLE_HOME/bin/:$PATH
 
-# for basicTex
-export PATH=/Library/TeX/texbin:$PATH
+# # for basicTex
+# export PATH=/Library/TeX/texbin:$PATH
 
-# for Sublime Text
-export PATH=/Applications/Sublime\ Text.app/Contents/MacOS:$PATH
+# # for Android Studio
+# export PATH=/Users/qunyan/Library/Android/sdk/platform-tools:/Users/qunyan/Library/Android/sdk/tools:$PATH
+# source /home/blue_/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# for Android Studio
-export PATH=/Users/qunyan/Library/Android/sdk/platform-tools:/Users/qunyan/Library/Android/sdk/tools:$PATH
-#export PATH=/usr/local/texlive/2015basic/bin/universal-darwin:$PATH
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# for scala
-SCALA_HOME="/Users/qunyan/Documents/summer16/scala/scala-2.11.8"
-export PATH=/Users/qunyan/Documents/summer16/scala/scala-2.11.8/bin:$PATH
+# 为了在终端能够显示中文语言
+# export LANG=LANG="zh_CN.utf-8"
+# export LANGUAGE="zh_CN:zh:en_US:en"
+# export LC_ALL="zh_CN.utf-8" 
 
-# /usr/local/bin/
-export PATH=/usr/local/bin:$PATH
-export PATH=$PATH:/Users/qunyan/Library/Android/sdk/ndk-bundle
+bindkey '^i' autosuggest-accept
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(buffer-empty bracketed-paste accept-line push-line-or-edit)
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_USE_ASYNC=true
 
-export PATH=/usr/local/share/dotnet:$PATH
-export PATH=/Users/qunyan/Library/Android/sdk/platform-tools/adb:$PATH
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search
+bindkey "^[[B" down-line-or-beginning-search
+
+alias fl="cat /mnt/c/Users/blue_/AppData/Local/Unity/Editor/Editor.log | grep -v 'Filename: Assets/Scripts/Framework/Util/MathUtil.cs\|Framework.Core\|Framework.MVVM.MathUtil\|ILRuntime.CLR.Method.CLRMethod:Invoke\|ILRuntime.Runtime.Enviorment.AppDomain:Invoke\|ILRuntime.Runtime.Intepreter.DelegateAdapter\|ILRuntime.Runtime.Intepreter.ILIntepreter\|Object\|System.Reflection.MethodBase\|System.Reflection.MonoMethod\|UnityEngine.Debug\|UnityEngine.DebugLogHandler\|UnityEngine.EventSystems.EventSystem\|UnityEngine.EventSystems.ExecuteEvents\|UnityEngine.EventSystems.StandaloneInputModule\|UnityEngine.Events.InvokableCall:Invoke\|UnityEngine.Events.UnityEvent:Invoke\|UnityEngine.Logger\|UnityEngine.UI.Button\|Adaptor:Update\|unity_Software/2017.2.0f3\|-define\|Assets/Scripts\|UnityEngine.SetupCoroutine\|Re imported Asset\|CheckDllChange\|UnityEditor.AssetPostprocessingInternal\|UnityEditor.BuildPipeline\|AssetBundleTool\|CheckDllChange\|Startup:Update\|UnityEditor.EditorApplication\|Updating ProjectSettings\|(Filename: C:\buildslave\unity\build\Runtime/Mono/MonoBehaviour.cpp Line: 1753)\|[C:\buildslave\unity\build\Runtime/Mono/MonoBehaviour.cpp line 1753]' > tetris.log"
+

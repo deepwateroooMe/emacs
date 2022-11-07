@@ -1,6 +1,0 @@
-# contributor: deepwaterooo
-# name: constStr
-# key: str
-# --
-public const string ${1:STR} = "$1";
-$0

@@ -124,27 +124,20 @@
 
 (global-set-key (kbd "<f5>") (lambda()  
                                (interactive)
-;;; 这里说,如果窗口存在,就切换过去;不存在则打开并切换到浏览窗口,坏处是窗口永远无法关闭                               
+;;; 如果窗口存在,就切换过去;不存在则打开并切换到浏览窗口,坏处是窗口永远无法关闭                               
                                (if (sr-speedbar-exist-p)
                                    (select-window sr-speedbar-window)
                                  (sr-speedbar-toggle)
                                  (sr-speedbar-select-window)
                                  )))
-;; (sr-speedbar-toggle) ;;; 这里的目录不对，应该是动态的目录才对
-;;; 设置为关闭窗口
+;;; 设置为关闭窗口; 填加一个手误功能,当点了F4,但是窗口是关闭的,那么当F5来用,打开窗口并将光标切换到窗口
 (global-set-key [(f4)] (lambda ()
                          (interactive)
                          (if (sr-speedbar-exist-p)
                              (sr-speedbar-close)
-                           (message "sr-speedbar window is not exist.")))
-                         ;; (sr-speedbar-toggle)
-                         ;; (sr-speedbar-select-window)
-                         
-                         ;; (speedbar-get-focus)
-                         ;; (sr-speedbar-select-window)
-                )
-                ;; 'speedbar-get-focus) ;; 不及上面的效果好，容易自动往右缩进
-
+                           (sr-speedbar-open)
+                           (sr-speedbar-select-window)
+                           )))
 
 ;; (speedbar 1)
 (setq speedbar-mode-hook '(lambda ()
