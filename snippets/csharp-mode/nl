@@ -1,7 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: n = length
-# key: nl
-#${1:root}.levelPrintTree($1);
-# --
-int ${1:n} = ${2:s}.length$3;
-$0

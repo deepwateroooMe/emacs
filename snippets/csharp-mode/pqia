@@ -1,6 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: PriorityQueue<int []>
-# key: pqia
-# --
-Queue<int []> ${1:q} = new PriorityQueue<>((x, y) -> $2);
-$0

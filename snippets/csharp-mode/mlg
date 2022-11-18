@@ -1,5 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: Math.log()
-# key: mlg
-# --
-Math.log(${1:v})$0

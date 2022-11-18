@@ -2,5 +2,5 @@
 # name: st
 # key: st
 # --
-#+BEGIN_SRC text
+#+BEGIN_SRC tex
 #+END_SRC $0

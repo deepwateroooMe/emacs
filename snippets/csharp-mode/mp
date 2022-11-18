@@ -2,4 +2,5 @@
 # name: mp
 # key: mp
 # --
-Math.pow(${1:10}, ${2})$0
+MathUtilP.print($1);
+$0

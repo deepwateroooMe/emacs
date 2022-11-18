@@ -1,6 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: Arrays.binarySearch(arr)
-# key: abs
-# --
-Arrays.binarySearch(${1:arr}, ${2:0}, ${3:n-1}, ${4:val});
-$0

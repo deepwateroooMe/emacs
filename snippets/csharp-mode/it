@@ -1,7 +1,0 @@
-# name: Iterator<Map.Entry<Integer, Integer>>
-# key: it
-# --
-Iterator<Map.Entry<${1:Integer, Integer}>> it = ${2:map}.entrySet().iterator();
-while (it.hasNext()) {
-    $0
-}

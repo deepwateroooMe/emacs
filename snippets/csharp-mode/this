@@ -1,5 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: this
-# key: tsv
-# --
-this.$1 = $1;$0

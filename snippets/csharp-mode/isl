@@ -1,6 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: IntStream.rangeClosed.toList()
-# key: isl
-# --
-IntStream.rangeClosed(0, n-1).mapToObj(z->${1:arr}[z]).collect(Collectors.toList());
-$0

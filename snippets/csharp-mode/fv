@@ -1,7 +1,0 @@
-# contributor: deepwaterooo
-# name: for values()
-# key: fv
-# --
-for (var ${1:v} : ${3:s}) {
-    $0
-}

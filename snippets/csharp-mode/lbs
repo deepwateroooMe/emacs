@@ -1,5 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: Long.toBinaryString()
-# key: lbs
-# --
-Long.toBinaryString(${1:s})$0

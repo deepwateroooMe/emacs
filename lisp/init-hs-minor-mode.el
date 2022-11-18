@@ -1,6 +1,6 @@
 (dolist (hook '(c-mode-common-hook
                 emacs-lisp-mode-hook
-                java-mode-hook
+                ;; java-mode-hook
                 lisp-mode-hook
                 perl-mode-hook
                 sh-mode-hook

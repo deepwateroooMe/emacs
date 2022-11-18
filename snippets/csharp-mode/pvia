@@ -1,6 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# key: pvia
-# --
-for (int [] zz : ${1:s}) 
-    System.out.println(Arrays.toString(zz));
-$0

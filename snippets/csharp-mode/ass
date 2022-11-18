@@ -1,5 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: Arrays.stream().sum()
-# key: ass
-# --
-Arrays.stream(${1:arr}).sum()$0

@@ -1,7 +1,0 @@
-# contributor: deepwaterooo
-# name: for (char decrease)
-# key: fdc
-# --
-for (char ${1:c} = ${2:'z'}; $1 >= ${3:'a'}; $1--) {
-    $0
-}

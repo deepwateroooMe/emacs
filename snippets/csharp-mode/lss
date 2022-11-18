@@ -1,5 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: List.stream().sum()
-# key: lss
-# --
-${1:l}.stream().collect(Collectors.summingInt(Integer::intValue));$0

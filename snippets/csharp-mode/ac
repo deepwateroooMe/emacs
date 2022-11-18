@@ -1,6 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: Arrays.copyOf()
-# key: ac
-# --
-Arrays.copyOf(${1:arr}, ${2:n});
-$0

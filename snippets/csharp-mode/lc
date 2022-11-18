@@ -1,6 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: List<Character>
-# key: lc
-# --
-List<Character> ${1:l} = new ArrayList<>();
-$0

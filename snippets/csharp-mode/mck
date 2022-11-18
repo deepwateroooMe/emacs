@@ -1,5 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: map.containsKey()
-# key: mck
-# --
-${1:m}.containsKey(${2:k})$0

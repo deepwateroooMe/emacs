@@ -1,6 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: PriorityQueue<Integer>
-# key: pqi
-# --
-Queue<Integer> ${1:q} = new PriorityQueue<>($2);
-$0

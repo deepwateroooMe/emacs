@@ -1,5 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: toBinaryString()
-# key: bs
-# --
-toBinaryString(${1:s})$0

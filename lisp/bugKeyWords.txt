@@ -1,12 +1,27 @@
-y FireEvent()
+y C:/Users/blue_/AppData/LocalLow/DefaultCompany/trunk/
 rb land
-b move
+l y NullReferenceException:
+l y ArgumentOutOfRangeException:
+l y KeyNotFoundException:
+l y EventManager: FireEvent() type: land
+l y GameViewModel: onUndoGame()
+l y ERROR:
+y onActiveTetrominoLand
+y onGameSave()
+y LoadDataFromParentList()
+g DeleteRowCoroutine()
+g GetFromPool() type:
+g 1 
+b 2 
+y 3 
+p parentData.name:
+p move
 b rotate
 rb GameView
 p GameViewModel
 b MenuView
 b MenuViewModel
-g Tetromino
+bb Tetromino
 g GhostTetromino
 p nextTetromino
 b prevPreview

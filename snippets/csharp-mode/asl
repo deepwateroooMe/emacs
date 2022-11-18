@@ -1,5 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: Arrays.stream()
-# key: asl
-# --
-Arrays.stream(${1:arr}).boxed().collect(Collectors.toList())$0

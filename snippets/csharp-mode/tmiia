@@ -1,5 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: TreeMap<Integer, int []>
-# key: tmiia
-# --
-TreeMap<Integer, int []> ${1:m} = new TreeMap<>($2);$0

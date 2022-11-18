@@ -1,5 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: map.getOrDefault
-# key: god
-# --
-${1:m}.getOrDefault($2, ${3:0})$0

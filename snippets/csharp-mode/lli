@@ -1,6 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: List<List<Integer>> ll
-# key: lli
-# --
-List<List<Integer>> ${1:ll} = new ArrayList<>();
-$0

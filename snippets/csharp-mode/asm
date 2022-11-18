@@ -1,5 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: Arrays.stream().max()min
-# key: asm
-# --
-Arrays.stream(${1:arr}).${2}().getAsInt()$0

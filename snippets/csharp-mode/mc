@@ -1,5 +1,5 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: mc
+# contributor: deepwaterooo
+# name: Model.gridClr
 # key: mc
 # --
-Math.ceil(${1})$0
+Model.gridClr$0

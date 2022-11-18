@@ -1,5 +1,0 @@
-# contributor: whi
-# name: wio
-# key: wio
-# --
-while ($1) $0

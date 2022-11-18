@@ -1,5 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: Math.abs(
-# key: mab
-# --
-Math.abs(${1:a})$0

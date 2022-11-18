@@ -159,6 +159,7 @@
   (require 'init-exec-path) ;; Set up $PATH
   ;; any file use flyspell should be initialized after init-spelling.el
   ;; actually, I don't know which major-mode use flyspell.
+  (require 'init-cc-mode)
   (require 'init-spelling)
   (require 'init-gui-frames)
   (require 'init-ido)
@@ -173,13 +174,11 @@
   (require 'init-crontab)
   (require 'init-markdown)
   (require 'init-erlang)
-  (require 'init-javascript)
   (require 'init-css)
   (require 'init-sr-speedbar)
-
   (require 'org-move-tree)
-
-  ;; (require 'init-java-mode)
+  (require 'init-java-mode)
+  ;; (require 'init-javascript)
   (require 'init-haskell)
   (require 'init-ruby-mode)
   (require 'init-lisp)
@@ -188,8 +187,7 @@
 
   (require 'cpputils-cmake) ; to do more work on this one
   ;; Use bookmark instead
-  (require 'init-cc-mode)
-  (require 'init-gud)
+  (require 'init-gud) 
   (require 'init-linum-mode)
   (require 'init-moz)
   (require 'init-gtags)

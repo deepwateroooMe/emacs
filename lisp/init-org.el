@@ -138,6 +138,7 @@ same directory as the org-buffer and insert a link to this file."
 ;;; 文件的自动保存地址，需要再自动化一下到当前文件所在的目录
     ;; (shell-command (concat powershell " -command \"(Get-Clipboard -Format Image).Save(\\\"F:/AndroidAppDevelopmentStudy/pic/" filename "\\\")\""))
     ;; (shell-command (concat powershell " -command \"(Get-Clipboard -Format Image).Save(\\\"f:/mixed_recently/pic/" filename "\\\")\""))
+    ;; (shell-command (concat powershell " -command \"(Get-Clipboard -Format Image).Save(\\\"l:/PersonalInfo/pic/" filename "\\\")\""))
     (shell-command (concat powershell " -command \"(Get-Clipboard -Format Image).Save(\\\"f:/tetris3D/pic/" filename "\\\")\""))
     ;; (shell-command (concat powershell " -command \"(Get-Clipboard -Format Image).Save(\\\"l:/PersonalInfo/pic/" filename "\\\")\""))
     (org-indent-line)

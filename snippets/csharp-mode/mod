@@ -1,6 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: mod
-# key: mod
-# --
-static final int mod = (int)1e9 + 7;
-$0

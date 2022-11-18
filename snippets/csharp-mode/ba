@@ -1,6 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: boolean [] a = new boolean [] {}
-# key: ba
-# --
-boolean [] ${1:a} = new boolean [] {$2};
-$0

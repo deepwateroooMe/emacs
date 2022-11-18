@@ -7,8 +7,8 @@
       (cons '("cs" . csharp-mode) interpreter-mode-alist))
 (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
 (add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-mode))
-(add-to-list 'auto-mode-alist '("\\.java\\'" . csharp-mode))
-(add-to-list 'auto-mode-alist '("\\.aidl\\'" . csharp-mode))
+;; (add-to-list 'auto-mode-alist '("\\.java\\'" . csharp-mode))
+;; (add-to-list 'auto-mode-alist '("\\.aidl\\'" . csharp-mode))
 
 ;;;for csharp-mode ; {} autoindent
 (defun csharp-autoindent ()

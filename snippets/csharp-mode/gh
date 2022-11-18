@@ -1,6 +1,5 @@
 # contributor: deepwaterooo
-# name: system.out.println("got here");
+# name: GameObjectHelper
 # key: gh
 # --
-System.out.println("${1:GotHere}");
-$0
+GameObjectHelper$0

@@ -6,6 +6,23 @@
 ;      (cons '("cs" . csharp-mode) interpreter-mode-alist))
 
 
+;;; org-mode auto configure mode
+(setq interpreter-mode-alist
+      (cons '("tex" . tex-mode) interpreter-mode-alist))
+(add-to-list 'auto-mode-alist '("\\.tex\\'" . latex-mode))
+
+
+;; (add-to-list 'exec-path "C:/Program Files (x86)/Aspell/bin/")
+(add-to-list 'exec-path "C:/msys64/mingw64/bin/")
+(setq ispell-program-name "aspell")
+(require 'ispell)
+(setq ispell-dictionary "en_US")
+(setq ispell-personal-dictionary "C:/msys64/mingw64/lib/aspell-0.60/en_US") ;;; 
+
+(global-set-key (kbd "<f8>") 'ispell-word)
+(global-set-key (kbd "<f9>") 'flyspell-mode)
+
+
 ;;; latex add/delete item
 (fset 'ait
    "\\item \C-n\C-a")
@@ -15,7 +32,7 @@
 (fset 'itm  ;;; \item{   }
 ;  "\\item{\C-e}\C-n\C-n\C-a")
    "\\item{\C-e}\C-n\C-a")
-
+  
 (fset 'ss   ;;; subsection{  }
    "\\subsection{\C-e}\C-n\C-a")
 (fset 'sss  ;;; subsubsection{  }

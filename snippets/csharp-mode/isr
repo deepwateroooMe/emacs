@@ -1,6 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: IntStream.rangeClosed.toArray()
-# key: isr
-# --
-IntStream.rangeClosed(0, n-1).map(z->arr[n-1-z]).toArray();
-$0

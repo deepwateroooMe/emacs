@@ -1,6 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: Arrays.fill
-# key: af
-# --
-Arrays.fill(${1:v}, ${2:1});
-$0

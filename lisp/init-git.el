@@ -10,24 +10,6 @@
 ;; controlled. other vcs functionality still works.
 (remove-hook 'find-file-hooks 'vc-find-file-hook)
 
-;; ;; Solution 3: setup vc-handled-backends per project
-;; (setq vc-handled-backends ())
-;; (defun my-setup-develop-environment ()
-;;   (interactive)
-;;   (cond
-;;    ((string-match-p (file-truename "~/.emacs.d") (file-name-directory (buffer-file-name))
-;;     (setq vc-handled-backends '(Git)))
-;;    (t (setq vc-handled-backends nil)))))
-;; (add-hook 'java-mode-hook 'my-setup-develop-environment)
-;; (add-hook 'emacs-lisp-mode-hook 'my-setup-develop-environment)
-;; (add-hook 'org-mode-hook 'my-setup-develop-environment)
-;; (add-hook 'js2-mode-hook 'my-setup-develop-environment)
-;; (add-hook 'js-mode-hook 'my-setup-develop-environment)
-;; (add-hook 'javascript-mode-hook 'my-setup-develop-environment)
-;; (add-hook 'web-mode-hook 'my-setup-develop-environment)
-;; (add-hook 'c++-mode-hook 'my-setup-develop-environment)
-;; (add-hook 'c-mode-hook 'my-setup-develop-environment)
-
 ;; {{ git-gutter
 (require 'git-gutter)
 

@@ -1,6 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: StringBuilder Variable
-# key: sbv
-# --
-StringBuilder ${1:s} = new StringBuilder($2);
-$0
