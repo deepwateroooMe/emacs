@@ -15,7 +15,6 @@
   (cl-flet ((process-list ())) ad-do-it))
 
 
-
 ;; (autoload 'jtags-extras "jtags-extras" "Load jtags-extras.")
 ;; (add-hook 'java-mode-hook 'jtags-extras)
 ;; ;; (add-hook 'java-mode-hook 'java-mode-indent-annotations-setup)
@@ -35,7 +34,7 @@
   (interactive "s")
   (save-excursion 
     (backward-sexp)
-    (looking-at regexp)))
+    (looking-at regexp))) 
 
 (defun cheeso-looking-back-at-equals-or-array-init-java ()
   "returns t if an equals or [] is immediate preceding. else nil."

@@ -3,4 +3,5 @@
 # key: st
 # --
 #+BEGIN_SRC tex
-#+END_SRC $0
+#+END_SRC
+$0

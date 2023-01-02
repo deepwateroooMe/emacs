@@ -2,4 +2,5 @@
 # name: TreeMap<String, Integer>
 # key: tmsi
 # --
-TreeMap<String, Integer> ${1:m} = new TreeMap<>();$0
+TreeMap<String, Integer> ${1:m} = new TreeMap<>();
+$0

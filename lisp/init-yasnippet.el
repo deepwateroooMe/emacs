@@ -28,8 +28,9 @@
   (interactive)
   (yas-compile-directory (file-truename "~/.emacs.d/snippets"))
   (yas-reload-all)
-  (yas-minor-mode 1)
-  )
+  (yas-minor-mode 1))
+;; (global-set-key [(F6)]  'my-yas-reload-all) ;;; 用个键方便一点儿 F8: 拼写检查相关的
+(global-set-key (kbd "<f6>")  'my-yas-reload-all) ;;; 用个键方便一点儿 F8: 拼写检查相关的
 
 (defun my-yas-field-to-statement(str sep)
   "If STR=='a.b.c' and SEP=' && ',

@@ -1,8 +1,7 @@
-% Created 2021-09-26 Sun 19:15
+% Created 2023-01-01 Sun 16:31
 \documentclass[9pt, b5paper]{article}
-\usepackage[UTF8]{ctex}
-\usepackage{xltxtra}
-\usepackage{bera}
+\usepackage{xeCJK}
+\usepackage{minted}
 \usepackage[T1]{fontenc}
 \usepackage[scaled]{beraserif}
 \usepackage[scaled]{berasans}
@@ -13,14 +12,13 @@
 \usepackage{multicol}
 \usepackage{float}
 \usepackage{textcomp}
-\usepackage{geometry}
-\geometry{left=1.2cm,right=1.2cm,top=1.5cm,bottom=1.2cm}
 \usepackage{algorithm}
 \usepackage{algorithmic}
 \usepackage{latexsym}
 \usepackage{natbib}
-\usepackage{minted}
-\newminted{common-lisp}{fontsize=ootnotesize}
+\usepackage{geometry}
+\geometry{left=1.2cm,right=1.2cm,top=1.5cm,bottom=1.2cm}
+\newminted{common-lisp}{fontsize=\footnotesize} 
 \usepackage[xetex,colorlinks=true,CJKbookmarks=true,linkcolor=blue,urlcolor=blue,menucolor=blue]{hyperref}
 \author{deepwaterooo}
 \date{\today}
@@ -28,7 +26,7 @@
 \hypersetup{
   pdfkeywords={},
   pdfsubject={},
-  pdfcreator={Emacs 27.1 (Org mode 8.2.7c)}}
+  pdfcreator={Emacs 27.2 (Org mode 8.2.7c)}}
 \begin{document}
 
 \maketitle
@@ -38,6 +36,86 @@
 \section{Updates}
 \label{sec-1}
 \begin{itemize}
+\item I liked recently configued Visual studio 2019 one-dark-pro theme, want to configue it for emacs, but ended up with any permission denied, renaming emacs initiating bug. reverted back for daily use, and may look into that bug for later reference.
+\item will reconfigure one-dark-pro theme later.
+\item fixed legency java-mode highlighing issue which I did not fix for years.
+\end{itemize}
+\subsection{BUG statement and partial fix}
+\label{sec-1-1}
+\begin{itemize}
+\item in java-mode, the code style I expected is as followed:
+\end{itemize}
+\begin{minted}[fontsize=\scriptsize,linenos=false]{java}
+class node {
+    int v ;
+    public node() {
+        if (a > 0) // I don't want { } blocks when I have only one line statement inside blocks
+     // a = 17;    // before fix:
+            a = 17;   // now it can auto-indent
+        b = 20;
+        while (true)  // same auto indents here
+            j++;
+    }
+}
+class dklfjdj {|} // <<==== current un-auto-expanded version, bug right now for java-mode
+class dklfjdj { 
+    | // <<==== expected feature: once I typed '{', '}' will be autopaired(it does), but also auto-expand and cursor moves and indents directly to where I expect
+}
+\end{minted}
+\begin{itemize}
+\item if while if while one line statement autoindent without \{\} fixed today for java-mode, but for kotlin-mode, this bug consists, make coders/programmers nuts.
+\end{itemize}
+\begin{minted}[fontsize=\scriptsize,linenos=false]{java}
+fun getStringLength(obj: Any): Int? {
+    if (obj is String)
+    return obj.length  // <<<<===== BUG: need to fix auto-indent here for if else while etc without {} 
+
+    if (obj is String) {
+        return obj.length
+    }
+    // 在离开类型检测分支后，`obj` 仍然是 `Any` 类型
+    return null
+}
+fun dslfkj { // kotlin-mode, unlike java-mode, this feature works charming
+    val a = 1720 
+}
+\end{minted}
+\begin{itemize}
+\item The \{|\} can NOT auto-expand still bugs me a lot, I don't want to switch back to java-mode yet unless bug fixed and it auto-pands.
+\item java minor bug: Debugger entered--Lisp error: (void-function company-clear-completion-rules): this bug I will look into it recently, and expect it to be fixed so I could switch java-mode from csharp-mode as soon as possible.
+\item \textbf{csharp-mode} has been the one that works perfectly for these two features, \{\} auto expand, also if while one line statement autoindent without \{\}, so I used csharp-mode as java mode.
+\end{itemize}
+\subsection{so far let it be this way}
+\label{sec-1-2}
+\begin{itemize}
+\item Spent a whole day, half fixed the bug in the morning, but has broke java-mode completely and had to pull request from github once again.
+\item I actually cannot stay kotlin-mode insdie csharp's, look at following indent:
+\end{itemize}
+\begin{minted}[fontsize=\scriptsize,linenos=false]{kotlin}
+public fun thread(start: Boolean = true,
+                  isDaemon: Boolean = false,
+                  contextClassLoader: ClassLoader? = null,
+                  name: String? = null,
+                  priority: Int = -1,
+                  block: () -> Unit
+                  ): Thread {
+    val thread = object : Thread() {
+        public override fun run() {
+            block()
+        }
+    }
+    if (isDaemon) thread.isDaemon = true
+                      if (priority > 0) thread.priority = priority
+                                            if (name != null) thread.name = name
+                                                                  if (contextClassLoader != null) thread.contextClassLoader = contextClassLoader
+                                                                                                      if (start) thread.start()   
+                                                                                                                     return thread
+\end{minted}
+\begin{itemize}
+\item cause csharp-mode does not have ';' !!! so kotlin-mode stay as designed, I will have to bear the bug till I search and find good solutions.
+\item Recently I have used csharp-mode less, so temportorily let java-mode and kotlin-mode stay inside csharp's for a while. And I only want to practise kotlin to get a comfortable level referring github android projects. So once I get familiar, i still mainly using java-mode insides csharp's, which could be Ok, untill I get a job, and finally settle down to work on java-mode and \{|\} auto-expandsion bug.
+
+\item today's
 \item will only update this repository when there is a need. emacs version 27.01 27.02
 \item working on leetcode interview questions, so have not configued any JDK IDE within emacs nor from csharp-mode, only take full advantage of emacs snippets for java algorithm problems coding. Uploaded so far some frequently used snippets for my own references.
 \item having not update this one for a while. pseudo-name .java jave-mode inside csharp-mode so that I can skip some pairs of \{ \}-s
@@ -93,5 +171,5 @@
 \begin{itemize}
 \item \url{https://github.com/redguardtoo/emacs.d}
 \end{itemize}
-% Emacs 27.1 (Org mode 8.2.7c)
+% Emacs 27.2 (Org mode 8.2.7c)
 \end{document}

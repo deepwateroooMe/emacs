@@ -178,12 +178,12 @@
   (require 'init-sr-speedbar)
   (require 'org-move-tree)
   (require 'init-java-mode)
-  ;; (require 'init-javascript)
+  (require 'init-javascript)
   (require 'init-haskell)
   (require 'init-ruby-mode)
   (require 'init-lisp)
   (require 'init-elisp)
- ;; (require 'init-auto-complete)
+ (require 'init-auto-complete)
 
   (require 'cpputils-cmake) ; to do more work on this one
   ;; Use bookmark instead
@@ -208,6 +208,7 @@
   (require 'shader-mode)
 ;  (require 'swift-mode)
   (require 'init-kotlin-mode)
+  (require 'init-nxml-mode)
   ;; (require 'init-company)
   
 ;; have NOT passed  
@@ -227,44 +228,9 @@
 ;; (require 'init-company) ;;; 不喜欢它老是跑出一大堆的路径相关的,不方便,暂时不同这个模式
   )
 
-;; ;;; org-mode auto complete, commented out only for dump fixes
-;; (require 'org-ac)
-;; (org-ac/config-default)
-
-
-;; (defmacro luna-if-dump (then &rest else)
-;;   "Evaluate IF if running with a dump file, else evaluate ELSE."
-;;   (declare (indent 1))
-;;   `(if luna-dumped
-;;        ,then
-;;      ,@else))
-
-;; (luna-if-dump
-;;     (progn
-;;       (setq load-path luna-dumped-load-path)
-;;       (global-font-lock-mode)
-;;       (transient-mark-mode)
-;;       (add-hook 'after-init-hook
-;;                 (lambda ()
-;;                   (save-excursion
-;;                     ;; (switch-to-buffer "*scratch*")
-;;                     (lisp-interaction-mode)))))
-;;   ;; add load-path’s and load autoload files
-;;   ;; (package-initialize)
-;;   )
-
-;; (defun spacemacs|load-modes (modes)
-;;   (dolist (mode modes)
-;;     (with-temp-buffer
-;;       (funcall-interactively
-;;        (intern (concat (symbol-name mode) "-mode"))))))
-;; (spacemacs|load-modes '(dired emacs-lisp markdown org python))
-
-
-
-
-
-
+;; ;;;; for one-dark-pro like visual studio theme
+;; (add-to-list 'custom-theme-load-path "C:/Users/blue_/AppData/Roaming/.emacs.d/elpa/atom-one-dark-theme/")
+;; (load-theme 'atom-one-dark t)
 
 
 (global-pangu-spacing-mode 1)
@@ -655,6 +621,14 @@
                     ;; (font-spec :family "Sarasa Mono Slab SC Semibold" :size 12 :weight semi-bold))) 
                     (font-spec :family "Sarasa Mono Slab SC Semibold" :height 130)))
 
+
+;; (setq initial-frame-alist '(
+;;                             (font . "Inconsolata-dz-10")
+;;                             ))
+;; (setq default-frame-alist '(
+;;                             (font . "Inconsolata-dz-10")
+;;                             ))
+
 ;; '(custom-enabled-themes '(deeper-blue))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -673,6 +647,7 @@
  '(git-gutter:handled-backends '(svn hg git))
  '(latex-run-command "latex --shell-escape")
  '(line-spacing 0.15)
+ '(nxml-slash-auto-complete-flag t)
  '(org-export-with-sub-superscripts nil)
  '(org-format-latex-options
    '(:foreground default :background default :scale 2.0 :html-foreground "Black" :html-background "Transparent" :html-scale 2.0 :matchers
@@ -695,17 +670,20 @@
  '(tex-start-commands "\"latex -ini -shell-escape\"")
  '(tex-start-options "\"latex -ini --shell-escape\"")
  '(tool-bar-mode nil)
+ '(warning-minimum-level :error)
  '(word-wrap nil)
  '(yas-also-auto-indent-first-line t)
  '(yas-also-indent-empty-lines t)
  '(yas-indent-line 'auto)
+ '(yas-snippet-dirs
+   '("c:/Users/blue_/AppData/Roaming/.emacs.d/snippets" "c:/Users/blue_/AppData/Roaming/.emacs.d/elpa/elpy-1.18.0/snippets/"))
  '(yas-wrap-around-region 'cua))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :extend nil :stipple nil :background "#181a26" :foreground "gray80" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "outline" :family "Inconsolata-dz"))))
+ '(default ((t (:family "Inconsolata-dz" :foundry "outline" :slant normal :weight normal :height 98 :width normal))))
  '(cursor ((t (:background "orchid"))))
  '(hi-blue-b ((t (:foreground "systemBlueColor" :weight bold))))
  '(hi-salmon ((t (:background "NavajoWhite1" :foreground "gray0"))))

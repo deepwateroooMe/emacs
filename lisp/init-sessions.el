@@ -25,7 +25,7 @@
                 (minibuffer-history       . 128)
                 (query-replace-history    . 128)
                 (read-expression-history  . 128)
-                (regexp-history           . 128)
+                ;; (regexp-history           . 128)
                 (regexp-search-ring       . 128)
                 (search-ring              . 128)
                 (comint-input-ring        . 128)

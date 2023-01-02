@@ -1,5 +1,5 @@
 # contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: s.deleteCharAt()
+# name: sed -n ',p' filename
 # key: sd
 # --
-${1:s}.deleteCharAt(${2:i})$0
+sed -n '$1p' $2$0

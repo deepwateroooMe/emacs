@@ -19,6 +19,8 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 ;(yas/load-directory (concat dotfiles-dir "/vendor/yasnippet/snippets"))
+(require 'auto-complete)
+(auto-complete-mode 1)
 
 ;; Whitespace mode
 (require 'whitespace)
@@ -75,9 +77,8 @@
 
 ;; CSS
 (add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
-
-;; .properties
-(add-to-list 'auto-mode-alist '("\\.properties" . text-mode))
+;; ;; .properties: shell-mode
+;; (add-to-list 'auto-mode-alist '("\\.properties" . sh-mode))
 
 (linum-mode 1)
 

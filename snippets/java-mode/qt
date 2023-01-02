@@ -2,4 +2,5 @@
 # name: Queue<TreeNode>
 # key: qt
 # --
-Deque<TreeNode> ${1:q} = new ArrayDeque<>();$0
+Deque<TreeNode> ${1:q} = new ArrayDeque<>();
+$0

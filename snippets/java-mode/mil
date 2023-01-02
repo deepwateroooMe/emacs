@@ -2,4 +2,5 @@
 # name: HashMap<Integer, List<Integer>>
 # key: mil
 # --
-Map<Integer, List<Integer>> ${1:m} = new HashMap<>();$0
+Map<Integer, List<Integer>> ${1:m} = new HashMap<>();
+$0

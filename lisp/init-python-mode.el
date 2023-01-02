@@ -25,7 +25,7 @@
   (auto-fill-mode 0)                    ;关闭 auto-fill-mode，拒绝自动折行
   (whitespace-mode t)                   ;开启 whitespace-mode 对制表符和行为空格高亮
   (hl-line-mode t)                      ;开启 hl-line-mode 对当前行进行高亮
-  (pretty-symbols-mode t)               ;开启 pretty-symbols-mode 将 lambda 显示成希腊字符 λ
+  ;; (pretty-symbols-mode t)               ;开启 pretty-symbols-mode 将 lambda 显示成希腊字符 λ
   (set (make-local-variable 'electric-indent-mode) nil)) ;关闭自动缩进
 
 (add-hook 'python-mode-hook 'my-python-mode-config)
@@ -70,7 +70,7 @@
 
 (push "~/.emacs.d/.python-environments/jedi/bin/" exec-path)
 
-(add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
+;; (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
 
 ;; 默认的一个标准是每行最大字符数为 80，如果超过了，格式化的时候会将该行折行。下面的配置可以设置为 200
 (setq py-autopep8-options '("--max-line-length=200"))

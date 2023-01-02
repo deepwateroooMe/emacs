@@ -3,4 +3,5 @@
 # key: sg
 # --
 #+BEGIN_SRC groovy
-#+END_SRC$0
+#+END_SRC
+$0

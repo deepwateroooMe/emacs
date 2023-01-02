@@ -58,6 +58,7 @@
 (autoload 'run-ruby "inf-ruby" "Run an inferior Ruby process")
 (autoload 'yari "yari" "" t nil)
 (autoload 'textile-mode "textile-mode" "Mode for editing Textile documents" t)
+(autoload 'xml-mode "nxml-mode" "Mode for editing Xml documents" t)
 (autoload 'find-library-name "find-func")
 (autoload 'web-mode "web-mode")
 (autoload 'wg-create-workgroup "workgroups2" nil t)
@@ -70,4 +71,3 @@
 
 (provide 'init-autoload)
 ;;; init-autoload.el ends here
-

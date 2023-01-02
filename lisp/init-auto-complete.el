@@ -43,7 +43,7 @@
 ;;                  auto-completion-enable-snippets-in-popup t)
 ;;                  ;; :disabled-for org markdown)
 
-(dolist (mode '(csharp-mode kotlin-mode java-mode python-mode swift-mode emacs-lisp-mode org-mode web-mode
+(dolist (mode '(csharp-mode kotlin-mode java-mode python-mode swift-mode emacs-lisp-mode org-mode web-mode groovy-mode xml-mode nxml-mode 
                           magit-log-edit-mode log-edit-mode org-mode text-mode haml-mode latex-mode
                           sass-mode yaml-mode csv-mode espresso-mode haskell-mode
                           html-mode web-mode sh-mode smarty-mode clojure-mode

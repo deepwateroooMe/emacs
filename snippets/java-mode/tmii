@@ -2,4 +2,5 @@
 # name: TreeMap<Integer, Integer>
 # key: tmii
 # --
-TreeMap<Integer, Integer> ${1:m} = new TreeMap<>();$0
+TreeMap<Integer, Integer> ${1:m} = new TreeMap<>();
+$0

@@ -2,4 +2,5 @@
 # name: HashMap<Integer, String>
 # key: mis
 # --
-Map<Integer, String> ${1:m} = new HashMap<>();$0
+Map<Integer, String> ${1:m} = new HashMap<>();
+$0

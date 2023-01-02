@@ -140,6 +140,7 @@ same directory as the org-buffer and insert a link to this file."
     ;; (shell-command (concat powershell " -command \"(Get-Clipboard -Format Image).Save(\\\"f:/mixed_recently/pic/" filename "\\\")\""))
     ;; (shell-command (concat powershell " -command \"(Get-Clipboard -Format Image).Save(\\\"l:/PersonalInfo/pic/" filename "\\\")\""))
     (shell-command (concat powershell " -command \"(Get-Clipboard -Format Image).Save(\\\"f:/tetris3D/pic/" filename "\\\")\""))
+    ;; (shell-command (concat powershell " -command \"(Get-Clipboard -Format Image).Save(\\\"f:/andrp/KotlinSampleApp/pic/" filename "\\\")\""))
     ;; (shell-command (concat powershell " -command \"(Get-Clipboard -Format Image).Save(\\\"l:/PersonalInfo/pic/" filename "\\\")\""))
     (org-indent-line)
      (insert (concat "\n[[" file-path-wsl "]]"))
@@ -174,58 +175,58 @@ same directory as the org-buffer and insert a link to this file."
 (autoload 'turn-on-iimage-mode "iimage" "Turn on Inline image minor mode." t)
 
 
-;;------------------------------------------------------------------------------
-;;;; Org Mode: Babel: Kotlin  没有弄好，不起作用
-;;------------------------------------------------------------------------------
-;; (init-message 3 "Org Mode: Babel: Kotlin") 
-(use-package ob-kotlin
-  ;;:quelpa (ob-kotlin)
-  :straight t
-  :after (org kotlin-mode)
-  :commands (org-babel-execute:kotlin)
-  :functions (flycheck-mode
-              kotlin-send-buffer
-              org-babel-kotlin-command)
-  :defines (org-babel-kotlin-compiler)
-  :config
-  ;; customize org/babel for kotlin so it works
-  (defcustom org-babel-kotlin-command "kotlin"
-    "Name of the kotlin command.
-May be either a command in the path, like kotlin or an absolute
-path name, like /usr/local/bin/kotlin parameters may be used,
-like kotlin -verbose"
-    :group 'org-babel
-    :type 'string)
+;; ;;------------------------------------------------------------------------------
+;; ;;;; Org Mode: Babel: Kotlin  没有弄好，不起作用
+;; ;;------------------------------------------------------------------------------
+;; ;; (init-message 3 "Org Mode: Babel: Kotlin") 
+;; (use-package ob-kotlin
+;;   ;;:quelpa (ob-kotlin)
+;;   :straight t ;;;; 它说这里错了,找不到straight
+;;   :after (org kotlin-mode)
+;;   :commands (org-babel-execute:kotlin)
+;;   :functions (flycheck-mode
+;;               kotlin-send-buffer
+;;               org-babel-kotlin-command)
+;;   :defines (org-babel-kotlin-compiler)
+;;   :config
+;;   ;; customize org/babel for kotlin so it works
+;;   (defcustom org-babel-kotlin-command "kotlin"
+;;     "Name of the kotlin command.
+;; May be either a command in the path, like kotlin or an absolute
+;; path name, like /usr/local/bin/kotlin parameters may be used,
+;; like kotlin -verbose"
+;;     :group 'org-babel
+;;     :type 'string)
 
-  (defcustom org-babel-kotlin-compiler "kotlinc"
-    "Name of the kotlin compiler.
-May be either a command in the path, like kotlinc or an absolute
-path name, like /usr/local/bin/kotlinc parameters may be used,
-like kotlinc -verbose"
-    :group 'org-babel
-    :type 'string)
+;;   (defcustom org-babel-kotlin-compiler "kotlinc"
+;;     "Name of the kotlin compiler.
+;; May be either a command in the path, like kotlinc or an absolute
+;; path name, like /usr/local/bin/kotlinc parameters may be used,
+;; like kotlinc -verbose"
+;;     :group 'org-babel
+;;     :type 'string)
 
-  (defun org-babel-execute:kotlin (body params)
-    "If main function exists, then compile code and run jar
-otherwise, run code in `kotlin-repl'."
-    (let* ((classname (or (cdr (assq :classname params)) "main"))
-           ;;(packagename (file-name-directory classname))
-           (src-file (org-babel-temp-file classname ".kt"))
-           (jar-file (concat (file-name-sans-extension src-file) ".jar"))
-           (cmpflag (or (cdr (assq :cmpflag params)) ""))
-           (cmdline (or (cdr (assq :cmdline params)) ""))
-           (full-body (org-babel-expand-body:generic body params)))
-      (if (or (string-match "fun main(args: Array<String>)" full-body)
-              (string-match "fun main()" full-body))
-          (progn
-            (with-temp-file src-file (insert full-body))
-            (org-babel-eval
-             (concat org-babel-kotlin-compiler " " cmpflag " " src-file " -include-runtime -d " jar-file) "")
-            (message (org-babel-eval (concat org-babel-java-command " " cmdline " -jar " jar-file) ""))
-            )
-        (with-temp-buffer
-          (insert body)
-          (kotlin-send-buffer))))))
+;;   (defun org-babel-execute:kotlin (body params)
+;;     "If main function exists, then compile code and run jar
+;; otherwise, run code in `kotlin-repl'."
+;;     (let* ((classname (or (cdr (assq :classname params)) "main"))
+;;            ;;(packagename (file-name-directory classname))
+;;            (src-file (org-babel-temp-file classname ".kt"))
+;;            (jar-file (concat (file-name-sans-extension src-file) ".jar"))
+;;            (cmpflag (or (cdr (assq :cmpflag params)) ""))
+;;            (cmdline (or (cdr (assq :cmdline params)) ""))
+;;            (full-body (org-babel-expand-body:generic body params)))
+;;       (if (or (string-match "fun main(args: Array<String>)" full-body)
+;;               (string-match "fun main()" full-body))
+;;           (progn
+;;             (with-temp-file src-file (insert full-body))
+;;             (org-babel-eval
+;;              (concat org-babel-kotlin-compiler " " cmpflag " " src-file " -include-runtime -d " jar-file) "")
+;;             (message (org-babel-eval (concat org-babel-java-command " " cmdline " -jar " jar-file) ""))
+;;             )
+;;         (with-temp-buffer
+;;           (insert body)
+          ;; (kotlin-send-buffer))))))
 
 
 ;;; 使用一步生成 xelatexPDF

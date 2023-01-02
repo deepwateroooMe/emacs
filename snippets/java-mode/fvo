@@ -2,4 +2,4 @@
 # name: for values() one line
 # key: fvo
 # --
-for (var ${1:v} : ${3:s}) $0
+for (${1:int} ${2:v} : ${3:arr}) $0
