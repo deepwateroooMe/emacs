@@ -5,7 +5,7 @@
 * Updates 
 - I liked recently configued Visual studio 2019 one-dark-pro theme, want to configue it for emacs, but ended up with any permission denied, renaming emacs initiating bug. reverted back for daily use, and may look into that bug for later reference. 
 - will reconfigure one-dark-pro theme later. 
-- fixed legency java-mode highlighing issue which I did not fix for years. 
+- fixed legency java-mode highlighing issue which I did not fix for years. Has been able to treat java-mode as java-mode Instead of using it as csharp-mode. Can not separate java-mode snippets from csharp-mode's.  
 ** BUG statement and partial fix
 - in java-mode, the code style I expected is as followed:
 #+BEGIN_SRC java
