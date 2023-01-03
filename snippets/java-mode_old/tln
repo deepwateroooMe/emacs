@@ -1,6 +1,0 @@
-# contributor: deepwaterooo
-# name: print ListNode
-# key: tln
-# --
-TreeLinkNode ${1:curr} = ${2:null};
-$0

@@ -1,5 +1,0 @@
-# contributor: deepwaterooo
-# name: String [] a = new String [] {}
-# key: sa
-# --
-String [] ${1:a} = new String [] {$2}; $0

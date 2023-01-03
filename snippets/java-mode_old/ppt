@@ -1,6 +1,0 @@
-# contributor: deepwaterooo
-# name: print ListNode
-# key: ppt
-# --
-${1:root}.preOrderPrintTree($1);
-$0

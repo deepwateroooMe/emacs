@@ -1,5 +1,6 @@
 # contributor: deepwaterooo
-# name: ChallLevelsView.
+# name: Console.WriteLine(v + v)
 # key: cv
 # --
-ChallLevelsView.$0
+Console.WriteLine(TAG + " $1 = " + $1);
+$0

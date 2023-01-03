@@ -1,6 +1,0 @@
-# contributor: deepwaterooo
-# name: Stack<Integer>
-# key: si
-# --
-Stack<Integer> ${1:s} = new Stack<>();
-$0

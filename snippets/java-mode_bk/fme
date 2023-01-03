@@ -1,6 +1,0 @@
-# name: forMayEntrySet
-# key: fme
-# --
-for (Map.Entry<${1:Integer}> entry : ${2:map}.entrySet()) {
-    $0
-}

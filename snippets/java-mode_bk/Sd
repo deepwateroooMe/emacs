@@ -1,6 +1,0 @@
-# contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: Map
-# key: Sd
-# --
-StringBuilder ${1:tmp} = new StringBuilder();
-$0

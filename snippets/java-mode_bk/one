@@ -1,6 +1,0 @@
-# contributor: deepwaterooo
-# name: system.out.println("got here");
-# key: one
-# --
-System.out.print(${1} + ", ");
-$0
