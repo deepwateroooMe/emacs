@@ -120,6 +120,9 @@ or terminating simple string."
 ;; added for init-java-mode.el temporatorially
 
 ;;; java macro
+;;;; et
+(fset 'et
+      (kmacro-lambda-form [?\M-l ?A ?s ?s ?e ?t ?s ?. ?S ?c ?r ?i ?p ?t ?s return ?E ?T backspace backspace ?D ?W backspace backspace ?E ?T return ?\M-l ?i ?n ?t ?e ?r ?n ?a ?l return ?p ?u ?b ?l ?i ?c return ?\M-< ?\C-c ?f] 0 "%d"))
 
 ;;; famously formating .java file
 (fset 'fo ;;; M-p --> M--l global replace-string commands changed
