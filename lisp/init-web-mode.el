@@ -1,3 +1,5 @@
+;;; init-web-mode
+
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.cmp\\'" . web-mode)) ; salesforce
 (add-to-list 'auto-mode-alist '("\\.app\\'" . web-mode)) ; salesforce
@@ -17,12 +19,12 @@
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.ftl\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.cshtml?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.xul?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.eex?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.xml?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.\\(jst\\|ejs\\|rhtml\\)\\(\\.erb\\)?\\'"  . web-mode)) ; ruby
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.cshtml?\\'" . web-mode))
 
 (defun flymake-html-init ()
        (let* ((temp-file (flymake-init-create-temp-buffer-copy
@@ -70,5 +72,6 @@
              ;; angular imenu
              (" \\(ng-[a-z]*\\)=\"\\([^\"]+\\)" 1 2 "=")))
      ))
+
 
 (provide 'init-web-mode)
