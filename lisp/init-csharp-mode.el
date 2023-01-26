@@ -34,7 +34,8 @@
                                        ":"
                                        (number-to-string (current-column)))))
 (define-key global-map (kbd "C-c v") 'gp/vscode-current-buffer-file-at-point)
-;;; 再去解决从VSC 中由Emacs打开的问题
+;;; VSC open in emacs: 现在的配置不理想,因为每次都会新开一个 emacs process来打开文件太慢,需要把自己的emacs 配置成server -cllient的模式,还要能够检测现存在emacs process
+;;; work around: VSC 中shift+Alt+c: copy path, 现emacs process中C-x C-f: C-a C-y C-k enter打开复制粘贴路径下的文件,算是目前最理想的配置了
 
 
 ;;;for csharp-mode ; {} autoindent
@@ -372,5 +373,15 @@ or terminating simple string."
 (fset 'cmts
       (kmacro-lambda-form [?\M-l ?/ ?/ return ?/ ?/ ?  return] 0 "%d"))
 (global-set-key (kbd "C-c m") 'cmts) ; very useful
+
+
+;;; VSC open in emacs: 现在的配置不理想,因为每次都会新开一个 emacs process来打开文件太慢,需要把自己的emacs 配置成server -cllient的模式,还要能够检测现存在emacs process
+;;; work around: VSC 中shift+Alt+c: copy path, 现emacs process中C-x C-f: C-a C-y C-k enter打开复制粘贴路径下的文件,算是目前最理想的配置了
+;;; 简化按键操作：现emacs process中C-x C-f: C-a C-y C-k enter  ＝＝> C-o works like a charm, 缺点：它会新开一个window, 再关闭其它，定位保留到当前唯一窗口
+;;; 可以再用同样的  C-x 1保留一个窗口添加到 after-init-hook, 晚点儿再弄这个
+(fset 'co
+      (kmacro-lambda-form [?\C-x ?\C-f ?\C-a ?\C-y ?\C-k return ?\C-x 1] 0 "%d"))
+(global-set-key (kbd "C-o") 'co) ; very useful
+
 
 (provide 'init-csharp-mode)
