@@ -217,7 +217,7 @@
  (require 'init-text)
  (require 'init-syslog-mode)
  (require 'init-misc)  ;; comment for replace-string
- (require 'init-hydra)
+ ;; (require 'init-hydra) ;; 不知道这个会影响哪些功能  
  
 ;(require 'init-python-mode)
 (require 'init-csharp-mode)

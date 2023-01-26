@@ -13,6 +13,7 @@
                 ("\\.xml" . nxml-mode)
                 ("\\.xsl" . nxml-mode)
                 ("\\.fo" . nxml-mode)
+                ("\\.csproj" . nxml-mode)
                 )
               auto-mode-alist
               )

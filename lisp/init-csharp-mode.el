@@ -8,6 +8,35 @@
 (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
 (add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-mode))
 
+
+;;; 这里添加一个从Emacs中直接要求从VSC中打开当前文件的命令
+;; (defun my-open-current-file-in-vscode ()
+;;   (interactive)
+;;   (save-window-excursion
+;;     (async-shell-command
+;;      ;; (format "code --add ~/Notes/MD/notes --goto %S:%d" ;;; 不是很明白这里说的是什么意思: 不起作用, 把中间一堆乱七八糟的参数去掉就可以了
+;;      (format "code --goto %S:%d:%d" 
+;;              (shell-quote-argument buffer-file-name) ;;; 是因为这里面的""使得它不起作用,把这个引号去掉就可以了
+;;              ;; (shell-argument buffer-file-name)
+;;              (+ (if (bolp) 1 0) (count-lines 1 (point)))
+;;              (current-column)
+;;              ))))
+(defalias 'display-buffer-in-major-side-window 'window--make-major-side-window)
+(defun gp/vscode-current-buffer-file-at-point ()
+  (interactive)
+  (start-process-shell-command "code"
+                               nil
+                               (concat "code --goto "
+                                       (buffer-file-name)
+                                       ":"
+                                       (number-to-string (+ (if (bolp) 1 0) (count-lines 1 (point)))) ;; 定位精确: 可以定位到了 当前行 当前列
+                                       ;; (number-to-string (1+ (current-line))) ;; +1 who knows why
+                                       ":"
+                                       (number-to-string (current-column)))))
+(define-key global-map (kbd "C-c v") 'gp/vscode-current-buffer-file-at-point)
+;;; 再去解决从VSC 中由Emacs打开的问题
+
+
 ;;;for csharp-mode ; {} autoindent
 (defun csharp-autoindent ()
   (when (and (eq major-mode 'csharp-mode) (looking-back "[;]"))
