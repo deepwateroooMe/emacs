@@ -156,7 +156,7 @@ or terminating simple string."
 
 ;;; famously formating .java file
 (fset 'fo ;;; M-p --> M--l global replace-string commands changed
-      [?\M-g ?1 return
+      [?\M-g ?1 return 
              ?\M-l ?\C-q ?\C-m return return
              ?\M-g ?1 return
              ?\M-l ?\C-q ?\C-j ?\{ delete return ?  ?\{ delete return
@@ -328,8 +328,18 @@ or terminating simple string."
              ])
 (fset 'f
       [?\M-g ?1 return ?\M-x ?f ?o return ?\C-x ?h tab ?\C-  ?\C-  ?\M-g ?1 return]) ;; indent region f12
-(global-set-key (kbd "C-c f") 'f) ; very useful
+(global-set-key (kbd "C-c f") 'f) 
 (put 'f 'kmacro t)
+
+
+;;; // comment for csharp-mode
+(fset 'cmt
+      (kmacro-lambda-form [?\C-x ?1 ? ?/ ?/ ? ] 0 "%d"))
+(local-set-key (kbd "C-j") 'cmt) ;;; 不想再设置全局,因为不同mode下会有不同的实现
+(put 'cmt 'kmacro t)
+;; (eval-after-load 'csharp
+;;   '(define-key csharp-mode-map [(C-j)] 'cmt))
+
 
 (fset 'nuf
       (kmacro-lambda-form [?\C-a ?\C-  ?\C-e ?\M-l ?\[ ?\C-k return return
@@ -380,8 +390,8 @@ or terminating simple string."
 ;;; 简化按键操作：现emacs process中C-x C-f: C-a C-y C-k enter  ＝＝> C-o works like a charm, 缺点：它会新开一个window, 再关闭其它，定位保留到当前唯一窗口
 ;;; 可以再用同样的  C-x 1保留一个窗口添加到 after-init-hook, 晚点儿再弄这个
 (fset 'co
-      (kmacro-lambda-form [?\C-x ?\C-f ?\C-a ?\C-y ?\C-k return ?\C-x 1] 0 "%d"))
-(global-set-key (kbd "C-o") 'co) ; very useful
+      (kmacro-lambda-form [?\C-x ?\C-f ?\C-a ?\C-y ?\C-k return ?\C-x ?1] 0 "%d"))
+(global-set-key (kbd "C-o") 'co)
 
 
 (provide 'init-csharp-mode)
