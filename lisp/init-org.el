@@ -61,14 +61,15 @@
 ;;; 因为陈桥全角半角符号容易失控,写* - 很容易写成全角,所以改成两个 键操作 减少 误操作
 ;;; // comment for csharp-mode
 (fset 'cmt
-      (kmacro-lambda-form [?\C-x ?1 ? ?- ? ] 0 "%d"))
+      (kmacro-lambda-form [?\C-x ?1 ?  ?- ? ] 0 "%d"))
 (global-set-key (kbd "C-j") 'cmt) ;;; 不想再设置全局,因为不同mode下会有不同的实现
 (put 'cmt 'kmacro t)
 ;; (eval-after-load 'csharp
 ;;   '(define-key csharp-mode-map [(C-j)] 'cmt))
 (fset 'cmtitem
       (kmacro-lambda-form [?\C-x ?1 ?* ] 0 "%d"))
-(global-set-key (kbd "C-i") 'cmtitem) ;;; 不想再设置全局,因为不同mode下会有不同的实现
+;;;; BUG: 这里有个副作用:把我的csharp-mode C-c f多加了一个＊(应该是由C-i在f  macro中引起的，改掉了)，需要去除
+(global-set-key (kbd "C-m") 'cmtitem) ;;; 不想再设置全局,因为不同mode下会有不同的实现
 (put 'cmtitem 'kmacro t)
 
 
