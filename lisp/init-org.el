@@ -497,7 +497,8 @@ same directory as the org-buffer and insert a link to this file."
 ))
 
 ;;; for iimage org-mode
-(setq org-image-actual-width nil)
+;; (setq org-image-actual-width nil) ;;; 这里不设置缺省为图片原本宽的  90%，现调为1
+(setq org-image-actual-width :max-width)
 
 
 ;; outline-mode  

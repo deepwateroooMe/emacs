@@ -19,6 +19,19 @@
 ;; (add-hook 'java-mode-hook 'jtags-extras)
 ;; ;; (add-hook 'java-mode-hook 'java-mode-indent-annotations-setup)
 
+;;;;; 仿 csharp-mode 因为自己没有配置emacs-android-mode,所以为了自己使用IDE便利，配置从emacs 到  Android StudioIDE打开当前buffer定位到行列的命令: 它无法定位到具体的行与列，但差强人意
+(defalias 'display-buffer-in-major-side-window 'window--make-major-side-window)
+(defun java/vscode-current-buffer-file-at-point ()
+  (interactive)
+  (start-process-shell-command "start"
+                               nil
+                               (concat "I:/selfSoft/AndroidStudio_3.17/bin/studio64.exe "
+                                        (buffer-file-name))))
+(add-hook 'java-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-c v") 'java/vscode-current-buffer-file-at-point)))
+
+
 ;;;for java-mode ; {} auto-expand
 (defun java-autoindent ()
   (when (and (eq major-mode 'java-mode) (looking-back "[;]"))

@@ -3,6 +3,9 @@
 #+author: deepwaterooo
 
 * Updates 
+- added key-bindings for opening from VSCode/Android Studio of current emacs buffer. 
+  - VSC Emacs can locate to each other to correct row and col. 
+  - Android Studio could open current emacs buffer. but not to the row nor col. 
 - I liked recently configued Visual studio 2019 one-dark-pro theme, want to configue it for emacs, but ended up with any permission denied, renaming emacs initiating bug. reverted back for daily use, and may look into that bug for later reference. 
 - will reconfigure one-dark-pro theme later. 
 - fixed legency java-mode highlighing issue which I did not fix for years. Has been able to treat java-mode as java-mode Instead of using it as csharp-mode. Can not separate java-mode snippets from csharp-mode's.  
