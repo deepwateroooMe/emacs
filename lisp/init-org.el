@@ -20,23 +20,18 @@
 (setq org-src-tab-acts-natively t)
 (setq linum-mode t)
 
-;;; shift region for source code trials:
-(defun shift-region (distance)
-  (let ((mark (mark)))
-    (save-excursion
-      (indent-rigidly (region-beginning) (region-end) distance)
-      (push-mark mark t t)
-      ;; Tell the command loop not to deactivate the mark
-      ;; for transient mark mode
-      (setq deactivate-mark nil))))
 
-(defun shift-right ()
+;;; 这是org-mode下专用整理笔记的，只偏移2
+(defun org/shift-right ()
   (interactive)
-  (shift-region 8))
-
-(defun shift-left ()
+  (shift-region 2))
+(defun org/shift-left ()
   (interactive)
-  (shift-region -8))
+  (shift-region -2))
+(add-hook 'org-mode-hook
+          (lambda ()
+            (local-set-key (kbd "<C-S-left>") 'org/shift-left)
+            (local-set-key (kbd "<C-S-right>") 'org/shift-right)))
 
 
 ;;; org mode source code comment with //
@@ -53,10 +48,11 @@
 
 (eval-after-load 'org
   '(progn
-     (define-key org-mode-map (kbd "<C-S-left>") nil)
-     (define-key org-mode-map (kbd "<C-S-right>") nil)
+     ;; (define-key org-mode-map (kbd "<C-S-left>") nil)
+     ;; (define-key org-mode-map (kbd "<C-S-right>") nil)
      (add-hook 'org-mode-hook #'my/org-comment-tweak)
      ))
+
 
 ;;; 因为陈桥全角半角符号容易失控,写* - 很容易写成全角,所以改成两个 键操作 减少 误操作
 ;;; // comment for csharp-mode

@@ -34,7 +34,6 @@
                                        ":"
                                        (number-to-string (current-column)))))
 ;; (define-key global-map (kbd "C-c v") 'gp/vscode-current-buffer-file-at-point)
-;; (local-set-key (kbd "C-c v") 'gp/vscode-current-buffer-file-at-point)
 (add-hook 'csharp-mode-hook
           (lambda ()
             (local-set-key (kbd "C-c v") 'gp/vscode-current-buffer-file-at-point)))
@@ -358,7 +357,7 @@ or terminating simple string."
 ;; (global-set-key (kbd "C-c n") 'nuaa) ; very useful
 
 (fset 'cpf
-      (kmacro-lambda-form [?\C-  ?\C-n ?\C-n ?\C-n ?\M-w ?\C-p ?\C-p ?\C-p ?\C-p ?\C-n ?\C-y ?\C-p ?\C-p ?\C-p ?\M-f ?\M-d ?\M-d ?  ?v ?o ?i ?d ? ?\C-e ?\M-b ?\M-d ?r ?e backspace ?\M-b ?\M-b ?\M-b ?\C-b ?R ?e ?c ?u ?r ?s ?i ?v ?e ?\C-p return ?p ?r ?i ?v ?a ?t ?e ? ] 0 "%d"))
+      (kmacro-lambda-form [?\C-  ?\C-n ?\C-n ?\C-n ?\M-w ?\C-p ?\C-p ?\C-p ?\C-p ?\C-n ?\C-y ?\C-p ?\C-p ?\C-p ?\M-f ?\M-d ?\M-d ?  ?v ?o ?i ?d ? ?\C-e ?\M-b ?\M-d ?r ?e backspace ?\M-b ?\M-b \M-b ?\C-b ?R ?e ?c ?u ?r ?s ?i ?v ?e ?\C-p return ?p ?r ?i ?v ?a ?t ?e ? ] 0 "%d"))
 (global-set-key (kbd "C-c p") 'cpf) ; very useful
 
 (fset 'caa
