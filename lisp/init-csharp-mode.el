@@ -335,15 +335,6 @@ or terminating simple string."
 (put 'f 'kmacro t)
 
 
-;;; // comment for csharp-mode
-(fset 'cmt
-      (kmacro-lambda-form [?\C-x ?1 ? ?/ ?/ ? ] 0 "%d"))
-(local-set-key (kbd "C-j") 'cmt) ;;; 不想再设置全局,因为不同mode下会有不同的实现
-(put 'cmt 'kmacro t)
-;; (eval-after-load 'csharp
-;;   '(define-key csharp-mode-map [(C-j)] 'cmt))
-
-
 (fset 'nuf
       (kmacro-lambda-form [?\C-a ?\C-  ?\C-e ?\M-l ?\[ ?\C-k return return
                                  ?\C-a ?\C-  ?\C-e ?\M-l ?\] return return

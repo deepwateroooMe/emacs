@@ -621,15 +621,13 @@
                     (font-spec :family "Sarasa Mono Slab SC Semibold" :height 130)))
 
 
-;; (setq initial-frame-alist '(
-;;                             (font . "Inconsolata-dz-10")
-;;                             ))
-;; (setq default-frame-alist '(
-;;                             (font . "Inconsolata-dz-10")
-;;                             ))
+;;; // comment for csharp-mode, 但因为这个键组合极其好用，把它提出去，全局公用
+(fset 'cmt
+      (kmacro-lambda-form [?\C-x ?1 ? ?/ ?/ ? ] 0 "%d"))
+(local-set-key (kbd "C-j") 'cmt) ;;; 不想再设置全局,因为不同mode下会有不同的实现
+(put 'cmt 'kmacro t)
 
-;; '(custom-enabled-themes '(deeper-blue))
-;; '(custom-enabled-themes '(deeper-blue))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

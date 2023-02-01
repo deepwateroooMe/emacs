@@ -34,6 +34,28 @@
             (local-set-key (kbd "<C-S-right>") 'org/shift-right)))
 
 
+;;; target: apply atom-one-dark color-theme before org-export into pdf for more colorful source code syntax highlighting
+;;;- https://emacs.stackexchange.com/questions/3374/set-the-background-of-org-exported-code-blocks-according-to-theme不起作用，因为我不是导出html而是pdf
+;;; 不喜欢我现在导出来的源码，因为着色太少，不好读，改天再干这个
+;; (defun my-org-inline-css-hook (exporter)
+;;   "Insert custom inline css"
+;;   (when (eq exporter 'html)
+;;     (let* ((dir (ignore-errors (file-name-directory (buffer-file-name))))
+;;            (path (concat dir "style.css"))
+;;            (homestyle (or (null dir) (null (file-exists-p path))))
+;;            (final (if homestyle "~/.emacs.d/org-style.css" path)))
+;;       (setq org-html-head-include-default-style nil)
+;;       (setq org-html-head (concat
+;;                            "<style type=\"text/css\">\n"
+;;                            "<!--/*--><![CDATA[/*><!--*/\n"
+;;                            (with-temp-buffer
+;;                              (insert-file-contents final)
+;;                              (buffer-string))
+;;                            "/*]]>*/-->\n"
+;;                            "</style>\n")))))
+;; (add-hook 'org-export-before-processing-hook 'my-org-inline-css-hook)
+
+
 ;;; org mode source code comment with //
 (defun my/org-comment-tweak ()
   (setq-local comment-start "// "))
@@ -132,7 +154,7 @@
       '(("" "graphicx" t)
         ("" "longtable" nil)
         ("" "float" nil)))
-
+;;; automated file-name-directory for current buffer
 (defun my-org-screenshot ()
   "Take a screenshot into a time stamped unique-named file in the
 same directory as the org-buffer and insert a link to this file."
@@ -142,30 +164,17 @@ same directory as the org-buffer and insert a link to this file."
          (filename (concat (file-name-base (buffer-file-name))
                            "_"
                            basename))
+         (winFilePathName (expand-file-name (concat "pic/" filename) (file-name-directory buffer-file-name)))
          (file-path-wsl (concat "./pic/" filename)))
 ;;; 必须先用第三方软件将截图复制到剪贴板，再调用这个命令自动生成图片和插入到org文件中，不是全自动
 ;;; (需要手动F1调用Snipaste[截图+自动复制到剪贴板，再emacs org 里C-i完成自动化，得两个步骤)；但仍差强人意
 ;;; 文件的自动保存地址，需要再自动化一下到当前文件所在的目录
-    ;; (shell-command (concat powershell " -command \"(Get-Clipboard -Format Image).Save(\\\"F:/AndroidAppDevelopmentStudy/pic/" filename "\\\")\""))
-    ;; (shell-command (concat powershell " -command \"(Get-Clipboard -Format Image).Save(\\\"f:/mixed_recently/pic/" filename "\\\")\""))
-    ;; (shell-command (concat powershell " -command \"(Get-Clipboard -Format Image).Save(\\\"l:/PersonalInfo/pic/" filename "\\\")\""))
-    ;; (shell-command (concat powershell " -command \"(Get-Clipboard -Format Image).Save(\\\"f:/tetris3D/pic/" filename "\\\")\""))
-    ;; (shell-command (concat powershell " -command \"(Get-Clipboard -Format Image).Save(\\\"f:/MyServer/pic/" filename "\\\")\""))
-    (shell-command (concat powershell " -command \"(Get-Clipboard -Format Image).Save(\\\"f:/ET/pic/" filename "\\\")\""))
-    ;; (shell-command (concat powershell " -command \"(Get-Clipboard -Format Image).Save(\\\"f:/unityGamesExamples/GeekServer/pic/" filename "\\\")\""))
-    ;; (shell-command (concat powershell " -command \"(Get-Clipboard -Format Image).Save(\\\"f:/andrp/KotlinSampleApp/pic/" filename "\\\")\""))
-    ;; (shell-command (concat powershell " -command \"(Get-Clipboard -Format Image).Save(\\\"l:/PersonalInfo/pic/" filename "\\\")\""))
+    (shell-command (concat powershell " -command \"(Get-Clipboard -Format Image).Save(\\\"" winFilePathName "\\\")\""))
     (org-indent-line)
-     (insert (concat "\n[[" file-path-wsl "]]"))
-     ))
-
+    (insert (concat "\n[[" file-path-wsl "]]"))))
 ;; (global-set-key (kbd "C-i") 'my-org-screenshot)
 (global-set-key (kbd "M-s") 'my-org-screenshot)
-
-
-;; :base-directory "./" ;;; 可以把这个想像成是比如：　/mnt/f/tetris3D/pic/　字符串 还是改天再弄这个，但是小心这里容易出错，因为文件目录还没有自动化
-;; (substring base-directory 0 3)
-
+    
 
 (add-hook 'org-mode-hook 'turn-on-font-lock)
 (add-hook 'org-mode-hook
