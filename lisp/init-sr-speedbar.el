@@ -83,6 +83,9 @@
 (speedbar-add-supported-extension ".json")
 (add-to-list 'speedbar-fetch-etags-parse-list
  		     '("\\.json" . speedbar-parse-c-or-c++tag))
+(speedbar-add-supported-extension ".proto")
+(add-to-list 'speedbar-fetch-etags-parse-list
+ 		     '("\\.proto" . speedbar-parse-c-or-c++tag))
 (speedbar-add-supported-extension ".cshtml")
 (add-to-list 'speedbar-fetch-etags-parse-list
  		     '("\\.cshtml" . speedbar-parse-c-or-c++tag))
@@ -142,13 +145,14 @@
                                  (sr-speedbar-toggle)
                                  (sr-speedbar-select-window)
                                  )))
-;;; 设置为关闭窗口; 填加一个手误功能,当点了F4,但是窗口是关闭的,那么当F5来用,打开窗口并将光标切换到窗口
+;;; 设置为关闭窗口; 填加一个手误功能,当点了F4,
+;;; 把这个功能失活，C－j好用的键，只在窗口关键下才起作用。但是窗口是关闭的,那么当F5来用,打开窗口并将光标切换到窗口
 (global-set-key [(f4)] (lambda ()
                          (interactive)
                          (if (sr-speedbar-exist-p)
                              (sr-speedbar-close)
-                           (sr-speedbar-open)
-                           (sr-speedbar-select-window)
+                           ;; (sr-speedbar-open)
+                           ;; (sr-speedbar-select-window)
                            )))
 
 ;; (speedbar 1)

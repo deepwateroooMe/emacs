@@ -62,7 +62,7 @@
 ;;   - Add support for fully-qualified identifiers (e.g., with a leading ".").
 
 ;;; Code:
-
+ 
 (require 'cc-mode)
 
 (eval-when-compile

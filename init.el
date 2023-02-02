@@ -15,7 +15,7 @@
 ;;; setup defaults for all modes
 (setq default-frame-alist
       ;; '((top . 0)(left . 400)(height . 63)(width . 180)(menubar-lines . 100)(tool-bar-line . 0))
-        '((top . 0)(left . 700)(height . 91)(width . 160)(menubar-lines . 100)(tool-bar-line . 0)) ; ori
+        '((top . 0)(left . 700)(height . 91)(width . 200)(menubar-lines . 100)(tool-bar-line . 0)) ; ori
       ) ; tmp.py
 
 
@@ -224,6 +224,7 @@
 (require 'init-auto-complete)
   (require 'pangu-spacing)
   (require 'expand-region)
+  (require 'init-protobuf-mode)
 ;; (require 'init-company) ;;; 不喜欢它老是跑出一大堆的路径相关的,不方便,暂时不同这个模式
   )
 
@@ -621,9 +622,9 @@
                     (font-spec :family "Sarasa Mono Slab SC Semibold" :height 130)))
 
 
-;;; // comment for csharp-mode, 但因为这个键组合极其好用，把它提出去，全局公用
+;;; // comment for csharp-mode, 但因为这个键组合极其好用，把它提出去，全局公用; 添加F4自关闭sr-speedbar功能
 (fset 'cmt
-      (kmacro-lambda-form [?\C-x ?1 ? ?/ ?/ ? ] 0 "%d"))
+      (kmacro-lambda-form [f4 ?\C-x ?1 ?  ?/ ?/ ? ] 0 "%d"))
 (local-set-key (kbd "C-j") 'cmt) ;;; 不想再设置全局,因为不同mode下会有不同的实现
 (put 'cmt 'kmacro t)
 
