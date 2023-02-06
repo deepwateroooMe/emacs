@@ -129,7 +129,7 @@
                     charset
                     ;; (font-spec :family "WenQuanYi Micro Hei Mono" :size 12))) 
                     ;; (font-spec :family "Sarasa Mono Slab SC Semibold" :size 12))) 
-                    (font-spec :family "SimHei" :size 12)))
+                    (font-spec :family "STHeiti" :size 12)))
 ;; '(default ((t (:inherit nil :extend nil :stipple nil :background "#181a26" :foreground "gray80" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight semi-bold :height 113 :width normal :foundry "outline" :family "Sarasa Mono Slab SC Semibold"))))
 
 ;; (When (member "Monaco" (font-family-list))
@@ -155,27 +155,48 @@
         ("" "longtable" nil)
         ("" "float" nil)))
 
-;;; automated file-name-directory for current buffer , for windows, not for mac
-(defun my-org-screenshot ()
-  "Take a screenshot into a time stamped unique-named file in the
-same directory as the org-buffer and insert a link to this file."
-  (interactive)
-  (let* ((powershell (executable-find "powershell.exe"))
-         (basename (format-time-string "%Y%m%d_%H%M%S.png"))
-         (filename (concat (file-name-base (buffer-file-name))
-                           "_"
-                           basename))
-         (winFilePathName (expand-file-name (concat "pic/" filename) (file-name-directory buffer-file-name)))
-         (file-path-wsl (concat "./pic/" filename)))
-;;; 必须先用第三方软件将截图复制到剪贴板，再调用这个命令自动生成图片和插入到org文件中，不是全自动
-;;; (需要手动F1调用Snipaste[截图+自动复制到剪贴板，再emacs org 里C-i完成自动化，得两个步骤)；但仍差强人意
-;;; 文件的自动保存地址，需要再自动化一下到当前文件所在的目录
-    (shell-command (concat powershell " -command \"(Get-Clipboard -Format Image).Save(\\\"" winFilePathName "\\\")\""))
-    (org-indent-line)
-    (insert (concat "\n[[" file-path-wsl "]]"))))
-;; (global-set-key (kbd "C-i") 'my-org-screenshot)
+
+;; ;;; automated file-name-directory for current buffer , for windows, 使用powershell 
+;; (defun my-org-screenshot ()
+;;   "Take a screenshot into a time stamped unique-named file in the
+;; same directory as the org-buffer and insert a link to this file."
+;;   (interactive)
+;;   (let* ((powershell (executable-find "powershell.exe"))
+;;          (basename (format-time-string "%Y%m%d_%H%M%S.png"))
+;;          (filename (concat (file-name-base (buffer-file-name))
+;;                            "_"
+;;                            basename))
+;;          (winFilePathName (expand-file-name (concat "pic/" filename) (file-name-directory buffer-file-name)))
+;;          (file-path-wsl (concat "./pic/" filename)))
+;; ;;; 必须先用第三方软件将截图复制到剪贴板，再调用这个命令自动生成图片和插入到org文件中，不是全自动
+;; ;;; (需要手动F1调用Snipaste[截图+自动复制到剪贴板，再emacs org 里C-i完成自动化，得两个步骤)；但仍差强人意
+;;     (shell-command (concat powershell " -command \"(Get-Clipboard -Format Image).Save(\\\"" winFilePathName "\\\")\""))
+;;     (org-indent-line)
+;;     (insert (concat "\n[[" file-path-wsl "]]"))))
+(defun my-org-screenshot () ;;; for mac: automated process, 
+    "Take a screenshot into a time stamped unique-named file in the
+    same directory as the org-buffer and insert a link to this file."
+      (interactive)
+      (start-process "Snipaste" nil nil nil) ;;; 这一步主要目标是： 有时候Snipaste没有打开，这里确保截屏程序打开在运行，这里仍然不对，调用得可能太晚，第一次仍会失败，如果没有开启的话，但保证下一步执行成功
+      (setq filename
+            (expand-file-name (concat "pic/"
+                                               ;; (concat (make-temp-name
+                                               (concat (file-name-base (buffer-file-name))
+                                                       "_"
+                                                       (format-time-string "%Y%m%d_%H%M%S.png")))
+      (file-name-directory buffer-file-name))) 
+      ;;; 现在技术高超，已经不再用复杂的键，只用最简单的键，和自动化过程: Snipaste F1: snip + copy into clipboard; M-s完成
+      ;; (defun org-insert-clipboard-image (&optional file)
+      ;;   (interactive "F")
+        (shell-command (concat "pngpaste " filename))
+        (org-indent-line)
+        (insert (concat "[[" filename "]]"))
+        )
 (global-set-key (kbd "M-s") 'my-org-screenshot)
-    
+;; [[./pic//Users/hhj/pubFrameWorks/MongoDBServer/pic/readme_20230205_223212.pngk0eJun]]
+;; [[./pic//Users/hhj/pubFrameWorks/MongoDBServer/pic/readme_20230205_223636.png4FO3ud]]
+;;; bug to be fixed above filename not as expected, 6 chars tail
+
 
 (add-hook 'org-mode-hook 'turn-on-font-lock)
 (add-hook 'org-mode-hook
@@ -317,15 +338,17 @@ same directory as the org-buffer and insert a link to this file."
 ;; \\usepackage{bera}
 ;; \\usepackage[xetex,colorlinks=true,CJKbookmarks=true,linkcolor=blue,urlcolor=blue,menucolor=blue]{hyperref}
 ;; \\renewcommand{\\MintedPygmentize}{/opt/homebrew/bin/pygmantize}
+;; \\usepackage[scaled]{beraserif}
+;; \\usepackage[scaled]{berasans}
+;; \\usepackage[scaled]{beramono}
 (add-to-list 'org-latex-classes
              '("cn-article"
                "\\documentclass[9pt, b5paper]{article}
 \\usepackage[UTF8]{ctex}
+\\setCJKmainfont{PingFangSC-Regular}
+\\setmainfont{Arial}
 \\usepackage[cache=false, outputdir=build]{minted}
 \\usepackage[T1]{fontenc}
-\\usepackage[scaled]{beraserif}
-\\usepackage[scaled]{berasans}
-\\usepackage[scaled]{beramono}
 \\usepackage{graphicx}
 \\usepackage{xcolor}
 \\usepackage{multirow}

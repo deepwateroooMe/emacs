@@ -3,6 +3,12 @@
 #+author: deepwaterooo
 
 * Updates 
+- Installed my emacs of version 28.1. But there is a bug of any verison emacs > 27.1, and I am NOT able to find a installable emacs 27.1 version any more. 
+  
+[[./pic/readme_20230205_210556.png]] 
+- 上面又成为一个需要改的东西： 就是系统下如何从剪贴板自动生成写入文件 org-mode M-s
+- 然后看见这里说可以自己构建一个，连Xcode也没有安装，就跑去构建了，当然不成功。这段时间太忙，XCode要的空间太大了，暂时还不想。等改天有机会的时候倒是可以一试的
+  - https://stuff-things.net/2020/12/28/building-emacs-27-dot-1-on-macos-big-sur/
 - added key-bindings for opening from VSCode/Android Studio of current emacs buffer. 
   - VSC Emacs can locate to each other to correct row and col. 
   - Android Studio could open current emacs buffer. but not to the row nor col. 
