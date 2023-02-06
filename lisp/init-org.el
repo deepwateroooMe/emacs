@@ -177,25 +177,18 @@
     "Take a screenshot into a time stamped unique-named file in the
     same directory as the org-buffer and insert a link to this file."
       (interactive)
-      (start-process "Snipaste" nil nil nil) ;;; 这一步主要目标是： 有时候Snipaste没有打开，这里确保截屏程序打开在运行，这里仍然不对，调用得可能太晚，第一次仍会失败，如果没有开启的话，但保证下一步执行成功
-      (setq filename
-            (expand-file-name (concat "pic/"
-                                               ;; (concat (make-temp-name
-                                               (concat (file-name-base (buffer-file-name))
-                                                       "_"
-                                                       (format-time-string "%Y%m%d_%H%M%S.png")))
-      (file-name-directory buffer-file-name))) 
-      ;;; 现在技术高超，已经不再用复杂的键，只用最简单的键，和自动化过程: Snipaste F1: snip + copy into clipboard; M-s完成
-      ;; (defun org-insert-clipboard-image (&optional file)
-      ;;   (interactive "F")
-        (shell-command (concat "pngpaste " filename))
+      ;; (start-process "Snipaste" nil nil nil) ;;; 这一步主要目标是： 有时候Snipaste没有打开，这里确保截屏程序打开在运行，这里仍然不对，调用得可能太晚，第一次仍会失败，如果没有开启的话，但保证下一步执行成功
+      (let* ((basename (format-time-string "%Y%m%d_%H%M%S.png"))
+             (filename (concat (file-name-base (buffer-file-name))
+                               "_"
+                               basename))
+             ;; (winFilePathName (expand-file-name (concat "pic/" filename) (file-name-directory buffer-file-name))) ;;; absolute directory for windows, don't like in mac
+             (file-path-wsl (concat "./pic/" filename))
+             )
+        (shell-command (concat "pngpaste " file-path-wsl))
         (org-indent-line)
-        (insert (concat "[[" filename "]]"))
-        )
+        (insert (concat "[[" file-path-wsl "]]"))))
 (global-set-key (kbd "M-s") 'my-org-screenshot)
-;; [[./pic//Users/hhj/pubFrameWorks/MongoDBServer/pic/readme_20230205_223212.pngk0eJun]]
-;; [[./pic//Users/hhj/pubFrameWorks/MongoDBServer/pic/readme_20230205_223636.png4FO3ud]]
-;;; bug to be fixed above filename not as expected, 6 chars tail
 
 
 (add-hook 'org-mode-hook 'turn-on-font-lock)
