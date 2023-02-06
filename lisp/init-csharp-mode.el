@@ -1,8 +1,6 @@
 ;;; for csharp-mode
 
-(add-to-list 'load-path (expand-file-name "c:/Users/blue_/AppData/Roaming/.emacs.d/elpa/csharp-mode")) ;拓展文件(插件)目录
-(require 'csharp-mode)
-
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/elpa/csharp-mode-20221126.2005"))
 (setq interpreter-mode-alist
       (cons '("cs" . csharp-mode) interpreter-mode-alist))
 (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))

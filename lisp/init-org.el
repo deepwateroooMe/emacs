@@ -1,4 +1,4 @@
-;;; org-mode
+;; org-mode
 (global-linum-mode 1)
 (setq load-path (cons "C:/Users/blue_/AppData/Roaming/.emacs.d/elpa/org-20140901/" load-path))
 (require 'ox)
@@ -154,7 +154,8 @@
       '(("" "graphicx" t)
         ("" "longtable" nil)
         ("" "float" nil)))
-;;; automated file-name-directory for current buffer
+
+;;; automated file-name-directory for current buffer , for windows, not for mac
 (defun my-org-screenshot ()
   "Take a screenshot into a time stamped unique-named file in the
 same directory as the org-buffer and insert a link to this file."
@@ -310,15 +311,17 @@ same directory as the org-buffer and insert a link to this file."
                ("\\paragraph{%s}" . "\\paragraph*{%s}")
                ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
-;; \\usepackage[UTF8]{ctex}
+;; \\usepackage{xeCJK}
 ;; \\newminted{common-lisp}{fontsize=\footnotesize} ;; scriptsize
 ;; \\usepackage{xltxtra}
 ;; \\usepackage{bera}
+;; \\usepackage[xetex,colorlinks=true,CJKbookmarks=true,linkcolor=blue,urlcolor=blue,menucolor=blue]{hyperref}
+;; \\renewcommand{\\MintedPygmentize}{/opt/homebrew/bin/pygmantize}
 (add-to-list 'org-latex-classes
              '("cn-article"
                "\\documentclass[9pt, b5paper]{article}
-\\usepackage{xeCJK}
-\\usepackage{minted}
+\\usepackage[UTF8]{ctex}
+\\usepackage[cache=false, outputdir=build]{minted}
 \\usepackage[T1]{fontenc}
 \\usepackage[scaled]{beraserif}
 \\usepackage[scaled]{berasans}
@@ -336,7 +339,6 @@ same directory as the org-buffer and insert a link to this file."
 \\usepackage{geometry}
 \\geometry{left=1.2cm,right=1.2cm,top=1.5cm,bottom=1.2cm}
 \\newminted{common-lisp}{fontsize=\\footnotesize} 
-\\usepackage[xetex,colorlinks=true,CJKbookmarks=true,linkcolor=blue,urlcolor=blue,menucolor=blue]{hyperref}
 [NO-DEFAULT-PACKAGES]
 [NO-PACKAGES]"
                ("\\section{%s}" . "\\section*{%s}")
@@ -514,10 +516,8 @@ same directory as the org-buffer and insert a link to this file."
           (lambda () (text-scale-increase 3)))
 
 ;for latex
-(setenv "PATH" (concat (getenv "PATH") "I:/selfSoft/texlive/texlive/bin/win32"))
-(setq exec-path (append exec-path '("I:/selfSoft/texlive/texlive/bin/win32")))
-(setenv "PATH" (concat (getenv "PATH") "C:/Users/blue_/OneDrive/Desktop"))
-(setq exec-path (append exec-path '("C:/Users/blue_/OneDrive/Desktop")))
+(setenv "PATH" (concat (getenv "PATH") "/usr/local/texlive/2022basic/bin/universal-darwin"))
+(setq exec-path (append exec-path '("/usr/local/texlive/2022basic/bin/universal-darwin")))
 
 ;; (add-to-list 'exec-path "C:/Program Files (x86)/Aspell/bin/")
 (add-to-list 'exec-path "C:/msys64/mingw64/bin/")

@@ -7,23 +7,12 @@
 
 ;; (package-initialize)
 
- (setq default-directory "C:/Users/blue_/AppData/Roaming/.emacs.d/")
+
+;; (setq default-directory "C:/Users/blue_/AppData/Roaming/.emacs.d/")
 ;; (setq default-directory "/Volumes/e/uMVVM/Assets/Sources/")
-;; (setq default-directory "/Volumes/e/ILRuntimeHotFix/ILRuntimeU3D/ILRuntimeDemo/Assets/Samples/ILRuntime/1.6.4/Demo/Scripts/Examples")
+;; p; (setq default-directory "/Volumes/e/ILRuntimeHotFix/ILRuntimeU3D/ILRuntimeDemo/Assets/Samples/ILRuntime/1.6.4/Demo/Scripts/Examples")
 ;; (setq default-directory "C:/Users/blue_/App/")
 
-;;; setup defaults for all modes
-(setq default-frame-alist
-      ;; '((top . 0)(left . 400)(height . 63)(width . 180)(menubar-lines . 100)(tool-bar-line . 0))
-        '((top . 0)(left . 700)(height . 91)(width . 200)(menubar-lines . 100)(tool-bar-line . 0)) ; ori
-      ) ; tmp.py
-
-
-(global-set-key (kbd "M-SPC") 'set-mark-command)
-(menu-bar-mode 1)
- 
-(defvar luna-dumped nil
-  "non-nil when a dump file is loaded (because dump.el sets this variable).")
 
 ;; Bootstrap 'use-package'
 (eval-after-load 'gnutls
@@ -35,15 +24,24 @@
   (require 'use-package))
 (require 'bind-key)
 (setq use-package-always-ensure t)
-
 ;(debug-on-entry 'package-initialize)    
+
+
+(global-set-key (kbd "M-SPC") 'set-mark-command)
 
 (defvar best-gc-cons-threshold 4000000 "Best default gc threshold value. Should't be too big.")
 (setq gc-cons-threshold most-positive-fixnum) ;; don't GC during startup to save time
 
 (setq emacs-load-start-time (current-time))
-;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
-(add-to-list 'load-path (expand-file-name "C:/Users/blue_/AppData/Roaming/.emacs.d/lisp"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
+
+
+;;; setup defaults for all modes
+(setq default-frame-alist
+      ;; '((top . 0)(left . 400)(height . 63)(width . 180)(menubar-lines . 100)(tool-bar-line . 0))
+      '((top . 0)(left . 2000)(height . 500)(width . 500)(menubar-lines . 70)(tool-bar-line . 0)) ; ori
+      ) ; tmp.py
+
 
 ;;----------------------------------------------------------------------------
 ;; which functionality to enable (use t or nil for true and false)
@@ -163,7 +161,7 @@
   (require 'init-spelling)
   (require 'init-gui-frames)
   (require 'init-ido)
-  (require 'init-dired)
+  ;; (require 'init-dired)
   (require 'init-uniquify)
   (require 'init-ibuffer)
   (require 'init-ivy)
@@ -207,7 +205,7 @@
   (require 'init-slime)
   (require 'shader-mode)
 ;  (require 'swift-mode)
-  (require 'init-kotlin-mode)
+  ;; (require 'init-kotlin-mode)
   (require 'init-nxml-mode)
   ;; (require 'init-company)
   
@@ -229,7 +227,7 @@
   )
 
 ;;;; for one-dark-pro like visual studio theme
-(add-to-list 'custom-theme-load-path "C:/Users/blue_/AppData/Roaming/.emacs.d/lisp/atom-one-dark-theme.el")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/lisp/atom-one-dark-theme.el")
 (load-theme 'atom-one-dark t)
 
 
@@ -254,33 +252,35 @@
 (setq font-lock-maximum-decoration t)
 (global-font-lock-mode)
 
-(defmacro luna-if-dump ()
-  "Evaluate IF if running with a dump file, else evaluate ELSE."
-  (declare (indent 1))
-  `(if (eq luna-dumped t)
-       (progn
-         (setq load-path luna-dumped-load-path)
-         (global-font-lock-mode)
-         (transient-mark-mode)
-         (add-hook 'after-init-hook
-                   (lambda ()
-                     (save-excursion
-                       (lisp-interaction-mode)))))
-     (progn
-       (let ((file-name-handler-alist nil))
-         (require 'init-python-mode)
-         (require 'init-csharp-mode)
-         ;; (require 'init-company)
-         (require 'init-sr-speedbar)
-         )
-       ;; (spacemacs|load-modes '(company csharp))
-       (add-hook 'after-init-hook
-                 (lambda ()
-                   (save-excursion
-                     (lisp-interaction-mode)
-                   ))))))
+;; (defmacro luna-if-dump ()
+;;   "Evaluate IF if running with a dump file, else evaluate ELSE."
+;;   (declare (indent 1))
+;;   `(if (eq luna-dumped t)
+;;        (progn
+;;          (setq load-path luna-dumped-load-path)
+;;          (global-font-lock-mode)
+;;          (transient-mark-mode)
+;;          (add-hook 'after-init-hook
+;;                    (lambda ()
+;;                      (save-excursion
+;;                        (lisp-interaction-mode)))))
+;;      (progn
+;;        (let ((file-name-handler-alist nil))
+;;          (require 'init-python-mode)
+;;          (require 'init-csharp-mode)
+;;          ;; (require 'init-company)
+;;          (require 'init-sr-speedbar)
+;;          )
+;;        ;; (spacemacs|load-modes '(company csharp))
+;;        (add-hook 'after-init-hook
+;;                  (lambda ()
+;;                    (save-excursion
+;;                      (lisp-interaction-mode)
+;;                    ))))))
 
-(luna-if-dump)
+;; (luna-if-dump)
+
+
 
 ;; (defun luna-dump ()
 ;;   "Dump Emacs."
@@ -428,17 +428,7 @@
 (add-hook 'latex-mode-hook 'ac-latex-mode-setup)
 
 
-(add-to-list 'load-path "C:/Users/blue_/AppData/Roaming/.emacs.d/wubi")
-(require 'wubi)
-(wubi-load-local-phrases) ; add user's Wubi phrases
-(register-input-method
- "chinese-wubi" "Chinese-GB" 'quail-use-package
- "WuBi" "WuBi"
- "wubi")
-(if (< emacs-major-version 21)
-    (setup-chinese-gb-environment)
-  (set-language-environment 'Chinese-GB))
-(setq default-input-method "chinese-wubi")
+
 
 ;;; key bindings of WuBi
 (global-set-key [?\C-+] 'add-wubi)
@@ -472,10 +462,9 @@
 
 
 
-(add-to-list 'load-path (expand-file-name "C:/Users/blue_/AppData/Roaming/.emacs.d/lisp/")) ;拓展文件(插件)目录
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp/")) ;拓展文件(插件)目录
 (require 'autopair)
 (defun turn-on-autopair-mode () (autopair-mode 1))
-
                                         ; turn off auto-pair for these modes
 (setq autopair-global-modes
       '(not
@@ -629,6 +618,10 @@
 (put 'cmt 'kmacro t)
 
 
+;;;; 加载snippets 的接口
+(add-hook 'emacs-startup-hook (lambda () (yas-load-directory "～/.emacs.d/snippets")))
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -655,7 +648,6 @@
  '(package-selected-packages
    '(web-mode-edit-element auctex fuzzy ppd-sr-speedbar lsp-mode py-autopep8 logview virtualenvwrapper company-jedi flycheck-color-mode-line auto-complete-clang-async flycheck-swift3 flycheck-swift flycheck swift3-mode swift-mode yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode lua-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-lua flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word csharp-mode crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link))
  '(session-use-package t nil (session))
- '(show-paren-mode t)
  '(speedbar-frame-parameters '((minibuffer) (width . 35)))
  '(speedbar-show-unknown-files nil)
  '(speedbar-smart-directory-expand-flag t)
@@ -683,14 +675,14 @@
  '(yas-also-indent-empty-lines t)
  '(yas-indent-line 'auto)
  '(yas-snippet-dirs
-   '("c:/Users/blue_/AppData/Roaming/.emacs.d/snippets" "c:/Users/blue_/AppData/Roaming/.emacs.d/elpa/elpy-1.18.0/snippets/"))
+   '("~/.emacs.d/snippets" "~/.emacs.d/elpa/elpy-1.18.0/snippets/"))
  '(yas-wrap-around-region 'cua))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Inconsolata-dz" :foundry "outline" :slant normal :weight normal :height 98 :width normal))))
+ '(default ((t (:inherit nil :stipple nil :background "#282C34" :foreground "#ABB2BF" :inverse-video nil :box nil :strike-through nil :extend nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "nil" :family "Inconsolata_dz"))))
  '(cursor ((t (:background "orchid"))))
  '(hi-blue-b ((t (:foreground "systemBlueColor" :weight bold))))
  '(hi-salmon ((t (:background "NavajoWhite1" :foreground "gray0"))))
