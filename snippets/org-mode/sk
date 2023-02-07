@@ -3,5 +3,4 @@
 # key: sk
 # --
 #+BEGIN_SRC kotlin
-#+END_SRC
-$0
+$0#+END_SRC

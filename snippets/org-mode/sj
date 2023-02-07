@@ -3,5 +3,4 @@
 # key: sj
 # --
 #+BEGIN_SRC java
-#+END_SRC
-$0
+$0#+END_SRC

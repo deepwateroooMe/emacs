@@ -3,5 +3,4 @@
 # key: sc
 # --
 #+BEGIN_SRC cpp
-#+END_SRC
-$0
+$0#+END_SRC

@@ -3,5 +3,4 @@
 # key: verse_
 # --
 #+begin_verse
-        $0
-#+end_verse
+$0#+end_verse

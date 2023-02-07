@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: sk
-# key: sk
-# --
-#+BEGIN_SRC kotlin
-#+END_SRC$0

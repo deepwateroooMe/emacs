@@ -187,8 +187,9 @@
              )
         (shell-command (concat "pngpaste " file-path-wsl))
         (org-indent-line)
-        (insert (concat "[[" file-path-wsl "]]"))))
-(global-set-key (kbd "M-s") 'my-org-screenshot)
+        (insert (concat "\n[[" file-path-wsl "]]"))))
+(global-set-key (kbd "C-i") 'my-org-screenshot) ;;; 我是觉得这个键的组合比较好用
+;; (global-set-key (kbd "M-s") 'my-org-screenshot)
 
 
 (add-hook 'org-mode-hook 'turn-on-font-lock)
@@ -325,23 +326,21 @@
                ("\\paragraph{%s}" . "\\paragraph*{%s}")
                ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
-;; \\usepackage{xeCJK}
-;; \\newminted{common-lisp}{fontsize=\footnotesize} ;; scriptsize
-;; \\usepackage{xltxtra}
-;; \\usepackage{bera}
-;; \\usepackage[xetex,colorlinks=true,CJKbookmarks=true,linkcolor=blue,urlcolor=blue,menucolor=blue]{hyperref}
-;; \\renewcommand{\\MintedPygmentize}{/opt/homebrew/bin/pygmantize}
-;; \\usepackage[scaled]{beraserif}
-;; \\usepackage[scaled]{berasans}
-;; \\usepackage[scaled]{beramono}
+;; \\newcommand{\\MintedPygmentize}{/Users/hhj/Library/Python/3.9/bin/pygmentize}
+;; \\usepackage[UTF8]{ctex}
+;; \\SetCJKmainfont{PingFangSC-Regular}
+;; \\setmainfont{Arial}
 (add-to-list 'org-latex-classes
              '("cn-article"
                "\\documentclass[9pt, b5paper]{article}
-\\usepackage[UTF8]{ctex}
-\\setCJKmainfont{PingFangSC-Regular}
-\\setmainfont{Arial}
-\\usepackage[cache=false, outputdir=build]{minted}
+\\usepackage{xeCJK}
 \\usepackage[T1]{fontenc}
+\\usepackage{bera}
+\\usepackage[scaled]{beraserif}
+\\usepackage[scaled]{berasans}
+\\usepackage[scaled]{beramono}
+\\usepackage[cache=false]{minted}
+\\usepackage{xltxtra}
 \\usepackage{graphicx}
 \\usepackage{xcolor}
 \\usepackage{multirow}
@@ -354,6 +353,7 @@
 \\usepackage{natbib}
 \\usepackage{geometry}
 \\geometry{left=1.2cm,right=1.2cm,top=1.5cm,bottom=1.2cm}
+\\usepackage[xetex,colorlinks=true,CJKbookmarks=true,linkcolor=blue,urlcolor=blue,menucolor=blue]{hyperref}
 \\newminted{common-lisp}{fontsize=\\footnotesize} 
 [NO-DEFAULT-PACKAGES]
 [NO-PACKAGES]"
@@ -389,9 +389,9 @@
 \\usepackage{natbib}
 \\usepackage{minted}
 \\newminted{common-lisp}{fontsize=\\footnotesize}
-\\usepackage[xetex,colorlinks=true,CJKbookmarks=true,linkcolor=blue,urlcolor=blue,menucolor=blue]{hyperref}
+\\usepackage[xetex,colorlinks=true,CJKbookmarks=true,linkcolor=blue,urlcolor=blue,menucolor=blue]{hyperref} 
 [NO-DEFAULT-PACKAGES]
-[NO-PACKAGES]"
+[NO-PACKAGES]" 
                ;; ("\\part{%s}" . "\\part*{%s}")
                ("\\chapter{%s}" . "\\chapter*{%s}")
                ("\\section{%s}" . "\\section*{%s}")
@@ -534,6 +534,10 @@
 ;for latex
 (setenv "PATH" (concat (getenv "PATH") "/usr/local/texlive/2022basic/bin/universal-darwin"))
 (setq exec-path (append exec-path '("/usr/local/texlive/2022basic/bin/universal-darwin")))
+;;; for pygmentize
+(setenv "PATH" (concat (getenv "PATH") "/Users/hhj/Library/Python/3.9/bin"))
+(setq exec-path (append exec-path '("/Users/hhj/Library/Python/3.9/bin")))
+
 
 ;; (add-to-list 'exec-path "C:/Program Files (x86)/Aspell/bin/")
 (add-to-list 'exec-path "C:/msys64/mingw64/bin/")

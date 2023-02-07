@@ -39,7 +39,7 @@
 ;;; setup defaults for all modes
 (setq default-frame-alist
       ;; '((top . 0)(left . 400)(height . 63)(width . 180)(menubar-lines . 100)(tool-bar-line . 0))
-      '((top . 0)(left . 2000)(height . 500)(width . 500)(menubar-lines . 70)(tool-bar-line . 0)) ; ori
+      '((top . 0)(left . 1000)(height . 500)(width . 500)(menubar-lines . 50)(tool-bar-line . 0)) ; ori
       ) ; tmp.py
 
 
