@@ -8,7 +8,7 @@
 ;; (package-initialize)
 
 
-;; (setq default-directory "C:/Users/blue_/AppData/Roaming/.emacs.d/")
+(setq default-directory "/Users/hhj/pubFrameWorks/ET/")
 ;; (setq default-directory "/Volumes/e/uMVVM/Assets/Sources/")
 ;; p; (setq default-directory "/Volumes/e/ILRuntimeHotFix/ILRuntimeU3D/ILRuntimeDemo/Assets/Samples/ILRuntime/1.6.4/Demo/Scripts/Examples")
 ;; (setq default-directory "C:/Users/blue_/App/")
