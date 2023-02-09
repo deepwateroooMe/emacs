@@ -1,4 +1,4 @@
-% Created 2023-02-08 Wed 10:23
+% Created 2023-02-08 Wed 16:53
 \documentclass[9pt, b5paper]{article}
 \usepackage{xeCJK}
 \usepackage[T1]{fontenc}
@@ -35,10 +35,30 @@
 \tableofcontents
 
 
-\section{Updates}
+\section{TODOs: tracing bugs of emacs 28.1 custom-build version}
 \label{sec-1}
+\subsection{invalid time specification: sr-speedbar on MacOS}
+\label{sec-1-1}
+
+\includegraphics[width=.9\linewidth]{./pic/readme_20230208_163916.png}
+\begin{itemize}
+\item 好像是macOS系统常常存在的 bug,两年了关了又开，开了再关\ldots{}\ldots{}
+\item \url{https://github.com/remacs/remacs/issues/845}
+\item get cmake work later, not urgent though.Complete
+\item babel org-mode so I don't have to copy from specific babeled source org-mode files in order for chinese characters to work.
+\end{itemize}
+
+\section{Updates}
+\label{sec-2}
 \begin{itemize}
 \item Installed my emacs of version 28.1. But there is a bug of any verison emacs > 27.1, and I am NOT able to find a installable emacs 27.1 version any more.
+\item 不同电脑架构上可能因为架构的不同，可以可能可以有某些优化.又照一个单做了一遍，似乎没有出错. \url{https://goykhman.ca/gene/blog/2022/2022-04-10-emacs-28.1-on-m1.html}
+\item 但是我没有没能加入那个补丁包.暂时没能想好怎么加入那个补丁包. （ \textbf{todo： 改天可以尝试再把这个补丁包加进去} ）
+\item 因为构建是在原有现有的 mac 28.1.1版本上构建的.所以改动什么，或是不曾改变，又或者改不了不影响明显功能都是无从知晓的，但是它最后的两个步骤的验证都是成功的，应该还是构建成功了吧？
+\end{itemize}
+
+\includegraphics[width=.9\linewidth]{./pic/readme_20230208_142554.png}
+\begin{itemize}
 \item 今天又尝试安装Xcode之后再构建一遍，但是没有成功.可能本身参考有些年代，另外自己还完全不通这个部分，所以暂时放一放.改天有机会可以再回来研究一下，错在哪里，我如何才可能构建出自己的版本.
 \end{itemize}
 
@@ -59,7 +79,7 @@
 \item fixed legency java-mode highlighing issue which I did not fix for years. Has been able to treat java-mode as java-mode Instead of using it as csharp-mode. Can not separate java-mode snippets from csharp-mode's.
 \end{itemize}
 \subsection{BUG statement and partial fix}
-\label{sec-1-1}
+\label{sec-2-1}
 \begin{itemize}
 \item in java-mode, the code style I expected is as followed:
 \end{itemize}
@@ -104,7 +124,7 @@ fun dslfkj { // kotlin-mode, unlike java-mode, this feature works charming
 \item \textbf{csharp-mode} has been the one that works perfectly for these two features, \{\} auto expand, also if while one line statement autoindent without \{\}, so I used csharp-mode as java mode.
 \end{itemize}
 \subsection{so far let it be this way}
-\label{sec-1-2}
+\label{sec-2-2}
 \begin{itemize}
 \item Spent a whole day, half fixed the bug in the morning, but has broke java-mode completely and had to pull request from github once again.
 \item I actually cannot stay kotlin-mode insdie csharp's, look at following indent:
@@ -168,20 +188,13 @@ public fun thread(start: Boolean = true,
 \end{itemize}
 
 \section{starting point}
-\label{sec-2}
+\label{sec-3}
 \begin{itemize}
 \item It is a new computer, and I did try to git clone from my own repository to new laptop, but after fixed errors and tried, \textbf{I promise I do NOT and can NOT bare the out-dated emacs 22.X any more, I have to move on.} I have to install newer versions for my own later on convenience.
 \item Instead of configuring my own again, this time, I tried from some "big" person's repository and try to make it work on my laptop (fixing errors, installing necessary packages etc), as well as comment out some complicated modes and customization so that I would still be able to use and like my current emacs interface.
 \item It is the first time I tried from some big person's (or any person's configurature completely), it was tidious to fix all the errors at beginning (I spent more than 2 days on it last week. For me it just took too much time), but so far I like some of the features that had been annoying me before, but I have not and was not able to find good solutions to solve it, like how to auto-complete words when in scripte comment line or in quotes. I like these detailed features which I did try by writing my own snippets from yasnippet mode before.
 \item So far, org-mode is not perfect, but it is a fully functional one that I could use and help convenient a game developer's daily work.
 \item Will devote more time to understand emacs better, and to solve my own problems and make it more convenient for me to use when I need some specific features.
-\end{itemize}
-
-\section{TODOs}
-\label{sec-3}
-\begin{itemize}
-\item get cmake work later, not urgent though.
-\item babel org-mode so I don't have to copy from specific babeled source org-mode files in order for chinese characters to work.
 \end{itemize}
 
 \section{References}

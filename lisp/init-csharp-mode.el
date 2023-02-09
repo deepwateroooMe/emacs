@@ -7,6 +7,24 @@
 (add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-mode))
 
 
+;;;;; csharp-mode 之后容易出gio-minor-mode引起的一些问题，试着纠正一下
+(defun csharp-disable-clear-string-fences (orig-fun &rest args)
+  "This turns off `c-clear-string-fences' for `csharp-mode'. When
+on for `csharp-mode' font lock breaks after an interpolated string
+or terminating simple string."
+  (unless (equal major-mode 'csharp-mode)
+    (apply orig-fun args)))
+(advice-add 'c-clear-string-fences :around 'csharp-disable-clear-string-fences)
+
+(defun csharp-disable-clear-string-fences (orig-fun &rest args)
+  "This turns off `c-clear-string-fences' for `csharp-mode'. When
+on for `csharp-mode' font lock breaks after an interpolated string
+or terminating simple string."
+  (unless (equal major-mode 'csharp-mode)
+    (apply orig-fun args)))
+(advice-add 'c-clear-string-fences :around 'csharp-disable-clear-string-fences)
+
+
 ;;; 这里添加一个从Emacs中直接要求从VSC中打开当前文件的命令
 ;; (defun my-open-current-file-in-vscode ()
 ;;   (interactive)

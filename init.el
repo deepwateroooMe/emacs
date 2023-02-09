@@ -6,9 +6,10 @@
 ;;              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
 ;; (package-initialize)
+(setq debug-on-error t)
 
 
-(setq default-directory "/Users/hhj/pubFrameWorks/ET/")
+(setq default-directory "/Users/hhj/")
 ;; (setq default-directory "/Volumes/e/uMVVM/Assets/Sources/")
 ;; p; (setq default-directory "/Volumes/e/ILRuntimeHotFix/ILRuntimeU3D/ILRuntimeDemo/Assets/Samples/ILRuntime/1.6.4/Demo/Scripts/Examples")
 ;; (setq default-directory "C:/Users/blue_/App/")
@@ -39,7 +40,7 @@
 ;;; setup defaults for all modes
 (setq default-frame-alist
       ;; '((top . 0)(left . 400)(height . 63)(width . 180)(menubar-lines . 100)(tool-bar-line . 0))
-      '((top . 0)(left . 1000)(height . 500)(width . 500)(menubar-lines . 50)(tool-bar-line . 0)) ; ori
+      '((top . 0)(left . 200)(height . 500)(width . 200)(menubar-lines . 50)(tool-bar-line . 0)) ; ori
       ) ; tmp.py
 
 
@@ -74,33 +75,30 @@
       (read-only-mode -1)))
 
 
-(defgroup gio-group nil
-  "Group for customization"
-  :prefix "gio-")
-
-(defface gio-highlight-numbers-face
-  '((t :inherit (default)
-       :foreground "#f6546a")) ;;; ori: #ffff00 #fff68f
-  "Face for numbers"
-  :group 'gio-group )
-
-(defvar gio-keywords '(("\\(\\b\\|[-]\\)\\([-]?\\([0-9]+\\)\\(\\.?[0-9]\\)*\\)\\b" . 'gio-highlight-numbers-face)) ;; Integers & Decimals
-  "Keywords for gio-minor-mode highlighting")
-
-(define-minor-mode gio-minor-mode
-  "Minor mode for customization"
-  :init-value 1
-  :lighter " GioMode"
-  :group 'gio-group
-  (when (bound-and-true-p gio-minor-mode)
-    (font-lock-add-keywords nil gio-keywords)
-    (font-lock-fontify-buffer))
-  (when (not (bound-and-true-p gio-minor-mode))
-    (font-lock-remove-keywords nil gio-keywords)
-    (font-lock-fontify-buffer)))
-
-(define-globalized-minor-mode gio-global-minor-mode gio-minor-mode gio-minor-mode :group 'gio-group)
-(gio-global-minor-mode 1)
+;; ;;;;; turn off this mode for a while
+;; (defgroup gio-group nil
+;;   "Group for customization"
+;;   :prefix "gio-")
+;; (defface gio-highlight-numbers-face
+;;   '((t :inherit (default)
+;;        :foreground "#f6546a")) ;;; ori: #ffff00 #fff68f
+;;   "Face for numbers"
+;;   :group 'gio-group )
+;; (defvar gio-keywords '(("\\(\\b\\|[-]\\)\\([-]?\\([0-9]+\\)\\(\\.?[0-9]\\)*\\)\\b" . 'gio-highlight-numbers-face)) ;; Integers & Decimals
+;;   "Keywords for gio-minor-mode highlighting")
+;; (define-minor-mode gio-minor-mode
+;;   "Minor mode for customization"
+;;   :init-value 1
+;;   :lighter " GioMode"
+;;   :group 'gio-group
+;;   (when (bound-and-true-p gio-minor-mode)
+;;     (font-lock-add-keywords nil gio-keywords)
+;;     (font-lock-fontify-buffer)) ;;; 这里会导致csharp-mode里的一些问题
+;;   (when (not (bound-and-true-p gio-minor-mode))
+;;     (font-lock-remove-keywords nil gio-keywords)
+;;     (font-lock-fontify-buffer)))  ;;; 这里会导致csharp-mode里的一些问题
+;; (define-globalized-minor-mode gio-global-minor-mode gio-minor-mode gio-minor-mode :group 'gio-group)
+;; (gio-global-minor-mode 1)
 
 
 ;;; bypassing default build in org-mode, and try to use customized version
@@ -518,7 +516,6 @@
   ;; (setq word-wrap t)
   )
                                         ;; (setq soft-wrap-lines t) ;; for chinese
-                                        ;; (setq debug-on-error t)
 
 
 
@@ -619,7 +616,7 @@
 
 
 ;;;; 加载snippets 的接口
-(add-hook 'emacs-startup-hook (lambda () (yas-load-directory "～/.emacs.d/snippets")))
+(add-hook 'emacs-startup-hook (lambda () (yas-load-directory "/Users/hhj/.emacs.d/snippets/")))
 
 
 (custom-set-variables
