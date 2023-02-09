@@ -7,8 +7,6 @@
 - newer debugging infos, concernibg about sr-speedbar.el file. Have NOT been able to trace down for today. 
 
 [[./pic/readme_20230209_135039.png]]
-
-[[./pic/readme_20230208_163916.png]]
 - 好像是macOS系统常常存在的 bug,两年了关了又开，开了再关......
 - https://github.com/remacs/remacs/issues/845
 - get cmake work later, not urgent though.Complete
