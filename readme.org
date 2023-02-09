@@ -4,7 +4,10 @@
 
 * TODOs: tracing bugs of emacs 28.1 custom-build version
 ** invalid time specification: sr-speedbar on MacOS
-   
+- newer debugging infos, concernibg about sr-speedbar.el file. Have NOT been able to trace down for today. 
+
+[[./pic/readme_20230209_135039.png]]
+
 [[./pic/readme_20230208_163916.png]]
 - 好像是macOS系统常常存在的 bug,两年了关了又开，开了再关......
 - https://github.com/remacs/remacs/issues/845
@@ -18,7 +21,7 @@
 - 因为构建是在原有现有的 mac 28.1.1版本上构建的.所以改动什么，或是不曾改变，又或者改不了不影响明显功能都是无从知晓的，但是它最后的两个步骤的验证都是成功的，应该还是构建成功了吧？
   
 [[./pic/readme_20230208_142554.png]]
-- 今天又尝试安装Xcode之后再构建一遍，但是没有成功.可能本身参考有些年代lp，另外自己还完全不通这个部分，所以暂时放一放.改天有机会可以再回来研究一下，错在哪里，我如何才可能构建出自己的版本. 
+- 今天又尝试安装Xcode之后再构建一遍，但是没有成功.可能本身参考有些年代，另外自己还完全不通这个部分，所以暂时放一放.改天有机会可以再回来研究一下，错在哪里，我如何才可能构建出自己的版本. 
 
 [[./pic/readme_20230208_102317.png]]
 - 上面又成为一个需要改的东西： 就是系统下如何从剪贴板自动生成写入文件 org-mode M-s
@@ -28,7 +31,7 @@
   - VSC Emacs can locate to each other to correct row and col. 
   - Android Studio could open current emacs buffer. but not to the row nor col. 
 - I liked recently configued Visual studio 2019 one-dark-pro theme, want to configue it for emacs, but ended up with any permission denied, renaming emacs initiating bug. reverted back for daily use, and may look into that bug for later reference. 
-- will reconfigure one-dark-pro theme later. 
+- will reconfigure one-dark-pro theme later.  
 - fixed legency java-mode highlighing issue which I did not fix for years. Has been able to treat java-mode as java-mode Instead of using it as csharp-mode. Can not separate java-mode snippets from csharp-mode's.  
 ** BUG statement and partial fix
 - in java-mode, the code style I expected is as followed:

@@ -1,4 +1,4 @@
-;;; ### Speedbar ###
+;;;;;; ### Speedbar ###
 (require 'sr-speedbar)
 
 (setq speedbar-use-images nil)       ; Turn off the ugly icons
@@ -18,9 +18,6 @@
   "Speedbar face for symlinked filenames."
   :group 'speedbar-faces)
 
-(make-face 'speedbar-face)
-(set-face-font 'speedbar-face "Fira Code Light-11") ;;; 一堆显示不出来的码
-(setq speedbar-mode-hook '(lambda () (buffer-face-set 'speedbar-faces)))
 
 ;; (custom-set-variables '(speedbar-show-unknown-files t))
 (speedbar-add-supported-extension ".h")
@@ -33,7 +30,7 @@
 (add-to-list 'speedbar-fetch-etags-parse-list
  		     '("\\.c" . speedbar-parse-c-or-c++tag))
 (speedbar-add-supported-extension ".cs")
- (add-to-list 'speedbar-fetch-etags-parse-list
+(add-to-list 'speedbar-fetch-etags-parse-list
  		     '("\\.cs" . speedbar-parse-c-or-c++tag))
 (speedbar-add-supported-extension ".xml")
 (add-to-list 'speedbar-fetch-etags-parse-list
@@ -63,7 +60,7 @@
 (add-to-list 'speedbar-fetch-etags-parse-list
  		     '("\\.glsl" . speedbar-parse-c-or-c++tag))
 (speedbar-add-supported-extension ".org")
- (add-to-list 'speedbar-fetch-etags-parse-list
+(add-to-list 'speedbar-fetch-etags-parse-list
  		     '("\\.org" . speedbar-parse-c-or-c++tag))
 (speedbar-add-supported-extension ".md")
 (add-to-list 'speedbar-fetch-etags-parse-list
@@ -142,25 +139,36 @@
 ;;; 如果窗口存在,就切换过去;不存在则打开并切换到浏览窗口,坏处是窗口永远无法关闭                               
                                (if (sr-speedbar-exist-p)
                                    (select-window sr-speedbar-window)
-                                 (sr-speedbar-toggle)
-                                 (sr-speedbar-select-window)
+                                 ;; (
+                                 ;; (sr-speedbar-toggle) ;;; 这么写会报错
+                                 (sr-speedbar-open)
+                                 ;; (sr-speedbar-select-window)) ;;; 暂时去掉这个，可能还会有残存问题，因为自己当初加了这个的
                                  )))
 ;;; 设置为关闭窗口; 填加一个手误功能,当点了F4,
 ;;; 把这个功能失活，C－j好用的键，只在窗口关键下才起作用。但是窗口是关闭的,那么当F5来用,打开窗口并将光标切换到窗口
 (global-set-key [(f4)] (lambda ()
                          (interactive)
-                         (if (sr-speedbar-exist-p)
-                             (sr-speedbar-close)
+                         (when (sr-speedbar-exist-p)
+                           (sr-speedbar-close)
                            ;; (sr-speedbar-open)
                            ;; (sr-speedbar-select-window)
-                           )))
+                           )
+                         ))
+
+
+;;;;; 放在这里的目的：是为了把它统一到一个里面来写，可能才起作用
+(make-face 'speedbar-face)
+(set-face-font 'speedbar-face "Fira Code Light-13") ;;; 一堆显示不出来的码
+;; (setq speedbar-mode-hook '(lambda () (buffer-face-set 'speedbar-face)))
+
 
 ;; (speedbar 1)
 (setq speedbar-mode-hook '(lambda ()
                             (interactive)
-                            (other-frame 0)))
+                            (other-frame 0)
+                            (buffer-face-set 'speedbar-face)
+                            ))
 ;; (when window-system          ; start speedbar if we're using a window system
 ;;   (speedbar t))
 
 (provide 'init-sr-speedbar)
-

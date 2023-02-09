@@ -1,21 +1,15 @@
 ;;; for csharp-mode
 
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/elpa/csharp-mode-20221126.2005"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/elpa/csharp-mode"))
+(require 'csharp-mode)
 (setq interpreter-mode-alist
       (cons '("cs" . csharp-mode) interpreter-mode-alist))
 (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
 (add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-mode))
 
 
+;;; fix bug for font lock breaks after ' or "
 ;;;;; csharp-mode 之后容易出gio-minor-mode引起的一些问题，试着纠正一下
-(defun csharp-disable-clear-string-fences (orig-fun &rest args)
-  "This turns off `c-clear-string-fences' for `csharp-mode'. When
-on for `csharp-mode' font lock breaks after an interpolated string
-or terminating simple string."
-  (unless (equal major-mode 'csharp-mode)
-    (apply orig-fun args)))
-(advice-add 'c-clear-string-fences :around 'csharp-disable-clear-string-fences)
-
 (defun csharp-disable-clear-string-fences (orig-fun &rest args)
   "This turns off `c-clear-string-fences' for `csharp-mode'. When
 on for `csharp-mode' font lock breaks after an interpolated string
@@ -119,51 +113,36 @@ or terminating simple string."
     )))
 
 
-(add-hook 'csharp-mode-hook (lambda ()
-                              (font-lock-add-keywords nil '(
-
-                                        ; Valid hex number (will highlight invalid suffix though)
-                                                            ("\\b0x[[:xdigit:]]+[uUlL]*\\b" . font-lock-string-face)
-
-                                        ; Invalid hex number
-                                                            ("\\b0x\\(\\w\\|\\.\\)+\\b" . font-lock-warning-face)
-
-                                        ; Valid floating point number.
-                                                            ("\\(\\b[0-9]+\\|\\)\\(\\.\\)\\([0-9]+\\(e[-]?[0-9]+\\)?\\([lL]?\\|[dD]?[fF]?\\)\\)\\b" (1 font-lock-string-face) (3 font-lock-string-face))
-
-                                        ; Invalid floating point number.  Must be before valid decimal.
-                                                            ("\\b[0-9].*?\\..+?\\b" . font-lock-warning-face)
-
-                                        ; Valid decimal number.  Must be before octal regexes otherwise 0 and 0l
-                                        ; will be highlighted as errors.  Will highlight invalid suffix though.
-                                                            ("\\b\\(\\(0\\|[1-9][0-9]*\\)[uUlL]*\\)\\b" 1 font-lock-string-face)
-
-                                        ; Valid octal number
-                                                            ("\\b0[0-7]+[uUlL]*\\b" . font-lock-string-face)
-
-                                        ; Floating point number with no digits after the period.  This must be
-                                        ; after the invalid numbers, otherwise it will "steal" some invalid
-                                        ; numbers and highlight them as valid.
-                                                            ("\\b\\([0-9]+\\)\\." (1 font-lock-string-face))
-
-                                        ; Invalid number.  Must be last so it only highlights anything not
-                                        ; matched above.
-                                                            ("\\b[0-9]\\(\\w\\|\\.\\)+?\\b" . font-lock-warning-face)
-                                                            ))
-                              ))
-(font-lock-add-keywords
- 'csharp-mode
- '(("0x\\([0-9a-fA-F]+\\)" . font-lock-builtin-face)))
+;;; 我把这个暂时去掉，看还会引起那么多的问题吗？这个东西应该是不会起什么作用的
+;; (add-hook 'csharp-mode-hook (lambda ()
+;;                               (font-lock-add-keywords nil '(
+;;                                         ; Valid hex number (will highlight invalid suffix though)
+;;                                                             ("\\b0x[[:xdigit:]]+[uUlL]*\\b" . font-lock-string-face)
+;;                                         ; Invalid hex number
+;;                                                             ("\\b0x\\(\\w\\|\\.\\)+\\b" . font-lock-warning-face)
+;;                                         ; Valid floating point number.
+;;                                                             ("\\(\\b[0-9]+\\|\\)\\(\\.\\)\\([0-9]+\\(e[-]?[0-9]+\\)?\\([lL]?\\|[dD]?[fF]?\\)\\)\\b" (1 font-lock-string-face) (3 font-lock-string-face))
+;;                                         ; Invalid floating point number.  Must be before valid decimal.
+;;                                                             ("\\b[0-9].*?\\..+?\\b" . font-lock-warning-face)
+;;                                         ; Valid decimal number.  Must be before octal regexes otherwise 0 and 0l
+;;                                         ; will be highlighted as errors.  Will highlight invalid suffix though.
+;;                                                             ("\\b\\(\\(0\\|[1-9][0-9]*\\)[uUlL]*\\)\\b" 1 font-lock-string-face)
+;;                                         ; Valid octal number
+;;                                                             ("\\b0[0-7]+[uUlL]*\\b" . font-lock-string-face)
+;;                                         ; Floating point number with no digits after the period.  This must be
+;;                                         ; after the invalid numbers, otherwise it will "steal" some invalid
+;;                                         ; numbers and highlight them as valid.
+;;                                                             ("\\b\\([0-9]+\\)\\." (1 font-lock-string-face))
+;;                                         ; Invalid number.  Must be last so it only highlights anything not
+;;                                         ; matched above.
+;;                                                             ("\\b[0-9]\\(\\w\\|\\.\\)+?\\b" . font-lock-warning-face)
+;;                                                             ))
+;;                               ))
+;; (font-lock-add-keywords
+;;  'csharp-mode
+;;  '(("0x\\([0-9a-fA-F]+\\)" . font-lock-builtin-face)))
 
 
-;;; fix bug for font lock breaks after ' or "
-(defun csharp-disable-clear-string-fences (orig-fun &rest args)
-  "This turns off `c-clear-string-fences' for `csharp-mode'. When
-on for `csharp-mode' font lock breaks after an interpolated string
-or terminating simple string."
-  (unless (equal major-mode 'csharp-mode)
-    (apply orig-fun args)))
-(advice-add 'c-clear-string-fences :around 'csharp-disable-clear-string-fences)
 
 
 ;; added for init-java-mode.el temporatorially

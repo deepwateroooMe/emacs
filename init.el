@@ -398,7 +398,7 @@
       c-basic-offset 4)
 
 ;;; 设定行距
-(setq default-line-spacing 0.05)
+(setq default-line-spacing 0.1)
 ;;; 开启语法高亮
 (global-font-lock-mode 1)
 ;;; 高亮显示区域选择
@@ -635,7 +635,7 @@
  '(fci-rule-color "#dedede")
  '(git-gutter:handled-backends '(svn hg git))
  '(latex-run-command "latex --shell-escape")
- '(line-spacing 0.15)
+ '(line-spacing 0.1)
  '(nxml-slash-auto-complete-flag t)
  '(org-export-with-sub-superscripts nil)
  '(org-format-latex-options
@@ -679,7 +679,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#282C34" :foreground "#ABB2BF" :inverse-video nil :box nil :strike-through nil :extend nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "nil" :family "Inconsolata_dz"))))
+ '(default ((t (:inherit nil :stipple nil :background "#282C34" :foreground "#ABB2BF" :inverse-video nil :box nil :strike-through nil :extend nil :overline nil :underline nil :slant normal :weight normal :height 130 :width normal :foundry "nil" :family "Inconsolata_dz"))))
  '(cursor ((t (:background "orchid"))))
  '(hi-blue-b ((t (:foreground "systemBlueColor" :weight bold))))
  '(hi-salmon ((t (:background "NavajoWhite1" :foreground "gray0"))))
