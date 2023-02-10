@@ -2,8 +2,13 @@
 #+title: Emacs Configuration
 #+author: deepwaterooo
 
-* TODOs: tracing bugs of emacs 28.1 custom-build version
+* TODOs: tracing bugs of emacs 28.1
+* Updates 
+- finally sync up with csharp-mode with tree-sitter, and fixed added the other's that gio-mode etc. 
+- Permanently diabled speedbar-edit-file's set-timer function call from Resource files. Do NOT want to see such a bug, don't know how to fix, but disable it and walk around. 
+- Now have a relatively barable and stable colorful emacs code editor now, at least for csharp-mode. Relatively satisfied now. Could sit it aside for a while now to focus on projects.
 ** invalid time specification: sr-speedbar on MacOS
+- I don't like this bug, and I belive I do NOT really using any timer for auto-refresh in my speedbar. So I ended up by disabling the (speedbar-edit-file() func, which is frequently bug trigered) setting timer part from /Applications/Emacs.app/Contents/Resources/lisp/speedbar.el.gz, and recompile the file. The bug was gone. And I could deal with csharp-mode's fontify bug. 
 - newer debugging infos, concernibg about sr-speedbar.el file. Have NOT been able to trace down for today. 
 
 [[./pic/readme_20230209_135039.png]]
@@ -11,8 +16,6 @@
 - https://github.com/remacs/remacs/issues/845
 - get cmake work later, not urgent though.Complete
 - babel org-mode so I don't have to copy from specific babeled source org-mode files in order for chinese characters to work. 
-
-* Updates 
 - Installed my emacs of version 28.1. But there is a bug of any verison emacs > 27.1, and I am NOT able to find a installable emacs 27.1 version any more. 
 - 不同电脑架构上可能因为架构的不同，可以可能可以有某些优化.又照一个单做了一遍，似乎没有出错. https://goykhman.ca/gene/blog/2022/2022-04-10-emacs-28.1-on-m1.html
 - 但是我没有没能加入那个补丁包.暂时没能想好怎么加入那个补丁包. （ *todo： 改天可以尝试再把这个补丁包加进去* ）

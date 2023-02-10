@@ -1,11 +1,11 @@
-;;; 下面的启动太慢了；在没有必要的时候不想要它来耽误启动时间 
-;; (require 'package)
-;; (add-to-list 'package-archives
-;;              '("melpa" . "http://melpa.org/packages/") t)
-;; (add-to-list 'package-archives
-;;              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+;; 下面的启动太慢了；在没有必要的时候不想要它来耽误启动时间 
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(package-initialize)
 
-;; (package-initialize)
 (setq debug-on-error t)
 
 
@@ -75,30 +75,30 @@
       (read-only-mode -1)))
 
 
-;; ;;;;; turn off this mode for a while
-;; (defgroup gio-group nil
-;;   "Group for customization"
-;;   :prefix "gio-")
-;; (defface gio-highlight-numbers-face
-;;   '((t :inherit (default)
-;;        :foreground "#f6546a")) ;;; ori: #ffff00 #fff68f
-;;   "Face for numbers"
-;;   :group 'gio-group )
-;; (defvar gio-keywords '(("\\(\\b\\|[-]\\)\\([-]?\\([0-9]+\\)\\(\\.?[0-9]\\)*\\)\\b" . 'gio-highlight-numbers-face)) ;; Integers & Decimals
-;;   "Keywords for gio-minor-mode highlighting")
-;; (define-minor-mode gio-minor-mode
-;;   "Minor mode for customization"
-;;   :init-value 1
-;;   :lighter " GioMode"
-;;   :group 'gio-group
-;;   (when (bound-and-true-p gio-minor-mode)
-;;     (font-lock-add-keywords nil gio-keywords)
-;;     (font-lock-fontify-buffer)) ;;; 这里会导致csharp-mode里的一些问题
-;;   (when (not (bound-and-true-p gio-minor-mode))
-;;     (font-lock-remove-keywords nil gio-keywords)
-;;     (font-lock-fontify-buffer)))  ;;; 这里会导致csharp-mode里的一些问题
-;; (define-globalized-minor-mode gio-global-minor-mode gio-minor-mode gio-minor-mode :group 'gio-group)
-;; (gio-global-minor-mode 1)
+;;;;; turn off this mode for a while
+(defgroup gio-group nil
+  "Group for customization"
+  :prefix "gio-")
+(defface gio-highlight-numbers-face
+  '((t :inherit (default)
+       :foreground "#f6546a")) ;;; ori: #ffff00 #fff68f
+  "Face for numbers"
+  :group 'gio-group )
+(defvar gio-keywords '(("\\(\\b\\|[-]\\)\\([-]?\\([0-9]+\\)\\(\\.?[0-9]\\)*\\)\\b" . 'gio-highlight-numbers-face)) ;; Integers & Decimals
+  "Keywords for gio-minor-mode highlighting")
+(define-minor-mode gio-minor-mode
+  "Minor mode for customization"
+  :init-value 1
+  :lighter " GioMode"
+  :group 'gio-group
+  (when (bound-and-true-p gio-minor-mode)
+    (font-lock-add-keywords nil gio-keywords)
+    (font-lock-fontify-buffer)) ;;; 这里会导致csharp-mode里的一些问题
+  (when (not (bound-and-true-p gio-minor-mode))
+    (font-lock-remove-keywords nil gio-keywords)
+    (font-lock-fontify-buffer)))  ;;; 这里会导致csharp-mode里的一些问题
+(define-globalized-minor-mode gio-global-minor-mode gio-minor-mode gio-minor-mode :group 'gio-group)
+(gio-global-minor-mode 1)
 
 
 ;;; bypassing default build in org-mode, and try to use customized version
@@ -214,6 +214,7 @@
  (require 'init-syslog-mode)
  (require 'init-misc)  ;; comment for replace-string
  ;; (require 'init-hydra) ;; 不知道这个会影响哪些功能  
+ (require 'init-autopair) ;; 不知道这个会影响哪些功能  
  
 ;(require 'init-python-mode)
 (require 'init-csharp-mode)
@@ -460,21 +461,20 @@
 
 
 
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp/")) ;拓展文件(插件)目录
-(require 'autopair)
-(defun turn-on-autopair-mode () (autopair-mode 1))
-                                        ; turn off auto-pair for these modes
-(setq autopair-global-modes
-      '(not
-                                        ;eshell-mode comint-mode erc-mode gud-mode rcirc-mode ; later on examples
-        swift-mode))
-
-                                        ;(autopair-global-mode) ;; enable autopair in all buffers
 (show-paren-mode 1)
 (setq show-paren-style 'parenthesis) ; 只高亮括号
 
+;(require 'expand-region) 
 
-                                        ;(require 'expand-region) 
+
+;;; check for spelling
+;; (setq-default ispell-program-name "aspell")
+;; (setq text-mode-hook '(lambda()
+;;                         (flyspell-mode t)))
+;; (setq org-mode-hook '(lambda()
+;;                        (flyspell-mode t)))
+
+
 (require 'ido-ubiquitous)
 (require 'undo-tree)
 (global-undo-tree-mode)
@@ -494,18 +494,9 @@
 ;; increase garbage collection threshold
 (setq gc-cons-threshold 20000000)
 
-
 (require 'ido)
 (ido-mode)
 (define-key (cdr ido-minor-mode-map-entry) [remap write-file] (kbd "C-x C-w"))
-
-
-;;; check for spelling
-;; (setq-default ispell-program-name "aspell")
-;; (setq text-mode-hook '(lambda()
-;;                         (flyspell-mode t)))
-;; (setq org-mode-hook '(lambda()
-;;                        (flyspell-mode t)))
 
 
 (defun soft-wrap-lines (boo)
@@ -584,7 +575,8 @@
 ;; '(default ((t (:family "Inconsolata-dz for Powerline" :foundry "outline" :slant normal :weight normal :height 98 :width normal))))
 ;; (set-fontset-font "fontset-default" 'unicode '("Inconsolata-dz for Powerline" . "unicode-otf"))
 
-(set-face-attribute 'default nil :font "Fira Code Retina")
+(set-face-attribute 'default nil :font "Inconsolata_dz")
+;; (set-face-attribute 'default nil :font "Fira Code Retina")
 ;; (font-spec :family "Iosevka Term" :size 16 :otf '(latn nil (dlig) nil)) ;;; 是我用来参考的
 ;; (set-face-attribute 'default nil :font "Inconsolata-dz" :otf '(latn nil (dlig) nil))
 

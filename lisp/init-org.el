@@ -56,14 +56,16 @@
                            "_"
                            basename))
          ;; (winFilePathName (expand-file-name (concat "pic/" filename) (file-name-directory buffer-file-name))) ;;; absolute directory for windows, don't like in mac
+;;; 这里想要检查一下./pic文件夹是存在，如果不存在，创建文件夹
          (file-path-wsl (concat "./pic/" filename))
-         )
+         (outdir (concat (file-name-directory (buffer-file-name)) "/pic")))
+    (unless (file-directory-p outdir)
+      (make-directory outdir t))
     (shell-command (concat "pngpaste " file-path-wsl))
     (org-indent-line)
     (insert (concat "\n[[" file-path-wsl "]]"))))
 ;;; global-set-key: producing side bugs for csharp-mode & java-mode whoever uses C-i commands .......
 ;; (global-set-key (kbd "C-i") 'my-org-screenshot) ;;; 今天终于明白了这个C-i是好用，但是在csharp-mode java-mode过程中因为使用到C-i【不知道为什么】会错配到org-mode中的这个合集
-;; (global-set-key (kbd "M-s") 'my-org-screenshot)
 
 (add-hook 'org-mode-hook
           (lambda ()
@@ -204,7 +206,7 @@
       (setq org-startup-truncated nil)
       ;; (soft-wrap-lines t) ;;; this one works
       ;; (auto-fill-mode 1) ;;; org里直线容易折断
-      ;; (gio-global-minor-mode 0) ;;; 这个会 break 掉csharp-mode里现存的fontify error，暂时关掉
+      (gio-global-minor-mode 0) ;;; 这个会 break 掉csharp-mode里现存的fontify error，暂时关掉
       (linum-mode 1)
       ))
 ;; (setq org-startup-truncated nil)

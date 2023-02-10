@@ -139,10 +139,8 @@
 ;;; 如果窗口存在,就切换过去;不存在则打开并切换到浏览窗口,坏处是窗口永远无法关闭                               
                                (if (sr-speedbar-exist-p)
                                    (select-window sr-speedbar-window)
-                                 ;; (
-                                 ;; (sr-speedbar-toggle) ;;; 这么写会报错
                                  (sr-speedbar-open)
-                                 ;; (sr-speedbar-select-window)) ;;; 暂时去掉这个，可能还会有残存问题，因为自己当初加了这个的
+                                 (sr-speedbar-select-window) ;;; 暂时去掉这个，可能还会有残存问题，因为自己当初加了这个的
                                  )))
 ;;; 设置为关闭窗口; 填加一个手误功能,当点了F4,
 ;;; 把这个功能失活，C－j好用的键，只在窗口关键下才起作用。但是窗口是关闭的,那么当F5来用,打开窗口并将光标切换到窗口
@@ -167,6 +165,9 @@
                             (interactive)
                             (other-frame 0)
                             (buffer-face-set 'speedbar-face)
+;;; 试着将它设置为常驻，不停不关掉，只实现两个不同窗口的跳转                            
+                            (sr-speedbar-open)
+                            (sr-speedbar-select-window) ;;; 暂时去掉这个，可能还会有残存问题，因为自己当初加了这个的
                             ))
 ;; (when window-system          ; start speedbar if we're using a window system
 ;;   (speedbar t))
