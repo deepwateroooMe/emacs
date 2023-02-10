@@ -1,4 +1,0 @@
-(
- (:id "sha1:ccfd2cc2a08c89a9b10969be8c1e926954d53e28" :fingerprints ("sha1:de:74:ee:90:bf:b8:e5:20:54:66:5b:bc:6f:6b:d5:75:a8:f7:db:cb") :host "stable.melpa.org:443" :conditions (:expired :invalid :verify-cert))
- (:id "sha1:85b31c268009209a8d3c5387033b219264f7e62b" :fingerprints ("sha1:de:74:ee:90:bf:b8:e5:20:54:66:5b:bc:6f:6b:d5:75:a8:f7:db:cb") :host "melpa.org:443" :conditions (:expired :invalid :verify-cert))
-)

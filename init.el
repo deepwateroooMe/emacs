@@ -1,13 +1,11 @@
-;; 下面的启动太慢了；在没有必要的时候不想要它来耽误启动时间 
-(require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
-(add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-(package-initialize)
-
+;; ;; 下面的启动太慢了；在没有必要的时候不想要它来耽误启动时间 
+;; (require 'package)
+;; (add-to-list 'package-archives
+;;              '("melpa" . "http://melpa.org/packages/") t)
+;; (add-to-list 'package-archives
+;;              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+;; (package-initialize)
 (setq debug-on-error t)
-
 
 (setq default-directory "/Users/hhj/")
 ;; (setq default-directory "/Volumes/e/uMVVM/Assets/Sources/")
@@ -214,7 +212,7 @@
  (require 'init-syslog-mode)
  (require 'init-misc)  ;; comment for replace-string
  ;; (require 'init-hydra) ;; 不知道这个会影响哪些功能  
- (require 'init-autopair) ;; 不知道这个会影响哪些功能  
+ (require 'init-autopair) 
  
 ;(require 'init-python-mode)
 (require 'init-csharp-mode)
