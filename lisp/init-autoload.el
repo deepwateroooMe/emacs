@@ -4,6 +4,8 @@
 (autoload 'simpleclip-get-contents "simpleclip" "" t)
 (autoload 'simpleclip-set-contents "simpleclip" "" t)
 (autoload 'rainbow-mode "rainbow-mode" nil t)
+(autoload 'csharp-mode "csharp-mode" nil t)
+;; (autoload 'csharp-tree-sitter-mode "csharp-tree-sitter-mode" nil t)
 (autoload 'csv-mode "csv-mode" "Major mode for editing comma-separated value files." t)
 (autoload 'csv-nav-mode "csv-nav-mode" "Major mode for navigating comma-separated value files." t)
 (autoload 'etags-select-find-tag-at-point "etags-select" "" t nil)
