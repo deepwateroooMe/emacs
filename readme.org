@@ -5,8 +5,8 @@
 * TODOs: tracing bugs of emacs 28.1
 * Updates 
 - could customer F5 toggle sr-speedbar, and make sis-mode work. But I do NOT really need sis-mode, only needed macism command line. to help [LOVE MY DEAR COUSIN!!!]
-  
-[[./pic/readme_20230210_220555.png]]
+
+[[./pic/readme_20230210_221127.png]]
 - finally sync up with csharp-mode with tree-sitter, and fixed added the other's that gio-mode etc. 
 - Permanently diabled speedbar-edit-file's set-timer function call from Resource files. Do NOT want to see such a bug, don't know how to fix, but disable it and walk around. 
 - Now have a relatively barable and stable colorful emacs code editor now, at least for csharp-mode. Relatively satisfied now. Could sit it aside for a while now to focus on projects.
