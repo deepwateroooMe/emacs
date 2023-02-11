@@ -11,6 +11,7 @@
                 ("\\.htm" . nxml-mode)
                 ("\\.html" . nxml-mode)
                 ("\\.xml" . nxml-mode)
+                ("\\.xaml\\'" . nxml-mode)
                 ("\\.xsl" . nxml-mode)
                 ("\\.fo" . nxml-mode)
                 ("\\.csproj" . nxml-mode)
@@ -18,6 +19,10 @@
               auto-mode-alist
               )
       )
+;;; csharp-mode for reference
+;; ;; (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-tree-sitter-mode))
+;; (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
+;; (add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-mode))
 
 ;;; Set up and enable syntax coloring. 
                                         ; Create faces  to assign markup categories.

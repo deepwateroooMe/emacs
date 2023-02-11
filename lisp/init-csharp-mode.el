@@ -60,8 +60,8 @@ or terminating simple string."
 ;; (define-key global-map (kbd "C-c v") 'gp/vscode-current-buffer-file-at-point)
 (add-hook 'csharp-mode-hook
           (lambda ()
-            ;; (local-set-key (kbd "C-c v") 'gp/vscode-current-buffer-file-at-point))) ;;;;; 这个键太复杂，不好用
-            (local-set-key (kbd "C-m") 'gp/vscode-current-buffer-file-at-point))) 
+            (local-set-key (kbd "C-c v") 'gp/vscode-current-buffer-file-at-point))) ;;;;; 这个键太复杂，不好用
+            ;; (local-set-key (kbd "C-m") 'gp/vscode-current-buffer-file-at-point))) ;;; 这个好像弄得不能换行了？
 ;;; VSC open in emacs: 现在的配置不理想,因为每次都会新开一个 emacs process来打开文件太慢,需要把自己的emacs 配置成server -cllient的模式,还要能够检测现存在emacs process
 ;;; work around: VSC 中shift+Alt+c: copy path, 现emacs process中C-x C-f: C-a C-y C-k enter打开复制粘贴路径下的文件,算是目前最理想的配置了
 

@@ -38,7 +38,7 @@
 ;;; setup defaults for all modes
 (setq default-frame-alist
       ;; '((top . 0)(left . 400)(height . 63)(width . 180)(menubar-lines . 100)(tool-bar-line . 0))
-      '((top . 0)(left . 200)(height . 500)(width . 200)(menubar-lines . 50)(tool-bar-line . 0)) ; ori
+      '((top . 0)(left . 180)(height . 500)(width . 200)(menubar-lines . 50)(tool-bar-line . 0)) ; ori
       ) ; tmp.py
 
 
@@ -212,6 +212,8 @@
  (require 'init-syslog-mode)
  (require 'init-misc)  ;; comment for replace-string
  ;; (require 'init-hydra) ;; 不知道这个会影响哪些功能  
+ (require 'init-sis)  ;;;;; it made my cursor look urgly, don't like it. need to update its color to make it pretty
+
  (require 'init-autopair) 
  
 ;(require 'init-python-mode)

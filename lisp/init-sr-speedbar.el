@@ -1,5 +1,6 @@
 ;;;;;; ### Speedbar ###
 (require 'sr-speedbar)
+(require 'sis) ;;; for extracting curretn input-source
 
 (setq speedbar-use-images nil)       ; Turn off the ugly icons
 ;; (setq sr-speedbar-right-side nil)    ; Left-side pane
@@ -74,6 +75,9 @@
 (speedbar-add-supported-extension ".yaml")
 (add-to-list 'speedbar-fetch-etags-parse-list
  		     '("\\.yaml" . speedbar-parse-c-or-c++tag))
+(speedbar-add-supported-extension ".xaml")
+(add-to-list 'speedbar-fetch-etags-parse-list
+ 		     '("\\.xaml" . speedbar-parse-c-or-c++tag))
 (speedbar-add-supported-extension ".sh")
 (add-to-list 'speedbar-fetch-etags-parse-list
  		     '("\\.sh" . speedbar-parse-c-or-c++tag))
@@ -136,12 +140,21 @@
 
 (global-set-key (kbd "<f5>") (lambda()  
                                (interactive)
+ ;;;; 想要实现不止一个步骤:F5之后，如果当前为中文输入法，自动切换为英文输入法
+                               ;; (when (eq 'sis-get "im.rime.inputmethod.Squirrel.Rime")
+                               (when (eq (shell-command "macism") "im.rime.inputmethod.Squirrel.Hans")
+                                 (message "input method is Chinese")
+                                 (sis-set-english))
 ;;; 如果窗口存在,就切换过去;不存在则打开并切换到浏览窗口,坏处是窗口永远无法关闭                               
                                (if (sr-speedbar-exist-p)
                                    (select-window sr-speedbar-window)
                                  (sr-speedbar-open)
                                  (sr-speedbar-select-window) ;;; 暂时去掉这个，可能还会有残存问题，因为自己当初加了这个的
                                  )))
+
+;; (sis-set-other)
+;; (shell-command "macism") ;;;;; -to-string
+
 ;;; 设置为关闭窗口; 填加一个手误功能,当点了F4,
 ;;; 把这个功能失活，C－j好用的键，只在窗口关键下才起作用。但是窗口是关闭的,那么当F5来用,打开窗口并将光标切换到窗口
 (global-set-key [(f4)] (lambda ()
