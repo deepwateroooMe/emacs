@@ -16,10 +16,11 @@
  ;; "com.apple.keylayout.ABC"
  "com.apple.keylayout.US"
  ;; Other language input source: "rime", "sogou" or another one.
- "im.rime.inputmethod.Squirrel.Rime")
+ ;; "im.rime.inputmethod.Squirrel.Rime") ;;;;; 这个与自己安装的好像还有点儿不一样
+"im.rime.inputmethod.Squirrel.Hans")
 
-;; enable the /cursor color/ mode
-(sis-global-cursor-color-mode t)
+;; ;; enable the /cursor color/ mode
+;; (sis-global-cursor-color-mode t) ;; 我不想要这个，因为它所它变得在我的系统配色下变得狠难看
 ;; enable the /respect/ mode
 (sis-global-respect-mode t)
 ;; enable the /context/ mode for all buffers

@@ -1,10 +1,10 @@
 ;; ;; 下面的启动太慢了；在没有必要的时候不想要它来耽误启动时间 
-;; (require 'package)
-;; (add-to-list 'package-archives
-;;              '("melpa" . "http://melpa.org/packages/") t)
-;; (add-to-list 'package-archives
-;;              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-;; (package-initialize)
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(package-initialize)
 (setq debug-on-error t)
 
 (setq default-directory "/Users/hhj/")
@@ -600,11 +600,13 @@
                     (font-spec :family "Sarasa Mono Slab SC Semibold" :height 130)))
 
 
-;;; // comment for csharp-mode, 但因为这个键组合极其好用，把它提出去，全局公用; 添加F4自关闭sr-speedbar功能
+;;; // comment for csharp-mode, 但因为这个键组合极其好用，把它提出去，全局公用; 添加F4自关闭sr-speedbar功能, 自动切换为中文输入法，方便自己标注
+;;;;;  这里想要添加的逻辑是： 当当前输入法为英文时，自动切为中文输入法
+;;;  它说下面的不能接着写，那么就是不管当前是什么输入法，用macro把它强行再设置为中文输入法，写进macro里，它执行起来应该还是狠快的，不用担心浪费计算机性能表现
 (fset 'cmt
-      (kmacro-lambda-form [f4 ?\C-x ?1 ?  ?/ ?/ ? ] 0 "%d"))
-(local-set-key (kbd "C-j") 'cmt) ;;; 不想再设置全局,因为不同mode下会有不同的实现
+      (kmacro-lambda-form [f4 ?\C-x ?1 ?  ?/ ?/ ?  ?\M-x ?s ?i ?s ?- ?s ?e ?t ?- ?o ?t ?h ?e ?r return] 0 "%d"))
 (put 'cmt 'kmacro t)
+(local-set-key (kbd "C-j") 'cmt)
 
 
 ;;;; 加载snippets 的接口
