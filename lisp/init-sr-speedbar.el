@@ -93,6 +93,9 @@
 (speedbar-add-supported-extension ".csproj")
 (add-to-list 'speedbar-fetch-etags-parse-list
  		     '("\\.csproj" . speedbar-parse-c-or-c++tag))
+(speedbar-add-supported-extension ".lua")
+(add-to-list 'speedbar-fetch-etags-parse-list
+ 		     '("\\.lua" . speedbar-parse-c-or-c++tag))
 
 ;; (add-to-list 'speedbar-frame-parameters '(left-fringe . 0)) ; doesn't seem to work
 (setq sr-speedbar-width 35)
@@ -143,7 +146,6 @@
  ;;;; 想要实现不止一个步骤:F5之后，如果当前为中文输入法，自动切换为英文输入法
                                ;; (when (eq 'sis-get "im.rime.inputmethod.Squirrel.Rime")
                                (when (eq (shell-command "macism") "im.rime.inputmethod.Squirrel.Hans")
-                                 ;; (message "input method is Chinese") ;;; 这是设置的时候给自己提示信息的，可以不用
                                  (sis-set-english))
 ;;; 如果窗口存在,就切换过去;不存在则打开并切换到浏览窗口,坏处是窗口永远无法关闭                               
                                (if (sr-speedbar-exist-p)

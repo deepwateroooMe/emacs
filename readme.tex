@@ -1,4 +1,4 @@
-% Created 2023-02-08 Wed 16:53
+% Created 2023-02-11 Sat 22:26
 \documentclass[9pt, b5paper]{article}
 \usepackage{xeCJK}
 \usepackage[T1]{fontenc}
@@ -35,22 +35,43 @@
 \tableofcontents
 
 
-\section{TODOs: tracing bugs of emacs 28.1 custom-build version}
+\section{TODOs: tracing bugs of emacs 28.1}
 \label{sec-1}
-\subsection{invalid time specification: sr-speedbar on MacOS}
-\label{sec-1-1}
+\section{Updates}
+\label{sec-2}
+\subsection{configuration for pdf-tools packages}
+\label{sec-2-1}
+\begin{itemize}
+\item pdf viewer noter <==> Skim bi-directional linking configuration on the way, most emacs work is done. Need to learn how to use them though.
+\end{itemize}
 
-\includegraphics[width=.9\linewidth]{./pic/readme_20230208_163916.png}
+\includegraphics[width=.9\linewidth]{./pic/Snipaste_2023-02-11_20-57-40.png}
+\begin{itemize}
+\item It has to be configured for M1. But I am still not getting any .tar file yet. 
+
+\includegraphics[width=.9\linewidth]{./pic/Snipaste_2023-02-11_22-20-25.png}
+\item could customer F5 toggle sr-speedbar, and make sis-mode work. But I do NOT really need sis-mode, only needed macism command line. to help [LOVE MY DEAR COUSIN!!!]
+\end{itemize}
+
+\includegraphics[width=.9\linewidth]{./pic/readme_20230210_221127.png}
+\begin{itemize}
+\item finally sync up with csharp-mode with tree-sitter, and fixed added the other's that gio-mode etc.
+\item Permanently diabled speedbar-edit-file's set-timer function call from Resource files. Do NOT want to see such a bug, don't know how to fix, but disable it and walk around.
+\item Now have a relatively barable and stable colorful emacs code editor now, at least for csharp-mode. Relatively satisfied now. Could sit it aside for a while now to focus on projects.
+\end{itemize}
+\subsection{invalid time specification: sr-speedbar on MacOS}
+\label{sec-2-2}
+\begin{itemize}
+\item I don't like this bug, and I belive I do NOT really using any timer for auto-refresh in my speedbar. So I ended up by disabling the (speedbar-edit-file() func, which is frequently bug trigered) setting timer part from /Applications/Emacs.app/Contents/Resources/lisp/speedbar.el.gz, and recompile the file. The bug was gone. And I could deal with csharp-mode's fontify bug.
+\item newer debugging infos, concernibg about sr-speedbar.el file. Have NOT been able to trace down for today.
+\end{itemize}
+
+\includegraphics[width=.9\linewidth]{./pic/readme_20230209_135039.png}
 \begin{itemize}
 \item 好像是macOS系统常常存在的 bug,两年了关了又开，开了再关\ldots{}\ldots{}
 \item \url{https://github.com/remacs/remacs/issues/845}
 \item get cmake work later, not urgent though.Complete
 \item babel org-mode so I don't have to copy from specific babeled source org-mode files in order for chinese characters to work.
-\end{itemize}
-
-\section{Updates}
-\label{sec-2}
-\begin{itemize}
 \item Installed my emacs of version 28.1. But there is a bug of any verison emacs > 27.1, and I am NOT able to find a installable emacs 27.1 version any more.
 \item 不同电脑架构上可能因为架构的不同，可以可能可以有某些优化.又照一个单做了一遍，似乎没有出错. \url{https://goykhman.ca/gene/blog/2022/2022-04-10-emacs-28.1-on-m1.html}
 \item 但是我没有没能加入那个补丁包.暂时没能想好怎么加入那个补丁包. （ \textbf{todo： 改天可以尝试再把这个补丁包加进去} ）
@@ -71,7 +92,7 @@
 \end{itemize}
 \item added key-bindings for opening from VSCode/Android Studio of current emacs buffer. 
 \begin{itemize}
-\item VSC Emacs can locate to each other to correct row and col.
+\item VSC Emacs can locate to each othr to correct row and col.
 \item Android Studio could open current emacs buffer. but not to the row nor col.
 \end{itemize}
 \item I liked recently configued Visual studio 2019 one-dark-pro theme, want to configue it for emacs, but ended up with any permission denied, renaming emacs initiating bug. reverted back for daily use, and may look into that bug for later reference.
@@ -79,7 +100,7 @@
 \item fixed legency java-mode highlighing issue which I did not fix for years. Has been able to treat java-mode as java-mode Instead of using it as csharp-mode. Can not separate java-mode snippets from csharp-mode's.
 \end{itemize}
 \subsection{BUG statement and partial fix}
-\label{sec-2-1}
+\label{sec-2-3}
 \begin{itemize}
 \item in java-mode, the code style I expected is as followed:
 \end{itemize}
@@ -124,7 +145,7 @@ fun dslfkj { // kotlin-mode, unlike java-mode, this feature works charming
 \item \textbf{csharp-mode} has been the one that works perfectly for these two features, \{\} auto expand, also if while one line statement autoindent without \{\}, so I used csharp-mode as java mode.
 \end{itemize}
 \subsection{so far let it be this way}
-\label{sec-2-2}
+\label{sec-2-4}
 \begin{itemize}
 \item Spent a whole day, half fixed the bug in the morning, but has broke java-mode completely and had to pull request from github once again.
 \item I actually cannot stay kotlin-mode insdie csharp's, look at following indent:
@@ -152,7 +173,6 @@ public fun thread(start: Boolean = true,
 \begin{itemize}
 \item cause csharp-mode does not have ';' !!! so kotlin-mode stay as designed, I will have to bear the bug till I search and find good solutions.
 \item Recently I have used csharp-mode less, so temportorily let java-mode and kotlin-mode stay inside csharp's for a while. And I only want to practise kotlin to get a comfortable level referring github android projects. So once I get familiar, i still mainly using java-mode insides csharp's, which could be Ok, untill I get a job, and finally settle down to work on java-mode and \{|\} auto-expandsion bug.
-
 \item today's
 \item will only update this repository when there is a need. emacs version 27.01 27.02
 \item working on leetcode interview questions, so have not configued any JDK IDE within emacs nor from csharp-mode, only take full advantage of emacs snippets for java algorithm problems coding. Uploaded so far some frequently used snippets for my own references.
@@ -186,7 +206,6 @@ public fun thread(start: Boolean = true,
 \item other major-modes, for example: \textbf{java-mode}, \textbf{csharp-mode}, which I would need to use pretty soon, is ready for use now (auto-complete + yasnippet etc).
 \item All the minor warnings, warning messages when starting emacs, modes fixes are all fixed, a clean Emacs open ready for work.
 \end{itemize}
-
 \section{starting point}
 \label{sec-3}
 \begin{itemize}
@@ -196,7 +215,6 @@ public fun thread(start: Boolean = true,
 \item So far, org-mode is not perfect, but it is a fully functional one that I could use and help convenient a game developer's daily work.
 \item Will devote more time to understand emacs better, and to solve my own problems and make it more convenient for me to use when I need some specific features.
 \end{itemize}
-
 \section{References}
 \label{sec-4}
 \begin{itemize}

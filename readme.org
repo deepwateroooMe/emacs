@@ -4,6 +4,13 @@
 
 * TODOs: tracing bugs of emacs 28.1
 * Updates 
+** configuration for pdf-tools packages
+- pdf viewer noter <==> Skim bi-directional linking configuration on the way, most emacs work is done. Need to learn how to use them though. 
+
+[[./pic/Snipaste_2023-02-11_20-57-40.png]]
+- It has to be configured for M1. But I am still not getting any .tar file yet. 
+
+  [[./pic/Snipaste_2023-02-11_22-20-25.png]]
 - could customer F5 toggle sr-speedbar, and make sis-mode work. But I do NOT really need sis-mode, only needed macism command line. to help [LOVE MY DEAR COUSIN!!!]
 
 [[./pic/readme_20230210_221127.png]]
@@ -32,7 +39,7 @@
 - 然后看见这里说可以自己构建一个，连Xcode也没有安装，就跑去构建了，当然不成功。这段时间太忙，XCode要的空间太大了，暂时还不想。等改天有机会的时候倒是可以一试的
   - https://stuff-things.net/2020/12/28/building-emacs-27-dot-1-on-macos-big-sur/
 - added key-bindings for opening from VSCode/Android Studio of current emacs buffer. 
-  - VSC Emacs can locate to each other to correct row and col. 
+  - VSC Emacs can locate to each othr to correct row and col. 
   - Android Studio could open current emacs buffer. but not to the row nor col. 
 - I liked recently configued Visual studio 2019 one-dark-pro theme, want to configue it for emacs, but ended up with any permission denied, renaming emacs initiating bug. reverted back for daily use, and may look into that bug for later reference. 
 - will reconfigure one-dark-pro theme later.  
@@ -100,7 +107,6 @@ public fun thread(start: Boolean = true,
 #+END_SRC
 - cause csharp-mode does not have ';' !!! so kotlin-mode stay as designed, I will have to bear the bug till I search and find good solutions.
 - Recently I have used csharp-mode less, so temportorily let java-mode and kotlin-mode stay inside csharp's for a while. And I only want to practise kotlin to get a comfortable level referring github android projects. So once I get familiar, i still mainly using java-mode insides csharp's, which could be Ok, untill I get a job, and finally settle down to work on java-mode and {|} auto-expandsion bug.
-
 - today's 
 - will only update this repository when there is a need. emacs version 27.01 27.02
 - working on leetcode interview questions, so have not configued any JDK IDE within emacs nor from csharp-mode, only take full advantage of emacs snippets for java algorithm problems coding. Uploaded so far some frequently used snippets for my own references. 
@@ -131,13 +137,11 @@ public fun thread(start: Boolean = true,
   - changed keyboard today actually so that I could type more conveniently. 
 - other major-modes, for example: *java-mode*, *csharp-mode*, which I would need to use pretty soon, is ready for use now (auto-complete + yasnippet etc). 
 - All the minor warnings, warning messages when starting emacs, modes fixes are all fixed, a clean Emacs open ready for work. 
-
 * starting point
 - It is a new computer, and I did try to git clone from my own repository to new laptop, but after fixed errors and tried, *I promise I do NOT and can NOT bare the out-dated emacs 22.X any more, I have to move on.* I have to install newer versions for my own later on convenience. 
 - Instead of configuring my own again, this time, I tried from some "big" person's repository and try to make it work on my laptop (fixing errors, installing necessary packages etc), as well as comment out some complicated modes and customization so that I would still be able to use and like my current emacs interface.
 - It is the first time I tried from some big person's (or any person's configurature completely), it was tidious to fix all the errors at beginning (I spent more than 2 days on it last week. For me it just took too much time), but so far I like some of the features that had been annoying me before, but I have not and was not able to find good solutions to solve it, like how to auto-complete words when in scripte comment line or in quotes. I like these detailed features which I did try by writing my own snippets from yasnippet mode before. 
 - So far, org-mode is not perfect, but it is a fully functional one that I could use and help convenient a game developer's daily work. 
 - Will devote more time to understand emacs better, and to solve my own problems and make it more convenient for me to use when I need some specific features. 
-  
 * References
 - https://github.com/redguardtoo/emacs.d

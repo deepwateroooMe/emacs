@@ -1,11 +1,15 @@
 ;; ;; 下面的启动太慢了；在没有必要的时候不想要它来耽误启动时间 
-(require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
-(add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-(package-initialize)
+;; (require 'package)
+;; (add-to-list 'package-archives
+;;              '("melpa" . "https://melpa.org/packages/") t)
+;; (add-to-list 'package-archives
+;;              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+;; (package-initialize)
 (setq debug-on-error t)
+
+
+(setenv "PKG_CONFIG_PATH" "/opt/homebrew/Cellar/cask/0.8.8/")
+
 
 (setq default-directory "/Users/hhj/")
 ;; (setq default-directory "/Volumes/e/uMVVM/Assets/Sources/")
@@ -212,8 +216,8 @@
  (require 'init-syslog-mode)
  (require 'init-misc)  ;; comment for replace-string
  ;; (require 'init-hydra) ;; 不知道这个会影响哪些功能  
- (require 'init-sis)  ;;;;; it made my cursor look urgly, don't like it. need to update its color to make it pretty
-
+ (require 'init-sis)
+ (require 'init-lua-mode)
  (require 'init-autopair) 
  
 ;(require 'init-python-mode)
@@ -222,6 +226,9 @@
   (require 'pangu-spacing)
   (require 'expand-region)
   (require 'init-protobuf-mode)
+  ;; (require 'init-pdf-tools)
+  (require 'init-org-noter-pdftools)
+  
 ;; (require 'init-company) ;;; 不喜欢它老是跑出一大堆的路径相关的,不方便,暂时不同这个模式
   )
 
@@ -600,15 +607,6 @@
                     (font-spec :family "Sarasa Mono Slab SC Semibold" :height 130)))
 
 
-;;; // comment for csharp-mode, 但因为这个键组合极其好用，把它提出去，全局公用; 添加F4自关闭sr-speedbar功能, 自动切换为中文输入法，方便自己标注
-;;;;;  这里想要添加的逻辑是： 当当前输入法为英文时，自动切为中文输入法
-;;;  它说下面的不能接着写，那么就是不管当前是什么输入法，用macro把它强行再设置为中文输入法，写进macro里，它执行起来应该还是狠快的，不用担心浪费计算机性能表现
-(fset 'cmt
-      (kmacro-lambda-form [f4 ?\C-x ?1 ?  ?/ ?/ ?  ?\M-x ?s ?i ?s ?- ?s ?e ?t ?- ?o ?t ?h ?e ?r return] 0 "%d"))
-(put 'cmt 'kmacro t)
-(local-set-key (kbd "C-j") 'cmt)
-
-
 ;;;; 加载snippets 的接口
 (add-hook 'emacs-startup-hook (lambda () (yas-load-directory "/Users/hhj/.emacs.d/snippets/")))
 
@@ -638,6 +636,7 @@
  '(org-support-shift-select nil)
  '(package-selected-packages
    '(web-mode-edit-element auctex fuzzy ppd-sr-speedbar lsp-mode py-autopep8 logview virtualenvwrapper company-jedi flycheck-color-mode-line auto-complete-clang-async flycheck-swift3 flycheck-swift flycheck swift3-mode swift-mode yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode lua-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-lua flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word csharp-mode crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link))
+ '(pdf-tools-handle-upgrades nil)
  '(session-use-package t nil (session))
  '(speedbar-frame-parameters '((minibuffer) (width . 35)))
  '(speedbar-show-unknown-files nil)
@@ -661,6 +660,7 @@
  '(tex-start-options "\"latex -ini --shell-escape\"")
  '(tool-bar-mode nil)
  '(warning-minimum-level :error)
+ '(warning-suppress-types '((use-package)))
  '(word-wrap nil)
  '(yas-also-auto-indent-first-line t)
  '(yas-also-indent-empty-lines t)
