@@ -1,13 +1,14 @@
 ;;;;;; org-noter-pdftools
 
-(use-package pdf-tools
-  :ensure t
-  :config
-  (custom-set-variables
-   '(pdf-tools-handle-upgrades nil)) ; Use brew upgrade pdf-tools instead.
-  ;; (setq pdf-info-epdfinfo-program "/usr/local/bin/epdfinfo")
-  )
-;; ;; (pdf-tools-install)
+;; 这下面的这个部分是我从pdf-tools 的配置里抄过来的，实际上是不必要的
+;; (use-package pdf-tools
+;;   :ensure t
+;;   :config
+;;   (custom-set-variables
+;;    '(pdf-tools-handle-upgrades nil)) ; Use brew upgrade pdf-tools instead.
+;;   ;; (setq pdf-info-epdfinfo-program "/usr/local/bin/epdfinfo") ;;;;;; 这里应该是需要把这个可执行文件复制或是链接到系统可执行目录下的，去查一下
+;;   )
+;; ;; ;; (pdf-tools-install)
 
 (use-package org-noter
   :config

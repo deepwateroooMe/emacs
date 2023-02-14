@@ -1,14 +1,14 @@
-;; ;; 下面的启动太慢了；在没有必要的时候不想要它来耽误启动时间 
-;; (require 'package)
-;; (add-to-list 'package-archives
-;;              '("melpa" . "https://melpa.org/packages/") t)
-;; (add-to-list 'package-archives
-;;              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-;; (package-initialize)
+;; 下面的启动太慢了；在没有必要的时候不想要它来耽误启动时间
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(package-initialize)
+
 (setq debug-on-error t)
 
 
-(setenv "PKG_CONFIG_PATH" "/opt/homebrew/Cellar/cask/0.8.8/")
 
 
 (setq default-directory "/Users/hhj/")
@@ -64,12 +64,11 @@
 (setq *emacs24old*  (or (and (= emacs-major-version 24) (= emacs-minor-version 3))
                         (not *emacs24*)))
 
-;; w32-alt-is-meta
-;; w32-lwindow-modifier
-;; and w32-rwindow-modifier
 
-;; (setq mac-option-modifier 'meta)
+;;; for emacs 27.1 specifically ,it does not recognize system key modifier switches 
+(setq mac-option-modifier 'meta)
 ;; (setq mac-right-option-modifier nil)
+
 
 ;; *Message* buffer should be writable in 24.4+
 (defadvice switch-to-buffer (after switch-to-buffer-after-hack activate)
@@ -135,6 +134,7 @@
   (require 'init-autoload)  ;; too many, commented this one out
   (require 'init-modeline)
   ;; (require 'cl-lib) ; it's built in since Emacs v24.3
+  (require 'init-pyim)
   (require 'init-compat)
   (require 'init-site-lisp) ;; Must come before elpa, as it may provide package.el
   (require 'init-utils) ; (defun is-buffer-file-temp())   ;;;;;;; comment for temp only, debug later today
@@ -181,7 +181,7 @@
   (require 'init-ruby-mode)
   (require 'init-lisp)
   (require 'init-elisp)
- (require 'init-auto-complete)
+  (require 'init-auto-complete)
 
   (require 'cpputils-cmake) ; to do more work on this one
   ;; Use bookmark instead
@@ -192,44 +192,42 @@
   ;; init-evil dependent on init-clipboard
   (require 'init-clipboard)
   ;; use evil mode (vi key binding)
-  ;(require 'init-evil)
+;;;;; 不会用下现在的这个mode 开启了就无法输入了，暂时放一放，研究一下这个到底是在干什么的了之后再看要不要试着用  
+  ;; (require 'init-evil) ;;;;; 它们说切到 evil-normal-mode就可以自动上屏了
   (require 'init-multiple-cursors)
   (require 'init-sh)
   (require 'init-ctags)
   (require 'init-bbdb)
   (require 'init-gnus)
-  (require 'init-lua-mode)
+  ;; (require 'init-lua-mode) ;;;;; cmp for tmp
   (require 'init-workgroups2)
   (require 'init-term-mode)
   (require 'init-web-mode)
   (require 'init-slime)
   (require 'shader-mode)
-;  (require 'swift-mode)
+                                        ;  (require 'swift-mode)
   ;; (require 'init-kotlin-mode)
   (require 'init-nxml-mode)
   ;; (require 'init-company)
   
-;; have NOT passed  
- (require 'init-org)			
- (require 'init-yasnippet)
- (require 'init-text)
- (require 'init-syslog-mode)
- (require 'init-misc)  ;; comment for replace-string
- ;; (require 'init-hydra) ;; 不知道这个会影响哪些功能  
- (require 'init-sis)
- (require 'init-lua-mode)
- (require 'init-autopair) 
- 
-;(require 'init-python-mode)
-(require 'init-csharp-mode)
-(require 'init-auto-complete)
+  ;; have NOT passed  
+  (require 'init-org)			
+  (require 'init-yasnippet)
+  (require 'init-text)
+  (require 'init-syslog-mode)
+  (require 'init-misc)  ;; comment for replace-string
+  ;; (require 'init-hydra) ;; 不知道这个会影响哪些功能  
+  (require 'init-autopair) 
+  
+  (require 'init-sis) 
+                                        ;(require 'init-python-mode)
+                                        ;(require 'init-auto-complete)
   (require 'pangu-spacing)
   (require 'expand-region)
   (require 'init-protobuf-mode)
-  ;; (require 'init-pdf-tools)
-  (require 'init-org-noter-pdftools)
-  
-;; (require 'init-company) ;;; 不喜欢它老是跑出一大堆的路径相关的,不方便,暂时不同这个模式
+  (require 'init-pdf-tools) ;;;; 我并没有使用这个
+                                        ;  (require 'init-org-noter-pdftools)
+  ;; (require 'init-company) ;;; 不喜欢它老是跑出一大堆的路径相关的,不方便,暂时不同这个模式
   )
 
 ;;;; for one-dark-pro like visual studio theme
@@ -471,7 +469,7 @@
 (show-paren-mode 1)
 (setq show-paren-style 'parenthesis) ; 只高亮括号
 
-;(require 'expand-region) 
+                                        ;(require 'expand-region) 
 
 
 ;;; check for spelling
@@ -513,7 +511,7 @@
   (setq truncate-lines nil)
   ;; (setq word-wrap t)
   )
-                                        ;; (setq soft-wrap-lines t) ;; for chinese
+;; (setq soft-wrap-lines t) ;; for chinese
 
 
 
@@ -589,7 +587,7 @@
 
 ;; (set-face-attribute 'region nil :background "#666" :foreground "#ffffff") 
 (setq yas-indent-line 'auto)
-;(setq yas/indent-line 'auto)
+                                        ;(setq yas/indent-line 'auto)
 
 (setq my/for-org nil)
 ;; (when (bound-and-true-p my/for-org) (load-theme 'misterioso))
@@ -635,7 +633,7 @@
                  ("begin" "$1" "$" "$$" "\\(" "\\[")))
  '(org-support-shift-select nil)
  '(package-selected-packages
-   '(web-mode-edit-element auctex fuzzy ppd-sr-speedbar lsp-mode py-autopep8 logview virtualenvwrapper company-jedi flycheck-color-mode-line auto-complete-clang-async flycheck-swift3 flycheck-swift flycheck swift3-mode swift-mode yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode lua-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-lua flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word csharp-mode crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link))
+   '(rime xr pyim-wbdict web-mode-edit-element auctex fuzzy ppd-sr-speedbar lsp-mode py-autopep8 logview virtualenvwrapper company-jedi flycheck-color-mode-line auto-complete-clang-async flycheck-swift3 flycheck-swift flycheck swift3-mode swift-mode yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode lua-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-lua flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word csharp-mode crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link))
  '(pdf-tools-handle-upgrades nil)
  '(session-use-package t nil (session))
  '(speedbar-frame-parameters '((minibuffer) (width . 35)))
