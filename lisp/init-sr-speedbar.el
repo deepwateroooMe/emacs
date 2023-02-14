@@ -146,7 +146,8 @@
  ;;;; 想要实现不止一个步骤:F5之后，如果当前为中文输入法，自动切换为英文输入法
                                ;; (when (eq 'sis-get "im.rime.inputmethod.Squirrel.Rime")
                                (when (eq (shell-command "macism") "im.rime.inputmethod.Squirrel.Hans")
-                                 (sis-set-english))
+;;; TODO: TOGETHER WITH C-J USAGE: 这里使用了它人包裹中的api ，但是没有用全，就是它人包裹接下来还有输入法改变之的光标颜色跟着改变，要么我用错api 了，要么我还需要通知光标跟着改变颜色，才能保持中文输入法一种固定着色，英语输入法一种固定光标着色
+                                 (sis-set-english)) 
 ;;; 如果窗口存在,就切换过去;不存在则打开并切换到浏览窗口,坏处是窗口永远无法关闭                               
                                (if (sr-speedbar-exist-p)
                                    (select-window sr-speedbar-window)

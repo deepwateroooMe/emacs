@@ -9,8 +9,6 @@
 (setq debug-on-error t)
 
 
-
-
 (setq default-directory "/Users/hhj/")
 ;; (setq default-directory "/Volumes/e/uMVVM/Assets/Sources/")
 ;; p; (setq default-directory "/Volumes/e/ILRuntimeHotFix/ILRuntimeU3D/ILRuntimeDemo/Assets/Samples/ILRuntime/1.6.4/Demo/Scripts/Examples")
@@ -76,30 +74,30 @@
       (read-only-mode -1)))
 
 
-;;;;; turn off this mode for a while
-(defgroup gio-group nil
-  "Group for customization"
-  :prefix "gio-")
-(defface gio-highlight-numbers-face
-  '((t :inherit (default)
-       :foreground "#f6546a")) ;;; ori: #ffff00 #fff68f
-  "Face for numbers"
-  :group 'gio-group )
-(defvar gio-keywords '(("\\(\\b\\|[-]\\)\\([-]?\\([0-9]+\\)\\(\\.?[0-9]\\)*\\)\\b" . 'gio-highlight-numbers-face)) ;; Integers & Decimals
-  "Keywords for gio-minor-mode highlighting")
-(define-minor-mode gio-minor-mode
-  "Minor mode for customization"
-  :init-value 1
-  :lighter " GioMode"
-  :group 'gio-group
-  (when (bound-and-true-p gio-minor-mode)
-    (font-lock-add-keywords nil gio-keywords)
-    (font-lock-fontify-buffer)) ;;; 这里会导致csharp-mode里的一些问题
-  (when (not (bound-and-true-p gio-minor-mode))
-    (font-lock-remove-keywords nil gio-keywords)
-    (font-lock-fontify-buffer)))  ;;; 这里会导致csharp-mode里的一些问题
-(define-globalized-minor-mode gio-global-minor-mode gio-minor-mode gio-minor-mode :group 'gio-group)
-(gio-global-minor-mode 1)
+;; ;;;;; turn off this mode for a while
+;; (defgroup gio-group nil
+;;   "Group for customization"
+;;   :prefix "gio-")
+;; (defface gio-highlight-numbers-face
+;;   '((t :inherit (default)
+;;        :foreground "#f6546a")) ;;; ori: #ffff00 #fff68f
+;;   "Face for numbers"
+;;   :group 'gio-group )
+;; (defvar gio-keywords '(("\\(\\b\\|[-]\\)\\([-]?\\([0-9]+\\)\\(\\.?[0-9]\\)*\\)\\b" . 'gio-highlight-numbers-face)) ;; Integers & Decimals
+;;   "Keywords for gio-minor-mode highlighting")
+;; (define-minor-mode gio-minor-mode
+;;   "Minor mode for customization"
+;;   :init-value 1
+;;   :lighter " GioMode"
+;;   :group 'gio-group
+;;   (when (bound-and-true-p gio-minor-mode)
+;;     (font-lock-add-keywords nil gio-keywords)
+;;     (font-lock-fontify-buffer)) ;;; 这里会导致csharp-mode里的一些问题
+;;   (when (not (bound-and-true-p gio-minor-mode))
+;;     (font-lock-remove-keywords nil gio-keywords)
+;;     (font-lock-fontify-buffer)))  ;;; 这里会导致csharp-mode里的一些问题
+;; (define-globalized-minor-mode gio-global-minor-mode gio-minor-mode gio-minor-mode :group 'gio-group)
+;; (gio-global-minor-mode 1)
 
 
 ;;; bypassing default build in org-mode, and try to use customized version
@@ -226,8 +224,9 @@
   (require 'expand-region)
   (require 'init-protobuf-mode)
   (require 'init-pdf-tools) ;;;; 我并没有使用这个
-                                        ;  (require 'init-org-noter-pdftools)
+;  (require 'init-org-noter-pdftools)
   ;; (require 'init-company) ;;; 不喜欢它老是跑出一大堆的路径相关的,不方便,暂时不同这个模式
+  (require 'init-csharp-mode) ;;;; 在27.1里面用tree-sitter 来加载csharp-mode 好像是有点儿问题的，可以重新退回到以前的加载模式
   )
 
 ;;;; for one-dark-pro like visual studio theme
@@ -271,7 +270,7 @@
 ;;      (progn
 ;;        (let ((file-name-handler-alist nil))
 ;;          (require 'init-python-mode)
-;;          (require 'init-csharp-mode)
+         ;; (require 'init-csharp-mode)
 ;;          ;; (require 'init-company)
 ;;          (require 'init-sr-speedbar)
 ;;          )

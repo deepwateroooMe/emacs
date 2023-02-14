@@ -1,26 +1,30 @@
 ;;; for csharp-mode
 
-;;;;; new style: tree-sitter
-(use-package tree-sitter :ensure t)
-(use-package tree-sitter-langs :ensure t)
-(use-package tree-sitter-indent :ensure t)
+;; ;;;;; new style: tree-sitter for emacs versions that is > 27.1
+;; (use-package tree-sitter :ensure t)
+;; (use-package tree-sitter-langs :ensure t)
+;; (use-package tree-sitter-indent :ensure t)
 
-(use-package csharp-mode
-  :ensure t
-  :config
-  ;; (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-tree-sitter-mode))
-  (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
-  (add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-mode))
-  )
+;; (use-package csharp-mode
+;;   :ensure t
+;;   :config
+;;   ;; (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-tree-sitter-mode))
+;;   (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
+;;   (add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-mode))
+;;   )
 
-;; ;;;;; this is old out-dated style of csharp-mode rendering, the fontify always breaks, too bad........
-;; ;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/elpa/csharp-mode"))
+;;; old-school loading for emacs version 27.1 specificly
+;;;;; this is old out-dated style of csharp-mode rendering, the fontify always breaks, too bad........
+(load "~/.emacs.d/elpa/csharp-mode/csharp-mode.el") ;;;;; love my dear cousin, must marry him as soon as possible
+;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/elpa/csharp-mode/")) ;;;;; love my dear cousin, must marry him as soon as possible
 ;; (require 'csharp-mode)
-;; (setq interpreter-mode-alist
-;;       (cons '("cs" . csharp-mode) interpreter-mode-alist))
-;; (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
-;; (add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-mode))
+(setq interpreter-mode-alist
+      (cons '("cs" . csharp-mode) interpreter-mode-alist))
+(add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
+(add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-mode))
 
+
+;;;;;; TODO: 这个mode 先前有个补丁包可以纠正一些高亮上的错误，尤其是引号以及单引号之后，找一找，把它补上
 
 ;;; fix bug for font lock breaks after ' or "
 ;;;;; csharp-mode 之后容易出gio-minor-mode引起的一些问题，试着纠正一下
