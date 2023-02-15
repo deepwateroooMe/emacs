@@ -16,8 +16,8 @@
  ;; "com.apple.keylayout.ABC"
  "com.apple.keylayout.US"
  ;; Other language input source: "rime", "sogou" or another one.
- ;; "im.rime.inputmethod.Squirrel.Rime") ;;;;; 这个与自己安装的好像还有点儿不一样
-"im.rime.inputmethod.Squirrel.Hans")
+ "im.rime.inputmethod.Squirrel.Hans") ;;;;; 这是自己系统的,这个与自己安装的好像还有点儿不一样
+ ;; "pyim") ;;;;; 它可以充当占位符,只要它能够帮助切换中英文输入法就可以了,这两个不能好好地玩耍......
 
 ;; ;; enable the /cursor color/ mode
 ;; (sis-global-cursor-color-mode t) ;; 我不想要这个，因为它所它变得在我的系统配色下变得狠难看

@@ -24,6 +24,9 @@
 (speedbar-add-supported-extension ".h")
 (add-to-list 'speedbar-fetch-etags-parse-list
  		     '("\\.h" . speedbar-parse-c-or-c++tag))
+(speedbar-add-supported-extension ".m")
+(add-to-list 'speedbar-fetch-etags-parse-list
+ 		     '("\\.m" . speedbar-parse-c-or-c++tag))
 (speedbar-add-supported-extension ".cpp")
 (add-to-list 'speedbar-fetch-etags-parse-list
  		     '("\\.cpp" . speedbar-parse-c-or-c++tag))
@@ -96,6 +99,9 @@
 (speedbar-add-supported-extension ".lua")
 (add-to-list 'speedbar-fetch-etags-parse-list
  		     '("\\.lua" . speedbar-parse-c-or-c++tag))
+(speedbar-add-supported-extension ".swift")
+(add-to-list 'speedbar-fetch-etags-parse-list
+ 		     '("\\.swift" . speedbar-parse-c-or-c++tag))
 
 ;; (add-to-list 'speedbar-frame-parameters '(left-fringe . 0)) ; doesn't seem to work
 (setq sr-speedbar-width 35)
@@ -147,6 +153,7 @@
                                ;; (when (eq 'sis-get "im.rime.inputmethod.Squirrel.Rime")
                                (when (eq (shell-command "macism") "im.rime.inputmethod.Squirrel.Hans")
 ;;; TODO: TOGETHER WITH C-J USAGE: 这里使用了它人包裹中的api ，但是没有用全，就是它人包裹接下来还有输入法改变之的光标颜色跟着改变，要么我用错api 了，要么我还需要通知光标跟着改变颜色，才能保持中文输入法一种固定着色，英语输入法一种固定光标着色
+;;; TODO: TO MAKE PYIM INPUT METHOD WORK, FOR AUTO INPUT METHOD SWITCHES, OR RESEARCH ON ONES THIS PACKAGE PROVIDED                                 
                                  (sis-set-english)) 
 ;;; 如果窗口存在,就切换过去;不存在则打开并切换到浏览窗口,坏处是窗口永远无法关闭                               
                                (if (sr-speedbar-exist-p)

@@ -63,14 +63,28 @@ or terminating simple string."
 ;; (define-key global-map (kbd "C-c i") 'gp/vscode-current-buffer-file-at-point) 
 
 ;;; 是好用，但仍然是需要分不同的mode 的
-(fset 'cmtss
-      (kmacro-lambda-form [f4 ?\C-x ?1 ?  ?/ ?/ ?  ?\M-x ?s ?i ?s ?- ?s ?e ?t ?- ?o ?t ?h ?e ?r return] 0 "%d"))
-(put 'cmtss 'kmacro t)
+;; 因为我现在主要用内置的输入法，两个模式还不能狠好地合作，所以这里暂把这个输入法的设置给关掉
+;; TODO: INTEGRATE SIS MODE TO WORK TOGETHER WITH PYIM INPUT METHOD
+;; (kmacro-lambda-form [f4 ?\C-x ?1 ?  ?/ ?/ ?  ?\M-x ?s ?i ?s ?- ?s ?e ?t ?- ?o ?t ?h ?e ?r return] 0 "%d")) ;; ori for sys mode
+;; (kmacro-lambda-form [f4 ?\C-x ?1 ?  ?/ ?/ ?  ] 0 "%d")) ;; for pyim-mode: but if chinese input method, resulted to be “、、”，which is not expected
+;; for pyim mode, 需要获取这个模式内部中英文输入法的名字以及转换方法 
+;; (fset 'cmtss
+;;       (kmacro-lambda-form [f4 ?\C-x ?1 ?  ?/ ?/ ?  ] 0 "%d"))
+;; (put 'cmtss 'kmacro t)
+
+;;; for pyim mode only: for temporary-use, until bug fix
+(fset 'cmtEnCh
+      (kmacro-lambda-form [f4 ?  ?/ ?/ ?  ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?\C-x] 0 "%d"))
+(fset 'cmtChCh ;; 有点儿延迟，最好的办法应该是强制使用的半角 ？暂时如此处理
+      (kmacro-lambda-form [f4 ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?  ?/ ?/ ?  ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?\C-x] 0 "%d"))
+(put 'cmtEnCh 'kmacro t)
+(put 'cmtChCh 'kmacro t)
 
 (add-hook 'csharp-mode-hook
           (lambda ()
             (local-set-key (kbd "C-c i") 'gp/vscode-current-buffer-file-at-point) ;;;;; 这个键太复杂，不好用 ;;;;; distribute the work into 2 fingers
-            (local-set-key (kbd "C-j") 'cmtss)
+            (local-set-key (kbd "C-j") 'cmtEnCh) ;; English ==> Chinese
+            (local-set-key (kbd "C-i") 'cmtChCh) ;; Chinese ==> Chinese
             ))
 
 

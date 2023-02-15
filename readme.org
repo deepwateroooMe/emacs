@@ -9,7 +9,10 @@
 [[./pic/readme_20230214_134351.png]]
 - this affect me access to current terminal, needs to be fixed later. 
 ** configue pyim wubi input method emacs-rime, works like a charm!
+- 不好用：终于是可以造词了，可是，它break 掉了sys里的自动转换输入法，也就是在中英文混合输入时，中英文混合输入时，它就太笨了。。。。。这种情况下没有系统输入法结合sis好用,它与sis不能合作使用 
+- 它除了使用了系统输入法的字库，其它所有好用的配置一个也不能用，现在只是可以选詞了而已，却不能使用其它中文下输入英文标点符号等 
 - emacs-rime rime 在emacs 里的前端，想要把它配置好：不能自动上屏的五笔输入法显然是太笨了.现在好了，终于有可以自动上屏的五笔输入法了
+- 我
 ** configuration for pdf-tools packages
 
    [[./pic/mememe2.png]]
