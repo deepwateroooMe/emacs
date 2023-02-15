@@ -8,10 +8,10 @@
 (use-package csharp-mode
   :ensure t
   :config
-  (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-tree-sitter-mode))
-  (add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-tree-sitter-mode))
-  ;; (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
-  ;; (add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-mode))
+  ;; (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-tree-sitter-mode))
+  ;; (add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-tree-sitter-mode))
+  (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
+  (add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-mode))
   )
 
 
@@ -60,7 +60,7 @@ or terminating simple string."
                                        ;; (number-to-string (1+ (current-line))) ;; +1 who knows why
                                        ":"
                                        (number-to-string (current-column)))))
-;; (define-key global-map (kbd "C-c v") 'gp/vscode-current-buffer-file-at-point)
+;; (define-key global-map (kbd "C-c i") 'gp/vscode-current-buffer-file-at-point) 
 
 ;;; 是好用，但仍然是需要分不同的mode 的
 (fset 'cmtss
@@ -69,7 +69,7 @@ or terminating simple string."
 
 (add-hook 'csharp-mode-hook
           (lambda ()
-            (local-set-key (kbd "C-c v") 'gp/vscode-current-buffer-file-at-point) ;;;;; 这个键太复杂，不好用
+            (local-set-key (kbd "C-c i") 'gp/vscode-current-buffer-file-at-point) ;;;;; 这个键太复杂，不好用 ;;;;; distribute the work into 2 fingers
             (local-set-key (kbd "C-j") 'cmtss)
             ))
 

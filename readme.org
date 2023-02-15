@@ -3,11 +3,13 @@
 #+author: deepwaterooo
 
 * Updates 
-** emacs-rime rime 在emacs 里的前端，想要把它配置好：不能自动上屏的五笔输入法显然是太笨了
+** emacs 1 initiliation bug
 - emacs 27.1 for emacs-rime input methods. one bug to be fixed. 
   
 [[./pic/readme_20230214_134351.png]]
 - this affect me access to current terminal, needs to be fixed later. 
+** configue pyim wubi input method emacs-rime, works like a charm!
+- emacs-rime rime 在emacs 里的前端，想要把它配置好：不能自动上屏的五笔输入法显然是太笨了.现在好了，终于有可以自动上屏的五笔输入法了
 ** configuration for pdf-tools packages
 
    [[./pic/mememe2.png]]
