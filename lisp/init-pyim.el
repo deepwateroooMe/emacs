@@ -57,7 +57,7 @@
 (setq pyim-default-scheme 'wubi)
 
 
-;; 下面的,我加上了,因为我使用半角标点,它就全把它转换成英语了,但凡有半角标点.....
+;; 过灵：因为我使用半角标点,它就全把它转换成英语了,但凡有半角标点。不使用半角标点了，仍在某引起情况下会过灵，被廹使用英文，不得转换，所以得少用几个探针
 ;; ;; 设置 pyim 探针： 我感觉他的这些探针更多的是对拼音畭法有效，想要更好的对五笔输入法的支持
 ;; ;; 设置 pyim 探针设置，这是 pyim 高级功能设置，可以实现 *无痛* 中英文切换 :-)
 ;; ;; 我自己使用的中英文动态切换规则是：
@@ -84,7 +84,7 @@
 ;; 2. 当前字符为中文字符或输入字符为行首字符时，输入的字符为中文字符
 ;; 3. 以单个空格为界，自动切换中文和英文字符
 ;;    即，形如 `我使用 emacs 编辑此函数' 的句子全程自动切换中英输入法
-(setq-default pyim-english-input-switch-functions
+(setq-default pyim-english-input-switch-functions ;; 止前仍然只使用一个，等适应了会用了，找到更好的使用方法，再用其它的。现在这个简单好用
               '(pyim-probe-auto-english) ;;; 设置有用: 但前提是我不可以使用英语半角符号,但是我需要/*-.是半角。把下在的探针开启就基本满足 org-mode 下的使用需要，可以不用半角了
               ) 
 (setq-default pyim-punctuation-half-width-functions;; 用这个来试半角 org-mode 下是没有总是的，因为都在头，它已经帮自动检测配置到位了
@@ -99,8 +99,7 @@
 ;; 魔术转换盒: 真能魔术，就将活宝妹嫁给亲爱的“亲爱的表哥，活宝妹一定要嫁的亲爱的表哥！！！”吧
 ;; 这里就设置为我所有的，有需要中文状态下输入英文标点的设置
 (defun my-converter (string)
-  ;; (if (equal string "表哥") "亲爱的表哥，活宝妹一定要嫁的亲爱的表哥！！！" string))
-  (if (equal string "、") "/" string)) ;; 这里可以解救出一个最常用的半角，但是其它两三个怎么办呢？
+  (if (equal string "表哥") "亲爱的表哥，活宝妹一定要嫁的亲爱的表哥！！！" string))
 (setq pyim-magic-converter #'my-converter)
 
 
