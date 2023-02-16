@@ -359,8 +359,8 @@ or terminating simple string."
 ;; 新加入两个鍵绑定后，会把第一行 comment 掉，这是不应该的，临时再 uncomment 一下，并去掉第一个空格
 ;; [?\M-g ?1 return ?\M-x ?f ?o return ?\C-x ?h tab ?\C-  ?\C-  ?\M-g ?1 return ?\C-  ?\C-n ?\M-\; ?\C-p ?\C-a ?\C-d ?\C-x]) ;; indent region f12
 ;; [?\M-g ?1 return ?\M-x ?f ?o return ?\C-x ?h tab ?\C-  ?\C-  ?\M-g ?1 return ?\C-x]) 
-(fset 'f;; C-x h Tab for indent the whole file 仍然会报个铃铛，暂时就让它这样
-      [?\M-g ?1 return ?\M-x ?f ?o return ?\C-x ?h tab ?\C-  ?\C-  ?\M-g ?1 return]) 
+(fset 'f;; C-x h Tab for indent the region: exchanged to M-x indent-region instead to remove the bell ring
+      [?\M-g ?1 return ?\M-x ?f ?o return ?\C-x ?h ?\M-x ?i ?n ?d ?e ?n ?t ?- ?r ?e ?g ?i ?o ?n return ?\C-x]) 
 (global-set-key (kbd "C-c f") 'f) 
 (put 'f 'kmacro t)
 
