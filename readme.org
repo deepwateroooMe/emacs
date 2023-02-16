@@ -5,14 +5,14 @@
 * Updates 
 ** emacs 1 initiliation bug
 - emacs 27.1 for emacs-rime input methods. one bug to be fixed. 
-  
-[[./pic/readme_20230214_134351.png]]
+ [[./pic/readme_20230214_134351.png]]
 - this affect me access to current terminal, needs to be fixed later. 
 ** configue pyim wubi input method emacs-rime, works like a charm!
-- 不好用：终于是可以造词了，可是，它break 掉了sys里的自动转换输入法，也就是在中英文混合输入时，中英文混合输入时，它就太笨了。。。。。这种情况下没有系统输入法结合sis好用,它与sis不能合作使用 
-- 它除了使用了系统输入法的字库，其它所有好用的配置一个也不能用，现在只是可以选詞了而已，却不能使用其它中文下输入英文标点符号等 
-- emacs-rime rime 在emacs 里的前端，想要把它配置好：不能自动上屏的五笔输入法显然是太笨了.现在好了，终于有可以自动上屏的五笔输入法了
-- 我
+- 现在最大的缺点是：我无法使用自已魔改过的个性化字库，姓名住圵等等，活宝妹，亲爱的表哥，等等。但其它也算是基本清单了，再不折腾它了。花了太多的时间在这个上面。所以现在输入法还算是基本清单的。
+  - 两套：系统的，与 emacs 里自带的。
+- 它具备以空格来区分中英文输入法的功能，但不能与中文下半角配合使用。也就是，它具备了我现在所使用过的 sis 下的自动中英文之间以一个空格为单位自动切换，但我无法使用中文下半角标点。
+- 它除了使用了系统输入法的字库，其它所有好用的配置一个也不能用（我只能拦截一个最常用的半角，仍然是不方便的），现在只是可以选詞了而已，却不能使用其它中文下输入英文标点符号等 
+- 我中文下使用英语标点：主要是 org-mode 打头的 -*. 等，它可以检测到，自动化到，还是方便的
 ** configuration for pdf-tools packages
 
    [[./pic/mememe2.png]]

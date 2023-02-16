@@ -21,21 +21,24 @@
 
 
 ;; (custom-set-variables '(speedbar-show-unknown-files t))
+(speedbar-add-supported-extension ".c")
+(add-to-list 'speedbar-fetch-etags-parse-list
+ 		     '("\\.c" . speedbar-parse-c-or-c++tag))
 (speedbar-add-supported-extension ".h")
 (add-to-list 'speedbar-fetch-etags-parse-list
  		     '("\\.h" . speedbar-parse-c-or-c++tag))
 (speedbar-add-supported-extension ".m")
 (add-to-list 'speedbar-fetch-etags-parse-list
  		     '("\\.m" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".cpp")
-(add-to-list 'speedbar-fetch-etags-parse-list
- 		     '("\\.cpp" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".c")
-(add-to-list 'speedbar-fetch-etags-parse-list
- 		     '("\\.c" . speedbar-parse-c-or-c++tag))
 (speedbar-add-supported-extension ".cs")
 (add-to-list 'speedbar-fetch-etags-parse-list
  		     '("\\.cs" . speedbar-parse-c-or-c++tag))
+(speedbar-add-supported-extension ".go")
+(add-to-list 'speedbar-fetch-etags-parse-list
+ 		     '("\\.go" . speedbar-parse-c-or-c++tag))
+(speedbar-add-supported-extension ".cpp")
+(add-to-list 'speedbar-fetch-etags-parse-list
+ 		     '("\\.cpp" . speedbar-parse-c-or-c++tag))
 (speedbar-add-supported-extension ".xml")
 (add-to-list 'speedbar-fetch-etags-parse-list
  	         '("\\.xml" . speedbar-parse-c-or-c++tag))
