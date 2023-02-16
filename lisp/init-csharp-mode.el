@@ -62,6 +62,7 @@ or terminating simple string."
                                        (number-to-string (current-column)))))
 ;; (define-key global-map (kbd "C-c i") 'gp/vscode-current-buffer-file-at-point) 
 
+
 ;;; 是好用，但仍然是需要分不同的mode 的
 ;; 因为我现在主要用内置的输入法，两个模式还不能狠好地合作，所以这里暂把这个输入法的设置给关掉
 ;; TODO: INTEGRATE SIS MODE TO WORK TOGETHER WITH PYIM INPUT METHOD
@@ -71,6 +72,19 @@ or terminating simple string."
 ;; (fset 'cmtss
 ;;       (kmacro-lambda-form [f4 ?\C-x ?1 ?  ?/ ?/ ?  ] 0 "%d"))
 ;; (put 'cmtss 'kmacro t)
+;;; for pyim mode only: for temporary-use, until bug fix
+(fset 'cmtEnCh;;; 这里的 C-j C-i 与上面的 C-c-f 会给 C-cf 制造麻烦，需要绑定不同的鍵，这里暂时移动一下，看看它有没有什么区别 ?
+      (kmacro-lambda-form [f4 ?  ?/ ?/ ?  ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?\C-x] 0 "%d"))
+(fset 'cmtChCh;;; 有点儿延迟
+      (kmacro-lambda-form [f4 ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?  ?/ ?/ ?  ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?\C-x] 0 "%d"))
+(put 'cmtEnCh 'kmacro t)
+(put 'cmtChCh 'kmacro t)
+(add-hook 'csharp-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-c i") 'gp/vscode-current-buffer-file-at-point) ;;;;; 这个键太复杂，不好用 ;;;;; distribute the work into 2 fingers
+            (local-set-key (kbd "C-j j") 'cmtEnCh) ;; English ==> Chinese 改变绑定的鍵才是最彻底的改法，不会让 C-cf 运行狠久
+            (local-set-key (kbd "C-i i") 'cmtChCh) ;; Chinese ==> Chinese
+            ))
 
 
 ;;;for csharp-mode ; {} autoindent
@@ -342,11 +356,11 @@ or terminating simple string."
              ?\M-l ?/ ?/ ?  ?  return ?/ ?/ ?  return
              ?\M-g ?1 return  ;;; go back to beginning of file
              ])
-;; (fset 'tmpUnCmt;; 临时被入的方法，因为臫鍵的绑定设置引入的 bug, 这里再绕弯改一下。这里只引用了自定义里面的内容 
-;;       (kmacro-lambda-form [?\C-  ?\C-n ?\M-\; ?\C-p ?\C-a ?\C-x] 0 "%d"))
-;; [?\M-g ?1 return ?\M-x ?f ?o return ?\C-x ?h tab ?\C-  ?\C-  ?\M-g ?1 return]) ;; 新加入两个鍵绑定后，会把第一行 comment 掉，这是不应该的，临时再 uncomment 一下
-(fset 'f
-      [?\M-g ?1 return ?\M-x ?f ?o return ?\C-x ?h tab ?\C-  ?\C-  ?\M-g ?1 return ?\C-  ?\C-n ?\M-\; ?\C-p ?\C-a ?\C-x]) ;; indent region f12
+;; 新加入两个鍵绑定后，会把第一行 comment 掉，这是不应该的，临时再 uncomment 一下，并去掉第一个空格
+;; [?\M-g ?1 return ?\M-x ?f ?o return ?\C-x ?h tab ?\C-  ?\C-  ?\M-g ?1 return ?\C-  ?\C-n ?\M-\; ?\C-p ?\C-a ?\C-d ?\C-x]) ;; indent region f12
+;; [?\M-g ?1 return ?\M-x ?f ?o return ?\C-x ?h tab ?\C-  ?\C-  ?\M-g ?1 return ?\C-x]) 
+(fset 'f;; C-x h Tab for indent the whole file 仍然会报个铃铛，暂时就让它这样
+      [?\M-g ?1 return ?\M-x ?f ?o return ?\C-x ?h tab ?\C-  ?\C-  ?\M-g ?1 return]) 
 (global-set-key (kbd "C-c f") 'f) 
 (put 'f 'kmacro t)
 
@@ -402,24 +416,6 @@ or terminating simple string."
 (fset 'co
       (kmacro-lambda-form [?\C-x ?\C-f ?\C-a ?\C-y ?\C-k return ?\C-x ?1] 0 "%d"))
 (global-set-key (kbd "C-o") 'co)
-
-
-
-;;; for pyim mode only: for temporary-use, until bug fix
-;;; 这里的 C-j C-i 与上面的 C-c-f 会给 C-cf 制造麻烦，需要绑定不同的鍵，这里暂时移动一下，看看它有没有什么区别 ?
-(fset 'cmtEnCh
-      (kmacro-lambda-form [f4 ?  ?/ ?/ ?  ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?\C-x] 0 "%d"))
-(fset 'cmtChCh ;; 有点儿延迟，最好的办法应该是强制使用的半角 ？暂时如此处理
-      (kmacro-lambda-form [f4 ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?  ?/ ?/ ?  ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?\C-x] 0 "%d"))
-(put 'cmtEnCh 'kmacro t)
-(put 'cmtChCh 'kmacro t)
-
-(add-hook 'csharp-mode-hook
-          (lambda ()
-            (local-set-key (kbd "C-c i") 'gp/vscode-current-buffer-file-at-point) ;;;;; 这个键太复杂，不好用 ;;;;; distribute the work into 2 fingers
-            (local-set-key (kbd "C-j") 'cmtEnCh) ;; English ==> Chinese
-            (local-set-key (kbd "C-i") 'cmtChCh) ;; Chinese ==> Chinese
-            ))
 
 
 (provide 'init-csharp-mode)
