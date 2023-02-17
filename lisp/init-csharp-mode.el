@@ -82,8 +82,10 @@ or terminating simple string."
 (add-hook 'csharp-mode-hook
           (lambda ()
             (local-set-key (kbd "C-c i") 'gp/vscode-current-buffer-file-at-point) ;;;;; 这个键太复杂，不好用 ;;;;; distribute the work into 2 fingers
-            (local-set-key (kbd "C-j j") 'cmtEnCh) ;; English ==> Chinese 改变绑定的鍵才是最彻底的改法，不会让 C-cf 运行狠久
-            (local-set-key (kbd "C-i i") 'cmtChCh) ;; Chinese ==> Chinese
+            ;; (local-set-key (kbd "C-x x") 'cmtEnCh) ;; English ==> Chinese 改变绑定的鍵才是最彻底的改法，不会让 C-cf 运行狠久
+            ;; (local-set-key (kbd "C-x j") 'cmtChCh) ;; Chinese ==> Chinese
+            (local-set-key (kbd "C-j") 'cmtEnCh) ;; English ==> Chinese 改变绑定的鍵才是最彻底的改法，不会让 C-cf 运行狠久
+            (local-set-key (kbd "C-i") 'cmtChCh) ;; Chinese ==> Chinese
             ))
 
 
@@ -356,11 +358,12 @@ or terminating simple string."
              ?\M-l ?/ ?/ ?  ?  return ?/ ?/ ?  return
              ?\M-g ?1 return  ;;; go back to beginning of file
              ])
+;; [?\M-g ?1 return ?\M-x ?f ?o return ?\C-x ?h tab ?\C-  ?\C-  ?\M-g ?1 return ?\C-x]) 
 ;; 新加入两个鍵绑定后，会把第一行 comment 掉，这是不应该的，临时再 uncomment 一下，并去掉第一个空格
 ;; [?\M-g ?1 return ?\M-x ?f ?o return ?\C-x ?h tab ?\C-  ?\C-  ?\M-g ?1 return ?\C-  ?\C-n ?\M-\; ?\C-p ?\C-a ?\C-d ?\C-x]) ;; indent region f12
-;; [?\M-g ?1 return ?\M-x ?f ?o return ?\C-x ?h tab ?\C-  ?\C-  ?\M-g ?1 return ?\C-x]) 
+;; [?\M-g ?1 return ?\M-x ?f ?o return ?\C-x ?h ?\M-x ?i ?n ?d ?e ?n ?t ?- ?r ?e ?g ?i ?o ?n return ?\C-x]) ;; 这是改了两个鍵之后的使用方法
 (fset 'f;; C-x h Tab for indent the region: exchanged to M-x indent-region instead to remove the bell ring
-      [?\M-g ?1 return ?\M-x ?f ?o return ?\C-x ?h ?\M-x ?i ?n ?d ?e ?n ?t ?- ?r ?e ?g ?i ?o ?n return ?\C-x]) 
+[?\M-g ?1 return ?\M-x ?f ?o return ?\C-x ?h ?\M-x ?i ?n ?d ?e ?n ?t ?- ?r ?e ?g ?i ?o ?n return ?\C-  ?\C-n ?\M-\; ?\C-p ?\C-a ?\C-d ?\C-x]) 
 (global-set-key (kbd "C-c f") 'f) 
 (put 'f 'kmacro t)
 
