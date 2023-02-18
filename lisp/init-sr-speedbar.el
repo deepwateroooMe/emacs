@@ -153,7 +153,6 @@
 (global-set-key (kbd "<f5>") (lambda()  
                                (interactive)
  ;;;; 想要实现不止一个步骤:F5之后，如果当前为中文输入法，自动切换为英文输入法
-                               ;; (when (eq 'sis-get "im.rime.inputmethod.Squirrel.Rime")
                                (when (eq (shell-command "macism") "im.rime.inputmethod.Squirrel.Hans")
 ;;; TODO: TOGETHER WITH C-J USAGE: 这里使用了它人包裹中的api ，但是没有用全，就是它人包裹接下来还有输入法改变之的光标颜色跟着改变，要么我用错api 了，要么我还需要通知光标跟着改变颜色，才能保持中文输入法一种固定着色，英语输入法一种固定光标着色
 ;;; TODO: TO MAKE PYIM INPUT METHOD WORK, FOR AUTO INPUT METHOD SWITCHES, OR RESEARCH ON ONES THIS PACKAGE PROVIDED                                 

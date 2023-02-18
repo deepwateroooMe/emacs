@@ -218,7 +218,7 @@
       (setq org-startup-truncated nil)
       ;; (soft-wrap-lines t) ;;; this one works
       ;; (auto-fill-mode 1) ;;; org里直线容易折断
-      (gio-global-minor-mode 0) ;;; 这个会 break 掉csharp-mode里现存的fontify error，暂时关掉
+      ;; (gio-global-minor-mode 0)
       (linum-mode 1)
       ))
 ;; (setq org-startup-truncated nil)

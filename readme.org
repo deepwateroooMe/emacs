@@ -4,6 +4,8 @@
 
 * Updates 
 ** emacs 1 initiliation bug
+- TODO: 需要将其配置到 arm64-arch 【爱表哥，爱生活！！！】
+- 昨天转词库感觉到旧版本的 emacs 可能还是存在各种性能问题，面将其升级到 28.2. 
 - emacs 27.1 for emacs-rime input methods. one bug to be fixed. 
 
  [[./pic/readme_20230214_134351.png]]
@@ -17,7 +19,6 @@
 ** configuration for pdf-tools packages
 
    [[./pic/mememe2.png]]
-
 - pdf viewer noter <==> Skim bi-directional linking configuration on the way, most emacs work is done. Need to learn how to use them though. 
 
 [[./pic/Snipaste_2023-02-11_20-57-40.png]]

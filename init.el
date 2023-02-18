@@ -6,7 +6,7 @@
 ;;              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 ;; (package-initialize)
 
-;; (setq debug-on-error t);; 它会无数次地停掉程序，去掉
+(setq debug-on-error t);; 它会无数次地停掉程序，去掉
 
 (setq default-directory "/Users/hhj/")
 
@@ -70,29 +70,30 @@
       (read-only-mode -1)))
 
 
-(defgroup gio-group nil
-  "Group for customization"
-  :prefix "gio-")
-(defface gio-highlight-numbers-face
-  '((t :inherit (default)
-       :foreground "#f6546a")) ;;; ori: #ffff00 #fff68f
-  "Face for numbers"
-  :group 'gio-group )
-(defvar gio-keywords '(("\\(\\b\\|[-]\\)\\([-]?\\([0-9]+\\)\\(\\.?[0-9]\\)*\\)\\b" . 'gio-highlight-numbers-face)) ;; Integers & Decimals
-  "Keywords for gio-minor-mode highlighting")
-(define-minor-mode gio-minor-mode
-  "Minor mode for customization"
-  :init-value 1
-  :lighter " GioMode"
-  :group 'gio-group
-  (when (bound-and-true-p gio-minor-mode)
-    (font-lock-add-keywords nil gio-keywords)
-    (font-lock-fontify-buffer)) ;;; 这里会导致csharp-mode里的一些问题
-  (when (not (bound-and-true-p gio-minor-mode))
-    (font-lock-remove-keywords nil gio-keywords)
-    (font-lock-fontify-buffer)))  ;;; 这里会导致csharp-mode里的一些问题
-(define-globalized-minor-mode gio-global-minor-mode gio-minor-mode gio-minor-mode :group 'gio-group)
-(gio-global-minor-mode 1)
+;; not stable: sometimes it works, sometimes does not.
+;; (defgroup gio-group nil
+;;   "Group for customization"
+;;   :prefix "gio-")
+;; (defface gio-highlight-numbers-face
+;;   '((t :inherit (default)
+;;        :foreground "#f6546a")) ;;; ori: #ffff00 #fff68f
+;;   "Face for numbers"
+;;   :group 'gio-group )
+;; (defvar gio-keywords '(("\\(\\b\\|[-]\\)\\([-]?\\([0-9]+\\)\\(\\.?[0-9]\\)*\\)\\b" . 'gio-highlight-numbers-face)) ;; Integers & Decimals
+;;   "Keywords for gio-minor-mode highlighting")
+;; (define-minor-mode gio-minor-mode
+;;   "Minor mode for customization"
+;;   :init-value 1
+;;   :lighter " GioMode"
+;;   :group 'gio-group
+;;   (when (bound-and-true-p gio-minor-mode)
+;;     (font-lock-add-keywords nil gio-keywords)
+;;     (font-lock-fontify-buffer)) ;;; 这里会导致csharp-mode里的一些问题
+;;   (when (not (bound-and-true-p gio-minor-mode))
+;;     (font-lock-remove-keywords nil gio-keywords)
+;;     (font-lock-fontify-buffer)))  ;;; 这里会导致csharp-mode里的一些问题
+;; (define-globalized-minor-mode gio-global-minor-mode gio-minor-mode gio-minor-mode :group 'gio-group)
+;; (gio-global-minor-mode 1)
 
 
 ;;; bypassing default build in org-mode, and try to use customized version
@@ -126,25 +127,10 @@
 (let ((file-name-handler-alist nil))
   (require 'init-autoload)  ;; too many, commented this one out
   (require 'init-modeline)
-  ;; (require 'cl-lib) ; it's built in since Emacs v24.3
   (require 'init-pyim)
   (require 'init-compat)
   (require 'init-site-lisp) ;; Must come before elpa, as it may provide package.el
   (require 'init-utils) ; (defun is-buffer-file-temp())   ;;;;;;; comment for temp only, debug later today
-
-  ;; Windows configuration, assuming that cygwin is installed at "c:/cygwin"
-  ;; (condition-case nil
-  ;;     (when *win64*
-  ;;       ;; (setq cygwin-mount-cygwin-bin-directory "c:/cygwin/bin")
-  ;;       (setq cygwin-mount-cygwin-bin-directory "c:/cygwin64/bin")
-  ;;       (require 'setup-cygwin)
-  ;;       ;; better to set HOME env in GUI
-  ;;       ;; (setenv "HOME" "c:/cygwin/home/someuser")
-  ;;       )
-  ;;   (error
-  ;;    (message "setup-cygwin failed, continue anyway")
-  ;;    ))
-  
   (require 'idle-require)
   (require 'init-elpa)
   (require 'init-exec-path) ;; Set up $PATH
@@ -220,8 +206,8 @@
   (require 'init-pdf-tools) ;;;; 我并没有使用这个
 ;  (require 'init-org-noter-pdftools)
   ;; (require 'init-company) ;;; 不喜欢它老是跑出一大堆的路径相关的,不方便,暂时不同这个模式
+  (require 'init-csharp-mode) 
   (require 'swift-mode) ;;; C-j C-i 容易被其它模式重写 ？
-  (require 'init-csharp-mode) ;;;; 在27.1里面用tree-sitter 来加载csharp-mode 好像是有点儿问题的，可以重新退回到以前的加载模式
   )
 
 ;;;; for one-dark-pro like visual studio theme
@@ -629,7 +615,7 @@
                  ("begin" "$1" "$" "$$" "\\(" "\\[")))
  '(org-support-shift-select nil)
  '(package-selected-packages
-   '(cnfonts go-mode slime rime xr pyim-wbdict web-mode-edit-element auctex fuzzy ppd-sr-speedbar lsp-mode py-autopep8 logview virtualenvwrapper company-jedi flycheck-color-mode-line auto-complete-clang-async flycheck-swift flycheck swift-mode yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word csharp-mode crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link))
+   '(cnfonts go-mode slime rime xr pyim-wbdict web-mode-edit-element auctex fuzzy ppd-sr-speedbar lsp-mode py-autopep8 logview virtualenvwrapper company-jedi flycheck-color-mode-line auto-complete-clang-async flycheck-swift flycheck swift-mode yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link))
  '(pdf-tools-handle-upgrades nil)
  '(session-use-package t nil (session))
  '(show-paren-mode t)
