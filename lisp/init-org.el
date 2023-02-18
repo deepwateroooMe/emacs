@@ -29,6 +29,17 @@
   (interactive)
   (shift-region -2))
 
+
+;;; 这里简单配置一下下划线与加粗字体的显示格式；
+(require 'cl)   ; for delete*
+(setq org-emphasis-alist
+      (cons '("+" '(:strike-through t :foreground "gray"))
+            (delete* "+" org-emphasis-alist :key 'car :test 'equal)))
+(setq org-emphasis-alist
+      (cons '("*" '(:emphasis t :foreground "#00ffff")) ;; 1e90ff
+            (delete* "*" org-emphasis-alist :key 'car :test 'equal)))
+
+
 ;; ;;; automated file-name-directory for current buffer , for windows, 使用powershell 
 ;; (defun my-org-screenshot ()
 ;;   "Take a screenshot into a time stamped unique-named file in the
@@ -171,7 +182,8 @@
                     charset
                     ;; (font-spec :family "WenQuanYi Micro Hei Mono" :size 12))) 
                     ;; (font-spec :family "Sarasa Mono Slab SC Semibold" :size 12))) 
-                    (font-spec :family "STHeiti" :size 12)))
+                    ;; (font-spec :family "STHeiti" :size 12)))
+                    (font-spec :family "PingFang SC" :size 12)));; 换个字体试一下，是否会有加粗效果
 ;; '(default ((t (:inherit nil :extend nil :stipple nil :background "#181a26" :foreground "gray80" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight semi-bold :height 113 :width normal :foundry "outline" :family "Sarasa Mono Slab SC Semibold"))))
 
 ;; (When (member "Monaco" (font-family-list))

@@ -1,10 +1,10 @@
 ;;;;; 配置pyim emacs-rime 在emacs 中的前端
 
-;;;;; 配置五笔词库
-(require 'pyim-wbdict)
-(setq pyim-default-scheme 'wubi)
-(pyim-wbdict-v86-enable) ;86版五笔用户使用这个命令
-;; (pyim-wbdict-v86-single-enable) ;86版五笔用户使用这个命令，该词库为单字词库，以尽可能不重码减少选词需要为目的
+;;;;; 配置五笔词库：这两个去掉，就可以实现完全使用用戶词库了，所以，去掉所有的繁体字
+;; (require 'pyim-wbdict) ;; 那么，这个意思，就是，我不用装载的词典，全用个人用戶配置的两个词典，现是一个
+;; (setq pyim-default-scheme 'wubi)
+;; (pyim-wbdict-v86-enable) ;86版五笔用户使用这个命令
+;; ;; (pyim-wbdict-v86-single-enable) ;86版五笔用户使用这个命令，该词库为 单字词库【不想用单字的】，以尽可能不重码减少选词需要为目的
 
 (require 'pyim)
 ;; (require 'posframe) ;; 使用 posframe 来绘制选词框，这里可以不要也能出来
@@ -49,6 +49,17 @@
 (setq pyim-default-scheme 'wubi)
 
 
+;;; 个人词库：可以有两个词库文件: 先测试用个人字典，没问题；现在就是怎么移除安装的带繁体的，只用简体詞库
+(setq pyim-dicts '(
+                   (:name "dict1" :file "/Users/hhj/.emacs.d/pyim/wubi86_jidian_selfbrew.pyim") ;; 路径为绝对路径【常用固定不变的词库： wubi86_jidian, 自己转换得来的，大约9 万词库量】 
+                   (:name "dict1" :file "/Users/hhj/.emacs.d/pyim/user_dict.pyim")));; 这是活宝妹，亲爱的表哥，个人用戶词库，可以魔改的
+;; 让 Emacs 启动时自动加载 pyim 词库：得制造一个这样的词库文件 
+(add-hook 'emacs-startup-hook
+          #'(lambda () (pyim-restart-1 t)))
+
+;; TODO: 注意到，同样有候选唯一，但是不上屏的情况，如“杻”，想要设置型码候选唯一自动上屏，源码里有，pyim-autoselector.el 但是不知道它全自动设置了没有？
+
+
 ;; 过灵：因为我使用半角标点,它就全把它转换成英语了,但凡有半角标点。不使用半角标点了，仍在某引起情况下会过灵，被廹使用英文，不得转换，所以得少用几个探针
 ;; ;; 设置 pyim 探针： 我感觉他的这些探针更多的是对拼音畭法有效，想要更好的对五笔输入法的支持
 ;; ;; 设置 pyim 探针设置，这是 pyim 高级功能设置，可以实现 *无痛* 中英文切换 :-)
@@ -83,34 +94,20 @@
 ;; 开启代码搜索中文功能（比如拼音，五笔码等）
 (pyim-isearch-mode 1) 
 
+;; 用分号做次选按键；用 ' 用第三选择, 第四第五就倒着遍历就可以了
+(defun pyim-select-second-word ()
+  (interactive)
+  (pyim-select-word-by-number 2))
+(defun pyim-select-third-word ()
+  (interactive)
+  (pyim-select-word-by-number 3))
+(define-key pyim-mode-map ";" 'pyim-select-second-word)
+(define-key pyim-mode-map "'" 'pyim-select-third-word)
+
 ;; 魔术转换盒: 真能魔术，就将活宝妹嫁给亲爱的“亲爱的表哥，活宝妹一定要嫁的亲爱的表哥！！！”吧
 (defun my-converter (string)
   (if (equal string "表哥") "亲爱的表哥，活宝妹一定要嫁的亲爱的表哥！！！" string))
 (setq pyim-magic-converter #'my-converter)
-
-
-;;; 个人词库：可以有两个词库文件 TODO
-;; (setq pyim-dicts
-;;       '((:name "dict1" :file "/path/to/pyim-dict1.pyim") ;; 路径为绝对路径 
-;;         (:name "dict2" :file "/path/to/pyim-dict2.pyim")))
-;; ;; 让 Emacs 启动时自动加载 pyim 词库：得制造一个这样的词库文件 
-;; (add-hook 'emacs-startup-hook
-;;           #'(lambda () (pyim-restart-1 t)))
-
-;; TODO: 还是想把这些设置出来
-;; ;; 它说，RIME只提供了五笔码表给这个当前包裹，所以无法个性化配置，所有的配置需要这里实现
-;; ;; ; 选择第二候选，'选择第三候选: 天杀的,我的源码里居然是找不到这两个函数的存在: pyim-page-select-second-word pyim-page-select-third-word
-;; (defun pyim-page-select-second-word ()
-;;   (interactive)
-;;   (pyim-page-select-word-by-number 2))
-;; (defun pyim-page-select-third-word ()
-;;   (interactive)
-;;   (pyim-page-select-word-by-number 3))
-;; (define-key pyim-mode-map ";" 'pyim-page-select-second-word)
-;; (define-key pyim-mode-map "," 'pyim-page-select-third-word)
-
-;; TODO: 注意到，同样有候选唯一，但是不上屏的情况，如“杻”，想要设置型码候选唯一自动上屏，源码里有，pyim-autoselector.el 但是不知道它全自动设置了没有？
-
 
 ;;; 向前向后移动一个词，设置为这个模式下使用的： 不想设置为全局，当前的 prev-next 前后一頁都可以自然工作，不设置
 ;; (global-set-key (kbd "M-f") 'pyim-forward-word)
