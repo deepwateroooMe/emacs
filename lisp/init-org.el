@@ -216,9 +216,9 @@
       (setq truncate-lines nil) ;;;解决编辑中文不会自动折行的问题
       (setq org-startup-indented t)
       (setq org-startup-truncated nil)
+      (gio-global-minor-mode 0)
       ;; (soft-wrap-lines t) ;;; this one works
       ;; (auto-fill-mode 1) ;;; org里直线容易折断
-      ;; (gio-global-minor-mode 0)
       (linum-mode 1)
       ))
 ;; (setq org-startup-truncated nil)

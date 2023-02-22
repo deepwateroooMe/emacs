@@ -1,6 +1,5 @@
 ;;; for csharp-mode
 
-;;;;; new style: this could work perfectly well for emacs version 27.1 too !!! this one renders better
 (use-package tree-sitter :ensure t)
 (use-package tree-sitter-langs :ensure t)
 (use-package tree-sitter-indent :ensure t)
@@ -62,6 +61,21 @@ or terminating simple string."
                                        (number-to-string (current-column)))))
 ;; (define-key global-map (kbd "C-c i") 'gp/vscode-current-buffer-file-at-point) 
 
+;; ;; try to make a version for Visual Studio 2022, but it does NOT work
+;; ;; open '/Applications/Visual Studio.app' [path_to].sln
+;; ;; echo "alias vs=\"open '/Applications/Visual Studio.app' *.sln\"" >> ~/.bash_profile
+;; (defun gp/vscode-current-buffer-file-at-point-forVisualStudio ()
+;;   (interactive)
+;;   (start-process-shell-command "VisualStudio"
+;;                                nil
+;;                                (concat "code --goto "
+;;                                        (buffer-file-name)
+;;                                        ":"
+;;                                        (number-to-string (+ (if (bolp) 1 0) (count-lines 1 (point)))) ;; 定位精确: 可以定位到了 当前行 当前列
+;;                                        ;; (number-to-string (1+ (current-line))) ;; +1 who knows why
+;;                                        ":"
+;;                                        (number-to-string (current-column)))))
+
 
 ;;; 是好用，但仍然是需要分不同的mode 的
 ;; 因为我现在主要用内置的输入法，两个模式还不能狠好地合作，所以这里暂把这个输入法的设置给关掉
@@ -84,9 +98,10 @@ or terminating simple string."
             (local-set-key (kbd "C-c i") 'gp/vscode-current-buffer-file-at-point) ;;;;; 这个键太复杂，不好用 ;;;;; distribute the work into 2 fingers
             ;; (local-set-key (kbd "C-x x") 'cmtEnCh) ;; English ==> Chinese 改变绑定的鍵才是最彻底的改法，不会让 C-cf 运行狠久
             ;; (local-set-key (kbd "C-x j") 'cmtChCh) ;; Chinese ==> Chinese
-            (local-set-key (kbd "C-j") 'cmtEnCh) ;; English ==> Chinese 改变绑定的鍵才是最彻底的改法，不会让 C-cf 运行狠久
-            (local-set-key (kbd "C-i") 'cmtChCh) ;; Chinese ==> Chinese
+            (local-set-key (kbd "C-x x") 'cmtEnCh) ;; English ==> Chinese 改变绑定的鍵才是最彻底的改法，不会让 C-cf 运行狠久
+            (local-set-key (kbd "C-j") 'cmtChCh) ;; Chinese ==> Chinese
             ))
+
 
 
 ;;;for csharp-mode ; {} autoindent
@@ -94,24 +109,23 @@ or terminating simple string."
   (when (and (eq major-mode 'csharp-mode) (looking-back "[;]"))
     (newline-and-indent)))
 (add-hook 'post-self-insert-hook 'csharp-autoindent)
-
 (add-hook 'csharp-mode-hook
 	      #'(lambda ()
-	          (local-set-key (kbd "{") 'cheeso-insert-open-brace)))
+	          (local-set-key (kbd "{") 'cheeso-insert-open-brace-ss)))
 
-(defun cheeso-looking-back-at-regexp (regexp)
+(defun cheeso-looking-back-at-regexp-ss (regexp)
   "calls backward-sexp and then checks for the regexp.  Returns t if it is found, else nil"
   (interactive "s")
   (save-excursion
     (backward-sexp)
     (looking-at regexp)))
 
-(defun cheeso-looking-back-at-equals-or-array-init ()
+(defun cheeso-looking-back-at-equals-or-array-init-ss ()
   "returns t if an equals or [] is immediate preceding. else nil."
   (interactive)
-  (cheeso-looking-back-at-regexp "\\(\\w+\\b *=\\|[[]]+\\)"))  
+  (cheeso-looking-back-at-regexp-ss "\\(\\w+\\b *=\\|[[]]+\\)"))  
 
-(defun cheeso-prior-sexp-same-statement-same-line ()
+(defun cheeso-prior-sexp-same-statement-same-line-ss ()
   "returns t if the prior sexp is on the same line. else nil"
   (interactive)
   (save-excursion
@@ -122,7 +136,7 @@ or terminating simple string."
 		             (line-number-at-pos))) )
       (= curline aftline))))  
 
-(defun cheeso-insert-open-brace ()
+(defun cheeso-insert-open-brace-ss ()
   "if point is not within a quoted string literal, insert an open brace, two newlines, and a close brace; indent everything and leave point on the empty line. If point is within a string literal, just insert a pair or braces, and leave point between them."
   (interactive)
   (cond
@@ -133,21 +147,24 @@ or terminating simple string."
     (insert "")) ; this one works great now
 
    ;; was the last non-space an equals sign? or square brackets?  Then it's an initializer.
-   ((cheeso-looking-back-at-equals-or-array-init)
+   ((cheeso-looking-back-at-equals-or-array-init-ss)
     (self-insert-command 1)
     (forward-char 2) ;; 1
     (insert ";") 
-    (backward-char 3)) ;; 2
+    (backward-char 3)) ;; init-java-mode 2
    
    ;; Doesn't cooperate well with autopair
    ;; else, it's a new scope., 
    ;; therefore, insert paired braces with an intervening newline, and indent everything appropriately.
    (t
-    (if (cheeso-prior-sexp-same-statement-same-line)
+    (if (cheeso-prior-sexp-same-statement-same-line-ss)
         (self-insert-command 1))  ;;; so far only upto here, don't know how to eval & expand {}
     (insert "")
-    (newline-and-indent)
-    (c-indent-line-or-region)
+    (newline-and-indent);; 处理当前空行
+    (forward-char 1) ;; 1 希望的是，它前一个字付，会移到下一行，格式化下一行
+    (indent-according-to-mode);; 这一行，可能不知道为什么不起俢了
+    (previous-line);; 回到前一行，但是光标位置不对
+    (indent-according-to-mode);; 这一行，仍然起作用，可以在当前行，将光标移到正确的位置 
     )))
 
 
@@ -286,8 +303,9 @@ or terminating simple string."
              ?\M-l ?/ ?/ ?  ?  return ?/ ?/ ?  return
              ?\M-g ?1 return  ;;; go back to beginning of file
              ])
-(fset 'f;; C-x h Tab for indent the region: exchanged to M-x indent-region instead to remove the bell ring
-      [?\M-g ?1 return ?\M-x ?f ?o return ?\C-x ?h ?\M-x ?i ?n ?d ?e ?n ?t ?- ?r ?e ?g ?i ?o ?n return ?\C-  ?\C-n ?\M-\; ?\C-p ?\C-a ?\C-d ?\C-d ?\C-d ?\C-x]) 
+;; [?\M-g ?1 return ?\M-x ?f ?o return ?\C-x ?h ?\M-x ?i ?n ?d ?e ?n ?t ?- ?r ?e ?g ?i ?o ?n return ?\C-  ?\C-n ?\M-\; ?\C-p ?\C-a ?\C-d ?\C-d ?\C-d ?\C-x]) 
+(fset 'f;; C-x h Tab for indent the region: exchanged to M-x indent-region instead to remove the bell ring; not using C-i any more, no deleting any more
+      [?\M-g ?1 return ?\M-x ?f ?o return ?\C-x ?h ?\M-x ?i ?n ?d ?e ?n ?t ?- ?r ?e ?g ?i ?o ?n return ?\C-x]) 
 (global-set-key (kbd "C-c f") 'f) 
 (put 'f 'kmacro t)
 

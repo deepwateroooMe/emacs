@@ -48,6 +48,9 @@
 (speedbar-add-supported-extension ".kts")
 (add-to-list 'speedbar-fetch-etags-parse-list
              '("\\.kts" . speedbar-parse-c-or-c++tag))
+(speedbar-add-supported-extension ".pyim") ;;; for .pyim 用户词典修改
+(add-to-list 'speedbar-fetch-etags-parse-list
+             '("\\.pyim" . speedbar-parse-c-or-c++tag))
 (speedbar-add-supported-extension ".gradle")
 (add-to-list 'speedbar-fetch-etags-parse-list
  		     '("\\.gradle" . speedbar-parse-c-or-c++tag))
