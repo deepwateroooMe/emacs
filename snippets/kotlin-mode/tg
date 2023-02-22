@@ -2,5 +2,5 @@
 # name: TAG
 # key: tg
 # --
-private val TAG = "test $1"
+const val TAG = "$1"
 $0

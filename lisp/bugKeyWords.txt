@@ -1,43 +1,89 @@
-y C:/Users/blue_/AppData/LocalLow/DefaultCompany/trunk/
-rb land
-l y NullReferenceException:
-l y ArgumentOutOfRangeException:
-l y KeyNotFoundException:
-l y EventManager: FireEvent() type: land
-l y GameViewModel: onUndoGame()
-l y ERROR:
-y onActiveTetrominoLand
-y onGameSave()
-y LoadDataFromParentList()
-g DeleteRowCoroutine()
-g GetFromPool() type:
-g 1 
-b 2 
-y 3 
-p parentData.name:
-p move
-b rotate
-rb GameView
-p GameViewModel
-b MenuView
-b MenuViewModel
-bb Tetromino
-g GhostTetromino
-p nextTetromino
-b prevPreview
-b preview
-y Manager
-// ScoreManager
-y ViewManager
-g Data
-rb GloData
-a Model
-rb ModelMono
-b SaveSystem
-g LoadingSystemHelper
-g MoveCanvas
-g RotateCanvas
-// BaseBoardSkin
-// ChallLevelsView
-// ChallLevelsViewModel
-// ChallengeRules
+l y FATAL EXCEPTION:
+l y com.deepwaterooo.tetris
+hi com.deepwaterooo.dw
+y com.deepwaterooo.sdk
+
+hi DWUnityActivity
+l y DWSDK
+l y Deepwaterooo
+hi y [DWUpper]
+
+y DWSplashScreenActivity
+p DWHaveAccountActivity
+p DWLoginActivity
+p DWSignUpActivity
+y PlayerUtil
+p SharedPrefUtil
+
+hi onCreate()
+hi onStart()
+hi onRestart()
+hi onPause()
+hi onResume()
+hi onStop()
+hi onDestroy()
+hi onWindowFocusChanged()
+b true
+p false
+
+// for unity games debug
+// y C:/Users/blue_/AppData/LocalLow/DefaultCompany/trunk/
+// rb land
+// l y NullReferenceException:
+// l y ArgumentOutOfRangeException:
+// l y KeyNotFoundException:
+// l y EventManager: FireEvent() type: land
+// l y GameViewModel: onUndoGame()
+// l y ERROR:
+// l y error:
+// l y Error:
+// l y UnityGuiView Hide() for debugging GameView Hiding
+// hi onGameModeChanged()
+// bb onChallengeLevelChanged()
+// bb onGameLevelChanged()
+// y onActiveTetrominoLand
+// y onGameSave()
+// y LoadDataFromParentList()
+// g DeleteRowCoroutine()
+// g GetFromPool() type:
+// g 1 
+// b 2 
+// y 3 
+// p parentData.name:
+// p move
+// b rotate
+// rb GameView
+// p GameViewModel
+// b MenuView
+// b MenuViewModel
+// bb Tetromino
+// g GhostTetromino
+// p nextTetromino
+// b prevPreview
+// b preview
+// y Manager
+// // ScoreManager
+// y ViewManager
+// g Data
+// rb GloData
+// a Model
+// rb ModelMono
+// b SaveSystem
+// g LoadingSystemHelper
+// g MoveCanvas
+// g RotateCanvas
+// bb BaseBoardSkin: 
+// bkb ChallengeRules
+// p printSkinArray() s.ToString():
+// // ChallLevelsView
+// // ChallLevelsViewModel
+// y UnityPlayerActivity
+// y com.deepwaterooo.tetris3d
+// hi com.deepwaterooo.dwsdk
+// hi com.defaultcompany.trunk
+// hi com.unity3d.player
+// l y GameApplication
+// p MainActivity
+// y Main
+// l y click()
+// b TestUnityActivity

@@ -7,6 +7,7 @@
 
 ;; (package-initialize)
 
+
  (setq default-directory "C:/Users/blue_/AppData/Roaming/.emacs.d/")
 ;; (setq default-directory "/Volumes/e/uMVVM/Assets/Sources/")
 ;; (setq default-directory "/Volumes/e/ILRuntimeHotFix/ILRuntimeU3D/ILRuntimeDemo/Assets/Samples/ILRuntime/1.6.4/Demo/Scripts/Examples")
@@ -225,7 +226,8 @@
   (require 'pangu-spacing)
   (require 'expand-region)
   (require 'init-protobuf-mode)
-;; (require 'init-company) ;;; 不喜欢它老是跑出一大堆的路径相关的,不方便,暂时不同这个模式
+ (require 'init-pyim) ;; 这个东西，一时半会儿可能还弄不出来，先放一下
+  ;; (require 'init-company) ;;; 不喜欢它老是跑出一大堆的路径相关的,不方便,暂时不同这个模式
   )
 
 ;;;; for one-dark-pro like visual studio theme
@@ -435,7 +437,7 @@
  "chinese-wubi" "Chinese-GB" 'quail-use-package
  "WuBi" "WuBi"
  "wubi")
-(if (< emacs-major-version 21)
+(if (< emacs-major-version 25)
     (setup-chinese-gb-environment)
   (set-language-environment 'Chinese-GB))
 (setq default-input-method "chinese-wubi")
@@ -443,7 +445,7 @@
 ;;; key bindings of WuBi
 (global-set-key [?\C-+] 'add-wubi)
 (global-set-key [?\C--] 'del-wubi)
-                                        ;(global-set-key "\M- " 'toggle-input-method)
+(global-set-key "\M- " 'toggle-input-method)
 
 ;;; meta
 (global-set-key "\M-l" 'replace-string) ; originally lowercase folling word
