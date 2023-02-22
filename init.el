@@ -6,17 +6,13 @@
 ;;              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 ;; (package-initialize)
 
-<<<<<<< HEAD
 
  (setq default-directory "C:/Users/blue_/AppData/Roaming/.emacs.d/")
 ;; (setq default-directory "/Volumes/e/uMVVM/Assets/Sources/")
 ;; (setq default-directory "/Volumes/e/ILRuntimeHotFix/ILRuntimeU3D/ILRuntimeDemo/Assets/Samples/ILRuntime/1.6.4/Demo/Scripts/Examples")
 ;; (setq default-directory "C:/Users/blue_/App/")
-=======
-(setq debug-on-error t);; 它会无数次地停掉程序，去掉
->>>>>>> d1b6518fdc5141d410372dca490fb0c5bab2a2c8
 
-(setq default-directory "/Users/hhj/")
+;; (setq debug-on-error t);; 它会无数次地停掉程序，去掉
 
 
 ;; ;; Bootstrap 'use-package'
@@ -43,8 +39,8 @@
 
 ;;; setup defaults for all modes
 (setq default-frame-alist
-      ;; '((top . 0)(left . 400)(height . 63)(width . 180)(menubar-lines . 100)(tool-bar-line . 0))
-      '((top . 0)(left . 427)(height . 550)(width . 160)(menubar-lines . 55)(tool-bar-line . 0)) ; ori
+       '((top . 0)(left . 400)(height . 73)(width . 180)(menubar-lines . 70)(tool-bar-line . 0))
+      ;;'((top . 0)(left . 427)(height . 550)(width . 160)(menubar-lines . 55)(tool-bar-line . 0)) ; ori
       ) ; tmp.p
 
 
@@ -135,7 +131,7 @@
 (let ((file-name-handler-alist nil))
   (require 'init-autoload)  ;; too many, commented this one out
   (require 'init-modeline)
-  (require 'init-pyim)
+  ;; (require 'init-pyim)
   (require 'init-compat)
   (require 'init-site-lisp) ;; Must come before elpa, as it may provide package.el
   (require 'init-utils) ; (defun is-buffer-file-temp())   ;;;;;;; comment for temp only, debug later today
@@ -195,7 +191,6 @@
 ;  (require 'init-kotlin-mode)
   (require 'init-nxml-mode)
   ;; (require 'init-company)
-  
   ;; have NOT passed  
   (require 'init-org)			
   (require 'init-yasnippet)
@@ -204,23 +199,17 @@
   (require 'init-misc)  ;; comment for replace-string
   ;; (require 'init-hydra) ;; 不知道这个会影响哪些功能  
   (require 'init-autopair) 
-  
-  (require 'init-sis) 
-                                        ;(require 'init-python-mode)
-                                        ;(require 'init-auto-complete)
+;  (require 'init-sis) 
   (require 'pangu-spacing)
   (require 'expand-region)
   (require 'init-protobuf-mode)
-<<<<<<< HEAD
- (require 'init-pyim) ;; 这个东西，一时半会儿可能还弄不出来，先放一下
-  ;; (require 'init-company) ;;; 不喜欢它老是跑出一大堆的路径相关的,不方便,暂时不同这个模式
-=======
+;;  (require 'init-pyim) ;; 这个东西，一时半会儿可能还弄不出来，先放一下
+;;   ;; (require 'init-company) ;;; 不喜欢它老是跑出一大堆的路径相关的,不方便,暂时不同这个模式
   (require 'init-pdf-tools) ;;;; 我并没有使用这个
 ;  (require 'init-org-noter-pdftools)
   ;; (require 'init-company) ;;; 不喜欢它老是跑出一大堆的路径相关的,不方便,暂时不同这个模式
   (require 'init-csharp-mode) 
   (require 'swift-mode) ;;; C-j C-i 容易被其它模式重写 ？
->>>>>>> d1b6518fdc5141d410372dca490fb0c5bab2a2c8
   )
 
 ;;;; for one-dark-pro like visual studio theme
@@ -425,22 +414,6 @@
 (add-hook 'latex-mode-hook 'ac-latex-mode-setup)
 
 
-<<<<<<< HEAD
-(add-to-list 'load-path "C:/Users/blue_/AppData/Roaming/.emacs.d/wubi")
-(require 'wubi)
-(wubi-load-local-phrases) ; add user's Wubi phrases
-(register-input-method
- "chinese-wubi" "Chinese-GB" 'quail-use-package
- "WuBi" "WuBi"
- "wubi")
-(if (< emacs-major-version 25)
-    (setup-chinese-gb-environment)
-  (set-language-environment 'Chinese-GB))
-(setq default-input-method "chinese-wubi")
-=======
-
->>>>>>> d1b6518fdc5141d410372dca490fb0c5bab2a2c8
-
 ;;; key bindings of WuBi
 (global-set-key [?\C-+] 'add-wubi)
 (global-set-key [?\C--] 'del-wubi)
@@ -487,28 +460,29 @@
 ;;                        (flyspell-mode t)))
 
 
-(require 'ido-ubiquitous)
-(require 'undo-tree)
-(global-undo-tree-mode)
+;; (require 'ido-ubiquitous)
+;; (require 'undo-tree)
+;; (global-undo-tree-mode)
 
-;;; require ido-ubiquitous
-(require 'ido)
-(require 'ido-ubiquitous) ; replaces ido-everywhere
+;; ;;; require ido-ubiquitous
+;; (require 'ido)
+;; (require 'ido-ubiquitous) ; replaces ido-everywhere
 
-;;; ido-mode
-(ido-mode t)
+;; ;;; ido-mode
+;; (ido-mode t)
 
-;;;; flx-ido
-(require 'flx-ido)
-(flx-ido-mode t)
+;; ;;;; flx-ido
+;; (require 'flx-ido)
+;; (flx-ido-mode t)
+
 ;; disable ido faces to see flx highlights.
 (setq ido-use-faces nil)
 ;; increase garbage collection threshold
 (setq gc-cons-threshold 20000000)
 
-(require 'ido)
-(ido-mode)
-(define-key (cdr ido-minor-mode-map-entry) [remap write-file] (kbd "C-x C-w"))
+;; (require 'ido)
+;; (ido-mode)
+;; (define-key (cdr ido-minor-mode-map-entry) [remap write-file] (kbd "C-x C-w"))
 
 
 (defun soft-wrap-lines (boo)
@@ -587,7 +561,7 @@
 ;; '(default ((t (:family "Inconsolata-dz for Powerline" :foundry "outline" :slant normal :weight normal :height 98 :width normal))))
 ;; (set-fontset-font "fontset-default" 'unicode '("Inconsolata-dz for Powerline" . "unicode-otf"))
 
-(set-face-attribute 'default nil :font "Inconsolata_dz")
+(set-face-attribute 'default nil :font "Inconsolata-dz")
 ;; (set-face-attribute 'default nil :font "Fira Code Retina")
 ;; (font-spec :family "Iosevka Term" :size 16 :otf '(latn nil (dlig) nil)) ;;; 是我用来参考的
 ;; (set-face-attribute 'default nil :font "Inconsolata-dz" :otf '(latn nil (dlig) nil))
@@ -613,7 +587,7 @@
 
 
 ;;;; 加载snippets 的接口
-(add-hook 'emacs-startup-hook (lambda () (yas-load-directory "/Users/hhj/.emacs.d/snippets/")))
+(add-hook 'emacs-startup-hook (lambda () (yas-load-directory "C:/Users/blue_/AppData/Roaming/.emacs.d/snippets/")))
 
 
 (custom-set-variables
@@ -628,13 +602,11 @@
  '(custom-enabled-themes '(atom-one-dark))
  '(custom-safe-themes
    '("0c860c4fe9df8cff6484c54d2ae263f19d935e4ff57019999edbda9c7eda50b8" "f490984d405f1a97418a92f478218b8e4bcc188cf353e5dd5d5acd2f8efd0790" "28a104f642d09d3e5c62ce3464ea2c143b9130167282ea97ddcc3607b381823f" default))
- '(default-input-method "pyim")
  '(display-time-mode t)
  '(fci-rule-color "#dedede")
  '(git-gutter:handled-backends '(svn hg git))
  '(latex-run-command "latex --shell-escape")
  '(line-spacing 0.1)
- '(menu-bar-mode nil)
  '(nxml-slash-auto-complete-flag t)
  '(org-export-with-sub-superscripts nil)
  '(org-format-latex-options
@@ -681,7 +653,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#282C34" :foreground "#ABB2BF" :inverse-video nil :box nil :strike-through nil :extend nil :overline nil :underline nil :slant normal :weight normal :height 141 :width normal :foundry "nil" :family "Inconsolata_dz"))))
+ '(default ((t (:inherit nil :stipple nil :background "#282C34" :foreground "#ABB2BF" :inverse-video nil :box nil :strike-through nil :extend nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "outline" :family "Inconsolata-dz for Powerline"))))
  '(cursor ((t (:background "orchid"))))
  '(hi-blue-b ((t (:foreground "systemBlueColor" :weight bold))))
  '(hi-salmon ((t (:background "NavajoWhite1" :foreground "gray0"))))
