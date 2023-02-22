@@ -1,0 +1,5 @@
+# contributor: deepwaterooo
+# name: SetParent()
+# key: sp
+# --
+SetParent($1)$0

@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: (go).SetActive(true);
+# key: st
+# --
+$1.SetActive(true);
+$0

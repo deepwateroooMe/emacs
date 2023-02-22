@@ -1,0 +1,6 @@
+# contributor: deepwaterooo
+# name: Log.d
+# key: dl
+# --
+Log.d(TAG, "${1:func}() $2");
+$0

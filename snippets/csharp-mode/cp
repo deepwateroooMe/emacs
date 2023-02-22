@@ -1,0 +1,6 @@
+# contributor: deepwaterooo
+# name: Console.WriteLine()
+# key: cp
+# --
+Console.WriteLine("$1");
+$0

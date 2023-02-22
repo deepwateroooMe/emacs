@@ -1,0 +1,6 @@
+# contributor: deepwaterooo
+# name: Console.WriteLineNoTag(v + v)
+# key: ct
+# --
+Console.WriteLine(" $1 = " + $1);
+$0

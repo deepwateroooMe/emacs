@@ -1,0 +1,6 @@
+# contributor: deepwaterooo
+# name: TAG
+# key: tag
+# --
+private final String TAG = "${1:Obj}";
+$0

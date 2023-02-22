@@ -1,0 +1,5 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: Debug.Log(StringArray)
+# key: pas
+# --
+Debug.Log(string.Join(", ", $1));$0

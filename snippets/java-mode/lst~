@@ -1,0 +1,4 @@
+# name: lastOccuranceToEndOfFileContents
+# key: lst
+# --
+tac log1.log | awk '!flag; /$1/{flag = 1};' | tac > cur.log$0

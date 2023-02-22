@@ -1,0 +1,6 @@
+# contributor: deepwaterooo
+# name: Console.WriteLine(v + v)
+# key: cv
+# --
+Console.WriteLine(TAG + " $1 = " + $1);
+$0

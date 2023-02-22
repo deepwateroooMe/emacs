@@ -1,0 +1,4 @@
+# name: firstOccuranceToEndofFile
+# key: ak
+# --
+cat log1.log | awk '/$1/,0' > $0

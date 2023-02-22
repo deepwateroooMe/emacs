@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: ss
+# key: ss
+# --
+#+BEGIN_SRC csharp
+$0#+END_SRC
+

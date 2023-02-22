@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: The Judge
+# key: tj
+# --
+*The Judge:* $0

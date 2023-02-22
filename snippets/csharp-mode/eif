@@ -1,0 +1,5 @@
+# contributor: deepwaterooo
+# name: EventManager.Instance.FireEvent("type")
+# key: eif
+# --
+EventManager.Instance.FireEvent("$1"$2);$0

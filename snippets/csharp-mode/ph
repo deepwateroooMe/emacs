@@ -1,0 +1,6 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: PoolHelper.
+# key: ph
+#${1:root}.levelPrintTree($1);
+# --
+PoolHelper.$0

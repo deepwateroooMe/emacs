@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: companion object
+# key: co
+# --
+companion object {
+    $0
+}

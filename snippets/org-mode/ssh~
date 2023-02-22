@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: s-shell
+# key: ssh
+# --
+#+BEGIN_SRC shell
+$1#+END_SRC
+$0

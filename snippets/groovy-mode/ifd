@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: implementation fileTree
+# key: ifd
+# --
+implementation fileTree(dir:'libs', include: ['*.jar'])$0

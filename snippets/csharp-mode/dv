@@ -1,0 +1,6 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: Debug.LogVariableNoFunc
+# key: dv
+# --
+Debug.Log(TAG + " ${1:var}: " + $1);
+$0
