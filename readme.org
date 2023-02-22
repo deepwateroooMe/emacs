@@ -3,11 +3,60 @@
 #+author: deepwaterooo
 
 * Updates 
+** emacs 1 initiliation bug
+- TODO: 需要将其配置到 arm64-arch 【爱表哥，爱生活！！！】
+- 昨天转词库感觉到旧版本的 emacs 可能还是存在各种性能问题，面将其升级到 28.2. 
+- emacs 27.1 for emacs-rime input methods. one bug to be fixed. 
+
+ [[./pic/readme_20230214_134351.png]]
+- this affect me access to current terminal, needs to be fixed later. 
+** configue pyim wubi input method emacs-rime, works like a charm!
+- 现在最大的缺点是：我无法使用自已魔改过的个性化字库，姓名住圵等等，活宝妹，亲爱的表哥，等等。但其它也算是基本清单了，再不折腾它了。花了太多的时间在这个上面。所以现在输入法还算是基本清单的。
+  - 两套：系统的，与 emacs 里自带的。目前的中英文转换只使用一个探针，过多会存在过灵的总是，某些情况下被禁用中文，就会更麻烦，不如它没有那么灵。爱亲爱的表哥，活宝妹一定要嫁的亲爱的表哥！！！
+- 它具备以空格来区分中英文输入法的功能，但不能与中文下半角配合使用。也就是，它具备了我现在所使用过的 sis 下的自动中英文之间以一个空格为单位自动切换，但我无法使用中文下半角标点。
+- 它除了使用了系统输入法的字库，其它所有好用的配置一个也不能用（我只能拦截一个最常用的半角，仍然是不方便的），现在只是可以选詞了而已，却不能使用其它中文下输入英文标点符号等 
+- 我中文下使用英语标点：主要是 org-mode 打头的 -*. 等，它可以检测到，自动化到，还是方便的
+** configuration for pdf-tools packages
+
+   [[./pic/mememe2.png]]
+- pdf viewer noter <==> Skim bi-directional linking configuration on the way, most emacs work is done. Need to learn how to use them though. 
+
+[[./pic/Snipaste_2023-02-11_20-57-40.png]]
+- It has to be configured for M1. But I am still not getting any .tar file yet. 
+
+  [[./pic/Snipaste_2023-02-11_22-20-25.png]]
+- could customer F5 toggle sr-speedbar, and make sis-mode work. But I do NOT really need sis-mode, only needed macism command line. to help [LOVE MY DEAR COUSIN!!!]
+
+[[./pic/readme_20230210_221127.png]]
+- finally sync up with csharp-mode with tree-sitter, and fixed added the other's that gio-mode etc. 
+- Permanently diabled speedbar-edit-file's set-timer function call from Resource files. Do NOT want to see such a bug, don't know how to fix, but disable it and walk around. 
+- Now have a relatively barable and stable colorful emacs code editor now, at least for csharp-mode. Relatively satisfied now. Could sit it aside for a while now to focus on projects.
+** invalid time specification: sr-speedbar on MacOS
+- I don't like this bug, and I belive I do NOT really using any timer for auto-refresh in my speedbar. So I ended up by disabling the (speedbar-edit-file() func, which is frequently bug trigered) setting timer part from /Applications/Emacs.app/Contents/Resources/lisp/speedbar.el.gz, and recompile the file. The bug was gone. And I could deal with csharp-mode's fontify bug. 
+- newer debugging infos, concernibg about sr-speedbar.el file. Have NOT been able to trace down for today. 
+
+[[./pic/readme_20230209_135039.png]]
+- 好像是macOS系统常常存在的 bug,两年了关了又开，开了再关......
+- https://github.com/remacs/remacs/issues/845
+- get cmake work later, not urgent though.Complete
+- babel org-mode so I don't have to copy from specific babeled source org-mode files in order for chinese characters to work. 
+- Installed my emacs of version 28.1. But there is a bug of any verison emacs > 27.1, and I am NOT able to find a installable emacs 27.1 version any more. 
+- 不同电脑架构上可能因为架构的不同，可以可能可以有某些优化.又照一个单做了一遍，似乎没有出错. https://goykhman.ca/gene/blog/2022/2022-04-10-emacs-28.1-on-m1.html
+- 但是我没有没能加入那个补丁包.暂时没能想好怎么加入那个补丁包. （ *todo： 改天可以尝试再把这个补丁包加进去* ）
+- 因为构建是在原有现有的 mac 28.1.1版本上构建的.所以改动什么，或是不曾改变，又或者改不了不影响明显功能都是无从知晓的，但是它最后的两个步骤的验证都是成功的，应该还是构建成功了吧？
+  
+[[./pic/readme_20230208_142554.png]]
+- 今天又尝试安装Xcode之后再构建一遍，但是没有成功.可能本身参考有些年代，另外自己还完全不通这个部分，所以暂时放一放.改天有机会可以再回来研究一下，错在哪里，我如何才可能构建出自己的版本. 
+
+[[./pic/readme_20230208_102317.png]]
+- 上面又成为一个需要改的东西： 就是系统下如何从剪贴板自动生成写入文件 org-mode M-s
+- 然后看见这里说可以自己构建一个，连Xcode也没有安装，就跑去构建了，当然不成功。这段时间太忙，XCode要的空间太大了，暂时还不想。等改天有机会的时候倒是可以一试的
+  - https://stuff-things.net/2020/12/28/building-emacs-27-dot-1-on-macos-big-sur/
 - added key-bindings for opening from VSCode/Android Studio of current emacs buffer. 
-  - VSC Emacs can locate to each other to correct row and col. 
+  - VSC Emacs can locate to each othr to correct row and col. 
   - Android Studio could open current emacs buffer. but not to the row nor col. 
 - I liked recently configued Visual studio 2019 one-dark-pro theme, want to configue it for emacs, but ended up with any permission denied, renaming emacs initiating bug. reverted back for daily use, and may look into that bug for later reference. 
-- will reconfigure one-dark-pro theme later. 
+- will reconfigure one-dark-pro theme later.  
 - fixed legency java-mode highlighing issue which I did not fix for years. Has been able to treat java-mode as java-mode Instead of using it as csharp-mode. Can not separate java-mode snippets from csharp-mode's.  
 ** BUG statement and partial fix
 - in java-mode, the code style I expected is as followed:
@@ -47,73 +96,16 @@ fun dslfkj { // kotlin-mode, unlike java-mode, this feature works charming
         - The {|} can NOT auto-expand still bugs me a lot, I don't want to switch back to java-mode yet unless bug fixed and it auto-pands.
         - java minor bug: Debugger entered--Lisp error: (void-function company-clear-completion-rules): this bug I will look into it recently, and expect it to be fixed so I could switch java-mode from csharp-mode as soon as possible.
 - *csharp-mode* has been the one that works perfectly for these two features, {} auto expand, also if while one line statement autoindent without {}, so I used csharp-mode as java mode.
-** so far let it be this way
-- Spent a whole day, half fixed the bug in the morning, but has broke java-mode completely and had to pull request from github once again. 
-- I actually cannot stay kotlin-mode insdie csharp's, look at following indent:
-#+BEGIN_SRC kotlin
-public fun thread(start: Boolean = true,
-                  isDaemon: Boolean = false,
-                  contextClassLoader: ClassLoader? = null,
-                  name: String? = null,
-                  priority: Int = -1,
-                  block: () -> Unit
-                  ): Thread {
-    val thread = object : Thread() {
-        public override fun run() {
-            block()
-        }
-    }
-    if (isDaemon) thread.isDaemon = true
-                      if (priority > 0) thread.priority = priority
-                                            if (name != null) thread.name = name
-                                                                  if (contextClassLoader != null) thread.contextClassLoader = contextClassLoader
-                                                                                                      if (start) thread.start()   
-                                                                                                                     return thread
-#+END_SRC
-- cause csharp-mode does not have ';' !!! so kotlin-mode stay as designed, I will have to bear the bug till I search and find good solutions.
-- Recently I have used csharp-mode less, so temportorily let java-mode and kotlin-mode stay inside csharp's for a while. And I only want to practise kotlin to get a comfortable level referring github android projects. So once I get familiar, i still mainly using java-mode insides csharp's, which could be Ok, untill I get a job, and finally settle down to work on java-mode and {|} auto-expandsion bug.
-
-- today's 
-- will only update this repository when there is a need. emacs version 27.01 27.02
-- working on leetcode interview questions, so have not configued any JDK IDE within emacs nor from csharp-mode, only take full advantage of emacs snippets for java algorithm problems coding. Uploaded so far some frequently used snippets for my own references. 
-- having not update this one for a while. pseudo-name .java jave-mode inside csharp-mode so that I can skip some pairs of { }-s
-- java-mode csharp-mode file organiation scripts update
-- Unhighlight leading or trailing whitespace
-- org-move-tree make it slightly easier than before for manipulating small org files, and followed by integrating into one book file, and export into one pdf book. Seek for auto-updating integrated book file according to small chapter file updates later on when get spare time.
-- fixed emacs org-mode export to pdf broken environment for personal laptop. 
-- configured company jedi environment for python3.
-- Adding snippets for csharp-mode when debugging unity games.
-- Remove not frequently used bothering commands from syslog-mode, and define simplified customized macro command for android SDK log analysis. 
-- *Enhanced syslog-mode*, with simplified textile-mode feature integrated for personal debugging log viewing propose. Will continuously improve relative features. 
-- logview-mode, log4j-mode, syslog-mode, in progress, so far only syslog-mode works, needs to combine textile-mode functions/hooks.
-- textile-mode for android logs;
-- sr-speedbar set fixed hight and width cater to current project file names length;
-- fixed previously existing tab cannot indent line and region problem;
-- company mode works convenient and as I expected;
-- C-c f formating files according to needs. Fix minor bugs for java python csharp-mode swift-mode auto complete.
-- clean auto-complete-mode, made repository more consistant.
-- csharp-mode: fixed minor bugs for autopairing, as well as expand {} for function scope.
-- swift-mode using swift3
-- org-mode src code highlight is on, just I forgot to specify language before.
-- emacs key-bound for mac keyboard, so that it would be convenient for me to type some specific keys. 
-  - exchanged the position of ^Control and Capslock;
-  - exchanged the position of Option and Command keys;
-  - through mac system preference.
-  - I tried this yesterday, but after having used window's keyboard for all these years for emacs, it is still very difficult to get used to the mac keyboard even after key exchanges. 
-  - changed keyboard today actually so that I could type more conveniently. 
-- other major-modes, for example: *java-mode*, *csharp-mode*, which I would need to use pretty soon, is ready for use now (auto-complete + yasnippet etc). 
-- All the minor warnings, warning messages when starting emacs, modes fixes are all fixed, a clean Emacs open ready for work. 
-
-* starting point
-- It is a new computer, and I did try to git clone from my own repository to new laptop, but after fixed errors and tried, *I promise I do NOT and can NOT bare the out-dated emacs 22.X any more, I have to move on.* I have to install newer versions for my own later on convenience. 
-- Instead of configuring my own again, this time, I tried from some "big" person's repository and try to make it work on my laptop (fixing errors, installing necessary packages etc), as well as comment out some complicated modes and customization so that I would still be able to use and like my current emacs interface.
-- It is the first time I tried from some big person's (or any person's configurature completely), it was tidious to fix all the errors at beginning (I spent more than 2 days on it last week. For me it just took too much time), but so far I like some of the features that had been annoying me before, but I have not and was not able to find good solutions to solve it, like how to auto-complete words when in scripte comment line or in quotes. I like these detailed features which I did try by writing my own snippets from yasnippet mode before. 
-- So far, org-mode is not perfect, but it is a fully functional one that I could use and help convenient a game developer's daily work. 
-- Will devote more time to understand emacs better, and to solve my own problems and make it more convenient for me to use when I need some specific features. 
-  
-* TODOs
-- get cmake work later, not urgent though.
-- babel org-mode so I don't have to copy from specific babeled source org-mode files in order for chinese characters to work. 
-
 * References
 - https://github.com/redguardtoo/emacs.d
+
+亲爱的亲爱的表哥，活宝妹一定要嫁的亲爱的表哥！！！
+我今天晚上找到狠多我感觉很有兴趣的框架
+明天上午会好好读源码
+中午下午傍晚会试着写更多的小游戏或写服务器相关的C# 。NET 项目
+
+爱亲爱的表哥，活宝妹一定要嫁的亲爱的表哥！！！
+爱生活
+活宝妹就是一定要嫁给亲爱的亲爱的表哥，活宝妹一定要嫁的亲爱的表哥！！！
+爱亲爱的表哥，活宝妹一定要嫁的亲爱的表哥！！！
+爱生活！！！

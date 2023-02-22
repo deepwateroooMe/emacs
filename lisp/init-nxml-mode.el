@@ -11,6 +11,7 @@
                 ("\\.htm" . nxml-mode)
                 ("\\.html" . nxml-mode)
                 ("\\.xml" . nxml-mode)
+                ("\\.xaml\\'" . nxml-mode)
                 ("\\.xsl" . nxml-mode)
                 ("\\.fo" . nxml-mode)
                 ("\\.csproj" . nxml-mode)

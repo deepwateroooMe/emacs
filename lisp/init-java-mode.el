@@ -27,9 +27,16 @@
                                nil
                                (concat "I:/selfSoft/AndroidStudio_3.17/bin/studio64.exe "
                                         (buffer-file-name))))
+;;; 是好用，但仍然是需要分不同的mode 的
+(fset 'cmt
+      (kmacro-lambda-form [f4 ?\C-x ?1 ?  ?/ ?/ ?  ?\M-x ?s ?i ?s ?- ?s ?e ?t ?- ?o ?t ?h ?e ?r return] 0 "%d"))
+(put 'cmt 'kmacro t)
+
 (add-hook 'java-mode-hook
           (lambda ()
-            (local-set-key (kbd "C-c v") 'java/vscode-current-buffer-file-at-point)))
+            (local-set-key (kbd "C-c v") 'java/vscode-current-buffer-file-at-point)
+            (local-set-key (kbd "C-j") 'cmt)
+            ))
 
 
 ;;;for java-mode ; {} auto-expand

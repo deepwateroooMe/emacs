@@ -1,4 +1,4 @@
-;;; org-mode
+;; org-mode
 (global-linum-mode 1)
 (setq load-path (cons "C:/Users/blue_/AppData/Roaming/.emacs.d/elpa/org-20140901/" load-path))
 (require 'ox)
@@ -28,10 +28,63 @@
 (defun org/shift-left ()
   (interactive)
   (shift-region -2))
+
+
+;;; 这里简单配置一下下划线与加粗字体的显示格式；
+(require 'cl)   ; for delete*
+(setq org-emphasis-alist
+      (cons '("+" '(:strike-through t :foreground "gray"))
+            (delete* "+" org-emphasis-alist :key 'car :test 'equal)))
+(setq org-emphasis-alist
+      (cons '("*" '(:emphasis t :foreground "#00ffff")) ;; 1e90ff
+            (delete* "*" org-emphasis-alist :key 'car :test 'equal)))
+
+
+;; ;;; automated file-name-directory for current buffer , for windows, 使用powershell 
+;; (defun my-org-screenshot ()
+;;   "Take a screenshot into a time stamped unique-named file in the
+;; same directory as the org-buffer and insert a link to this file."
+;;   (interactive)
+;;   (let* ((powershell (executable-find "powershell.exe"))
+;;          (basename (format-time-string "%Y%m%d_%H%M%S.png"))
+;;          (filename (concat (file-name-base (buffer-file-name))
+;;                            "_"
+;;                            basename))
+;;          (winFilePathName (expand-file-name (concat "pic/" filename) (file-name-directory buffer-file-name)))
+;;          (file-path-wsl (concat "./pic/" filename)))
+;; ;;; 必须先用第三方软件将截图复制到剪贴板，再调用这个命令自动生成图片和插入到org文件中，不是全自动
+;; ;;; (需要手动F1调用Snipaste[截图+自动复制到剪贴板，再emacs org 里C-i完成自动化，得两个步骤)；但仍差强人意
+;;     (shell-command (concat powershell " -command \"(Get-Clipboard -Format Image).Save(\\\"" winFilePathName "\\\")\""))
+;;     (org-indent-line)
+;;     (insert (concat "\n[[" file-path-wsl "]]"))))
+(defun my-org-screenshot () ;;; for mac: automated process, 
+  "Take a screenshot into a time stamped unique-named file in the
+    same directory as the org-buffer and insert a link to this file."
+  (interactive)
+  ;; (start-process "Snipaste" nil nil nil) ;;; 这一步主要目标是： 有时候Snipaste没有打开，这里确保截屏程序打开在运行，这里仍然不对，调用得可能太晚，第一次仍会失败，如果没有开启的话，但保证下一步执行成功
+  (let* ((basename (format-time-string "%Y%m%d_%H%M%S.png"))
+         (filename (concat (file-name-base (buffer-file-name))
+                           "_"
+                           basename))
+         ;; (winFilePathName (expand-file-name (concat "pic/" filename) (file-name-directory buffer-file-name))) ;;; absolute directory for windows, don't like in mac
+;;; 这里想要检查一下./pic文件夹是存在，如果不存在，创建文件夹
+         (file-path-wsl (concat "./pic/" filename))
+         (outdir (concat (file-name-directory (buffer-file-name)) "/pic")))
+    (unless (file-directory-p outdir)
+      (make-directory outdir t))
+    (shell-command (concat "pngpaste " file-path-wsl))
+    (org-indent-line)
+    (insert (concat "\n[[" file-path-wsl "]]"))))
+;;; global-set-key: producing side bugs for csharp-mode & java-mode whoever uses C-i commands .......
+;; (global-set-key (kbd "C-i") 'my-org-screenshot) ;;; 今天终于明白了这个C-i是好用，但是在csharp-mode java-mode过程中因为使用到C-i【不知道为什么】会错配到org-mode中的这个合集
+
 (add-hook 'org-mode-hook
           (lambda ()
             (local-set-key (kbd "<C-S-left>") 'org/shift-left)
-            (local-set-key (kbd "<C-S-right>") 'org/shift-right)))
+            (local-set-key (kbd "<C-S-right>") 'org/shift-right)
+;;;;; auto paste and generate .png image file from clipboard-yank
+            (local-set-key (kbd "C-i") 'my-org-screenshot)
+            ))
 
 
 ;;; target: apply atom-one-dark color-theme before org-export into pdf for more colorful source code syntax highlighting
@@ -78,25 +131,25 @@
 
 ;;; 因为陈桥全角半角符号容易失控,写* - 很容易写成全角,所以改成两个 键操作 减少 误操作
 ;;; // comment for csharp-mode
-(fset 'cmt
-      (kmacro-lambda-form [?\C-x ?1 ?  ?- ? ] 0 "%d"))
-(global-set-key (kbd "C-j") 'cmt) ;;; 不想再设置全局,因为不同mode下会有不同的实现
-(put 'cmt 'kmacro t)
-;; (eval-after-load 'csharp
-;;   '(define-key csharp-mode-map [(C-j)] 'cmt))
-(fset 'cmtitem
-      (kmacro-lambda-form [?\C-x ?1 ?* ] 0 "%d"))
-;;;; BUG: 这里有个副作用:把我的csharp-mode C-c f多加了一个＊(应该是由C-i在f  macro中引起的，改掉了)，需要去除
-(global-set-key (kbd "C-m") 'cmtitem) ;;; 不想再设置全局,因为不同mode下会有不同的实现
-(put 'cmtitem 'kmacro t)
-
+;; (fset 'cmtorg
+;;       (kmacro-lambda-form [?\C-x ?1 ?  ?- ? ] 0 "%d"))
+;; (put 'cmtorg 'kmacro t)
+;; (global-set-key (kbd "C-j") 'cmtorg) ;;; 会把这个键组合抢去，影响他们使用
+;; (fset 'cmtitem
+;;       (kmacro-lambda-form [?\C-x ?1 ?* ] 0 "%d"))
+;; ;;;; BUG: 这里有个副作用:把我的csharp-mode C-c f多加了一个＊(应该是由C-i在f  macro中引起的，改掉了)，需要去除
+;; (put 'cmtitem 'kmacro t)
+;; (global-set-key (kbd "C-m") 'cmtitem) ;;; 不想再设置全局,因为不同mode下会有不同的实现
 
 (defun org-show-two-levels ()
   (interactive)
   (org-content 3))
 (add-hook 'org-mode-hook
           (lambda ()
-	    (global-set-key (kbd "C-c m") 'org-show-two-levels))) ; very useful
+	        (local-set-key (kbd "C-c m") 'org-show-two-levels)
+	        ;; (local-set-key (kbd "C-j") 'cmtorg)
+            ;; (local-set-key (kbd "C-m") 'cmtitem) ;;; 不想再设置全局,因为不同mode下会有不同的实现
+            )) ; very useful
 
 (setq org-link-file-path-type 'relative)
 
@@ -129,7 +182,8 @@
                     charset
                     ;; (font-spec :family "WenQuanYi Micro Hei Mono" :size 12))) 
                     ;; (font-spec :family "Sarasa Mono Slab SC Semibold" :size 12))) 
-                    (font-spec :family "SimHei" :size 12)))
+                    ;; (font-spec :family "STHeiti" :size 12)))
+                    (font-spec :family "PingFang SC" :size 12)));; 换个字体试一下，是否会有加粗效果
 ;; '(default ((t (:inherit nil :extend nil :stipple nil :background "#181a26" :foreground "gray80" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight semi-bold :height 113 :width normal :foundry "outline" :family "Sarasa Mono Slab SC Semibold"))))
 
 ;; (When (member "Monaco" (font-family-list))
@@ -154,27 +208,7 @@
       '(("" "graphicx" t)
         ("" "longtable" nil)
         ("" "float" nil)))
-;;; automated file-name-directory for current buffer
-(defun my-org-screenshot ()
-  "Take a screenshot into a time stamped unique-named file in the
-same directory as the org-buffer and insert a link to this file."
-  (interactive)
-  (let* ((powershell (executable-find "powershell.exe"))
-         (basename (format-time-string "%Y%m%d_%H%M%S.png"))
-         (filename (concat (file-name-base (buffer-file-name))
-                           "_"
-                           basename))
-         (winFilePathName (expand-file-name (concat "pic/" filename) (file-name-directory buffer-file-name)))
-         (file-path-wsl (concat "./pic/" filename)))
-;;; 必须先用第三方软件将截图复制到剪贴板，再调用这个命令自动生成图片和插入到org文件中，不是全自动
-;;; (需要手动F1调用Snipaste[截图+自动复制到剪贴板，再emacs org 里C-i完成自动化，得两个步骤)；但仍差强人意
-;;; 文件的自动保存地址，需要再自动化一下到当前文件所在的目录
-    (shell-command (concat powershell " -command \"(Get-Clipboard -Format Image).Save(\\\"" winFilePathName "\\\")\""))
-    (org-indent-line)
-    (insert (concat "\n[[" file-path-wsl "]]"))))
-;; (global-set-key (kbd "C-i") 'my-org-screenshot)
-(global-set-key (kbd "M-s") 'my-org-screenshot)
-    
+
 
 (add-hook 'org-mode-hook 'turn-on-font-lock)
 (add-hook 'org-mode-hook
@@ -184,7 +218,7 @@ same directory as the org-buffer and insert a link to this file."
       (setq org-startup-truncated nil)
       ;; (soft-wrap-lines t) ;;; this one works
       ;; (auto-fill-mode 1) ;;; org里直线容易折断
-      (gio-global-minor-mode 0) ;;; 这个会 break 掉 org-level-faces,暂时把它关掉
+      ;; (gio-global-minor-mode 0)
       (linum-mode 1)
       ))
 ;; (setq org-startup-truncated nil)
@@ -310,19 +344,21 @@ same directory as the org-buffer and insert a link to this file."
                ("\\paragraph{%s}" . "\\paragraph*{%s}")
                ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
+;; \\newcommand{\\MintedPygmentize}{/Users/hhj/Library/Python/3.9/bin/pygmentize}
 ;; \\usepackage[UTF8]{ctex}
-;; \\newminted{common-lisp}{fontsize=\footnotesize} ;; scriptsize
-;; \\usepackage{xltxtra}
-;; \\usepackage{bera}
+;; \\SetCJKmainfont{PingFangSC-Regular}
+;; \\setmainfont{Arial}
 (add-to-list 'org-latex-classes
              '("cn-article"
                "\\documentclass[9pt, b5paper]{article}
 \\usepackage{xeCJK}
-\\usepackage{minted}
 \\usepackage[T1]{fontenc}
+\\usepackage{bera}
 \\usepackage[scaled]{beraserif}
 \\usepackage[scaled]{berasans}
 \\usepackage[scaled]{beramono}
+\\usepackage[cache=false]{minted}
+\\usepackage{xltxtra}
 \\usepackage{graphicx}
 \\usepackage{xcolor}
 \\usepackage{multirow}
@@ -335,8 +371,8 @@ same directory as the org-buffer and insert a link to this file."
 \\usepackage{natbib}
 \\usepackage{geometry}
 \\geometry{left=1.2cm,right=1.2cm,top=1.5cm,bottom=1.2cm}
-\\newminted{common-lisp}{fontsize=\\footnotesize} 
 \\usepackage[xetex,colorlinks=true,CJKbookmarks=true,linkcolor=blue,urlcolor=blue,menucolor=blue]{hyperref}
+\\newminted{common-lisp}{fontsize=\\footnotesize} 
 [NO-DEFAULT-PACKAGES]
 [NO-PACKAGES]"
                ("\\section{%s}" . "\\section*{%s}")
@@ -371,9 +407,9 @@ same directory as the org-buffer and insert a link to this file."
 \\usepackage{natbib}
 \\usepackage{minted}
 \\newminted{common-lisp}{fontsize=\\footnotesize}
-\\usepackage[xetex,colorlinks=true,CJKbookmarks=true,linkcolor=blue,urlcolor=blue,menucolor=blue]{hyperref}
+\\usepackage[xetex,colorlinks=true,CJKbookmarks=true,linkcolor=blue,urlcolor=blue,menucolor=blue]{hyperref} 
 [NO-DEFAULT-PACKAGES]
-[NO-PACKAGES]"
+[NO-PACKAGES]" 
                ;; ("\\part{%s}" . "\\part*{%s}")
                ("\\chapter{%s}" . "\\chapter*{%s}")
                ("\\section{%s}" . "\\section*{%s}")
@@ -514,10 +550,12 @@ same directory as the org-buffer and insert a link to this file."
           (lambda () (text-scale-increase 3)))
 
 ;for latex
-(setenv "PATH" (concat (getenv "PATH") "I:/selfSoft/texlive/texlive/bin/win32"))
-(setq exec-path (append exec-path '("I:/selfSoft/texlive/texlive/bin/win32")))
-(setenv "PATH" (concat (getenv "PATH") "C:/Users/blue_/OneDrive/Desktop"))
-(setq exec-path (append exec-path '("C:/Users/blue_/OneDrive/Desktop")))
+(setenv "PATH" (concat (getenv "PATH") "/usr/local/texlive/2022basic/bin/universal-darwin"))
+(setq exec-path (append exec-path '("/usr/local/texlive/2022basic/bin/universal-darwin")))
+;;; for pygmentize
+(setenv "PATH" (concat (getenv "PATH") "/Users/hhj/Library/Python/3.9/bin"))
+(setq exec-path (append exec-path '("/Users/hhj/Library/Python/3.9/bin")))
+
 
 ;; (add-to-list 'exec-path "C:/Program Files (x86)/Aspell/bin/")
 (add-to-list 'exec-path "C:/msys64/mingw64/bin/")

@@ -1,5 +1,6 @@
-;;; ### Speedbar ###
+;;;;;; ### Speedbar ###
 (require 'sr-speedbar)
+(require 'sis) ;;; for extracting curretn input-source
 
 (setq speedbar-use-images nil)       ; Turn off the ugly icons
 ;; (setq sr-speedbar-right-side nil)    ; Left-side pane
@@ -18,23 +19,26 @@
   "Speedbar face for symlinked filenames."
   :group 'speedbar-faces)
 
-(make-face 'speedbar-face)
-(set-face-font 'speedbar-face "Fira Code Light-11") ;;; 一堆显示不出来的码
-(setq speedbar-mode-hook '(lambda () (buffer-face-set 'speedbar-faces)))
 
 ;; (custom-set-variables '(speedbar-show-unknown-files t))
-(speedbar-add-supported-extension ".h")
-(add-to-list 'speedbar-fetch-etags-parse-list
- 		     '("\\.h" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".cpp")
-(add-to-list 'speedbar-fetch-etags-parse-list
- 		     '("\\.cpp" . speedbar-parse-c-or-c++tag))
 (speedbar-add-supported-extension ".c")
 (add-to-list 'speedbar-fetch-etags-parse-list
  		     '("\\.c" . speedbar-parse-c-or-c++tag))
+(speedbar-add-supported-extension ".h")
+(add-to-list 'speedbar-fetch-etags-parse-list
+ 		     '("\\.h" . speedbar-parse-c-or-c++tag))
+(speedbar-add-supported-extension ".m")
+(add-to-list 'speedbar-fetch-etags-parse-list
+ 		     '("\\.m" . speedbar-parse-c-or-c++tag))
 (speedbar-add-supported-extension ".cs")
- (add-to-list 'speedbar-fetch-etags-parse-list
+(add-to-list 'speedbar-fetch-etags-parse-list
  		     '("\\.cs" . speedbar-parse-c-or-c++tag))
+(speedbar-add-supported-extension ".go")
+(add-to-list 'speedbar-fetch-etags-parse-list
+ 		     '("\\.go" . speedbar-parse-c-or-c++tag))
+(speedbar-add-supported-extension ".cpp")
+(add-to-list 'speedbar-fetch-etags-parse-list
+ 		     '("\\.cpp" . speedbar-parse-c-or-c++tag))
 (speedbar-add-supported-extension ".xml")
 (add-to-list 'speedbar-fetch-etags-parse-list
  	         '("\\.xml" . speedbar-parse-c-or-c++tag))
@@ -63,7 +67,7 @@
 (add-to-list 'speedbar-fetch-etags-parse-list
  		     '("\\.glsl" . speedbar-parse-c-or-c++tag))
 (speedbar-add-supported-extension ".org")
- (add-to-list 'speedbar-fetch-etags-parse-list
+(add-to-list 'speedbar-fetch-etags-parse-list
  		     '("\\.org" . speedbar-parse-c-or-c++tag))
 (speedbar-add-supported-extension ".md")
 (add-to-list 'speedbar-fetch-etags-parse-list
@@ -77,6 +81,9 @@
 (speedbar-add-supported-extension ".yaml")
 (add-to-list 'speedbar-fetch-etags-parse-list
  		     '("\\.yaml" . speedbar-parse-c-or-c++tag))
+(speedbar-add-supported-extension ".xaml")
+(add-to-list 'speedbar-fetch-etags-parse-list
+ 		     '("\\.xaml" . speedbar-parse-c-or-c++tag))
 (speedbar-add-supported-extension ".sh")
 (add-to-list 'speedbar-fetch-etags-parse-list
  		     '("\\.sh" . speedbar-parse-c-or-c++tag))
@@ -92,6 +99,12 @@
 (speedbar-add-supported-extension ".csproj")
 (add-to-list 'speedbar-fetch-etags-parse-list
  		     '("\\.csproj" . speedbar-parse-c-or-c++tag))
+(speedbar-add-supported-extension ".lua")
+(add-to-list 'speedbar-fetch-etags-parse-list
+ 		     '("\\.lua" . speedbar-parse-c-or-c++tag))
+(speedbar-add-supported-extension ".swift")
+(add-to-list 'speedbar-fetch-etags-parse-list
+ 		     '("\\.swift" . speedbar-parse-c-or-c++tag))
 
 ;; (add-to-list 'speedbar-frame-parameters '(left-fringe . 0)) ; doesn't seem to work
 (setq sr-speedbar-width 35)
@@ -139,28 +152,49 @@
 
 (global-set-key (kbd "<f5>") (lambda()  
                                (interactive)
+ ;;;; 想要实现不止一个步骤:F5之后，如果当前为中文输入法，自动切换为英文输入法
+                               (when (eq (shell-command "macism") "im.rime.inputmethod.Squirrel.Hans")
+;;; TODO: TOGETHER WITH C-J USAGE: 这里使用了它人包裹中的api ，但是没有用全，就是它人包裹接下来还有输入法改变之的光标颜色跟着改变，要么我用错api 了，要么我还需要通知光标跟着改变颜色，才能保持中文输入法一种固定着色，英语输入法一种固定光标着色
+;;; TODO: TO MAKE PYIM INPUT METHOD WORK, FOR AUTO INPUT METHOD SWITCHES, OR RESEARCH ON ONES THIS PACKAGE PROVIDED                                 
+                                 (sis-set-english)) 
 ;;; 如果窗口存在,就切换过去;不存在则打开并切换到浏览窗口,坏处是窗口永远无法关闭                               
                                (if (sr-speedbar-exist-p)
                                    (select-window sr-speedbar-window)
-                                 (sr-speedbar-toggle)
-                                 (sr-speedbar-select-window)
+                                 (sr-speedbar-open)
+                                 (sr-speedbar-select-window) ;;; 暂时去掉这个，可能还会有残存问题，因为自己当初加了这个的
                                  )))
+
+;; (sis-set-other)
+;; (shell-command "macism") ;;;;; -to-string
+
 ;;; 设置为关闭窗口; 填加一个手误功能,当点了F4,
 ;;; 把这个功能失活，C－j好用的键，只在窗口关键下才起作用。但是窗口是关闭的,那么当F5来用,打开窗口并将光标切换到窗口
 (global-set-key [(f4)] (lambda ()
                          (interactive)
-                         (if (sr-speedbar-exist-p)
-                             (sr-speedbar-close)
+                         (when (sr-speedbar-exist-p)
+                           (sr-speedbar-close)
                            ;; (sr-speedbar-open)
                            ;; (sr-speedbar-select-window)
-                           )))
+                           )
+                         ))
+
+
+;;;;; 放在这里的目的：是为了把它统一到一个里面来写，可能才起作用
+(make-face 'speedbar-face)
+(set-face-font 'speedbar-face "Fira Code Light-13") ;;; 一堆显示不出来的码
+;; (setq speedbar-mode-hook '(lambda () (buffer-face-set 'speedbar-face)))
+
 
 ;; (speedbar 1)
 (setq speedbar-mode-hook '(lambda ()
                             (interactive)
-                            (other-frame 0)))
+                            (other-frame 0)
+                            (buffer-face-set 'speedbar-face)
+;;; 试着将它设置为常驻，不停不关掉，只实现两个不同窗口的跳转                            
+                            (sr-speedbar-open)
+                            (sr-speedbar-select-window) ;;; 暂时去掉这个，可能还会有残存问题，因为自己当初加了这个的
+                            ))
 ;; (when window-system          ; start speedbar if we're using a window system
 ;;   (speedbar t))
 
 (provide 'init-sr-speedbar)
-

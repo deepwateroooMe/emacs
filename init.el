@@ -1,50 +1,52 @@
-;;; 下面的启动太慢了；在没有必要的时候不想要它来耽误启动时间 
+;; 下面的启动太慢了；在没有必要的时候不想要它来耽误启动时间
 ;; (require 'package)
 ;; (add-to-list 'package-archives
-;;              '("melpa" . "http://melpa.org/packages/") t)
+;;              '("melpa" . "https://melpa.org/packages/") t)
 ;; (add-to-list 'package-archives
 ;;              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-
 ;; (package-initialize)
 
+<<<<<<< HEAD
 
  (setq default-directory "C:/Users/blue_/AppData/Roaming/.emacs.d/")
 ;; (setq default-directory "/Volumes/e/uMVVM/Assets/Sources/")
 ;; (setq default-directory "/Volumes/e/ILRuntimeHotFix/ILRuntimeU3D/ILRuntimeDemo/Assets/Samples/ILRuntime/1.6.4/Demo/Scripts/Examples")
 ;; (setq default-directory "C:/Users/blue_/App/")
+=======
+(setq debug-on-error t);; 它会无数次地停掉程序，去掉
+>>>>>>> d1b6518fdc5141d410372dca490fb0c5bab2a2c8
 
-;;; setup defaults for all modes
-(setq default-frame-alist
-      ;; '((top . 0)(left . 400)(height . 63)(width . 180)(menubar-lines . 100)(tool-bar-line . 0))
-        '((top . 0)(left . 700)(height . 91)(width . 200)(menubar-lines . 100)(tool-bar-line . 0)) ; ori
-      ) ; tmp.py
+(setq default-directory "/Users/hhj/")
+
+
+;; ;; Bootstrap 'use-package'
+;; (eval-after-load 'gnutls
+;;   '(add-to-list 'gnutls-trustfiles "/etc/ssl/cert.pem"))
+;; (unless (package-installed-p 'use-packsage)
+;;   (package-refresh-contents)
+;;   (package-install 'use-package))
+;; (eval-when-compile
+;;   (require 'use-package))
+;; (require 'bind-key)
+;; (setq use-package-always-ensure t)
+;; ;(debug-on-entry 'package-initialize)    
 
 
 (global-set-key (kbd "M-SPC") 'set-mark-command)
-(menu-bar-mode 1)
- 
-(defvar luna-dumped nil
-  "non-nil when a dump file is loaded (because dump.el sets this variable).")
-
-;; Bootstrap 'use-package'
-(eval-after-load 'gnutls
-  '(add-to-list 'gnutls-trustfiles "/etc/ssl/cert.pem"))
-(unless (package-installed-p 'use-packsage)
-  (package-refresh-contents)
-  (package-install 'use-package))
-(eval-when-compile
-  (require 'use-package))
-(require 'bind-key)
-(setq use-package-always-ensure t)
-
-;(debug-on-entry 'package-initialize)    
 
 (defvar best-gc-cons-threshold 4000000 "Best default gc threshold value. Should't be too big.")
 (setq gc-cons-threshold most-positive-fixnum) ;; don't GC during startup to save time
 
 (setq emacs-load-start-time (current-time))
-;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
-(add-to-list 'load-path (expand-file-name "C:/Users/blue_/AppData/Roaming/.emacs.d/lisp"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
+
+
+;;; setup defaults for all modes
+(setq default-frame-alist
+      ;; '((top . 0)(left . 400)(height . 63)(width . 180)(menubar-lines . 100)(tool-bar-line . 0))
+      '((top . 0)(left . 427)(height . 550)(width . 160)(menubar-lines . 55)(tool-bar-line . 0)) ; ori
+      ) ; tmp.p
+
 
 ;;----------------------------------------------------------------------------
 ;; which functionality to enable (use t or nil for true and false)
@@ -64,12 +66,11 @@
 (setq *emacs24old*  (or (and (= emacs-major-version 24) (= emacs-minor-version 3))
                         (not *emacs24*)))
 
-;; w32-alt-is-meta
-;; w32-lwindow-modifier
-;; and w32-rwindow-modifier
 
-;; (setq mac-option-modifier 'meta)
+;;; for emacs 27.1 specifically ,it does not recognize system key modifier switches 
+(setq mac-option-modifier 'meta)
 ;; (setq mac-right-option-modifier nil)
+
 
 ;; *Message* buffer should be writable in 24.4+
 (defadvice switch-to-buffer (after switch-to-buffer-after-hack activate)
@@ -77,33 +78,30 @@
       (read-only-mode -1)))
 
 
-(defgroup gio-group nil
-  "Group for customization"
-  :prefix "gio-")
-
-(defface gio-highlight-numbers-face
-  '((t :inherit (default)
-       :foreground "#f6546a")) ;;; ori: #ffff00 #fff68f
-  "Face for numbers"
-  :group 'gio-group )
-
-(defvar gio-keywords '(("\\(\\b\\|[-]\\)\\([-]?\\([0-9]+\\)\\(\\.?[0-9]\\)*\\)\\b" . 'gio-highlight-numbers-face)) ;; Integers & Decimals
-  "Keywords for gio-minor-mode highlighting")
-
-(define-minor-mode gio-minor-mode
-  "Minor mode for customization"
-  :init-value 1
-  :lighter " GioMode"
-  :group 'gio-group
-  (when (bound-and-true-p gio-minor-mode)
-    (font-lock-add-keywords nil gio-keywords)
-    (font-lock-fontify-buffer))
-  (when (not (bound-and-true-p gio-minor-mode))
-    (font-lock-remove-keywords nil gio-keywords)
-    (font-lock-fontify-buffer)))
-
-(define-globalized-minor-mode gio-global-minor-mode gio-minor-mode gio-minor-mode :group 'gio-group)
-(gio-global-minor-mode 1)
+;; not stable: sometimes it works, sometimes does not.
+;; (defgroup gio-group nil
+;;   "Group for customization"
+;;   :prefix "gio-")
+;; (defface gio-highlight-numbers-face
+;;   '((t :inherit (default)
+;;        :foreground "#f6546a")) ;;; ori: #ffff00 #fff68f
+;;   "Face for numbers"
+;;   :group 'gio-group )
+;; (defvar gio-keywords '(("\\(\\b\\|[-]\\)\\([-]?\\([0-9]+\\)\\(\\.?[0-9]\\)*\\)\\b" . 'gio-highlight-numbers-face)) ;; Integers & Decimals
+;;   "Keywords for gio-minor-mode highlighting")
+;; (define-minor-mode gio-minor-mode
+;;   "Minor mode for customization"
+;;   :init-value 1
+;;   :lighter " GioMode"
+;;   :group 'gio-group
+;;   (when (bound-and-true-p gio-minor-mode)
+;;     (font-lock-add-keywords nil gio-keywords)
+;;     (font-lock-fontify-buffer)) ;;; 这里会导致csharp-mode里的一些问题
+;;   (when (not (bound-and-true-p gio-minor-mode))
+;;     (font-lock-remove-keywords nil gio-keywords)
+;;     (font-lock-fontify-buffer)))  ;;; 这里会导致csharp-mode里的一些问题
+;; (define-globalized-minor-mode gio-global-minor-mode gio-minor-mode gio-minor-mode :group 'gio-group)
+;; (gio-global-minor-mode 1)
 
 
 ;;; bypassing default build in org-mode, and try to use customized version
@@ -137,24 +135,10 @@
 (let ((file-name-handler-alist nil))
   (require 'init-autoload)  ;; too many, commented this one out
   (require 'init-modeline)
-  ;; (require 'cl-lib) ; it's built in since Emacs v24.3
+  (require 'init-pyim)
   (require 'init-compat)
   (require 'init-site-lisp) ;; Must come before elpa, as it may provide package.el
   (require 'init-utils) ; (defun is-buffer-file-temp())   ;;;;;;; comment for temp only, debug later today
-
-  ;; Windows configuration, assuming that cygwin is installed at "c:/cygwin"
-  ;; (condition-case nil
-  ;;     (when *win64*
-  ;;       ;; (setq cygwin-mount-cygwin-bin-directory "c:/cygwin/bin")
-  ;;       (setq cygwin-mount-cygwin-bin-directory "c:/cygwin64/bin")
-  ;;       (require 'setup-cygwin)
-  ;;       ;; better to set HOME env in GUI
-  ;;       ;; (setenv "HOME" "c:/cygwin/home/someuser")
-  ;;       )
-  ;;   (error
-  ;;    (message "setup-cygwin failed, continue anyway")
-  ;;    ))
-  
   (require 'idle-require)
   (require 'init-elpa)
   (require 'init-exec-path) ;; Set up $PATH
@@ -164,7 +148,7 @@
   (require 'init-spelling)
   (require 'init-gui-frames)
   (require 'init-ido)
-  (require 'init-dired)
+  ;; (require 'init-dired)
   (require 'init-uniquify)
   (require 'init-ibuffer)
   (require 'init-ivy)
@@ -184,7 +168,7 @@
   (require 'init-ruby-mode)
   (require 'init-lisp)
   (require 'init-elisp)
- (require 'init-auto-complete)
+  (require 'init-auto-complete)
 
   (require 'cpputils-cmake) ; to do more work on this one
   ;; Use bookmark instead
@@ -195,43 +179,52 @@
   ;; init-evil dependent on init-clipboard
   (require 'init-clipboard)
   ;; use evil mode (vi key binding)
-  ;(require 'init-evil)
+;;;;; 不会用下现在的这个mode 开启了就无法输入了，暂时放一放，研究一下这个到底是在干什么的了之后再看要不要试着用  
+  ;; (require 'init-evil) ;;;;; 它们说切到 evil-normal-mode就可以自动上屏了
   (require 'init-multiple-cursors)
   (require 'init-sh)
   (require 'init-ctags)
   (require 'init-bbdb)
   (require 'init-gnus)
-  (require 'init-lua-mode)
+  ;; (require 'init-lua-mode) ;;;;; cmp for tmp
   (require 'init-workgroups2)
   (require 'init-term-mode)
   (require 'init-web-mode)
   (require 'init-slime)
   (require 'shader-mode)
-;  (require 'swift-mode)
-  (require 'init-kotlin-mode)
+;  (require 'init-kotlin-mode)
   (require 'init-nxml-mode)
   ;; (require 'init-company)
   
-;; have NOT passed  
- (require 'init-org)			
- (require 'init-yasnippet)
- (require 'init-text)
- (require 'init-syslog-mode)
- (require 'init-misc)  ;; comment for replace-string
- ;; (require 'init-hydra) ;; 不知道这个会影响哪些功能  
- 
-;(require 'init-python-mode)
-(require 'init-csharp-mode)
-(require 'init-auto-complete)
+  ;; have NOT passed  
+  (require 'init-org)			
+  (require 'init-yasnippet)
+  (require 'init-text)
+  (require 'init-syslog-mode)
+  (require 'init-misc)  ;; comment for replace-string
+  ;; (require 'init-hydra) ;; 不知道这个会影响哪些功能  
+  (require 'init-autopair) 
+  
+  (require 'init-sis) 
+                                        ;(require 'init-python-mode)
+                                        ;(require 'init-auto-complete)
   (require 'pangu-spacing)
   (require 'expand-region)
   (require 'init-protobuf-mode)
+<<<<<<< HEAD
  (require 'init-pyim) ;; 这个东西，一时半会儿可能还弄不出来，先放一下
   ;; (require 'init-company) ;;; 不喜欢它老是跑出一大堆的路径相关的,不方便,暂时不同这个模式
+=======
+  (require 'init-pdf-tools) ;;;; 我并没有使用这个
+;  (require 'init-org-noter-pdftools)
+  ;; (require 'init-company) ;;; 不喜欢它老是跑出一大堆的路径相关的,不方便,暂时不同这个模式
+  (require 'init-csharp-mode) 
+  (require 'swift-mode) ;;; C-j C-i 容易被其它模式重写 ？
+>>>>>>> d1b6518fdc5141d410372dca490fb0c5bab2a2c8
   )
 
 ;;;; for one-dark-pro like visual studio theme
-(add-to-list 'custom-theme-load-path "C:/Users/blue_/AppData/Roaming/.emacs.d/lisp/atom-one-dark-theme.el")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/lisp/atom-one-dark-theme.el")
 (load-theme 'atom-one-dark t)
 
 
@@ -256,33 +249,35 @@
 (setq font-lock-maximum-decoration t)
 (global-font-lock-mode)
 
-(defmacro luna-if-dump ()
-  "Evaluate IF if running with a dump file, else evaluate ELSE."
-  (declare (indent 1))
-  `(if (eq luna-dumped t)
-       (progn
-         (setq load-path luna-dumped-load-path)
-         (global-font-lock-mode)
-         (transient-mark-mode)
-         (add-hook 'after-init-hook
-                   (lambda ()
-                     (save-excursion
-                       (lisp-interaction-mode)))))
-     (progn
-       (let ((file-name-handler-alist nil))
-         (require 'init-python-mode)
-         (require 'init-csharp-mode)
-         ;; (require 'init-company)
-         (require 'init-sr-speedbar)
-         )
-       ;; (spacemacs|load-modes '(company csharp))
-       (add-hook 'after-init-hook
-                 (lambda ()
-                   (save-excursion
-                     (lisp-interaction-mode)
-                   ))))))
+;; (defmacro luna-if-dump ()
+;;   "Evaluate IF if running with a dump file, else evaluate ELSE."
+;;   (declare (indent 1))
+;;   `(if (eq luna-dumped t)
+;;        (progn
+;;          (setq load-path luna-dumped-load-path)
+;;          (global-font-lock-mode)
+;;          (transient-mark-mode)
+;;          (add-hook 'after-init-hook
+;;                    (lambda ()
+;;                      (save-excursion
+;;                        (lisp-interaction-mode)))))
+;;      (progn
+;;        (let ((file-name-handler-alist nil))
+;;          (require 'init-python-mode)
+         ;; (require 'init-csharp-mode)
+;;          ;; (require 'init-company)
+;;          (require 'init-sr-speedbar)
+;;          )
+;;        ;; (spacemacs|load-modes '(company csharp))
+;;        (add-hook 'after-init-hook
+;;                  (lambda ()
+;;                    (save-excursion
+;;                      (lisp-interaction-mode)
+;;                    ))))))
 
-(luna-if-dump)
+;; (luna-if-dump)
+
+
 
 ;; (defun luna-dump ()
 ;;   "Dump Emacs."
@@ -402,7 +397,7 @@
       c-basic-offset 4)
 
 ;;; 设定行距
-(setq default-line-spacing 0.05)
+(setq default-line-spacing 0.1)
 ;;; 开启语法高亮
 (global-font-lock-mode 1)
 ;;; 高亮显示区域选择
@@ -430,6 +425,7 @@
 (add-hook 'latex-mode-hook 'ac-latex-mode-setup)
 
 
+<<<<<<< HEAD
 (add-to-list 'load-path "C:/Users/blue_/AppData/Roaming/.emacs.d/wubi")
 (require 'wubi)
 (wubi-load-local-phrases) ; add user's Wubi phrases
@@ -441,6 +437,9 @@
     (setup-chinese-gb-environment)
   (set-language-environment 'Chinese-GB))
 (setq default-input-method "chinese-wubi")
+=======
+
+>>>>>>> d1b6518fdc5141d410372dca490fb0c5bab2a2c8
 
 ;;; key bindings of WuBi
 (global-set-key [?\C-+] 'add-wubi)
@@ -474,22 +473,20 @@
 
 
 
-(add-to-list 'load-path (expand-file-name "C:/Users/blue_/AppData/Roaming/.emacs.d/lisp/")) ;拓展文件(插件)目录
-(require 'autopair)
-(defun turn-on-autopair-mode () (autopair-mode 1))
-
-                                        ; turn off auto-pair for these modes
-(setq autopair-global-modes
-      '(not
-                                        ;eshell-mode comint-mode erc-mode gud-mode rcirc-mode ; later on examples
-        swift-mode))
-
-                                        ;(autopair-global-mode) ;; enable autopair in all buffers
 (show-paren-mode 1)
 (setq show-paren-style 'parenthesis) ; 只高亮括号
 
-
                                         ;(require 'expand-region) 
+
+
+;;; check for spelling
+;; (setq-default ispell-program-name "aspell")
+;; (setq text-mode-hook '(lambda()
+;;                         (flyspell-mode t)))
+;; (setq org-mode-hook '(lambda()
+;;                        (flyspell-mode t)))
+
+
 (require 'ido-ubiquitous)
 (require 'undo-tree)
 (global-undo-tree-mode)
@@ -509,18 +506,9 @@
 ;; increase garbage collection threshold
 (setq gc-cons-threshold 20000000)
 
-
 (require 'ido)
 (ido-mode)
 (define-key (cdr ido-minor-mode-map-entry) [remap write-file] (kbd "C-x C-w"))
-
-
-;;; check for spelling
-;; (setq-default ispell-program-name "aspell")
-;; (setq text-mode-hook '(lambda()
-;;                         (flyspell-mode t)))
-;; (setq org-mode-hook '(lambda()
-;;                        (flyspell-mode t)))
 
 
 (defun soft-wrap-lines (boo)
@@ -530,8 +518,7 @@
   (setq truncate-lines nil)
   ;; (setq word-wrap t)
   )
-                                        ;; (setq soft-wrap-lines t) ;; for chinese
-                                        ;; (setq debug-on-error t)
+;; (setq soft-wrap-lines t) ;; for chinese
 
 
 
@@ -600,13 +587,14 @@
 ;; '(default ((t (:family "Inconsolata-dz for Powerline" :foundry "outline" :slant normal :weight normal :height 98 :width normal))))
 ;; (set-fontset-font "fontset-default" 'unicode '("Inconsolata-dz for Powerline" . "unicode-otf"))
 
-(set-face-attribute 'default nil :font "Fira Code Retina")
+(set-face-attribute 'default nil :font "Inconsolata_dz")
+;; (set-face-attribute 'default nil :font "Fira Code Retina")
 ;; (font-spec :family "Iosevka Term" :size 16 :otf '(latn nil (dlig) nil)) ;;; 是我用来参考的
 ;; (set-face-attribute 'default nil :font "Inconsolata-dz" :otf '(latn nil (dlig) nil))
 
 ;; (set-face-attribute 'region nil :background "#666" :foreground "#ffffff") 
 (setq yas-indent-line 'auto)
-;(setq yas/indent-line 'auto)
+                                        ;(setq yas/indent-line 'auto)
 
 (setq my/for-org nil)
 ;; (when (bound-and-true-p my/for-org) (load-theme 'misterioso))
@@ -624,11 +612,8 @@
                     (font-spec :family "Sarasa Mono Slab SC Semibold" :height 130)))
 
 
-;;; // comment for csharp-mode, 但因为这个键组合极其好用，把它提出去，全局公用; 添加F4自关闭sr-speedbar功能
-(fset 'cmt
-      (kmacro-lambda-form [f4 ?\C-x ?1 ?  ?/ ?/ ? ] 0 "%d"))
-(local-set-key (kbd "C-j") 'cmt) ;;; 不想再设置全局,因为不同mode下会有不同的实现
-(put 'cmt 'kmacro t)
+;;;; 加载snippets 的接口
+(add-hook 'emacs-startup-hook (lambda () (yas-load-directory "/Users/hhj/.emacs.d/snippets/")))
 
 
 (custom-set-variables
@@ -643,11 +628,13 @@
  '(custom-enabled-themes '(atom-one-dark))
  '(custom-safe-themes
    '("0c860c4fe9df8cff6484c54d2ae263f19d935e4ff57019999edbda9c7eda50b8" "f490984d405f1a97418a92f478218b8e4bcc188cf353e5dd5d5acd2f8efd0790" "28a104f642d09d3e5c62ce3464ea2c143b9130167282ea97ddcc3607b381823f" default))
+ '(default-input-method "pyim")
  '(display-time-mode t)
  '(fci-rule-color "#dedede")
  '(git-gutter:handled-backends '(svn hg git))
  '(latex-run-command "latex --shell-escape")
- '(line-spacing 0.15)
+ '(line-spacing 0.1)
+ '(menu-bar-mode nil)
  '(nxml-slash-auto-complete-flag t)
  '(org-export-with-sub-superscripts nil)
  '(org-format-latex-options
@@ -655,7 +642,8 @@
                  ("begin" "$1" "$" "$$" "\\(" "\\[")))
  '(org-support-shift-select nil)
  '(package-selected-packages
-   '(web-mode-edit-element auctex fuzzy ppd-sr-speedbar lsp-mode py-autopep8 logview virtualenvwrapper company-jedi flycheck-color-mode-line auto-complete-clang-async flycheck-swift3 flycheck-swift flycheck swift3-mode swift-mode yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode lua-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-lua flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word csharp-mode crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link))
+   '(cnfonts go-mode slime rime xr pyim-wbdict web-mode-edit-element auctex fuzzy ppd-sr-speedbar lsp-mode py-autopep8 logview virtualenvwrapper company-jedi flycheck-color-mode-line auto-complete-clang-async flycheck-swift flycheck swift-mode yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link))
+ '(pdf-tools-handle-upgrades nil)
  '(session-use-package t nil (session))
  '(show-paren-mode t)
  '(speedbar-frame-parameters '((minibuffer) (width . 35)))
@@ -680,23 +668,24 @@
  '(tex-start-options "\"latex -ini --shell-escape\"")
  '(tool-bar-mode nil)
  '(warning-minimum-level :error)
+ '(warning-suppress-types '((use-package)))
  '(word-wrap nil)
  '(yas-also-auto-indent-first-line t)
  '(yas-also-indent-empty-lines t)
  '(yas-indent-line 'auto)
  '(yas-snippet-dirs
-   '("c:/Users/blue_/AppData/Roaming/.emacs.d/snippets" "c:/Users/blue_/AppData/Roaming/.emacs.d/elpa/elpy-1.18.0/snippets/"))
+   '("~/.emacs.d/snippets" "~/.emacs.d/elpa/elpy-1.18.0/snippets/"))
  '(yas-wrap-around-region 'cua))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Inconsolata-dz" :foundry "outline" :slant normal :weight normal :height 98 :width normal))))
+ '(default ((t (:inherit nil :stipple nil :background "#282C34" :foreground "#ABB2BF" :inverse-video nil :box nil :strike-through nil :extend nil :overline nil :underline nil :slant normal :weight normal :height 141 :width normal :foundry "nil" :family "Inconsolata_dz"))))
  '(cursor ((t (:background "orchid"))))
  '(hi-blue-b ((t (:foreground "systemBlueColor" :weight bold))))
  '(hi-salmon ((t (:background "NavajoWhite1" :foreground "gray0"))))
- '(highlight ((t (:background "medium orchid"))))
+ '(highlight ((t (:background "white smoke"))))
  '(org-level-1 ((t (:inherit outline-1))))
  '(org-level-2 ((t (:inherit outline-2))))
  '(org-level-3 ((t (:inherit outline-3))))

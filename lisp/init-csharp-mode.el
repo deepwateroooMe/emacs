@@ -1,12 +1,39 @@
 ;;; for csharp-mode
 
-(add-to-list 'load-path (expand-file-name "c:/Users/blue_/AppData/Roaming/.emacs.d/elpa/csharp-mode")) ;拓展文件(插件)目录
-(require 'csharp-mode)
+;;;;; new style: this could work perfectly well for emacs version 27.1 too !!! this one renders better
+(use-package tree-sitter :ensure t)
+(use-package tree-sitter-langs :ensure t)
+(use-package tree-sitter-indent :ensure t)
 
-(setq interpreter-mode-alist
-      (cons '("cs" . csharp-mode) interpreter-mode-alist))
-(add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
-(add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-mode))
+(use-package csharp-mode
+  :ensure t
+  :config
+  ;; (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-tree-sitter-mode))
+  ;; (add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-tree-sitter-mode))
+  (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
+  (add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-mode))
+  )
+
+
+;; ;;; old-school loading for emacs version 27.1 specificly
+;; (load "~/.emacs.d/elpa/csharp-mode/csharp-mode.el") ;;;;; love my dear cousin, must marry him as soon as possible
+;; ;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/elpa/csharp-mode/")) ;;;;; love my dear cousin, must marry him as soon as possible
+;; ;; (require 'csharp-mode)
+;; (setq interpreter-mode-alist
+;;       (cons '("cs" . csharp-mode) interpreter-mode-alist))
+;; (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
+;; (add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-mode))
+
+
+;;; fix bug for font lock breaks after ' or ": 这里以前古老版本里存在这种bug时，当时的补救修改办法,现在看来不起作用了，需要改回适配新的安装方法模式
+;;;;; csharp-mode 之后容易出gio-minor-mode引起的一些问题，试着纠正一下
+(defun csharp-disable-clear-string-fences (orig-fun &rest args)
+  "This turns off `c-clear-string-fences' for `csharp-mode'. When
+on for `csharp-mode' font lock breaks after an interpolated string
+or terminating simple string."
+  (unless (equal major-mode 'csharp-mode)
+    (apply orig-fun args)))
+(advice-add 'c-clear-string-fences :around 'csharp-disable-clear-string-fences)
 
 
 ;;; 这里添加一个从Emacs中直接要求从VSC中打开当前文件的命令
@@ -33,12 +60,33 @@
                                        ;; (number-to-string (1+ (current-line))) ;; +1 who knows why
                                        ":"
                                        (number-to-string (current-column)))))
-;; (define-key global-map (kbd "C-c v") 'gp/vscode-current-buffer-file-at-point)
+;; (define-key global-map (kbd "C-c i") 'gp/vscode-current-buffer-file-at-point) 
+
+
+;;; 是好用，但仍然是需要分不同的mode 的
+;; 因为我现在主要用内置的输入法，两个模式还不能狠好地合作，所以这里暂把这个输入法的设置给关掉
+;; TODO: INTEGRATE SIS MODE TO WORK TOGETHER WITH PYIM INPUT METHOD
+;; (kmacro-lambda-form [f4 ?\C-x ?1 ?  ?/ ?/ ?  ?\M-x ?s ?i ?s ?- ?s ?e ?t ?- ?o ?t ?h ?e ?r return] 0 "%d")) ;; ori for sys mode
+;; (kmacro-lambda-form [f4 ?\C-x ?1 ?  ?/ ?/ ?  ] 0 "%d")) ;; for pyim-mode: but if chinese input method, resulted to be “、、”，which is not expected
+;; for pyim mode, 需要获取这个模式内部中英文输入法的名字以及转换方法 
+;; (fset 'cmtss
+;;       (kmacro-lambda-form [f4 ?\C-x ?1 ?  ?/ ?/ ?  ] 0 "%d"))
+;; (put 'cmtss 'kmacro t)
+;;; for pyim mode only: for temporary-use, until bug fix
+(fset 'cmtEnCh;;; 这里的 C-j C-i 与上面的 C-c-f 会给 C-cf 制造麻烦，需要绑定不同的鍵，这里暂时移动一下，看看它有没有什么区别 ?
+      (kmacro-lambda-form [f4 ?  ?/ ?/ ?  ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?\C-x] 0 "%d"))
+(fset 'cmtChCh;;; 有点儿延迟
+      (kmacro-lambda-form [f4 ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?  ?/ ?/ ?  ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?\C-x] 0 "%d"))
+(put 'cmtEnCh 'kmacro t)
+(put 'cmtChCh 'kmacro t)
 (add-hook 'csharp-mode-hook
           (lambda ()
-            (local-set-key (kbd "C-c v") 'gp/vscode-current-buffer-file-at-point)))
-;;; VSC open in emacs: 现在的配置不理想,因为每次都会新开一个 emacs process来打开文件太慢,需要把自己的emacs 配置成server -cllient的模式,还要能够检测现存在emacs process
-;;; work around: VSC 中shift+Alt+c: copy path, 现emacs process中C-x C-f: C-a C-y C-k enter打开复制粘贴路径下的文件,算是目前最理想的配置了
+            (local-set-key (kbd "C-c i") 'gp/vscode-current-buffer-file-at-point) ;;;;; 这个键太复杂，不好用 ;;;;; distribute the work into 2 fingers
+            ;; (local-set-key (kbd "C-x x") 'cmtEnCh) ;; English ==> Chinese 改变绑定的鍵才是最彻底的改法，不会让 C-cf 运行狠久
+            ;; (local-set-key (kbd "C-x j") 'cmtChCh) ;; Chinese ==> Chinese
+            (local-set-key (kbd "C-j") 'cmtEnCh) ;; English ==> Chinese 改变绑定的鍵才是最彻底的改法，不会让 C-cf 运行狠久
+            (local-set-key (kbd "C-i") 'cmtChCh) ;; Chinese ==> Chinese
+            ))
 
 
 ;;;for csharp-mode ; {} autoindent
@@ -48,8 +96,8 @@
 (add-hook 'post-self-insert-hook 'csharp-autoindent)
 
 (add-hook 'csharp-mode-hook
-	  #'(lambda ()
-	      (local-set-key (kbd "{") 'cheeso-insert-open-brace)))
+	      #'(lambda ()
+	          (local-set-key (kbd "{") 'cheeso-insert-open-brace)))
 
 (defun cheeso-looking-back-at-regexp (regexp)
   "calls backward-sexp and then checks for the regexp.  Returns t if it is found, else nil"
@@ -70,8 +118,8 @@
     (let ((curline (line-number-at-pos))
           (curpoint (point))
           (aftline (progn
-		     (backward-sexp)
-		     (line-number-at-pos))) )
+		             (backward-sexp)
+		             (line-number-at-pos))) )
       (= curline aftline))))  
 
 (defun cheeso-insert-open-brace ()
@@ -103,33 +151,26 @@
     )))
 
 
+;;; 我把这个暂时去掉，看还会引起那么多的问题吗？这个东西应该是不会起什么作用的
 (add-hook 'csharp-mode-hook (lambda ()
                               (font-lock-add-keywords nil '(
-
                                         ; Valid hex number (will highlight invalid suffix though)
                                                             ("\\b0x[[:xdigit:]]+[uUlL]*\\b" . font-lock-string-face)
-
                                         ; Invalid hex number
                                                             ("\\b0x\\(\\w\\|\\.\\)+\\b" . font-lock-warning-face)
-
                                         ; Valid floating point number.
                                                             ("\\(\\b[0-9]+\\|\\)\\(\\.\\)\\([0-9]+\\(e[-]?[0-9]+\\)?\\([lL]?\\|[dD]?[fF]?\\)\\)\\b" (1 font-lock-string-face) (3 font-lock-string-face))
-
                                         ; Invalid floating point number.  Must be before valid decimal.
                                                             ("\\b[0-9].*?\\..+?\\b" . font-lock-warning-face)
-
                                         ; Valid decimal number.  Must be before octal regexes otherwise 0 and 0l
                                         ; will be highlighted as errors.  Will highlight invalid suffix though.
                                                             ("\\b\\(\\(0\\|[1-9][0-9]*\\)[uUlL]*\\)\\b" 1 font-lock-string-face)
-
                                         ; Valid octal number
                                                             ("\\b0[0-7]+[uUlL]*\\b" . font-lock-string-face)
-
                                         ; Floating point number with no digits after the period.  This must be
                                         ; after the invalid numbers, otherwise it will "steal" some invalid
                                         ; numbers and highlight them as valid.
                                                             ("\\b\\([0-9]+\\)\\." (1 font-lock-string-face))
-
                                         ; Invalid number.  Must be last so it only highlights anything not
                                         ; matched above.
                                                             ("\\b[0-9]\\(\\w\\|\\.\\)+?\\b" . font-lock-warning-face)
@@ -139,18 +180,6 @@
  'csharp-mode
  '(("0x\\([0-9a-fA-F]+\\)" . font-lock-builtin-face)))
 
-
-;;; fix bug for font lock breaks after ' or "
-(defun csharp-disable-clear-string-fences (orig-fun &rest args)
-  "This turns off `c-clear-string-fences' for `csharp-mode'. When
-on for `csharp-mode' font lock breaks after an interpolated string
-or terminating simple string."
-  (unless (equal major-mode 'csharp-mode)
-    (apply orig-fun args)))
-(advice-add 'c-clear-string-fences :around 'csharp-disable-clear-string-fences)
-
-
-;; added for init-java-mode.el temporatorially
 
 ;;; java macro
 ;;;; et
@@ -180,77 +209,16 @@ or terminating simple string."
              ?\M-g ?1 return
              ?\M-l ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?\{ delete return ?  ?\{ delete return
              ?\M-g ?1 return
-             ?\M-l ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?\{ delete return ?  ?\{ delete return
-             ?\M-g ?1 return
-             ?\M-l ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?\{ delete return ?  ?\{ delete return
-             ?\M-g ?1 return
-             ?\M-l ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?\{ delete return ?  ?\{ delete return
-             ?\M-g ?1 return
-             ?\M-l ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?\{ delete return ?  ?\{ delete return
-             ?\M-g ?1 return
              ?\M-l ?\C-q ?\C-j ?\C-q ?\C-i ?\C-q ?\C-i ?\C-q ?\C-i ?\C-q ?\C-i ?\{ delete return ?  ?\{ delete return
-                                        ;             ?\M-g ?1 return
-                                        ;             ?\M-l ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?\{ delete return ?  ?\{ delete return
-                                        ;             ?\M-g ?1 return
-                                        ;             ?\M-l ?\C-q ?\C-j ?\C-q ?\C-i ?\C-q ?\C-i ?\C-q ?\C-i ?\C-q ?\C-i ?\C-q ?\C-i ?\{ delete return ?  ?\{ delete return
-             ?\M-g ?1 return
              ?\M-l ?\} ?\C-q ?\C-j ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e return 
-             ?\M-g ?1 return
-             ?\M-l ?\} ?\C-q ?\C-j ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
-             ?\M-g ?1 return
-             ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
-             ?\M-g ?1 return
-             ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
              ?\M-g ?1 return
              ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
              ?\M-g ?1 return
-             ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?  ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
-             ?\M-g ?1 return
-             ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
-             ?\M-g ?1 return
-             ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
-             ?\M-g ?1 return
              ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
-             ?\M-g ?1 return
-             ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
-             ?\M-g ?1 return
-             ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
-             ?\M-g ?1 return
-             ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
              ?\M-g ?1 return
              ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
              ?\M-g ?1 return
-             ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
-             ?\M-g ?1 return
-             ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
-             ?\M-g ?1 return
-             ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
-             ?\M-g ?1 return
-             ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
-             ?\M-g ?1 return
-             ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
-             ?\M-g ?1 return
-             ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
-             ?\M-g ?1 return
-             ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
-             ?\M-g ?1 return
-             ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
-             ?\M-g ?1 return
-             ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
-             ?\M-g ?1 return
-             ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
-             ?\M-g ?1 return
-             ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
-             ?\M-g ?1 return
-             ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
-             ?\M-g ?1 return
-             ?\M-l ?\} ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
-             ?\M-g ?1 return
              ?\M-l ?\} ?\C-q ?\C-j ?\C-q ?\C-i ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return ;; 1 \t
-             ?\M-g ?1 return
-             ?\M-l ?\} ?\C-q ?\C-j ?\C-q ?\C-i ?\C-q ?\C-i ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
-             ?\M-g ?1 return
-             ?\M-l ?\} ?\C-q ?\C-j ?\C-q ?\C-i ?\C-q ?\C-i ?\C-q ?\C-i ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e  return
              ?\M-g ?1 return
              ?\M-l ?\} ?\C-q ?\C-j ?\C-q ?\C-i ?\C-q ?\C-i ?\C-q ?\C-i ?\C-q ?\C-i ?e ?l ?s ?e return ?\} ?  ?e ?l ?s ?e return
              ?\M-g ?1 return
@@ -259,8 +227,8 @@ or terminating simple string."
              ?\M-l ?\{ ?\C-q ?\C-j ?  ?  ?  ?  ?\} return ?\{ ?\} return
              ?\M-g ?1 return
              ?\M-l ?\{ ?  ?\C-q ?\C-j ?  ?  ?  ?  ?\} return ?\{ ?\} return
-             ?\M-g ?1 return
-             ?\M-l ?\{ ?  ?  ?\C-q ?\C-j ?  ?  ?  ?  ?\} return ?\{ ?\} return
+             ;; ?\M-g ?1 return
+             ;; ?\M-l ?\{ ?  ?  ?\C-q ?\C-j ?  ?  ?  ?  ?\} return ?\{ ?\} return
              ?\M-g ?1 return 
              ?\M-l ?\{ ?\C-q ?\C-j ?\C-q ?\C-j ?  ?  ?  ?  ?\} return ?\{ ?\} return
              ?\M-g ?1 return
@@ -275,7 +243,7 @@ or terminating simple string."
              ?\M-l ?\{ ?  ?  ?\C-q ?\C-j ?\C-q ?\C-j ?\C-q ?\C-i ?\} return ?\{ ?\} return
              ;;; tab ---> ____
              ?\M-g ?1 return ?\M-l ?\C-q ?\C-i return  ?  ?  ?  ?  return
-             ?\M-g ?1 return ?\M-l ?/ ?/ ?/ ?  return ?/ ?/ ?  return ?\M-g ?1 return    ;;; /// --> //
+             ?\M-g ?1 return ?\M-l ?/ ?/ ?/ ?  return ?/ ?/ ?  return     ;;; /// --> //
              ?\M-g ?1 return ?\M-l ?\C-q ?\C-j ?/ ?/ ?  ?< ?s ?u ?m ?m ?a ?r ?y ?> ?\C-q ?\C-j return ?\C-q ?\C-j return  
              ?\M-g ?1 return ?\M-l ?\C-q ?\C-j ?  ?  ?  ?  ?/ ?/ ?  ?< ?s ?u ?m ?m ?a ?r ?y ?> ?\C-q ?\C-j return ?\C-q ?\C-j return    
              ?\M-g ?1 return ?\M-l ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?/ ?/ ?  ?< ?s ?u ?m ?m ?a ?r ?y ?> ?\C-q ?\C-j return ?\C-q ?\C-j return 
@@ -286,17 +254,6 @@ or terminating simple string."
              ?\M-g ?1 return ?\M-l ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?/ ?/ ?  ?< ?/ ?s ?u ?m ?m ?a ?r ?y ?> ?\C-q ?\C-j return ?\C-q ?\C-j return
              ?\M-g ?1 return ?\M-l ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?/ ?/ ?  ?< ?/ ?s ?u ?m ?m ?a ?r ?y ?> ?\C-q ?\C-j return ?\C-q ?\C-j return
              ?\M-g ?1 return ?\M-l ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?/ ?/ ?  ?< ?/ ?s ?u ?m ?m ?a ?r ?y ?> ?\C-q ?\C-j return ?\C-q ?\C-j return
-;;; ____// </summary>口
-                                        ;             ?\M-g ?1 return ?\M-l ?\C-q ?\C-j ?/ ?/ ?  ?< ?s ?u ?m ?m ?a ?r ?y ?> ?  ?\C-q ?\C-j return ?\C-q ?\C-j return   ;;; // <summary>
-                                        ;             ?\M-g ?1 return ?\M-l ?\C-q ?\C-j ?  ?  ?  ?  ?/ ?/ ?  ?< ?s ?u ?m ?m ?a ?r ?y ?> ?  ?\C-q ?\C-j return ?\C-q ?\C-j return
-                                        ;             ?\M-g ?1 return ?\M-l ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?/ ?/ ?  ?< ?s ?u ?m ?m ?a ?r ?y ?> ?  ?\C-q ?\C-j return ?\C-q ?\C-j return
-                                        ;             ?\M-g ?1 return ?\M-l ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?/ ?/ ?  ?< ?s ?u ?m ?m ?a ?r ?y ?> ?  ?\C-q ?\C-j return ?\C-q ?\C-j return
-                                        ;             ?\M-g ?1 return ?\M-l ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?/ ?/ ?  ?< ?s ?u ?m ?m ?a ?r ?y ?> ?  ?\C-q ?\C-j return ?\C-q ?\C-j return
-                                        ;             ?\M-g ?1 return ?\M-l ?\C-q ?\C-j ?/ ?/ ?  ?< ?/ ?s ?u ?m ?m ?a ?r ?y ?> ?  ?\C-q ?\C-j return ?\C-q ?\C-j return ;;; // </summary>
-                                        ;             ?\M-g ?1 return ?\M-l ?\C-q ?\C-j ?  ?  ?  ?  ?/ ?/ ?  ?< ?/ ?s ?u ?m ?m ?a ?r ?y ?> ?  ?\C-q ?\C-j return ?\C-q ?\C-j return
-                                        ;             ?\M-g ?1 return ?\M-l ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?/ ?/ ?  ?< ?/ ?s ?u ?m ?m ?a ?r ?y ?> ?  ?\C-q ?\C-j return ?\C-q ?\C-j return
-                                        ;             ?\M-g ?1 return ?\M-l ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?/ ?/ ?  ?< ?/ ?s ?u ?m ?m ?a ?r ?y ?> ?  ?\C-q ?\C-j return ?\C-q ?\C-j return
-                                        ;             ?\M-g ?1 return ?\M-l ?\C-q ?\C-j ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?/ ?/ ?  ?< ?/ ?s ?u ?m ?m ?a ?r ?y ?> ?  ?\C-q ?\C-j return ?\C-q ?\C-j return
              ;;;     // <returns></returns>
              ?\M-g ?1 return
              ?\M-l ?\C-q ?\C-j ?/ ?/ ?  ?< ?r ?e ?t ?u ?r ?n ?s ?> ?< ?/ ?r ?e ?t ?u ?r ?n ?s ?> ?\C-q ?\C-j return ?\C-q ?\C-j return
@@ -329,8 +286,8 @@ or terminating simple string."
              ?\M-l ?/ ?/ ?  ?  return ?/ ?/ ?  return
              ?\M-g ?1 return  ;;; go back to beginning of file
              ])
-(fset 'f
-      [?\M-g ?1 return ?\M-x ?f ?o return ?\C-x ?h tab ?\C-  ?\C-  ?\M-g ?1 return]) ;; indent region f12
+(fset 'f;; C-x h Tab for indent the region: exchanged to M-x indent-region instead to remove the bell ring
+      [?\M-g ?1 return ?\M-x ?f ?o return ?\C-x ?h ?\M-x ?i ?n ?d ?e ?n ?t ?- ?r ?e ?g ?i ?o ?n return ?\C-  ?\C-n ?\M-\; ?\C-p ?\C-a ?\C-d ?\C-d ?\C-d ?\C-x]) 
 (global-set-key (kbd "C-c f") 'f) 
 (put 'f 'kmacro t)
 
@@ -379,13 +336,8 @@ or terminating simple string."
 (global-set-key (kbd "C-c m") 'cmts) ; very useful
 
 
-;;; VSC open in emacs: 现在的配置不理想,因为每次都会新开一个 emacs process来打开文件太慢,需要把自己的emacs 配置成server -cllient的模式,还要能够检测现存在emacs process
-;;; work around: VSC 中shift+Alt+c: copy path, 现emacs process中C-x C-f: C-a C-y C-k enter打开复制粘贴路径下的文件,算是目前最理想的配置了
-;;; 简化按键操作：现emacs process中C-x C-f: C-a C-y C-k enter  ＝＝> C-o works like a charm, 缺点：它会新开一个window, 再关闭其它，定位保留到当前唯一窗口
-;;; 可以再用同样的  C-x 1保留一个窗口添加到 after-init-hook, 晚点儿再弄这个
 (fset 'co
       (kmacro-lambda-form [?\C-x ?\C-f ?\C-a ?\C-y ?\C-k return ?\C-x ?1] 0 "%d"))
 (global-set-key (kbd "C-o") 'co)
-
 
 (provide 'init-csharp-mode)

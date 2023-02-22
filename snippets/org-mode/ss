@@ -1,7 +1,14 @@
 # -*- mode: snippet -*-
+<<<<<<< HEAD
 # name: ss
+=======
+# name: csharp-mode
+>>>>>>> d1b6518fdc5141d410372dca490fb0c5bab2a2c8
 # key: ss
 # --
 #+BEGIN_SRC csharp
 $0#+END_SRC
+<<<<<<< HEAD
 
+=======
+>>>>>>> d1b6518fdc5141d410372dca490fb0c5bab2a2c8
