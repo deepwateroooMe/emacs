@@ -1,12 +1,12 @@
 ;; 下面的启动太慢了；在没有必要的时候不想要它来耽误启动时间
-;; (require 'package)
-;; (add-to-list 'package-archives
-;;              '("melpa" . "https://melpa.org/packages/") t)
-;; (add-to-list 'package-archives
-;;              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-;; (package-initialize)
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(package-initialize)
 
-;; (setq debug-on-error t);; 它会无数次地停掉程序，去掉
+(setq debug-on-error t);; 它会无数次地停掉程序，去掉
 
 (setq default-directory "/Users/hhj/")
 
@@ -195,19 +195,33 @@
   (require 'init-misc)  ;; comment for replace-string
   ;; (require 'init-hydra) ;; 不知道这个会影响哪些功能  
   (require 'init-autopair) 
-  
   (require 'init-sis) 
-                                        ;(require 'init-python-mode)
-                                        ;(require 'init-auto-complete)
+;(require 'init-python-mode)
+;(require 'init-auto-complete)
   (require 'pangu-spacing)
   (require 'expand-region)
   (require 'init-protobuf-mode)
   (require 'init-pdf-tools) ;;;; 我并没有使用这个
 ;  (require 'init-org-noter-pdftools)
-  ;; (require 'init-company) ;;; 不喜欢它老是跑出一大堆的路径相关的,不方便,暂时不同这个模式
+  (require 'init-company) ;;; 不喜欢它老是跑出一大堆的路径相关的,不方便,暂时不同这个模式
   (require 'init-csharp-mode) 
-  (require 'swift-mode) ;;; C-j C-i 容易被其它模式重写 ？
+  (require 'init-swift-mode)
   )
+
+
+;; ;;; for macOS iOS swift-mode configurations
+;; (require 'company-sourcekit)
+;; (setq company-sourcekit-verbose nil s)
+;; (setq ourcekit-verbose nil)
+;; (setq sourcekit-sourcekittendaemon-executable "/usr/local/bin/sourcekittend");;; 这个 daemon 服务器可以很容易地弄好，但是后面内存管理哪里报了个错
+;; (add-to-list 'company-backends 'company-sourcekit)
+;; ;; ;; 下面 daemon 的启动：报了个错，无法使用，修正之前，暂时先关一下
+;; ;; ;; sourcekittend start --port 8081 --project yourproject.xcodeproj
+;; ;; sourcekittend start --port 8081 --project test.xcodeproj
+;; ;; [INFO] Monitoring /Users/hhj/pp/macos/test/test.xcodeproj for changes
+;; ;; Swift/arm64e-apple-macos.swiftinterface:23320: Fatal error: self must be a properly aligned pointer for types Pointee and T
+;; ;; [1]    22170 trace trap  sourcekittend start --port 8081 --project test.xcodeproj
+
 
 ;;;; for one-dark-pro like visual studio theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/lisp/atom-one-dark-theme.el")
@@ -614,7 +628,7 @@
                  ("begin" "$1" "$" "$$" "\\(" "\\[")))
  '(org-support-shift-select nil)
  '(package-selected-packages
-   '(cnfonts go-mode slime rime xr pyim-wbdict web-mode-edit-element auctex fuzzy ppd-sr-speedbar lsp-mode py-autopep8 logview virtualenvwrapper company-jedi flycheck-color-mode-line auto-complete-clang-async flycheck-swift flycheck swift-mode yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link))
+   '(company-sourcekit cnfonts go-mode slime rime xr pyim-wbdict web-mode-edit-element auctex fuzzy ppd-sr-speedbar lsp-mode py-autopep8 logview virtualenvwrapper company-jedi flycheck-color-mode-line auto-complete-clang-async flycheck-swift flycheck swift-mode yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link))
  '(pdf-tools-handle-upgrades nil)
  '(session-use-package t nil (session))
  '(show-paren-mode t)

@@ -98,14 +98,3 @@ fun dslfkj { // kotlin-mode, unlike java-mode, this feature works charming
 - *csharp-mode* has been the one that works perfectly for these two features, {} auto expand, also if while one line statement autoindent without {}, so I used csharp-mode as java mode.
 * References
 - https://github.com/redguardtoo/emacs.d
-
-亲爱的亲爱的表哥，活宝妹一定要嫁的亲爱的表哥！！！
-我今天晚上找到狠多我感觉很有兴趣的框架
-明天上午会好好读源码
-中午下午傍晚会试着写更多的小游戏或写服务器相关的C# 。NET 项目
-
-爱亲爱的表哥，活宝妹一定要嫁的亲爱的表哥！！！
-爱生活
-活宝妹就是一定要嫁给亲爱的亲爱的表哥，活宝妹一定要嫁的亲爱的表哥！！！
-爱亲爱的表哥，活宝妹一定要嫁的亲爱的表哥！！！
-爱生活！！！

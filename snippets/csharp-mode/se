@@ -1,0 +1,5 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: String.Equals
+# key: se
+# --
+String.Equals($1);$0

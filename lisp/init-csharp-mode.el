@@ -3,7 +3,6 @@
 (use-package tree-sitter :ensure t)
 (use-package tree-sitter-langs :ensure t)
 (use-package tree-sitter-indent :ensure t)
-
 (use-package csharp-mode
   :ensure t
   :config
@@ -13,7 +12,6 @@
   (add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-mode))
   )
 
-
 ;; ;;; old-school loading for emacs version 27.1 specificly
 ;; (load "~/.emacs.d/elpa/csharp-mode/csharp-mode.el") ;;;;; love my dear cousin, must marry him as soon as possible
 ;; ;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/elpa/csharp-mode/")) ;;;;; love my dear cousin, must marry him as soon as possible
@@ -22,7 +20,6 @@
 ;;       (cons '("cs" . csharp-mode) interpreter-mode-alist))
 ;; (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-mode))
-
 
 ;;; fix bug for font lock breaks after ' or ": 这里以前古老版本里存在这种bug时，当时的补救修改办法,现在看来不起作用了，需要改回适配新的安装方法模式
 ;;;;; csharp-mode 之后容易出gio-minor-mode引起的一些问题，试着纠正一下
@@ -119,12 +116,10 @@ or terminating simple string."
   (save-excursion
     (backward-sexp)
     (looking-at regexp)))
-
 (defun cheeso-looking-back-at-equals-or-array-init-ss ()
   "returns t if an equals or [] is immediate preceding. else nil."
   (interactive)
   (cheeso-looking-back-at-regexp-ss "\\(\\w+\\b *=\\|[[]]+\\)"))  
-
 (defun cheeso-prior-sexp-same-statement-same-line-ss ()
   "returns t if the prior sexp is on the same line. else nil"
   (interactive)
@@ -135,7 +130,6 @@ or terminating simple string."
 		             (backward-sexp)
 		             (line-number-at-pos))) )
       (= curline aftline))))  
-
 (defun cheeso-insert-open-brace-ss ()
   "if point is not within a quoted string literal, insert an open brace, two newlines, and a close brace; indent everything and leave point on the empty line. If point is within a string literal, just insert a pair or braces, and leave point between them."
   (interactive)
@@ -167,35 +161,35 @@ or terminating simple string."
     (indent-according-to-mode);; 这一行，仍然起作用，可以在当前行，将光标移到正确的位置 
     )))
 
-
-;;; 我把这个暂时去掉，看还会引起那么多的问题吗？这个东西应该是不会起什么作用的
-(add-hook 'csharp-mode-hook (lambda ()
-                              (font-lock-add-keywords nil '(
-                                        ; Valid hex number (will highlight invalid suffix though)
-                                                            ("\\b0x[[:xdigit:]]+[uUlL]*\\b" . font-lock-string-face)
-                                        ; Invalid hex number
-                                                            ("\\b0x\\(\\w\\|\\.\\)+\\b" . font-lock-warning-face)
-                                        ; Valid floating point number.
-                                                            ("\\(\\b[0-9]+\\|\\)\\(\\.\\)\\([0-9]+\\(e[-]?[0-9]+\\)?\\([lL]?\\|[dD]?[fF]?\\)\\)\\b" (1 font-lock-string-face) (3 font-lock-string-face))
-                                        ; Invalid floating point number.  Must be before valid decimal.
-                                                            ("\\b[0-9].*?\\..+?\\b" . font-lock-warning-face)
-                                        ; Valid decimal number.  Must be before octal regexes otherwise 0 and 0l
-                                        ; will be highlighted as errors.  Will highlight invalid suffix though.
-                                                            ("\\b\\(\\(0\\|[1-9][0-9]*\\)[uUlL]*\\)\\b" 1 font-lock-string-face)
-                                        ; Valid octal number
-                                                            ("\\b0[0-7]+[uUlL]*\\b" . font-lock-string-face)
-                                        ; Floating point number with no digits after the period.  This must be
-                                        ; after the invalid numbers, otherwise it will "steal" some invalid
-                                        ; numbers and highlight them as valid.
-                                                            ("\\b\\([0-9]+\\)\\." (1 font-lock-string-face))
-                                        ; Invalid number.  Must be last so it only highlights anything not
-                                        ; matched above.
-                                                            ("\\b[0-9]\\(\\w\\|\\.\\)+?\\b" . font-lock-warning-face)
-                                                            ))
-                              ))
-(font-lock-add-keywords
- 'csharp-mode
- '(("0x\\([0-9a-fA-F]+\\)" . font-lock-builtin-face)))
+;; 把下面的去掉，是因为前面说，company-mode 下会出现太多路径相关的后端填词，把它去掉试试看
+;; ;;; 我把这个暂时去掉，看还会引起那么多的问题吗？这个东西应该是不会起什么作用的
+;; (add-hook 'csharp-mode-hook (lambda ()
+;;                               (font-lock-add-keywords nil '(
+;;                                         ; Valid hex number (will highlight invalid suffix though)
+;;                                                             ("\\b0x[[:xdigit:]]+[uUlL]*\\b" . font-lock-string-face)
+;;                                         ; Invalid hex number
+;;                                                             ("\\b0x\\(\\w\\|\\.\\)+\\b" . font-lock-warning-face)
+;;                                         ; Valid floating point number.
+;;                                                             ("\\(\\b[0-9]+\\|\\)\\(\\.\\)\\([0-9]+\\(e[-]?[0-9]+\\)?\\([lL]?\\|[dD]?[fF]?\\)\\)\\b" (1 font-lock-string-face) (3 font-lock-string-face))
+;;                                         ; Invalid floating point number.  Must be before valid decimal.
+;;                                                             ("\\b[0-9].*?\\..+?\\b" . font-lock-warning-face)
+;;                                         ; Valid decimal number.  Must be before octal regexes otherwise 0 and 0l
+;;                                         ; will be highlighted as errors.  Will highlight invalid suffix though.
+;;                                                             ("\\b\\(\\(0\\|[1-9][0-9]*\\)[uUlL]*\\)\\b" 1 font-lock-string-face)
+;;                                         ; Valid octal number
+;;                                                             ("\\b0[0-7]+[uUlL]*\\b" . font-lock-string-face)
+;;                                         ; Floating point number with no digits after the period.  This must be
+;;                                         ; after the invalid numbers, otherwise it will "steal" some invalid
+;;                                         ; numbers and highlight them as valid.
+;;                                                             ("\\b\\([0-9]+\\)\\." (1 font-lock-string-face))
+;;                                         ; Invalid number.  Must be last so it only highlights anything not
+;;                                         ; matched above.
+;;                                                             ("\\b[0-9]\\(\\w\\|\\.\\)+?\\b" . font-lock-warning-face)
+;;                                                             ))
+;;                               ))
+;; (font-lock-add-keywords
+;;  'csharp-mode
+;;  '(("0x\\([0-9a-fA-F]+\\)" . font-lock-builtin-face)))
 
 
 ;;; java macro

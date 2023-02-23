@@ -1,0 +1,6 @@
+# contributor: deepwaterooo
+# name: Console.WriteLine(msg + v + v)
+# key: cfv
+# --
+Console.WriteLine(TAG + "${1:f} ${2:v} = " + $2);
+$0

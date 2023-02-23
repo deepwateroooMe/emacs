@@ -1,0 +1,5 @@
+# contributor: deepwaterooo
+# name: Model.grid[x][y][z]
+# key: mgxy
+# --
+Model.grid[x][y][z]$0

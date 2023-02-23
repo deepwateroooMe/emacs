@@ -1,0 +1,6 @@
+# contributor: deepwaterooo
+# name: TAGforCsharp
+# key: tg
+# --
+private const string TAG = "$1";
+$0

@@ -1,0 +1,5 @@
+# contributor: deepwaterooo
+# name: print(nextTetromino.transform.position)
+# key: pn
+# --
+MathUtil.print(ViewManager.nextTetromino.transform.position);$0

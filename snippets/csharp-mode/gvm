@@ -1,0 +1,5 @@
+# contributor: deepwaterooo
+# name: ViewManager.GameView.ViewModel
+# key: gvm
+# --
+((GameViewModel)ViewManager.GameView.ViewModel)$0

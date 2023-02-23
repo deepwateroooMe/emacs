@@ -2,7 +2,6 @@
       (cons '("swift" . swift-mode) interpreter-mode-alist))
 (add-to-list 'auto-mode-alist '("\\.swift\\'" . swift-mode))
 
-
 ; swift-mode
 ;; (setq load-path (cons (expand-file-name "~/.emacs.d/elpa/swift3-mode-2.1.1") load-path))
 (setq load-path (cons (expand-file-name "~/.emacs.d/elpa/swift-mode-2.3.0") load-path))
@@ -11,6 +10,21 @@
  '(swift-indent-offset 2)
  '(swift-indent-multiline-statement-offset 1)
  )
+
+;;; 不喜欢现在的 swift-mode 里的 {} 不能自动扩展开来，要个帮助方法，自动扩展
+(add-hook 'swift-mode-hook
+	      #'(lambda ()
+	          (local-set-key (kbd "{") 'after-swift-mark)))
+(defun after-swift-mark ()
+  (interactive)
+  (self-insert-command 1)  ;;; so far only upto here, don't know how to eval & expand {}
+  (insert "")
+  (newline-and-indent);; 处理当前空行
+  (forward-char 1) ;; 1 希望的是，它前一个字付，会移到下一行，格式化下一行
+  (indent-according-to-mode);; 这一行，可能不知道为什么不起俢了
+  (previous-line);; 回到前一行，但是光标位置不对
+  (indent-according-to-mode);; 这一行，仍然起作用，可以在当前行，将光标移到正确的位置 
+  )
 
 
 ; quickrun keybindings to swift-mode-hook
@@ -62,7 +76,8 @@
 (add-hook 'after-mode-hook ;;; ?
           (lambda()
             (global-set-key (kbd "C-j") 'cmtSwiftEnCh) ;; English ==> Chinese
-            (local-set-key (kbd "C-i") 'cmtSwiftChCh) ;; Chinese ==> Chinese
+            (local-set-key (kbd "C-x x") 'cmtSwiftChCh) ;; Chinese ==> Chinese
             ))
+
 
 (provide 'init-swift-mode)

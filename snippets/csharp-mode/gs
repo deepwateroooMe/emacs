@@ -1,0 +1,6 @@
+# contributor: deepwaterooo
+# name: get;set;1 line 
+# key: gs
+# --
+{ get; set; }
+$0

@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: self.var
+# key: sv
+# --
+self.$1 = $2.$1;
+$0

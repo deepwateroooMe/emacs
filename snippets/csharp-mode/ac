@@ -1,0 +1,5 @@
+# contributor: deepwaterooo
+# name: AddComponent<>
+# key: ac
+# --
+AddComponent<$1>()$0

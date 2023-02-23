@@ -1,0 +1,5 @@
+# contributor: deepwaterooo
+# name: ViewModel..ParentViewModel
+# key: vmp
+# --
+((MenuViewModel)ViewModel.ParentViewModel).$0

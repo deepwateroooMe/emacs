@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: ForTmpUseOnlyFalse
+# key: ff
+# --
+btnState.Value[$1] = false;
+$0
