@@ -432,7 +432,7 @@ joined together."))
 (slime-define-keys slime-repl-mode-map
   ("\C-m" 'slime-repl-return)
   ([return] 'slime-repl-return)
-  ("\C-j" 'slime-repl-newline-and-indent)
+  ;; ("\C-j" 'slime-repl-newline-and-indent) ;; 这个键我要用
   ("\C-\M-m" 'slime-repl-closing-return)
   ([(control return)] 'slime-repl-closing-return)
   ("\C-a" 'slime-repl-bol)

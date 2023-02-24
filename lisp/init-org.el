@@ -596,10 +596,13 @@
 
 (fset 'cm
       (kmacro-lambda-form [?\C-a ?- ?  ?\C-e ?\C-n ?\C-a] 0 "%d"))
-(global-set-key (kbd "C-c i") 'cm) ; very useful
+;; (global-set-key (kbd "C-c i") 'cm) ; 这里只是不能定义为全局，可以定义为局部
+;; (global-set-key (kbd "C-c j") 'org-emphasize) ; very useful
+(add-hook 'org-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-c i") 'cm) ; 这里只是不能定义为全局，可以定义为局部
+            (local-set-key (kbd "C-c j") 'org-emphasize) ; very useful
+            ))
 
-
-
-(global-set-key (kbd "C-c j") 'org-emphasize) ; very useful
 
 (provide 'init-org)

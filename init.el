@@ -1,10 +1,10 @@
 ;; 下面的启动太慢了；在没有必要的时候不想要它来耽误启动时间
-(require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/") t)
-(add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-(package-initialize)
+;; (require 'package)
+;; (add-to-list 'package-archives
+;;              '("melpa" . "https://melpa.org/packages/") t)
+;; (add-to-list 'package-archives
+;;              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+;; (package-initialize)
 
 (setq debug-on-error t);; 它会无数次地停掉程序，去掉
 
@@ -185,7 +185,6 @@
   (require 'shader-mode)
 ;  (require 'init-kotlin-mode)
   (require 'init-nxml-mode)
-  ;; (require 'init-company)
   
   ;; have NOT passed  
   (require 'init-org)			
@@ -203,7 +202,7 @@
   (require 'init-protobuf-mode)
   (require 'init-pdf-tools) ;;;; 我并没有使用这个
 ;  (require 'init-org-noter-pdftools)
-  (require 'init-company) ;;; 不喜欢它老是跑出一大堆的路径相关的,不方便,暂时不同这个模式
+  ;; (require 'init-company) ;;; 不喜欢它老是跑出一大堆的路径相关的,不方便; 它老是导致闪屏提示，不方便 
   (require 'init-csharp-mode) 
   (require 'init-swift-mode)
   )
@@ -538,32 +537,6 @@
     (insert clip)
     (if arg (kill-new clip))))
 
-
-;;; for formating files when copying codes from online or somewhere which format I don't like
-(fset 'ta   ;;; C-i to be " & "  tab
-      [?\M-x ?r ?e ?p ?l ?  ?s return ?\C-q ?\C-i return ?  ?& ?  return])
-
-(fset 'fom  ;;; { to be inline
-      [?\M-x ?r ?e ?p ?l ?  ?s return ?\C-q ?\C-j ?\C-q ?\C-i ?\{ ?\C-q ?\C-j return ?  ?\{ ?\C-q ?\C-j return])
-(fset 'el
-      "\C-n\C-k\C-p\C-e\C-y\C-n\C-n\C-b\C-b\C-k\C-p\C-p\C-e\C-y\C-k\C-k\C-n\C-n\C-a")
-
-(fset 'fn
-      [?\M-p ?\C-q ?\C-j ?\{ return ?  ?\{ return])
-(fset 'nd
-      "\C-e|\C-n\C-e")
-
-(fset 'lc ;;; c++ header for leetcode problems
-      [?# ?i ?n ?c ?l ?u ?d ?e ?  ?< ?i ?o ?s ?t ?r ?e ?a ?m ?> return ?# ?i ?n ?c ?l ?u ?d ?e ?  ?< ?v ?e ?c ?t ?o ?r ?> return ?# ?i ?n ?c ?l ?u ?d ?e ?  ?< ?s ?t ?a ?c ?k ?> return ?# ?i ?n ?c ?l ?u ?d ?e ?  ?< ?q ?u ?e ?u ?e ?> return ?# ?i ?n ?c ?l ?u ?d ?e ?  ?< ?c ?m ?a ?t ?h ?> return ?u ?s ?i ?n ?g ?  ?n ?a ?m ?e ?s ?p ?a ?c ?e ?  ?s ?t ?d ?\; return return return return ?i ?n ?t ?  ?m ?a ?i ?n ?\( ?\) ?  backspace ?\{ return return return ?r ?e ?t ?u ?r ?n ?  ?0 ?\; return ?\} ?\C-p ?\C-p ?\C-p ?\C-p ?\C-p ?\C-p])
-
-(fset 'st
-      [?\C-  ?\C-p ?\C-p ?\C-p ?\C-p ?\C-p ?\C-p ?\M-p ?* return return ?\C-p ?\C-p])
-
-;; @see https://www.reddit.com/r/emacs/comments/4q4ixw/how_to_forbid_emacs_to_touch_configuration_files/
-                                        ;(setq custom-file (concat user-emacs-directory "custom-set-variables.el"))
-                                        ;(load custom-file 'noerror)
-
-                                        ;(setq gc-cons-threshold best-gc-cons-threshold)
 
 (set-language-environment 'UTF-8) 
 (set-locale-environment "UTF-8")

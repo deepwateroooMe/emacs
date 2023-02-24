@@ -4,6 +4,9 @@
 
 * Updates 
 ** emacs 1 initiliation bug
+- swift-mode: C-c i open in appcode of emacs current buffer
+  - C-c i 无法从 emacs 中跳转至 appcode 中打开当前 buffer, 
+  - 同样是因为 x86-64 的 emacs 无法找到相应的 arm64-swift 环境？相对难办，晚点儿再处理 
 - TODO: 需要将其配置到 arm64-arch 【爱表哥，爱生活！！！】
 - 昨天转词库感觉到旧版本的 emacs 可能还是存在各种性能问题，面将其升级到 28.2. 
 - emacs 27.1 for emacs-rime input methods. one bug to be fixed. 

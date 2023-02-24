@@ -38,7 +38,7 @@
 	(slime-mode t)
 	(current-buffer))))
 
-(slime-define-keys slime-scratch-mode-map
-  ("\C-j" 'slime-eval-print-last-expression))
+;; (slime-define-keys slime-scratch-mode-map ;; C-j 我要用
+;;   ("\C-j" 'slime-eval-print-last-expression))
 
 (provide 'slime-scratch)

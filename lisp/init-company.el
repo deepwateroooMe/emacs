@@ -133,7 +133,7 @@
 
 (defun sucha-install-company-completion-rules ()
   "gtags and dabbref completions for C and C++ mode"
-  (company-clear-completion-rules)
+  ;; (company-clear-completion-rules)
   (company-install-dabbrev-completions)
   (company-install-file-name-completions)
   (eval-after-load 'company-gtags-completions
@@ -144,7 +144,7 @@
  'c-mode-common-hook
  (lambda ()
    (company-mode 1)
-   (sucha-install-company-completion-rules) ; refers to the function
+   ;; (sucha-install-company-completion-rules) ; 这里面有很多的配置出不来，暂去掉
    )
  t)
 
