@@ -40,41 +40,42 @@
             (delete* "*" org-emphasis-alist :key 'car :test 'equal)))
 
 
-;; ;;; automated file-name-directory for current buffer , for windows, 使用powershell 
-;; (defun my-org-screenshot ()
-;;   "Take a screenshot into a time stamped unique-named file in the
-;; same directory as the org-buffer and insert a link to this file."
-;;   (interactive)
-;;   (let* ((powershell (executable-find "powershell.exe"))
-;;          (basename (format-time-string "%Y%m%d_%H%M%S.png"))
-;;          (filename (concat (file-name-base (buffer-file-name))
-;;                            "_"
-;;                            basename))
-;;          (winFilePathName (expand-file-name (concat "pic/" filename) (file-name-directory buffer-file-name)))
-;;          (file-path-wsl (concat "./pic/" filename)))
-;; ;;; 必须先用第三方软件将截图复制到剪贴板，再调用这个命令自动生成图片和插入到org文件中，不是全自动
-;; ;;; (需要手动F1调用Snipaste[截图+自动复制到剪贴板，再emacs org 里C-i完成自动化，得两个步骤)；但仍差强人意
-;;     (shell-command (concat powershell " -command \"(Get-Clipboard -Format Image).Save(\\\"" winFilePathName "\\\")\""))
-;;     (org-indent-line)
-;;     (insert (concat "\n[[" file-path-wsl "]]"))))
-(defun my-org-screenshot () ;;; for mac: automated process, 
+;;; automated file-name-directory for current buffer , for windows, 使用powershell 
+(defun my-org-screenshot ()
   "Take a screenshot into a time stamped unique-named file in the
-    same directory as the org-buffer and insert a link to this file."
+same directory as the org-buffer and insert a link to this file."
   (interactive)
-  ;; (start-process "Snipaste" nil nil nil) ;;; 这一步主要目标是： 有时候Snipaste没有打开，这里确保截屏程序打开在运行，这里仍然不对，调用得可能太晚，第一次仍会失败，如果没有开启的话，但保证下一步执行成功
-  (let* ((basename (format-time-string "%Y%m%d_%H%M%S.png"))
+  (let* ((powershell (executable-find "powershell.exe"))
+         (basename (format-time-string "%Y%m%d_%H%M%S.png"))
          (filename (concat (file-name-base (buffer-file-name))
                            "_"
                            basename))
-         ;; (winFilePathName (expand-file-name (concat "pic/" filename) (file-name-directory buffer-file-name))) ;;; absolute directory for windows, don't like in mac
-;;; 这里想要检查一下./pic文件夹是存在，如果不存在，创建文件夹
-         (file-path-wsl (concat "./pic/" filename))
-         (outdir (concat (file-name-directory (buffer-file-name)) "/pic")))
-    (unless (file-directory-p outdir)
-      (make-directory outdir t))
-    (shell-command (concat "pngpaste " file-path-wsl))
+         (winFilePathName (expand-file-name (concat "pic/" filename) (file-name-directory buffer-file-name)))
+         (file-path-wsl (concat "./pic/" filename)))
+;;; 必须先用第三方软件将截图复制到剪贴板，再调用这个命令自动生成图片和插入到org文件中，不是全自动
+;;; (需要手动F1调用Snipaste[截图+自动复制到剪贴板，再emacs org 里C-i完成自动化，得两个步骤)；但仍差强人意
+    (shell-command (concat powershell " -command \"(Get-Clipboard -Format Image).Save(\\\"" winFilePathName "\\\")\""))
     (org-indent-line)
     (insert (concat "\n[[" file-path-wsl "]]"))))
+
+;; (defun my-org-screenshot () ;;; for mac: automated process, 
+;;   "Take a screenshot into a time stamped unique-named file in the
+;;     same directory as the org-buffer and insert a link to this file."
+;;   (interactive)
+;;   ;; (start-process "Snipaste" nil nil nil) ;;; 这一步主要目标是： 有时候Snipaste没有打开，这里确保截屏程序打开在运行，这里仍然不对，调用得可能太晚，第一次仍会失败，如果没有开启的话，但保证下一步执行成功
+;;   (let* ((basename (format-time-string "%Y%m%d_%H%M%S.png"))
+;;          (filename (concat (file-name-base (buffer-file-name))
+;;                            "_"
+;;                            basename))
+;;          ;; (winFilePathName (expand-file-name (concat "pic/" filename) (file-name-directory buffer-file-name))) ;;; absolute directory for windows, don't like in mac
+;; ;;; 这里想要检查一下./pic文件夹是存在，如果不存在，创建文件夹
+;;          (file-path-wsl (concat "./pic/" filename))
+;;          (outdir (concat (file-name-directory (buffer-file-name)) "/pic")))
+;;     (unless (file-directory-p outdir)
+;;       (make-directory outdir t))
+;;     (shell-command (concat "pngpaste " file-path-wsl))
+;;     (org-indent-line)
+;;     (insert (concat "\n[[" file-path-wsl "]]"))))
 ;;; global-set-key: producing side bugs for csharp-mode & java-mode whoever uses C-i commands .......
 ;; (global-set-key (kbd "C-i") 'my-org-screenshot) ;;; 今天终于明白了这个C-i是好用，但是在csharp-mode java-mode过程中因为使用到C-i【不知道为什么】会错配到org-mode中的这个合集
 

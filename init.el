@@ -1,10 +1,10 @@
 ;; 下面的启动太慢了；在没有必要的时候不想要它来耽误启动时间
-;; (require 'package)
-;; (add-to-list 'package-archives
-;;              '("melpa" . "https://melpa.org/packages/") t)
-;; (add-to-list 'package-archives
-;;              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-;; (package-initialize)
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(package-initialize)
 
 
  (setq default-directory "C:/Users/blue_/AppData/Roaming/.emacs.d/")
@@ -39,7 +39,7 @@
 
 ;;; setup defaults for all modes
 (setq default-frame-alist
-       '((top . 0)(left . 400)(height . 73)(width . 180)(menubar-lines . 70)(tool-bar-line . 0))
+       '((top . 0)(left . 400)(height . 76)(width . 180)(menubar-lines . 70)(tool-bar-line . 0))
       ;;'((top . 0)(left . 427)(height . 550)(width . 160)(menubar-lines . 55)(tool-bar-line . 0)) ; ori
       ) ; tmp.p
 
@@ -197,13 +197,13 @@
   (require 'init-text)
   (require 'init-syslog-mode)
   (require 'init-misc)  ;; comment for replace-string
-  ;; (require 'init-hydra) ;; 不知道这个会影响哪些功能  
   (require 'init-autopair) 
-;  (require 'init-sis) 
+  ;; (require 'init-hydra) ;; 不知道这个会影响哪些功能  
+ (require 'init-sis) 
   (require 'pangu-spacing)
   (require 'expand-region)
   (require 'init-protobuf-mode)
-;;  (require 'init-pyim) ;; 这个东西，一时半会儿可能还弄不出来，先放一下
+ (require 'init-pyim) ;; 这个东西，一时半会儿可能还弄不出来，先放一下
 ;;   ;; (require 'init-company) ;;; 不喜欢它老是跑出一大堆的路径相关的,不方便,暂时不同这个模式
   (require 'init-pdf-tools) ;;;; 我并没有使用这个
 ;  (require 'init-org-noter-pdftools)
