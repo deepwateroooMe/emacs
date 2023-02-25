@@ -1,4 +1,4 @@
-;; 下面的启动太慢了；在没有必要的时候不想要它来耽误启动时间
+; 下面的启动太慢了；在没有必要的时候不想要它来耽误启动时间
 ;; (require 'package)
 ;; (add-to-list 'package-archives
 ;;              '("melpa" . "https://melpa.org/packages/") t)
@@ -205,6 +205,7 @@
   ;; (require 'init-company) ;;; 不喜欢它老是跑出一大堆的路径相关的,不方便; 它老是导致闪屏提示，不方便 
   (require 'init-csharp-mode) 
   (require 'init-swift-mode)
+  (require 'init-color-theme)
   )
 
 

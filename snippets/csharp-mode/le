@@ -1,0 +1,5 @@
+# contributor: deepwaterooo
+# name: Log.Error()
+# key: le
+# --
+Log.Error($1)$0

@@ -1,16 +1,13 @@
+(require 'swift-mode)
+
 (setq interpreter-mode-alist
       (cons '("swift" . swift-mode) interpreter-mode-alist))
 (add-to-list 'auto-mode-alist '("\\.swift\\'" . swift-mode))
 
-; swift-mode
-;; (setq load-path (cons (expand-file-name "~/.emacs.d/elpa/swift3-mode-2.1.1") load-path))
-;; (setq load-path (cons (expand-file-name "~/.emacs.d/elpa/swift-mode-2.3.0") load-path))
-(require 'swift-mode)
 (custom-set-variables
  '(swift-indent-offset 4)
  '(swift-indent-multiline-statement-offset 1)
  )
-
 
 ;;; 不喜欢现在的 swift-mode 里的 {} 不能自动扩展开来，要个帮助方法，自动扩展
 (add-hook 'swift-mode-hook
@@ -27,7 +24,6 @@
   (indent-according-to-mode);; 这一行，仍然起作用，可以在当前行，将光标移到正确的位置 
   )
 
-
 ; quickrun keybindings to swift-mode-hook
 (add-hook 'swift-mode-hook
           (lambda()
@@ -37,17 +33,17 @@
           )
 
 ; add global-flycheck-mode to after-ini-hook
-;; (add-hook 'after-init-hook #'global-flycheck-mode) ;;; 暂时不要这些，把键弄得狠复杂 
+(add-hook 'after-init-hook #'global-flycheck-mode) ;;; 暂时不要这些，把键弄得狠复杂 
 
 ; Add swift to flychecker-checkers when swift-mode-hook is enabled. Set swift SDK path to flycheck-swift-sdk-path.
 (add-hook 'swift-mode-hook
   '(lambda()
      ;; (add-to-list 'flycheck-checkers 'swift)
      (setq autopair-dont-activate t)
-     ;; (setq flycheck-swift-sdk-path
-     ;;   (replace-regexp-in-string
-     ;;    "\n+$" "" (shell-command-to-string
-     ;;               "xcrun --show-sdk-path --sdk macosx")))
+     (setq flycheck-swift-sdk-path
+       (replace-regexp-in-string
+        "\n+$" "" (shell-command-to-string
+                   "xcrun --show-sdk-path --sdk macosx")))
   ))
 
 

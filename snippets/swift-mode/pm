@@ -1,0 +1,6 @@
+# contributor: deepwaterooo
+# name: printMsg()
+# key: pm
+# --
+print("$1")
+$0

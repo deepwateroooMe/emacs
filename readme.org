@@ -4,15 +4,27 @@
 
 * Updates 
 ** emacs 1 initiliation bug
-- swift-mode: C-c i open in appcode of emacs current buffer
-  - C-c i 无法从 emacs 中跳转至 appcode 中打开当前 buffer, 
-  - 同样是因为 x86-64 的 emacs 无法找到相应的 arm64-swift 环境？相对难办，晚点儿再处理 
-- TODO: 需要将其配置到 arm64-arch 【爱表哥，爱生活！！！】
-- 昨天转词库感觉到旧版本的 emacs 可能还是存在各种性能问题，面将其升级到 28.2. 
+- TODO: 需要将Rime 动态库构建成适配配置到 arm64-arch 版本。它性能我电脑的整体性能。
+* Emacs x86_64 vs arm64-arch, and System Rime input method
+- 【重点：上次我的 emacs 升级，为什么我不能把它直接升级到 arm 版本来着？那个 csharp-mode 的循环问题不是早解决了？！！！可以再试下？ NO, not yet.】
+  - 现和使用的 x86_64 版本，当初是为了安装 pyim 吗？如果是这样，我不应该再有任何的变化，就意味着我无法从 appcode 中打开当前 emacs 的 buffer 文件（因为 emacs 的 x86_64 版本限制了其正常找到 appcode 所依赖的 arm64-arch 环境？这个可以试着找下是否有解决方案）；
+  - 而如果 pyim 可以 workwith arm 版本，我就可以安装 arm64-arch 版本，可能就可以从 appcode 中打开当前 emacs 的 buffer 文件了。
+  - 我要再试一遍？【现在还不能够试，在我还不能够构建和安装出 rime 系统输入法的 arm64-arch 版本动态库之前（这个输入法，现系统所安装的是 x86_64 版本的），我安装 arm64-arch 版本的 emacs ，我的pyim 将不可以用（找不到对应版本的 rime 动态库），因为我构建不出 arm64-arch 版本的 pyim 所依赖的动态库。所以将现在的 emacs 委屈成了 x86_64 版本的，也因为这样，我的 emacs 无法正常加载 arm 版本的 appcode 所依赖的动态库，所以无法从 emacs 中直接在 appcode 中打开当前 buffer 文件。】
+  - 可以 walk-around 的解决办法是：安装 x86-64 版本的 appcode. 【在自己能够想方设法构建出 arm 版本的 rime 动态库之前，先用这个版本，可以满足自已的基本跳转需求】
+    
+[[./pic/readme_20230225_132052.png]]
+  - 有试过， boost 的步骤基本能够完成，但是构建第三方库时的 cmake 与 xcode-clang++ 还有很多 arm 相关的问题待解。 
+- 那么我现在有个迫切需要：就是能够自己构建 arm64-arch 版本的 rime 输入法( 至少是能够编译出它的动态库吧？！！！)：现在找到的参考如下： 
+  - https://www.bilibili.com/read/cv9664366?from=search
+  - 但是按照上面的步骤，目前理解消化不够，安装不好。注意，这里用到的 MacOS 下在的库是： https://github.com/rime/squirrel 但是我仍然构建不出那个动态库
+- 如些发现，原来，所谓 rime macOS 下的输入法构建，原来是 MacOS 下的平台应用，正是我可以学习的地方。终于是半只脚往输入法的坑里踏：
+  - https://www.logcg.com/archives/2078.html. 这些都可以成为日后自己学习和开发的参考 
+
 - emacs 27.1 for emacs-rime input methods. one bug to be fixed. 
 
  [[./pic/readme_20230214_134351.png]]
-- this affect me access to current terminal, needs to be fixed later. 
+- this affect me access to current terminal, needs to be fixed later.
+- after having updated swift-mode, color-theme for swift mode is much better now. 
 ** configue pyim wubi input method emacs-rime, works like a charm!
 - 现在最大的缺点是：我无法使用自已魔改过的个性化字库，姓名住圵等等，活宝妹，亲爱的表哥，等等。但其它也算是基本清单了，再不折腾它了。花了太多的时间在这个上面。所以现在输入法还算是基本清单的。
   - 两套：系统的，与 emacs 里自带的。目前的中英文转换只使用一个探针，过多会存在过灵的总是，某些情况下被禁用中文，就会更麻烦，不如它没有那么灵。爱亲爱的表哥，活宝妹一定要嫁的亲爱的表哥！！！
