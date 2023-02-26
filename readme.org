@@ -113,3 +113,153 @@ fun dslfkj { // kotlin-mode, unlike java-mode, this feature works charming
 - *csharp-mode* has been the one that works perfectly for these two features, {} auto expand, also if while one line statement autoindent without {}, so I used csharp-mode as java mode.
 * References
 - https://github.com/redguardtoo/emacs.d
+
+* windows 10 posframe 因为显示位置过高，遮挡了输入行底部部分的搜索解决办法
+- 先把行距再调大一点儿：从0.1 ＝＝》 0.15 ＝＝》 0.2 ＝＝》 0.3 看看这些能不能起什么作用；
+- posframe 包下，应该有参数可以设置框的显示位置
+  #+BEGIN_SRC text
+ ~/.emacs.d/e/posframe-20230212.808  on   master *2 +3 !1 ?8  grep -nE "posframe-poshandler" ./**/*.el
+./posframe-autoloads.el:61:1.  `posframe-poshandler-frame-center'
+./posframe-autoloads.el:62:2.  `posframe-poshandler-frame-top-center'
+./posframe-autoloads.el:63:3.  `posframe-poshandler-frame-top-left-corner'
+./posframe-autoloads.el:64:4.  `posframe-poshandler-frame-top-right-corner'
+./posframe-autoloads.el:65:5.  `posframe-poshandler-frame-bottom-center'
+./posframe-autoloads.el:66:6.  `posframe-poshandler-frame-bottom-left-corner'
+./posframe-autoloads.el:67:7.  `posframe-poshandler-frame-bottom-right-corner'
+./posframe-autoloads.el:68:8.  `posframe-poshandler-window-center'
+./posframe-autoloads.el:69:9.  `posframe-poshandler-window-top-center'
+./posframe-autoloads.el:70:10. `posframe-poshandler-window-top-left-corner'
+./posframe-autoloads.el:71:11. `posframe-poshandler-window-top-right-corner'
+./posframe-autoloads.el:72:12. `posframe-poshandler-window-bottom-center'
+./posframe-autoloads.el:73:13. `posframe-poshandler-window-bottom-left-corner'
+./posframe-autoloads.el:74:14. `posframe-poshandler-window-bottom-right-corner'
+./posframe-autoloads.el:75:15. `posframe-poshandler-point-top-left-corner'
+./posframe-autoloads.el:76:16. `posframe-poshandler-point-bottom-left-corner'
+./posframe-autoloads.el:77:17. `posframe-poshandler-point-bottom-left-corner-upward'
+./posframe-autoloads.el:78:18. `posframe-poshandler-point-window-center'
+./posframe-autoloads.el:79:19. `posframe-poshandler-point-frame-center'
+./posframe.el:212:1.  `posframe-poshandler-frame-center'
+./posframe.el:213:2.  `posframe-poshandler-frame-top-center'
+./posframe.el:214:3.  `posframe-poshandler-frame-top-left-corner'
+./posframe.el:215:4.  `posframe-poshandler-frame-top-right-corner'
+./posframe.el:216:5.  `posframe-poshandler-frame-bottom-center'
+./posframe.el:217:6.  `posframe-poshandler-frame-bottom-left-corner'
+./posframe.el:218:7.  `posframe-poshandler-frame-bottom-right-corner'
+./posframe.el:219:8.  `posframe-poshandler-window-center'
+./posframe.el:220:9.  `posframe-poshandler-window-top-center'
+./posframe.el:221:10. `posframe-poshandler-window-top-left-corner'
+./posframe.el:222:11. `posframe-poshandler-window-top-right-corner'
+./posframe.el:223:12. `posframe-poshandler-window-bottom-center'
+./posframe.el:224:13. `posframe-poshandler-window-bottom-left-corner'
+./posframe.el:225:14. `posframe-poshandler-window-bottom-right-corner'
+./posframe.el:226:15. `posframe-poshandler-point-top-left-corner'
+./posframe.el:227:16. `posframe-poshandler-point-bottom-left-corner'
+./posframe.el:228:17. `posframe-poshandler-point-bottom-left-corner-upward'
+./posframe.el:229:18. `posframe-poshandler-point-window-center'
+./posframe.el:230:19. `posframe-poshandler-point-frame-center'
+./posframe.el:854:               #'posframe-poshandler-point-bottom-left-corner)
+./posframe.el:858:               #'posframe-poshandler-absolute-x-y)
+./posframe.el:1099:(defun posframe-poshandler-absolute-x-y (info)
+./posframe.el:1113:(defun posframe-poshandler-point-1 (info &optional font-height upward)
+./posframe.el:1153:(defun posframe-poshandler-point-bottom-left-corner (info)
+./posframe.el:1161:  (posframe-poshandler-point-1 info))
+./posframe.el:1163:(defun posframe-poshandler-point-window-center (info)
+./posframe.el:1172:  (let ((x (car (posframe-poshandler-window-top-center info)))
+./posframe.el:1173:        (y (cdr (posframe-poshandler-point-bottom-left-corner info))))
+./posframe.el:1176:(defun posframe-poshandler-point-frame-center (info)
+./posframe.el:1185:  (let ((x (car (posframe-poshandler-frame-top-center info)))
+./posframe.el:1186:        (y (cdr (posframe-poshandler-point-bottom-left-corner info))))
+./posframe.el:1189:(defun posframe-poshandler-point-bottom-left-corner-upward (info)
+./posframe.el:1197:  (posframe-poshandler-point-1 info nil t))
+./posframe.el:1199:(defun posframe-poshandler-point-top-left-corner (info)
+./posframe.el:1208:    (posframe-poshandler-point-1 info font-height)))
+./posframe.el:1210:(defun posframe-poshandler-frame-center (info)
+./posframe.el:1225:(defun posframe-poshandler-frame-top-center (info)
+./posframe.el:1238:(defun posframe-poshandler-frame-top-left-corner (_info)
+./posframe.el:1248:(defun posframe-poshandler-frame-top-right-corner (_info)
+./posframe.el:1258:(defun posframe-poshandler-frame-bottom-left-corner (info)
+./posframe.el:1270:(defun posframe-poshandler-frame-bottom-right-corner (info)
+./posframe.el:1282:(defun posframe-poshandler-frame-bottom-center (info)
+./posframe.el:1298:(defun posframe-poshandler-window-center (info)
+./posframe.el:1315:(defun posframe-poshandler-window-top-left-corner (info)
+./posframe.el:1328:(defun posframe-poshandler-window-top-right-corner (info)
+./posframe.el:1344:(defun posframe-poshandler-window-top-center (info)
+./posframe.el:1359:(defun posframe-poshandler-window-bottom-left-corner (info)
+./posframe.el:1376:(defun posframe-poshandler-window-bottom-right-corner (info)
+./posframe.el:1396:(defun posframe-poshandler-window-bottom-center (info)
+  #+END_SRC
+- 其它人解决办法的参考： 
+#+BEGIN_SRC emacs-lisp
+(use-package mini-frame
+  :hook (window-setup . mini-frame-mode))
+
+(use-package posframe
+  :hook (window-setup . (lambda () (require 'posframe))))
+
+(use-package selectrum
+  :hook (window-setup . selectrum-mode)
+  :config
+  (setq mini-frame-show-parameters                                        
+      (lambda ()                                                                
+        (let* ((info (posframe-poshandler-argbuilder))
+               (posn (posframe-poshandler-point-bottom-left-corner info))
+               (left (car posn))
+               (top (cdr posn)))
+          `((left . ,left)
+            (top . ,top))))))
+#+END_SRC
+- 设置 posframe 的参数等: 这也是我有的问题，因为我候选框字太小，我看不清楚，想调大
+#+BEGIN_SRC emacs-lisp
+(defun selectrum-posframe (buffer _alist)
+    "Function used by `selectrum-display-action."
+    (frame-root-window
+     (posframe-show buffer
+		    :min-width 30
+		    :width 60
+		    :min-height 5
+		    :height 10
+		    :background-color "#b4eeb4" ;; hl-line background color
+		    :left-fringe (min 0 (* (frame-char-width) selectrum-posframe-fringe))
+		    :right-fringe (min 0 (* (frame-char-width) selectrum-posframe-fringe))
+		    :poshandler 'posframe-poshandler-point-bottom-left-corner-fringe
+		    :lines-truncate t
+		    )))
+#+END_SRC
+- 
+[[./pic/readme_20230226_100330.png]]
+#+BEGIN_SRC emacs-lisp
+(defcustom selectrum-posframe-parameters nil
+    "The frame parameters used by selectrum-posframe."
+    :type 'string)
+
+  (setq selectrum-posframe-parameters
+	'(
+	  (min-width . 30)
+	  (min-height . 2)
+	  (width . 60)
+	  (height . 10)
+	  ))
+
+  (defun selectrum-posframe (buffer _alist)
+    "Function used by `selectrum-display-action."
+    (frame-root-window
+     (posframe-show buffer
+		    :min-width 30
+		    :width 60
+		    :min-height 5
+		    :height 10
+		    :background-color "#b4eeb4" ;; hl-line background color
+		    :left-fringe (min 0 (* (frame-char-width) selectrum-posframe-fringe))
+		    :right-fringe (min 0 (* (frame-char-width) selectrum-posframe-fringe))
+		    :poshandler 'posframe-poshandler-point-bottom-left-corner-fringe
+		    :override-parameters selectrum-posframe-parameters
+		    :lines-truncate t
+		    )))
+#+END_SRC
+
+[[./pic/readme_20230226_100415.png]]
+- 为啥posframe的 :width 和 :height 不能生效
+  - 试试最新代码，原来的这两个参数指的是 max-width 和 max-height
+- :override-parameters 传参数也不行，
+  - 有些 posframe-show 参数 不是 frame parameters, 所以也就不起作用。
+- 暂时就搜这么多，晚上回家稍微折腾一会儿这东西。总要自己输入中文的时候稍微方便一点儿吧，不能总被挡住底部一条线一条边。 
