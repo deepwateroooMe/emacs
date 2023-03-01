@@ -1,0 +1,5 @@
+# contributor: deepwaterooo
+# name: Log.Error($"v: {v}")
+# key: lv
+# --
+Log.Error($"${1:v}: {$1}");$0

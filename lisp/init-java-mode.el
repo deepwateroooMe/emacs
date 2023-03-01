@@ -92,13 +92,23 @@
 
    ;; else, it's a new scope., 
    ;; therefore, insert paired braces with an intervening newline, and indent everything appropriately.
-   (t
+   (t ;; fixing similar problem for java-mode
     (if (cheeso-prior-sexp-same-statement-same-line-java)
-        (self-insert-command 1)) ;;; so far only upto here, don't know how to eval & expand {}
+        (self-insert-command 1))  ;;; so far only upto here, don't know how to eval & expand {}
     (insert "")
-    (newline-and-indent)
-    (c-indent-line-or-region)
+    (newline-and-indent);; 处理当前空行
+    (forward-char 1) ;; 1 希望的是，它前一个字付，会移到下一行，格式化下一行
+    (indent-according-to-mode);; 这一行，可能不知道为什么不起俢了
+    (previous-line);; 回到前一行，但是光标位置不对
+    (indent-according-to-mode);; 这一行，仍然起作用，可以在当前行，将光标移到正确的位置 
     )))
+;; (t
+;;     (if (cheeso-prior-sexp-same-statement-same-line-java)
+;;         (self-insert-command 1)) ;;; so far only upto here, don't know how to eval & expand {}
+;;     (insert "")
+;;     (newline-and-indent)
+;;     (c-indent-line-or-region)
+;;     )))
 
 
 ;;; famously formating .java file

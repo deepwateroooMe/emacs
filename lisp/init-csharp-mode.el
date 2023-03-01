@@ -45,7 +45,7 @@ or terminating simple string."
 ;;              (current-column)
 ;;              ))))
 (defalias 'display-buffer-in-major-side-window 'window--make-major-side-window)
-(defun gp/vscode-current-buffer-file-at-point ()
+(defun gp/ss-vscode-current-buffer-file-at-point ()
   (interactive)
   (start-process-shell-command "code"
                                nil
@@ -56,7 +56,7 @@ or terminating simple string."
                                        ;; (number-to-string (1+ (current-line))) ;; +1 who knows why
                                        ":"
                                        (number-to-string (current-column)))))
-;; (define-key global-map (kbd "C-c i") 'gp/vscode-current-buffer-file-at-point) 
+;; (define-key global-map (kbd "C-c i") 'gp/ss-vscode-current-buffer-file-at-point) 
 
 ;; ;; try to make a version for Visual Studio 2022, but it does NOT work
 ;; ;; open '/Applications/Visual Studio.app' [path_to].sln
@@ -91,8 +91,8 @@ or terminating simple string."
 (put 'cmtEnCh 'kmacro t)
 (put 'cmtChCh 'kmacro t)
 (add-hook 'csharp-mode-hook
-          (lambda ()
-            (local-set-key (kbd "C-c i") 'gp/vscode-current-buffer-file-at-point) ;;;;; 这个键太复杂，不好用 ;;;;; distribute the work into 2 fingers
+          '(lambda ()
+            (local-set-key (kbd "C-c i") 'gp/ss-vscode-current-buffer-file-at-point) 
             ;; (local-set-key (kbd "C-x x") 'cmtEnCh) ;; English ==> Chinese 改变绑定的鍵才是最彻底的改法，不会让 C-cf 运行狠久
             ;; (local-set-key (kbd "C-x j") 'cmtChCh) ;; Chinese ==> Chinese
             (local-set-key (kbd "C-x x") 'cmtEnCh) ;; English ==> Chinese 改变绑定的鍵才是最彻底的改法，不会让 C-cf 运行狠久
@@ -162,34 +162,34 @@ or terminating simple string."
     )))
 
 ;; 把下面的去掉，是因为前面说，company-mode 下会出现太多路径相关的后端填词，把它去掉试试看
-;; ;;; 我把这个暂时去掉，看还会引起那么多的问题吗？这个东西应该是不会起什么作用的
-;; (add-hook 'csharp-mode-hook (lambda ()
-;;                               (font-lock-add-keywords nil '(
-;;                                         ; Valid hex number (will highlight invalid suffix though)
-;;                                                             ("\\b0x[[:xdigit:]]+[uUlL]*\\b" . font-lock-string-face)
-;;                                         ; Invalid hex number
-;;                                                             ("\\b0x\\(\\w\\|\\.\\)+\\b" . font-lock-warning-face)
-;;                                         ; Valid floating point number.
-;;                                                             ("\\(\\b[0-9]+\\|\\)\\(\\.\\)\\([0-9]+\\(e[-]?[0-9]+\\)?\\([lL]?\\|[dD]?[fF]?\\)\\)\\b" (1 font-lock-string-face) (3 font-lock-string-face))
-;;                                         ; Invalid floating point number.  Must be before valid decimal.
-;;                                                             ("\\b[0-9].*?\\..+?\\b" . font-lock-warning-face)
-;;                                         ; Valid decimal number.  Must be before octal regexes otherwise 0 and 0l
-;;                                         ; will be highlighted as errors.  Will highlight invalid suffix though.
-;;                                                             ("\\b\\(\\(0\\|[1-9][0-9]*\\)[uUlL]*\\)\\b" 1 font-lock-string-face)
-;;                                         ; Valid octal number
-;;                                                             ("\\b0[0-7]+[uUlL]*\\b" . font-lock-string-face)
-;;                                         ; Floating point number with no digits after the period.  This must be
-;;                                         ; after the invalid numbers, otherwise it will "steal" some invalid
-;;                                         ; numbers and highlight them as valid.
-;;                                                             ("\\b\\([0-9]+\\)\\." (1 font-lock-string-face))
-;;                                         ; Invalid number.  Must be last so it only highlights anything not
-;;                                         ; matched above.
-;;                                                             ("\\b[0-9]\\(\\w\\|\\.\\)+?\\b" . font-lock-warning-face)
-;;                                                             ))
-;;                               ))
-;; (font-lock-add-keywords
-;;  'csharp-mode
-;;  '(("0x\\([0-9a-fA-F]+\\)" . font-lock-builtin-face)))
+;;; 我把这个暂时去掉，看还会引起那么多的问题吗？这个东西应该是不会起什么作用的
+(add-hook 'csharp-mode-hook (lambda ()
+                              (font-lock-add-keywords nil '(
+                                        ; Valid hex number (will highlight invalid suffix though)
+                                                            ("\\b0x[[:xdigit:]]+[uUlL]*\\b" . font-lock-string-face)
+                                        ; Invalid hex number
+                                                            ("\\b0x\\(\\w\\|\\.\\)+\\b" . font-lock-warning-face)
+                                        ; Valid floating point number.
+                                                            ("\\(\\b[0-9]+\\|\\)\\(\\.\\)\\([0-9]+\\(e[-]?[0-9]+\\)?\\([lL]?\\|[dD]?[fF]?\\)\\)\\b" (1 font-lock-string-face) (3 font-lock-string-face))
+                                        ; Invalid floating point number.  Must be before valid decimal.
+                                                            ("\\b[0-9].*?\\..+?\\b" . font-lock-warning-face)
+                                        ; Valid decimal number.  Must be before octal regexes otherwise 0 and 0l
+                                        ; will be highlighted as errors.  Will highlight invalid suffix though.
+                                                            ("\\b\\(\\(0\\|[1-9][0-9]*\\)[uUlL]*\\)\\b" 1 font-lock-string-face)
+                                        ; Valid octal number
+                                                            ("\\b0[0-7]+[uUlL]*\\b" . font-lock-string-face)
+                                        ; Floating point number with no digits after the period.  This must be
+                                        ; after the invalid numbers, otherwise it will "steal" some invalid
+                                        ; numbers and highlight them as valid.
+                                                            ("\\b\\([0-9]+\\)\\." (1 font-lock-string-face))
+                                        ; Invalid number.  Must be last so it only highlights anything not
+                                        ; matched above.
+                                                            ("\\b[0-9]\\(\\w\\|\\.\\)+?\\b" . font-lock-warning-face)
+                                                            ))
+                              ))
+(font-lock-add-keywords
+ 'csharp-mode
+ '(("0x\\([0-9a-fA-F]+\\)" . font-lock-builtin-face)))
 
 
 ;;; java macro

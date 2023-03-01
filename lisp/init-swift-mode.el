@@ -32,19 +32,19 @@
             )
           )
 
-; add global-flycheck-mode to after-ini-hook
-(add-hook 'after-init-hook #'global-flycheck-mode) ;;; 暂时不要这些，把键弄得狠复杂 
+;; ; add global-flycheck-mode to after-ini-hook
+;; (add-hook 'after-init-hook #'global-flycheck-mode) ;;; 暂时不要这些，把键弄得狠复杂 
 
-; Add swift to flychecker-checkers when swift-mode-hook is enabled. Set swift SDK path to flycheck-swift-sdk-path.
-(add-hook 'swift-mode-hook
-  '(lambda()
-     ;; (add-to-list 'flycheck-checkers 'swift)
-     (setq autopair-dont-activate t)
-     (setq flycheck-swift-sdk-path
-       (replace-regexp-in-string
-        "\n+$" "" (shell-command-to-string
-                   "xcrun --show-sdk-path --sdk macosx")))
-  ))
+;; ; Add swift to flychecker-checkers when swift-mode-hook is enabled. Set swift SDK path to flycheck-swift-sdk-path.
+;; (add-hook 'swift-mode-hook
+;;   '(lambda()
+;;      ;; (add-to-list 'flycheck-checkers 'swift)
+;;      (setq autopair-dont-activate t)
+;;      (setq flycheck-swift-sdk-path
+;;        (replace-regexp-in-string
+;;         "\n+$" "" (shell-command-to-string
+;;                    "xcrun --show-sdk-path --sdk macosx")))
+;;   ))
 
 
 ;;; C-c i 来从 appcode 中打开当前 buffer
@@ -62,7 +62,7 @@
                                        ;; ":"
                                        ;; (number-to-string (current-column))
                                        )))
-;; (define-key global-map (kbd "C-c i") 'gp/vscode-current-buffer-file-at-point) 
+;; (define-key global-map (kbd "C-c i") 'gp/vscode-current-buffer-file-at-point-sw) 
 
 ;; C-j C-i
 ;;; for pyim mode only: for temporary-use, until bug fix

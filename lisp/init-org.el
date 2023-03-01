@@ -208,7 +208,7 @@
       '(("" "graphicx" t)
         ("" "longtable" nil)
         ("" "float" nil)))
-
+  
 
 (add-hook 'org-mode-hook 'turn-on-font-lock)
 (add-hook 'org-mode-hook
@@ -216,7 +216,7 @@
       (setq truncate-lines nil) ;;;解决编辑中文不会自动折行的问题
       (setq org-startup-indented t)
       (setq org-startup-truncated nil)
-      (gio-global-minor-mode 0)
+      ;; (gio-global-minor-mode 0) ;; 因为 protobuf-mode 抛错，暂时禁用了
       ;; (soft-wrap-lines t) ;;; this one works
       ;; (auto-fill-mode 1) ;;; org里直线容易折断
       (linum-mode 1)
@@ -599,7 +599,7 @@
 ;; (global-set-key (kbd "C-c i") 'cm) ; 这里只是不能定义为全局，可以定义为局部
 ;; (global-set-key (kbd "C-c j") 'org-emphasize) ; very useful
 (add-hook 'org-mode-hook
-          (lambda ()
+          '(lambda ()
             (local-set-key (kbd "C-c i") 'cm) ; 这里只是不能定义为全局，可以定义为局部
             (local-set-key (kbd "C-c j") 'org-emphasize) ; very useful
             ))
