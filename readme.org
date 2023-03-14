@@ -3,6 +3,10 @@
 #+author: deepwaterooo
 
 * Updates 
+- daxx it utf-8. Who knows it will block pyim from indicating cursor colors? A whole evening of debugging it......Finally it works as expected. 
+- 活宝妹爱亲爱的表哥，活宝妹就是一定要嫁给的亲爱的表哥。
+- 活宝妹若是还没能嫁给亲爱的表哥，活宝妹就永远守候在亲爱的表哥的身边。爱表哥，爱生活！！！
+
 ** emacs 1 initiliation bug
 - 现在的 emacs 的版本是：GNU Emacs 27.2(build 1, 86_640w64-mingw32)of 3/26-two-years-ago. 
 - 现在的从VSC 中打开 emacs 总是开个新的窗口（而不是以客户端的形式打开），不知道与 emacs 的版本是否有关系。想要升级，涉及一个问题：Windows 下的 emacs 多是32 位的，前几天不知道是哪里看说，有版本是不支持加载动态库的

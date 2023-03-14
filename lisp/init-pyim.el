@@ -57,7 +57,6 @@
               'pyim-activate
               ));; Windows 下是这个方法的调用
 
-
 ;; 这里说，可以切换光标的颜色
 (setq pyim-indicator-list (list #'pyim-indicator-with-cursor-color #'pyim-indicator-with-modeline))
 ;; ;; TODO: 光标的颜色好像是跟其它的包冲突了，显示不出来了
@@ -82,9 +81,11 @@
 ;;   (progn
 ;;     (load-theme dark-theme t)
 ;;     (set-cursor-color "#b2b2b2")
-(setq pyim-indicator-cursor-color (list "#ff72ff" "#b2b2b2"));; 不知道为什么，这些设置就是不起作用
+(setq pyim-indicator-cursor-color (list "#ff72ff" "#00FFFF"));; 不知道为什么，前面一个是橙色，是中文状态。后面一个是灰色#b2b2b2 【改成浅蓝色了】英语状态
 
-(global-set-key (kbd "M-SPC") 'pyim-activate);; 用这个来启动: 因为它的切换方法特殊，影响光标配色的自动检测
+;; (global-set-key (kbd "M-SPC") 'pyim-activate);; 用这个来启动: 因为它的切换方法特殊，影响光标配色的自动检测
+(global-set-key (kbd "C-\\") 'toggle-input-method)
+
 ;; ;; 添加执行方法回调
 ;; (add-hook 'pyim-activate-hook #'(lambda ()
 ;;                                   ;; '(set-cursor-color "green")

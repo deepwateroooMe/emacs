@@ -188,7 +188,7 @@
   (require 'init-nxml-mode)
   ;; (require 'init-company)
   ;; have NOT passed  
-  (require 'init-org);; 这个还是可以用的			
+  (require 'init-org);; 这个还是可以用的	org.el-wrong-numberkfdjfjd 我爱亲爱的表哥，活宝妹一定要嫁的亲爱的表哥！！！ dlkfjdfkljf 
   (require 'init-yasnippet)
   (require 'init-text)
   (require 'init-syslog-mode)
@@ -206,7 +206,6 @@
   (require 'init-csharp-mode) 
   ;; (require 'swift-mode) ;;; C-j C-i 容易被其它模式重写 ？
   )
-
 
 (defun shift-region (distance)
   (let ((mark (mark)))
@@ -227,25 +226,21 @@
 (global-set-key [C-S-right] 'shift-right)
 (global-set-key [C-S-left] 'shift-left)
 
-
 (setq auto-save-default nil)
-
 
 ;;;; for one-dark-pro like visual studio theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/atom-one-dark-theme.el")
 (load-theme 'atom-one-dark t)
 
-
 (global-pangu-spacing-mode 1)
 ;; C-; 不知道是什么原因，绑定到ISpell 或是 flycheck 之类的了，把其它的去掉，保留这个好用的键
 (global-set-key (kbd "C-;") 'er/expand-region)
 
-;;; forward word to skip _ mark
+;; forward word to skip _ mark
 
 (modify-syntax-entry ?_ "w" c-mode-syntax-table)
 (modify-syntax-entry ?_ "w" c++-mode-syntax-table)
 (global-set-key (kbd "M-f") 'forward-word)
-
 
 ;; *Message* buffer should be writable in 24.4+
 (defadvice switch-to-buffer (after switch-to-buffer-after-hack activate)
@@ -257,7 +252,6 @@
 (load "font-lock")
 (setq font-lock-maximum-decoration t)
 (global-font-lock-mode)
-
 
 ;;; move up or down multiple lines
 (global-set-key (kbd "M-n")
@@ -300,7 +294,7 @@
   (interactive)
   (save-excursion
     (indent-region (point-min) (point-max) nil)))
-(global-set-key [f12] 'indent-buffer)   
+(global-set-key [f12] 'indent-buffer)
 
 
 ;;; delete backward one char
@@ -345,9 +339,6 @@
 ;;; 开启服务器模式
 (server-start)
 
-;; 这里把调整中文输入法稍微配置一下
-;; (global-set-key "C-\\" 'toggle-input-method) ;; 这个怎么也不起作用
-
 ;;; 递妆mimibuffer
 (setq enable-recursive-minibuffers t)
 
@@ -359,27 +350,27 @@
 (defun ac-latex-mode-setup()
   (setq ac-sources (append '(ac-source-yasnippet) ac-sources)))
 (add-hook 'latex-mode-hook 'ac-latex-mode-setup)
-
-;; ;;; key bindings of WuBi
-;; (global-set-key [?\C-+] 'add-wubi)
-;; (global-set-key [?\C--] 'del-wubi)
+;;;okokok
+;;;okokok
+;;;okokok
 
 ;;; meta
 (global-set-key "\M-l" 'replace-string) ; originally lowercase folling word
 (global-set-key "\M-g" 'goto-line)
 (setq c-brace-imaginary-offset 1)
 
+;;;comment outbelow: 它把 pyim 的光标给弄没了。。。。。
+;;;comment outbelow
+;; (setq utf-translate-cjk-mode nil) ; disable CJK coding/encoding (Chinese/Japanese/Korean characters)
+;; (set-language-environment 'utf-8)
+;; (setq locale-coding-system 'utf-8)
+;; (set-default-coding-systems 'utf-8)
+;; (set-terminal-coding-system 'utf-8)
+;; (unless (eq system-type 'windows-nt)
+;;   (set-selection-coding-system 'utf-8))
+;; (prefer-coding-system 'utf-8)
+;; ;(setq desktop-restore-frames nil)
 
-(setq utf-translate-cjk-mode nil) ; disable CJK coding/encoding (Chinese/Japanese/Korean characters)
-(set-language-environment 'utf-8)
-                                        ;(set-keyboard-coding-system 'utf-8-mac) ; For old Carbon emacs on OS X only, uncommented this one for temp
-(setq locale-coding-system 'utf-8)
-(set-default-coding-systems 'utf-8)
-(set-terminal-coding-system 'utf-8)
-(unless (eq system-type 'windows-nt)
-  (set-selection-coding-system 'utf-8))
-(prefer-coding-system 'utf-8)
-                                        ;(setq desktop-restore-frames nil)
 
 ;;; for iimage org-mode
 (setq org-image-actual-width nil)
@@ -388,7 +379,6 @@
 (global-set-key [(control h)] 'delete-backward-char)
 ;;; prohibit auto-generate backup files
 (setq-default make-backup-files nil)
-
 
 ;; ;; check for spelling
 ;; (setq-default ispell-program-name "aspell")
@@ -430,11 +420,8 @@
   (interactive "r")
   (setq truncate-lines nil))
 
-
 ;;; turn off buffer-read-only property
 (setq buffer-read-only nil)
-
-
 
 (defun wsl-copy-region-to-clipboard (start end)
   "Copy region to Windows clipboard."
@@ -478,12 +465,14 @@
 (fset 'lc ;;; c++ header for leetcode problems
       [?# ?i ?n ?c ?l ?u ?d ?e ?  ?< ?i ?o ?s ?t ?r ?e ?a ?m ?> return ?# ?i ?n ?c ?l ?u ?d ?e ?  ?< ?v ?e ?c ?t ?o ?r ?> return ?# ?i ?n ?c ?l ?u ?d ?e ?  ?< ?s ?t ?a ?c ?k ?> return ?# ?i ?n ?c ?l ?u ?d ?e ?  ?< ?q ?u ?e ?u ?e ?> return ?# ?i ?n ?c ?l ?u ?d ?e ?  ?< ?c ?m ?a ?t ?h ?> return ?u ?s ?i ?n ?g ?  ?n ?a ?m ?e ?s ?p ?a ?c ?e ?  ?s ?t ?d ?\; return return return return ?i ?n ?t ?  ?m ?a ?i ?n ?\( ?\) ?  backspace ?\{ return return return ?r ?e ?t ?u ?r ?n ?  ?0 ?\; return ?\} ?\C-p ?\C-p ?\C-p ?\C-p ?\C-p ?\C-p])
 
-(fset 'st
-      [?\C-  ?\C-p ?\C-p ?\C-p ?\C-p ?\C-p ?\C-p ?\M-p ?* return return ?\C-p ?\C-p])
+;; (fset 
+;;       [?\C-  ?\C-p ?\C-p ?\C-p ?\C-p ?\C-p ?\C-p ?\M-p ?* return return ?\C-p ?\C-p])
 
 
-(set-language-environment 'UTF-8) 
-(set-locale-environment "UTF-8")
+;;;comment outbelow: 它把 pyim 的光标给弄没了。。。。。
+;;;comment outbelow
+;; (set-language-environment 'UTF-8) 
+;; (set-locale-environment "UTF-8")
 
 (set-face-attribute 'default nil :font "Inconsolata-dz")
 
@@ -497,6 +486,7 @@
   (set-fontset-font (frame-parameter nil 'font) ;
                     charset
                     (font-spec :family "Sarasa Mono Slab SC Semibold" :height 130)))
+
 
 
 ;;;; 加载snippets 的接口
