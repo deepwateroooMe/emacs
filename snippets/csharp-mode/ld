@@ -1,0 +1,6 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: Log.Debug()
+# key: ld
+# --
+Log.Debug(TAG + ": ${1:v}: " + $1);
+$0

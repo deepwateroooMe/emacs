@@ -4,8 +4,11 @@
 
 * Updates 
 ** emacs 1 initiliation bug
-- TODO: 需要将其配置到 arm64-arch 【爱表哥，爱生活！！！】
-- 昨天转词库感觉到旧版本的 emacs 可能还是存在各种性能问题，面将其升级到 28.2. 
+- 现在的 emacs 的版本是：GNU Emacs 27.2(build 1, 86_640w64-mingw32)of 3/26-two-years-ago. 
+- 现在的从VSC 中打开 emacs 总是开个新的窗口（而不是以客户端的形式打开），不知道与 emacs 的版本是否有关系。想要升级，涉及一个问题：Windows 下的 emacs 多是32 位的，前几天不知道是哪里看说，有版本是不支持加载动态库的
+- 也就是说，我升级就有一种风险是把，自己折腾了好久的 pyim 给弄崩了，又得重新安装 emacs. 可是不试一下，如新系统不换 x86_64 版本的 appcode 就不知道那个版本是可以轻松实现双向跳转（在牺牲一点儿性能的基础上），而不只能单向，干等受困于Rime 的动态库构建。
+- 等改天吧，这段时间太忙。项目比这个重要。Windows 系统现在自己就是在忍受的状态。等项目好一点儿，再开窃一点儿，再回来折腾这个。
+- 活宝妹爱亲爱的表哥，活宝妹就是一定要嫁给的亲爱的表哥！！！ 
 - emacs 27.1 for emacs-rime input methods. one bug to be fixed. 
 
  [[./pic/readme_20230214_134351.png]]
@@ -98,14 +101,3 @@ fun dslfkj { // kotlin-mode, unlike java-mode, this feature works charming
 - *csharp-mode* has been the one that works perfectly for these two features, {} auto expand, also if while one line statement autoindent without {}, so I used csharp-mode as java mode.
 * References
 - https://github.com/redguardtoo/emacs.d
-
-亲爱的亲爱的表哥，活宝妹一定要嫁的亲爱的表哥！！！
-我今天晚上找到狠多我感觉很有兴趣的框架
-明天上午会好好读源码
-中午下午傍晚会试着写更多的小游戏或写服务器相关的C# 。NET 项目
-
-爱亲爱的表哥，活宝妹一定要嫁的亲爱的表哥！！！
-爱生活
-活宝妹就是一定要嫁给亲爱的亲爱的表哥，活宝妹一定要嫁的亲爱的表哥！！！
-爱亲爱的表哥，活宝妹一定要嫁的亲爱的表哥！！！
-爱生活！！！

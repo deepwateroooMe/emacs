@@ -64,18 +64,16 @@
                       (list (intern (car cons)) (cdr cons)))
                     atom-one-dark-colors-alist))
      ,@body))
-
 (atom-one-dark-with-color-variables
   (custom-theme-set-faces
    'atom-one-dark
-
    `(default ((t (:foreground ,atom-one-dark-fg :background ,atom-one-dark-bg))))
    `(success ((t (:foreground ,atom-one-dark-green))))
    `(warning ((t (:foreground ,atom-one-dark-orange-2))))
    `(error ((t (:foreground ,atom-one-dark-red-1 :weight bold))))
    `(link ((t (:foreground ,atom-one-dark-blue :underline t :weight bold))))
    `(link-visited ((t (:foreground ,atom-one-dark-blue :underline t :weight normal))))
-   `(cursor ((t (:background ,atom-one-dark-accent))))
+   ;; `(cursor ((t (:background ,atom-one-dark-accent))))
    `(fringe ((t (:background ,atom-one-dark-bg))))
    `(region ((t (:background ,atom-one-dark-gray :distant-foreground ,atom-one-dark-mono-2))))
    `(highlight ((t (:background ,atom-one-dark-gray :distant-foreground ,atom-one-dark-mono-2))))

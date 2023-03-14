@@ -8,9 +8,8 @@
 ;; 配置五笔词库：这两个去掉，就可以实现完全使用用戶词库了，所以，去掉所有的繁体字
 (require 'pyim-wbdict) ;; 那么，这个意思，就是，我不用装载的词典，全用个人用戶配置的两个词典，现是一个
 (setq pyim-default-scheme 'wubi)
-(pyim-wbdict-v86-enable) ;86版五笔用户使用这个命令
+;; (pyim-wbdict-v86-enable) ;86版五笔用户使用这个命令
 ;; (pyim-wbdict-v86-single-enable) ;86版五笔用户使用这个命令，该词库为 单字词库【不想用单字的】，以尽可能不重码减少选词需要为目的
-
 
 (setq default-input-method "pyim")
 (setq pyim-page-tooltip 'posframe)
@@ -29,7 +28,6 @@
               '(probe-function1 probe-function2 probe-function3))
 
 
-
 (setq rime-user-data-dir "C:/Users/blue_/AppData/Roaming/Rime")
 (setq rime-share-data-dir "c:/Users/blue_/AppData/Roaming/.emacs.d/elpa/rime/rime-data")
 (let ((liberime-auto-build t))
@@ -37,9 +35,7 @@
 
 (with-eval-after-load "liberime"
   (liberime-try-select-schema "wubi86_jidian")
-  ;; (liberime-select-schema "wubi86_jidian")  ;; 会报错，找不到方法
-  (setq pyim-default-scheme 'wubi)
-  )
+  (setq pyim-default-scheme 'wubi))
 
 
 ;; 金手指设置，可以将光标处的编码（比如：拼音字符串）转换为中文。
@@ -50,15 +46,56 @@
 
 ;;; 个人词库：可以有两个词库文件: 先测试用个人字典，没问题；现在就是怎么移除安装的带繁体的，只用简体詞库
 (setq pyim-dicts '(
-                   (:name "dict1" :file "/Users/hhj/.emacs.d/pyim/wubi86_jidian_selfbrew.pyim") ;; 路径为绝对路径【常用固定不变的词库： wubi86_jidian, 自己转换得来的，大约9 万词库量】 
-                   (:name "dict1" :file "/Users/hhj/.emacs.d/pyim/user_dict.pyim")));; 这是活宝妹，亲爱的表哥，个人用戶词库，可以魔改的
-;; 让 Emacs 启动时自动加载 pyim 词库：得制造一个这样的词库文件 
+                   (:name "dict1" :file "C:/Users/blue_/AppData/Roaming/.emacs.d/pyim/wubi86_jidian_selfbrew.pyim") ;; 路径为绝对路径【常用固定不变的词库： wubi86_jidian, 自己转换得来的，大约9 万词库量】 
+                   (:name "dict1" :file "C:/Users/blue_/AppData/Roaming/.emacs.d/pyim/user_dict.pyim")));; 这是活宝妹，亲爱的表哥，个人用戶词库，可以魔改的
+;; 让 Emacs 启动时自动加载 pyim 词库：得制造一个这样的词库文件。我
 (add-hook 'emacs-startup-hook
-          #'(lambda () (pyim-restart-1 t)))
+          #'(lambda ()
+              ;; (pyim-restart t)
+              'pyim-restart
+              ;; (pyim-activate);; 我自己现加的
+              'pyim-activate
+              ));; Windows 下是这个方法的调用
+
+
+;; 这里说，可以切换光标的颜色
+(setq pyim-indicator-list (list #'pyim-indicator-with-cursor-color #'pyim-indicator-with-modeline))
+;; ;; TODO: 光标的颜色好像是跟其它的包冲突了，显示不出来了
+;; ;; 根据中英文的不同状态，显示不同的光标着色。【所以，这个里面可能还需要很多工作才能够真正自动切换光标颜色】
+(defun my-pyim-indicator-with-cursor-color (input-method chinese-input-p)
+  (if (not (equal input-method "pyim"))
+      (progn
+        ;; 用户在这里定义 pyim 未激活时的光标颜色设置语句
+        (set-cursor-color "red"))
+    (if chinese-input-p
+        (progn
+          ;; 用户在这里定义 pyim 输入中文时的光标颜色设置语句
+          (set-cursor-color "green"));; green 
+      ;; 用户在这里定义 pyim 输入英文时的光标颜色设置语句
+      (set-cursor-color "blue"))));;blue
+;; (my-pyim-indicator-with-cursor-color ()) ;; 感觉我这里还是少了一个调用设值的步骤
+;; (when (eq target-theme atom-one-dark-theme)
+;;     (progn
+;;       ;; (load-theme day-theme t)
+;;       (set-cursor-color "#666")
+;;       (setq pyim-indicator-cursor-color (list "purple" "#666")))
+;;   (progn
+;;     (load-theme dark-theme t)
+;;     (set-cursor-color "#b2b2b2")
+(setq pyim-indicator-cursor-color (list "#ff72ff" "#b2b2b2"));; 不知道为什么，这些设置就是不起作用
+
+(global-set-key (kbd "M-SPC") 'pyim-activate);; 用这个来启动: 因为它的切换方法特殊，影响光标配色的自动检测
+;; ;; 添加执行方法回调
+;; (add-hook 'pyim-activate-hook #'(lambda ()
+;;                                   ;; '(set-cursor-color "green")
+;;                                   (setq pyim-indicator-cursor-color (list "#ff72ff" "#b2b2b2"))
+;;                                   ))
+;; ;; (add-hook 'pyim-deactivate-hook #'(lambda ()
+;; ;;                                     '(set-cursor-color "white")
+;; ;;                                     ))
 
 
 ;; TODO: 注意到，同样有候选唯一，但是不上屏的情况，如“杻”，想要设置型码候选唯一自动上屏，源码里有，pyim-autoselector.el 但是不知道它全自动设置了没有？
-
 
 ;; 过灵：因为我使用半角标点,它就全把它转换成英语了,但凡有半角标点。不使用半角标点了，仍在某引起情况下会过灵，被廹使用英文，不得转换，所以得少用几个探针
 ;; ;; 设置 pyim 探针： 我感觉他的这些探针更多的是对拼音畭法有效，想要更好的对五笔输入法的支持

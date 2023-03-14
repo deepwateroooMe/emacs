@@ -1,6 +1,6 @@
 ;; {{ shell and conf
 (add-to-list 'auto-mode-alist '("\\.[^b][^a][a-zA-Z]*rc$" . conf-mode))
-(add-to-list 'auto-mode-alist '("\\.aspell\\.en\\.pws\\'" . conf-mode))
+;; (add-to-list 'auto-mode-alist '("\\.aspell\\.en\\.pws\\'" . conf-mode));; 这个字典，也把它去掉
 (add-to-list 'auto-mode-alist '("\\.editorconfig$" . conf-mode))
 (add-to-list 'auto-mode-alist '("\\.meta\\'" . conf-mode))
 (add-to-list 'auto-mode-alist '("\\.?muttrc\\'" . conf-mode))
@@ -253,7 +253,7 @@
 
     ;; fic-mode has performance issue on 5000 line C++, we can always use swiper instead
     ;; don't spell check double words
-    (setq flyspell-check-doublon nil)
+    ;; (setq flyspell-check-doublon nil);;; 因为 C-;-for-expand-region 我把这个去掉了
     ;; enable for all programming modes
     ;; http://emacsredux.com/blog/2013/04/21/camelcase-aware-editing/
     (unless (derived-mode-p 'js2-mode)
@@ -809,8 +809,8 @@ If no region is selected. You will be asked to use `kill-ring' or clipboard inst
 (add-hook 'after-make-frame-functions 'run-after-make-frame-hooks)
 ;; }}
 
-;; flymake
-(setq flymake-gui-warnings-enabled nil)
+;; ;; flymake
+;; (setq flymake-gui-warnings-enabled nil)
 
 ;; {{ check attachments
 (defun my-message-current-line-cited-p ()

@@ -21,7 +21,9 @@
                        ("sp" "SetParent($1)$0" "SetParent()" nil nil nil "c:/Users/blue_/AppData/Roaming/.emacs.d/snippets/csharp-mode/sp" nil nil)
                        ("sf" "$1.SetActive(false);\n$0" "(go).SetActive(false);" nil nil nil "c:/Users/blue_/AppData/Roaming/.emacs.d/snippets/csharp-mode/sf" nil nil)
                        ("se" "String.Equals($1);$0\n" "String.Equals" nil nil nil "c:/Users/blue_/AppData/Roaming/.emacs.d/snippets/csharp-mode/se" nil nil)
+                       ("rt" "return true$0" "rt" nil nil nil "c:/Users/blue_/AppData/Roaming/.emacs.d/snippets/csharp-mode/rt" nil nil)
                        ("rn" "return $0" "return" nil nil nil "c:/Users/blue_/AppData/Roaming/.emacs.d/snippets/csharp-mode/rn" nil nil)
+                       ("rf" "return false$0" "rf" nil nil nil "c:/Users/blue_/AppData/Roaming/.emacs.d/snippets/csharp-mode/rf" nil nil)
                        ("pvc" "System.out.println(\"${1:i}: \" + $1); \n$0" "printlVariables" nil nil nil "c:/Users/blue_/AppData/Roaming/.emacs.d/snippets/csharp-mode/pvc" nil nil)
                        ("pv" "MathUtil.print($1);\n$0" "printlVariables" nil nil nil "c:/Users/blue_/AppData/Roaming/.emacs.d/snippets/csharp-mode/pv" nil nil)
                        ("pn" "MathUtil.print(ViewManager.nextTetromino.transform.position);$0" "print(nextTetromino.transform.position)" nil nil nil "c:/Users/blue_/AppData/Roaming/.emacs.d/snippets/csharp-mode/pn" nil nil)
@@ -36,7 +38,9 @@
                        ("mgoxx" "Model.gridOcc[$1][$2][$3]$0" "Model.gridOcc[$1][$2][$3]" nil nil nil "c:/Users/blue_/AppData/Roaming/.emacs.d/snippets/csharp-mode/mgoxx" nil nil)
                        ("mg" "Model.grid$0" "Model.grid" nil nil nil "c:/Users/blue_/AppData/Roaming/.emacs.d/snippets/csharp-mode/mg" nil nil)
                        ("mc" "Model.gridClr$0" "Model.gridClr" nil nil nil "c:/Users/blue_/AppData/Roaming/.emacs.d/snippets/csharp-mode/mc" nil nil)
+                       ("lv" "Log.ILog.Debug(TAG + \" ${1:v}: \" + $1);\n$0\n" "Log.ILog.Debug()" nil nil nil "c:/Users/blue_/AppData/Roaming/.emacs.d/snippets/csharp-mode/lv" nil nil)
                        ("lst" "tac log1.log | awk '!flag; /$1:00.00/{flag = 1};' | tac > cur.log$0\n" "lastOccuranceToEndOfFileContents" nil nil nil "c:/Users/blue_/AppData/Roaming/.emacs.d/snippets/csharp-mode/lst" nil nil)
+                       ("le" "Log.Error(TAG, \"${1:v}: \" + $1);\n$0\n" "Log.Error" nil nil nil "c:/Users/blue_/AppData/Roaming/.emacs.d/snippets/csharp-mode/le" nil nil)
                        ("ins" "Instance.$0" "Instance." nil nil nil "c:/Users/blue_/AppData/Roaming/.emacs.d/snippets/csharp-mode/ins" nil nil)
                        ("in" "Manager.Instance.$0" "Manager.Instance." nil nil nil "c:/Users/blue_/AppData/Roaming/.emacs.d/snippets/csharp-mode/in" nil nil)
                        ("gvm" "((GameViewModel)ViewManager.GameView.ViewModel)$0" "ViewManager.GameView.ViewModel" nil nil nil "c:/Users/blue_/AppData/Roaming/.emacs.d/snippets/csharp-mode/gvm" nil nil)
@@ -72,4 +76,4 @@
                        ("ai" "AudioManager.Instance.$0" "Manager.Instance." nil nil nil "c:/Users/blue_/AppData/Roaming/.emacs.d/snippets/csharp-mode/ai" nil nil)))
 
 
-;;; Do not edit! File generated at Fri Feb  3 22:10:06 2023
+;;; Do not edit! File generated at Sat Mar 11 10:29:34 2023

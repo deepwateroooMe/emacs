@@ -1,7 +1,7 @@
 
 ;; original: https://github.com/redguardtoo/emacs.d/blob/903aeb10c316c0f43b35bc0dc6101eea3f729da7/init-auto-complete.el
 ;; @see http://cx4a.org/software/auto-complete/manual.html
-
+;; (load-file "~/.emacs.d/elpa/auto-complete-1.4/auto-complete.el")
 (require 'auto-complete)
 (require 'auto-complete-config)
 (ac-config-default)

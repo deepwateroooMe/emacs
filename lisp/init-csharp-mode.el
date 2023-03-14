@@ -1,28 +1,29 @@
 ;;; for csharp-mode
 
-;; ;;;;; new style: this could work perfectly well for emacs version 27.1 too !!! this one renders better
+;; ;; new style: this could work perfectly well for emacs version 27.1 too !!! this one renders better
 ;; (use-package tree-sitter :ensure t)
 ;; (use-package tree-sitter-langs :ensure t)
 ;; (use-package tree-sitter-indent :ensure t)
 
+(load-file "~/.emacs.d/elpa/csharp-mode-2.0.0/csharp-mode.el")
 ;; (use-package csharp-mode
 ;;   :ensure t
 ;;   :config
 ;;   ;; (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-tree-sitter-mode))
 ;;   ;; (add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-tree-sitter-mode))
-;;   (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
-;;   (add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-mode))
-;;   )
+  (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
+  (add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-mode))
+  ;; )
 
 
-;;; old-school loading for emacs version 27.1 specificly
-(load "~/.emacs.d/elpa/csharp-mode/csharp-mode.el") ;;;;; love my dear cousin, must marry him as soon as possible
-;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/elpa/csharp-mode/")) ;;;;; love my dear cousin, must marry him as soon as possible
-;; (require 'csharp-mode)
-(setq interpreter-mode-alist
-      (cons '("cs" . csharp-mode) interpreter-mode-alist))
-(add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
-(add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-mode))
+;; ;;; old-school loading for emacs version 27.1 specificly
+;; (load "~/.emacs.d/elpa/csharp-mode/csharp-mode.el") ;;;;; love my dear cousin, must marry him as soon as possible
+;; ;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/elpa/csharp-mode/")) ;;;;; love my dear cousin, must marry him as soon as possible
+;; ;; (require 'csharp-mode)
+;; (setq interpreter-mode-alist
+;;       (cons '("cs" . csharp-mode) interpreter-mode-alist))
+;; (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
+;; (add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-mode))
 
 
 ;;; fix bug for font lock breaks after ' or ": 这里以前古老版本里存在这种bug时，当时的补救修改办法,现在看来不起作用了，需要改回适配新的安装方法模式
@@ -60,6 +61,20 @@ or terminating simple string."
                                        ;; (number-to-string (1+ (current-line))) ;; +1 who knows why
                                        ":"
                                        (number-to-string (current-column)))))
+;; (defun xah-open-in-vscode ();;; 这个就列这里作参考，因为上面的，在 windows 下可以成功跳转，我就暂不考虑这个方法了
+;;   "Open current file or dir in vscode.
+;; URL `http://xahlee.info/emacs/emacs/emacs_dired_open_file_in_ext_apps.html'
+;; Version: 2020-02-13 2021-01-18 2022-08-04"
+;;   (interactive)
+;;   (let (($path (if buffer-file-name buffer-file-name (expand-file-name default-directory))))
+;;     (message "path is %s" $path)
+;;     (cond
+;;      ((string-equal system-type "windows-nt")
+;;       (shell-command (format "code.cmd %s" (shell-quote-argument $path))))
+;;      ((string-equal system-type "darwin")
+;;       (shell-command (format "open -a Visual\\ Studio\\ Code.app %s" (shell-quote-argument $path))))
+;;      ((string-equal system-type "gnu/linux")
+;;       (shell-command (format "code %s" (shell-quote-argument $path)))))))
 ;; (define-key global-map (kbd "C-c i") 'gp/vscode-current-buffer-file-at-point) 
 
 
@@ -74,9 +89,9 @@ or terminating simple string."
 ;; (put 'cmtss 'kmacro t)
 ;;; for pyim mode only: for temporary-use, until bug fix
 (fset 'cmtEnCh;;; 这里的 C-j C-i 与上面的 C-c-f 会给 C-cf 制造麻烦，需要绑定不同的鍵，这里暂时移动一下，看看它有没有什么区别 ?
-      (kmacro-lambda-form [f4 ?  ?/ ?/ ?  ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?\C-x] 0 "%d"))
-(fset 'cmtChCh;;; 有点儿延迟
-      (kmacro-lambda-form [f4 ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?  ?/ ?/ ?  ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?\C-x] 0 "%d"))
+      (kmacro-lambda-form [f4 ?  ?/ ?/ ?  ?\M-x ?p ?y ?i ?m ?- ?a ?c ?t ?i ?v ?a ?t ?e return ?\C-x] 0 "%d")) ;; ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d 
+(fset 'cmtChCh;;; 有点儿延迟: [f4 pyim-deactivate // pyim-activate ]
+      (kmacro-lambda-form [f4 ?\M-x ?p ?y ?i ?m ?- ?d ?e ?a ?c ?t ?i ?v ?a ?t ?e return ?  ?/ ?/ ?  ?\M-x ?p ?y ?i ?m ?- ?a ?c ?t ?i ?v ?a ?t ?e return ?\C-x] 0 "%d")) ;; windows 平台上，用的是 pyim-activate
 (put 'cmtEnCh 'kmacro t)
 (put 'cmtChCh 'kmacro t)
 (add-hook 'csharp-mode-hook
@@ -86,9 +101,11 @@ or terminating simple string."
             ;; (local-set-key (kbd "C-x j") 'cmtChCh) ;; Chinese ==> Chinese
             (local-set-key (kbd "C-x x") 'cmtEnCh) ;; English ==> Chinese 改变绑定的鍵才是最彻底的改法，不会让 C-cf 运行狠久
             (local-set-key (kbd "C-j") 'cmtChCh) ;; Chinese ==> Chinese
+            ;; due to the fact that C-; is globally binded to flyspell.cs some funtion, somehow not able to rebound to C-; for er/expand-region for csharp-mode
+            (local-set-key (kbd "C-i") 'er/expand-region) ;; csharp-mode 这个功能可用；但是 tree-sitter-mode 这个功能不可用，狠奇怪 
             ))
 
-
+ 
 ;;;for csharp-mode ; {} autoindent
 (defun csharp-autoindent ()
   (when (and (eq major-mode 'csharp-mode) (looking-back "[;]"))

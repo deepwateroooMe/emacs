@@ -8,4 +8,4 @@
                        ("all" "all:\n        $0" "all" nil nil nil "c:/Users/blue_/AppData/Roaming/.emacs.d/snippets/makefile-mode/all" nil nil)))
 
 
-;;; Do not edit! File generated at Fri Feb  3 22:10:07 2023
+;;; Do not edit! File generated at Sat Mar 11 10:29:36 2023
