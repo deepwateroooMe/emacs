@@ -60,6 +60,13 @@
 ;; TODO: 注意到，同样有候选唯一，但是不上屏的情况，如“杻”，想要设置型码候选唯一自动上屏，源码里有，pyim-autoselector.el 但是不知道它全自动设置了没有？
 
 
+;;;; pyim 光标的颜色，以及自动颜色等等
+;; 这里说，可以切换光标的颜色
+(setq pyim-indicator-list (list #'pyim-indicator-with-cursor-color #'pyim-indicator-with-modeline))
+(setq pyim-indicator-cursor-color (list "orange" "white"));; 不知道为什么，前面一个是橙色，是中文状态。后面一个是灰色#b2b2b2 【改成浅蓝色了】英语状态
+(global-set-key (kbd "C-\\") 'toggle-input-method);; 暂就先加这里了
+
+
 ;; 过灵：因为我使用半角标点,它就全把它转换成英语了,但凡有半角标点。不使用半角标点了，仍在某引起情况下会过灵，被廹使用英文，不得转换，所以得少用几个探针
 ;; ;; 设置 pyim 探针： 我感觉他的这些探针更多的是对拼音畭法有效，想要更好的对五笔输入法的支持
 ;; ;; 设置 pyim 探针设置，这是 pyim 高级功能设置，可以实现 *无痛* 中英文切换 :-)

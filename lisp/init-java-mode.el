@@ -86,9 +86,9 @@
    ;; was the last non-space an equals sign? or square brackets?  Then it's an initializer.
    ((cheeso-looking-back-at-equals-or-array-init-java)
     (self-insert-command 1)
-    (forward-char 1)
+    (forward-char 2);; 让它往前多移一个，常常是 (new int [] {});
     (insert ";") 
-    (backward-char 2)) ; this one works great now
+    (backward-char 3)) ; this one works great now
 
    ;; else, it's a new scope., 
    ;; therefore, insert paired braces with an intervening newline, and indent everything appropriately.
@@ -102,13 +102,6 @@
     (previous-line);; 回到前一行，但是光标位置不对
     (indent-according-to-mode);; 这一行，仍然起作用，可以在当前行，将光标移到正确的位置 
     )))
-;; (t
-;;     (if (cheeso-prior-sexp-same-statement-same-line-java)
-;;         (self-insert-command 1)) ;;; so far only upto here, don't know how to eval & expand {}
-;;     (insert "")
-;;     (newline-and-indent)
-;;     (c-indent-line-or-region)
-;;     )))
 
 
 ;;; famously formating .java file
@@ -303,7 +296,7 @@
       (kmacro-lambda-form [f4 ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?  ?/ ?/ ?  ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?\C-x] 0 "%d"))
 (put 'cmtEnCh 'kmacro t)
 (put 'cmtChCh 'kmacro t)
-(add-hook 'java-mode-hook
+(add-hook 'java-mode-hook 
           (lambda ()
             ;; (local-set-key (kbd "C-x x") 'cmtEnCh) ;; English ==> Chinese 改变绑定的鍵才是最彻底的改法，不会让 C-cf 运行狠久
             ;; (local-set-key (kbd "C-x j") 'cmtChCh) ;; Chinese ==> Chinese

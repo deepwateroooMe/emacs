@@ -1,5 +1,6 @@
 # contributor: deepwaterooo
-# name: Log.Error($"v: {v}")
+# name: Log.ILog.Debug($"v: {v}")
 # key: lv
 # --
-Log.Error($"${1:v}: {$1}");$0
+Log.ILog.Debug(TAG + ": ${1:v}: " + $1);
+$0

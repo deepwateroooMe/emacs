@@ -2,5 +2,5 @@
 # name: Debug.LogVariableNoFunc
 # key: dv
 # --
-Debug.Log(TAG + " ${1:var}: " + $1);
+Debug.Log(TAG + " $1: " + $1);
 $0

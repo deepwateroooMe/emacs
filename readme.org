@@ -115,8 +115,8 @@ fun dslfkj { // kotlin-mode, unlike java-mode, this feature works charming
 - https://github.com/redguardtoo/emacs.d
 
 * windows 10 下面的 toggle-input-method 不 work: 想要绑定到一个方便使用的銉上面，另外 posframe （＋ point 1）只想加上下，不想加左右。
-- 激活中文必须 M-x:pyim-activate
-- 切换成英文可以 either M-x:pyim-deactivate 或者是 C-\\
+- 有个想要打开文件时，不能C-a 到根目录的 bug: 
+- 激活中文必须 M-x:pyim-activate; 切换成英文可以 either M-x:pyim-deactivate 或者是 C-\\
 - 再激活中文又必须是 M-x:pyim-activate
 - 需要一个简单的键绑定，帮助自己方便地切换到中文：而不是每次都得M-x:pyim-activate 太麻烦，易输入错误 
   

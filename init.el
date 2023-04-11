@@ -6,9 +6,9 @@
 ;;              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 ;; (package-initialize)
 
-(setq debug-on-error t);; 它会无数次地停掉程序，去掉
+;; (setq debug-on-error t);; 它会无数次地停掉程序，去掉
 
-(setq default-directory "/Users/hhj/")
+(setq default-directory "/Users/hhj/routine/myAlgorithms/")
 
 
 ;; ;; Bootstrap 'use-package'
@@ -195,7 +195,7 @@
   (require 'init-misc)  ;; comment for replace-string
   ;; (require 'init-hydra) ;; 不知道这个会影响哪些功能  
   (require 'init-autopair) 
-  (require 'init-sis) 
+  ;; (require 'init-sis)  ;; 不再需要这个东西，会给自己的程序造成混乱
 ;(require 'init-python-mode)
 ;(require 'init-auto-complete)
   (require 'pangu-spacing)
@@ -564,7 +564,7 @@
 ;;                        (load-theme 'deeper-blue))
 
 
-;; ;;确保这一段是在所有配置文件的最后面执行,在最前面没有效果
+;; ;;确保这一段是在所有配置文件的最后面执行,在最前面没有效果【这里，好像说的是，为了解决先前Windows 下过于耗电的问题】
 (dolist (charset '(kana han symbol cjk-misc bopomofo))
   (set-fontset-font (frame-parameter nil 'font) ;
                     charset
@@ -575,6 +575,8 @@
 
 ;;;; 加载snippets 的接口
 (add-hook 'emacs-startup-hook (lambda () (yas-load-directory "/Users/hhj/.emacs.d/snippets/")))
+;;; 开启服务器－客户端模式 
+(server-start) 
 
 
 (custom-set-variables
@@ -643,7 +645,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "#282C34" :foreground "#ABB2BF" :inverse-video nil :box nil :strike-through nil :extend nil :overline nil :underline nil :slant normal :weight normal :height 141 :width normal :foundry "nil" :family "Inconsolata_dz"))))
- '(cursor ((t (:background "orchid"))))
  '(hi-blue-b ((t (:foreground "systemBlueColor" :weight bold))))
  '(hi-salmon ((t (:background "NavajoWhite1" :foreground "gray0"))))
  '(highlight ((t (:background "white smoke"))))
@@ -660,3 +661,4 @@
 ;;; no-byte-compile: t
 ;;; End:
                                         ;(put 'erase-buffer 'disabled nil)
+;; '(cursor ((t (:background "orchid"))))

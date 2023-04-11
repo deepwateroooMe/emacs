@@ -32,8 +32,8 @@ or terminating simple string."
 (advice-add 'c-clear-string-fences :around 'csharp-disable-clear-string-fences)
 
 
-;;; 这里添加一个从Emacs中直接要求从VSC中打开当前文件的命令
-;; (defun my-open-current-file-in-vscode ()
+;; ;; 这里添加一个从Emacs中直接要求从Visual Studio中打开当前文件的命令
+;; (defun gp/my-open-current-file-in-visualStudio ()
 ;;   (interactive)
 ;;   (save-window-excursion
 ;;     (async-shell-command
@@ -58,7 +58,9 @@ or terminating simple string."
                                        (number-to-string (current-column)))))
 ;; (define-key global-map (kbd "C-c i") 'gp/ss-vscode-current-buffer-file-at-point) 
 
-;; ;; try to make a version for Visual Studio 2022, but it does NOT work
+;; ;; TODO: EMACS ＝＝》 Visual Studio ， to open file 
+;; ;; try to make a version for Visual Studio 2022, but it does NOT work 现在可以 VS 直接跳转 Emacs 了；Emacs 跳转 VS 的改天再解决
+;; ;; 这里最大的问题主要是：VS 不会从当前工程中打开当前文件，而是新开一个实例，不方便，想它在现实例中打开，如 VSC 一样
 ;; ;; open '/Applications/Visual Studio.app' [path_to].sln
 ;; ;; echo "alias vs=\"open '/Applications/Visual Studio.app' *.sln\"" >> ~/.bash_profile
 ;; (defun gp/vscode-current-buffer-file-at-point-forVisualStudio ()
@@ -100,7 +102,6 @@ or terminating simple string."
             ))
 
 
-
 ;;;for csharp-mode ; {} autoindent
 (defun csharp-autoindent ()
   (when (and (eq major-mode 'csharp-mode) (looking-back "[;]"))
@@ -129,7 +130,8 @@ or terminating simple string."
           (aftline (progn
 		             (backward-sexp)
 		             (line-number-at-pos))) )
-      (= curline aftline))))  
+      (= curline aftline))))
+
 (defun cheeso-insert-open-brace-ss ()
   "if point is not within a quoted string literal, insert an open brace, two newlines, and a close brace; indent everything and leave point on the empty line. If point is within a string literal, just insert a pair or braces, and leave point between them."
   (interactive)
