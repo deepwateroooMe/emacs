@@ -71,29 +71,29 @@
 
 
 ;; ;; 在试图打开 .proto 的 protobuf-mode 的时候，下面的仍然会导致错误
-;; (defgroup gio-group nil
-;;   "Group for customization"
-;;   :prefix "gio-")
-;; (defface gio-highlight-numbers-face
-;;   '((t :inherit (default)
-;;        :foreground "#f6546a")) ;;; ori: #ffff00 #fff68f
-;;   "Face for numbers"
-;;   :group 'gio-group )
-;; (defvar gio-keywords '(("\\(\\b\\|[-]\\)\\([-]?\\([0-9]+\\)\\(\\.?[0-9]\\)*\\)\\b" . 'gio-highlight-numbers-face)) ;; Integers & Decimals
-;;   "Keywords for gio-minor-mode highlighting")
-;; (define-minor-mode gio-minor-mode
-;;   "Minor mode for customization"
-;;   :init-value 1
-;;   :lighter " GioMode"
-;;   :group 'gio-group
-;;   (when (bound-and-true-p gio-minor-mode)
-;;     (font-lock-add-keywords nil gio-keywords)
-;;     (font-lock-fontify-buffer)) ;;; 这里会导致csharp-mode里的一些问题
-;;   (when (not (bound-and-true-p gio-minor-mode))
-;;     (font-lock-remove-keywords nil gio-keywords)
-;;     (font-lock-fontify-buffer)))  ;;; 这里会导致csharp-mode里的一些问题
-;; (define-globalized-minor-mode gio-global-minor-mode gio-minor-mode gio-minor-mode :group 'gio-group)
-;; (gio-global-minor-mode 1)
+(defgroup gio-group nil
+  "Group for customization"
+  :prefix "gio-")
+(defface gio-highlight-numbers-face
+  '((t :inherit (default)
+       :foreground "#f6546a")) ;;; ori: #ffff00 #fff68f
+  "Face for numbers"
+  :group 'gio-group )
+(defvar gio-keywords '(("\\(\\b\\|[-]\\)\\([-]?\\([0-9]+\\)\\(\\.?[0-9]\\)*\\)\\b" . 'gio-highlight-numbers-face)) ;; Integers & Decimals
+  "Keywords for gio-minor-mode highlighting")
+(define-minor-mode gio-minor-mode
+  "Minor mode for customization"
+  :init-value 1
+  :lighter " GioMode"
+  :group 'gio-group
+  (when (bound-and-true-p gio-minor-mode)
+    (font-lock-add-keywords nil gio-keywords)
+    (font-lock-fontify-buffer)) ;;; 这里会导致csharp-mode里的一些问题
+  (when (not (bound-and-true-p gio-minor-mode))
+    (font-lock-remove-keywords nil gio-keywords)
+    (font-lock-fontify-buffer)))  ;;; 这里会导致csharp-mode里的一些问题
+(define-globalized-minor-mode gio-global-minor-mode gio-minor-mode gio-minor-mode :group 'gio-group)
+(gio-global-minor-mode 1)
 
 
 ;;; bypassing default build in org-mode, and try to use customized version

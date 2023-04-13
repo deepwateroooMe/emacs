@@ -1,0 +1,5 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: Arrays.stream(Arrays.fill)
+# key: asaf
+# --
+Arrays.stream($1).forEach(z -> Arrays.fill(z, $2));$0
