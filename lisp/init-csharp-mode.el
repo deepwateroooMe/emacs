@@ -78,20 +78,11 @@ or terminating simple string."
 ;; (define-key global-map (kbd "C-c i") 'gp/vscode-current-buffer-file-at-point) 
 
 
-;;; 是好用，但仍然是需要分不同的mode 的
-;; 因为我现在主要用内置的输入法，两个模式还不能狠好地合作，所以这里暂把这个输入法的设置给关掉
-;; TODO: INTEGRATE SIS MODE TO WORK TOGETHER WITH PYIM INPUT METHOD
-;; (kmacro-lambda-form [f4 ?\C-x ?1 ?  ?/ ?/ ?  ?\M-x ?s ?i ?s ?- ?s ?e ?t ?- ?o ?t ?h ?e ?r return] 0 "%d")) ;; ori for sys mode
-;; (kmacro-lambda-form [f4 ?\C-x ?1 ?  ?/ ?/ ?  ] 0 "%d")) ;; for pyim-mode: but if chinese input method, resulted to be “、、”，which is not expected
 ;; for pyim mode, 需要获取这个模式内部中英文输入法的名字以及转换方法 
-;; (fset 'cmtss
-;;       (kmacro-lambda-form [f4 ?\C-x ?1 ?  ?/ ?/ ?  ] 0 "%d"))
-;; (put 'cmtss 'kmacro t)
-;;; for pyim mode only: for temporary-use, until bug fix
-(fset 'cmtEnCh;;; 这里的 C-j C-i 与上面的 C-c-f 会给 C-cf 制造麻烦，需要绑定不同的鍵，这里暂时移动一下，看看它有没有什么区别 ?
-      (kmacro-lambda-form [f4 ?  ?/ ?/ ?  ?\M-x ?p ?y ?i ?m ?- ?a ?c ?t ?i ?v ?a ?t ?e return ?\C-x] 0 "%d")) ;; ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d 
-(fset 'cmtChCh;;; 有点儿延迟: [f4 pyim-deactivate // pyim-activate ]
-      (kmacro-lambda-form [f4 ?\M-x ?p ?y ?i ?m ?- ?d ?e ?a ?c ?t ?i ?v ?a ?t ?e return ?  ?/ ?/ ?  ?\M-x ?p ?y ?i ?m ?- ?a ?c ?t ?i ?v ?a ?t ?e return ?\C-x] 0 "%d")) ;; windows 平台上，用的是 pyim-activate
+(fset 'cmtEnCh ;;; 英语，之后是要转换为中文 [f4 // toggle-input-method]
+      (kmacro-lambda-form [f4 ?  ?/ ?/ ?  ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?\C-x] 0 "%d")) 
+(fset 'cmtChCh ;;; 有点儿延迟: [f4 toggle-input-method // toggle-input-method ]
+      (kmacro-lambda-form [f4 ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?  ?/ ?/ ?  ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?\C-x] 0 "%d"))
 (put 'cmtEnCh 'kmacro t)
 (put 'cmtChCh 'kmacro t)
 (add-hook 'csharp-mode-hook
@@ -163,8 +154,11 @@ or terminating simple string."
     (if (cheeso-prior-sexp-same-statement-same-line)
         (self-insert-command 1))  ;;; so far only upto here, don't know how to eval & expand {}
     (insert "")
-    (newline-and-indent)
-    (c-indent-line-or-region)
+    (newline-and-indent);; 处理当前空行
+    (forward-char 1) ;; 1 希望的是，它前一个字付，会移到下一行，格式化下一行
+    (indent-according-to-mode);; 这一行，可能不知道为什么不起俢了
+    (previous-line);; 回到前一行，但是光标位置不对
+    (indent-according-to-mode);; 这一行，仍然起作用，可以在当前行，将光标移到正确的位置 
     )))
 
 
@@ -303,8 +297,9 @@ or terminating simple string."
              ?\M-l ?/ ?/ ?  ?  return ?/ ?/ ?  return
              ?\M-g ?1 return  ;;; go back to beginning of file
              ])
+;; [?\M-g ?1 return ?\M-x ?f ?o return ?\C-x ?h ?\M-x ?i ?n ?d ?e ?n ?t ?- ?r ?e ?g ?i ?o ?n return ?\C-  ?\C-n ?\M-\; ?\C-p ?\C-a ?\C-d ?\C-d ?\C-d ?\C-x]) 
 (fset 'f;; C-x h Tab for indent the region: exchanged to M-x indent-region instead to remove the bell ring
-      [?\M-g ?1 return ?\M-x ?f ?o return ?\C-x ?h ?\M-x ?i ?n ?d ?e ?n ?t ?- ?r ?e ?g ?i ?o ?n return ?\C-  ?\C-n ?\M-\; ?\C-p ?\C-a ?\C-d ?\C-d ?\C-d ?\C-x]) 
+      [?\M-g ?1 return ?\M-x ?f ?o return ?\C-x ?h ?\M-x ?i ?n ?d ?e ?n ?t ?- ?r ?e ?g ?i ?o ?n return ?\C-x]) 
 (global-set-key (kbd "C-c f") 'f) 
 (put 'f 'kmacro t)
 

@@ -2,5 +2,4 @@
 # name: Arrays.sort(arr)
 # key: as
 # --
-Arrays.sort(${1:arr});
-$0
+Arrays.sort(${1:arr});$0

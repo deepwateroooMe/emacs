@@ -2,5 +2,4 @@
 # name: printlVariables BinaryString newline
 # key: pvbn
 # --
-System.out.println("\n Integer.toBinaryString(${1:i}): " + Integer.toBinaryString($1));
-$0
+System.out.println("\n Integer.toBinaryString(${1:i}): " + Integer.toBinaryString($1));$0

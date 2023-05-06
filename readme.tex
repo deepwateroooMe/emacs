@@ -1,0 +1,204 @@
+% Created 2023-05-06 Sat 15:33
+% Intended LaTeX compiler: pdflatex
+\documentclass[9pt, b5paper]{article}
+\usepackage{xeCJK}
+\usepackage[T1]{fontenc}
+\usepackage{bera}
+\usepackage[scaled]{beraserif}
+\usepackage[scaled]{berasans}
+\usepackage[scaled]{beramono}
+\usepackage[cache=false]{minted}
+\usepackage{xltxtra}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{latexsym}
+\usepackage{natbib}
+\usepackage{geometry}
+\geometry{left=1.2cm,right=1.2cm,top=1.5cm,bottom=1.2cm}
+\usepackage[xetex,colorlinks=true,CJKbookmarks=true,linkcolor=blue,urlcolor=blue,menucolor=blue]{hyperref}
+\newminted{common-lisp}{fontsize=\footnotesize} 
+\author{deepwaterooo}
+\date{\today}
+\title{Emacs Configuration}
+\hypersetup{
+ pdfauthor={deepwaterooo},
+ pdftitle={Emacs Configuration},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 28.2 (Org mode 9.5.5)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\section{Updates}
+\label{sec:org3055f32}
+\begin{itemize}
+\item daxx it utf-8. Who knows it will block pyim from indicating cursor colors? A whole evening of debugging it\ldots{}\ldots{}Finally it works as expected.
+\item 活宝妹爱亲爱的表哥，活宝妹就是一定要嫁给的亲爱的表哥。
+\item 活宝妹若是还没能嫁给亲爱的表哥，活宝妹就永远守候在亲爱的表哥的身边。爱表哥，爱生活！！！
+\end{itemize}
+
+\subsection{{\bfseries\sffamily emacs} 1 initiliation bug}
+\label{sec:orgf7aff97}
+\begin{itemize}
+\item 现在的 emacs 的版本是：GNU Emacs 27.2(build 1, 86\_640w64-mingw32)of 3/26-two-years-ago.
+\item 现在的从VSC 中打开 emacs 总是开个新的窗口（而不是以客户端的形式打开），不知道与 emacs 的版本是否有关系。想要升级，涉及一个问题：Windows 下的 emacs 多是32 位的，前几天不知道是哪里看说，有版本是不支持加载动态库的
+\item 也就是说，我升级就有一种风险是把，自己折腾了好久的 pyim 给弄崩了，又得重新安装 emacs. 可是不试一下，如新系统不换 x86\_64 版本的 appcode 就不知道那个版本是可以轻松实现双向跳转（在牺牲一点儿性能的基础上），而不只能单向，干等受困于Rime 的动态库构建。
+\item 等改天吧，这段时间太忙。项目比这个重要。Windows 系统现在自己就是在忍受的状态。等项目好一点儿，再开窃一点儿，再回来折腾这个。
+\item 活宝妹爱亲爱的表哥，活宝妹就是一定要嫁给的亲爱的表哥！！！
+\item emacs 27.1 for emacs-rime input methods. one bug to be fixed. 
+
+\begin{center}
+\includegraphics[width=.9\linewidth]{./pic/readme_20230214_134351.png}
+\end{center}
+\item this affect me access to current terminal, needs to be fixed later.
+\end{itemize}
+\subsection{configue pyim wubi input method emacs-rime, works like a charm!}
+\label{sec:orgb4d7218}
+\begin{itemize}
+\item 现在最大的缺点是：我无法使用自已魔改过的个性化字库，姓名住圵等等，活宝妹，亲爱的表哥，等等。但其它也算是基本清单了，再不折腾它了。花了太多的时间在这个上面。所以现在输入法还算是基本清单的。
+\begin{itemize}
+\item 两套：系统的，与 emacs 里自带的。目前的中英文转换只使用一个探针，过多会存在过灵的总是，某些情况下被禁用中文，就会更麻烦，不如它没有那么灵。爱亲爱的表哥，活宝妹一定要嫁的亲爱的表哥！！！
+\end{itemize}
+\item 它具备以空格来区分中英文输入法的功能，但不能与中文下半角配合使用。也就是，它具备了我现在所使用过的 sis 下的自动中英文之间以一个空格为单位自动切换，但我无法使用中文下半角标点。
+\item 它除了使用了系统输入法的字库，其它所有好用的配置一个也不能用（我只能拦截一个最常用的半角，仍然是不方便的），现在只是可以选詞了而已，却不能使用其它中文下输入英文标点符号等
+\item 我中文下使用英语标点：主要是 org-mode 打头的 -*. 等，它可以检测到，自动化到，还是方便的
+\end{itemize}
+\subsection{configuration for pdf-tools packages}
+\label{sec:org0bdfc3b}
+
+\begin{center}
+\includegraphics[width=.9\linewidth]{./pic/mememe2.png}
+\end{center}
+\begin{itemize}
+\item pdf viewer noter <==> Skim bi-directional linking configuration on the way, most emacs work is done. Need to learn how to use them though.
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=.9\linewidth]{./pic/Snipaste_2023-02-11_20-57-40.png}
+\end{center}
+\begin{itemize}
+\item It has to be configured for M1. But I am still not getting any .tar file yet. 
+
+\begin{center}
+\includegraphics[width=.9\linewidth]{./pic/Snipaste_2023-02-11_22-20-25.png}
+\end{center}
+\item could customer F5 toggle sr-speedbar, and make sis-mode work. But I do NOT really need sis-mode, only needed macism command line. to help [LOVE MY DEAR COUSIN!!!]
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=.9\linewidth]{./pic/readme_20230210_221127.png}
+\end{center}
+\begin{itemize}
+\item finally sync up with csharp-mode with tree-sitter, and fixed added the other's that gio-mode etc.
+\item Permanently diabled speedbar-edit-file's set-timer function call from Resource files. Do NOT want to see such a bug, don't know how to fix, but disable it and walk around.
+\item Now have a relatively barable and stable colorful emacs code editor now, at least for csharp-mode. Relatively satisfied now. Could sit it aside for a while now to focus on projects.
+\end{itemize}
+\subsection{invalid time specification: sr-speedbar on MacOS}
+\label{sec:org450051b}
+\begin{itemize}
+\item I don't like this bug, and I belive I do NOT really using any timer for auto-refresh in my speedbar. So I ended up by disabling the (speedbar-edit-file() func, which is frequently bug trigered) setting timer part from /Applications/Emacs.app/Contents/Resources/lisp/speedbar.el.gz, and recompile the file. The bug was gone. And I could deal with csharp-mode's fontify bug.
+\item newer debugging infos, concernibg about sr-speedbar.el file. Have NOT been able to trace down for today.
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=.9\linewidth]{./pic/readme_20230209_135039.png}
+\end{center}
+\begin{itemize}
+\item 好像是macOS系统常常存在的 bug,两年了关了又开，开了再关\ldots{}\ldots{}
+\item \url{https://github.com/remacs/remacs/issues/845}
+\item get cmake work later, not urgent though.Complete
+\item babel org-mode so I don't have to copy from specific babeled source org-mode files in order for chinese characters to work.
+\item Installed my emacs of version 28.1. But there is a bug of any verison emacs > 27.1, and I am NOT able to find a installable emacs 27.1 version any more.
+\item 不同电脑架构上可能因为架构的不同，可以可能可以有某些优化.又照一个单做了一遍，似乎没有出错. \url{https://goykhman.ca/gene/blog/2022/2022-04-10-emacs-28.1-on-m1.html}
+\item 但是我没有没能加入那个补丁包.暂时没能想好怎么加入那个补丁包. （ \textbf{todo： 改天可以尝试再把这个补丁包加进去} ）
+\item 因为构建是在原有现有的 mac 28.1.1版本上构建的.所以改动什么，或是不曾改变，又或者改不了不影响明显功能都是无从知晓的，但是它最后的两个步骤的验证都是成功的，应该还是构建成功了吧？
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=.9\linewidth]{./pic/readme_20230208_142554.png}
+\end{center}
+\begin{itemize}
+\item 今天又尝试安装Xcode之后再构建一遍，但是没有成功.可能本身参考有些年代，另外自己还完全不通这个部分，所以暂时放一放.改天有机会可以再回来研究一下，错在哪里，我如何才可能构建出自己的版本.
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=.9\linewidth]{./pic/readme_20230208_102317.png}
+\end{center}
+\begin{itemize}
+\item 上面又成为一个需要改的东西： 就是系统下如何从剪贴板自动生成写入文件 org-mode M-s
+\item 然后看见这里说可以自己构建一个，连Xcode也没有安装，就跑去构建了，当然不成功。这段时间太忙，XCode要的空间太大了，暂时还不想。等改天有机会的时候倒是可以一试的
+\begin{itemize}
+\item \url{https://stuff-things.net/2020/12/28/building-emacs-27-dot-1-on-macos-big-sur/}
+\end{itemize}
+\item added key-bindings for opening from VSCode/Android Studio of current emacs buffer. 
+\begin{itemize}
+\item VSC Emacs can locate to each othr to correct row and col.
+\item Android Studio could open current emacs buffer. but not to the row nor col.
+\end{itemize}
+\item I liked recently configued Visual studio 2019 one-dark-pro theme, want to configue it for emacs, but ended up with any permission denied, renaming emacs initiating bug. reverted back for daily use, and may look into that bug for later reference.
+\item will reconfigure one-dark-pro theme later.
+\item fixed legency java-mode highlighing issue which I did not fix for years. Has been able to treat java-mode as java-mode Instead of using it as csharp-mode. Can not separate java-mode snippets from csharp-mode's.
+\end{itemize}
+\subsection{BUG statement and partial fix}
+\label{sec:org38dfb29}
+\begin{itemize}
+\item in java-mode, the code style I expected is as followed:
+\end{itemize}
+\begin{minted}[fontsize=\scriptsize,linenos=false]{java}
+class node {
+    int v ;
+    public node() {
+        if (a > 0) // I don't want { } blocks when I have only one line statement inside blocks
+     // a = 17;    // before fix:
+            a = 17;   // now it can auto-indent
+        b = 20;
+        while (true)  // same auto indents here
+            j++;
+    }
+}
+class dklfjdj {|} // <<==== current un-auto-expanded version, bug right now for java-mode
+class dklfjdj { 
+    | // <<==== expected feature: once I typed '{', '}' will be autopaired(it does), but also auto-expand and cursor moves and indents directly to where I expect
+}
+\end{minted}
+\begin{itemize}
+\item if while if while one line statement autoindent without \{\} fixed today for java-mode, but for kotlin-mode, this bug consists, make coders/programmers nuts.
+\end{itemize}
+\begin{minted}[fontsize=\scriptsize,linenos=false]{java}
+fun getStringLength(obj: Any): Int? {
+    if (obj is String)
+    return obj.length  // <<<<===== BUG: need to fix auto-indent here for if else while etc without {} 
+
+    if (obj is String) {
+        return obj.length
+    }
+    // 在离开类型检测分支后，`obj` 仍然是 `Any` 类型
+    return null
+}
+fun dslfkj { // kotlin-mode, unlike java-mode, this feature works charming
+    val a = 1720 
+}
+\end{minted}
+\begin{itemize}
+\item The \{|\} can NOT auto-expand still bugs me a lot, I don't want to switch back to java-mode yet unless bug fixed and it auto-pands.
+\item java minor bug: Debugger entered--Lisp error: (void-function company-clear-completion-rules): this bug I will look into it recently, and expect it to be fixed so I could switch java-mode from csharp-mode as soon as possible.
+\end{itemize}
+\begin{itemize}
+\item \textbf{csharp-mode} has been the one that works perfectly for these two features, \{\} auto expand, also if while one line statement autoindent without \{\}, so I used csharp-mode as java mode.
+\end{itemize}
+\section{References}
+\label{sec:orgb5789eb}
+\begin{itemize}
+\item \url{https://github.com/redguardtoo/emacs.d}
+\end{itemize}
+\end{document}

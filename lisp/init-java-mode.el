@@ -27,15 +27,20 @@
                                nil
                                (concat "I:/selfSoft/AndroidStudio_3.17/bin/studio64.exe "
                                         (buffer-file-name))))
-;;; 是好用，但仍然是需要分不同的mode 的
-(fset 'cmt
-      (kmacro-lambda-form [f4 ?\C-x ?1 ?  ?/ ?/ ?  ?\M-x ?s ?i ?s ?- ?s ?e ?t ?- ?o ?t ?h ?e ?r return] 0 "%d"))
-(put 'cmt 'kmacro t)
-
+;; for pyim mode, 需要获取这个模式内部中英文输入法的名字以及转换方法 
+(fset 'cmtEnCh ;;; 英语，之后是要转换为中文 [f4 // toggle-input-method]
+      (kmacro-lambda-form [f4 ?  ?/ ?/ ?  ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?\C-x] 0 "%d")) 
+(fset 'cmtChCh ;;; 有点儿延迟: [f4 toggle-input-method // toggle-input-method ]
+      (kmacro-lambda-form [f4 ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?  ?/ ?/ ?  ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?\C-x] 0 "%d"))
+(put 'cmtEnCh 'kmacro t)
+(put 'cmtChCh 'kmacro t)
 (add-hook 'java-mode-hook
           (lambda ()
             (local-set-key (kbd "C-c v") 'java/vscode-current-buffer-file-at-point)
-            (local-set-key (kbd "C-j") 'cmt)
+            ;; (local-set-key (kbd "C-j") 'cmt)
+            (local-set-key (kbd "C-x x") 'cmtEnCh) ;; English ==> Chinese 改变绑定的鍵才是最彻底的改法，不会让 C-cf 运行狠久
+            (local-set-key (kbd "C-j") 'cmtChCh) ;; Chinese ==> Chinese
+            ;; (local-set-key (kbd "C-i") 'er/expand-region) ;; csharp-mode 这个功能可用；但是 tree-sitter-mode 这个功能不可用，狠奇怪 
             ))
 
 
@@ -86,9 +91,9 @@
    ;; was the last non-space an equals sign? or square brackets?  Then it's an initializer.
    ((cheeso-looking-back-at-equals-or-array-init-java)
     (self-insert-command 1)
-    (forward-char 1)
+    (forward-char 2);; 1
     (insert ";") 
-    (backward-char 2)) ; this one works great now
+    (backward-char 3)) ;; 2 this one works great now
 
    ;; else, it's a new scope., 
    ;; therefore, insert paired braces with an intervening newline, and indent everything appropriately.
@@ -96,8 +101,11 @@
     (if (cheeso-prior-sexp-same-statement-same-line-java)
         (self-insert-command 1)) ;;; so far only upto here, don't know how to eval & expand {}
     (insert "")
-    (newline-and-indent)
-    (c-indent-line-or-region)
+    (newline-and-indent);; 处理当前空行
+    (forward-char 1) ;; 1 希望的是，它前一个字付，会移到下一行，格式化下一行
+    (indent-according-to-mode);; 这一行，可能不知道为什么不起俢了
+    (previous-line);; 回到前一行，但是光标位置不对
+    (indent-according-to-mode);; 这一行，仍然起作用，可以在当前行，将光标移到正确的位置 
     )))
 
 

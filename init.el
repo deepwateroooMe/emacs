@@ -35,7 +35,7 @@
 ;;; setup defaults for all modes
 (setq default-frame-alist
       ;; '((top . 0)(left . 427)(height . 75)(width . 180)(menubar-lines . 70)(tool-bar-line . 0))
-      '((top . 0)(left . 427)(height . 90)(width . 180)(menubar-lines . 83)(tool-bar-line . 0))
+      '((top . 0)(left . 527)(height . 90)(width . 180)(menubar-lines . 83)(tool-bar-line . 0))
       ;; '((top . 0)(left . 400)(height . 157)(width . 180)(menubar-lines . 70)(tool-bar-line . 0)) ; ori
       ) ; tmp.p
 
@@ -118,7 +118,6 @@
   '((t (:foreground "#008ED1" :background "#D3D3D3"))) ;; #EAEAFF
   ;; '((t (:overline "#A7A6AA" :foreground "#008ED1" :background "#D3D3D3"))) ;; #EAEAFF
   "Face used for the line delimiting the end of source blocks.")
-
 
 ;; @see https://www.reddit.com/r/emacs/comments/3kqt6e/2_easy_little_known_steps_to_speed_up_emacs_start/
 ;; Normally file-name-handler-alist is set to
@@ -364,12 +363,17 @@
 ;; (setq utf-translate-cjk-mode nil) ; disable CJK coding/encoding (Chinese/Japanese/Korean characters)
 ;; (set-language-environment 'utf-8)
 ;; (setq locale-coding-system 'utf-8)
-;; (set-default-coding-systems 'utf-8)
+(set-default-coding-systems 'utf-8)
 ;; (set-terminal-coding-system 'utf-8)
 ;; (unless (eq system-type 'windows-nt)
 ;;   (set-selection-coding-system 'utf-8))
 ;; (prefer-coding-system 'utf-8)
 ;; ;(setq desktop-restore-frames nil)
+
+;;;comment outbelow: 它把 pyim 的光标给弄没了。。。。。
+;;;comment outbelow
+;; (set-language-environment 'UTF-8) 
+;; (set-locale-environment "UTF-8")
 
 
 ;;; for iimage org-mode
@@ -469,11 +473,6 @@
 ;;       [?\C-  ?\C-p ?\C-p ?\C-p ?\C-p ?\C-p ?\C-p ?\M-p ?* return return ?\C-p ?\C-p])
 
 
-;;;comment outbelow: 它把 pyim 的光标给弄没了。。。。。
-;;;comment outbelow
-;; (set-language-environment 'UTF-8) 
-;; (set-locale-environment "UTF-8")
-
 (set-face-attribute 'default nil :font "Inconsolata-dz")
 
 ;; (set-face-attribute 'region nil :background "#666" :foreground "#ffffff") 
@@ -500,7 +499,8 @@
     ad-do-it))
 (global-set-key (kbd "C-x C-c") 'save-buffers-kill-emacs)
 
-;; '(fci-rule-color "#dedede")
+
+;; '(fci-rule-color "#dedede") ;;; 我又试着把它加回去了
 ;; '(custom-safe-themes
 ;;   '("0c860c4fe9df8cff6484c54d2ae263f19d935e4ff57019999edbda9c7eda50b8" "f490984d405f1a97418a92f478218b8e4bcc188cf353e5dd5d5acd2f8efd0790" "28a104f642d09d3e5c62ce3464ea2c143b9130167282ea97ddcc3607b381823f" default))
 
@@ -509,13 +509,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(an si-color-faces-vector)
+ '(ansi-color-faces-vector)
  '(ansi-color-names-vector
    ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
+ '(fci-rule-color "#dedede")
  '(column-number-mode t)
  '(custom-enabled-themes '(atom-one-dark))
- ;; '(custom-safe-themes
- ;;   '("0c860c4fe9df8cff6484c54d2ae263f19d935e4ff57019999edbda9c7eda50b8" "f490984d405f1a97418a92f478218b8e4bcc188cf353e5dd5d5acd2f8efd0790" "28a104f642d09d3e5c62ce3464ea2c143b9130167282ea97ddcc3607b381823f" default))
+ '(custom-safe-themes
+   '("0c860c4fe9df8cff6484c54d2ae263f19d935e4ff57019999edbda9c7eda50b8" "f490984d405f1a97418a92f478218b8e4bcc188cf353e5dd5d5acd2f8efd0790" "28a104f642d09d3e5c62ce3464ea2c143b9130167282ea97ddcc3607b381823f" default))
  '(display-time-mode t)
  '(fci-rule-color "#dedede")
  '(git-gutter:handled-backends '(svn hg git))

@@ -2,6 +2,6 @@
 # name: print <List<Integer>
 # key: pl
 # --
-System.out.println("${1:res}.size(): " + $1.size());
+System.out.println("${1:l}.size(): " + $1.size());
 System.out.println(Arrays.toString($1.toArray()));
 $0

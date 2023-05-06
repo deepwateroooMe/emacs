@@ -1,0 +1,5 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: [x][y]
+# key: xy
+# --
+$1[x][y]$0

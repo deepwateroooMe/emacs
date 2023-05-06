@@ -1,0 +1,5 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: contains()
+# key: cts
+# --
+contains(${1:k})$0

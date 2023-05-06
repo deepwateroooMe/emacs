@@ -81,7 +81,8 @@
 ;;   (progn
 ;;     (load-theme dark-theme t)
 ;;     (set-cursor-color "#b2b2b2")
-(setq pyim-indicator-cursor-color (list "#ff72ff" "#00FFFF"));; 不知道为什么，前面一个是橙色，是中文状态。后面一个是灰色#b2b2b2 【改成浅蓝色了】英语状态
+;; (setq pyim-indicator-cursor-color (list "#ff72ff" "#00FFFF")) ;; 不知道为什么，前面一个是橙色，是中文状态。后面一个是【改成浅蓝色了】英语状态
+(setq pyim-indicator-cursor-color (list "orange" "white")) 
 
 ;; (global-set-key (kbd "M-SPC") 'pyim-activate);; 用这个来启动: 因为它的切换方法特殊，影响光标配色的自动检测
 (global-set-key (kbd "C-\\") 'toggle-input-method)

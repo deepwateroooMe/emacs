@@ -2,5 +2,4 @@
 # name: List<Integer> l = new ArrayList<>();
 # key: li
 # --
-List<Integer> ${1:l} = new ArrayList<>();
-$0
+List<Integer> ${1:l} = new ArrayList<>();$0

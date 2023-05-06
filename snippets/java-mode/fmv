@@ -2,7 +2,6 @@
 # name: for map values()
 # key: fmv
 # --
-for (${1:Integer} ${2:val} : ${3:map}.values()) {
+for (${1:int} ${2:val} : ${3:m}.values()) {
     $3
-}
-$0
+}$0

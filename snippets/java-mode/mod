@@ -2,5 +2,4 @@
 # name: mod
 # key: mod
 # --
-static final int mod = (int)1e9 + 7;
-$0
+static final int mod = (int)1e9 + 7;$0

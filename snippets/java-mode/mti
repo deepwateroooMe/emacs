@@ -1,0 +1,6 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: HashMap<TreeNode, Integer>
+# key: mti
+# --
+Map<TreeNode, Integer> ${1:m} = new HashMap<>();
+$0

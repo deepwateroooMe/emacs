@@ -1,0 +1,5 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: Arrays.stream().max()min
+# key: ama
+# --
+Arrays.stream(${1:arr}).max().getAsInt()$0

@@ -2,5 +2,5 @@
 # name: print int []
 # key: pai
 # --
-System.out.println(Arrays.toString(${1:arr}));
+System.out.println(Arrays.toString(${1:a}));
 $0

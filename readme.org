@@ -4,7 +4,7 @@
 
 * Updates 
 - daxx it utf-8. Who knows it will block pyim from indicating cursor colors? A whole evening of debugging it......Finally it works as expected. 
-- 活宝妹爱亲爱的表哥，活宝妹就是一定要嫁给的亲爱的表哥。
+- 活宝妹爱亲爱的表哥，活宝妹就是一定要嫁给的亲爱的表哥。 *【活宝妹就是一定要嫁给的亲爱的表哥！！】【亲爱的表哥，活宝妹一定要嫁的亲爱的表哥！！！】*
 - 活宝妹若是还没能嫁给亲爱的表哥，活宝妹就永远守候在亲爱的表哥的身边。爱表哥，爱生活！！！
 
 ** emacs 1 initiliation bug
