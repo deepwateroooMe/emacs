@@ -1,0 +1,5 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: [i][j]
+# key: ij
+# --
+$1[i][j]$0

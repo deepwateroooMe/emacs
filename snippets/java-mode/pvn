@@ -3,5 +3,4 @@
 # key: pvn
 #${1:root}.levelPrintTree($1);
 # --
-System.out.println("\n ${1:i}: " + $1);
-$0
+System.out.println("\n ${1:i}: " + $1);$0

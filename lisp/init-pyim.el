@@ -40,7 +40,7 @@
 (liberime-start "/usr/share/rime-data" "~/Library/Rime/") ;;; 这里公共的库里，我好像并没有任保的可用的数据
 
 ;; 金手指设置，可以将光标处的编码（比如：拼音字符串）转换为中文。
-(global-set-key (kbd "M-j") 'pyim-convert-string-at-point)
+;; (global-set-key (kbd "M-j") 'pyim-convert-string-at-point);; 我需要这个好用的健编代码 .....
 ;; 按 "C-<return>" 将光标前的 regexp 转换为可以搜索中文的 regexp.
 (define-key minibuffer-local-map (kbd "C-<return>") 'pyim-cregexp-convert-at-point)
 

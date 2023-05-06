@@ -2,7 +2,7 @@
 # name: print List<List<Integer>>
 # key: pll
 # --
-System.out.println("${1:res}.size(): " + $1.size());
+System.out.println("${1:ll}.size(): " + $1.size());
 for (int z = 0; z < $1.size(); ++z) 
     System.out.println(Arrays.toString($1.get(z).toArray()));
 $0

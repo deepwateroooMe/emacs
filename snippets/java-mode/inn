@@ -1,5 +1,5 @@
 # contributor: Renaud Aubin <renaud.aubin@gmail.com>
-# name: contains()
-# key: cnt
+# name: [n][n]
+# key: inn
 # --
-contains(${1:k})$0
+[n][n];$0

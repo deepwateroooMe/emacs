@@ -1,0 +1,5 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: Arrays.stream().min()
+# key: ami
+# --
+Arrays.stream(${1:arr}).min().getAsInt()$0
