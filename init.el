@@ -233,7 +233,7 @@
 
 (global-pangu-spacing-mode 1)
 ;; C-; 不知道是什么原因，绑定到ISpell 或是 flycheck 之类的了，把其它的去掉，保留这个好用的键
-(global-set-key (kbd "C-;") 'er/expand-region)
+(global-set-key (kbd "C-;") 'er/expand-region);; 上次不是在 windows 上运行吗？刚把 flyspell.el 里的键绑定给取消了换到M-; 上去了，这个应该可以用了
 
 ;; forward word to skip _ mark
 

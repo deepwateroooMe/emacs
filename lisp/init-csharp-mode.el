@@ -93,7 +93,7 @@ or terminating simple string."
             (local-set-key (kbd "C-x x") 'cmtEnCh) ;; English ==> Chinese 改变绑定的鍵才是最彻底的改法，不会让 C-cf 运行狠久
             (local-set-key (kbd "C-j") 'cmtChCh) ;; Chinese ==> Chinese
             ;; due to the fact that C-; is globally binded to flyspell.cs some funtion, somehow not able to rebound to C-; for er/expand-region for csharp-mode
-            (local-set-key (kbd "C-i") 'er/expand-region) ;; csharp-mode 这个功能可用；但是 tree-sitter-mode 这个功能不可用，狠奇怪 
+            ;; (local-set-key (kbd "C-i") 'er/expand-region) ;; csharp-mode 这个功能可用；换回最习惯最原始的 C-i 比较好用
             ))
 
  

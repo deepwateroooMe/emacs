@@ -40,7 +40,7 @@
             ;; (local-set-key (kbd "C-j") 'cmt)
             (local-set-key (kbd "C-x x") 'cmtEnCh) ;; English ==> Chinese 改变绑定的鍵才是最彻底的改法，不会让 C-cf 运行狠久
             (local-set-key (kbd "C-j") 'cmtChCh) ;; Chinese ==> Chinese
-            ;; (local-set-key (kbd "C-i") 'er/expand-region) ;; csharp-mode 这个功能可用；但是 tree-sitter-mode 这个功能不可用，狠奇怪 
+            ;; (local-set-key (kbd "C-i") 'er/expand-region) ;; csharp-mode 这个功能可用 ；但是 tree-sitter-mode 这个功能不可用，【这个功能不能用太郁闷了，要解决掉这个 bug】 
             ))
 
 
