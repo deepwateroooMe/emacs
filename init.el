@@ -5,7 +5,7 @@
 ;;              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 ;; (package-initialize)
 
-(setq default-directory "C:/Users/blue_/AppData/Roaming/.emacs.d/")
+(setq default-directory "F:/")
 ;; (setq default-directory "f:/")
 
 (setq debug-on-error t);; 它会无数次地停掉程序，去掉
@@ -35,7 +35,7 @@
 ;;; setup defaults for all modes
 (setq default-frame-alist
       ;; '((top . 0)(left . 427)(height . 75)(width . 180)(menubar-lines . 70)(tool-bar-line . 0))
-      '((top . 0)(left . 527)(height . 90)(width . 180)(menubar-lines . 83)(tool-bar-line . 0))
+      '((top . 0)(left . 577)(height . 90)(width . 180)(menubar-lines . 83)(tool-bar-line . 0))
       ;; '((top . 0)(left . 400)(height . 157)(width . 180)(menubar-lines . 70)(tool-bar-line . 0)) ; ori
       ) ; tmp.p
 
@@ -70,54 +70,53 @@
       (read-only-mode -1)))
 
 
-;; not stable: sometimes it works, sometimes does not.
-;; (defgroup gio-group nil
-;;   "Group for customization"
-;;   :prefix "gio-")
-;; (defface gio-highlight-numbers-face
-;;   '((t :inherit (default)
-;;        :foreground "#f6546a")) ;;; ori: #ffff00 #fff68f
-;;   "Face for numbers"
-;;   :group 'gio-group )
-;; (defvar gio-keywords '(("\\(\\b\\|[-]\\)\\([-]?\\([0-9]+\\)\\(\\.?[0-9]\\)*\\)\\b" . 'gio-highlight-numbers-face)) ;; Integers & Decimals
-;;   "Keywords for gio-minor-mode highlighting")
-;; (define-minor-mode gio-minor-mode
-;;   "Minor mode for customization"
-;;   :init-value 1
-;;   :lighter " GioMode"
-;;   :group 'gio-group
-;;   (when (bound-and-true-p gio-minor-mode)
-;;     (font-lock-add-keywords nil gio-keywords)
-;;     (font-lock-fontify-buffer)) ;;; 这里会导致csharp-mode里的一些问题
-;;   (when (not (bound-and-true-p gio-minor-mode))
-;;     (font-lock-remove-keywords nil gio-keywords)
-;;     (font-lock-fontify-buffer)))  ;;; 这里会导致csharp-mode里的一些问题
-;; (define-globalized-minor-mode gio-global-minor-mode gio-minor-mode gio-minor-mode :group 'gio-group)
-;; (gio-global-minor-mode 1)
+(defgroup gio-group nil
+  "Group for customization"
+  :prefix "gio-")
+(defface gio-highlight-numbers-face
+  '((t :inherit (default)
+       :foreground "#f6546a")) ;;; ori: #ffff00 #fff68f
+  "Face for numbers"
+  :group 'gio-group )
+(defvar gio-keywords '(("\\(\\b\\|[-]\\)\\([-]?\\([0-9]+\\)\\(\\.?[0-9]\\)*\\)\\b" . 'gio-highlight-numbers-face)) ;; Integers & Decimals
+  "Keywords for gio-minor-mode highlighting")
+(define-minor-mode gio-minor-mode
+  "Minor mode for customization"
+  :init-value 1
+  :lighter " GioMode"
+  :group 'gio-group
+  (when (bound-and-true-p gio-minor-mode)
+    (font-lock-add-keywords nil gio-keywords)
+    (font-lock-fontify-buffer)) ;;; 这里会导致csharp-mode里的一些问题
+  (when (not (bound-and-true-p gio-minor-mode))
+    (font-lock-remove-keywords nil gio-keywords)
+    (font-lock-fontify-buffer)))  ;;; 这里会导致csharp-mode里的一些问题
+(define-globalized-minor-mode gio-global-minor-mode gio-minor-mode gio-minor-mode :group 'gio-group)
+(gio-global-minor-mode 1)
 
 
-;; ;;; bypassing default build in org-mode, and try to use customized version
-;; (use-package org
-;;   :ensure nil
-;;   :ensure htmlize                       ; For org-publish
-;;   :load-path ("~/.emacs.d/elpa/org-20140901/")
-;;   :init
-;;   :config
-;;   (add-to-list 'org-modules 'org-habit))
-
-
-
+;;; org-9.5.5 线太长了，不想要整行的线，想它们短一点儿
 (defface org-block-begin-line
-  '((t (:foreground "#008ED1" :background "#D3D3D3"))) ;; #EAEAFF
+  '((t (:underline "#A7A6AA" :foreground "#008ED1" :background "#D3D3D3" :extend t))) ;; #EAEAFF
   ;; '((t (:underline "#A7A6AA" :foreground "#008ED1" :background "#D3D3D3"))) ;; #EAEAFF
   "Face used for the line delimiting the begin of source blocks.")
 ;; (defface org-block-background
 ;;   '((t (:background "#D3D3D3"))) ;;; #FFFFEA
 ;;   "Face used for the source block background.")
 (defface org-block-end-line
-  '((t (:foreground "#008ED1" :background "#D3D3D3"))) ;; #EAEAFF
+  '((t (:overline "#A7A6AA" :foreground "#008ED1" :background "#D3D3D3" :extend t))) ;; #EAEAFF
   ;; '((t (:overline "#A7A6AA" :foreground "#008ED1" :background "#D3D3D3"))) ;; #EAEAFF
   "Face used for the line delimiting the end of source blocks.")
+
+;; (custom-set-faces ;;; 太难看了，弄得人没眼睛看。。。
+;;  '(org-block-begin-line
+;;    ((t (:underline "#A7A6AA" :foreground "#008ED1" :background "#EAEAFF" :extend t))))
+;;  ;; '(org-block
+;;  ;;   ((t (:background "#EFF0F1" :extend t))))
+;;  '(org-block-end-line
+;;    ((t (:overline "#A7A6AA" :foreground "#008ED1" :background "#EAEAFF" :extend t))))
+;;  )
+
 
 ;; @see https://www.reddit.com/r/emacs/comments/3kqt6e/2_easy_little_known_steps_to_speed_up_emacs_start/
 ;; Normally file-name-handler-alist is set to
@@ -521,7 +520,7 @@
  '(fci-rule-color "#dedede")
  '(git-gutter:handled-backends '(svn hg git))
  '(latex-run-command "latex --shell-escape")
- '(line-spacing 0.1)
+ '(line-spacing 0.2)
  '(nxml-slash-auto-complete-flag t)
  '(org-export-with-sub-superscripts nil)
  '(org-format-latex-options

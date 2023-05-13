@@ -96,9 +96,9 @@
 (speedbar-add-supported-extension ".cshtml")
 (add-to-list 'speedbar-fetch-etags-parse-list
  		     '("\\.cshtml" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".csproj")
-(add-to-list 'speedbar-fetch-etags-parse-list
- 		     '("\\.csproj" . speedbar-parse-c-or-c++tag))
+;; (speedbar-add-supported-extension ".csproj")
+;; (add-to-list 'speedbar-fetch-etags-parse-list
+;;  		     '("\\.csproj" . speedbar-parse-c-or-c++tag))
 (speedbar-add-supported-extension ".lua")
 (add-to-list 'speedbar-fetch-etags-parse-list
  		     '("\\.lua" . speedbar-parse-c-or-c++tag))

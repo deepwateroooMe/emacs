@@ -507,7 +507,6 @@ wubi/adpl 匪军
 wubi/adpn 茂密	
 wubi/adpt 欺客	
 wubi/adpu 其实	
-wubi/adpu 荙	
 wubi/adpw 勘察	
 wubi/adpx 其它	
 wubi/adpy 惹祸	
@@ -6134,8 +6133,6 @@ wubi/bufg 卫道士
 wubi/bufh 阧	
 wubi/bufr 孤立无援	
 wubi/buft 联考	
-wubi/bugf 陪玩	
-wubi/bugm 耳闻不如目见	
 wubi/buhh 耳闻目睹	
 wubi/buhm 耳闻目见	
 wubi/buhv 障眼	
@@ -14864,7 +14861,6 @@ wubi/fcfp 去过
 wubi/fcfr 去垢	
 wubi/fcft 云雾	
 wubi/fcfv 云霓	
-wubi/fcfw 走马赴任	
 wubi/fcfy 云霭	
 wubi/fcga 动武	
 wubi/fcgc 运到	
@@ -30961,7 +30957,6 @@ wubi/jaqt 曔
 wubi/jarf 蜡质	
 wubi/jarr 蜡白	
 wubi/jars 暴打	
-wubi/jarv 暴热	
 wubi/jasg 里斯本	
 wubi/jasm 日薄西山	
 wubi/jasr 蜡板	
@@ -31667,8 +31662,6 @@ wubi/jgh 是
 wubi/jghc 虾皮	
 wubi/jghf 昰	
 wubi/jghh 题目	
-wubi/jghh 韪	
-wubi/jghh 韙	
 wubi/jghi 师叔	
 wubi/jghm 题	
 wubi/jghm 題	
@@ -49460,7 +49453,6 @@ wubi/pwue 空前
 wubi/pwui 空阔	
 wubi/pwuj 空间	
 wubi/pwuj 究竟	
-wubi/pwuj 窨	
 wubi/pwuk 窘况	
 wubi/pwum 宿弊	
 wubi/pwuo 窯	
@@ -50532,7 +50524,6 @@ wubi/qej 角
 wubi/qeja 锄暴	
 wubi/qejg 钥匙	
 wubi/qejg 解题	
-wubi/qejg 觛	
 wubi/qejn 触电	
 wubi/qejs 角果	
 wubi/qejy 触	
@@ -52299,7 +52290,6 @@ wubi/qnud 饲养
 wubi/qnud 馒头	
 wubi/qnud 包头	
 wubi/qnue 饭前	
-wubi/qnuf 馐	
 wubi/qnuf 包装	
 wubi/qnug 急性病	
 wubi/qnui 刨冰	
@@ -52332,9 +52322,6 @@ wubi/qnww 包谷
 wubi/qnwx 蚀化	
 wubi/qnwy 包含	
 wubi/qnwy 饮食	
-wubi/qnwy 饱含	
-wubi/qnwy 鈌	
-wubi/qnwy 鑃	
 wubi/qnx 铌	
 wubi/qnxa 鸟尽弓藏	
 wubi/qnxc 饱经	
@@ -59389,7 +59376,6 @@ wubi/rvfj 抛进
 wubi/rvfl 扫雷	
 wubi/rvfn 热卖	
 wubi/rvfp 搜索	
-wubi/rvfp 揵	
 wubi/rvft 执教	
 wubi/rvft 招考	
 wubi/rvfv 扫雪	
@@ -66490,7 +66476,6 @@ wubi/tjnn 利己
 wubi/tjnt 复发	
 wubi/tjnt 馝	
 wubi/tjnu 复习	
-wubi/tjnu 悡	
 wubi/tjnx 馜	
 wubi/tjny 得以	
 wubi/tjog 香精	
@@ -67972,7 +67957,6 @@ wubi/trkk 物品
 wubi/trkk 选择器	
 wubi/trkk 牲口	
 wubi/trkl 特别	
-wubi/trkl 箉	
 wubi/trkq 御史	
 wubi/trle 长年累月	
 wubi/trlf 籜	
@@ -71061,7 +71045,7 @@ wubi/uipl 闣
 wubi/uipu 冰袖	
 wubi/uipw 冰窖	
 wubi/uiqf 冰镇	
-wubi/uiqn 盖浇饭	
+wubi/uiqn 资源包	
 wubi/uiqq 奖学金	
 wubi/uiqt 关汉卿	
 wubi/uiqw 冰锥	
@@ -80781,7 +80765,6 @@ wubi/wyrw 偏失
 wubi/wyrx 食指	
 wubi/wyry 仗义执言	
 wubi/wys 集	
-wubi/wysa 停柩	
 wubi/wysc 集权	
 wubi/wysf 售票	
 wubi/wysf 食材	
@@ -86225,7 +86208,6 @@ wubi/ynng 永恒
 wubi/ynng 忘怀	
 wubi/ynnm 齐刷刷	
 wubi/ynnn 记忆	
-wubi/ynnn 戺	
 wubi/ynno 焈	
 wubi/ynnt 启发	
 wubi/ynnt 记性	
@@ -88091,26 +88073,18 @@ wubi/ywxn 论
 wubi/ywxn 訛	
 wubi/ywy 认	
 wubi/ywyb 腐熟	
-wubi/ywyc 詅	
-wubi/ywyc 謢	
 wubi/ywyc 﨎	
 wubi/ywyg 谁	
 wubi/ywyg 认证	
 wubi/ywyg 论证	
-wubi/ywyg 誰	
 wubi/ywyk 认识	
-wubi/ywyk 誝	
-wubi/ywyk 謒	
 wubi/ywyl 认为	
 wubi/ywym 论调	
 wubi/ywym 夜市	
 wubi/ywyn 谂	
 wubi/ywyn 庈	
-wubi/ywyn 訡	
-wubi/ywyn 諗	
 wubi/ywyo 座谈	
 wubi/ywyo 谯	
-wubi/ywyo 譙	
 wubi/ywyq 褒义	
 wubi/ywyt 讹诈	
 wubi/ywyu 论说	
@@ -88121,7 +88095,6 @@ wubi/yx 率
 wubi/yxaa 熟练工	
 wubi/yxab 庇荫	
 wubi/yxai 变幻莫测	
-wubi/yxau 壅蔽	
 wubi/yxbi 玄孙	
 wubi/yxbw 率队	
 wubi/yxcd 玄参	

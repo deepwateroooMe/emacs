@@ -1,6 +1,5 @@
 ;; org-mode
-(global-linum-mode 1)
-(setq load-path (cons "C:/Users/blue_/AppData/Roaming/.emacs.d/elpa/org-20140901/" load-path))
+;; (setq load-path (cons "C:/Users/blue_/AppData/Roaming/.emacs.d/elpa/org-20140901/" load-path))
 (require 'ox)
 (require 'org-install)
 (require 'ob-ditaa)  
@@ -19,15 +18,16 @@
 (setq org-src-fontify-natively t)  ;;; 要对代码进行语法高亮
 (setq org-src-tab-acts-natively t)
 (setq linum-mode t)
+(global-linum-mode 1)
 
 
 ;;; 这是org-mode下专用整理笔记的，只偏移2
 (defun org/shift-right ()
   (interactive)
-  (shift-region 2))
+  (shift-region 4))
 (defun org/shift-left ()
   (interactive)
-  (shift-region -2))
+  (shift-region -4))
 
 
 ;;; 这里简单配置一下下划线与加粗字体的显示格式；
@@ -84,7 +84,25 @@ same directory as the org-buffer and insert a link to this file."
             (local-set-key (kbd "<C-S-left>") 'org/shift-left)
             (local-set-key (kbd "<C-S-right>") 'org/shift-right)
 ;;;;; auto paste and generate .png image file from clipboard-yank
-            (local-set-key (kbd "C-i") 'my-org-screenshot)
+            ;; (local-set-key (kbd "C-i") 'my-org-screenshot) ;;; 这个銉仍然会阻挡我其它使用：比如 Tab 的使用，表格拉自动延展等
+            (local-set-key (kbd "M-s") 'my-org-screenshot)
+            ))
+
+
+;; 从 csharp 里直接搬来的，方便对源码作笔记
+(fset 'cmtEnCh ;;; 英语，之后是要转换为中文 [f4 // toggle-input-method]
+      (kmacro-lambda-form [f4 ?  ?/ ?/ ?  ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?\C-x] 0 "%d")) 
+(fset 'cmtChCh ;;; 有点儿延迟: [f4 toggle-input-method // toggle-input-method ]
+      (kmacro-lambda-form [f4 ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?  ?/ ?/ ?  ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?\C-x] 0 "%d"))
+(put 'cmtEnCh 'kmacro t)
+(put 'cmtChCh 'kmacro t)
+(add-hook 'csharp-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-c i") 'gp/vscode-current-buffer-file-at-point) ;;;;; 这个键太复杂，不好用 ;;;;; distribute the work into 2 fingers
+            ;; (local-set-key (kbd "C-x x") 'cmtEnCh) ;; English ==> Chinese 改变绑定的鍵才是最彻底的改法，不会让 C-cf 运行狠久
+            ;; (local-set-key (kbd "C-x j") 'cmtChCh) ;; Chinese ==> Chinese
+            (local-set-key (kbd "C-x x") 'cmtEnCh) ;; English ==> Chinese 改变绑定的鍵才是最彻底的改法，不会让 C-cf 运行狠久
+            (local-set-key (kbd "C-j") 'cmtChCh) ;; Chinese ==> Chinese
             ))
 
 
@@ -219,7 +237,7 @@ same directory as the org-buffer and insert a link to this file."
       (setq org-startup-truncated nil)
       ;; (soft-wrap-lines t) ;;; this one works
       ;; (auto-fill-mode 1) ;;; org里直线容易折断
-      ;; (gio-global-minor-mode 0)
+      (gio-global-minor-mode 1)
       (linum-mode 1)
       ))
 ;; (setq org-startup-truncated nil)
@@ -299,6 +317,8 @@ same directory as the org-buffer and insert a link to this file."
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((R . t)
+   (csharp . t)
+   ;; (java . t)
    (latex . t)))
 
 (setq TeX−auto−save t)
