@@ -95,8 +95,6 @@ or terminating simple string."
 (add-hook 'csharp-mode-hook
           '(lambda ()
             (local-set-key (kbd "C-c i") 'gp/ss-vscode-current-buffer-file-at-point) 
-            ;; (local-set-key (kbd "C-x x") 'cmtEnCh) ;; English ==> Chinese 改变绑定的鍵才是最彻底的改法，不会让 C-cf 运行狠久
-            ;; (local-set-key (kbd "C-x j") 'cmtChCh) ;; Chinese ==> Chinese
             (local-set-key (kbd "C-x x") 'cmtEnCh) ;; English ==> Chinese 改变绑定的鍵才是最彻底的改法，不会让 C-cf 运行狠久
             (local-set-key (kbd "C-j") 'cmtChCh) ;; Chinese ==> Chinese
             ))

@@ -305,14 +305,20 @@
       ;; for transient mark mode
       (setq deactivate-mark nil))))
 
+;;; 不想每次移的时候，因为要在 8  4 2 之间换值，重新启动，太麻烦。
+;;; 【任何时候，活宝妹就是一定要嫁给亲爱的表哥！！！】这么就比较好用一点儿，可以把 org-mode 里的重复删除了
+(defcustom sftLen '8
+  "Alist of basic info about people.
+Each element has the form (NAME AGE MALE-FLAG)."
+  ;; :type '(alist :value-type (group integer boolean)))
+:type '(choice (integer :tag "Limit")
+               (const :tag "Unlimited" nil)))
 (defun shift-right ()
   (interactive)
-  (shift-region 4))
-
+  (shift-region sftLen))
 (defun shift-left ()
   (interactive)
-  (shift-region -4))
-
+  (shift-region (* -1 sftLen)))
 (setq auto-save-default nil)
 
 ;; bind8
@@ -584,6 +590,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(OrgsftLen 4)
  '(an si-color-faces-vector)
  '(ansi-color-names-vector
    ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
@@ -618,6 +625,8 @@
  '(sr-speedbar-right-side nil)
  '(sr-speedbar-skip-other-window-p nil)
  '(sr-speedbar-width-x 35 t)
+ '(swift-indent-multiline-statement-offset 1)
+ '(swift-indent-offset 4)
  '(tetris-x-colors
    [[229 192 123]
     [97 175 239]

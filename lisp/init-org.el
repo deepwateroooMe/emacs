@@ -21,13 +21,24 @@
 (setq linum-mode t)
 
 
-;;; 这是org-mode下专用整理笔记的，只偏移2
+(defun org/shift-region (distance)
+  (let ((mark (mark)))
+    (save-excursion
+      (indent-rigidly (region-beginning) (region-end) distance)
+      (push-mark mark t t)
+      (setq deactivate-mark nil))))
+;;; 不想每次移的时候，因为要在 8  4 2 之间换值，重新启动，太麻烦。
+;;; 【任何时候，活宝妹就是一定要嫁给亲爱的表哥！！！】这么就比较好用一点儿 org 里要重复，因为这个模式特殊。但现在至少不用我每次需要修改时不得不重启 emacs 了
+(defcustom orgsftLen '8 ;;; 还得与主程序的自定义变量相区分，否则 org 下改了没效果
+  "damn it org-mode"
+  :type '(choice (integer :tag "Limit")
+                 (const :tag "Unlimited" nil)))
 (defun org/shift-right ()
   (interactive)
-  (shift-region 8))
+  (org/shift-region orgsftLen))
 (defun org/shift-left ()
   (interactive)
-  (shift-region -8))
+  (org/shift-region (* -1 orgsftLen))) ;; 【活宝妹就是一定要嫁给亲爱的表哥！！！】
 
 
 ;;; 这里简单配置一下下划线与加粗字体的显示格式；
@@ -80,7 +91,7 @@
 
 (add-hook 'org-mode-hook
           (lambda ()
-            (local-set-key (kbd "<C-S-left>") 'org/shift-left)
+            (local-set-key (kbd "<C-S-left>") 'org/shift-left) ;; init.el 可以全局配置管理了
             (local-set-key (kbd "<C-S-right>") 'org/shift-right)
 ;;;;; auto paste and generate .png image file from clipboard-yank
             (local-set-key (kbd "C-i") 'my-org-screenshot)
