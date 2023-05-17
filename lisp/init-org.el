@@ -1,5 +1,6 @@
 ;; org-mode
-;; (setq load-path (cons "C:/Users/blue_/AppData/Roaming/.emacs.d/elpa/org-20140901/" load-path))
+;; (setq load-path (cons "C:/Users/blue_/AppData/Roaming/.emacs.d/elpa/org-mode/" load-path))
+(add-to-list 'load-path (cons "C:/Users/blue_/AppData/Roaming/.emacs.d/elpa/org-mode/" load-path))
 (require 'ox)
 (require 'org-install)
 (require 'ob-ditaa)  
@@ -8,6 +9,9 @@
 (require 'ox-beamer)
 (require 'ox-md)
 (require 'ox-org)
+
+;; (require 'org-indent) ;;; 这个因为配置不好，容易造成我的源码失色，惨不忍睹。。。好像不是这个原因 
+;; (org-indent-mode -1)
 
 ;;; org-mode auto configure mode
 (setq interpreter-mode-alist
@@ -21,13 +25,24 @@
 (global-linum-mode 1)
 
 
-;;; 这是org-mode下专用整理笔记的，只偏移2
+(defun org/shift-region (distance)
+  (let ((mark (mark)))
+    (save-excursion
+      (indent-rigidly (region-beginning) (region-end) distance)
+      (push-mark mark t t)
+      (setq deactivate-mark nil))))
+;;; 不想每次移的时候，因为要在 8  4 2 之间换值，重新启动，太麻烦。
+;;; 【任何时候，活宝妹就是一定要嫁给亲爱的表哥！！！】这么就比较好用一点儿 org 里要重复，因为这个模式特殊。但现在至少不用我每次需要修改时不得不重启 emacs 了
+(defcustom orgsftLen '8 ;;; 还得与主程序的自定义变量相区分，否则 org 下改了没效果
+  "damn it org-mode"
+  :type '(choice (integer :tag "Limit")
+                 (const :tag "Unlimited" nil)))
 (defun org/shift-right ()
   (interactive)
-  (shift-region 4))
+  (org/shift-region orgsftLen))
 (defun org/shift-left ()
   (interactive)
-  (shift-region -4))
+  (org/shift-region (* -1 orgsftLen))) ;; 【活宝妹就是一定要嫁给亲爱的表哥！！！】
 
 
 ;;; 这里简单配置一下下划线与加粗字体的显示格式；
@@ -96,7 +111,7 @@ same directory as the org-buffer and insert a link to this file."
       (kmacro-lambda-form [f4 ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?  ?/ ?/ ?  ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?\C-x] 0 "%d"))
 (put 'cmtEnCh 'kmacro t)
 (put 'cmtChCh 'kmacro t)
-(add-hook 'csharp-mode-hook
+(add-hook 'org-mode-hook
           (lambda ()
             (local-set-key (kbd "C-c i") 'gp/vscode-current-buffer-file-at-point) ;;;;; 这个键太复杂，不好用 ;;;;; distribute the work into 2 fingers
             ;; (local-set-key (kbd "C-x x") 'cmtEnCh) ;; English ==> Chinese 改变绑定的鍵才是最彻底的改法，不会让 C-cf 运行狠久
@@ -145,6 +160,8 @@ same directory as the org-buffer and insert a link to this file."
      ;; (define-key org-mode-map (kbd "<C-S-left>") nil)
      ;; (define-key org-mode-map (kbd "<C-S-right>") nil)
      (add-hook 'org-mode-hook #'my/org-comment-tweak)
+     ;;; 这里，加载一个源文件的时候，强行要求它给源码区染色！！！
+     (setq org-src-fontify-natively t)  ;;; 要对代码进行语法高亮
      ))
 
 

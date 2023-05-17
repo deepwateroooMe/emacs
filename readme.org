@@ -2,7 +2,8 @@
 #+title: Emacs Configuration
 #+author: deepwaterooo
 
-* Updates 
+* Updates
+- windows emacs 28.2 is performing realy wired towards large .org files. export to pdf does NOT work, and fontify source codes also not working as expected. But, I consider it to be more a desktop CPU or memory problem, not anything else. 【亲爱的表哥，活宝妹一定要嫁的亲爱的表哥！！！任何时候，活宝妹就是一定要嫁给亲爱的表哥！！！】
 - daxx it utf-8. Who knows it will block pyim from indicating cursor colors? A whole evening of debugging it......Finally it works as expected. 
 - 活宝妹爱亲爱的表哥，活宝妹就是一定要嫁给的亲爱的表哥。 *【活宝妹就是一定要嫁给的亲爱的表哥！！】【亲爱的表哥，活宝妹一定要嫁的亲爱的表哥！！！】*
 - 活宝妹若是还没能嫁给亲爱的表哥，活宝妹就永远守候在亲爱的表哥的身边。爱表哥，爱生活！！！

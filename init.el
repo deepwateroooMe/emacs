@@ -5,7 +5,7 @@
 ;;              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 ;; (package-initialize)
 
-(setq default-directory "F:/")
+(setq default-directory "F:/ET/")
 ;; (setq default-directory "f:/")
 
 (setq debug-on-error t);; 它会无数次地停掉程序，去掉
@@ -34,10 +34,8 @@
 
 ;;; setup defaults for all modes
 (setq default-frame-alist
-      ;; '((top . 0)(left . 427)(height . 75)(width . 180)(menubar-lines . 70)(tool-bar-line . 0))
-      '((top . 0)(left . 577)(height . 90)(width . 180)(menubar-lines . 83)(tool-bar-line . 0))
-      ;; '((top . 0)(left . 400)(height . 157)(width . 180)(menubar-lines . 70)(tool-bar-line . 0)) ; ori
-      ) ; tmp.p
+      '((top . 0)(left . 607)(height . 90)(width . 180)(menubar-lines . 83)(tool-bar-line . 0))
+      )
 
 
 ;;----------------------------------------------------------------------------
@@ -97,25 +95,16 @@
 
 ;;; org-9.5.5 线太长了，不想要整行的线，想它们短一点儿
 (defface org-block-begin-line
-  '((t (:underline "#A7A6AA" :foreground "#008ED1" :background "#D3D3D3" :extend t))) ;; #EAEAFF
-  ;; '((t (:underline "#A7A6AA" :foreground "#008ED1" :background "#D3D3D3"))) ;; #EAEAFF
+  ;; '((t (:underline "#A7A6AA" :foreground "#008ED1" :background "#D3D3D3" :extend t))) ;; #EAEAFF
+  '((t (:foreground "#0d0df2" :background "#999999"))) ;; #D3D3D3 #b3b3b3
   "Face used for the line delimiting the begin of source blocks.")
 ;; (defface org-block-background
 ;;   '((t (:background "#D3D3D3"))) ;;; #FFFFEA
 ;;   "Face used for the source block background.")
 (defface org-block-end-line
-  '((t (:overline "#A7A6AA" :foreground "#008ED1" :background "#D3D3D3" :extend t))) ;; #EAEAFF
-  ;; '((t (:overline "#A7A6AA" :foreground "#008ED1" :background "#D3D3D3"))) ;; #EAEAFF
+  ;; '((t (:overline "#A7A6AA" :foreground "#008ED1" :background "#D3D3D3" :extend t))) ;; #EAEAFF
+  '((t (:foreground "#0d0df2" :background "#999999"))) ;; #EAEAFF
   "Face used for the line delimiting the end of source blocks.")
-
-;; (custom-set-faces ;;; 太难看了，弄得人没眼睛看。。。
-;;  '(org-block-begin-line
-;;    ((t (:underline "#A7A6AA" :foreground "#008ED1" :background "#EAEAFF" :extend t))))
-;;  ;; '(org-block
-;;  ;;   ((t (:background "#EFF0F1" :extend t))))
-;;  '(org-block-end-line
-;;    ((t (:overline "#A7A6AA" :foreground "#008ED1" :background "#EAEAFF" :extend t))))
-;;  )
 
 
 ;; @see https://www.reddit.com/r/emacs/comments/3kqt6e/2_easy_little_known_steps_to_speed_up_emacs_start/
@@ -205,24 +194,32 @@
   ;; (require 'swift-mode) ;;; C-j C-i 容易被其它模式重写 ？
   )
 
+
 (defun shift-region (distance)
   (let ((mark (mark)))
     (save-excursion
       (indent-rigidly (region-beginning) (region-end) distance)
       (push-mark mark t t)
-      ;; Tell the command loop not to deactivate the mark
-      ;; for transient mark mode
       (setq deactivate-mark nil))))
-
+;;; 不想每次移的时候，因为要在 8  4 2 之间换值，重新启动，太麻烦。
+;;; 【任何时候，活宝妹就是一定要嫁给亲爱的表哥！！！】这么就比较好用一点儿，可以把 org-mode 里的重复删除了
+(defcustom sftLen '8
+  "Alist of basic info about people.
+Each element has the form (NAME AGE MALE-FLAG)."
+  ;; :type '(alist :value-type (group integer boolean)))
+  :type '(choice (integer :tag "Limit")
+                 (const :tag "Unlimited" nil)))
 (defun shift-right ()
   (interactive)
-  (shift-region 4))
+  (shift-region sftLen))
 (defun shift-left ()
   (interactive)
-  (shift-region -4))
+  (shift-region (* -1 sftLen)))
+(setq auto-save-default nil)
 
 (global-set-key [C-S-right] 'shift-right)
 (global-set-key [C-S-left] 'shift-left)
+
 
 (setq auto-save-default nil)
 
@@ -508,10 +505,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector)
+ '(ansi-color-faces-vector nil)
  '(ansi-color-names-vector
    ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
- '(fci-rule-color "#dedede")
  '(column-number-mode t)
  '(custom-enabled-themes '(atom-one-dark))
  '(custom-safe-themes
@@ -528,7 +524,7 @@
                  ("begin" "$1" "$" "$$" "\\(" "\\[")))
  '(org-support-shift-select nil)
  '(package-selected-packages
-   '(tree-sitter-indent tree-sitter-langs tree-sitter csharp-mode cnfonts go-mode slime rime xr pyim-wbdict web-mode-edit-element auctex fuzzy ppd-sr-speedbar lsp-mode py-autopep8 logview virtualenvwrapper company-jedi auto-complete-clang-async yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link))
+   '(org-modern tree-sitter-indent tree-sitter-langs tree-sitter csharp-mode cnfonts go-mode slime rime xr pyim-wbdict web-mode-edit-element auctex fuzzy ppd-sr-speedbar lsp-mode py-autopep8 logview virtualenvwrapper company-jedi auto-complete-clang-async yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link))
  '(pdf-tools-handle-upgrades nil)
  '(session-use-package t nil (session))
  '(show-paren-mode t)
