@@ -8,8 +8,7 @@
 
 ;; (setq debug-on-error t);; 它会无数次地停掉程序，去掉
 
-(setq default-directory "/Users/hhj/routine/myAlgorithms/")
-
+(setq default-directory "/Users/hhj/pubFrameWorks/ET/")
 
 ;; ;; Bootstrap 'use-package'
 ;; (eval-after-load 'gnutls
@@ -307,7 +306,7 @@
 
 ;;; 不想每次移的时候，因为要在 8  4 2 之间换值，重新启动，太麻烦。
 ;;; 【任何时候，活宝妹就是一定要嫁给亲爱的表哥！！！】这么就比较好用一点儿，可以把 org-mode 里的重复删除了
-(defcustom sftLen '8
+(defcustom sftLen '4
   "Alist of basic info about people.
 Each element has the form (NAME AGE MALE-FLAG)."
   ;; :type '(alist :value-type (group integer boolean)))
@@ -590,7 +589,6 @@ Each element has the form (NAME AGE MALE-FLAG)."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(OrgsftLen 4)
  '(an si-color-faces-vector)
  '(ansi-color-names-vector
    ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
@@ -611,6 +609,7 @@ Each element has the form (NAME AGE MALE-FLAG)."
    '(:foreground default :background default :scale 2.0 :html-foreground "Black" :html-background "Transparent" :html-scale 2.0 :matchers
                  ("begin" "$1" "$" "$$" "\\(" "\\[")))
  '(org-support-shift-select nil)
+ '(orgsftLen 2)
  '(package-selected-packages
    '(company-sourcekit cnfonts go-mode slime rime xr pyim-wbdict web-mode-edit-element auctex fuzzy ppd-sr-speedbar lsp-mode py-autopep8 logview virtualenvwrapper company-jedi flycheck-color-mode-line auto-complete-clang-async flycheck-swift flycheck swift-mode yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link))
  '(pdf-tools-handle-upgrades nil)

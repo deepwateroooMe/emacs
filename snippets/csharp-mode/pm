@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: 【】 for 中文小括号
+# key: pm
+# --
+$0【$1】

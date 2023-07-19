@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: aet
+# key: aet
+# --
+await ETTask.CompletedTask;$0

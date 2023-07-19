@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: [] for chinese middle pair
+# key: pm
+# --
+$0【$1】

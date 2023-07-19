@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ris
+# key: ris
+# --
+Root.Instance.Scene.$0

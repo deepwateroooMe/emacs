@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: Root.instanONEce
+# key: rin
+# --
+Root.Instance$0

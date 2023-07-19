@@ -1,0 +1,5 @@
+# contributor: deepwaterooo
+# name: GetComponent<>
+# key: gc
+# --
+GetComponent<$1>()$0
