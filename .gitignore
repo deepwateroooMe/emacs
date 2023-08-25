@@ -10,7 +10,7 @@ tramp
 # Org-mode
 .org-id-locations
 *_archive
-
+**/..yas-compiled-snippets.el
 # flymake-mode
 *_flymake.*
 

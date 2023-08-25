@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: commenting emphasis long
+# key: el
+# --
+ // <<<<<<<<<<<<<<<<<<<< $0

@@ -29,7 +29,7 @@
       (setq deactivate-mark nil))))
 ;;; 不想每次移的时候，因为要在 8  4 2 之间换值，重新启动，太麻烦。
 ;;; 【任何时候，活宝妹就是一定要嫁给亲爱的表哥！！！】这么就比较好用一点儿 org 里要重复，因为这个模式特殊。但现在至少不用我每次需要修改时不得不重启 emacs 了
-(defcustom orgsftLen '8 ;;; 还得与主程序的自定义变量相区分，否则 org 下改了没效果
+(defcustom orgsftLen '4 ;;; 还得与主程序的自定义变量相区分，否则 org 下改了没效果
   "damn it org-mode"
   :type '(choice (integer :tag "Limit")
                  (const :tag "Unlimited" nil)))

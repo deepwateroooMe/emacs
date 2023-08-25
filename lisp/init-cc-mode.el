@@ -2,6 +2,7 @@
       (cons '(".glsl" . c-mode) interpreter-mode-alist))
 (add-to-list 'auto-mode-alist '("\\.glsl\\'" . c-mode))
 (add-to-list 'auto-mode-alist '("\\.cpp\\'" . c-mode))
+(add-to-list 'auto-mode-alist '("\\.c\\'" . c-mode)) ;; 我自己又加的，不知道加对了没有
 
 (defun c-wx-lineup-topmost-intro-cont (langelem)
   (save-excursion
@@ -12,6 +13,34 @@
 
 ;; avoid default "gnu" style, use more popular one
 (setq c-default-style "linux")
+
+
+;;; 把 csharp-mode 里，几个便利的功能，搬过来，测试一下，是否可以用
+;; for pyim mode, 需要获取这个模式内部中英文输入法的名字以及转换方法 
+(fset 'cmtEnCh;;; 这里的 C-j C-i 与上面的 C-c-f 会给 C-cf 制造麻烦，需要绑定不同的鍵，这里暂时移动一下，看看它有没有什么区别 ?
+      (kmacro-lambda-form [f4 ?  ?/ ?/ ?  ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?\C-x] 0 "%d"))
+(fset 'cmtChCh;;; 有点儿延迟
+      (kmacro-lambda-form [f4 ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?  ?/ ?/ ?  ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?\C-x] 0 "%d"))
+(put 'cmtEnCh 'kmacro t)
+(put 'cmtChCh 'kmacro t)
+;; (add-hook 'csharp-mode-hook
+;;           '(lambda ()
+;;              (local-set-key (kbd "C-c i") 'gp/ss-vscode-current-buffer-file-at-point) 
+;;              (local-set-key (kbd "C-x x") 'cmtEnCh) ;; English ==> Chinese 改变绑定的鍵才是最彻底的改法，不会让 C-cf 运行狠久
+;;              (local-set-key (kbd "C-j") 'cmtChCh) ;; Chinese ==> Chinese
+;;              ))
+
+(defun gp/ss-vscode-current-buffer-file-at-point ()
+  (interactive)
+  (start-process-shell-command "code"
+                               nil
+                               (concat "code --goto "
+                                       (buffer-file-name)
+                                       ":"
+                                       (number-to-string (+ (if (bolp) 1 0) (count-lines 1 (point)))) ;; 定位精确: 可以定位到了 当前行 当前列
+                                       ;; (number-to-string (1+ (current-line))) ;; +1 who knows why
+                                       ":"
+                                       (number-to-string (current-column)))))
 
 
 ;; (defun fix-c-indent-offset-according-to-syntax-context (key val)
@@ -34,6 +63,12 @@
   ;make DEL take all previous whitespace with it
   (c-toggle-hungry-state 1)
 
+  (local-set-key (kbd "C-c i") 'gp/ss-vscode-current-buffer-file-at-point);; 这个功能也要加进来，需要能够跳到VSC 
+  (local-set-key (kbd "C-x x") 'cmtEnCh) ;; English ==> Chinese 改变绑定的鍵才是最彻底的改法，不会让 C-cf 运行狠久
+  (local-set-key (kbd "C-j") 'cmtChCh) ;; Chinese ==> Chinese
+  (local-set-key (kbd "{") 'cheeso-insert-open-brace-ss)
+  (c-toggle-comment-style -1);; 这里用 // 来 comment-uncomment 一行代码，而不用 /* */ 太多符号了
+  
   ;; ;; indent google "C/C++/Java code indentation in Emacs" for more
   ;; ;; advanced skills C code: if(1) // press ENTER here, zero means
   ;; ;; no indentation ;;
@@ -119,7 +154,66 @@
               (local-set-key "\177" 'my/c-mode-delete-space))) ;;; backspace
 
 
-  
+;;; 把 csharp-mode ; {} autoindent 搬过来了：试一下，能否自动扩展
+(defun mycc-autoindent ()
+  (when (and (eq major-mode 'c-mode) (looking-back "[;]"))
+    (newline-and-indent)))
+(add-hook 'post-self-insert-hook 'mycc-autoindent)
+
+
+(defun cheeso-looking-back-at-regexp-ss (regexp)
+  "calls backward-sexp and then checks for the regexp.  Returns t if it is found, else nil"
+  (interactive "s")
+  (save-excursion
+    (backward-sexp)
+    (looking-at regexp)))
+(defun cheeso-looking-back-at-equals-or-array-init-ss ()
+  "returns t if an equals or [] is immediate preceding. else nil."
+  (interactive)
+  (cheeso-looking-back-at-regexp-ss "\\(\\w+\\b *=\\|[[]]+\\)"))  
+(defun cheeso-prior-sexp-same-statement-same-line-ss ()
+  "returns t if the prior sexp is on the same line. else nil"
+  (interactive)
+  (save-excursion
+    (let ((curline (line-number-at-pos))
+          (curpoint (point))
+          (aftline (progn
+		             (backward-sexp)
+		             (line-number-at-pos))) )
+      (= curline aftline))))
+
+(defun cheeso-insert-open-brace-ss ()
+  "if point is not within a quoted string literal, insert an open brace, two newlines, and a close brace; indent everything and leave point on the empty line. If point is within a string literal, just insert a pair or braces, and leave point between them."
+  (interactive)
+  (cond
+   ;; are we inside a string literan? 
+   ((c-got-face-at (point) c-literal-faces)
+    ;; if so, then just insert a pair of braces and put the point between them
+    (self-insert-command 1)
+    (insert "")) ; this one works great now
+
+   ;; was the last non-space an equals sign? or square brackets?  Then it's an initializer.
+   ((cheeso-looking-back-at-equals-or-array-init-ss)
+    (self-insert-command 1)
+    (forward-char 2) ;; 1
+    (insert ";") 
+    (backward-char 3)) ;; init-java-mode 2
+   
+   ;; Doesn't cooperate well with autopair
+   ;; else, it's a new scope., 
+   ;; therefore, insert paired braces with an intervening newline, and indent everything appropriately.
+   (t
+    (if (cheeso-prior-sexp-same-statement-same-line-ss)
+        (self-insert-command 1))  ;;; so far only upto here, don't know how to eval & expand {}
+    (insert "")
+    (newline-and-indent);; 处理当前空行
+    (forward-char 1) ;; 1 希望的是，它前一个字付，会移到下一行，格式化下一行
+    (indent-according-to-mode);; 这一行，可能不知道为什么不起俢了
+    (previous-line);; 回到前一行，但是光标位置不对
+    (indent-according-to-mode);; 这一行，仍然起作用，可以在当前行，将光标移到正确的位置 
+    )))
+
+
 ;;; cc-mode c++-mode macros
 
 (fset 'cpp  ;;; C++ enter enter enter --> ""

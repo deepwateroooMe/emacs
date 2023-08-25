@@ -3,6 +3,9 @@
 #+author: deepwaterooo
 
 * Updates 
+** C/C++ 语言开发环境配置 
+- 太久没有用这个了，必须把 emacs 里这个开发的环境配置好。现在用那个什么 init-cc-mode.el
+- {|} 的自动扩展开来，我以前不知道怎么回事， java 与 csharp-mode 只能配置好两个中的一个；现在 java 与 csharp-mode 与 cc-mode 似乎都能自动扩展。当初是怎么回事呢？等改天用多了看它还会不会再抛锚抛错。。。先把自己其它 mode 里【中英文】切换注释等常用功能銉转到这个 mode 里来，没问题。这些简单功能都容易实现。
 ** emacs 1 initiliation bug
 - TODO: 需要将Rime 动态库构建成适配配置到 arm64-arch 版本。它性能我电脑的整体性能。
 * Emacs x86_64 vs arm64-arch, and System Rime input method: *【TODO: 现在应该可以系统更新了！！】*
