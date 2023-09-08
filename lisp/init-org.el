@@ -15,11 +15,9 @@
       (cons '("org" . org-mode) interpreter-mode-alist))
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 
-
 (setq org-src-fontify-natively t)  ;;; 要对代码进行语法高亮
 (setq org-src-tab-acts-natively t)
 (setq linum-mode t)
-
 
 (defun org/shift-region (distance)
   (let ((mark (mark)))
@@ -40,8 +38,22 @@
   (interactive)
   (org/shift-region (* -1 orgsftLen))) ;; 【活宝妹就是一定要嫁给亲爱的表哥！！！】
 
+;;; 下面：是配置下划线和加粗的样式
+;; (setq org-emphasis-alist (quote (("*" bold "<b>" "</b>") 
+;;                                  ("/" italic "<i>" "</i>")
+;;                                  ("_" underline "<span style=\"text-decoration:underline;\">" "</span>")
+;;                                  ("=" org-code "<code>" "</code>" verbatim)
+;;                                  ("~" org-verbatim "<code>" "</code>" verbatim)
+;;                                  ("+" (:strike-through t) "<del>" "</del>")
+;;                                  ("@" org-warning "<b>" "</b>"))))
+(setq  org-export-latex-emphasis-alist (quote (("*" "\\textbf{%s}" nil)
+                                           ("/" "\\emph{%s}" nil) 
+                                           ("_" "\\underline{%s}" nil)
+                                           ("+" "\\texttt{%s}" nil)
+                                           ("=" "\\verb=%s=" nil)
+                                           ("~" "\\verb~%s~" t)
+                                           ("@" "\\alert{%s}" nil))))
 
-;;; 这里简单配置一下下划线与加粗字体的显示格式；
 (require 'cl)   ; for delete*
 (setq org-emphasis-alist
       (cons '("+" '(:strike-through t :foreground "gray"))
@@ -89,12 +101,24 @@
 ;;; global-set-key: producing side bugs for csharp-mode & java-mode whoever uses C-i commands .......
 ;; (global-set-key (kbd "C-i") 'my-org-screenshot) ;;; 今天终于明白了这个C-i是好用，但是在csharp-mode java-mode过程中因为使用到C-i【不知道为什么】会错配到org-mode中的这个合集
 
+
+;;; 想要配置出：模式里，源码区块里，源码自动换行【就是一行太长】时，不是 pdf 里打印不出来，而是自动换行，转到下一行去
+;;; 感觉下面的配置不起效，改天再解决这个问题
+;; (defun indent-org-block-automatically ()
+;;   (when (org-in-src-block-p)
+;;     (org-edit-special)
+;;     (indent-region (point-min) (point-max))
+;;     (org-edit-src-exit)))
+;; (run-at-time 1 10 'indent-org-block-automatically);;; 这里说，每 10 秒调用一次这个方法
+
+
 (add-hook 'org-mode-hook
           (lambda ()
             (local-set-key (kbd "<C-S-left>") 'org/shift-left) ;; init.el 可以全局配置管理了
             (local-set-key (kbd "<C-S-right>") 'org/shift-right)
 ;;;;; auto paste and generate .png image file from clipboard-yank
             (local-set-key (kbd "C-i") 'my-org-screenshot)
+            ;; (local-set-key (kbd "M-s") #'indent-org-block-automatically);; 想不出别的可用銉，暂时用这个测试一下。这里设置不对，参数不对
             ))
 
 
@@ -355,10 +379,56 @@
                ("\\paragraph{%s}" . "\\paragraph*{%s}")
                ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
-;; \\newcommand{\\MintedPygmentize}{/Users/hhj/Library/Python/3.9/bin/pygmentize}
-;; \\usepackage[UTF8]{ctex}
-;; \\SetCJKmainfont{PingFangSC-Regular}
-;; \\setmainfont{Arial}
+
+;; 因为新版本的 org.el 里源码区的样式（整条两长条开始结束行），活宝妹不喜欢，所以一直用老版本的 org-mode(两条短横线); 但是它影响了 beamer 里主题的使用
+;; 仍然暂时先这样【基本功能齐全：图片、源码、除了报几个没改的错，基本不影响使用体验】老版本，基本功能齐全。不是必须，也可以不用再浪费时间配置这个
+;; 改天可以配置成，新老 org-mode 都配置出来。使用时用哪个方便，就临时调整为使用哪个版本：就是当活宝妹不得不要作幻灯片时，如果有时间配置，可以临时用一下新版本的主题等
+;;\\mode
+;;%\\usecolortheme{{{{beamercolortheme}}}}
+;;\\usetheme{{{{Warsaw}}}}
+;;\\usepackage{graphicx}
+;;\\institute{{{{beamerinstitute}}}}
+(add-to-list 'org-latex-classes
+             '("beamer"
+               "\\documentclass[11pt,professionalfonts]{beamer}
+\\beamertemplateballitem
+\\setbeameroption{show notes}
+\\usepackage{xeCJK}
+\\usepackage[T1]{fontenc}
+\\usepackage{bera}
+\\usepackage[scaled]{beraserif}
+\\usepackage[scaled]{berasans}
+\\usepackage[scaled]{beramono}
+\\usepackage[cache=false]{minted}
+\\usepackage{xltxtra}
+\\usepackage{xcolor}
+\\usepackage{multirow}
+\\usepackage{multicol}
+\\usepackage{float}
+\\usepackage{textcomp}
+\\usepackage{algorithm}
+\\usepackage{algorithmic}
+\\usepackage{latexsym}
+\\usepackage{natbib}
+\\usepackage{tikz}
+\\usepackage{xcolor}
+\\usepackage{amsmath}
+\\usepackage{lmodern}
+\\usepackage{fontspec,xunicode,xltxtra}
+\\usepackage{polyglossia}
+\\usepackage{verbatim}
+\\usepackage{listings}
+\\subject{{{{beamersubject}}}}"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\begin{frame}[fragile]\\frametitle{%s}"
+                "\\end{frame}"
+                "\\begin{frame}[fragile]\\frametitle{%s}"
+                "\\end{frame}")))
+
+
+;; \\setmainfont{Times New Roman}
+;; \\setCJKmainfont{DejaVu Sans YuanTi}
+;; \\setCJKmonofont{DejaVu Sans YuanTi Mono}
 (add-to-list 'org-latex-classes
              '("cn-article"
                "\\documentclass[9pt, b5paper]{article}
@@ -391,6 +461,10 @@
                ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                ("\\paragraph{%s}" . "\\paragraph*{%s}")
                ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+;; \\newcommand{\\MintedPygmentize}{/Users/hhj/Library/Python/3.9/bin/pygmentize}
+;; \\usepackage[UTF8]{ctex}
+;; \\SetCJKmainfont{PingFangSC-Regular}
+;; \\setmainfont{Arial}
 
 
 ;; want one for book
@@ -448,16 +522,6 @@
              ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
              ("\\paragraph{%s}" . "\\paragraph*{%s}")
              ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
-
-;; #+LaTeX_CLASS: beamer in org files
-(unless (boundp 'org-export-latex-classes)
-  (setq org-export-latex-classes nil))
-(add-to-list 'org-latex-classes
-             '("beamer"
-               "\\documentclass\[presentation\]\{beamer\}"
-               ("\\section\{%s\}" . "\\section*\{%s\}")
-               ("\\subsection\{%s\}" . "\\subsection*\{%s\}")
-               ("\\subsubsection\{%s\}" . "\\subsubsection*\{%s\}")))
 
 
 (setq org-latex-packages-alist '(

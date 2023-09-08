@@ -281,7 +281,7 @@
                        ("em" " // <<<<<<<<<< $0" "commenting emphasis" nil nil nil "/Users/hhj/.emacs.d/snippets/java-mode/em" nil nil)
                        ("el" " // <<<<<<<<<<<<<<<<<<<< $0" "commenting emphasis long" nil nil nil "/Users/hhj/.emacs.d/snippets/java-mode/el" nil nil)
                        ("dvo" "Double.valueOf(${1:v});$0\n" "Double.valueOf()" nil nil nil "/Users/hhj/.emacs.d/snippets/java-mode/dvo" nil nil)
-                       ("dr" "int [][] dirs = {{1, 0}, {0, 1}, {0, -1}, {-1, 0}};$0\n" "dirs = {}" nil nil nil "/Users/hhj/.emacs.d/snippets/java-mode/dr" nil nil)
+                       ("dr" "static final int [][] dirs = {{1, 0}, {0, 1}, {0, -1}, {-1, 0}};$0\n" "dirs = {}" nil nil nil "/Users/hhj/.emacs.d/snippets/java-mode/dr" nil nil)
                        ("dqs" "Deque<String> ${1:q} = new ArrayDeque<>();\n$0\n" "Deque<String>" nil nil nil "/Users/hhj/.emacs.d/snippets/java-mode/dqs" nil nil)
                        ("dqia" "Deque<int []> ${1:s} = new ArrayDeque<>();\n$0\n" "Deque<int []>" nil nil nil "/Users/hhj/.emacs.d/snippets/java-mode/dqia" nil nil)
                        ("dqi" "Deque<Integer> ${1:q} = new ArrayDeque<>();\n$0\n" "Deque<Integer>" nil nil nil "/Users/hhj/.emacs.d/snippets/java-mode/dqi" nil nil)
@@ -348,4 +348,4 @@
                        ("Lint" "List<Integer> ${1:path} = new ArrayList<Integer>();\n$0\n" "List" nil nil nil "/Users/hhj/.emacs.d/snippets/java-mode/Lint" nil nil)))
 
 
-;;; Do not edit! File generated at Wed Jul  5 11:30:21 2023
+;;; Do not edit! File generated at Thu Sep  7 20:51:32 2023

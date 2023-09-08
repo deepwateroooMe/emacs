@@ -11,9 +11,9 @@
       'c-basic-offset
       (c-lineup-topmost-intro-cont langelem))))
 
+(setq c-default-style "linux" c-basic-offset 4)
 ;; avoid default "gnu" style, use more popular one
 (setq c-default-style "linux")
-
 
 ;;; 把 csharp-mode 里，几个便利的功能，搬过来，测试一下，是否可以用
 ;; for pyim mode, 需要获取这个模式内部中英文输入法的名字以及转换方法 
@@ -77,7 +77,6 @@
   ;; (fix-c-indent-offset-according-to-syntax-context 'func-decl-cont 0)
   )
 
-;;; some error here flymake 
 (defun my-c-mode-setup ()
   "C/C++ only setup"
   (message "my-c-mode-setup called (buffer-file-name)=%s" (buffer-file-name))
@@ -126,6 +125,8 @@
       (eldoc-mode 1))
     ))
 (add-hook 'c-mode-common-hook 'c-mode-common-hook-setup)
+;; (add-hook 'c-mode-common-hook 'google-set-c-style) ;; 这个，为什么会破坏活宝妹的个性化配置呢？只在看 xv6OS 时才打开
+;;; 爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！
 
 (defun my/c-mode-insert-space (arg)
   (interactive "*P")

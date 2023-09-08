@@ -1,0 +1,5 @@
+# contributor: wea
+# name: while (!q.isEmpty() && )
+# key: wea
+# --
+while (!${1:q}.isEmpty() && $2) $0

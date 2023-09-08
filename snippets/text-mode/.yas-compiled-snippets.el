@@ -6,4 +6,4 @@
                        ("cm" "cmake.dir = I\\:\\\\\\\\selfSoft\\\\\\\\android\\\\\\\\sdk\\\\\\\\cmake\\\\\\\\3.6.4111459\n$0" "cmake.dir=" nil nil nil "/Users/hhj/.emacs.d/snippets/text-mode/cm" nil nil)))
 
 
-;;; Do not edit! File generated at Wed Jul  5 11:30:21 2023
+;;; Do not edit! File generated at Thu Sep  7 20:51:32 2023

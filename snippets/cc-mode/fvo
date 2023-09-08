@@ -1,0 +1,5 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: for values() one line
+# key: fvo
+# --
+for (${1:int} ${2:v} : ${3:a}) $0

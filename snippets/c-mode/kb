@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: kb
+# key: kb
+# --
+kput${1:b}($2);$0

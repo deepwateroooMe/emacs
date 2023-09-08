@@ -1,0 +1,7 @@
+# contributor: deepwaterooo
+# name: for map keySet 
+# key: fmk
+# --
+for (${1:int} key : ${2:m}.keySet()) {
+    $3
+}$0

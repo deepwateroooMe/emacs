@@ -3,6 +3,25 @@
 #+author: deepwaterooo
 
 * Updates 
+** configuration for org-mode beamer for slides
+- using older version of org-mode because the 2 shorter lines of "#+BEGIN_SRC" AND "#+END_SRC". DO NOT like newer version two long window width lines.
+- Beamer configuration under older version, I have NOT configued themes for beamer yet, but inline imgs and source code works, basically satisified my usage cases. If I have to configue for new versions, will do when I have time. 
+- *【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】*
+** configuration for pdf-tools packages
+
+   [[./pic/mememe2.png]]
+- pdf viewer noter <==> Skim bi-directional linking configuration on the way, most emacs work is done. Need to learn how to use them though. 
+
+[[./pic/Snipaste_2023-02-11_20-57-40.png]]
+- It has to be configured for M1. But I am still not getting any .tar file yet. 
+
+  [[./pic/Snipaste_2023-02-11_22-20-25.png]]
+- could customer F5 toggle sr-speedbar, and make sis-mode work. But I do NOT really need sis-mode, only needed macism command line. to help [LOVE MY DEAR COUSIN!!!]
+
+[[./pic/readme_20230210_221127.png]]
+- finally sync up with csharp-mode with tree-sitter, and fixed added the other's that gio-mode etc. 
+- Permanently diabled speedbar-edit-file's set-timer function call from Resource files. Do NOT want to see such a bug, don't know how to fix, but disable it and walk around. 
+- Now have a relatively barable and stable colorful emacs code editor now, at least for csharp-mode. Relatively satisfied now. Could sit it aside for a while now to focus on projects.
 ** C/C++ 语言开发环境配置 
 - 太久没有用这个了，必须把 emacs 里这个开发的环境配置好。现在用那个什么 init-cc-mode.el
 - {|} 的自动扩展开来，我以前不知道怎么回事， java 与 csharp-mode 只能配置好两个中的一个；现在 java 与 csharp-mode 与 cc-mode 似乎都能自动扩展。当初是怎么回事呢？等改天用多了看它还会不会再抛锚抛错。。。先把自己其它 mode 里【中英文】切换注释等常用功能銉转到这个 mode 里来，没问题。这些简单功能都容易实现。
@@ -53,21 +72,6 @@
 - 它具备以空格来区分中英文输入法的功能，但不能与中文下半角配合使用。也就是，它具备了我现在所使用过的 sis 下的自动中英文之间以一个空格为单位自动切换，但我无法使用中文下半角标点。
 - 它除了使用了系统输入法的字库，其它所有好用的配置一个也不能用（我只能拦截一个最常用的半角，仍然是不方便的），现在只是可以选詞了而已，却不能使用其它中文下输入英文标点符号等 
 - 我中文下使用英语标点：主要是 org-mode 打头的 -*. 等，它可以检测到，自动化到，还是方便的
-** configuration for pdf-tools packages
-
-   [[./pic/mememe2.png]]
-- pdf viewer noter <==> Skim bi-directional linking configuration on the way, most emacs work is done. Need to learn how to use them though. 
-
-[[./pic/Snipaste_2023-02-11_20-57-40.png]]
-- It has to be configured for M1. But I am still not getting any .tar file yet. 
-
-  [[./pic/Snipaste_2023-02-11_22-20-25.png]]
-- could customer F5 toggle sr-speedbar, and make sis-mode work. But I do NOT really need sis-mode, only needed macism command line. to help [LOVE MY DEAR COUSIN!!!]
-
-[[./pic/readme_20230210_221127.png]]
-- finally sync up with csharp-mode with tree-sitter, and fixed added the other's that gio-mode etc. 
-- Permanently diabled speedbar-edit-file's set-timer function call from Resource files. Do NOT want to see such a bug, don't know how to fix, but disable it and walk around. 
-- Now have a relatively barable and stable colorful emacs code editor now, at least for csharp-mode. Relatively satisfied now. Could sit it aside for a while now to focus on projects.
 ** invalid time specification: sr-speedbar on MacOS
 - I don't like this bug, and I belive I do NOT really using any timer for auto-refresh in my speedbar. So I ended up by disabling the (speedbar-edit-file() func, which is frequently bug trigered) setting timer part from /Applications/Emacs.app/Contents/Resources/lisp/speedbar.el.gz, and recompile the file. The bug was gone. And I could deal with csharp-mode's fontify bug. 
 - newer debugging infos, concernibg about sr-speedbar.el file. Have NOT been able to trace down for today. 

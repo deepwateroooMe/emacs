@@ -1,0 +1,7 @@
+# contributor: deepwaterooo
+# name: for values()
+# key: fv
+# --
+for (${1:int} ${2:v} : ${3:a}) {
+    $0
+}

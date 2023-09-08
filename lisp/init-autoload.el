@@ -1,4 +1,5 @@
 (autoload 'gmail2bbdb-import-file "gmail2bbdb" "" t)
+;; (autoload 'asm "asm")
 (autoload 'ivy-recentf "ivy" "" t)
 (autoload 'ivy-read "ivy")
 (autoload 'simpleclip-get-contents "simpleclip" "" t)

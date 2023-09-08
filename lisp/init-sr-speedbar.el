@@ -20,13 +20,12 @@
   :group 'speedbar-faces)
 
 
-;; (custom-set-variables '(speedbar-show-unknown-files t))
 (speedbar-add-supported-extension ".c")
 (add-to-list 'speedbar-fetch-etags-parse-list
  		     '("\\.c" . speedbar-parse-c-or-c++tag))
-;; (speedbar-add-supported-extension ".s") ;;; assembly
-;; (add-to-list 'speedbar-fetch-etags-parse-list
-;;  		     '("\\.s" . speedbar-parse-c-or-c++tag))
+(speedbar-add-supported-extension ".s") ;;; assembly
+(add-to-list 'speedbar-fetch-etags-parse-list
+ 		     '("\\.s" . speedbar-parse-c-or-c++tag))
 (speedbar-add-supported-extension ".h")
 (add-to-list 'speedbar-fetch-etags-parse-list
  		     '("\\.h" . speedbar-parse-c-or-c++tag))
@@ -112,6 +111,8 @@
 (add-to-list 'speedbar-fetch-etags-parse-list
  		     '("\\.swift" . speedbar-parse-c-or-c++tag))
 
+;; (custom-set-variables '(speedbar-show-unknown-files t))
+(setq speedbar-show-unknown-files t)
 ;; (add-to-list 'speedbar-frame-parameters '(left-fringe . 0)) ; doesn't seem to work
 (setq sr-speedbar-width 35)
 (setq window-size-fixed 'width)

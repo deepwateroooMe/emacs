@@ -206,6 +206,8 @@
   (require 'init-csharp-mode) 
   (require 'init-swift-mode)
   (require 'init-color-theme)
+  (require 'init-asm-mode)
+  (require 'ld-script)
   )
 
 
@@ -249,48 +251,6 @@
 (setq font-lock-maximum-decoration t)
 (global-font-lock-mode)
 
-;; (defmacro luna-if-dump ()
-;;   "Evaluate IF if running with a dump file, else evaluate ELSE."
-;;   (declare (indent 1))
-;;   `(if (eq luna-dumped t)
-;;        (progn
-;;          (setq load-path luna-dumped-load-path)
-;;          (global-font-lock-mode)
-;;          (transient-mark-mode)
-;;          (add-hook 'after-init-hook
-;;                    (lambda ()
-;;                      (save-excursion
-;;                        (lisp-interaction-mode)))))
-;;      (progn
-;;        (let ((file-name-handler-alist nil))
-;;          (require 'init-python-mode)
-         ;; (require 'init-csharp-mode)
-;;          ;; (require 'init-company)
-;;          (require 'init-sr-speedbar)
-;;          )
-;;        ;; (spacemacs|load-modes '(company csharp))
-;;        (add-hook 'after-init-hook
-;;                  (lambda ()
-;;                    (save-excursion
-;;                      (lisp-interaction-mode)
-;;                    ))))))
-
-;; (luna-if-dump)
-
-
-
-;; (defun luna-dump ()
-;;   "Dump Emacs."
-;;   (interactive)
-;;   (let ((buf "*dump process*"))
-;;     (make-process
-;;      :name "dump"
-;;      :buffer buf
-;;      :command (list "emacs" "--batch" "-q"
-;;                     "-l" (expand-file-name "dump.el"
-;;                                            user-emacs-directory)))
-;;     (display-buffer buf)))
-
 
 ;;; make tab key always call a indent command
 ;; (setq-default tab-always-indent t)
@@ -320,29 +280,22 @@ Each element has the form (NAME AGE MALE-FLAG)."
   (shift-region (* -1 sftLen)))
 (setq auto-save-default nil)
 
-;; bind8
-;; (shift-right) and (shift-left) function to your favorite keys. I use
-;; the following so that Ctrl-Shift-Right Arrow moves selected text one 
-;; column to the right, Ctrl-Shift-Left Arrow moves selected text one
-;; column to the left:
 
 (global-set-key [C-S-right] 'shift-right)
 (global-set-key [C-S-left] 'shift-left)
 
-
-;;; move up or down multiple lines
+;;; 改天：把下面的变量设置为如 orgsftLen 一样，可以不关闭 emacs 实现调参值的功能 !!! 
+;;; move up or down multiple lines 一次移 10 行太多了，老是往回走，活宝妹喜欢亲爱的表哥的 7
 (global-set-key (kbd "M-n")
                 (lambda ()
                   (interactive)
                   (setq this-command 'next-line)
-                  (next-line 6)))
-
-;; replaces backward-sentence
+                  (next-line 7)))
 (global-set-key (kbd "M-p")
                 (lambda ()
                   (interactive)
                   (setq this-command 'previous-line)
-                  (previous-line 6)))
+                  (previous-line 7)))
 
 
 ;;; autorevert buffer
@@ -592,6 +545,7 @@ Each element has the form (NAME AGE MALE-FLAG)."
  '(an si-color-faces-vector)
  '(ansi-color-names-vector
    ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
+ '(c-default-style "linux")
  '(column-number-mode t)
  '(custom-enabled-themes '(atom-one-dark))
  '(custom-safe-themes
@@ -600,6 +554,7 @@ Each element has the form (NAME AGE MALE-FLAG)."
  '(display-time-mode t)
  '(fci-rule-color "#dedede")
  '(git-gutter:handled-backends '(svn hg git))
+ '(indent-tabs-mode nil)
  '(latex-run-command "latex --shell-escape")
  '(line-spacing 0.1)
  '(menu-bar-mode nil)
