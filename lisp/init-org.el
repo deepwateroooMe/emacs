@@ -1,5 +1,5 @@
 ;; org-mode
-(global-linum-mode 1)
+;; (global-linum-mode 1)
 (setq load-path (cons "C:/Users/blue_/AppData/Roaming/.emacs.d/elpa/org-20140901/" load-path))
 (require 'ox)
 (require 'org-install)
@@ -216,9 +216,10 @@
   (set-fontset-font (frame-parameter nil 'font)
                     charset
                     ;; (font-spec :family "WenQuanYi Micro Hei Mono" :size 12))) 
-                    ;; (font-spec :family "Sarasa Mono Slab SC Semibold" :size 12))) 
+                    ;; (font-spec :family "Sarasa Mono Slab SC Semibold" :size 12)))
+                    (font-spec :family "Sarasa Mono SC" :size 12)))
                     ;; (font-spec :family "STHeiti" :size 12)))
-                    (font-spec :family "PingFang SC" :size 12)));; 换个字体试一下，是否会有加粗效果
+                    ;; (font-spec :family "PingFang SC" :size 12)));; 换个字体试一下，是否会有加粗效果
 ;; '(default ((t (:inherit nil :extend nil :stipple nil :background "#181a26" :foreground "gray80" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight semi-bold :height 113 :width normal :foundry "outline" :family "Sarasa Mono Slab SC Semibold"))))
 
 ;; (When (member "Monaco" (font-family-list))
@@ -333,7 +334,9 @@
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((R . t)
-   (latex . t)))
+   (makefile . t)
+   (latex . t)
+   ))
 
 (setq TeX−auto−save t)
 (setq TeX−parse−self t)

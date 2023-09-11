@@ -27,48 +27,57 @@
 - {|} 的自动扩展开来，我以前不知道怎么回事， java 与 csharp-mode 只能配置好两个中的一个；现在 java 与 csharp-mode 与 cc-mode 似乎都能自动扩展。当初是怎么回事呢？等改天用多了看它还会不会再抛锚抛错。。。先把自己其它 mode 里【中英文】切换注释等常用功能銉转到这个 mode 里来，没问题。这些简单功能都容易实现。
 ** emacs 1 initiliation bug
 - TODO: 需要将Rime 动态库构建成适配配置到 arm64-arch 版本。它性能我电脑的整体性能。
-* Emacs x86_64 vs arm64-arch, and System Rime input method: *【TODO: 现在应该可以系统更新了！！】*
-  - 因为Macbook 下的 Rime 输入法支持arm 的构建已经好了，我应该可以 *【构建出 arm64-arch 的Rime 动态库给 emacs 用】*
-  - Rime 安装链接：https://github.com/rime/squirrel/blob/master/INSTALL.md 
-  - 把 emacs 升级为 arm64-arch
-  - 把 arm64-arch 的 emacs 版本pyim 配置好
-  - 把 appcode 重新安装 arm64-arch 版本，应该就可以与 arm64-arch 版本的 emacs 自由跳转了。而不必再是 X86_64 版本的。
-  - *【总结】* ：安装 arm64-arch 版本，是与自己笔记本硬件更好地配合提升效率。
-    - 但过程繁琐，仍然不能达到 *【亲爱的表哥的活宝妹，实时想要动态更改词库，实时想要更新动态库给 emacs 用的需求！】*
-    - 这系列更新包括：Rime-arm64 版本安装与自己构建、emacs 删除与重新安装与 pyim 配置， appcode 的删除与再安装。前两个应用都可能出问题。。。若真出问题，就把自己的配置摧毁掉了。。。
-    - 我其实只要去解决：【亲爱的表哥的活宝妹，怎么才能手动构建 Rime 的动态词库？】只要我能手动构建更新后词库的动态库，我就满足了自己的使用需求。
-      - 【难点：】这是别人输入法的精华。虽然只改了一个最小的脚本错误，但是正如全中文网没人会告诉你别人输入法的精华、没有贴子真正会涉及这些精华（细节的构建步骤，只有一个几年前的老贴子不 work: https://hackmd.io/@PhahTaigi/r1tlmy0cV），所有的都是去抓现成的缺省版本的。就当自己想要了解和深入中文输入法更进一步。留这个兴趣点在这里。改天有时间、有机会再看。细节上，就是Rime 的 boost 库可能也没有能够找全，该生成的文件没能全部生成。也可能是因为现在系统 arm64-arch 硬件与 x86_64 Rime 的库不匹配？可是我试 x86_64 之前，先试过本地 arm64-arch 版本，也没能生成。改天再看。（可以参考 Rime 提供的不完整步骤：https://github.com/rime/librime/blob/master/README-mac.md 和一个用户M1 的步骤： https://www.bilibili.com/read/cv9664366/. 另Rime M1 手动构建步骤说明：https://github.com/rime/squirrel/blob/master/INSTALL.md）
-    - 折腾了大半个下午，仍然同先前一样构建不出来，只是感觉比前几个月似乎理解得更深刻一点儿。说明今天下午大改前的考虑是对的，看起来狠容易的动态库构建，没人自己手动构建，只有亲爱的表哥的活宝妹突发奇想，觉得可能可以有效更新词库。实际因素可能还有狠多。这个思路暂时放下。
+** Emacs arm64-arch, and System Rime input method: *【TODO: 现在应该可以系统更新了！！】* Rime 自己建不出来。。
+- 现在Rime ARM M 版本，我还建不出来，仅只输入法仍为旧版本，其它全是ARM M 的了。
+- Emacs 29.1 狠干净：以前 srspeedbar 里Timer 相关的【BUG：】全部改掉了；也没有再占用活宝妹特爱的C-;expand-region 键。就是怪异的中文字体看不习惯，还不知道从哪里来改。【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】
+** ARM M-series: Rime 自己建不出来。。
+- trying to build Squirral ARM M version (have to self-build for ARM M versions, but not successful yet, was able to build librime dylib, but not for Squirral yet);
+- For me, it seems like when I install in ARM arche term, boost library somewhere somehow is missing.......
+- Still install Squirral input method app for x86_64 version;
+- install Emacs 29.1 universal version;
+- build librime dynamic library for emacs pyim for ARM archi; https://github.com/merrickluo/liberime Mac ARM 适用, 可用。需要明白它是怎么连接词库的
+- make Emacs 29.1 universal work for pyim with ARM librime dynamic library work.
+- 因为Macbook 下的 Rime 输入法支持arm 的构建已经好了，我应该可以 *【构建出 arm64-arch 的Rime 动态库给 emacs 用】：可是现在还建不出来*
+- Rime 安装链接：https://github.com/rime/squirrel/blob/master/INSTALL.md 
+- 把 emacs 升级为 arm64-arch
+- 把 arm64-arch 的 emacs 版本pyim 配置好
+- 把 appcode 重新安装 arm64-arch 版本，应该就可以与 arm64-arch 版本的 emacs 自由跳转了。而不必再是 X86_64 版本的。
+- *【总结】* ：安装 arm64-arch 版本，是与自己笔记本硬件更好地配合提升效率。
+- 但过程繁琐，仍然不能达到 *【亲爱的表哥的活宝妹，实时想要动态更改词库，实时想要更新动态库给 emacs 用的需求！】*
+- 这系列更新包括：Rime-arm64 版本安装与自己构建、emacs 删除与重新安装与 pyim 配置， appcode 的删除与再安装。前两个应用都可能出问题。。。若真出问题，就把自己的配置摧毁掉了。。。
+- 我其实只要去解决：【亲爱的表哥的活宝妹，怎么才能手动构建 Rime 的动态词库？】只要我能手动构建更新后词库的动态库，我就满足了自己的使用需求。
+  - 【难点：】这是别人输入法的精华。虽然只改了一个最小的脚本错误，但是正如全中文网没人会告诉你别人输入法的精华、没有贴子真正会涉及这些精华（细节的构建步骤，只有一个几年前的老贴子不 work: https://hackmd.io/@PhahTaigi/r1tlmy0cV），所有的都是去抓现成的缺省版本的。就当自己想要了解和深入中文输入法更进一步。留这个兴趣点在这里。改天有时间、有机会再看。细节上，就是Rime 的 boost 库可能也没有能够找全，该生成的文件没能全部生成。也可能是因为现在系统 arm64-arch 硬件与 x86_64 Rime 的库不匹配？可是我试 x86_64 之前，先试过本地 arm64-arch 版本，也没能生成。改天再看。（可以参考 Rime 提供的不完整步骤：https://github.com/rime/librime/blob/master/README-mac.md 和一个用户M1 的步骤： https://www.bilibili.com/read/cv9664366/. 另Rime M1 手动构建步骤说明：https://github.com/rime/squirrel/blob/master/INSTALL.md）
+- 折腾了大半个下午，仍然同先前一样构建不出来，只是感觉比前几个月似乎理解得更深刻一点儿。说明今天下午大改前的考虑是对的，看起来狠容易的动态库构建，没人自己手动构建，只有亲爱的表哥的活宝妹突发奇想，觉得可能可以有效更新词库。实际因素可能还有狠多。这个思路暂时放下。
 - 【重点：上次我的 emacs 升级，为什么我不能把它直接升级到 arm 版本来着？那个 csharp-mode 的循环问题不是早解决了？！！！可以再试下？ NO, not yet.】
-  - 现和使用的 x86_64 版本，当初是为了安装 pyim 吗？如果是这样，我不应该再有任何的变化，就意味着我无法从 appcode 中打开当前 emacs 的 buffer 文件（因为 emacs 的 x86_64 版本限制了其正常找到 appcode 所依赖的 arm64-arch 环境？这个可以试着找下是否有解决方案）；
-  - 而如果 pyim 可以 workwith arm 版本，我就可以安装 arm64-arch 版本，可能就可以从 appcode 中打开当前 emacs 的 buffer 文件了。
-  - 我要再试一遍？【现在还不能够试，在我还不能够构建和安装出 rime 系统输入法的 arm64-arch 版本动态库之前（这个输入法，现系统所安装的是 x86_64 版本的），我安装 arm64-arch 版本的 emacs ，我的pyim 将不可以用（找不到对应版本的 rime 动态库），因为我构建不出 arm64-arch 版本的 pyim 所依赖的动态库。所以将现在的 emacs 委屈成了 x86_64 版本的，也因为这样，我的 emacs 无法正常加载 arm 版本的 appcode 所依赖的动态库，所以无法从 emacs 中直接在 appcode 中打开当前 buffer 文件。】
-  - 可以 walk-around 的解决办法是：安装 x86-64 版本的 appcode. 【在自己能够想方设法构建出 arm 版本的 rime 动态库之前，先用这个版本，可以满足自已的基本跳转需求】
-    
+- 现和使用的 x86_64 版本，当初是为了安装 pyim 吗？如果是这样，我不应该再有任何的变化，就意味着我无法从 appcode 中打开当前 emacs 的 buffer 文件（因为 emacs 的 x86_64 版本限制了其正常找到 appcode 所依赖的 arm64-arch 环境？这个可以试着找下是否有解决方案）；
+- 而如果 pyim 可以 workwith arm 版本，我就可以安装 arm64-arch 版本，可能就可以从 appcode 中打开当前 emacs 的 buffer 文件了。
+- 我要再试一遍？【现在还不能够试，在我还不能够构建和安装出 rime 系统输入法的 arm64-arch 版本动态库之前（这个输入法，现系统所安装的是 x86_64 版本的），我安装 arm64-arch 版本的 emacs ，我的pyim 将不可以用（找不到对应版本的 rime 动态库），因为我构建不出 arm64-arch 版本的 pyim 所依赖的动态库。所以将现在的 emacs 委屈成了 x86_64 版本的，也因为这样，我的 emacs 无法正常加载 arm 版本的 appcode 所依赖的动态库，所以无法从 emacs 中直接在 appcode 中打开当前 buffer 文件。】
+- 可以 walk-around 的解决办法是：安装 x86-64 版本的 appcode. 【在自己能够想方设法构建出 arm 版本的 rime 动态库之前，先用这个版本，可以满足自已的基本跳转需求】
+
 [[./pic/readme_20230225_132052.png]]
-  - 有试过， boost 的步骤基本能够完成，但是构建第三方库时的 cmake 与 xcode-clang++ 还有很多 arm 相关的问题待解。 
+- 有试过， boost 的步骤基本能够完成，但是构建第三方库时的 cmake 与 xcode-clang++ 还有很多 arm 相关的问题待解。 
 - 那么我现在有个迫切需要：就是能够自己构建 arm64-arch 版本的 rime 输入法( 至少是能够编译出它的动态库吧？！！！)：现在找到的参考如下： 
-  - 现在 emacs 使用的是 28.2 X86_64 版本。我 *【想要动态手动更新Rime 五笔第三方库】* 。可是我忘记当初几个月之前，我是怎么添加这个动态库给 emacs 使用的了。会找一找。也可能再尝试能否构建出 arm 版本的第三方库。
-    - 有个教程，这里也简要记一下过程，免得自己总忘记：大致过程：
+- 现在 emacs 使用的是 28.2 X86_64 版本。我 *【想要动态手动更新Rime 五笔第三方库】* 。可是我忘记当初几个月之前，我是怎么添加这个动态库给 emacs 使用的了。会找一找。也可能再尝试能否构建出 arm 版本的第三方库。
+- 有个教程，这里也简要记一下过程，免得自己总忘记：大致过程：
 - 把Rime 的重新部署好的动态库，复制到 emacs 的Rime 第三方适配库 librime 特定目录下
 - emacs 的Rime 第三方适配库 librime 下，生成Macbook 系统可用的用户第三方库
 - 再配置 emacs 什么的就可以了。加个截图：【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹，就是一定要嫁给亲爱的表哥！！爱表哥，爱生活！！！】
-  
+
 [[./pic/readme_20230718_111929.png]]
 
-  - https://www.bilibili.com/read/cv9664366?from=search
-  - 但是按照上面的步骤，目前理解消化不够，安装不好。注意，这里用到的 MacOS 下在的库是： https://github.com/rime/squirrel 但是我仍然构建不出那个动态库
+- https://www.bilibili.com/read/cv9664366?from=search
+- 但是按照上面的步骤，目前理解消化不够，安装不好。注意，这里用到的 MacOS 下在的库是： https://github.com/rime/squirrel 但是我仍然构建不出那个动态库
 - 如些发现，原来，所谓 rime macOS 下的输入法构建，原来是 MacOS 下的平台应用，正是我可以学习的地方。终于是半只脚往输入法的坑里踏：
-  - https://www.logcg.com/archives/2078.html. 这些都可以成为日后自己学习和开发的参考 
+- https://www.logcg.com/archives/2078.html. 这些都可以成为日后自己学习和开发的参考 
 
 - emacs 27.1 for emacs-rime input methods. one bug to be fixed. 
 
- [[./pic/readme_20230214_134351.png]]
+[[./pic/readme_20230214_134351.png]]
 - this affect me access to current terminal, needs to be fixed later.
 - after having updated swift-mode, color-theme for swift mode is much better now. 
 ** configue pyim wubi input method emacs-rime, works like a charm!
 - 现在最大的缺点是：我无法使用自已魔改过的个性化字库，姓名住圵等等，活宝妹，亲爱的表哥，等等。但其它也算是基本清单了，再不折腾它了。花了太多的时间在这个上面。所以现在输入法还算是基本清单的。
-  - 两套：系统的，与 emacs 里自带的。目前的中英文转换只使用一个探针，过多会存在过灵的总是，某些情况下被禁用中文，就会更麻烦，不如它没有那么灵。爱亲爱的表哥，活宝妹一定要嫁的亲爱的表哥！！！
+- 两套：系统的，与 emacs 里自带的。目前的中英文转换只使用一个探针，过多会存在过灵的总是，某些情况下被禁用中文，就会更麻烦，不如它没有那么灵。爱亲爱的表哥，活宝妹一定要嫁的亲爱的表哥！！！
 - 它具备以空格来区分中英文输入法的功能，但不能与中文下半角配合使用。也就是，它具备了我现在所使用过的 sis 下的自动中英文之间以一个空格为单位自动切换，但我无法使用中文下半角标点。
 - 它除了使用了系统输入法的字库，其它所有好用的配置一个也不能用（我只能拦截一个最常用的半角，仍然是不方便的），现在只是可以选詞了而已，却不能使用其它中文下输入英文标点符号等 
 - 我中文下使用英语标点：主要是 org-mode 打头的 -*. 等，它可以检测到，自动化到，还是方便的

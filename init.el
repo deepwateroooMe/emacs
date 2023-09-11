@@ -1,4 +1,5 @@
-; 下面的启动太慢了；在没有必要的时候不想要它来耽误启动时间
+
+;;; 下面的启动太慢了；在没有必要的时候不想要它来耽误启动时间
 ;; (require 'package)
 ;; (add-to-list 'package-archives
 ;;              '("melpa" . "https://melpa.org/packages/") t)
@@ -7,8 +8,13 @@
 ;; (package-initialize)
 
 ;; (setq debug-on-error t);; 它会无数次地停掉程序，去掉
+;; setup minimum warning msg: 想去掉 Makefile-mode 里 suspicious-line-warning
+(setq warning-minimum-level :emergency)
 
-(setq default-directory "/Users/hhj/pubFrameWorks/ET/")
+;; (setq default-directory "/Users/hhj/.emacs.d/")
+;; (setq default-directory "/Users/hhj/pubFrameWorks/ET/")
+;; (setq default-directory "/Users/hhj/rtt/multizone-sdk-arm/")
+(setq default-directory "/Users/hhj/os/mid2/MID2/")
 
 ;; ;; Bootstrap 'use-package'
 ;; (eval-after-load 'gnutls
@@ -37,6 +43,13 @@
       ;; '((top . 0)(left . 400)(height . 63)(width . 180)(menubar-lines . 100)(tool-bar-line . 0))
       '((top . 0)(left . 427)(height . 550)(width . 160)(menubar-lines . 55)(tool-bar-line . 0)) ; ori
       ) ; tmp.p
+
+
+;;; show line number
+;(add-to-list 'load-path (expand-file-name "~/.emacs.d/")) ;拓展文件(插件)目录
+(autoload 'linum "linum" nil t)
+(require 'linum)
+(global-linum-mode 1)
 
 
 ;;----------------------------------------------------------------------------
@@ -132,6 +145,7 @@
   (require 'init-utils) ; (defun is-buffer-file-temp())   ;;;;;;; comment for temp only, debug later today
   (require 'idle-require)
   (require 'init-elpa)
+ (require 'init-linum-mode)
   (require 'init-exec-path) ;; Set up $PATH
   ;; any file use flyspell should be initialized after init-spelling.el
   ;; actually, I don't know which major-mode use flyspell.
@@ -164,7 +178,6 @@
   (require 'cpputils-cmake) ; to do more work on this one
   ;; Use bookmark instead
   (require 'init-gud) 
-  (require 'init-linum-mode)
   (require 'init-moz)
   (require 'init-gtags)
   ;; init-evil dependent on init-clipboard
@@ -196,7 +209,7 @@
   (require 'init-autopair) 
   ;; (require 'init-sis)  ;; 不再需要这个东西，会给自己的程序造成混乱
 ;(require 'init-python-mode)
-;(require 'init-auto-complete)
+;; (require 'init-auto-complete)
   (require 'pangu-spacing)
   (require 'expand-region)
   (require 'init-protobuf-mode)
@@ -208,9 +221,10 @@
   (require 'init-color-theme)
   (require 'init-asm-mode)
   (require 'ld-script)
+  (require 'init-make-mode)
   )
 
-
+;;; 【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】
 ;; ;;; for macOS iOS swift-mode configurations
 ;; (require 'company-sourcekit)
 ;; (setq company-sourcekit-verbose nil s)
@@ -332,11 +346,6 @@ Each element has the form (NAME AGE MALE-FLAG)."
 ;;; prohibit auto-generate backup files
 (setq-default make-backup-files nil)
 
-;;; show line number
-                                        ;(add-to-list 'load-path (expand-file-name "~/.emacs.d/")) ;拓展文件(插件)目录
-(autoload 'linum "linum" nil t)
-(require 'linum)
-(global-linum-mode 1)
 
 ;;; no startup buffer
 (setq inhibit-splash-screen t)
@@ -527,8 +536,9 @@ Each element has the form (NAME AGE MALE-FLAG)."
   (set-fontset-font (frame-parameter nil 'font) ;
                     charset
                     ;; (font-spec :family "courier new" :height 130 )))
-                    ;; (font-spec :family "Sarasa Mono Slab SC Semibold" :size 12 :weight semi-bold))) 
-                    (font-spec :family "Sarasa Mono Slab SC Semibold" :height 130)))
+                    ;; (font-spec :family "Sarasa Mono Slab SC Semibold" :size 12 :weight semibold))) 
+                    (font-spec :family "Sarasa Mono SC" :size 12))) 
+                    ;; (font-spec :family "Sarasa Mono Slab SC Semibold" :height 130)))
 
 
 ;;;; 加载snippets 的接口

@@ -20,96 +20,96 @@
   :group 'speedbar-faces)
 
 
-(speedbar-add-supported-extension ".c")
-(add-to-list 'speedbar-fetch-etags-parse-list
- 		     '("\\.c" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".s") ;;; assembly
-(add-to-list 'speedbar-fetch-etags-parse-list
- 		     '("\\.s" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".h")
-(add-to-list 'speedbar-fetch-etags-parse-list
- 		     '("\\.h" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".m")
-(add-to-list 'speedbar-fetch-etags-parse-list
- 		     '("\\.m" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".cs")
-(add-to-list 'speedbar-fetch-etags-parse-list
- 		     '("\\.cs" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".go")
-(add-to-list 'speedbar-fetch-etags-parse-list
- 		     '("\\.go" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".cpp")
-(add-to-list 'speedbar-fetch-etags-parse-list
- 		     '("\\.cpp" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".xml")
-(add-to-list 'speedbar-fetch-etags-parse-list
- 	         '("\\.xml" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".kt")
-(add-to-list 'speedbar-fetch-etags-parse-list
-             '("\\.kt" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".kts")
-(add-to-list 'speedbar-fetch-etags-parse-list
-             '("\\.kts" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".pyim") ;;; for .pyim 用户词典修改
-(add-to-list 'speedbar-fetch-etags-parse-list
-             '("\\.pyim" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".gradle")
-(add-to-list 'speedbar-fetch-etags-parse-list
- 		     '("\\.gradle" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".properties")
-(add-to-list 'speedbar-fetch-etags-parse-list
- 		     '("\\.properties" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".txt")
-(add-to-list 'speedbar-fetch-etags-parse-list
- 		     '("\\.txt" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".mk")
-(add-to-list 'speedbar-fetch-etags-parse-list
- 		     '("\\.mk" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".shader")
-(add-to-list 'speedbar-fetch-etags-parse-list
- 		     '("\\.shader" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".glsl")
-(add-to-list 'speedbar-fetch-etags-parse-list
- 		     '("\\.glsl" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".org")
-(add-to-list 'speedbar-fetch-etags-parse-list
- 		     '("\\.org" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".md")
-(add-to-list 'speedbar-fetch-etags-parse-list
- 		     '("\\.md" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".kt")
-(add-to-list 'speedbar-fetch-etags-parse-list
- 		     '("\\.kt" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".aidl")
-(add-to-list 'speedbar-fetch-etags-parse-list
- 		     '("\\.aidl" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".yaml")
-(add-to-list 'speedbar-fetch-etags-parse-list
- 		     '("\\.yaml" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".xaml")
-(add-to-list 'speedbar-fetch-etags-parse-list
- 		     '("\\.xaml" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".sh")
-(add-to-list 'speedbar-fetch-etags-parse-list
- 		     '("\\.sh" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".json")
-(add-to-list 'speedbar-fetch-etags-parse-list
- 		     '("\\.json" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".proto")
-(add-to-list 'speedbar-fetch-etags-parse-list
- 		     '("\\.proto" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".cshtml")
-(add-to-list 'speedbar-fetch-etags-parse-list
- 		     '("\\.cshtml" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".csproj")
-(add-to-list 'speedbar-fetch-etags-parse-list
- 		     '("\\.csproj" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".lua")
-(add-to-list 'speedbar-fetch-etags-parse-list
- 		     '("\\.lua" . speedbar-parse-c-or-c++tag))
-(speedbar-add-supported-extension ".swift")
-(add-to-list 'speedbar-fetch-etags-parse-list
- 		     '("\\.swift" . speedbar-parse-c-or-c++tag))
+;; (speedbar-add-supported-extension ".c")
+;; (add-to-list 'speedbar-fetch-etags-parse-list
+;;  		     '("\\.c" . speedbar-parse-c-or-c++tag))
+;; (speedbar-add-supported-extension ".s") ;;; assembly
+;; (add-to-list 'speedbar-fetch-etags-parse-list
+;;  		     '("\\.s" . speedbar-parse-c-or-c++tag))
+;; (speedbar-add-supported-extension ".h")
+;; (add-to-list 'speedbar-fetch-etags-parse-list
+;;  		     '("\\.h" . speedbar-parse-c-or-c++tag))
+;; (speedbar-add-supported-extension ".m")
+;; (add-to-list 'speedbar-fetch-etags-parse-list
+;;  		     '("\\.m" . speedbar-parse-c-or-c++tag))
+;; (speedbar-add-supported-extension ".cs")
+;; (add-to-list 'speedbar-fetch-etags-parse-list
+;;  		     '("\\.cs" . speedbar-parse-c-or-c++tag))
+;; (speedbar-add-supported-extension ".go")
+;; (add-to-list 'speedbar-fetch-etags-parse-list
+;;  		     '("\\.go" . speedbar-parse-c-or-c++tag))
+;; (speedbar-add-supported-extension ".cpp")
+;; (add-to-list 'speedbar-fetch-etags-parse-list
+;;  		     '("\\.cpp" . speedbar-parse-c-or-c++tag))
+;; (speedbar-add-supported-extension ".xml")
+;; (add-to-list 'speedbar-fetch-etags-parse-list
+;;  	         '("\\.xml" . speedbar-parse-c-or-c++tag))
+;; (speedbar-add-supported-extension ".kt")
+;; (add-to-list 'speedbar-fetch-etags-parse-list
+;;              '("\\.kt" . speedbar-parse-c-or-c++tag))
+;; (speedbar-add-supported-extension ".kts")
+;; (add-to-list 'speedbar-fetch-etags-parse-list
+;;              '("\\.kts" . speedbar-parse-c-or-c++tag))
+;; (speedbar-add-supported-extension ".pyim") ;;; for .pyim 用户词典修改
+;; (add-to-list 'speedbar-fetch-etags-parse-list
+;;              '("\\.pyim" . speedbar-parse-c-or-c++tag))
+;; (speedbar-add-supported-extension ".gradle")
+;; (add-to-list 'speedbar-fetch-etags-parse-list
+;;  		     '("\\.gradle" . speedbar-parse-c-or-c++tag))
+;; (speedbar-add-supported-extension ".properties")
+;; (add-to-list 'speedbar-fetch-etags-parse-list
+;;  		     '("\\.properties" . speedbar-parse-c-or-c++tag))
+;; (speedbar-add-supported-extension ".txt")
+;; (add-to-list 'speedbar-fetch-etags-parse-list
+;;  		     '("\\.txt" . speedbar-parse-c-or-c++tag))
+;; (speedbar-add-supported-extension ".mk")
+;; (add-to-list 'speedbar-fetch-etags-parse-list
+;;  		     '("\\.mk" . speedbar-parse-c-or-c++tag))
+;; (speedbar-add-supported-extension ".shader")
+;; (add-to-list 'speedbar-fetch-etags-parse-list
+;;  		     '("\\.shader" . speedbar-parse-c-or-c++tag))
+;; (speedbar-add-supported-extension ".glsl")
+;; (add-to-list 'speedbar-fetch-etags-parse-list
+;;  		     '("\\.glsl" . speedbar-parse-c-or-c++tag))
+;; (speedbar-add-supported-extension ".org")
+;; (add-to-list 'speedbar-fetch-etags-parse-list
+;;  		     '("\\.org" . speedbar-parse-c-or-c++tag))
+;; (speedbar-add-supported-extension ".md")
+;; (add-to-list 'speedbar-fetch-etags-parse-list
+;;  		     '("\\.md" . speedbar-parse-c-or-c++tag))
+;; (speedbar-add-supported-extension ".kt")
+;; (add-to-list 'speedbar-fetch-etags-parse-list
+;;  		     '("\\.kt" . speedbar-parse-c-or-c++tag))
+;; (speedbar-add-supported-extension ".aidl")
+;; (add-to-list 'speedbar-fetch-etags-parse-list
+;;  		     '("\\.aidl" . speedbar-parse-c-or-c++tag))
+;; (speedbar-add-supported-extension ".yaml")
+;; (add-to-list 'speedbar-fetch-etags-parse-list
+;;  		     '("\\.yaml" . speedbar-parse-c-or-c++tag))
+;; (speedbar-add-supported-extension ".xaml")
+;; (add-to-list 'speedbar-fetch-etags-parse-list
+;;  		     '("\\.xaml" . speedbar-parse-c-or-c++tag))
+;; (speedbar-add-supported-extension ".sh")
+;; (add-to-list 'speedbar-fetch-etags-parse-list
+;;  		     '("\\.sh" . speedbar-parse-c-or-c++tag))
+;; (speedbar-add-supported-extension ".json")
+;; (add-to-list 'speedbar-fetch-etags-parse-list
+;;  		     '("\\.json" . speedbar-parse-c-or-c++tag))
+;; (speedbar-add-supported-extension ".proto")
+;; (add-to-list 'speedbar-fetch-etags-parse-list
+;;  		     '("\\.proto" . speedbar-parse-c-or-c++tag))
+;; (speedbar-add-supported-extension ".cshtml")
+;; (add-to-list 'speedbar-fetch-etags-parse-list
+;;  		     '("\\.cshtml" . speedbar-parse-c-or-c++tag))
+;; (speedbar-add-supported-extension ".csproj")
+;; (add-to-list 'speedbar-fetch-etags-parse-list
+;;  		     '("\\.csproj" . speedbar-parse-c-or-c++tag))
+;; (speedbar-add-supported-extension ".lua")
+;; (add-to-list 'speedbar-fetch-etags-parse-list
+;;  		     '("\\.lua" . speedbar-parse-c-or-c++tag))
+;; (speedbar-add-supported-extension ".swift")
+;; (add-to-list 'speedbar-fetch-etags-parse-list
+;;  		     '("\\.swift" . speedbar-parse-c-or-c++tag))
 
 ;; (custom-set-variables '(speedbar-show-unknown-files t))
 (setq speedbar-show-unknown-files t)

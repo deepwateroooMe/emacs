@@ -1,4 +1,4 @@
-(global-linum-mode t)
+;; (global-linum-mode t)
 
 ;; http://stackoverflow.com/questions/3875213/turning-on-linum-mode-when-in-python-c-mode
 (setq linum-mode-inhibit-modes-list '(eshell-mode
