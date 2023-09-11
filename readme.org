@@ -1,3 +1,4 @@
+
 #+latex_class: cn-article
 #+title: Emacs Configuration
 #+author: deepwaterooo
@@ -27,9 +28,16 @@
 - {|} 的自动扩展开来，我以前不知道怎么回事， java 与 csharp-mode 只能配置好两个中的一个；现在 java 与 csharp-mode 与 cc-mode 似乎都能自动扩展。当初是怎么回事呢？等改天用多了看它还会不会再抛锚抛错。。。先把自己其它 mode 里【中英文】切换注释等常用功能銉转到这个 mode 里来，没问题。这些简单功能都容易实现。
 ** emacs 1 initiliation bug
 - TODO: 需要将Rime 动态库构建成适配配置到 arm64-arch 版本。它性能我电脑的整体性能。
-** Emacs arm64-arch, and System Rime input method: *【TODO: 现在应该可以系统更新了！！】* Rime 自己建不出来。。
+** Emacs arm64-arch, and System Rime input method: *【TODO: 现在应该可以系统更新了！！】* Rime 自己建不出来。。但是活宝妹将来还是会能够建得出来的。【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】
 - 现在Rime ARM M 版本，我还建不出来，仅只输入法仍为旧版本，其它全是ARM M 的了。
 - Emacs 29.1 狠干净：以前 srspeedbar 里Timer 相关的【BUG：】全部改掉了；也没有再占用活宝妹特爱的C-;expand-region 键。就是怪异的中文字体看不习惯，还不知道从哪里来改。【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】
+- 但是emacs ARM M 版本的， *【全部ARM M 版本的】* ：它们都少了活宝妹也狠喜欢的：Macbook 上触屏翻屏功能。。。那个功能也是活宝妹的大爱。。。【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】
+- 为了回复活宝妹先前 emacs 里的触屏翻屏功能，把 emacs 29.1 卸载掉，重新安装回 28.2  ARM M 版本，简单试一下，不行就再装回 29.1. 【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】29.1 存在字体怪异的问题； ARM M 28.2 没有怪异字体的这个问题。但是活宝妹心爱的触屏翻屏功能，看似ARM M 版本里，全部被消灭掉了。。。 *活宝妹大爱的触屏翻屏功能呀。。。*
+- 现在仍在用 28.2, 因为 29.1 里怪异的中文字体。可是28.2 存在 sr-speedbar 里 timer 的【BUG：】要活宝妹再改一次。还不能触屏翻屏。。。【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】
+- 再换个版本： *【macport 里的， ARM 版本的M 版本的】* ：试一下可以触屏翻屏吗？活宝妹大爱的功能呀。。。。没有这个功能，活宝妹真想哭了。。。 *【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】* 这个版本活宝妹比较喜欢，没有第一个 29.1 的怪异中文字体、有 sr-speedbar 里 timer 的【BUG：】，活宝妹可以再改一遍；但是有了ARM M 版本的，活宝妹先前大爱的【触屏翻屏】功能，狠好用；没有怪异的中文字体；C-; 是好用的。【就用这个版本的】 *【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】*
+  
+[[./pic/readme_20230911_143430.png]]
+- Emacs: ARM M 版本里， csharp-mode 里 tsc 好像差个动态库。也就是说，极可能是 tsc ARM M 版本下差个动态的。到时再看。今天下午还是要先写 os 的作业。【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】
 ** ARM M-series: Rime 自己建不出来。。
 - trying to build Squirral ARM M version (have to self-build for ARM M versions, but not successful yet, was able to build librime dylib, but not for Squirral yet);
 - For me, it seems like when I install in ARM arche term, boost library somewhere somehow is missing.......
@@ -51,7 +59,7 @@
 - 【重点：上次我的 emacs 升级，为什么我不能把它直接升级到 arm 版本来着？那个 csharp-mode 的循环问题不是早解决了？！！！可以再试下？ NO, not yet.】
 - 现和使用的 x86_64 版本，当初是为了安装 pyim 吗？如果是这样，我不应该再有任何的变化，就意味着我无法从 appcode 中打开当前 emacs 的 buffer 文件（因为 emacs 的 x86_64 版本限制了其正常找到 appcode 所依赖的 arm64-arch 环境？这个可以试着找下是否有解决方案）；
 - 而如果 pyim 可以 workwith arm 版本，我就可以安装 arm64-arch 版本，可能就可以从 appcode 中打开当前 emacs 的 buffer 文件了。
-- 我要再试一遍？【现在还不能够试，在我还不能够构建和安装出 rime 系统输入法的 arm64-arch 版本动态库之前（这个输入法，现系统所安装的是 x86_64 版本的），我安装 arm64-arch 版本的 emacs ，我的pyim 将不可以用（找不到对应版本的 rime 动态库），因为我构建不出 arm64-arch 版本的 pyim 所依赖的动态库。所以将现在的 emacs 委屈成了 x86_64 版本的，也因为这样，我的 emacs 无法正常加载 arm 版本的 appcode 所依赖的动态库，所以无法从 emacs 中直接在 appcode 中打开当前 buffer 文件。】
+- 我要再试一遍？【现在还不能够试，在我b还不能够构建和安装出 rime 系统输入法的 arm64-arch 版本动态库之前（这个输入法，现系统所安装的是 x86_64 版本的），我安装 arm64-arch 版本的 emacs ，我的pyim 将不可以用（找不到对应版本的 rime 动态库），因为我构建不出 arm64-arch 版本的 pyim 所依赖的动态库。所以将现在的 emacs 委屈成了 x86_64 版本的，也因为这样，我的 emacs 无法正常加载 arm 版本的 appcode 所依赖的动态库，所以无法从 emacs 中直接在 appcode 中打开当前 buffer 文件。】
 - 可以 walk-around 的解决办法是：安装 x86-64 版本的 appcode. 【在自己能够想方设法构建出 arm 版本的 rime 动态库之前，先用这个版本，可以满足自已的基本跳转需求】
 
 [[./pic/readme_20230225_132052.png]]

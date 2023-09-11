@@ -30,7 +30,8 @@
 ;;              (local-set-key (kbd "C-j") 'cmtChCh) ;; Chinese ==> Chinese
 ;;              ))
 
-(defun gp/ss-vscode-current-buffer-file-at-point ()
+
+(defun gp/ss-vscode-current-buffer-file-at-point-cc () ;; 爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！
   (interactive)
   (start-process-shell-command "code"
                                nil
@@ -63,7 +64,7 @@
   ;make DEL take all previous whitespace with it
   (c-toggle-hungry-state 1)
 
-  (local-set-key (kbd "C-c i") 'gp/ss-vscode-current-buffer-file-at-point);; 这个功能也要加进来，需要能够跳到VSC 
+  (local-set-key (kbd "C-c i") 'gp/ss-vscode-current-buffer-file-at-point-cc);; 这个功能也要加进来，需要能够跳到VSC 
   (local-set-key (kbd "C-x x") 'cmtEnCh) ;; English ==> Chinese 改变绑定的鍵才是最彻底的改法，不会让 C-cf 运行狠久
   (local-set-key (kbd "C-j") 'cmtChCh) ;; Chinese ==> Chinese
   (local-set-key (kbd "{") 'cheeso-insert-open-brace-ss)
@@ -122,7 +123,9 @@
                                     (shell-command-to-string "global -p"))))
       ;; emacs 24.4+ will set up eldoc automatically.
       ;; so below code is NOT needed.
-      (eldoc-mode 1))
+      ;; (eldoc-mode 1) ;;; 我把这里改了，还是改成是 cc-mode
+      (c-mode 1)
+      )
     ))
 (add-hook 'c-mode-common-hook 'c-mode-common-hook-setup)
 ;; (add-hook 'c-mode-common-hook 'google-set-c-style) ;; 这个，为什么会破坏活宝妹的个性化配置呢？只在看 xv6OS 时才打开

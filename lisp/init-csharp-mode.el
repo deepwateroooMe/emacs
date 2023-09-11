@@ -1,25 +1,25 @@
 ;;; for csharp-mode
 
-;; (use-package tree-sitter :ensure t)
-;; (use-package tree-sitter-langs :ensure t)
-;; (use-package tree-sitter-indent :ensure t)
-;; (use-package csharp-mode
-;;   :ensure t
-;;   :config
-;;   ;; (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-tree-sitter-mode))
-;;   ;; (add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-tree-sitter-mode))
-;;   (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
-;;   (add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-mode))
-;;   )
+(use-package tree-sitter :ensure t)
+(use-package tree-sitter-langs :ensure t)
+(use-package tree-sitter-indent :ensure t)
+(use-package csharp-mode
+  :ensure t
+  :config
+  ;; (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-tree-sitter-mode))
+  ;; (add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-tree-sitter-mode))
+  (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
+  (add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-mode))
+  )
 
-;;; old-school loading for emacs version 27.1 specificly
-(load "~/.emacs.d/elpa/csharp-mode/csharp-mode.el") ;;;;; love my dear cousin, must marry him as soon as possible
-;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/elpa/csharp-mode/")) ;;;;; love my dear cousin, must marry him as soon as possible
-;; (require 'csharp-mode)
-(setq interpreter-mode-alist
-      (cons '("cs" . csharp-mode) interpreter-mode-alist))
-(add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
-(add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-mode))
+;; ;;; old-school loading for emacs version 27.1 specificly
+;; (load "~/.emacs.d/elpa/csharp-mode/csharp-mode.el") ;;;;; love my dear cousin, must marry him as soon as possible
+;; ;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/elpa/csharp-mode/")) ;;;;; love my dear cousin, must marry him as soon as possible
+;; ;; (require 'csharp-mode)
+;; (setq interpreter-mode-alist
+;;       (cons '("cs" . csharp-mode) interpreter-mode-alist))
+;; (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
+;; (add-to-list 'auto-mode-alist '("\\.shader\\'" . csharp-mode))
 
 ;;; fix bug for font lock breaks after ' or ": 这里以前古老版本里存在这种bug时，当时的补救修改办法,现在看来不起作用了，需要改回适配新的安装方法模式
 ;;;;; csharp-mode 之后容易出gio-minor-mode引起的一些问题，试着纠正一下

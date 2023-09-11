@@ -11,7 +11,7 @@
       (kmacro-lambda-form [f4 ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?  ?/ ?/ ?  ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?\C-x] 0 "%d"))
 (put 'cmtEnCh 'kmacro t)
 (put 'cmtChCh 'kmacro t)
-(defun gp/ss-vscode-current-buffer-file-at-point ()
+(defun gp/ss-vscode-current-buffer-file-at-point-asm ()
   (interactive)
   (start-process-shell-command "code"
                                nil
@@ -23,7 +23,7 @@
                                        (number-to-string (current-column)))))
 (add-hook 'asm-mode-hook
           '(lambda ()
-             (local-set-key (kbd "C-c i") 'gp/ss-vscode-current-buffer-file-at-point) 
+             (local-set-key (kbd "C-c i") 'gp/ss-vscode-current-buffer-file-at-point-asm) 
              (local-set-key (kbd "C-x x") 'cmtEnCh)
              (local-set-key (kbd "C-j") 'cmtChCh) 
              ))
