@@ -4,6 +4,7 @@
 #+author: deepwaterooo
 
 * Updates 
+- clean ARM M Emacs with pyim librime.dylib build capability. Great to have all convenient features enabled. 【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】
 ** configuration for org-mode beamer for slides
 - using older version of org-mode because the 2 shorter lines of "#+BEGIN_SRC" AND "#+END_SRC". DO NOT like newer version two long window width lines.
 - Beamer configuration under older version, I have NOT configued themes for beamer yet, but inline imgs and source code works, basically satisified my usage cases. If I have to configue for new versions, will do when I have time. 
@@ -30,14 +31,19 @@
 - TODO: 需要将Rime 动态库构建成适配配置到 arm64-arch 版本。它性能我电脑的整体性能。
 ** Emacs arm64-arch, and System Rime input method: *【TODO: 现在应该可以系统更新了！！】* Rime 自己建不出来。。但是活宝妹将来还是会能够建得出来的。【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】
 - 现在Rime ARM M 版本，我还建不出来，仅只输入法仍为旧版本，其它全是ARM M 的了。
-- Emacs 29.1 狠干净：以前 srspeedbar 里Timer 相关的【BUG：】全部改掉了；也没有再占用活宝妹特爱的C-;expand-region 键。就是怪异的中文字体看不习惯，还不知道从哪里来改。【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】
+- Emacs 29.1 狠干净：以前 srspeedbar 里Timer 相关的【BUG：】全部改掉了(timer 的【BUG：】还在！！再改一遍)；也没有再占用活宝妹特爱的C-;expand-region 键。就是怪异的中文字体看不习惯，还不知道从哪里来改。【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】
 - 但是emacs ARM M 版本的， *【全部ARM M 版本的】* ：它们都少了活宝妹也狠喜欢的：Macbook 上触屏翻屏功能。。。那个功能也是活宝妹的大爱。。。【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】
 - 为了回复活宝妹先前 emacs 里的触屏翻屏功能，把 emacs 29.1 卸载掉，重新安装回 28.2  ARM M 版本，简单试一下，不行就再装回 29.1. 【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】29.1 存在字体怪异的问题； ARM M 28.2 没有怪异字体的这个问题。但是活宝妹心爱的触屏翻屏功能，看似ARM M 版本里，全部被消灭掉了。。。 *活宝妹大爱的触屏翻屏功能呀。。。*
-- 现在仍在用 28.2, 因为 29.1 里怪异的中文字体。可是28.2 存在 sr-speedbar 里 timer 的【BUG：】要活宝妹再改一次。还不能触屏翻屏。。。【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】
+- 【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】
 - 再换个版本： *【macport 里的， ARM 版本的M 版本的】* ：试一下可以触屏翻屏吗？活宝妹大爱的功能呀。。。。没有这个功能，活宝妹真想哭了。。。 *【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】* 这个版本活宝妹比较喜欢，没有第一个 29.1 的怪异中文字体、有 sr-speedbar 里 timer 的【BUG：】，活宝妹可以再改一遍；但是有了ARM M 版本的，活宝妹先前大爱的【触屏翻屏】功能，狠好用；没有怪异的中文字体；C-; 是好用的。【就用这个版本的】 *【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】*
   
 [[./pic/readme_20230911_143430.png]]
-- Emacs: ARM M 版本里， csharp-mode 里 tsc 好像差个动态库。也就是说，极可能是 tsc ARM M 版本下差个动态的。到时再看。今天下午还是要先写 os 的作业。【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】
+- Emacs: ARM M 版本里， csharp-mode 里总是有个环形引用： elpa 里我弄的 csharp-mode 的版本太多了，用了相比古老的 csharp-mode 和 tree-sitter 结合起来的，可以用了
+- ARM M 版本Emacs, 里，被他们把 emacs 到VSC 的自动跳转拦住了。zsh 终端可以找到 code. 但是 emacs 里找不到code. *【找到原因是】：活宝妹昨天下午折腾那块板，结果一个什么狔版本的 texinfo 库，把 emacs 里不能正常 parse 系统的 path 变量了。。去掉就都好了。。。* 真坑人呀。。。。 *【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】*
+- *【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】*
+- 【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】
+- 现在版本的 Emacs 其它 bug 都扫除了，再改最后一个最简单的： sr-speedbar 里 timer 的【BUG：】。改完就清空了。搜索 librime 里如何引用词库，以后就可以动态更新活宝妹魔改过的词库了！！！【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】
+- 【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】
 ** ARM M-series: Rime 自己建不出来。。
 - trying to build Squirral ARM M version (have to self-build for ARM M versions, but not successful yet, was able to build librime dylib, but not for Squirral yet);
 - For me, it seems like when I install in ARM arche term, boost library somewhere somehow is missing.......
