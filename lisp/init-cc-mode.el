@@ -12,23 +12,17 @@
       (c-lineup-topmost-intro-cont langelem))))
 
 (setq c-default-style "linux" c-basic-offset 4)
-;; avoid default "gnu" style, use more popular one
 (setq c-default-style "linux")
 
-;;; 把 csharp-mode 里，几个便利的功能，搬过来，测试一下，是否可以用
-;; for pyim mode, 需要获取这个模式内部中英文输入法的名字以及转换方法 
 (fset 'cmtEnCh;;; 这里的 C-j C-i 与上面的 C-c-f 会给 C-cf 制造麻烦，需要绑定不同的鍵，这里暂时移动一下，看看它有没有什么区别 ?
       (kmacro-lambda-form [f4 ?  ?/ ?/ ?  ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?\C-x] 0 "%d"))
 (fset 'cmtChCh;;; 有点儿延迟
       (kmacro-lambda-form [f4 ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?  ?/ ?/ ?  ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?\C-x] 0 "%d"))
 (put 'cmtEnCh 'kmacro t)
 (put 'cmtChCh 'kmacro t)
-;; (add-hook 'csharp-mode-hook
-;;           '(lambda ()
-;;              (local-set-key (kbd "C-c i") 'gp/ss-vscode-current-buffer-file-at-point) 
-;;              (local-set-key (kbd "C-x x") 'cmtEnCh) ;; English ==> Chinese 改变绑定的鍵才是最彻底的改法，不会让 C-cf 运行狠久
-;;              (local-set-key (kbd "C-j") 'cmtChCh) ;; Chinese ==> Chinese
-;;              ))
+;; (defalias 'meme
+;;   (kmacro "<f4> M-x t o g g l e - i n p u t - m e t h o d <return> SPC / / SPC M-x t o g g l e - i n p u t - m e t h o d <return>"))
+;; (put 'meme 'kmacro t)
 
 
 (defun gp/ss-vscode-current-buffer-file-at-point-cc () ;; 爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！
@@ -42,7 +36,6 @@
                                        ;; (number-to-string (1+ (current-line))) ;; +1 who knows why
                                        ":"
                                        (number-to-string (current-column)))))
-
 
 ;; (defun fix-c-indent-offset-according-to-syntax-context (key val)
 ;;   ;; remove the old element
@@ -111,12 +104,10 @@
 
 ;; donot use c-mode-common-hook or cc-mode-hook because many major-modes use this hook
 (defun c-mode-common-hook-setup ()
-  (unless (is-buffer-file-temp)
+    (unless (is-buffer-file-temp)
     (my-common-cc-mode-setup)
     (unless (or (derived-mode-p 'java-mode) (derived-mode-p 'groovy-mode))
       (my-c-mode-setup))
-
-    ;; gtags (GNU global) stuff
     (when (and (executable-find "global")
                ;; `man global' to figure out why
                (not (string-match-p "GTAGS not found"
@@ -124,7 +115,8 @@
       ;; emacs 24.4+ will set up eldoc automatically.
       ;; so below code is NOT needed.
       ;; (eldoc-mode 1) ;;; 我把这里改了，还是改成是 cc-mode
-      (c-mode 1)
+      (c-mode 1);; 下面，改走了一个便利功能：就是，先前当 under_tree 后，输入一个空格，会自动关窗 undo_tree 的窗口，现在这个功能没有了，被下面一行、被活宝妹改丢了。。
+      (local-set-key " " 'my/c-mode-insert-space);; 添加，期望：活宝妹注释时，会【 // 】输入法正确，且前后都有一个空格。这个功能用得更多。上面的功能，就手动或配置其它銉
       )
     ))
 (add-hook 'c-mode-common-hook 'c-mode-common-hook-setup)
@@ -151,11 +143,12 @@
                                               (string-match "[[({]" (string pprev)))
                                          (delete-char 1))
                                      (backward-delete-char-untabify arg killp)))
-;;;  They can be bound in c-mode and c-mode derivatives like this:
-  (add-hook 'c-mode-common-hook
-            (lambda ()
-              (local-set-key " " 'my/c-mode-insert-space)
-              (local-set-key "\177" 'my/c-mode-delete-space))) ;;; backspace
+
+
+(add-hook 'c-mode-common-hook;; 暂时去掉，影响活宝妹使用：中英文中注释时，少了一个空格
+          (lambda ()
+            (local-set-key " " 'my/c-mode-insert-space);; 不明白这里为什么要加上这个东西？
+            (local-set-key "\177" 'my/c-mode-delete-space)))
 
 
 ;;; 把 csharp-mode ; {} autoindent 搬过来了：试一下，能否自动扩展

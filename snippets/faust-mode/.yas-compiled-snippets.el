@@ -31,4 +31,4 @@
                        ("bu" "button(\"$1\")$0" "button" nil nil nil "/Users/hhj/.emacs.d/snippets/faust-mode/button" nil nil)))
 
 
-;;; Do not edit! File generated at Thu Sep  7 20:51:32 2023
+;;; Do not edit! File generated at Tue Sep 26 21:53:09 2023

@@ -19,10 +19,12 @@
                        ("io" "#include <stdio.h>" "stdio" nil nil nil "/Users/hhj/.emacs.d/snippets/cc-mode/stdio" nil nil)
                        ("rn" "return $0" "return" nil nil nil "/Users/hhj/.emacs.d/snippets/cc-mode/rn" nil nil)
                        ("pv" "uprintf(\"$1 = %${2:d}\\n\\r\", $1, \"\", '\\0');$0" "pv" nil nil nil "/Users/hhj/.emacs.d/snippets/cc-mode/pv" nil nil)
-                       ("ps" "uprints(\"$1(): $2 \\n\\r\");$0" "ps" nil nil nil "/Users/hhj/.emacs.d/snippets/cc-mode/ps" nil nil)
                        ("pr" "printf(\"${1:format string}\"${2: ,a0,a1});" "printf" nil nil nil "/Users/hhj/.emacs.d/snippets/cc-mode/printf" nil nil)
+                       ("pf" "printf(\"$1\\n\"$2);$0" "pf" nil nil nil "/Users/hhj/.emacs.d/snippets/cc-mode/pf" nil nil)
                        ("packed" "__attribute__((__packed__))$0" "packed" nil nil nil "/Users/hhj/.emacs.d/snippets/cc-mode/packed" nil nil)
                        ("once" "#ifndef ${1:`(upcase (file-name-nondirectory (file-name-sans-extension (or (buffer-file-name) \"\"))))`_H}\n#define $1\n\n$0\n\n#endif /* $1 */" "#ifndef XXX; #define XXX; #endif" nil nil nil "/Users/hhj/.emacs.d/snippets/cc-mode/once" nil nil)
+                       ("mmi" "Math.min(${1:a}, ${2:b})$0" "Math.min(" nil nil nil "/Users/hhj/.emacs.d/snippets/cc-mode/mmi" nil nil)
+                       ("mma" "Math.max(${1:a}, ${2:b})$0" "Math.max(" nil nil nil "/Users/hhj/.emacs.d/snippets/cc-mode/mma" nil nil)
                        ("!<" "/*!< ${1:Detailed description after the member} */" "Member description" nil
                         ("doxygen")
                         nil "/Users/hhj/.emacs.d/snippets/cc-mode/member_description" nil nil)
@@ -95,4 +97,4 @@
                        ("ass" "#include <assert.h>\n$0" "assert" nil nil nil "/Users/hhj/.emacs.d/snippets/cc-mode/assert" nil nil)))
 
 
-;;; Do not edit! File generated at Thu Sep  7 20:51:32 2023
+;;; Do not edit! File generated at Tue Sep 26 21:53:09 2023

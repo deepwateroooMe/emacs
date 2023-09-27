@@ -1,10 +1,20 @@
 ;;;;;; ### Speedbar ###
 (require 'sr-speedbar)
-;; (require 'sis) ;;; for extracting curretn input-source
 
 (setq speedbar-use-images nil)       ; Turn off the ugly icons
-;; (setq sr-speedbar-right-side nil)    ; Left-side pane
 (setq sr-speedbar-auto-refresh nil) ; Don't refresh on buffer changes
+(setq speedbar-use-images t)
+(setq speedbar-update-flag t)
+(setq sr-speedbar-refresh-turn-off nil)
+
+
+;; Add new extensions for speedbar tagging (allow to expand/collapse
+;; sections, etc.) -- do this BEFORE firing up speedbar?
+(speedbar-add-supported-extension
+ '(".org" ".c" ".s" ".txt" ".ld" "mk" "Makefile" "makefile" ".java" ".cs"))
+(custom-set-variables
+ '(speedbar-show-unknown-files t)
+ )
 
 ;;; set faces speedbar-dirctory-face
 (defface speedbar-symlink-directory-face
@@ -20,100 +30,7 @@
   :group 'speedbar-faces)
 
 
-;; (speedbar-add-supported-extension ".c")
-;; (add-to-list 'speedbar-fetch-etags-parse-list
-;;  		     '("\\.c" . speedbar-parse-c-or-c++tag))
-;; (speedbar-add-supported-extension ".s") ;;; assembly
-;; (add-to-list 'speedbar-fetch-etags-parse-list
-;;  		     '("\\.s" . speedbar-parse-c-or-c++tag))
-;; (speedbar-add-supported-extension ".h")
-;; (add-to-list 'speedbar-fetch-etags-parse-list
-;;  		     '("\\.h" . speedbar-parse-c-or-c++tag))
-;; (speedbar-add-supported-extension ".m")
-;; (add-to-list 'speedbar-fetch-etags-parse-list
-;;  		     '("\\.m" . speedbar-parse-c-or-c++tag))
-;; (speedbar-add-supported-extension ".cs")
-;; (add-to-list 'speedbar-fetch-etags-parse-list
-;;  		     '("\\.cs" . speedbar-parse-c-or-c++tag))
-;; (speedbar-add-supported-extension ".go")
-;; (add-to-list 'speedbar-fetch-etags-parse-list
-;;  		     '("\\.go" . speedbar-parse-c-or-c++tag))
-;; (speedbar-add-supported-extension ".cpp")
-;; (add-to-list 'speedbar-fetch-etags-parse-list
-;;  		     '("\\.cpp" . speedbar-parse-c-or-c++tag))
-;; (speedbar-add-supported-extension ".xml")
-;; (add-to-list 'speedbar-fetch-etags-parse-list
-;;  	         '("\\.xml" . speedbar-parse-c-or-c++tag))
-;; (speedbar-add-supported-extension ".kt")
-;; (add-to-list 'speedbar-fetch-etags-parse-list
-;;              '("\\.kt" . speedbar-parse-c-or-c++tag))
-;; (speedbar-add-supported-extension ".kts")
-;; (add-to-list 'speedbar-fetch-etags-parse-list
-;;              '("\\.kts" . speedbar-parse-c-or-c++tag))
-;; (speedbar-add-supported-extension ".pyim") ;;; for .pyim 用户词典修改
-;; (add-to-list 'speedbar-fetch-etags-parse-list
-;;              '("\\.pyim" . speedbar-parse-c-or-c++tag))
-;; (speedbar-add-supported-extension ".gradle")
-;; (add-to-list 'speedbar-fetch-etags-parse-list
-;;  		     '("\\.gradle" . speedbar-parse-c-or-c++tag))
-;; (speedbar-add-supported-extension ".properties")
-;; (add-to-list 'speedbar-fetch-etags-parse-list
-;;  		     '("\\.properties" . speedbar-parse-c-or-c++tag))
-;; (speedbar-add-supported-extension ".txt")
-;; (add-to-list 'speedbar-fetch-etags-parse-list
-;;  		     '("\\.txt" . speedbar-parse-c-or-c++tag))
-;; (speedbar-add-supported-extension ".mk")
-;; (add-to-list 'speedbar-fetch-etags-parse-list
-;;  		     '("\\.mk" . speedbar-parse-c-or-c++tag))
-;; (speedbar-add-supported-extension ".shader")
-;; (add-to-list 'speedbar-fetch-etags-parse-list
-;;  		     '("\\.shader" . speedbar-parse-c-or-c++tag))
-;; (speedbar-add-supported-extension ".glsl")
-;; (add-to-list 'speedbar-fetch-etags-parse-list
-;;  		     '("\\.glsl" . speedbar-parse-c-or-c++tag))
-;; (speedbar-add-supported-extension ".org")
-;; (add-to-list 'speedbar-fetch-etags-parse-list
-;;  		     '("\\.org" . speedbar-parse-c-or-c++tag))
-;; (speedbar-add-supported-extension ".md")
-;; (add-to-list 'speedbar-fetch-etags-parse-list
-;;  		     '("\\.md" . speedbar-parse-c-or-c++tag))
-;; (speedbar-add-supported-extension ".kt")
-;; (add-to-list 'speedbar-fetch-etags-parse-list
-;;  		     '("\\.kt" . speedbar-parse-c-or-c++tag))
-;; (speedbar-add-supported-extension ".aidl")
-;; (add-to-list 'speedbar-fetch-etags-parse-list
-;;  		     '("\\.aidl" . speedbar-parse-c-or-c++tag))
-;; (speedbar-add-supported-extension ".yaml")
-;; (add-to-list 'speedbar-fetch-etags-parse-list
-;;  		     '("\\.yaml" . speedbar-parse-c-or-c++tag))
-;; (speedbar-add-supported-extension ".xaml")
-;; (add-to-list 'speedbar-fetch-etags-parse-list
-;;  		     '("\\.xaml" . speedbar-parse-c-or-c++tag))
-;; (speedbar-add-supported-extension ".sh")
-;; (add-to-list 'speedbar-fetch-etags-parse-list
-;;  		     '("\\.sh" . speedbar-parse-c-or-c++tag))
-;; (speedbar-add-supported-extension ".json")
-;; (add-to-list 'speedbar-fetch-etags-parse-list
-;;  		     '("\\.json" . speedbar-parse-c-or-c++tag))
-;; (speedbar-add-supported-extension ".proto")
-;; (add-to-list 'speedbar-fetch-etags-parse-list
-;;  		     '("\\.proto" . speedbar-parse-c-or-c++tag))
-;; (speedbar-add-supported-extension ".cshtml")
-;; (add-to-list 'speedbar-fetch-etags-parse-list
-;;  		     '("\\.cshtml" . speedbar-parse-c-or-c++tag))
-;; (speedbar-add-supported-extension ".csproj")
-;; (add-to-list 'speedbar-fetch-etags-parse-list
-;;  		     '("\\.csproj" . speedbar-parse-c-or-c++tag))
-;; (speedbar-add-supported-extension ".lua")
-;; (add-to-list 'speedbar-fetch-etags-parse-list
-;;  		     '("\\.lua" . speedbar-parse-c-or-c++tag))
-;; (speedbar-add-supported-extension ".swift")
-;; (add-to-list 'speedbar-fetch-etags-parse-list
-;;  		     '("\\.swift" . speedbar-parse-c-or-c++tag))
-
-;; (custom-set-variables '(speedbar-show-unknown-files t))
 (setq speedbar-show-unknown-files t)
-;; (add-to-list 'speedbar-frame-parameters '(left-fringe . 0)) ; doesn't seem to work
 (setq sr-speedbar-width 35)
 (setq window-size-fixed 'width)
 (setq sr-speedbar-width 35)
@@ -121,7 +38,7 @@
 (setq window-size-fixed 'width)
 (setq sr-speedbar-right-side nil)    ; Left-side pane
 (setq sr-speedbar-width-x 35)
-(setq dframe-update-speed t)        ; prevent the speedbar to update the current state, since it is always changing  
+(setq dframe-update-speed nil)        ; prevent the speedbar to update the current state, since it is always changing  
 
 (defun sb/expand-tags ()
   "Expand current `sr-speedbar' buffer file."
@@ -159,12 +76,6 @@
 
 (global-set-key (kbd "<f5>") (lambda()  
                                (interactive)
-;;  ;;;; 想要实现不止一个步骤:F5之后，如果当前为中文输入法，自动切换为英文输入法【使用 pyim 之后，可以自动调节，不再需要 sis 介入，也不需要 macism 】
-;;                                (when (eq (shell-command "macism") "im.rime.inputmethod.Squirrel.Hans")
-;; ;;; TODO: TOGETHER WITH C-J USAGE: 这里使用了它人包裹中的api ，但是没有用全，就是它人包裹接下来还有输入法改变之的光标颜色跟着改变，要么我用错api 了，要么我还需要通知光标跟着改变颜色，才能保持中文输入法一种固定着色，英语输入法一种固定光标着色
-;; ;;; TODO: TO MAKE PYIM INPUT METHOD WORK, FOR AUTO INPUT METHOD SWITCHES, OR RESEARCH ON ONES THIS PACKAGE PROVIDED                                 
-;;                                  (sis-set-english)) 
-
 ;;; 如果窗口存在,就切换过去;不存在则打开并切换到浏览窗口,坏处是窗口永远无法关闭                               
                                (if (sr-speedbar-exist-p)
                                    (select-window sr-speedbar-window)
@@ -189,8 +100,22 @@
 
 ;;;;; 放在这里的目的：是为了把它统一到一个里面来写，可能才起作用
 (make-face 'speedbar-face)
-(set-face-font 'speedbar-face "Fira Code Light-13") ;;; 一堆显示不出来的码
-;; (setq speedbar-mode-hook '(lambda () (buffer-face-set 'speedbar-face)))
+;; (set-face-font 'speedbar-face "Fira Code Light-13") ;;; 一堆显示不出来的码
+(set-face-font 'speedbar-face "Inconsolata-14");; 想字号再大一点儿
+(setq speedbar-mode-hook '(lambda () (buffer-face-set 'speedbar-face)))
+
+
+;;; 添加一个功能键 h 快速到 base-directory
+(setq var_start-path default-directory)
+(define-key speedbar-file-key-map (kbd "h")
+            (lambda() (interactive)
+              (when (and (not (equal var_start-path
+                                     sr-speedbar-last-refresh-dictionary))
+                         (not (sr-speedbar-window-p)))
+                (setq sr-speedbar-last-refresh-dictionary var_start-path))
+              (setq default-directory var_start-path)
+              (speedbar-refresh))
+            )
 
 
 ;; (speedbar 1)
@@ -204,5 +129,6 @@
                             ))
 ;; (when window-system          ; start speedbar if we're using a window system
 ;;   (speedbar t))
+
 
 (provide 'init-sr-speedbar)

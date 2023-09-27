@@ -32,7 +32,7 @@
 ;;               (null (gethash major-mode
 ;;                              yas/snippet-tables)))
 ;;     (yas/minor-mode 1)))
-(defun my-yas-reload-all ()
+(defun my-yas-reload-all () ;; 可能还是分 mode 加载的，这个要再 debug 一下
   (interactive)
   (yas-compile-directory (file-truename "~/.emacs.d/snippets"))
   ;; (yas-reload-all) ;;;  我觉得是这里把所有的都加了一遍，这是不对的

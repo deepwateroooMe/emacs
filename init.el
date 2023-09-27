@@ -1,21 +1,19 @@
-
-
 ;;; 下面的启动太慢了；在没有必要的时候不想要它来耽误启动时间
-;; (require 'package)
-;; (add-to-list 'package-archives
-;;              '("melpa" . "https://melpa.org/packages/") t)
-;; (add-to-list 'package-archives
-;;              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-;; (package-initialize)
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(package-initialize)
 
-;; (setq debug-on-error t);; 它会无数次地停掉程序，去掉
+(setq debug-on-error t);; 它会无数次地停掉程序，去掉。改天再弄这个，把 sr-speedbar 的目录给弄出来
 ;; setup minimum warning msg: 想去掉 Makefile-mode 里 suspicious-line-warning
 (setq warning-minimum-level :emergency)
 
 ;; (setq default-directory "/Users/hhj/.emacs.d/")
 ;; (setq default-directory "/Users/hhj/pubFrameWorks/ET/")
 ;; (setq default-directory "/Users/hhj/rtt/multizone-sdk-arm/")
-(setq default-directory "/Users/hhj/os/mid2/MID2/")
+(setq default-directory "/Users/hhj/os/mid4/")
 
 ;; ;; Bootstrap 'use-package'
 ;; (eval-after-load 'gnutls
@@ -30,7 +28,7 @@
 ;; ;(debug-on-entry 'package-initialize)    
 
 
-(global-set-key (kbd "M-SPC") 'set-mark-command)
+;; (global-set-key (kbd "M-SPC") 'set-mark-command)
 
 (defvar best-gc-cons-threshold 4000000 "Best default gc threshold value. Should't be too big.")
 (setq gc-cons-threshold most-positive-fixnum) ;; don't GC during startup to save time
@@ -47,7 +45,7 @@
 
 
 ;;; show line number
-;(add-to-list 'load-path (expand-file-name "~/.emacs.d/")) ;拓展文件(插件)目录
+                                        ;(add-to-list 'load-path (expand-file-name "~/.emacs.d/")) ;拓展文件(插件)目录
 (autoload 'linum "linum" nil t)
 (require 'linum)
 (global-linum-mode 1)
@@ -146,15 +144,13 @@
   (require 'init-utils) ; (defun is-buffer-file-temp())   ;;;;;;; comment for temp only, debug later today
   (require 'idle-require)
   (require 'init-elpa)
- (require 'init-linum-mode)
+  (require 'init-linum-mode)
   (require 'init-exec-path) ;; Set up $PATH
-  ;; any file use flyspell should be initialized after init-spelling.el
-  ;; actually, I don't know which major-mode use flyspell.
   (require 'init-cc-mode)
   (require 'init-spelling)
   (require 'init-gui-frames)
   (require 'init-ido)
-  ;; (require 'init-dired)
+  ;; (require 'init-dired) ;; added today
   (require 'init-uniquify)
   (require 'init-ibuffer)
   (require 'init-ivy)
@@ -175,7 +171,6 @@
   (require 'init-lisp)
   (require 'init-elisp)
   (require 'init-auto-complete)
-
   (require 'cpputils-cmake) ; to do more work on this one
   ;; Use bookmark instead
   (require 'init-gud) 
@@ -197,28 +192,24 @@
   (require 'init-web-mode)
   (require 'init-slime)
   (require 'shader-mode)
-;  (require 'init-kotlin-mode)
+                                        ;  (require 'init-kotlin-mode)
   (require 'init-nxml-mode)
-  
-  ;; have NOT passed  
   (require 'init-org)			
   (require 'init-yasnippet)
   (require 'init-text)
   (require 'init-syslog-mode)
   (require 'init-misc)  ;; comment for replace-string
-  ;; (require 'init-hydra) ;; 不知道这个会影响哪些功能  
+  (require 'init-hydra) ;; 不知道这个会影响哪些功能  
   (require 'init-autopair) 
-  ;; (require 'init-sis)  ;; 不再需要这个东西，会给自己的程序造成混乱
 ;(require 'init-python-mode)
-;; (require 'init-auto-complete)
+  (require 'init-auto-complete)
   (require 'pangu-spacing)
   (require 'expand-region)
   (require 'init-protobuf-mode)
-  (require 'init-pdf-tools) ;;;; 我并没有使用这个
-;  (require 'init-org-noter-pdftools)
-  ;; (require 'init-company) ;;; 不喜欢它老是跑出一大堆的路径相关的,不方便; 它老是导致闪屏提示，不方便 
-  ;; (require 'init-csharp-mode)
-
+  ;; (require 'init-pdf-tools) ;;;; 我并没有使用这个
+  ;  (require 'init-org-noter-pdftools)
+  ;; (require 'init-company) ;;; 不喜欢它老是跑出一大堆的路径相关的,不方便; 它老是导致闪屏提示，在能够修改闪屏前，先禁用 
+  (require 'init-csharp-mode)
   
   (require 'init-swift-mode)
   (require 'init-color-theme)
@@ -287,8 +278,8 @@
   "Alist of basic info about people.
 Each element has the form (NAME AGE MALE-FLAG)."
   ;; :type '(alist :value-type (group integer boolean)))
-:type '(choice (integer :tag "Limit")
-               (const :tag "Unlimited" nil)))
+  :type '(choice (integer :tag "Limit")
+                 (const :tag "Unlimited" nil)))
 (defun shift-right ()
   (interactive)
   (shift-region sftLen))
@@ -525,7 +516,7 @@ Each element has the form (NAME AGE MALE-FLAG)."
 
 ;; (set-face-attribute 'region nil :background "#666" :foreground "#ffffff") 
 (setq yas-indent-line 'auto)
-;(setq yas/indent-line 'auto)
+                                        ;(setq yas/indent-line 'auto)
 
 (setq my/for-org nil)
 ;; (when (bound-and-true-p my/for-org) (load-theme 'misterioso))
@@ -541,7 +532,7 @@ Each element has the form (NAME AGE MALE-FLAG)."
                     ;; (font-spec :family "courier new" :height 130 )))
                     ;; (font-spec :family "Sarasa Mono Slab SC Semibold" :size 12 :weight semibold))) 
                     (font-spec :family "Sarasa Mono SC" :size 12))) 
-                    ;; (font-spec :family "Sarasa Mono Slab SC Semibold" :height 130)))
+;; (font-spec :family "Sarasa Mono Slab SC Semibold" :height 130)))
 
 
 ;;;; 加载snippets 的接口
@@ -579,7 +570,7 @@ Each element has the form (NAME AGE MALE-FLAG)."
  '(org-support-shift-select nil)
  '(orgsftLen 2)
  '(package-selected-packages
-   '(tree-sitter-indent tree-sitter-langs tree-sitter company-sourcekit cnfonts go-mode slime rime xr pyim-wbdict web-mode-edit-element auctex fuzzy ppd-sr-speedbar lsp-mode py-autopep8 logview virtualenvwrapper company-jedi flycheck-color-mode-line auto-complete-clang-async flycheck-swift flycheck swift-mode yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link))
+   '(org-download tree-sitter-indent tree-sitter-langs tree-sitter company-sourcekit cnfonts go-mode slime rime xr pyim-wbdict web-mode-edit-element auctex fuzzy ppd-sr-speedbar lsp-mode py-autopep8 logview virtualenvwrapper company-jedi flycheck-color-mode-line auto-complete-clang-async flycheck-swift flycheck swift-mode yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link))
  '(pdf-tools-handle-upgrades nil)
  '(session-use-package t nil (session))
  '(show-paren-mode t)
@@ -633,8 +624,3 @@ Each element has the form (NAME AGE MALE-FLAG)."
  '(region ((t (:extend t :background "dodger blue" :foreground "#e1e1e0"))))
  '(speedbar-directory-face ((t (:foreground "light slate blue" :height 100 :family "Droid Sans"))))
  '(window-numbering-face ((t (:foreground "DeepPink" :underline "DeepPink" :weight bold))) t))
-	;;; Local Variables:
-;;; no-byte-compile: t
-;;; End:
-                                        ;(put 'erase-buffer 'disabled nil)
-;; '(cursor ((t (:background "orchid"))))

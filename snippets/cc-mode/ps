@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: ps
-# key: ps
-# --
-uprints("$1(): $2 \n\r");$0

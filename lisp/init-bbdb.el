@@ -8,6 +8,8 @@
 ;; import Gmail contacts in vcard format into bbdb
 (setq gmail2bbdb-bbdb-file "~/.bbdb")
 
+
+;; 【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】
 (defun bbdb-initialize-hook-setup ()
   ;; @see http://emacs-fu.blogspot.com.au/2009/08/managing-e-mail-addresses-with-bbdb.html
   (setq
