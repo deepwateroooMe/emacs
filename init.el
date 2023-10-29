@@ -13,7 +13,9 @@
 ;; (setq default-directory "/Users/hhj/.emacs.d/")
 ;; (setq default-directory "/Users/hhj/pubFrameWorks/ET/")
 ;; (setq default-directory "/Users/hhj/rtt/multizone-sdk-arm/")
-(setq default-directory "/Users/hhj/os/mid4/")
+;; (setq default-directory "/Users/hhj/rtt/")
+;; (setq default-directory "/Users/hhj/os/lab6/")
+(setq default-directory "/Users/hhj/os/lab6/")
 
 ;; ;; Bootstrap 'use-package'
 ;; (eval-after-load 'gnutls
@@ -201,13 +203,13 @@
   (require 'init-misc)  ;; comment for replace-string
   (require 'init-hydra) ;; 不知道这个会影响哪些功能  
   (require 'init-autopair) 
-;(require 'init-python-mode)
+                                        ;(require 'init-python-mode)
   (require 'init-auto-complete)
   (require 'pangu-spacing)
   (require 'expand-region)
   (require 'init-protobuf-mode)
   ;; (require 'init-pdf-tools) ;;;; 我并没有使用这个
-  ;  (require 'init-org-noter-pdftools)
+                                        ;  (require 'init-org-noter-pdftools)
   ;; (require 'init-company) ;;; 不喜欢它老是跑出一大堆的路径相关的,不方便; 它老是导致闪屏提示，在能够修改闪屏前，先禁用 
   (require 'init-csharp-mode)
   
@@ -298,13 +300,12 @@ Each element has the form (NAME AGE MALE-FLAG)."
                 (lambda ()
                   (interactive)
                   (setq this-command 'next-line)
-                  (next-line 7)))
+                  (next-line 5)))
 (global-set-key (kbd "M-p")
                 (lambda ()
                   (interactive)
                   (setq this-command 'previous-line)
-                  (previous-line 7)))
-
+                  (previous-line 5)))
 
 ;;; autorevert buffer
 (require 'autorevert)
@@ -531,8 +532,13 @@ Each element has the form (NAME AGE MALE-FLAG)."
                     charset
                     ;; (font-spec :family "courier new" :height 130 )))
                     ;; (font-spec :family "Sarasa Mono Slab SC Semibold" :size 12 :weight semibold))) 
-                    (font-spec :family "Sarasa Mono SC" :size 12))) 
+                    ;; (font-spec :family "Sarasa Mono SC" :size 12))) 
+                    (font-spec :family "PingFang SC" :size 15))) ;; 不知道，我这里为什么调整了没有变化
 ;; (font-spec :family "Sarasa Mono Slab SC Semibold" :height 130)))
+
+
+;; too often: mini-buffer is difficult to close, C-g F12
+(define-key minibuffer-local-map (kbd "<f12>") 'abort-recursive-edit)
 
 
 ;;;; 加载snippets 的接口

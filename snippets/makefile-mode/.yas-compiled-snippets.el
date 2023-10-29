@@ -8,4 +8,4 @@
                        ("all" "all:\n        $0" "all" nil nil nil "/Users/hhj/.emacs.d/snippets/makefile-mode/all" nil nil)))
 
 
-;;; Do not edit! File generated at Tue Sep 26 21:53:09 2023
+;;; Do not edit! File generated at Sat Oct 28 14:08:48 2023

@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: running->
+# key: rp
+# --
+r->$0

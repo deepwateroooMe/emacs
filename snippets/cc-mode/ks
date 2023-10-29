@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ks
+# key: ks
+# --
+kstack[SSIZE-$1]$0

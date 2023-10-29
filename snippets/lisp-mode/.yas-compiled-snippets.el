@@ -17,4 +17,4 @@
                        ("cls" "(defclass ${1:name} (${2:inherits})\n   (${4:slot})\n   (:documentation \"${3:doc}\"))\n$0\n" "class" nil nil nil "/Users/hhj/.emacs.d/snippets/lisp-mode/class" nil nil)))
 
 
-;;; Do not edit! File generated at Tue Sep 26 21:53:09 2023
+;;; Do not edit! File generated at Sat Oct 28 14:08:48 2023

@@ -8,14 +8,6 @@
 (setq sr-speedbar-refresh-turn-off nil)
 
 
-;; Add new extensions for speedbar tagging (allow to expand/collapse
-;; sections, etc.) -- do this BEFORE firing up speedbar?
-(speedbar-add-supported-extension
- '(".org" ".c" ".s" ".txt" ".ld" "mk" "Makefile" "makefile" ".java" ".cs"))
-(custom-set-variables
- '(speedbar-show-unknown-files t)
- )
-
 ;;; set faces speedbar-dirctory-face
 (defface speedbar-symlink-directory-face
   '((((class color) (background light)) :foreground "red")
@@ -74,6 +66,7 @@
 ;;; 下面这行会制造很多问题
 ;; (add-hook 'after-save-hook 'sb/expand-tags)
 
+
 (global-set-key (kbd "<f5>") (lambda()  
                                (interactive)
 ;;; 如果窗口存在,就切换过去;不存在则打开并切换到浏览窗口,坏处是窗口永远无法关闭                               
@@ -129,6 +122,15 @@
                             ))
 ;; (when window-system          ; start speedbar if we're using a window system
 ;;   (speedbar t))
+
+
+;; Add new extensions for speedbar tagging (allow to expand/collapse
+;; sections, etc.) -- do this BEFORE firing up speedbar?
+(speedbar-add-supported-extension
+ '(".org" ".c" ".s" ".txt" ".ld" "mk" "mku" "Makefile" "makefile" ".java" ".cs" ".out" ".log", ".cfg"))
+(custom-set-variables
+ '(speedbar-show-unknown-files t)
+ )
 
 
 (provide 'init-sr-speedbar)
