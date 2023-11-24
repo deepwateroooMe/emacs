@@ -1,9 +1,9 @@
-
 #+latex_class: cn-article
 #+title: Emacs Configuration
 #+author: deepwaterooo
 
 * Updates 
+- cc-mode has minor bugs of "At Top Level", which prevent auto-indent whole file. Will fix later. *【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】*
 - clean ARM M Emacs with pyim librime.dylib build capability. Great to have all convenient features enabled. 【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】
 - 【亲爱的表哥的活宝妹，任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】
 - 【亲爱的表哥的活宝妹，任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】

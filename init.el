@@ -16,7 +16,7 @@
 ;; (setq default-directory "/Users/hhj/rtt/")
 ;; (setq default-directory "/Users/hhj/os/lab6/")
 ;; (setq default-directory "/Users/hhj/os/lab7/")
-(setq default-directory "/Users/hhj/os/xv6-public/")
+(setq default-directory "/Users/hhj/graOS/xv6-public/")
 
 ;; ;; Bootstrap 'use-package'
 ;; (eval-after-load 'gnutls

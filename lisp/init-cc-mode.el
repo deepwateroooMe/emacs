@@ -4,6 +4,7 @@
 (add-to-list 'auto-mode-alist '("\\.cpp\\'" . c-mode))
 (add-to-list 'auto-mode-alist '("\\.c\\'" . c-mode)) ;; 我自己又加的，不知道加对了没有
 
+
 (defun c-wx-lineup-topmost-intro-cont (langelem)
   (save-excursion
     (beginning-of-line)
@@ -13,6 +14,7 @@
 
 (setq c-default-style "linux" c-basic-offset 4)
 (setq c-default-style "linux")
+
 
 (fset 'cmtEnCh;;; 这里的 C-j C-i 与上面的 C-c-f 会给 C-cf 制造麻烦，需要绑定不同的鍵，这里暂时移动一下，看看它有没有什么区别 ?
       (kmacro-lambda-form [f4 ?  ?/ ?/ ?  ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?\C-x] 0 "%d"))
@@ -42,6 +44,7 @@
 ;;   (setq c-offsets-alist (delq (assoc key c-offsets-alist) c-offsets-alist))
 ;;   ;; new value
 ;;   (add-to-list 'c-offsets-alist '(key . val)))
+
 
 (defun my-common-cc-mode-setup ()
   "setup shared by all languages (java/groovy/c++ ...)"
@@ -102,6 +105,8 @@
     )
   )
 
+
+
 ;; donot use c-mode-common-hook or cc-mode-hook because many major-modes use this hook
 (defun c-mode-common-hook-setup ()
     (unless (is-buffer-file-temp)
@@ -119,8 +124,8 @@
       (local-set-key " " 'my/c-mode-insert-space);; 添加，期望：活宝妹注释时，会【 // 】输入法正确，且前后都有一个空格。这个功能用得更多。上面的功能，就手动或配置其它銉
       )
     ))
-(add-hook 'c-mode-common-hook 'c-mode-common-hook-setup)
-;; (add-hook 'c-mode-common-hook 'google-set-c-style) ;; 这个，为什么会破坏活宝妹的个性化配置呢？只在看 xv6OS 时才打开
+(add-hook 'c-mode-common-hook 'google-set-c-style) ;; 这个，为什么会破坏活宝妹的个性化配置呢？只在看 xv6OS 时才打开 ;;; 现在打开几天用下 C-c i 会被覆盖掉不能用
+(add-hook 'c-mode-common-hook 'c-mode-common-hook-setup);; 这样，就把C-c i 写到后面，应该是可以用了。亲爱的表哥的活宝妹，任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！
 ;;; 爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！
 
 (defun my/c-mode-insert-space (arg)
