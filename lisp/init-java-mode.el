@@ -1,5 +1,5 @@
 ;;;
-(setq interpreter-mode-alist
+(Setq interpreter-mode-alist
       (cons '("java" . java-mode) interpreter-mode-alist))
 (add-to-list 'auto-mode-alist '("\\.java\\'" . java-mode))
 (add-to-list 'auto-mode-alist '("\\.aidl\\'" . java-mode))

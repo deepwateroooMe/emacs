@@ -2,4 +2,4 @@
 # name: uf
 # key: uf
 # --
-uprintf("$1\n"$2);$0
+uprintf("$1 = %${2:x}\n", $1);$0

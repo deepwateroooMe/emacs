@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: printff
+# key: pff
+# --
+printf("$1(): $2 = %${3:x}, $4 = %${5:x}\n", $2, $4);
+$0

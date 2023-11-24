@@ -1,5 +1,5 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: running->
+# name: r->pgdir[]
 # key: rp
 # --
-r->$0
+p->pgdir[$1]$0

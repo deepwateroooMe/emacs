@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# name: printf
+# name: printf_ori
 # key: pr
 # --
 printf("${1:format string}"${2: ,a0,a1});

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: uff
+# key: uff
+# --
+uprintf("$1 = %${2:x}, $3 = %${4:s}\n", $1, $3);$0

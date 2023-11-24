@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: uprintfMsg
+# key: um
+# --
+uprintf("$1\n");$0

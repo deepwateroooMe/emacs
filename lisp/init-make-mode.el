@@ -5,10 +5,12 @@
       (cons '("\\.mak\\'" . makefile-nmake-mode) auto-mode-alist))
 (setq auto-mode-alist
       (cons '("\\.mk\\'" . makefile-nmake-mode) auto-mode-alist))
-(setq auto-mode-alist
-      (cons '("\\mku\\'"  . makefile-nmake-mode) auto-mode-alist))
-(setq auto-mode-alist
+(setq auto-mode-alist ;; making Umode-makefile
       (cons '("\\mk\\'"  . makefile-nmake-mode) auto-mode-alist))
+(setq auto-mode-alist ;; making Umode-makefile
+      (cons '("\\mku\\'"  . makefile-nmake-mode) auto-mode-alist))
+(setq auto-mode-alist ;; making Kmode-makefile
+      (cons '("\\mkk\\'"  . makefile-nmake-mode) auto-mode-alist))
 (setq auto-mode-alist
       (cons '("\\makefile\\'"  . makefile-nmake-mode) auto-mode-alist))
 (setq auto-mode-alist

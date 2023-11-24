@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: printfMsg
+# key: pm
+# --
+printf("$1\n");
+$0
