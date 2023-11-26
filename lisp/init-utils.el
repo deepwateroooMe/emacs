@@ -261,7 +261,8 @@ If N is nil, use `ivy-mode' to browse the `kill-ring'."
       (with-output-to-string
         (with-current-buffer standard-output
           (call-process "getclip" nil t nil))))
-     ((memq system-type '(gnu gnu/linux gnu/kfreebsd))
+     ;; ((memq system-type '(gnu gnu/linux gnu/kfreebsd)) ;;; 亲爱的表哥的活宝妹把这里改掉
+      ((memq system-type '(awk gnu gnu/linux))
       (with-output-to-string
         (with-current-buffer standard-output
           (call-process "xsel" nil t nil "--clipboard" "--output")))))))
@@ -277,7 +278,8 @@ If N is nil, use `ivy-mode' to browse the `kill-ring'."
       (with-temp-buffer
         (insert str-val)
         (call-process-region (point-min) (point-max) "putclip")))
-     ((memq system-type '(gnu gnu/linux gnu/kfreebsd))
+     ;; ((memq system-type '(gnu gnu/linux gnu/kfreebsd))
+      ((memq system-type '(awk gnu gnu/linux))
       (with-temp-buffer
         (insert str-val)
         (call-process-region (point-min) (point-max) "xsel" nil nil nil "--clipboard" "--input"))))))

@@ -94,7 +94,8 @@ Suitable for inclusion in `c-offsets-alist'."
         c-semi&comma-no-newlines-before-nonblanks))
     (c-indent-comments-syntactically-p . t)
     (comment-column . 40)
-    (c-indent-comment-alist . ((other . (space . 2))))
+    (c-indent-comment-alist . ((other . (space . 4))))
+    ;; (c-indent-comment-alist . ((other . (space . 2))))
     (c-cleanup-list . (brace-else-brace
                        brace-elseif-brace
                        brace-catch-brace

@@ -1,3 +1,4 @@
+
 ;;; 下面的启动太慢了；在没有必要的时候不想要它来耽误启动时间
 (require 'package)
 (add-to-list 'package-archives
@@ -10,13 +11,13 @@
 ;; setup minimum warning msg: 想去掉 Makefile-mode 里 suspicious-line-warning
 (setq warning-minimum-level :emergency)
 
-;; (setq default-directory "/Users/hhj/.emacs.d/")
+(setq default-directory "/Users/hhj/.emacs.d/")
 ;; (setq default-directory "/Users/hhj/pubFrameWorks/ET/")
 ;; (setq default-directory "/Users/hhj/rtt/multizone-sdk-arm/")
 ;; (setq default-directory "/Users/hhj/rtt/")
 ;; (setq default-directory "/Users/hhj/os/lab6/")
 ;; (setq default-directory "/Users/hhj/os/lab7/")
-(setq default-directory "/Users/hhj/graOS/xv6-public/")
+;; (setq default-directory "/Users/hhj/graOS/xv6-public/")
 
 ;; ;; Bootstrap 'use-package'
 ;; (eval-after-load 'gnutls
@@ -141,7 +142,6 @@
 (let ((file-name-handler-alist nil))
   (require 'init-autoload)  ;; too many, commented this one out
   (require 'init-modeline)
-  (require 'init-pyim)
   (require 'init-compat)
   (require 'init-site-lisp) ;; Must come before elpa, as it may provide package.el
   (require 'init-utils) ; (defun is-buffer-file-temp())   ;;;;;;; comment for temp only, debug later today
@@ -149,7 +149,6 @@
   (require 'init-elpa)
   (require 'init-linum-mode)
   (require 'init-exec-path) ;; Set up $PATH
-  (require 'init-cc-mode)
   (require 'init-spelling)
   (require 'init-gui-frames)
   (require 'init-ido)
@@ -210,15 +209,16 @@
   (require 'expand-region)
   (require 'init-protobuf-mode)
   ;; (require 'init-pdf-tools) ;;;; 我并没有使用这个
-                                        ;  (require 'init-org-noter-pdftools)
-  ;; (require 'init-company) ;;; 不喜欢它老是跑出一大堆的路径相关的,不方便; 它老是导致闪屏提示，在能够修改闪屏前，先禁用 
-  (require 'init-csharp-mode)
-  
-  (require 'init-swift-mode)
+  ;  (require 'init-org-noter-pdftools)
   (require 'init-color-theme)
   (require 'init-asm-mode)
+  ;; (require 'init-company) ;;; 不喜欢它老是跑出一大堆的路径相关的,不方便; 它老是导致闪屏提示，在能够修改闪屏前，先禁用 
+  ;; (require 'init-csharp-mode) ; 
   (require 'ld-script)
   (require 'init-make-mode)
+  (require 'init-pyim);; 
+  (require 'init-swift-mode);; 
+  (require 'init-cc-mode)
   )
 
 ;;; 【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】
