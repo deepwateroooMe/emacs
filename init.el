@@ -11,13 +11,13 @@
 ;; setup minimum warning msg: 想去掉 Makefile-mode 里 suspicious-line-warning
 (setq warning-minimum-level :emergency)
 
-(setq default-directory "/Users/hhj/.emacs.d/")
+;; (setq default-directory "/Users/hhj/.emacs.d/")
 ;; (setq default-directory "/Users/hhj/pubFrameWorks/ET/")
 ;; (setq default-directory "/Users/hhj/rtt/multizone-sdk-arm/")
 ;; (setq default-directory "/Users/hhj/rtt/")
 ;; (setq default-directory "/Users/hhj/os/lab6/")
 ;; (setq default-directory "/Users/hhj/os/lab7/")
-;; (setq default-directory "/Users/hhj/graOS/xv6-public/")
+(setq default-directory "/Users/hhj/graOS/xv6-public/")
 
 ;; ;; Bootstrap 'use-package'
 ;; (eval-after-load 'gnutls
