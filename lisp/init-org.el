@@ -1,8 +1,8 @@
 ;; org-mode
 ;; (global-linum-mode 1)
-(setq load-path (cons "C:/Users/blue_/AppData/Roaming/.emacs.d/elpa/org-20140901/" load-path))
+;; (setq load-path (cons "C:/Users/blue_/AppData/Roaming/.emacs.d/elpa/org-20140901/" load-path))
 (require 'ox)
-(require 'org-install)
+;; (require 'org-install)
 (require 'ob-ditaa)  
 (require 'ox-publish)
 (require 'ox-latex)
@@ -382,6 +382,34 @@
                ("\\paragraph{%s}" . "\\paragraph*{%s}")
                ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
+(add-to-list 'org-latex-classes
+             '("IEEEtran"
+               "\\documentclass[conference]{IEEEtran}"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+             ;; ("article" "\\documentclass[11pt]{article}" ;; I don't think i need this
+             ;;  ("\\section{%s}" . "\\section*{%s}")
+             ;;  ("\\subsection{%s}" . "\\subsection*{%s}")
+             ;;  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+             ;;  ("\\paragraph{%s}" . "\\paragraph*{%s}")
+             ;;  ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
+             ;; ("report" "\\documentclass[11pt]{report}"
+             ;;  ("\\part{%s}" . "\\part*{%s}")
+             ;;  ("\\chapter{%s}" . "\\chapter*{%s}")
+             ;;  ("\\section{%s}" . "\\section*{%s}")
+             ;;  ("\\subsection{%s}" . "\\subsection*{%s}")
+             ;;  ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))
+             ;; ("book" "\\documentclass[11pt]{book}"
+             ;;  ("\\part{%s}" . "\\part*{%s}")
+             ;;  ("\\chapter{%s}" . "\\chapter*{%s}")
+             ;;  ("\\section{%s}" . "\\section*{%s}")
+             ;;  ("\\subsection{%s}" . "\\subsection*{%s}")
+             ;;  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
+'(org-latex-image-default-width "0.3\\linewidth")
+'(package-selected-packages '(org-ref))
 
 ;; 因为新版本的 org.el 里源码区的样式（整条两长条开始结束行），活宝妹不喜欢，所以一直用老版本的 org-mode(两条短横线); 但是它影响了 beamer 里主题的使用
 ;; 仍然暂时先这样【基本功能齐全：图片、源码、除了报几个没改的错，基本不影响使用体验】老版本，基本功能齐全。不是必须，也可以不用再浪费时间配置这个

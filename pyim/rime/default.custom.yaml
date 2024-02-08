@@ -6,7 +6,7 @@ patch:
       "speller/auto_select": false
       "speller/auto_select_unique_candidate": false
 
-  #+END_EXAMPLE
+#+END_EXAMPLE
 
   # `liberime-get-context' 函数在默认情况下一次只能获取5个候选词，如
   # 果想获取更多的候选词，就需要给 liberime 发送翻页命令字符，模拟翻

@@ -2,5 +2,5 @@
 # name: printf
 # key: pf
 # --
-printf("$1(): $2 = %${3:x}\n", $2);
+printf("$1(): $2 = %${3:s}\n", $2);
 $0

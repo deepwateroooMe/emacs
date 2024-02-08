@@ -76,9 +76,6 @@
                                  (sr-speedbar-select-window) ;;; 暂时去掉这个，可能还会有残存问题，因为自己当初加了这个的
                                  )))
 
-;; (sis-set-other)
-;; (shell-command "macism") ;;;;; -to-string
-
 ;;; 设置为关闭窗口; 填加一个手误功能,当点了F4,
 ;;; 把这个功能失活，C－j好用的键，只在窗口关键下才起作用。但是窗口是关闭的,那么当F5来用,打开窗口并将光标切换到窗口
 (global-set-key [(f4)] (lambda ()
@@ -116,7 +113,7 @@
                             (interactive)
                             (other-frame 0)
                             (buffer-face-set 'speedbar-face)
-;;; 试着将它设置为常驻，不停不关掉，只实现两个不同窗口的跳转                            
+;;; 试着将它设置为常驻，不停不关掉【可是这个功能不便利】，只实现两个不同窗口的跳转：需要，每选择一个文件，导航窗口自动关闭，才方便：改天再弄这个                          
                             (sr-speedbar-open)
                             (sr-speedbar-select-window) ;;; 暂时去掉这个，可能还会有残存问题，因为自己当初加了这个的
                             ))
@@ -127,10 +124,10 @@
 ;; Add new extensions for speedbar tagging (allow to expand/collapse
 ;; sections, etc.) -- do this BEFORE firing up speedbar?
 (speedbar-add-supported-extension
- '(".org" ".c" ".s" ".txt" ".ld" "mk" "mkk" "mku" "Makefile" "makefile" ".java" ".cs" ".out" ".log" ".cfg" "map" ".S"))
-(custom-set-variables
- '(speedbar-show-unknown-files t)
- )
+ '(".org" ".c" ".s" ".txt" ".ld" "mk" "mkk" "mku" "Makefile" "makefile" ".java" ".cs" ".out" ".log" ".cfg" "map" ".S" ".kt"))
+;; (custom-set-variables ;;; temporary-do-NOT show .tex etc hate...
+;;  '(speedbar-show-unknown-files t)
+;;  )
 
 
 (provide 'init-sr-speedbar)

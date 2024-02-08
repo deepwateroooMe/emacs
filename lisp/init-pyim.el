@@ -1,17 +1,50 @@
 ;;;;; 配置pyim emacs-rime 在emacs 中的前端
+;; 下面不知道为什么 liberime-core.so 也不知道摆哪里，找不到同步函数
 
-;;;;; 配置五笔词库：这两个去掉，就可以实现完全使用用戶词库了，所以，去掉所有的繁体字
-;; (require 'pyim-wbdict) ;; 那么，这个意思，就是，我不用装载的词典，全用个人用戶配置的两个词典，现是一个
-;; (setq pyim-default-scheme 'wubi)
-;; (pyim-wbdict-v86-enable) ;86版五笔用户使用这个命令
-;; ;; (pyim-wbdict-v86-single-enable) ;86版五笔用户使用这个命令，该词库为 单字词库【不想用单字的】，以尽可能不重码减少选词需要为目的
+;; (setq load-path (cons (file-truename "~/.emacs.d/elpa/liberime") load-path))
+;; ;; (require 'liberime)
+;; (load-file "~/.emacs.d/elpa/liberime/liberime.el")
+;; (use-package pyim
+;;   :demand t
+;;   :diminish pyim-isearch-mode
+;;   :init
+;;   (setq default-input-method "pyim")
+;;   (setq pyim-title "ㄓ")
+;;   ;; (use-feature posframe
+;;   ;;              :demand t)
+;;   ;; :custom
+;;   ;; (pyim-page-tooltip 'posframe)
+;;   ;; (pyim-page-length 9)
+;;   :config
+;;   (use-feature liberime
+;;                :load-path "~/.emacs.d/elpa/liberime/"
+;;                :demand t
+;;                ;; :init
+;;                ;; (module-load (expand-file-name "/Users/hhj/.emacs.d/elpa/liberime/src/liberime-core.dylib"));;this-is-NOT-right
+;;                :custom
+;;                (liberime-shared-data-dir "/Library/Input Methods/Squirrel.app/Contents/SharedSupport")
+;;                ;; (liberime-user-date-dir "~/.emacs.d/rime/")
+;;                (liberime-user-date-dir "~/Library/Rime/")
+;;                :config
+;;                (use-feature pyim-liberime
+;;                             :load-path "~/.emacs.d/pyim"
+;;                             :demand t
+;;                             :init
+;;                             (setq pyim-default-scheme 'wubi)
+;;                             )
+;;                (liberime-start liberime-shared-data-dir liberime-user-data-dir)
+;;                (liberime-try-select-schema "wubi86_jidian")
+;;                (liberime-select-schema "wubi86_jidian")
+;;                ))
 
+
+(setq load-path (cons (file-truename "~/.emacs.d/elpa/liberime/src") load-path))
 (require 'pyim)
-;; (require 'posframe) ;; 使用 posframe 来绘制选词框，这里可以不要也能出来
-(require 'liberime) 
-
+(require 'liberime)
+;; (require 'liberime-core);; 这个不需要， liberime 会自动加载 liberime-core 
+(require 'liberime nil t)
 (setq default-input-method "pyim") ;; 设置为缺省输入法 
-;; (global-set-key (kbd "C-m") 'toggle-input-method) ;; 需要十字不动可以觙的好用的鍵组合:可是这仍然不起作用
+
 
 ;; 如果使用 popup page tooltip, 就需要加载 popup 包。
 ;; (require 'popup nil t)
@@ -33,30 +66,42 @@
 
 ;; 显示 5 个候选词: 太多引起的问题就是，得选半天
 (setq pyim-page-length 5)
-
 (require 'pyim-cregexp-utils)
-
-;; 我觉得liberime 这个模块，我还没有配置好，我现配置的提供的路径下可能都还没有
-(liberime-start "/usr/share/rime-data" "~/Library/Rime/") ;;; 这里公共的库里，我好像并没有任保的可用的数据
+(liberime-start "/usr/share/rime-data" "~/Library/Rime/") ;;; 这济发大i
 
 ;; 金手指设置，可以将光标处的编码（比如：拼音字符串）转换为中文。
 ;; (global-set-key (kbd "M-j") 'pyim-convert-string-at-point);; 我需要这个好用的健编代码 .....
 ;; 按 "C-<return>" 将光标前的 regexp 转换为可以搜索中文的 regexp.
 (define-key minibuffer-local-map (kbd "C-<return>") 'pyim-cregexp-convert-at-point)
 
+(with-eval-after-load "liberime"
+  (liberime-select-schema "wubi86_jidian")
+  (setq pyim-default-scheme 'wubi))
 (liberime-select-schema "wubi86_jidian")
 ;; 设置 pyim 默认使用的输入法策略，我使用全拼。
 (setq pyim-default-scheme 'wubi)
 
 
 ;;; 个人词库：可以有两个词库文件: 先测试用个人字典，没问题；现在就是怎么移除安装的带繁体的，只用简体詞库
+;;; the propose of these dicts: so that 亲爱的表哥的活宝妹，可以用相对个性化的词库。但是还没能连 macbook-os-Rime 词库自动同步
 (setq pyim-dicts '(
                    (:name "dict1" :file "/Users/hhj/.emacs.d/pyim/wubi86_jidian_selfbrew.pyim") ;; 路径为绝对路径【常用固定不变的词库： wubi86_jidian, 自己转换得来的，大约9 万词库量】 
                    (:name "dict1" :file "/Users/hhj/.emacs.d/pyim/user_dict.pyim")));; 这是活宝妹，亲爱的表哥，个人用戶词库，可以魔改的
+
+
+(setq liberime-shared-data-dir "/Library/Input Methods/Squirrel.app/Contents/SharedSupport")
+(setq liberime-user-date-dir "~/.emacs.d/rime/")
+;; (setq liberime-user-date-dir "~/Library/Rime/")
+
+
 ;; 让 Emacs 启动时自动加载 pyim 词库：得制造一个这样的词库文件 
 (add-hook 'emacs-startup-hook
           #'(lambda () (pyim-restart-1 t)))
+;; (add-hook 'after-init-hook #'liberime-sync)
+(add-hook 'after-init-hook #'liberime-sync-user-data)
 
+(let ((liberime-auto-build t))
+  (require 'liberime nil t))
 ;; TODO: 注意到，同样有候选唯一，但是不上屏的情况，如“杻”，想要设置型码候选唯一自动上屏，源码里有，pyim-autoselector.el 但是不知道它全自动设置了没有？
 
 

@@ -1,23 +1,22 @@
-
 ;;; 下面的启动太慢了；在没有必要的时候不想要它来耽误启动时间
-(require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/") t)
-(add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-(package-initialize)
+;; (require 'package)
+;; (add-to-list 'package-archives
+;;              '("melpa" . "https://melpa.org/packages/") t)
+;; (add-to-list 'package-archives
+;;              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+;; (package-initialize)
 
 (setq debug-on-error t);; 它会无数次地停掉程序，去掉。改天再弄这个，把 sr-speedbar 的目录给弄出来
 ;; setup minimum warning msg: 想去掉 Makefile-mode 里 suspicious-line-warning
 (setq warning-minimum-level :emergency)
+;; 配制，可以个性化 faces: 这里好像还是不行
+(setq custom--inhibit-theme-enable nil)
 
 ;; (setq default-directory "/Users/hhj/.emacs.d/")
+;; (setq default-directory "/Users/hhj/Tractor/")
 ;; (setq default-directory "/Users/hhj/pubFrameWorks/ET/")
-;; (setq default-directory "/Users/hhj/rtt/multizone-sdk-arm/")
-;; (setq default-directory "/Users/hhj/rtt/")
-;; (setq default-directory "/Users/hhj/os/lab6/")
-;; (setq default-directory "/Users/hhj/os/lab7/")
-(setq default-directory "/Users/hhj/graOS/xv6-public/")
+(setq default-directory "/Users/hhj/pp/android/SumTea_Android/")
+  
 
 ;; ;; Bootstrap 'use-package'
 ;; (eval-after-load 'gnutls
@@ -26,10 +25,52 @@
 ;;   (package-refresh-contents)
 ;;   (package-install 'use-package))
 ;; (eval-when-compile
-;;   (require 'use-package))
+;;   (require 'use-package)
+;;   ;; (require 'use-feature)
+;;   )
 ;; (require 'bind-key)
 ;; (setq use-package-always-ensure t)
-;; ;(debug-on-entry 'package-initialize)    
+;; (debug-on-entry 'package-initialize)    
+
+
+
+(setq load-path (cons (file-truename "~/.emacs.d/elpa/liberime") load-path))
+(require 'liberime)
+;; (setq load-path (cons (file-truename "~/.emacs.d/elpa/liberime") load-path))
+;; (load-file "~/.emacs.d/elpa/liberime/liberime.el")
+;; ;; (require 'liberime)
+;; (use-package pyim
+;;   :demand t
+;;   :diminish pyim-isearch-mode
+;;   :init
+;;   (setq default-input-method "pyim")
+;;   (setq pyim-title "ㄓ")
+;;   ;; (use-feature posframe
+;;   ;;              :demand t)
+;;   ;; :custom
+;;   ;; (pyim-page-tooltip 'posframe)
+;;   ;; (pyim-page-length 9)
+;;   :config
+;;   (use-feature liberime
+;;                :load-path "~/.emacs.d/elpa/liberime/"
+;;                :demand t
+;;                :init
+;;                (module-load (expand-file-name "/Users/hhj/.emacs.d/elpa/liberime/src/liberime-core.dylib"));;this-is-NOT-right
+;;                :custom
+;;                (liberime-shared-data-dir "/Library/Input Methods/Squirrel.app/Contents/SharedSupport")
+;;                ;; (liberime-user-date-dir "~/.emacs.d/rime/")
+;;                (liberime-user-date-dir "~/Library/Rime/")
+;;                :config
+;;                (use-feature pyim-liberime
+;;                             :load-path "~/.emacs.d/pyim"
+;;                             :demand t
+;;                             :init
+;;                             (setq pyim-default-scheme 'wubi)
+;;                             )
+;;                (liberime-start liberime-shared-data-dir liberime-user-data-dir)
+;;                (liberime-try-select-schema "wubi86_jidian")
+;;                (liberime-select-schema "wubi86_jidian")
+;;                ))
 
 
 ;; (global-set-key (kbd "M-SPC") 'set-mark-command)
@@ -194,7 +235,7 @@
   (require 'init-web-mode)
   (require 'init-slime)
   (require 'shader-mode)
-                                        ;  (require 'init-kotlin-mode)
+  (require 'init-kotlin-mode)
   (require 'init-nxml-mode)
   (require 'init-org)			
   (require 'init-yasnippet)
@@ -213,13 +254,14 @@
   (require 'init-color-theme)
   (require 'init-asm-mode)
   ;; (require 'init-company) ;;; 不喜欢它老是跑出一大堆的路径相关的,不方便; 它老是导致闪屏提示，在能够修改闪屏前，先禁用 
-  ;; (require 'init-csharp-mode) ; 
+  (require 'init-csharp-mode) ;; 早上先解决这个：必须这个 csharp-mode 是能够好好工作的！！！
   (require 'ld-script)
   (require 'init-make-mode)
-  (require 'init-pyim);; 
+  (require 'init-pyim);; ;;; 暂时放一下，亲爱的表哥的活宝妹来配置 
   (require 'init-swift-mode);; 
-  (require 'init-cc-mode)
+  ;; (require 'init-cc-mode)
   )
+
 
 ;;; 【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】
 ;; ;;; for macOS iOS swift-mode configurations
@@ -263,8 +305,9 @@
 (global-font-lock-mode)
 
 
-;;; make tab key always call a indent command
+;; make tab key always call a indent command
 ;; (setq-default tab-always-indent t)
+(setq-default tab-always-indent nil)
 
 (defun shift-region (distance)
   (let ((mark (mark)))
@@ -518,7 +561,7 @@ Each element has the form (NAME AGE MALE-FLAG)."
 
 ;; (set-face-attribute 'region nil :background "#666" :foreground "#ffffff") 
 (setq yas-indent-line 'auto)
-                                        ;(setq yas/indent-line 'auto)
+(setq yas/indent-line 'auto);; 不知道 csharp-mode 里，会不会出什么问题
 
 (setq my/for-org nil)
 ;; (when (bound-and-true-p my/for-org) (load-theme 'misterioso))
@@ -577,7 +620,7 @@ Each element has the form (NAME AGE MALE-FLAG)."
  '(org-support-shift-select nil)
  '(orgsftLen 2)
  '(package-selected-packages
-   '(org-download tree-sitter-indent tree-sitter-langs tree-sitter company-sourcekit cnfonts go-mode slime rime xr pyim-wbdict web-mode-edit-element auctex fuzzy ppd-sr-speedbar lsp-mode py-autopep8 logview virtualenvwrapper company-jedi flycheck-color-mode-line auto-complete-clang-async flycheck-swift flycheck swift-mode yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link))
+   '(kotlin-mode org-download tree-sitter-indent tree-sitter-langs tree-sitter company-sourcekit cnfonts go-mode slime rime xr pyim-wbdict web-mode-edit-element auctex fuzzy ppd-sr-speedbar lsp-mode py-autopep8 logview virtualenvwrapper company-jedi flycheck-color-mode-line auto-complete-clang-async flycheck-swift flycheck swift-mode yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link))
  '(pdf-tools-handle-upgrades nil)
  '(session-use-package t nil (session))
  '(show-paren-mode t)

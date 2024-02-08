@@ -78,10 +78,10 @@
   ;; emacs-c-opening-corresponding-header-file
   (local-set-key (kbd "C-x C-o") 'ff-find-other-file)
 
-  (setq cc-search-directories '("." "/usr/include" "/usr/local/include/*" "../*/include" "$WXWIN/include"))
+  ;; (setq cc-search-directories '("." "/usr/include" "/usr/local/include/*" "../*/include" "$WXWIN/include"))
 
-  ;; wxWidgets setup
-  (c-set-offset 'topmost-intro-cont 'c-wx-lineup-topmost-intro-cont);;; 不要这个了，应该就好了！！
+  ;; ;; wxWidgets setup
+  ;; (c-set-offset 'topmost-intro-cont 'c-wx-lineup-topmost-intro-cont);;; 不要这个了，应该就好了！！
 
   ;; make a #define be left-aligned
   (setq c-electric-pound-behavior (quote (alignleft)))
