@@ -1,48 +1,11 @@
 ;;;;; 配置pyim emacs-rime 在emacs 中的前端
-;; 下面不知道为什么 liberime-core.so 也不知道摆哪里，找不到同步函数
-
-;; (setq load-path (cons (file-truename "~/.emacs.d/elpa/liberime") load-path))
-;; ;; (require 'liberime)
-;; (load-file "~/.emacs.d/elpa/liberime/liberime.el")
-;; (use-package pyim
-;;   :demand t
-;;   :diminish pyim-isearch-mode
-;;   :init
-;;   (setq default-input-method "pyim")
-;;   (setq pyim-title "ㄓ")
-;;   ;; (use-feature posframe
-;;   ;;              :demand t)
-;;   ;; :custom
-;;   ;; (pyim-page-tooltip 'posframe)
-;;   ;; (pyim-page-length 9)
-;;   :config
-;;   (use-feature liberime
-;;                :load-path "~/.emacs.d/elpa/liberime/"
-;;                :demand t
-;;                ;; :init
-;;                ;; (module-load (expand-file-name "/Users/hhj/.emacs.d/elpa/liberime/src/liberime-core.dylib"));;this-is-NOT-right
-;;                :custom
-;;                (liberime-shared-data-dir "/Library/Input Methods/Squirrel.app/Contents/SharedSupport")
-;;                ;; (liberime-user-date-dir "~/.emacs.d/rime/")
-;;                (liberime-user-date-dir "~/Library/Rime/")
-;;                :config
-;;                (use-feature pyim-liberime
-;;                             :load-path "~/.emacs.d/pyim"
-;;                             :demand t
-;;                             :init
-;;                             (setq pyim-default-scheme 'wubi)
-;;                             )
-;;                (liberime-start liberime-shared-data-dir liberime-user-data-dir)
-;;                (liberime-try-select-schema "wubi86_jidian")
-;;                (liberime-select-schema "wubi86_jidian")
-;;                ))
-
-
 (setq load-path (cons (file-truename "~/.emacs.d/elpa/liberime/src") load-path))
+
 (require 'pyim)
 (require 'liberime)
 ;; (require 'liberime-core);; 这个不需要， liberime 会自动加载 liberime-core 
 (require 'liberime nil t)
+(require 'ivy);; 使中文 pyim下 ivy-resume 热键不出错
 (setq default-input-method "pyim") ;; 设置为缺省输入法 
 
 
@@ -104,33 +67,36 @@
   (require 'liberime nil t))
 ;; TODO: 注意到，同样有候选唯一，但是不上屏的情况，如“杻”，想要设置型码候选唯一自动上屏，源码里有，pyim-autoselector.el 但是不知道它全自动设置了没有？
 
-
 ;;;; pyim 光标的颜色，以及自动颜色等等
 ;; 这里说，可以切换光标的颜色
 (setq pyim-indicator-list (list #'pyim-indicator-with-cursor-color #'pyim-indicator-with-modeline))
 (setq pyim-indicator-cursor-color (list "orange" "white"));; 不知道为什么，前面一个是橙色，是中文状态。后面一个是灰色#b2b2b2 【改成浅蓝色了】英语状态
 (global-set-key (kbd "C-\\") 'toggle-input-method);; 暂就先加这里了
+(global-set-key (kbd "C-c C-r") 'ivy-resume) ;; 这么可以解决问题
+(global-set-key (kbd "RET") 'newline-and-indent) ;; 这么可以解决问题
+;; (define-key global-map (kbd "RET") 'newline-and-indent)
 
 
+;; 下面，是亲爱的表哥的活宝妹自己试过吗？感觉应该还有狠多，好用的功能，当初没能偿试。亲爱的表哥的活宝妹，自信的亲爱的表哥的活宝妹，自认为现在又强大一层呀。。再试试
 ;; 过灵：因为我使用半角标点,它就全把它转换成英语了,但凡有半角标点。不使用半角标点了，仍在某引起情况下会过灵，被廹使用英文，不得转换，所以得少用几个探针
-;; ;; 设置 pyim 探针： 我感觉他的这些探针更多的是对拼音畭法有效，想要更好的对五笔输入法的支持
-;; ;; 设置 pyim 探针设置，这是 pyim 高级功能设置，可以实现 *无痛* 中英文切换 :-)
-;; ;; 我自己使用的中英文动态切换规则是：
-;; ;; 1. 光标只有在注释里面时，才可以输入中文。
-;; ;; 2. 光标前是汉字字符时，才能输入中文。
-;; ;; 3. 使用 M-j 快捷键，强制将光标前的拼音字符串转换为中文。
-;; (setq-default pyim-english-input-switch-functions;; 这几个可能是太灵了，以致于我无法输入中文，所以去掉，只用一个
-;;               '(pyim-probe-dynamic-english ;; 这个函数的标注見下面的说明 : 
-;;                         ;; "激活这个 pyim 探针函数后，使用下面的规则动态切换中英文输入：
-;;                         ;; 1. 从光标往前找第一个非数字的字符，为中文字符时，输入下一个字符时默认开启中文输入
-;;                         ;; 2. 从光标往前找第一个非数字的字符，为其他字符时，输入下一个字符时默认开启英文输入
-;;                         ;; 3. 使用 `pyim-convert-string-at-point' 可以将光标前的字符串转换为中文，
-;;                         ;;    所以用户需要给 `pyim-convert-string-at-point' 绑定一个快捷键，比如：
-;;                         ;;    (global-set-key (kbd \"M-i\") #\\='pyim-convert-string-at-point)
-;;                         ;; 这个函数用于：`pyim-english-input-switch-functions' 。"
-;;                 pyim-probe-isearch-mode ;; 激活这个 pyim 探针函数后，使用 isearch 搜索时，禁用中文输入，强制英文输入
-;;                 pyim-probe-program-mode
-;;                 pyim-probe-org-structure-template)) ;; 
+;; 设置 pyim 探针： 我感觉他的这些探针更多的是对拼音畭法有效，想要更好的对五笔输入法的支持
+;; 设置 pyim 探针设置，这是 pyim 高级功能设置，可以实现 *无痛* 中英文切换 :-)
+;; 我自己使用的中英文动态切换规则是：
+;; 1. 光标只有在注释里面时，才可以输入中文。
+;; 2. 光标前是汉字字符时，才能输入中文。
+;; 3. 使用 M-j 快捷键，强制将光标前的拼音字符串转换为中文。
+(setq-default pyim-english-input-switch-functions;; 这几个可能是太灵了，以致于我无法输入中文，所以去掉，只用一个
+              '(pyim-probe-dynamic-english ;; 这个函数的标注見下面的说明 : 
+                        ;; "激活这个 pyim 探针函数后，使用下面的规则动态切换中英文输入：
+                        ;; 1. 从光标往前找第一个非数字的字符，为中文字符时，输入下一个字符时默认开启中文输入
+                        ;; 2. 从光标往前找第一个非数字的字符，为其他字符时，输入下一个字符时默认开启英文输入
+                        ;; 3. 使用 `pyim-convert-string-at-point' 可以将光标前的字符串转换为中文，
+                        ;;    所以用户需要给 `pyim-convert-string-at-point' 绑定一个快捷键，比如：
+                        ;;    (global-set-key (kbd \"M-i\") #\\='pyim-convert-string-at-point)
+                        ;; 这个函数用于：`pyim-english-input-switch-functions' 。"
+                pyim-probe-isearch-mode ;; 激活这个 pyim 探针函数后，使用 isearch 搜索时，禁用中文输入，强制英文输入
+                pyim-probe-program-mode
+                pyim-probe-org-structure-template)) ;; 
 ;; 上面太灵了，无法再输入中文了。我试别的: 它说这里也是自动中英文切换的
 ;; (defun pyim-probe-auto-english ()
 ;;   "激活这个 pyim 探针函数后，使用下面的规则自动切换中英文输入：
@@ -145,6 +111,7 @@
                 pyim-probe-punctuation-after-punctuation))
 ;; 开启代码搜索中文功能（比如拼音，五笔码等）
 (pyim-isearch-mode 1) 
+
 
 ;; 用分号做次选按键；用 ' 用第三选择, 第四第五就倒着遍历就可以了
 (defun pyim-select-second-word ()
@@ -166,3 +133,41 @@
 ;; (global-set-key (kbd "M-b") 'pyim-backward-word)
 
 (provide 'init-pyim)
+
+;; 下面不知道为什么 liberime-core.so 也不知道摆哪里，找不到同步函数
+
+;; (setq load-path (cons (file-truename "~/.emacs.d/elpa/liberime") load-path))
+;; ;; (require 'liberime)
+;; (load-file "~/.emacs.d/elpa/liberime/liberime.el")
+;; (use-package pyim
+;;   :demand t
+;;   :diminish pyim-isearch-mode
+;;   :init
+;;   (setq default-input-method "pyim")
+;;   (setq pyim-title "ㄓ")
+;;   ;; (use-feature posframe
+;;   ;;              :demand t)
+;;   ;; :custom
+;;   ;; (pyim-page-tooltip 'posframe)
+;;   ;; (pyim-page-length 9)
+;;   :config
+;;   (use-feature liberime
+;;                :load-path "~/.emacs.d/elpa/liberime/"
+;;                :demand t
+;;                ;; :init
+;;                ;; (module-load (expand-file-name "/Users/hhj/.emacs.d/elpa/liberime/src/liberime-core.dylib"));;this-is-NOT-right
+;;                :custom
+;;                (liberime-shared-data-dir "/Library/Input Methods/Squirrel.app/Contents/SharedSupport")
+;;                ;; (liberime-user-date-dir "~/.emacs.d/rime/")
+;;                (liberime-user-date-dir "~/Library/Rime/")
+;;                :config
+;;                (use-feature pyim-liberime
+;;                             :load-path "~/.emacs.d/pyim"
+;;                             :demand t
+;;                             :init
+;;                             (setq pyim-default-scheme 'wubi)
+;;                             )
+;;                (liberime-start liberime-shared-data-dir liberime-user-data-dir)
+;;                (liberime-try-select-schema "wubi86_jidian")
+;;                (liberime-select-schema "wubi86_jidian")
+;;                ))

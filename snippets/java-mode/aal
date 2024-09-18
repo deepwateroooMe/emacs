@@ -2,4 +2,4 @@
 # name: Arrays.asList()
 # key: aal
 # --
-Arrays.asList(${1:arr})$0
+Arrays.asList(${1:arr}) $0

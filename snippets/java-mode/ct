@@ -1,5 +1,6 @@
-# contributor: deepwaterooo
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
 # name: char [] s = t.toCharArray()
 # key: ct
 # --
-char [] ${1:s} = ${2:t}.toCharArray();$0
+char [] ${1:s} = ${2:t}.toCharArray();
+$0

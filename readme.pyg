@@ -1,0 +1,13 @@
+fun getStringLength(obj: Any): Int? {
+    if (obj is String)
+    return obj.length  // <<<<===== BUG: need to fix auto-indent here for if else while etc without {}
+
+    if (obj is String) {
+        return obj.length
+    }
+    // 在离开类型检测分支后，`obj` 仍然是 `Any` 类型
+    return null
+}
+fun dslfkj { // kotlin-mode, unlike java-mode, this feature works charming
+    val a = 1720
+}

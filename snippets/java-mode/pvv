@@ -1,0 +1,5 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: printlVariablesVariables
+# key: pvv
+# --
+System.out.println("${1:i}: " + $1 + " " + "${2:j}: " + $2);$0

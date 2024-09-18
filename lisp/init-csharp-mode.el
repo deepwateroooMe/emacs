@@ -1,4 +1,5 @@
 ;;; for csharp-mode
+(require 'open-in-msvs)
 
 (use-package tree-sitter :ensure t)
 (use-package tree-sitter-langs :ensure t)
@@ -32,37 +33,15 @@ or terminating simple string."
 (advice-add 'c-clear-string-fences :around 'csharp-disable-clear-string-fences)
 
 
-;; ;; 这里添加一个从Emacs中直接要求从Visual Studio中打开当前文件的命令
-;; (defun gp/my-open-current-file-in-visualStudio ()
-;;   (interactive)
-;;   (save-window-excursion
-;;     (async-shell-command
-;;      ;; (format "code --add ~/Notes/MD/notes --goto %S:%d" ;;; 不是很明白这里说的是什么意思: 不起作用, 把中间一堆乱七八糟的参数去掉就可以了
-;;      (format "code --goto %S:%d:%d" 
-;;              (shell-quote-argument buffer-file-name) ;;; 是因为这里面的""使得它不起作用,把这个引号去掉就可以了
-;;              ;; (shell-argument buffer-file-name)
-;;              (+ (if (bolp) 1 0) (count-lines 1 (point)))
-;;              (current-column)
-;;              ))))
-(defalias 'display-buffer-in-major-side-window 'window--make-major-side-window)
-(defun gp/ss-vscode-current-buffer-file-at-point ()
-  (interactive)
-  (start-process-shell-command "code"
-                               nil
-                               (concat "code --goto "
-                                       (buffer-file-name)
-                                       ":"
-                                       (number-to-string (+ (if (bolp) 1 0) (count-lines 1 (point)))) ;; 定位精确: 可以定位到了 当前行 当前列
-                                       ;; (number-to-string (1+ (current-line))) ;; +1 who knows why
-                                       ":"
-                                       (number-to-string (current-column)))))
-;; (define-key global-map (kbd "C-c i") 'gp/ss-vscode-current-buffer-file-at-point) 
 
-;; ;; TODO: EMACS ＝＝》 Visual Studio ， to open file 
-;; ;; try to make a version for Visual Studio 2022, but it does NOT work 现在可以 VS 直接跳转 Emacs 了；Emacs 跳转 VS 的改天再解决
-;; ;; 这里最大的问题主要是：VS 不会从当前工程中打开当前文件，而是新开一个实例，不方便，想它在现实例中打开，如 VSC 一样
-;; ;; open '/Applications/Visual Studio.app' [path_to].sln
-;; ;; echo "alias vs=\"open '/Applications/Visual Studio.app' *.sln\"" >> ~/.bash_profile
+;; 下面的这两个，应该是，在任何情况下，哪个好用，就用哪个应用：VS 与 VSC
+(defalias 'display-buffer-in-major-side-window 'window--make-major-side-window)
+;; ;; ;; try to make a version for Visual Studio 2022, but it does NOT work 现在可以 VS 直接跳转 Emacs 了；Emacs 跳转 VS 的改天再解决
+;; ;; ;; 这里最大的问题主要是：VS 不会从当前工程中打开当前文件，而是新开一个实例，不方便，想它在现实例中打开，如 VSC 一样
+;; ;; ;; open '/Applications/Visual Studio.app' [path_to].sln
+;; ;; ;; echo "alias vs=\"open '/Applications/Visual Studio.app' *.sln\"" >> ~/.bash_profile
+;; ;; (defvar open-in-msvs--path-to-vbs (concat (file-name-directory load-file-name) "open-in-msvs.vbs")) ;;; original
+;; ;; (defvar open-in-msvs--path-to-vbs (concat (buffer-file-name) "open-in-msvs.vbs"))
 ;; (defun gp/vscode-current-buffer-file-at-point-forVisualStudio ()
 ;;   (interactive)
 ;;   (start-process-shell-command "VisualStudio"
@@ -74,6 +53,30 @@ or terminating simple string."
 ;;                                        ;; (number-to-string (1+ (current-line))) ;; +1 who knows why
 ;;                                        ":"
 ;;                                        (number-to-string (current-column)))))
+;; ;; 这里添加一个从Emacs中直接要求从Visual Studio中打开当前文件的命令
+;; (defun gp/my-open-current-file-in-visualStudio ()
+;;   (interactive)
+;;   (save-window-excursion
+;;     (async-shell-command
+;;      ;; (format "code --add ~/Notes/MD/notes --goto %S:%d" ;;; 不是很明白这里说的是什么意思: 不起作用, 把中间一堆乱七八糟的参数去掉就可以了
+;;      (format "code --goto %S:%d:%d"  ;;; 这里不对，仍然是在用 VSC 想用 VS
+;;              (shell-quote-argument buffer-file-name) ;;; 是因为这里面的""使得它不起作用,把这个引号去掉就可以了
+;;              ;; (shell-argument buffer-file-name)
+;;              (+ (if (bolp) 1 0) (count-lines 1 (point)))
+;;              (current-column)
+;;              ))))
+(defun gp/ss-vscode-current-buffer-file-at-point ()
+  (interactive)
+  (start-process-shell-command "code"
+                               nil
+                               (concat "code --goto "
+                                       (buffer-file-name)
+                                       ":"
+                                       (number-to-string (+ (if (bolp) 1 0) (count-lines 1 (point)))) ;; 定位精确: 可以定位到了 当前行 当前列
+                                       ;; (number-to-string (1+ (current-line))) ;; +1 who knows why
+                                       ":"
+                                       (number-to-string (current-column)))))
+;; ;; (define-key global-map (kbd "C-c i") 'gp/ss-vscode-current-buffer-file-at-point) 
 
 
 ;;; 是好用，但仍然是需要分不同的mode 的
@@ -86,6 +89,7 @@ or terminating simple string."
 ;;       (kmacro-lambda-form [f4 ?\C-x ?1 ?  ?/ ?/ ?  ] 0 "%d"))
 ;; (put 'cmtss 'kmacro t)
 ;;; for pyim mode only: for temporary-use, until bug fix
+
 (fset 'cmtEnCh;;; 这里的 C-j C-i 与上面的 C-c-f 会给 C-cf 制造麻烦，需要绑定不同的鍵，这里暂时移动一下，看看它有没有什么区别 ?
       (kmacro-lambda-form [f4 ?  ?/ ?/ ?  ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?\C-x] 0 "%d"))
 (fset 'cmtChCh;;; 有点儿延迟
@@ -95,9 +99,11 @@ or terminating simple string."
 (add-hook 'csharp-mode-hook
           '(lambda ()
             (local-set-key (kbd "C-c i") 'gp/ss-vscode-current-buffer-file-at-point) 
-            (local-set-key (kbd "C-x x") 'cmtEnCh) ;; English ==> Chinese 改变绑定的鍵才是最彻底的改法，不会让 C-cf 运行狠久
-            (local-set-key (kbd "C-j") 'cmtChCh) ;; Chinese ==> Chinese
-            ))
+             ;; (local-set-key (kbd "C-c i") 'gp/my-open-current-file-in-visualStudio) 
+             ;; (local-set-key (kbd "C-c i") 'open-in-msvs) 
+             (local-set-key (kbd "C-x x") 'cmtEnCh) ;; English ==> Chinese 改变绑定的鍵才是最彻底的改法，不会让 C-cf 运行狠久
+             (local-set-key (kbd "C-j") 'cmtChCh) ;; Chinese ==> Chinese
+             ))
 
 
 ;;;for csharp-mode ; {} autoindent

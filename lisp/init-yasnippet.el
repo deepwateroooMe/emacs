@@ -24,6 +24,13 @@
 (add-hook 'csharp-mode-hook 'yasnippet-generic-setup-for-mode-hook)
 (add-hook 'python-mode-hook 'yasnippet-generic-setup-for-mode-hook)
 
+
+;;; 添加了如下三行，不知道，会有什么效果
+;; (setq yas-indent-line 'auto);; comment so java-mode snippets {}  indent properly
+(setq yas-also-auto-indent-first-line t)
+(setq yas-also-indent-empty-lines t)
+
+
 (defun my-yas-reload-all () ;; 可能还是分 mode 加载的，这个要再 debug 一下
   (interactive)
   (yas-compile-directory (file-truename "~/.emacs.d/snippets"))
@@ -32,9 +39,8 @@
               (null (gethash major-mode
                              yas/snippet-tables)))
   (yas-minor-mode 1)))
-;; (global-set-key [(F6)]  'my-yas-reload-all) ;;; 用个键方便一点儿 F8: 拼写检查相关的
-(global-set-key (kbd "<f6>")  'yas-reload-all) ;;; 用个键方便一点儿 F8: 拼写检查相关的
-;; (global-set-key (kbd "<f6>")  'my-yas-reload-all) ;;; 这个自定义方法可能有错误，用 default 的
+(global-set-key [(F6)]  'my-yas-reload-all) ;;; 用个键方便一点儿 F8: 拼写检查相关的
+;; (global-set-key (kbd "<f6>")  'yas-reload-all) ;;; 用个键方便一点儿 F8: 拼写检查相关的
 
 
 (defun my-yas-field-to-statement(str sep)

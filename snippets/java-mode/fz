@@ -2,4 +2,4 @@
 # name: f[x][y][z]
 # key: fz
 # --
-f[x][y][z]$0
+f[x][y][z] $0

@@ -1,4 +1,4 @@
-# name: forMayEntrySet
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
 # key: fme
 # --
 for (Map.Entry<${1:Integer, Integer}> en : ${2:m}.entrySet()) {

@@ -12,11 +12,50 @@
       (c-lineup-topmost-intro-cont langelem))))
 
 
-(setq c-default-style "awk" c-basic-offset 4)
-(setq c-default-style "awk")
+;; (setq c-hanging-braces-alist ((brace-list-open)
+;;                               (brace-entry-open)
+;;                               (substatement-open after)
+;;                               ;; (block-close . c-snug-do-while)
+;;                               (block-close)
+;;                               (arglist-cont-nonempty)))
+;; (custom-set-variables
+;;  '(c-hanging-braces-alist (quote (
+;;                                   ;; (substatement-open . (after))
+;;                                   ))))
+;; (c-add-style "STYLE NAME HERE"
+;;              '("linux-tabs-style"
+;;                (c-basic-offset . 4)     ; Guessed value
+;;                (c-offsets-alist
+;;                 (block-close . 0)       ; Guessed value
+;;                 (defun-block-intro . +) ; Guessed value
+;;                 (defun-close . 0)       ; Guessed value
+;;                 (else-clause . 0)       ; Guessed value
+;;                 (statement . 0)         ; Guessed value
+;;                 (statement-block-intro . +) ; Guessed value
+;;                 (topmost-intro . 0)         ; Guessed value
+;;                 (topmost-intro-cont . c-lineup-topmost-intro-cont))))
+;; (c-set-style 'linux-tabs-style)
+;; (require 'google-c-style)
+;; (add-hook 'c-mode-common-hook
+;;           (lambda()
+;;             (subword-mode)
+;;             (google-set-c-style)
+;;             (google-make-newline-indent)
+;;             (setq c-basic-offset 4)))
+
+
+
+
+
+(setq c-default-style "java" c-basic-offset 4);; 它可以解决掉：亲爱的表哥的活宝妹， java-mode 里 {} 对齐方式的无限烦人 bug!!!
+(setq c-default-style "java")
+;; (add-to-list 'c-default-style '(c-mode "bsd"))
+;; (setq c-default-style "bsd" c-basic-offset 4)
+;; (setq c-default-style "bsd")
 (setq-default c-basic-offset 4
               tab-width 4
               indent-tabs-mode t)
+
 
 (fset 'cmtEnCh;;; 这里的 C-j C-i 与上面的 C-c-f 会给 C-cf 制造麻烦，需要绑定不同的鍵，这里暂时移动一下，看看它有没有什么区别 ?
       (kmacro-lambda-form [f4 ?  ?/ ?/ ?  ?\M-x ?t ?o ?g ?g ?l ?e ?- ?i ?n ?p ?u ?t ?- ?m ?e ?t ?h ?o ?d return ?\C-x] 0 "%d"))
@@ -33,7 +72,6 @@
                                        (buffer-file-name)
                                        ":"
                                        (number-to-string (+ (if (bolp) 1 0) (count-lines 1 (point)))) ;; 定位精确: 可以定位到了 当前行 当前列
-                                       ;; (number-to-string (1+ (current-line))) ;; +1 who knows why
                                        ":"
                                        (number-to-string (current-column)))))
 
@@ -71,7 +109,7 @@
   ;; (fix-c-indent-offset-according-to-syntax-context 'func-decl-cont 0)
   )
 
-(defun my-c-mode-setup ();;; 这个，检查是哪里调用的？
+(defun my-c-mode-setup ()
   "C/C++ only setup"
   (message "my-c-mode-setup called (buffer-file-name)=%s" (buffer-file-name))
   ;; @see http://stackoverflow.com/questions/3509919/ \
@@ -116,7 +154,7 @@
       (local-set-key " " 'my/c-mode-insert-space);; 添加，期望：活宝妹注释时，会【 // 】输入法正确，且前后都有一个空格。这个功能用得更多。上面的功能，就手动或配置其它銉
       )))
 (add-hook 'c-mode-common-hook 'c-mode-common-hook-setup)
-;; (add-hook 'c-mode-common-hook 'google-set-c-style) ;; 这个，为什么会破坏活宝妹的个性化配置呢？只在看 xv6OS 时才打开
+;; (add-hook 'c-mode-common-hook 'google-set-c-style) ;; 感觉，这里不起作用
 ;;; 爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！
 
 

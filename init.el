@@ -12,10 +12,17 @@
 ;; 配制，可以个性化 faces: 这里好像还是不行
 (setq custom--inhibit-theme-enable nil)
 
-;; (setq default-directory "/Users/hhj/.emacs.d/")
-;; (setq default-directory "/Users/hhj/Tractor/")
+(setq default-directory "/Users/hhj/.emacs.d/")
 ;; (setq default-directory "/Users/hhj/pubFrameWorks/ET/")
-(setq default-directory "/Users/hhj/pp/android/SumTea_Android/")
+;; (setq default-directory "/Users/hhj/pp/android/")
+;; (setq default-directory "/Users/hhj/pp/android/MVVMRecipeApp/")
+;; (setq default-directory "/Users/hhj/pp/android/ckdassist/app/src/main/")
+;; (setq default-directory "/Users/hhj/mixed/Me&Mom/")
+;; (setq default-directory "/Users/hhj/pp/me_winter3wks/")
+;; (setq default-directory "/Users/hhj/Tractor/")
+;; (setq default-directory "/Users/hhj/routine/myAlgorithms/")
+;; (setq default-directory "/Users/hhj/pp/android/Android-Week-View/")
+;; (setq default-directory "/Users/hhj/pp/android/SumTea_Android/")
   
 
 ;; ;; Bootstrap 'use-package'
@@ -229,7 +236,7 @@
   (require 'init-ctags)
   (require 'init-bbdb)
   (require 'init-gnus)
-  ;; (require 'init-lua-mode) ;;;;; cmp for tmp
+  ;; (require 'init-lua-mode) ;;;;; cmp for tmp 
   (require 'init-workgroups2)
   (require 'init-term-mode)
   (require 'init-web-mode)
@@ -291,6 +298,7 @@
 (modify-syntax-entry ?_ "w" c-mode-syntax-table)
 (modify-syntax-entry ?_ "w" c++-mode-syntax-table)
 (global-set-key (kbd "M-f") 'forward-word)
+(global-set-key (kbd "C-c C-r") 'ivy-resume)
 
 
 ;; *Message* buffer should be writable in 24.4+
@@ -559,9 +567,9 @@ Each element has the form (NAME AGE MALE-FLAG)."
 ;; (font-spec :family "Iosevka Term" :size 16 :otf '(latn nil (dlig) nil)) ;;; 是我用来参考的
 ;; (set-face-attribute 'default nil :font "Inconsolata-dz" :otf '(latn nil (dlig) nil))
 
-;; (set-face-attribute 'region nil :background "#666" :foreground "#ffffff") 
-(setq yas-indent-line 'auto)
-(setq yas/indent-line 'auto);; 不知道 csharp-mode 里，会不会出什么问题
+;; (set-face-attribute 'region nil :background "#666" :foreground "#ffffff")
+;; comment 试解决 java-mode-snippets 里 {} 格式化 bug 
+;; (setq yas/indent-line 'auto);; 不知道 csharp-mode 里，会不会出什么问题
 
 (setq my/for-org nil)
 ;; (when (bound-and-true-p my/for-org) (load-theme 'misterioso))
@@ -591,6 +599,9 @@ Each element has the form (NAME AGE MALE-FLAG)."
 (server-start) 
 
 
+;; (set-face-attribute 'font-lock-comment-face nil :foreground "#ffd700")  ;; 加这里不起作用
+
+;; '(font-lock-comment-face ((t (:foreground "#afaf9d" :slant normal)))) 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -665,6 +676,7 @@ Each element has the form (NAME AGE MALE-FLAG)."
  '(hi-blue-b ((t (:foreground "systemBlueColor" :weight bold))))
  '(hi-salmon ((t (:background "NavajoWhite1" :foreground "gray0"))))
  '(highlight ((t (:background "white smoke"))))
+ '(font-lock-comment-face ((t (:slant normal)))) 
  '(org-level-1 ((t (:inherit outline-1))))
  '(org-level-2 ((t (:inherit outline-2))))
  '(org-level-3 ((t (:inherit outline-3))))

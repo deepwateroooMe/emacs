@@ -1,6 +1,10 @@
 ;;; kotlin-mode
 (require 'kotlin-mode)
 
+;;【亲爱的表哥的活宝妹，任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】
+;; tmp fix bug of C-c C-r ivy-resume set to global map 
+(require 'ivy)
+
 (setq debug-on-error t)
 
 (setq interpreter-mode-alist
@@ -42,6 +46,8 @@
             ;; (local-set-key (kbd "C-j") 'cmtChChkt) ;; Chinese ==> Chinese
             (global-set-key (kbd "C-x x") 'cmtEnCh) ;; English ==> Chinese 改变绑定的鍵才是最彻底的改法，不会让 C-cf 运行狠久
             (global-set-key (kbd "C-j") 'cmtChChkt) ;; Chinese ==> Chinese
+            ;; 下面并没有解决问题：亲爱的表哥的活宝妹，直接暴力进 Kotlin-mode.el 下把原始键绑定去掉了。。。
+            (global-set-key (kbd "C-c C-r") 'ivy-resume) ;; 这么可以解决问题
             ))
 
 
@@ -101,5 +107,6 @@
     (indent-according-to-mode)
     ;; (c-indent-line-or-region)
     )))
+
 
 (provide 'init-kotlin-mode)

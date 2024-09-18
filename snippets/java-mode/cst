@@ -2,4 +2,4 @@
 # name: Collections.sort()
 # key: cst
 # --
-Collections.sort(${1:arr})$0
+Collections.sort(${1:l})$0

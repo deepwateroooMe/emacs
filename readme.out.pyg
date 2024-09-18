@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{fun}\PYG{+w}{ }\PYG{n+nf}{getStringLength}\PYG{p}{(}\PYG{n}{obj}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{Any}\PYG{p}{):}\PYG{+w}{ }\PYG{n}{Int}\PYG{o}{?}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{obj}\PYG{+w}{ }\PYG{n}{is}\PYG{+w}{ }\PYG{n}{String}\PYG{p}{)}
+\PYG{+w}{    }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{obj}\PYG{p}{.}\PYG{n+na}{length}\PYG{+w}{  }\PYG{c+c1}{// \PYGZlt{}\PYGZlt{}\PYGZlt{}\PYGZlt{}===== BUG: need to fix auto\PYGZhy{}indent here for if else while etc without \PYGZob{}\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{obj}\PYG{+w}{ }\PYG{n}{is}\PYG{+w}{ }\PYG{n}{String}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{obj}\PYG{p}{.}\PYG{n+na}{length}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{c+c1}{// 在离开类型检测分支后，`obj` 仍然是 `Any` 类型}
+\PYG{+w}{    }\PYG{k}{return}\PYG{+w}{ }\PYG{k+kc}{null}
+\PYG{p}{\PYGZcb{}}
+\PYG{n}{fun}\PYG{+w}{ }\PYG{n}{dslfkj}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{c+c1}{// kotlin\PYGZhy{}mode, unlike java\PYGZhy{}mode, this feature works charming}
+\PYG{+w}{    }\PYG{n}{val}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1720}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

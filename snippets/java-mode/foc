@@ -1,6 +1,7 @@
-# name: for (char i = ''; i < ''; i++)
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: for (char i =''; i < ''; i++)
 # key: foc
 # --
-for (char ${1:c} = '${2:a}'; $1 < '${3:z}'; $1++) {
+for (char ${1:c} = '${2:a}'; $1 ${3:<=} '${4:z}'; $1++) {
     $0
 }

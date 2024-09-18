@@ -10,7 +10,7 @@
 
 ;;; set faces speedbar-dirctory-face
 (defface speedbar-symlink-directory-face
-  '((((class color) (background light)) :foreground "red")
+  '((((class color) (background light)) :foreground "red") 
     (((class color) (background dark)) :foreground "green"))
   "Speedbar face for symlinked directory names."
   :group 'speedbar-faces)
@@ -124,7 +124,7 @@
 ;; Add new extensions for speedbar tagging (allow to expand/collapse
 ;; sections, etc.) -- do this BEFORE firing up speedbar?
 (speedbar-add-supported-extension
- '(".org" ".c" ".s" ".txt" ".ld" "mk" "mkk" "mku" "Makefile" "makefile" ".java" ".cs" ".out" ".log" ".cfg" "map" ".S" ".kt"))
+ '(".org" ".c" ".s" ".txt" ".ld" "mk" "mkk" "mku" "Makefile" "makefile" ".java" ".cs" ".out" ".log" ".cfg" "map" ".S" ".kt" ".gradle" ".properties" ".xml"))
 ;; (custom-set-variables ;;; temporary-do-NOT show .tex etc hate...
 ;;  '(speedbar-show-unknown-files t)
 ;;  )

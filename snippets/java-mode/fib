@@ -1,6 +1,0 @@
-# name: for (Integer i : some) {}
-# key: fib
-# --
-for (Integer ${1:i} : ${2}) {
-    $0
-}

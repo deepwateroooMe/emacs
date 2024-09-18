@@ -1,5 +1,5 @@
 ;;;
-(Setq interpreter-mode-alist
+(setq interpreter-mode-alist
       (cons '("java" . java-mode) interpreter-mode-alist))
 (add-to-list 'auto-mode-alist '("\\.java\\'" . java-mode))
 (add-to-list 'auto-mode-alist '("\\.aidl\\'" . java-mode))
@@ -13,6 +13,25 @@
   "Prevent annoying \"Active processes exist\" query when you quit Emacs."
                                         ;  (flet ((process-list ())) ad-do-it))
   (cl-flet ((process-list ())) ad-do-it))
+
+
+(setq c-default-style
+      '((java-mode . "linux")))
+;; (c-add-style "STYLE NAME HERE"
+;;              '("linux-tabs-style"
+;;                (c-basic-offset . 4)     ; Guessed value
+;;                (c-offsets-alist
+;;                 (block-close . 0)       ; Guessed value
+;;                 (defun-block-intro . +) ; Guessed value
+;;                 (defun-close . 0)       ; Guessed value
+;;                 (else-clause . 0)       ; Guessed value
+;;                 (statement . 0)         ; Guessed value
+;;                 (statement-block-intro . +) ; Guessed value
+;;                 (topmost-intro . 0)         ; Guessed value
+;;                 (topmost-intro-cont . c-lineup-topmost-intro-cont))))
+;; (c-set-style 'linux-tabs-style)
+;; (setq c-default-style
+;;       '((java-mode . "linux-tabs-style")))
 
 
 ;; (autoload 'jtags-extras "jtags-extras" "Load jtags-extras.")
@@ -46,6 +65,8 @@
 (add-hook 'post-self-insert-hook 'java-autoindent)
 (add-hook 'java-mode-hook
           #'(lambda ()
+              ;; (set (make-local-variable 'yas-indent-line) 'fixed)
+              ;; ;; (setq yas-also-indent-empty-lines 'nil);; 试看这个，可以解决，最后空行的【一定得、多跳一次、的 bug 吗】？不解决问题
               (local-set-key (kbd "{") 'cheeso-insert-open-brace-for-java)))
 
 ; work with autopair for {

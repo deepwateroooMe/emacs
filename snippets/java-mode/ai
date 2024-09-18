@@ -1,0 +1,5 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: a[i]
+# key: ai
+# --
+${1:a}[i]$0

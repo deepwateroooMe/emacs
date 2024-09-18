@@ -1,0 +1,5 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: a[i][j][k]
+# key: ak
+# --
+${1:a}[i][j][k]$0
