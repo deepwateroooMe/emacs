@@ -12,7 +12,8 @@
 ;; 配制，可以个性化 faces: 这里好像还是不行
 (setq custom--inhibit-theme-enable nil)
 
-(setq default-directory "/Users/hhj/.emacs.d/")
+(setq default-directory "/Users/hhj/routine/myAlgorithms/")
+;; (setq default-directory "/Users/hhj/.emacs.d/snippets/java-mode/")
 ;; (setq default-directory "/Users/hhj/pubFrameWorks/ET/")
 ;; (setq default-directory "/Users/hhj/pp/android/")
 ;; (setq default-directory "/Users/hhj/pp/android/MVVMRecipeApp/")
@@ -20,7 +21,6 @@
 ;; (setq default-directory "/Users/hhj/mixed/Me&Mom/")
 ;; (setq default-directory "/Users/hhj/pp/me_winter3wks/")
 ;; (setq default-directory "/Users/hhj/Tractor/")
-;; (setq default-directory "/Users/hhj/routine/myAlgorithms/")
 ;; (setq default-directory "/Users/hhj/pp/android/Android-Week-View/")
 ;; (setq default-directory "/Users/hhj/pp/android/SumTea_Android/")
   
@@ -610,7 +610,8 @@ Each element has the form (NAME AGE MALE-FLAG)."
  '(an si-color-faces-vector)
  '(ansi-color-names-vector
    ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
- '(c-default-style "linux")
+ ;; '(c-default-style "linux") ;; 昨天改漏掉的 bug 。。。
+ '(c-default-style "java")
  '(column-number-mode t)
  '(custom-enabled-themes '(atom-one-dark))
  '(custom-safe-themes

@@ -8,6 +8,7 @@
 - *【亲爱的表哥的活宝妹，任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】*
 -  *【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】*
 - *java-mode {} snippets indents* produced bugs: *bsd==>java* 就可以了。解决了 java-mode 里 {} 对齐方式，不符合亲爱的表哥的活宝妹的使用习惯，及附加 {} 内的对齐错误等相关问题。完美解决，开心！！ *【TODO】： java-mode 里，还有亲爱的表哥的活宝妹，先前写的部分 snippets, 因为多添加了最后一行，所造成的、【不必要的、最后一行空行、行头需要 tab-indent 多跳一次】的问题* 。但是，解决它，只需要亲爱的表哥的活宝妹，修改那些个别的 snippets 就可以了。不是重点，某天晚上快离学校前花几分钟修改一下那些 snippets就可以了。
+  - *【TODO】* ：残存1 个【史诗级】【BUG：】： *new int [] {}; 当输入 { 后自动化完成 "{|};" 就制造了这个；后的、下一行以及后序行的 indentation 错乱的问题* 。改天再改这个 bug. *使用的时候，注意它后留一空行，就可以避免新行和后序行的 indent 错乱* 。但每到这个用例，就务必插入一个空行；回头代码写完，再删除这个【务必插入、以避免 indents 错乱】的【画蛇添足】的多余步骤，极其烦人，令人恨痛！！
 - add configuration for another lanugage for android apps
 - cc-mode minor bugs fixed. C-c . Set Style= "awk" from bsd. modify .dir-locals.el from bsd to awk perfectly solved all problems!! *【爱表哥，爱生活！！！任何时候，亲爱的表哥的活宝妹就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】*
 #+BEGIN_SRC lisp

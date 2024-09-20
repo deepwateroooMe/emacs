@@ -3,6 +3,6 @@
 # key: paii
 # --
 System.out.println("${1:a}.length: " + $1.length);
-for (int z = 0; z < $1.length; ++z) 
+for (int z = 0; z < $1.length; ++z)
     System.out.println(Arrays.toString($1[z]));
 $0

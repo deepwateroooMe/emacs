@@ -1,6 +1,6 @@
-# contributor: deepwaterooo
+# -*- mode: snippet; require-final-newline: nil -*-
 # name: print ListNode
 # key: ppt
 # --
-${1:root}.preOrderPrintTree($1);
+${1:r}.preOrderPrintTree($1);
 $0

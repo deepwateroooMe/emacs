@@ -66,7 +66,7 @@
 (add-hook 'java-mode-hook
           #'(lambda ()
               ;; (set (make-local-variable 'yas-indent-line) 'fixed)
-              ;; ;; (setq yas-also-indent-empty-lines 'nil);; 试看这个，可以解决，最后空行的【一定得、多跳一次、的 bug 吗】？不解决问题
+              (setq yas-also-indent-empty-lines 'nil);; 试看这个，可以解决，最后空行的【一定得、多跳一次、的 bug 吗】？不解决问题
               (local-set-key (kbd "{") 'cheeso-insert-open-brace-for-java)))
 
 ; work with autopair for {
@@ -108,7 +108,7 @@
    ((cheeso-looking-back-at-equals-or-array-init-java)
     (self-insert-command 1)
     (forward-char 2);; 让它往前多移一个，常常是 (new int [] {});
-    (insert ";") 
+    (insert ";") ;; 【TODO】：这里埋了个【史诗级】【BUG：】，真恨人！！！改天再来改这个【BUG：】
     (backward-char 3)) ; this one works great now
 
    ;; else, it's a new scope., 
