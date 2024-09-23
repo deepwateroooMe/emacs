@@ -12,8 +12,8 @@
 ;; 配制，可以个性化 faces: 这里好像还是不行
 (setq custom--inhibit-theme-enable nil)
 
-(setq default-directory "/Users/hhj/routine/myAlgorithms/")
-;; (setq default-directory "/Users/hhj/.emacs.d/snippets/java-mode/")
+;; (setq default-directory "/Users/hhj/routine/myAlgorithms/")
+(setq default-directory "/Users/hhj/.emacs.d/")
 ;; (setq default-directory "/Users/hhj/pubFrameWorks/ET/")
 ;; (setq default-directory "/Users/hhj/pp/android/")
 ;; (setq default-directory "/Users/hhj/pp/android/MVVMRecipeApp/")
@@ -242,7 +242,7 @@
   (require 'init-web-mode)
   (require 'init-slime)
   (require 'shader-mode)
-  (require 'init-kotlin-mode)
+  ;; (require 'init-kotlin-mode)
   (require 'init-nxml-mode)
   (require 'init-org)			
   (require 'init-yasnippet)
@@ -263,7 +263,7 @@
   ;; (require 'init-company) ;;; 不喜欢它老是跑出一大堆的路径相关的,不方便; 它老是导致闪屏提示，在能够修改闪屏前，先禁用 
   (require 'init-csharp-mode) ;; 早上先解决这个：必须这个 csharp-mode 是能够好好工作的！！！
   (require 'ld-script)
-  (require 'init-make-mode)
+  ;; (require 'init-make-mode)
   (require 'init-pyim);; ;;; 暂时放一下，亲爱的表哥的活宝妹来配置 
   (require 'init-swift-mode);; 
   ;; (require 'init-cc-mode)
@@ -610,8 +610,7 @@ Each element has the form (NAME AGE MALE-FLAG)."
  '(an si-color-faces-vector)
  '(ansi-color-names-vector
    ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
- ;; '(c-default-style "linux") ;; 昨天改漏掉的 bug 。。。
- '(c-default-style "java")
+ '(c-default-style "awk")
  '(column-number-mode t)
  '(custom-enabled-themes '(atom-one-dark))
  '(custom-safe-themes
@@ -632,7 +631,7 @@ Each element has the form (NAME AGE MALE-FLAG)."
  '(org-support-shift-select nil)
  '(orgsftLen 2)
  '(package-selected-packages
-   '(kotlin-mode org-download tree-sitter-indent tree-sitter-langs tree-sitter company-sourcekit cnfonts go-mode slime rime xr pyim-wbdict web-mode-edit-element auctex fuzzy ppd-sr-speedbar lsp-mode py-autopep8 logview virtualenvwrapper company-jedi flycheck-color-mode-line auto-complete-clang-async flycheck-swift flycheck swift-mode yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link))
+   '(csharp-mode kotlin-mode org-download tree-sitter-indent tree-sitter-langs tree-sitter company-sourcekit cnfonts go-mode slime rime xr pyim-wbdict web-mode-edit-element auctex fuzzy ppd-sr-speedbar lsp-mode py-autopep8 logview virtualenvwrapper company-jedi flycheck-color-mode-line auto-complete-clang-async flycheck-swift flycheck swift-mode yaml-mode writeroom-mode workgroups2 wgrep web-mode w3m unfill tidy textile-mode tagedit sr-speedbar smex simple-httpd session scss-mode scratch rvm ruby-compilation robe rjsx-mode request regex-tool rainbow-delimiters quack pyim pomodoro paredit page-break-lines package-lint nvm neotree mwe-log-commands multi-term move-text markdown-mode link less-css-mode legalese jump js-doc iedit idomenu ibuffer-vc hydra htmlize hl-sexp haskell-mode haml-mode groovy-mode gitignore-mode gitconfig-mode git-timemachine git-link gist fringe-helper flyspell-lazy flymake-ruby flymake-jslint flymake-css flx-ido find-by-pinyin-dired expand-region exec-path-from-shell erlang emms emmet-mode elpy dumb-jump dsvn dropdown-list dired+ diminish dictionary define-word crontab-mode cpputils-cmake counsel-gtags counsel-bbdb connection company-c-headers color-theme cmake-mode cliphist buffer-move bookmark+ bbdb auto-yasnippet auto-complete auto-compile ace-window ace-mc ace-link))
  '(pdf-tools-handle-upgrades nil)
  '(session-use-package t nil (session))
  '(show-paren-mode t)
@@ -674,10 +673,10 @@ Each element has the form (NAME AGE MALE-FLAG)."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "#282C34" :foreground "#ABB2BF" :inverse-video nil :box nil :strike-through nil :extend nil :overline nil :underline nil :slant normal :weight normal :height 141 :width normal :foundry "nil" :family "Inconsolata_dz"))))
+ '(font-lock-comment-face ((t (:slant normal))))
  '(hi-blue-b ((t (:foreground "systemBlueColor" :weight bold))))
  '(hi-salmon ((t (:background "NavajoWhite1" :foreground "gray0"))))
  '(highlight ((t (:background "white smoke"))))
- '(font-lock-comment-face ((t (:slant normal)))) 
  '(org-level-1 ((t (:inherit outline-1))))
  '(org-level-2 ((t (:inherit outline-2))))
  '(org-level-3 ((t (:inherit outline-3))))

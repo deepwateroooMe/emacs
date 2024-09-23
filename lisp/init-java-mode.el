@@ -16,7 +16,8 @@
 
 
 (setq c-default-style
-      '((java-mode . "linux")))
+      ;; '((java-mode . "linux")))
+      '((java-mode . "java")))
 ;; (c-add-style "STYLE NAME HERE"
 ;;              '("linux-tabs-style"
 ;;                (c-basic-offset . 4)     ; Guessed value
@@ -29,7 +30,6 @@
 ;;                 (statement-block-intro . +) ; Guessed value
 ;;                 (topmost-intro . 0)         ; Guessed value
 ;;                 (topmost-intro-cont . c-lineup-topmost-intro-cont))))
-;; (c-set-style 'linux-tabs-style)
 ;; (setq c-default-style
 ;;       '((java-mode . "linux-tabs-style")))
 
@@ -57,17 +57,18 @@
             ;; (local-set-key (kbd "C-j") 'cmt)
             ))
 
-
+;; 下面，定义了两件事：；和 { 。两件事，它们可以，各自不 work, 也可以，2 件事合并后，在 { 定义的事件里，插入；不 work
 ;;;for java-mode ; {} auto-expand
 (defun java-autoindent ()
   (when (and (eq major-mode 'java-mode) (looking-back "[;]"))
     (newline-and-indent)))
-(add-hook 'post-self-insert-hook 'java-autoindent)
+(add-hook 'post-self-insert-hook 'java-autoindent);; 这件事，应该是 work 的
 (add-hook 'java-mode-hook
           #'(lambda ()
               ;; (set (make-local-variable 'yas-indent-line) 'fixed)
-              (setq yas-also-indent-empty-lines 'nil);; 试看这个，可以解决，最后空行的【一定得、多跳一次、的 bug 吗】？不解决问题
+              ;; (setq yas-also-indent-empty-lines 'nil);; 试看这个，可以解决，最后空行的【一定得、多跳一次、的 bug 吗】？不解决问题
               (local-set-key (kbd "{") 'cheeso-insert-open-brace-for-java)))
+;; 上面这件，合并嵌套后，或不 work
 
 ; work with autopair for {
 (defun cheeso-looking-back-at-regexp (regexp)
@@ -108,7 +109,7 @@
    ((cheeso-looking-back-at-equals-or-array-init-java)
     (self-insert-command 1)
     (forward-char 2);; 让它往前多移一个，常常是 (new int [] {});
-    (insert ";") ;; 【TODO】：这里埋了个【史诗级】【BUG：】，真恨人！！！改天再来改这个【BUG：】
+    (insert ";") ;; macport 29.1 版本，这里埋了个【史诗级】【BUG：】28.2 版本里不存在了，自动消失！！
     (backward-char 3)) ; this one works great now
 
    ;; else, it's a new scope., 
