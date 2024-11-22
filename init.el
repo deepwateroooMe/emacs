@@ -13,9 +13,12 @@
 (setq custom--inhibit-theme-enable nil)
 
 ;; (setq default-directory "/Users/hhj/routine/myAlgorithms/")
-(setq default-directory "/Users/hhj/.emacs.d/")
+;; (setq default-directory "/Users/hhj/.emacs.d/")
 ;; (setq default-directory "/Users/hhj/pubFrameWorks/ET/")
-;; (setq default-directory "/Users/hhj/pp/android/")
+(setq default-directory "/Users/hhj/pp/android/TabLayoutonJetpackcompose/")
+;; (setq default-directory "/Users/hhj/pp/android/FansArts/")
+;; (setq default-directory "/Users/hhj/pp/android/AndroidBroadCastReceiverRecdByUnity/")
+;; (setq default-directory "/Users/hhj/pp/android/deepwateroooSDK/")
 ;; (setq default-directory "/Users/hhj/pp/android/MVVMRecipeApp/")
 ;; (setq default-directory "/Users/hhj/pp/android/ckdassist/app/src/main/")
 ;; (setq default-directory "/Users/hhj/mixed/Me&Mom/")
@@ -139,7 +142,8 @@
   :prefix "gio-")
 (defface gio-highlight-numbers-face
   '((t :inherit (default)
-       :foreground "#f6546a")) ;;; ori: #ffff00 #fff68f
+       ;; :foreground "#f6546a")) ;;; ori: #ffff00 #fff68f
+       :foreground "#ffff00")) ;;; ori: #ffff00 #fff68f
   "Face for numbers"
   :group 'gio-group )
 (defvar gio-keywords '(("\\(\\b\\|[-]\\)\\([-]?\\([0-9]+\\)\\(\\.?[0-9]\\)*\\)\\b" . 'gio-highlight-numbers-face)) ;; Integers & Decimals
@@ -200,6 +204,9 @@
   (require 'init-spelling)
   (require 'init-gui-frames)
   (require 'init-ido)
+  (require 'init-misc)  ;; comment for replace-string
+  (require 'init-lisp)
+  (require 'init-elisp)
   ;; (require 'init-dired) ;; added today
   (require 'init-uniquify)
   (require 'init-ibuffer)
@@ -212,14 +219,12 @@
   (require 'init-markdown)
   (require 'init-erlang)
   (require 'init-css)
+  (require 'init-java-mode)
   (require 'init-sr-speedbar)
   (require 'org-move-tree)
-  (require 'init-java-mode)
   (require 'init-javascript)
   (require 'init-haskell)
   (require 'init-ruby-mode)
-  (require 'init-lisp)
-  (require 'init-elisp)
   (require 'init-auto-complete)
   (require 'cpputils-cmake) ; to do more work on this one
   ;; Use bookmark instead
@@ -242,15 +247,14 @@
   (require 'init-web-mode)
   (require 'init-slime)
   (require 'shader-mode)
-  ;; (require 'init-kotlin-mode)
+  (require 'init-kotlin-mode)
   (require 'init-nxml-mode)
+  (require 'init-autopair) 
   (require 'init-org)			
   (require 'init-yasnippet)
   (require 'init-text)
   (require 'init-syslog-mode)
-  (require 'init-misc)  ;; comment for replace-string
   (require 'init-hydra) ;; 不知道这个会影响哪些功能  
-  (require 'init-autopair) 
                                         ;(require 'init-python-mode)
   (require 'init-auto-complete)
   (require 'pangu-spacing)
@@ -263,10 +267,11 @@
   ;; (require 'init-company) ;;; 不喜欢它老是跑出一大堆的路径相关的,不方便; 它老是导致闪屏提示，在能够修改闪屏前，先禁用 
   (require 'init-csharp-mode) ;; 早上先解决这个：必须这个 csharp-mode 是能够好好工作的！！！
   (require 'ld-script)
-  ;; (require 'init-make-mode)
+  ;; (require 'init-make-mode) ;; 这个，好像昨天卸载 emacs 时，包裹不小心丢了？
   (require 'init-pyim);; ;;; 暂时放一下，亲爱的表哥的活宝妹来配置 
   (require 'init-swift-mode);; 
-  ;; (require 'init-cc-mode)
+  (require 'init-cc-mode)
+  (require 'init-groovy)
   )
 
 
@@ -638,7 +643,7 @@ Each element has the form (NAME AGE MALE-FLAG)."
  '(speedbar-frame-parameters '((minibuffer) (width . 35)))
  '(speedbar-show-unknown-files nil)
  '(speedbar-smart-directory-expand-flag t)
- '(sr-speedbar-auto-refresh nil)
+ ;; '(sr-speedbar-auto-refresh nil) ;;; 去掉后，sr-speedbar 可以自动更新匹配【当前】目录吗？
  '(sr-speedbar-default-width 35)
  '(sr-speedbar-max-width 35)
  '(sr-speedbar-right-side nil)

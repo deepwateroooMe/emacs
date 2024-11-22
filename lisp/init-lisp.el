@@ -64,8 +64,12 @@
 
 (let* ((lispy-hooks '(lisp-mode-hook
                       inferior-lisp-mode-hook
-                      lisp-interaction-mode-hook)))
+                      lisp-interaction-mode-hook
+                      )))
   (dolist (hook lispy-hooks)
-    (add-hook hook 'sanityinc/lisp-setup)))
+    (add-hook hook 'sanityinc/lisp-setup)
+    ;;; 实现 scratch 里 electric-mode 中文括号【】的自动匹配
+    (add-hook hook 'electric-pair-mode)
+    ))
 
 (provide 'init-lisp)

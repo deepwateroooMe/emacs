@@ -124,10 +124,16 @@
 ;; Add new extensions for speedbar tagging (allow to expand/collapse
 ;; sections, etc.) -- do this BEFORE firing up speedbar?
 (speedbar-add-supported-extension
- '(".org" ".c" ".s" ".txt" ".ld" "mk" "mkk" "mku" "Makefile" "makefile" ".java" ".cs" ".out" ".log" ".cfg" "map" ".S" ".kt" ".gradle" ".properties" ".xml"))
+ '(".org" ".c" ".s" ".txt" ".ld" "mk" "mkk" "mku" "Makefile" "makefile" ".java" ".cs" ".out" ".log" ".cfg" "map" ".S" ".kt" ".kts" ".gradle" ".properties" ".xml" "groovy" ".csproj" ".aidl" ".json"))
 ;; (custom-set-variables ;;; temporary-do-NOT show .tex etc hate...
 ;;  '(speedbar-show-unknown-files t)
 ;;  )
 
 
 (provide 'init-sr-speedbar)
+
+
+
+
+
+

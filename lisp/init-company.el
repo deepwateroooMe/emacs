@@ -50,8 +50,9 @@
      ;; https://github.com/company-mode/company-mode/issues/29
      (setq company-global-modes
            '(not
-             eshell-mode comint-mode erc-mode gud-mode rcirc-mode 
-             minibuffer-inactive-mode))))
+             ;;; 这里【暂时】加上 org-mode 实现 scratch-buffer 改 org-mode 后的【】自动匹配
+             ;; 【TODO：】检查是否后继【BUG：】或是使用不便  org-mode
+             eshell-mode comint-mode erc-mode gud-mode rcirc-mode minibuffer-inactive-mode))))
 
 
 ;; {{ setup company-ispell

@@ -1,9 +1,9 @@
-(setq interpreter-mode-alist
+(setq interpreter-mode-alist 
       (cons '(".glsl" . c-mode) interpreter-mode-alist))
 (add-to-list 'auto-mode-alist '("\\.glsl\\'" . c-mode))
 (add-to-list 'auto-mode-alist '("\\.cpp\\'" . c-mode))
 (add-to-list 'auto-mode-alist '("\\.c\\'" . c-mode)) 
-
+ 
 (defun c-wx-lineup-topmost-intro-cont (langelem)
   (save-excursion
     (beginning-of-line)
@@ -199,10 +199,13 @@
   (save-excursion
     (backward-sexp)
     (looking-at regexp)))
+;; eg int myArray[10] = {5,5, 2,2,2, 7,7,7,7,7,7,7 };
 (defun cheeso-looking-back-at-equals-or-array-init-ss ()
   "returns t if an equals or [] is immediate preceding. else nil."
   (interactive)
-  (cheeso-looking-back-at-regexp-ss "\\(\\w+\\b *=\\|[[]]+\\)"))  
+  ;; (cheeso-looking-back-at-regexp-ss "\\(\\w+\\b *=\\|[[]]+\\)") ;;for-java-mode 
+  (cheeso-looking-back-at-regexp-ss "\\(\\w+\\b *=\\|[[0-9]+]+\\)");;for-cc-mode-modi 
+  )  
 (defun cheeso-prior-sexp-same-statement-same-line-ss ()
   "returns t if the prior sexp is on the same line. else nil"
   (interactive)
@@ -227,9 +230,9 @@
    ;; was the last non-space an equals sign? or square brackets?  Then it's an initializer.
    ((cheeso-looking-back-at-equals-or-array-init-ss)
     (self-insert-command 1)
-    (forward-char 2) ;; 1
+    (forward-char 1) ;; 1 2 
     (insert ";") 
-    (backward-char 3)) ;; init-java-mode 2
+    (backward-char 2)) ;; init-java-mode 2 3
    
    ;; Doesn't cooperate well with autopair
    ;; else, it's a new scope., 

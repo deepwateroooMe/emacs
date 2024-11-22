@@ -15,6 +15,10 @@
   (cl-flet ((process-list ())) ad-do-it))
 
 
+;;; 【亲爱的表哥的活宝妹，任何时候，亲爱的表哥的活宝妹，就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】
+;;; 【TODO】： java-mode 在 pyim 中文状态 C-c f 会出错 ^J^I^I^I^I 改天把这个 bug 改掉。
+
+
 (setq c-default-style
       ;; '((java-mode . "linux")))
       '((java-mode . "java")))
@@ -71,6 +75,7 @@
 ;; 上面这件，合并嵌套后，或不 work
 
 ; work with autopair for {
+;;; 亲爱的表哥的活宝妹，感觉 org-mode 里的【】匹配、极其怪异：只要打开过 java-mode,org-mode 就能【】自动匹配了；但是如果不曾打开过 java-mode, 它 org-mode 【】就不能自动匹配。。。
 (defun cheeso-looking-back-at-regexp (regexp)
   "calls backward-sexp and then checks for the regexp.  Returns t if it is found, else nil"
   (interactive "s")
@@ -109,8 +114,10 @@
    ((cheeso-looking-back-at-equals-or-array-init-java)
     (self-insert-command 1)
     (forward-char 2);; 让它往前多移一个，常常是 (new int [] {});
+    ;; (forward-char 1);; 让它往前多移一个，常常是 (new int [] {});
     (insert ";") ;; macport 29.1 版本，这里埋了个【史诗级】【BUG：】28.2 版本里不存在了，自动消失！！
     (backward-char 3)) ; this one works great now
+   ;; (backward-char 2)) ; this one works great now
 
    ;; else, it's a new scope., 
    ;; therefore, insert paired braces with an intervening newline, and indent everything appropriately.

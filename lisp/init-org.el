@@ -10,6 +10,7 @@
 (require 'ox-md)
 (require 'ox-org)
 
+
 ;;; org-mode auto configure mode
 (setq interpreter-mode-alist
       (cons '("org" . org-mode) interpreter-mode-alist))
@@ -112,6 +113,7 @@
 ;; (run-at-time 1 10 'indent-org-block-automatically);;; 这里说，每 10 秒调用一次这个方法
 
 
+
 (add-hook 'org-mode-hook
           (lambda ()
             (local-set-key (kbd "<C-S-left>") 'org/shift-left) ;; init.el 可以全局配置管理了
@@ -119,6 +121,7 @@
 ;;;;; auto paste and generate .png image file from clipboard-yank
             (local-set-key (kbd "C-i") 'my-org-screenshot)
             ;; (local-set-key (kbd "M-s") #'indent-org-block-automatically);; 想不出别的可用銉，暂时用这个测试一下。这里设置不对，参数不对
+            ;; (autopair-mode 1)
             ))
 
 
