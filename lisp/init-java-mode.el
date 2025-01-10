@@ -61,6 +61,48 @@
             ;; (local-set-key (kbd "C-j") 'cmt)
             ))
 
+
+;; try 亲爱的表哥的活宝妹，最喜欢的【】 comment 高亮
+;; your custom face to color secondary comments blue
+(defface my-second-comment-face '((t (:foreground "firebrick"))) "its a face")
+;; (define-derived-mode testy-mode fundamental-mode
+;;   "test"
+;;   (modify-syntax-entry ?/ "<1")
+;;   (modify-syntax-entry ?/ "<2")
+;;   (modify-syntax-entry 10 ">")
+;;   (font-lock-add-keywords
+;;    'testy-mode
+;;    ;; this highlights || followed by anything to the end of the line as long as there is
+;;    ;; a // before it on the same line.
+;;    ;; the 2 means only highlight the second regexp group, and the t means highlight it
+;;    ;; even if it has been highlighted already, which is should have been.
+;;    ;; '(("\\(//.*\\)\\(||.*$\\)" 2 'my-second-comment-face t))))
+;;    '(("\\(//.*\\)\\(【.*\\)\\(】.*$\\)" 2 'my-second-comment-face t))))
+;; 下面是参考另一个例子
+;; (defun java-match-item-marker (bound) ;;; 这里是 org-mode 相关的
+;;   "Highlight the 【】bounded test in Red in comments."
+;;   (and
+;;    (re-search-forward "^ *\\(-\\) " bound t)
+;;    (save-match-data
+;;      (save-excursion
+;;        (goto-char (match-end 1))
+;;        (eq (org-element-type (org-element-at-point)) 'item)))))
+(font-lock-add-keywords
+ 'java-mode
+ '(
+   ;; 【TODO：】目前每行只能匹配1次出出过的【】（）【）（】 ()[](][) 匹配，不能每行匹配同样的模式任意次 >1 次。暂时先这样
+   ("\\(//.*\\)\\(【.*】\\)\\(.*$\\)" 2 'my-second-comment-face t)
+   ("\\(//.*\\)\\(（.*）+\\)\\(.*\\)" 2 'my-second-comment-face t)
+   ("\\(//.*\\)\\(【.*）+\\)\\(.*\\)" 2 'my-second-comment-face t)
+   ("\\(//.*\\)\\(（.*】+\\)\\(.*\\)" 2 'my-second-comment-face t)
+   ("\\(//.*\\)\\(\\[.*\\]+\\)\\(.*\\)" 2 'my-second-comment-face t)
+   ("\\(//.*\\)\\((.*)+\\)\\(.*\\)" 2 'my-second-comment-face t)
+   ("\\(//.*\\)\\(\\[.*)+\\)\\(.*\\)" 2 'my-second-comment-face t)
+   ("\\(//.*\\)\\((.*\\]+\\)\\(.*\\)" 2 'my-second-comment-face t)
+    );; 【亲爱的表哥的活宝妹，任何时候，亲爱的表哥的活宝妹，就是一定要、一定会嫁给活宝妹的亲爱的表哥！！！爱表哥，爱生活！！！】
+) 
+
+
 ;; 下面，定义了两件事：；和 { 。两件事，它们可以，各自不 work, 也可以，2 件事合并后，在 { 定义的事件里，插入；不 work
 ;;;for java-mode ; {} auto-expand
 (defun java-autoindent ()

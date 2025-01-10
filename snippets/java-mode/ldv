@@ -1,0 +1,5 @@
+# contributor: Renaud Aubin <renaud.aubin@gmail.com>
+# name: Log.ldv
+# key: ldv
+# --
+Log.d(TAG, "$1(): ${2:v}: " + $2);$0

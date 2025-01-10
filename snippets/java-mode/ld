@@ -2,5 +2,4 @@
 # name: Log.d
 # key: ld
 # --
-Log.d(TAG, "${1: }() $2");
-$0
+Log.d(TAG, "${1: }()");$0

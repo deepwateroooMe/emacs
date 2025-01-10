@@ -2,5 +2,5 @@
 # name: m = length, n = length
 # key: mn
 # --
-int ${1:m} = ${2:a}.length$3, ${4:n} = ${5:a[0]}.length;
+int ${1:m} = ${2:a}.length$3, ${4:n} = ${5:a}[0].length;
 $0

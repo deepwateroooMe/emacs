@@ -12,10 +12,11 @@
 ;; 配制，可以个性化 faces: 这里好像还是不行
 (setq custom--inhibit-theme-enable nil)
 
-;; (setq default-directory "/Users/hhj/routine/myAlgorithms/")
+(setq default-directory "/Users/hhj/routine/myAlgorithms/")
 ;; (setq default-directory "/Users/hhj/.emacs.d/")
 ;; (setq default-directory "/Users/hhj/pubFrameWorks/ET/")
-(setq default-directory "/Users/hhj/pp/android/TabLayoutonJetpackcompose/")
+;; (setq default-directory "/Users/hhj/pp/android/NCalendar/")
+;; (setq default-directory "/Users/hhj/pp/android/TabLayoutonJetpackcompose/")
 ;; (setq default-directory "/Users/hhj/pp/android/FansArts/")
 ;; (setq default-directory "/Users/hhj/pp/android/AndroidBroadCastReceiverRecdByUnity/")
 ;; (setq default-directory "/Users/hhj/pp/android/deepwateroooSDK/")
@@ -44,8 +45,9 @@
 
 
 
-(setq load-path (cons (file-truename "~/.emacs.d/elpa/liberime") load-path))
-(require 'liberime)
+;(setq load-path (cons (file-truename "~/.emacs.d/elpa/liberime") load-path))
+					;(require 'liberime)
+
 ;; (setq load-path (cons (file-truename "~/.emacs.d/elpa/liberime") load-path))
 ;; (load-file "~/.emacs.d/elpa/liberime/liberime.el")
 ;; ;; (require 'liberime)
@@ -493,13 +495,14 @@ Each element has the form (NAME AGE MALE-FLAG)."
 ;;                        (flyspell-mode t)))
 
 
-(require 'ido-ubiquitous)
+					;(require 'ido-ubiquitous)
+
 (require 'undo-tree)
 (global-undo-tree-mode)
 
 ;;; require ido-ubiquitous
 (require 'ido)
-(require 'ido-ubiquitous) ; replaces ido-everywhere
+;(require 'ido-ubiquitous) ; replaces ido-everywhere
 
 ;;; ido-mode
 (ido-mode t)

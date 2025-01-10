@@ -88,7 +88,8 @@
    `(tooltip ((t (:foreground ,atom-one-dark-fg :background ,atom-one-dark-bg-1 :inherit variable-pitch))))
 
    `(font-lock-builtin-face ((t (:foreground ,atom-one-dark-cyan))))
-   `(font-lock-comment-face ((t (:foreground ,atom-one-dark-mono-3 :slant italic))))
+   ;; `(font-lock-comment-face ((t (:foreground ,atom-one-dark-mono-3 :slant italic))))
+   `(font-lock-comment-face ((t (:foreground ,atom-one-dark-mono-3 :slant normal))))
    `(font-lock-comment-delimiter-face ((default (:inherit (font-lock-comment-face)))))
    `(font-lock-doc-face ((t (:inherit (font-lock-string-face)))))
    `(font-lock-function-name-face ((t (:foreground ,atom-one-dark-blue))))
@@ -461,7 +462,8 @@
    `(notmuch-tree-match-date-face ((t (:inherit notmuch-search-date))))
    `(notmuch-tree-match-face ((t (:weight semi-bold))))
    `(notmuch-tree-match-tag-face ((t (:inherit notmuch-tag-face))))
-   `(notmuch-tree-no-match-face ((t (:slant italic :weight light :inherit font-lock-comment-face))))
+   ;; `(notmuch-tree-no-match-face ((t (:slant italic :weight light :inherit font-lock-comment-face))))
+   `(notmuch-tree-no-match-face ((t (:slant normal :weight light :inherit font-lock-comment-face))))
 
    ;; elfeed
    `(elfeed-log-debug-level-face ((t (:background ,atom-one-dark-black :foreground ,atom-one-dark-green))))
